@@ -1,0 +1,2802 @@
+{
+    "id": "8605111c89feb26340f16c52d804d21e",
+    "name": "Okta API",
+    "description": null,
+    "auth": null,
+    "events": null,
+    "variables": [],
+    "order": [],
+    "folders_order": [],
+    "folders": [],
+    "requests": [
+        {
+            "id": "1c25ec01dda76b4270c1524e655d638e",
+            "name": "List Applications",
+            "url": "http:\/\/your-subdomain.okta.com\/\/api\/v1\/apps",
+            "description": "Enumerates apps added to your organization with pagination. A subset of apps can be returned that match a supported filter expression or query.",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "get",
+            "pathVariableData": [],
+            "queryParams": [
+                {
+                    "key": "q",
+                    "description": "",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "after",
+                    "description": "Specifies the pagination cursor for the next page of apps",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "limit",
+                    "description": "Specifies the number of results for a page",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "filter",
+                    "description": "Filters apps by status, user.id, group.id or credentials.signing.kid expression",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "expand",
+                    "description": "Traverses users link relationship and optionally embeds Application User resource",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "includeNonDeleted",
+                    "description": "",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                }
+            ],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "8605111c89feb26340f16c52d804d21e",
+            "rawModeData": ""
+        },
+        {
+            "id": "2e700d0dc07d54859fc8b7e7f4a16d72",
+            "name": "Add Application",
+            "url": "http:\/\/your-subdomain.okta.com\/\/api\/v1\/apps",
+            "description": "Adds a new application to your Okta organization.",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "post",
+            "pathVariableData": [],
+            "queryParams": [
+                {
+                    "key": "activate",
+                    "description": "Executes activation lifecycle operation when creating the app",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                }
+            ],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "8605111c89feb26340f16c52d804d21e",
+            "rawModeData": ""
+        },
+        {
+            "id": "ebdd59420a8f671eb2a7b391c8e8dd88",
+            "name": "Delete Application",
+            "url": "http:\/\/your-subdomain.okta.com\/\/api\/v1\/apps\/{appId}",
+            "description": "Removes an inactive application.",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "delete",
+            "pathVariableData": [],
+            "queryParams": [
+                {
+                    "key": "appId",
+                    "description": "",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                }
+            ],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "8605111c89feb26340f16c52d804d21e",
+            "rawModeData": ""
+        },
+        {
+            "id": "ec698fa3f53efd05933c80c7efaf0162",
+            "name": "Get Application",
+            "url": "http:\/\/your-subdomain.okta.com\/\/api\/v1\/apps\/{appId}",
+            "description": "Fetches an application from your Okta organization by `id`.",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "get",
+            "pathVariableData": [],
+            "queryParams": [
+                {
+                    "key": "appId",
+                    "description": "",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "expand",
+                    "description": "Traverses users link relationship and optionally embeds Application User resource",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                }
+            ],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "8605111c89feb26340f16c52d804d21e",
+            "rawModeData": ""
+        },
+        {
+            "id": "0ec5cc7ed9da244d7f24acd66db2b447",
+            "name": "Update Application",
+            "url": "http:\/\/your-subdomain.okta.com\/\/api\/v1\/apps\/{appId}",
+            "description": "Updates an application in your organization.",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "put",
+            "pathVariableData": [],
+            "queryParams": [
+                {
+                    "key": "appId",
+                    "description": "",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                }
+            ],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "8605111c89feb26340f16c52d804d21e",
+            "rawModeData": ""
+        },
+        {
+            "id": "a34159d58b0ce83b94ff281c1f98228f",
+            "name": "List Key Credentials for Application",
+            "url": "http:\/\/your-subdomain.okta.com\/\/api\/v1\/apps\/{appId}\/credentials\/keys",
+            "description": "Enumerates key credentials for an application",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "get",
+            "pathVariableData": [],
+            "queryParams": [
+                {
+                    "key": "appId",
+                    "description": "",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                }
+            ],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "8605111c89feb26340f16c52d804d21e",
+            "rawModeData": ""
+        },
+        {
+            "id": "d4f660716d013716c04ca3671fa4bd9b",
+            "name": "Get Key Credential for Application",
+            "url": "http:\/\/your-subdomain.okta.com\/\/api\/v1\/apps\/{appId}\/credentials\/keys\/{keyId}",
+            "description": "Gets a specific [application key credential](#application-key-credential-model) by `kid`",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "get",
+            "pathVariableData": [],
+            "queryParams": [
+                {
+                    "key": "appId",
+                    "description": "",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "keyId",
+                    "description": "",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                }
+            ],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "8605111c89feb26340f16c52d804d21e",
+            "rawModeData": ""
+        },
+        {
+            "id": "0c9a1fa0141532fb8b17fa7e2af67399",
+            "name": "Clone Application Key Credential",
+            "url": "http:\/\/your-subdomain.okta.com\/\/api\/v1\/apps\/{appId}\/credentials\/keys\/{keyId}\/clone",
+            "description": "Clones a X.509 certificate for an application key credential from a source application to target application.",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "post",
+            "pathVariableData": [],
+            "queryParams": [
+                {
+                    "key": "appId",
+                    "description": "",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "keyId",
+                    "description": "",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "targetAid",
+                    "description": "Unique key of the target Application",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                }
+            ],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "8605111c89feb26340f16c52d804d21e",
+            "rawModeData": ""
+        },
+        {
+            "id": "2c3af928731edef83397ada2dee323ac",
+            "name": "List Groups Assigned to Application",
+            "url": "http:\/\/your-subdomain.okta.com\/\/api\/v1\/apps\/{appId}\/groups",
+            "description": "Enumerates group assignments for an application.",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "get",
+            "pathVariableData": [],
+            "queryParams": [
+                {
+                    "key": "appId",
+                    "description": "",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "q",
+                    "description": "",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "after",
+                    "description": "Specifies the pagination cursor for the next page of apps",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "limit",
+                    "description": "Specifies the number of results for a page",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "expand",
+                    "description": "Traverses users link relationship and optionally embeds Application User resource",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                }
+            ],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "8605111c89feb26340f16c52d804d21e",
+            "rawModeData": ""
+        },
+        {
+            "id": "4f2467b13ead3620cf26603c42210010",
+            "name": "Remove Group from Application",
+            "url": "http:\/\/your-subdomain.okta.com\/\/api\/v1\/apps\/{appId}\/groups\/{groupId}",
+            "description": "Removes a group assignment from an application.",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "delete",
+            "pathVariableData": [],
+            "queryParams": [
+                {
+                    "key": "appId",
+                    "description": "",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "groupId",
+                    "description": "",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                }
+            ],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "8605111c89feb26340f16c52d804d21e",
+            "rawModeData": ""
+        },
+        {
+            "id": "8f6fd2b540dd3ac22c8ca62a03162b67",
+            "name": "Get Assigned Group for Application",
+            "url": "http:\/\/your-subdomain.okta.com\/\/api\/v1\/apps\/{appId}\/groups\/{groupId}",
+            "description": "Fetches an application group assignment",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "get",
+            "pathVariableData": [],
+            "queryParams": [
+                {
+                    "key": "appId",
+                    "description": "",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "groupId",
+                    "description": "",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "expand",
+                    "description": "Traverses users link relationship and optionally embeds Application User resource",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                }
+            ],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "8605111c89feb26340f16c52d804d21e",
+            "rawModeData": ""
+        },
+        {
+            "id": "456ac8cee0eb607eb5498566337b5ae6",
+            "name": "Assign Group to Application",
+            "url": "http:\/\/your-subdomain.okta.com\/\/api\/v1\/apps\/{appId}\/groups\/{groupId}",
+            "description": "Assigns a group to an application",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "put",
+            "pathVariableData": [],
+            "queryParams": [
+                {
+                    "key": "appId",
+                    "description": "",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "groupId",
+                    "description": "",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                }
+            ],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "8605111c89feb26340f16c52d804d21e",
+            "rawModeData": ""
+        },
+        {
+            "id": "e887991e873e64207a3366b1bd9e1a42",
+            "name": "Activate Application",
+            "url": "http:\/\/your-subdomain.okta.com\/\/api\/v1\/apps\/{appId}\/lifecycle\/activate",
+            "description": "Activates an inactive application.",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "post",
+            "pathVariableData": [],
+            "queryParams": [
+                {
+                    "key": "appId",
+                    "description": "",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                }
+            ],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "8605111c89feb26340f16c52d804d21e",
+            "rawModeData": ""
+        },
+        {
+            "id": "8f53d39b17dedd75e286b4ceb346df74",
+            "name": "Deactivate Application",
+            "url": "http:\/\/your-subdomain.okta.com\/\/api\/v1\/apps\/{appId}\/lifecycle\/deactivate",
+            "description": "Deactivates an active application.",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "post",
+            "pathVariableData": [],
+            "queryParams": [
+                {
+                    "key": "appId",
+                    "description": "",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                }
+            ],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "8605111c89feb26340f16c52d804d21e",
+            "rawModeData": ""
+        },
+        {
+            "id": "f676261b0c20dff801832e090973ed1e",
+            "name": "List Users Assigned to Application",
+            "url": "http:\/\/your-subdomain.okta.com\/\/api\/v1\/apps\/{appId}\/users",
+            "description": "Enumerates all assigned [application users](#application-user-model) for an application.",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "get",
+            "pathVariableData": [],
+            "queryParams": [
+                {
+                    "key": "appId",
+                    "description": "",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "q",
+                    "description": "",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "query_scope",
+                    "description": "",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "after",
+                    "description": "Specifies the pagination cursor for the next page of apps",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "limit",
+                    "description": "Specifies the number of results for a page",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "filter",
+                    "description": "Filters apps by status, user.id, group.id or credentials.signing.kid expression",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "expand",
+                    "description": "Traverses users link relationship and optionally embeds Application User resource",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                }
+            ],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "8605111c89feb26340f16c52d804d21e",
+            "rawModeData": ""
+        },
+        {
+            "id": "fa7dac99cd052e3de900a27f457ceec8",
+            "name": "Assign User to Application for SSO & Provisioning",
+            "url": "http:\/\/your-subdomain.okta.com\/\/api\/v1\/apps\/{appId}\/users",
+            "description": "Assigns an user to an application with [credentials](#application-user-credentials-object) and an app-specific [profile](#application-user-profile-object). Profile mappings defined for the application are first applied before applying any profile properties specified in the request.",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "post",
+            "pathVariableData": [],
+            "queryParams": [
+                {
+                    "key": "appId",
+                    "description": "",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                }
+            ],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "8605111c89feb26340f16c52d804d21e",
+            "rawModeData": ""
+        },
+        {
+            "id": "79414bf78a22707cd9fd8aac8269c7cd",
+            "name": "Remove User from Application",
+            "url": "http:\/\/your-subdomain.okta.com\/\/api\/v1\/apps\/{appId}\/users\/{userId}",
+            "description": "Removes an assignment for a user from an application.",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "delete",
+            "pathVariableData": [],
+            "queryParams": [
+                {
+                    "key": "appId",
+                    "description": "",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "userId",
+                    "description": "",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                }
+            ],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "8605111c89feb26340f16c52d804d21e",
+            "rawModeData": ""
+        },
+        {
+            "id": "4134522e7eff2ea26401416df347c200",
+            "name": "Get Assigned User for Application",
+            "url": "http:\/\/your-subdomain.okta.com\/\/api\/v1\/apps\/{appId}\/users\/{userId}",
+            "description": "Fetches a specific user assignment for application by `id`.",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "get",
+            "pathVariableData": [],
+            "queryParams": [
+                {
+                    "key": "appId",
+                    "description": "",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "userId",
+                    "description": "",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "expand",
+                    "description": "Traverses users link relationship and optionally embeds Application User resource",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                }
+            ],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "8605111c89feb26340f16c52d804d21e",
+            "rawModeData": ""
+        },
+        {
+            "id": "d8fbb7daf10770f7f1f44ab38ff9f6da",
+            "name": "Update Application Profile for Assigned User",
+            "url": "http:\/\/your-subdomain.okta.com\/\/api\/v1\/apps\/{appId}\/users\/{userId}",
+            "description": "Updates a user's profile for an application",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "post",
+            "pathVariableData": [],
+            "queryParams": [
+                {
+                    "key": "appId",
+                    "description": "",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "userId",
+                    "description": "",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                }
+            ],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "8605111c89feb26340f16c52d804d21e",
+            "rawModeData": ""
+        },
+        {
+            "id": "63e816ca7b8a3e0316207ef80a04137d",
+            "name": "List Groups",
+            "url": "http:\/\/your-subdomain.okta.com\/\/api\/v1\/groups",
+            "description": "Enumerates groups in your organization with pagination. A subset of groups can be returned that match a supported filter expression or query.",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "get",
+            "pathVariableData": [],
+            "queryParams": [
+                {
+                    "key": "q",
+                    "description": "",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "filter",
+                    "description": "Filters apps by status, user.id, group.id or credentials.signing.kid expression",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "after",
+                    "description": "Specifies the pagination cursor for the next page of apps",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "limit",
+                    "description": "Specifies the number of results for a page",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "expand",
+                    "description": "Traverses users link relationship and optionally embeds Application User resource",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                }
+            ],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "8605111c89feb26340f16c52d804d21e",
+            "rawModeData": ""
+        },
+        {
+            "id": "f8db573ad3a916fef2551102f6cb5ced",
+            "name": "Add Group",
+            "url": "http:\/\/your-subdomain.okta.com\/\/api\/v1\/groups",
+            "description": "Adds a new group with `OKTA_GROUP` type to your organization.",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "post",
+            "pathVariableData": [],
+            "queryParams": [],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "8605111c89feb26340f16c52d804d21e",
+            "rawModeData": ""
+        },
+        {
+            "id": "dacd2ea54e551a04701c84cce0c0b405",
+            "name": "List Group Rules",
+            "url": "http:\/\/your-subdomain.okta.com\/\/api\/v1\/groups\/rules",
+            "description": "Lists all group rules for your organization.",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "get",
+            "pathVariableData": [],
+            "queryParams": [
+                {
+                    "key": "limit",
+                    "description": "Specifies the number of results for a page",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "after",
+                    "description": "Specifies the pagination cursor for the next page of apps",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "expand",
+                    "description": "Traverses users link relationship and optionally embeds Application User resource",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                }
+            ],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "8605111c89feb26340f16c52d804d21e",
+            "rawModeData": ""
+        },
+        {
+            "id": "a82e62da370adb88dc5f8c2de2374fb3",
+            "name": "Create Group Rule",
+            "url": "http:\/\/your-subdomain.okta.com\/\/api\/v1\/groups\/rules",
+            "description": "Creates a group rule to dynamically add users to the specified group if they match the condition",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "post",
+            "pathVariableData": [],
+            "queryParams": [],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "8605111c89feb26340f16c52d804d21e",
+            "rawModeData": ""
+        },
+        {
+            "id": "bdb9627c2b43c2654896e59c17cbfcfb",
+            "name": "Delete a group Rule",
+            "url": "http:\/\/your-subdomain.okta.com\/\/api\/v1\/groups\/rules\/{ruleId}",
+            "description": "Removes a specific group rule by id from your organization",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "delete",
+            "pathVariableData": [],
+            "queryParams": [
+                {
+                    "key": "ruleId",
+                    "description": "",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "removeUsers",
+                    "description": "",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                }
+            ],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "8605111c89feb26340f16c52d804d21e",
+            "rawModeData": ""
+        },
+        {
+            "id": "82da8d4bdd2d7fb5dd59dafb77a97ee9",
+            "name": "Get Group Rule",
+            "url": "http:\/\/your-subdomain.okta.com\/\/api\/v1\/groups\/rules\/{ruleId}",
+            "description": "Fetches a specific group rule by id from your organization",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "get",
+            "pathVariableData": [],
+            "queryParams": [
+                {
+                    "key": "ruleId",
+                    "description": "",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "expand",
+                    "description": "Traverses users link relationship and optionally embeds Application User resource",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                }
+            ],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "8605111c89feb26340f16c52d804d21e",
+            "rawModeData": ""
+        },
+        {
+            "id": "1eff41f6d44daa514444fc85f9028f87",
+            "name": "",
+            "url": "http:\/\/your-subdomain.okta.com\/\/api\/v1\/groups\/rules\/{ruleId}",
+            "description": "",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "put",
+            "pathVariableData": [],
+            "queryParams": [
+                {
+                    "key": "ruleId",
+                    "description": "",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                }
+            ],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "8605111c89feb26340f16c52d804d21e",
+            "rawModeData": ""
+        },
+        {
+            "id": "94ddf051e6387522a3cd303ffe2c509f",
+            "name": "Activate a group Rule",
+            "url": "http:\/\/your-subdomain.okta.com\/\/api\/v1\/groups\/rules\/{ruleId}\/lifecycle\/activate",
+            "description": "Activates a specific group rule by id from your organization",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "post",
+            "pathVariableData": [],
+            "queryParams": [
+                {
+                    "key": "ruleId",
+                    "description": "",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                }
+            ],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "8605111c89feb26340f16c52d804d21e",
+            "rawModeData": ""
+        },
+        {
+            "id": "8513f8f798d49abf1e5c287e6d445381",
+            "name": "Deactivate a group Rule",
+            "url": "http:\/\/your-subdomain.okta.com\/\/api\/v1\/groups\/rules\/{ruleId}\/lifecycle\/deactivate",
+            "description": "Deactivates a specific group rule by id from your organization",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "post",
+            "pathVariableData": [],
+            "queryParams": [
+                {
+                    "key": "ruleId",
+                    "description": "",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                }
+            ],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "8605111c89feb26340f16c52d804d21e",
+            "rawModeData": ""
+        },
+        {
+            "id": "f298e6d0c1e058186cbd5b26e718b697",
+            "name": "Remove Group",
+            "url": "http:\/\/your-subdomain.okta.com\/\/api\/v1\/groups\/{groupId}",
+            "description": "Removes a group with `OKTA_GROUP` type from your organization.",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "delete",
+            "pathVariableData": [],
+            "queryParams": [
+                {
+                    "key": "groupId",
+                    "description": "",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                }
+            ],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "8605111c89feb26340f16c52d804d21e",
+            "rawModeData": ""
+        },
+        {
+            "id": "28065753e97b5f989784825b0f5a9a8e",
+            "name": "List Group Rules",
+            "url": "http:\/\/your-subdomain.okta.com\/\/api\/v1\/groups\/{groupId}",
+            "description": "Lists all group rules for your organization.",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "get",
+            "pathVariableData": [],
+            "queryParams": [
+                {
+                    "key": "groupId",
+                    "description": "",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "expand",
+                    "description": "Traverses users link relationship and optionally embeds Application User resource",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                }
+            ],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "8605111c89feb26340f16c52d804d21e",
+            "rawModeData": ""
+        },
+        {
+            "id": "ed9b89042dc58a7238a52ff794bf3bfd",
+            "name": "Update Group",
+            "url": "http:\/\/your-subdomain.okta.com\/\/api\/v1\/groups\/{groupId}",
+            "description": "Updates the profile for a group with `OKTA_GROUP` type from your organization.",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "put",
+            "pathVariableData": [],
+            "queryParams": [
+                {
+                    "key": "groupId",
+                    "description": "",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                }
+            ],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "8605111c89feb26340f16c52d804d21e",
+            "rawModeData": ""
+        },
+        {
+            "id": "941d55b4f207dd9e10a2f356f62016f3",
+            "name": "List Group Members",
+            "url": "http:\/\/your-subdomain.okta.com\/\/api\/v1\/groups\/{groupId}\/users",
+            "description": "Enumerates all [users](\/docs\/api\/resources\/users.html#user-model) that are a member of a group.",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "get",
+            "pathVariableData": [],
+            "queryParams": [
+                {
+                    "key": "groupId",
+                    "description": "",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "after",
+                    "description": "Specifies the pagination cursor for the next page of apps",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "limit",
+                    "description": "Specifies the number of results for a page",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "managedBy",
+                    "description": "",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                }
+            ],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "8605111c89feb26340f16c52d804d21e",
+            "rawModeData": ""
+        },
+        {
+            "id": "cadb02edb1645b054cd02827c5902e00",
+            "name": "Remove User from Group",
+            "url": "http:\/\/your-subdomain.okta.com\/\/api\/v1\/groups\/{groupId}\/users\/{userId}",
+            "description": "Removes a [user](users.html#user-model) from a group with `OKTA_GROUP` type.",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "delete",
+            "pathVariableData": [],
+            "queryParams": [
+                {
+                    "key": "groupId",
+                    "description": "",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "userId",
+                    "description": "",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                }
+            ],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "8605111c89feb26340f16c52d804d21e",
+            "rawModeData": ""
+        },
+        {
+            "id": "d7d547dc31b99c41ffaee4ac45aeeec5",
+            "name": "Add User to Group",
+            "url": "http:\/\/your-subdomain.okta.com\/\/api\/v1\/groups\/{groupId}\/users\/{userId}",
+            "description": "Adds a [user](users.html#user-model) to a group with `OKTA_GROUP` type.",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "put",
+            "pathVariableData": [],
+            "queryParams": [
+                {
+                    "key": "groupId",
+                    "description": "",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "userId",
+                    "description": "",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                }
+            ],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "8605111c89feb26340f16c52d804d21e",
+            "rawModeData": ""
+        },
+        {
+            "id": "e04d94d97d4139b480fb511a6f5926fb",
+            "name": "Fetch a list of events from your Okta organization system log.",
+            "url": "http:\/\/your-subdomain.okta.com\/\/api\/v1\/logs",
+            "description": "The Okta System Log API provides read access to your organization\u2019s system log. This API provides more functionality than the Events API",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "get",
+            "pathVariableData": [],
+            "queryParams": [
+                {
+                    "key": "until",
+                    "description": "",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "since",
+                    "description": "",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "filter",
+                    "description": "Filters apps by status, user.id, group.id or credentials.signing.kid expression",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "q",
+                    "description": "",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "limit",
+                    "description": "Specifies the number of results for a page",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "sortOrder",
+                    "description": "",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "after",
+                    "description": "Specifies the pagination cursor for the next page of apps",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                }
+            ],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "8605111c89feb26340f16c52d804d21e",
+            "rawModeData": ""
+        },
+        {
+            "id": "21fa53f37c1f9bdd66f09502f7c0fe37",
+            "name": "Create Session with Session Token",
+            "url": "http:\/\/your-subdomain.okta.com\/\/api\/v1\/sessions",
+            "description": "Creates a new session for a user with a valid session token. Use this API if, for example, you want to set the session cookie yourself instead of allowing Okta to set it, or want to hold the session ID in order to delete a session via the API instead of visiting the logout URL.",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "post",
+            "pathVariableData": [],
+            "queryParams": [],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "8605111c89feb26340f16c52d804d21e",
+            "rawModeData": ""
+        },
+        {
+            "id": "3a0471d0967e817d801169ed36a0ca80",
+            "name": "Close Session",
+            "url": "http:\/\/your-subdomain.okta.com\/\/api\/v1\/sessions\/{sessionId}",
+            "description": "",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "delete",
+            "pathVariableData": [],
+            "queryParams": [
+                {
+                    "key": "sessionId",
+                    "description": "",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                }
+            ],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "8605111c89feb26340f16c52d804d21e",
+            "rawModeData": ""
+        },
+        {
+            "id": "1ed046828297b4a813c89905ff30fdf4",
+            "name": "",
+            "url": "http:\/\/your-subdomain.okta.com\/\/api\/v1\/sessions\/{sessionId}",
+            "description": "Get details about a session.",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "get",
+            "pathVariableData": [],
+            "queryParams": [
+                {
+                    "key": "sessionId",
+                    "description": "",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                }
+            ],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "8605111c89feb26340f16c52d804d21e",
+            "rawModeData": ""
+        },
+        {
+            "id": "85a15e20985e553294be646624fd5182",
+            "name": "Refresh Session",
+            "url": "http:\/\/your-subdomain.okta.com\/\/api\/v1\/sessions\/{sessionId}\/lifecycle\/refresh",
+            "description": "",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "post",
+            "pathVariableData": [],
+            "queryParams": [
+                {
+                    "key": "sessionId",
+                    "description": "",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                }
+            ],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "8605111c89feb26340f16c52d804d21e",
+            "rawModeData": ""
+        },
+        {
+            "id": "ef24c34948f8845b7d9fa87c5e52af40",
+            "name": "List Users",
+            "url": "http:\/\/your-subdomain.okta.com\/\/api\/v1\/users",
+            "description": "Lists users in your organization with pagination in most cases.  A subset of users can be returned that match a supported filter expression or search criteria.",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "get",
+            "pathVariableData": [],
+            "queryParams": [
+                {
+                    "key": "q",
+                    "description": "",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "after",
+                    "description": "Specifies the pagination cursor for the next page of apps",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "limit",
+                    "description": "Specifies the number of results for a page",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "filter",
+                    "description": "Filters apps by status, user.id, group.id or credentials.signing.kid expression",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "format",
+                    "description": "",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "search",
+                    "description": "Searches for users with a supported filtering  expression for most properties",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "expand",
+                    "description": "Traverses users link relationship and optionally embeds Application User resource",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                }
+            ],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "8605111c89feb26340f16c52d804d21e",
+            "rawModeData": ""
+        },
+        {
+            "id": "eeea40d84807be73c4da5a3ad79d34c5",
+            "name": "Create User",
+            "url": "http:\/\/your-subdomain.okta.com\/\/api\/v1\/users",
+            "description": "Creates a new user in your Okta organization with or without credentials.",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "post",
+            "pathVariableData": [],
+            "queryParams": [
+                {
+                    "key": "activate",
+                    "description": "Executes activation lifecycle operation when creating the app",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "provider",
+                    "description": "Indicates whether to create a user with a specified authentication provider",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "nextLogin",
+                    "description": "With activate=true, set nextLogin to \"changePassword\" to have the password be EXPIRED, so user must change it the next time they log in.",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                }
+            ],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "8605111c89feb26340f16c52d804d21e",
+            "rawModeData": ""
+        },
+        {
+            "id": "8052f5c662e81f23a8a5a01edb3ad9a5",
+            "name": "Delete User",
+            "url": "http:\/\/your-subdomain.okta.com\/\/api\/v1\/users\/{userId}",
+            "description": "Deletes a user permanently.  This operation can only be performed on users that have a `DEPROVISIONED` status.  **This action cannot be recovered!**",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "delete",
+            "pathVariableData": [],
+            "queryParams": [
+                {
+                    "key": "userId",
+                    "description": "",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                }
+            ],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "8605111c89feb26340f16c52d804d21e",
+            "rawModeData": ""
+        },
+        {
+            "id": "a5ff52165773dfb23fa13c86ec7e54ff",
+            "name": "Get User",
+            "url": "http:\/\/your-subdomain.okta.com\/\/api\/v1\/users\/{userId}",
+            "description": "Fetches a user from your Okta organization.",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "get",
+            "pathVariableData": [],
+            "queryParams": [
+                {
+                    "key": "userId",
+                    "description": "",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                }
+            ],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "8605111c89feb26340f16c52d804d21e",
+            "rawModeData": ""
+        },
+        {
+            "id": "3183d105acb73601cfa979c124b074d8",
+            "name": "Update User",
+            "url": "http:\/\/your-subdomain.okta.com\/\/api\/v1\/users\/{userId}",
+            "description": "Update a user's profile and\/or credentials using strict-update semantics.",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "put",
+            "pathVariableData": [],
+            "queryParams": [
+                {
+                    "key": "userId",
+                    "description": "",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                }
+            ],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "8605111c89feb26340f16c52d804d21e",
+            "rawModeData": ""
+        },
+        {
+            "id": "c984531586c24c077fc242b4e89ecad4",
+            "name": "Get Assigned App Links",
+            "url": "http:\/\/your-subdomain.okta.com\/\/api\/v1\/users\/{userId}\/appLinks",
+            "description": "Fetches appLinks for all direct or indirect (via group membership) assigned applications.",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "get",
+            "pathVariableData": [],
+            "queryParams": [
+                {
+                    "key": "userId",
+                    "description": "",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "showAll",
+                    "description": "",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                }
+            ],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "8605111c89feb26340f16c52d804d21e",
+            "rawModeData": ""
+        },
+        {
+            "id": "f6c043af8c9c472c6cc92ff239f053f5",
+            "name": "Change Password",
+            "url": "http:\/\/your-subdomain.okta.com\/\/api\/v1\/users\/{userId}\/credentials\/change_password",
+            "description": "Changes a user's password by validating the user's current password.  This operation can only be performed on users in `STAGED`, `ACTIVE`, `PASSWORD_EXPIRED`, or `RECOVERY` status that have a valid [password credential](#password-object)",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "post",
+            "pathVariableData": [],
+            "queryParams": [
+                {
+                    "key": "userId",
+                    "description": "",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                }
+            ],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "8605111c89feb26340f16c52d804d21e",
+            "rawModeData": ""
+        },
+        {
+            "id": "0316e961942d94c1d37a9e71ba07a54e",
+            "name": "Change Recovery Question",
+            "url": "http:\/\/your-subdomain.okta.com\/\/api\/v1\/users\/{userId}\/credentials\/change_recovery_question",
+            "description": "Changes a user's recovery question & answer credential by validating the user's current password.  This operation can only be performed on users in **STAGED**, **ACTIVE** or **RECOVERY** `status` that have a valid [password credential](#password-object)",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "post",
+            "pathVariableData": [],
+            "queryParams": [
+                {
+                    "key": "userId",
+                    "description": "",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                }
+            ],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "8605111c89feb26340f16c52d804d21e",
+            "rawModeData": ""
+        },
+        {
+            "id": "5568ee9d534744188ed7a1c76a568ca1",
+            "name": "Forgot Password",
+            "url": "http:\/\/your-subdomain.okta.com\/\/api\/v1\/users\/{userId}\/credentials\/forgot_password",
+            "description": "Generates a one-time token (OTT) that can be used to reset a user's password.  The user will be required to validate their security question's answer when visiting the reset link.  This operation can only be performed on users with a valid [recovery question credential](#recovery-question-object) and have an `ACTIVE` status.",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "post",
+            "pathVariableData": [],
+            "queryParams": [
+                {
+                    "key": "userId",
+                    "description": "",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "sendEmail",
+                    "description": "",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                }
+            ],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "8605111c89feb26340f16c52d804d21e",
+            "rawModeData": ""
+        },
+        {
+            "id": "dae0bf12722c5d83565434936fefc735",
+            "name": "",
+            "url": "http:\/\/your-subdomain.okta.com\/\/api\/v1\/users\/{userId}\/factors",
+            "description": "Enumerates all the enrolled factors for the specified user",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "get",
+            "pathVariableData": [],
+            "queryParams": [
+                {
+                    "key": "userId",
+                    "description": "",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                }
+            ],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "8605111c89feb26340f16c52d804d21e",
+            "rawModeData": ""
+        },
+        {
+            "id": "ebc04346719138aaeec309ebf0fe5d04",
+            "name": "Enroll Factor",
+            "url": "http:\/\/your-subdomain.okta.com\/\/api\/v1\/users\/{userId}\/factors",
+            "description": "Enrolls a user with a supported [factor](#list-factors-to-enroll)",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "post",
+            "pathVariableData": [],
+            "queryParams": [
+                {
+                    "key": "userId",
+                    "description": "",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "updatePhone",
+                    "description": "",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "templateId",
+                    "description": "id of SMS template (only for SMS factor)",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "tokenLifetimeSeconds",
+                    "description": "",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "activate",
+                    "description": "Executes activation lifecycle operation when creating the app",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                }
+            ],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "8605111c89feb26340f16c52d804d21e",
+            "rawModeData": ""
+        },
+        {
+            "id": "b8f207d34d8c2b25ec294d2991d3bb6a",
+            "name": "",
+            "url": "http:\/\/your-subdomain.okta.com\/\/api\/v1\/users\/{userId}\/factors\/catalog",
+            "description": "Enumerates all the [supported factors](#supported-factors-for-providers) that can be enrolled for the specified user",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "get",
+            "pathVariableData": [],
+            "queryParams": [
+                {
+                    "key": "userId",
+                    "description": "",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                }
+            ],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "8605111c89feb26340f16c52d804d21e",
+            "rawModeData": ""
+        },
+        {
+            "id": "126e6542682aa3f015d9fcb53b65cbbf",
+            "name": "",
+            "url": "http:\/\/your-subdomain.okta.com\/\/api\/v1\/users\/{userId}\/factors\/questions",
+            "description": "Enumerates all available security questions for a user's `question` factor",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "get",
+            "pathVariableData": [],
+            "queryParams": [
+                {
+                    "key": "userId",
+                    "description": "",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                }
+            ],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "8605111c89feb26340f16c52d804d21e",
+            "rawModeData": ""
+        },
+        {
+            "id": "c7743e8990c76c8d67bc94b5f02c80ba",
+            "name": "",
+            "url": "http:\/\/your-subdomain.okta.com\/\/api\/v1\/users\/{userId}\/factors\/{factorId}",
+            "description": "Unenrolls an existing factor for the specified user, allowing the user to enroll a new factor.",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "delete",
+            "pathVariableData": [],
+            "queryParams": [
+                {
+                    "key": "userId",
+                    "description": "",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "factorId",
+                    "description": "",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                }
+            ],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "8605111c89feb26340f16c52d804d21e",
+            "rawModeData": ""
+        },
+        {
+            "id": "670625a816c9a53025b1f01a061f2076",
+            "name": "",
+            "url": "http:\/\/your-subdomain.okta.com\/\/api\/v1\/users\/{userId}\/factors\/{factorId}",
+            "description": "Fetches a factor for the specified user",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "get",
+            "pathVariableData": [],
+            "queryParams": [
+                {
+                    "key": "userId",
+                    "description": "",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "factorId",
+                    "description": "",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                }
+            ],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "8605111c89feb26340f16c52d804d21e",
+            "rawModeData": ""
+        },
+        {
+            "id": "e7317269386c5f7c4a1cedcb54d0473c",
+            "name": "Activate Factor",
+            "url": "http:\/\/your-subdomain.okta.com\/\/api\/v1\/users\/{userId}\/factors\/{factorId}\/lifecycle\/activate",
+            "description": "The `sms` and `token:software:totp` [factor types](#factor-type) require activation to complete the enrollment process.",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "post",
+            "pathVariableData": [],
+            "queryParams": [
+                {
+                    "key": "userId",
+                    "description": "",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "factorId",
+                    "description": "",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                }
+            ],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "8605111c89feb26340f16c52d804d21e",
+            "rawModeData": ""
+        },
+        {
+            "id": "967d5410e54b18666b2ab0aa72b37c62",
+            "name": "Verify MFA Factor",
+            "url": "http:\/\/your-subdomain.okta.com\/\/api\/v1\/users\/{userId}\/factors\/{factorId}\/verify",
+            "description": "Verifies an OTP for a `token` or `token:hardware` factor",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "post",
+            "pathVariableData": [],
+            "queryParams": [
+                {
+                    "key": "userId",
+                    "description": "",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "factorId",
+                    "description": "",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "templateId",
+                    "description": "id of SMS template (only for SMS factor)",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "tokenLifetimeSeconds",
+                    "description": "",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                }
+            ],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "8605111c89feb26340f16c52d804d21e",
+            "rawModeData": ""
+        },
+        {
+            "id": "248cbdd7084a4c7927c39bb8fab80d28",
+            "name": "Get Member Groups",
+            "url": "http:\/\/your-subdomain.okta.com\/\/api\/v1\/users\/{userId}\/groups",
+            "description": "Fetches the groups of which the user is a member.",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "get",
+            "pathVariableData": [],
+            "queryParams": [
+                {
+                    "key": "userId",
+                    "description": "",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "after",
+                    "description": "Specifies the pagination cursor for the next page of apps",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "limit",
+                    "description": "Specifies the number of results for a page",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                }
+            ],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "8605111c89feb26340f16c52d804d21e",
+            "rawModeData": ""
+        },
+        {
+            "id": "9ba627a5a7485e29f51a4c1fd8993c98",
+            "name": "Activate User",
+            "url": "http:\/\/your-subdomain.okta.com\/\/api\/v1\/users\/{userId}\/lifecycle\/activate",
+            "description": "Activates a user.  This operation can only be performed on users with a `STAGED` status.  Activation of a user is an asynchronous operation.  The user will have the `transitioningToStatus` property with a value of `ACTIVE` during activation to indicate that the user hasn't completed the asynchronous operation.  The user will have a status of `ACTIVE` when the activation process is complete.",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "post",
+            "pathVariableData": [],
+            "queryParams": [
+                {
+                    "key": "userId",
+                    "description": "",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "sendEmail",
+                    "description": "",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                }
+            ],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "8605111c89feb26340f16c52d804d21e",
+            "rawModeData": ""
+        },
+        {
+            "id": "2fa63caf716a6d324b5ea8e7ecc1ed8a",
+            "name": "Deactivate User",
+            "url": "http:\/\/your-subdomain.okta.com\/\/api\/v1\/users\/{userId}\/lifecycle\/deactivate",
+            "description": "Deactivates a user.  This operation can only be performed on users that do not have a `DEPROVISIONED` status.  Deactivation of a user is an asynchronous operation.  The user will have the `transitioningToStatus` property with a value of `DEPROVISIONED` during deactivation to indicate that the user hasn't completed the asynchronous operation.  The user will have a status of `DEPROVISIONED` when the deactivation process is complete.",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "post",
+            "pathVariableData": [],
+            "queryParams": [
+                {
+                    "key": "userId",
+                    "description": "",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                }
+            ],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "8605111c89feb26340f16c52d804d21e",
+            "rawModeData": ""
+        },
+        {
+            "id": "9273a5b82813fb485944c6cb3b50d17a",
+            "name": "Expire Password",
+            "url": "http:\/\/your-subdomain.okta.com\/\/api\/v1\/users\/{userId}\/lifecycle\/expire_password",
+            "description": "This operation transitions the user to the status of `PASSWORD_EXPIRED` so that the user is required to change their password at their next login.",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "post",
+            "pathVariableData": [],
+            "queryParams": [
+                {
+                    "key": "userId",
+                    "description": "",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "tempPassword",
+                    "description": "Sets the user's password to a temporary password,  if true",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                }
+            ],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "8605111c89feb26340f16c52d804d21e",
+            "rawModeData": ""
+        },
+        {
+            "id": "252554ccfb7624fd5309ebe596e9a5ae",
+            "name": "Reset Factors",
+            "url": "http:\/\/your-subdomain.okta.com\/\/api\/v1\/users\/{userId}\/lifecycle\/reset_factors",
+            "description": "This operation resets all factors for the specified user. All MFA factor enrollments returned to the unenrolled state. The user's status remains ACTIVE. This link is present only if the user is currently enrolled in one or more MFA factors.",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "post",
+            "pathVariableData": [],
+            "queryParams": [
+                {
+                    "key": "userId",
+                    "description": "",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                }
+            ],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "8605111c89feb26340f16c52d804d21e",
+            "rawModeData": ""
+        },
+        {
+            "id": "bf0c5d2d3c0dcba4ab87b5ba81c60d8f",
+            "name": "Reset Password",
+            "url": "http:\/\/your-subdomain.okta.com\/\/api\/v1\/users\/{userId}\/lifecycle\/reset_password",
+            "description": "Generates a one-time token (OTT) that can be used to reset a user's password.  The OTT link can be automatically emailed to the user or returned to the API caller and distributed using a custom flow.",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "post",
+            "pathVariableData": [],
+            "queryParams": [
+                {
+                    "key": "userId",
+                    "description": "",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "provider",
+                    "description": "Indicates whether to create a user with a specified authentication provider",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "sendEmail",
+                    "description": "",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                }
+            ],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "8605111c89feb26340f16c52d804d21e",
+            "rawModeData": ""
+        },
+        {
+            "id": "34c2d4f0111d8f23b43f230e4ba3ee26",
+            "name": "Suspend User",
+            "url": "http:\/\/your-subdomain.okta.com\/\/api\/v1\/users\/{userId}\/lifecycle\/suspend",
+            "description": "Suspends a user.  This operation can only be performed on users with an `ACTIVE` status.  The user will have a status of `SUSPENDED` when the process is complete.",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "post",
+            "pathVariableData": [],
+            "queryParams": [
+                {
+                    "key": "userId",
+                    "description": "",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                }
+            ],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "8605111c89feb26340f16c52d804d21e",
+            "rawModeData": ""
+        },
+        {
+            "id": "84175a12735a4add482e4f78fc411062",
+            "name": "Unlock User",
+            "url": "http:\/\/your-subdomain.okta.com\/\/api\/v1\/users\/{userId}\/lifecycle\/unlock",
+            "description": "Unlocks a user with a `LOCKED_OUT` status and returns them to `ACTIVE` status.  Users will be able to login with their current password.",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "post",
+            "pathVariableData": [],
+            "queryParams": [
+                {
+                    "key": "userId",
+                    "description": "",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                }
+            ],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "8605111c89feb26340f16c52d804d21e",
+            "rawModeData": ""
+        },
+        {
+            "id": "13a860a161fdef09a1d065867dad930f",
+            "name": "Unsuspend User",
+            "url": "http:\/\/your-subdomain.okta.com\/\/api\/v1\/users\/{userId}\/lifecycle\/unsuspend",
+            "description": "Unsuspends a user and returns them to the `ACTIVE` state.  This operation can only be performed on users that have a `SUSPENDED` status.",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "post",
+            "pathVariableData": [],
+            "queryParams": [
+                {
+                    "key": "userId",
+                    "description": "",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                }
+            ],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "8605111c89feb26340f16c52d804d21e",
+            "rawModeData": ""
+        },
+        {
+            "id": "56a457baade4385f87a1eb952ba271f7",
+            "name": "",
+            "url": "http:\/\/your-subdomain.okta.com\/\/api\/v1\/users\/{userId}\/roles",
+            "description": "Lists all roles assigned to a user.",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "get",
+            "pathVariableData": [],
+            "queryParams": [
+                {
+                    "key": "userId",
+                    "description": "",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "expand",
+                    "description": "Traverses users link relationship and optionally embeds Application User resource",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                }
+            ],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "8605111c89feb26340f16c52d804d21e",
+            "rawModeData": ""
+        },
+        {
+            "id": "d86e0010695d0dd5bd6f17fd150d0234",
+            "name": "",
+            "url": "http:\/\/your-subdomain.okta.com\/\/api\/v1\/users\/{userId}\/roles",
+            "description": "Assigns a role to a user.",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "post",
+            "pathVariableData": [],
+            "queryParams": [
+                {
+                    "key": "userId",
+                    "description": "",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                }
+            ],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "8605111c89feb26340f16c52d804d21e",
+            "rawModeData": ""
+        },
+        {
+            "id": "4425eab2280c00527833fb6cecd18815",
+            "name": "",
+            "url": "http:\/\/your-subdomain.okta.com\/\/api\/v1\/users\/{userId}\/roles\/{roleId}",
+            "description": "Unassigns a role from a user.",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "delete",
+            "pathVariableData": [],
+            "queryParams": [
+                {
+                    "key": "userId",
+                    "description": "",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "roleId",
+                    "description": "",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                }
+            ],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "8605111c89feb26340f16c52d804d21e",
+            "rawModeData": ""
+        },
+        {
+            "id": "931ff7cc872431ca0cf5fb21777cd661",
+            "name": "",
+            "url": "http:\/\/your-subdomain.okta.com\/\/api\/v1\/users\/{userId}\/roles\/{roleId}\/targets\/groups",
+            "description": "",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "get",
+            "pathVariableData": [],
+            "queryParams": [
+                {
+                    "key": "userId",
+                    "description": "",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "roleId",
+                    "description": "",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "after",
+                    "description": "Specifies the pagination cursor for the next page of apps",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "limit",
+                    "description": "Specifies the number of results for a page",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                }
+            ],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "8605111c89feb26340f16c52d804d21e",
+            "rawModeData": ""
+        },
+        {
+            "id": "5d951ca1c83e8659a11859dd2b4a5dc6",
+            "name": "",
+            "url": "http:\/\/your-subdomain.okta.com\/\/api\/v1\/users\/{userId}\/roles\/{roleId}\/targets\/groups\/{groupId}",
+            "description": "",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "delete",
+            "pathVariableData": [],
+            "queryParams": [
+                {
+                    "key": "userId",
+                    "description": "",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "roleId",
+                    "description": "",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "groupId",
+                    "description": "",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                }
+            ],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "8605111c89feb26340f16c52d804d21e",
+            "rawModeData": ""
+        },
+        {
+            "id": "1a97a8641df80bed409b7738d07eed68",
+            "name": "",
+            "url": "http:\/\/your-subdomain.okta.com\/\/api\/v1\/users\/{userId}\/roles\/{roleId}\/targets\/groups\/{groupId}",
+            "description": "",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "put",
+            "pathVariableData": [],
+            "queryParams": [
+                {
+                    "key": "userId",
+                    "description": "",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "roleId",
+                    "description": "",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "groupId",
+                    "description": "",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                }
+            ],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "8605111c89feb26340f16c52d804d21e",
+            "rawModeData": ""
+        },
+        {
+            "id": "bcdf4c440e5e179f29a9a72e5712232d",
+            "name": "",
+            "url": "http:\/\/your-subdomain.okta.com\/\/api\/v1\/users\/{userId}\/sessions",
+            "description": "Removes all active identity provider sessions. This forces the user to authenticate on the next operation. Optionally revokes OpenID Connect and OAuth refresh and access tokens issued to the user.",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "delete",
+            "pathVariableData": [],
+            "queryParams": [
+                {
+                    "key": "userId",
+                    "description": "",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "oauthTokens",
+                    "description": "Revoke issued OpenID Connect and OAuth refresh and access tokens",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                }
+            ],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "8605111c89feb26340f16c52d804d21e",
+            "rawModeData": ""
+        }
+    ]
+}
