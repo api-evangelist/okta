@@ -1,0 +1,651 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "version": "",
+        "title": "Users (Okta API)",
+        "description": "The [Okta User API](\/docs\/api\/rest\/users.html) provides operations to manage users in your organization.",
+        "termsOfService": ""
+    },
+    "servers": [
+        "httpsexample.com\/api\/v1"
+    ],
+    "paths": {
+        "\/users\/{userId}": {
+            "get": {
+                "summary": "Get User",
+                "description": "Get user.",
+                "operationId": "GetUsersUser",
+                "deprecated": 0,
+                "parameters": [
+                    {
+                        "name": "Accept",
+                        "in": "header",
+                        "description": ""
+                    },
+                    {
+                        "name": "Content",
+                        "in": "header",
+                        "description": ""
+                    },
+                    {
+                        "name": "userId",
+                        "in": "path",
+                        "description": ""
+                    }
+                ]
+            },
+            "put": {
+                "summary": "Set Password",
+                "description": "Set password.",
+                "operationId": "PutUsersUser",
+                "deprecated": 0,
+                "parameters": [
+                    {
+                        "name": "Body",
+                        "in": "body",
+                        "description": ""
+                    },
+                    {
+                        "name": "Accept",
+                        "in": "header",
+                        "description": ""
+                    },
+                    {
+                        "name": "Content",
+                        "in": "header",
+                        "description": ""
+                    },
+                    {
+                        "name": "userId",
+                        "in": "path",
+                        "description": ""
+                    }
+                ]
+            }
+        },
+        "\/users": {
+            "get": {
+                "summary": "List Password Expired Users",
+                "description": "List password expired users.",
+                "operationId": "GetUsers",
+                "deprecated": 0,
+                "parameters": [
+                    {
+                        "name": "filter",
+                        "in": "query",
+                        "description": ""
+                    },
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "description": ""
+                    },
+                    {
+                        "name": "Accept",
+                        "in": "header",
+                        "description": ""
+                    },
+                    {
+                        "name": "Content",
+                        "in": "header",
+                        "description": ""
+                    }
+                ]
+            },
+            "post": {
+                "summary": "Create User without Credentials",
+                "description": "Create user without credentials.",
+                "operationId": "PostUsers",
+                "deprecated": 0,
+                "parameters": [
+                    {
+                        "name": "activate",
+                        "in": "query",
+                        "description": ""
+                    },
+                    {
+                        "name": "Body",
+                        "in": "body",
+                        "description": ""
+                    },
+                    {
+                        "name": "Accept",
+                        "in": "header",
+                        "description": ""
+                    },
+                    {
+                        "name": "Content",
+                        "in": "header",
+                        "description": ""
+                    }
+                ]
+            }
+        },
+        "\/users\/{userId}\/lifecycle\/reset_factors": {
+            "post": {
+                "summary": "Reset Factors",
+                "description": "Reset factors.",
+                "operationId": "PostUsersUserLifecycleResetFactors",
+                "deprecated": 0,
+                "parameters": [
+                    {
+                        "name": "Accept",
+                        "in": "header",
+                        "description": ""
+                    },
+                    {
+                        "name": "Content",
+                        "in": "header",
+                        "description": ""
+                    },
+                    {
+                        "name": "userId",
+                        "in": "path",
+                        "description": ""
+                    }
+                ]
+            }
+        },
+        "\/users\/{userId}\/lifecycle\/suspend": {
+            "post": {
+                "summary": "Suspend User",
+                "description": "Suspend user.",
+                "operationId": "PostUsersUserLifecycleSuspend",
+                "deprecated": 0,
+                "parameters": [
+                    {
+                        "name": "Content",
+                        "in": "header",
+                        "description": ""
+                    },
+                    {
+                        "name": "Accept",
+                        "in": "header",
+                        "description": ""
+                    },
+                    {
+                        "name": "userId",
+                        "in": "path",
+                        "description": ""
+                    }
+                ]
+            }
+        },
+        "\/users\/{userId}\/credentials\/forgot_password": {
+            "post": {
+                "summary": "Forgot Password (One Time Code)",
+                "description": "Forgot password (one time code).",
+                "operationId": "PostUsersUserCredentialsForgotPassword",
+                "deprecated": 0,
+                "parameters": [
+                    {
+                        "name": "sendEmail",
+                        "in": "query",
+                        "description": ""
+                    },
+                    {
+                        "name": "Accept",
+                        "in": "header",
+                        "description": ""
+                    },
+                    {
+                        "name": "Content",
+                        "in": "header",
+                        "description": ""
+                    },
+                    {
+                        "name": "userId",
+                        "in": "path",
+                        "description": ""
+                    }
+                ]
+            }
+        },
+        "\/users\/{userId}\/credentials\/change_password": {
+            "post": {
+                "summary": "Change Password",
+                "description": "Change password.",
+                "operationId": "PostUsersUserCredentialsChangePassword",
+                "deprecated": 0,
+                "parameters": [
+                    {
+                        "name": "Body",
+                        "in": "body",
+                        "description": ""
+                    },
+                    {
+                        "name": "Accept",
+                        "in": "header",
+                        "description": ""
+                    },
+                    {
+                        "name": "Content",
+                        "in": "header",
+                        "description": ""
+                    },
+                    {
+                        "name": "userId",
+                        "in": "path",
+                        "description": ""
+                    }
+                ]
+            }
+        },
+        "\/users\/{userId}\/lifecycle\/reset_password": {
+            "post": {
+                "summary": "Reset Password",
+                "description": "Reset password.",
+                "operationId": "PostUsersUserLifecycleResetPassword",
+                "deprecated": 0,
+                "parameters": [
+                    {
+                        "name": "sendEmail",
+                        "in": "query",
+                        "description": ""
+                    },
+                    {
+                        "name": "Content",
+                        "in": "header",
+                        "description": ""
+                    },
+                    {
+                        "name": "Accept",
+                        "in": "header",
+                        "description": ""
+                    },
+                    {
+                        "name": "userId",
+                        "in": "path",
+                        "description": ""
+                    }
+                ]
+            }
+        },
+        "\/users\/{userId}\/credentials\/change_recovery_question": {
+            "post": {
+                "summary": "Change Recovery Question",
+                "description": "Change recovery question.",
+                "operationId": "PostUsersUserCredentialsChangeRecoveryQuestion",
+                "deprecated": 0,
+                "parameters": [
+                    {
+                        "name": "Body",
+                        "in": "body",
+                        "description": ""
+                    },
+                    {
+                        "name": "Accept",
+                        "in": "header",
+                        "description": ""
+                    },
+                    {
+                        "name": "Content",
+                        "in": "header",
+                        "description": ""
+                    },
+                    {
+                        "name": "userId",
+                        "in": "path",
+                        "description": ""
+                    }
+                ]
+            }
+        },
+        "\/users\/{userId}\/lifecycle\/activate": {
+            "post": {
+                "summary": "Activate User",
+                "description": "Activate user.",
+                "operationId": "PostUsersUserLifecycleActivate",
+                "deprecated": 0,
+                "parameters": [
+                    {
+                        "name": "sendEmail",
+                        "in": "query",
+                        "description": ""
+                    },
+                    {
+                        "name": "Content",
+                        "in": "header",
+                        "description": ""
+                    },
+                    {
+                        "name": "Accept",
+                        "in": "header",
+                        "description": ""
+                    },
+                    {
+                        "name": "userId",
+                        "in": "path",
+                        "description": ""
+                    }
+                ]
+            }
+        },
+        "\/users\/{userId}\/sessions": {
+            "delete": {
+                "summary": "Clear User Sessions",
+                "description": "Clear user sessions.",
+                "operationId": "DeleteUsersUserSessions",
+                "deprecated": 0,
+                "parameters": [
+                    {
+                        "name": "Accept",
+                        "in": "header",
+                        "description": ""
+                    },
+                    {
+                        "name": "Content",
+                        "in": "header",
+                        "description": ""
+                    },
+                    {
+                        "name": "userId",
+                        "in": "path",
+                        "description": ""
+                    }
+                ]
+            }
+        },
+        "\/users\/{userId}\/appLinks": {
+            "get": {
+                "summary": "Get Assigned App Links",
+                "description": "Get assigned app links.",
+                "operationId": "GetUsersUserApplinks",
+                "deprecated": 0,
+                "parameters": [
+                    {
+                        "name": "Accept",
+                        "in": "header",
+                        "description": ""
+                    },
+                    {
+                        "name": "Content",
+                        "in": "header",
+                        "description": ""
+                    },
+                    {
+                        "name": "userId",
+                        "in": "path",
+                        "description": ""
+                    }
+                ]
+            }
+        },
+        "\/users\/{userId}\/lifecycle\/unsuspend": {
+            "post": {
+                "summary": "Unsuspend User",
+                "description": "Unsuspend user.",
+                "operationId": "PostUsersUserLifecycleUnsuspend",
+                "deprecated": 0,
+                "parameters": [
+                    {
+                        "name": "Content",
+                        "in": "header",
+                        "description": ""
+                    },
+                    {
+                        "name": "Accept",
+                        "in": "header",
+                        "description": ""
+                    },
+                    {
+                        "name": "userId",
+                        "in": "path",
+                        "description": ""
+                    }
+                ]
+            }
+        },
+        "\/users\/{userId}\/lifecycle\/expire_password": {
+            "post": {
+                "summary": "Expire Password",
+                "description": "Expire password.",
+                "operationId": "PostUsersUserLifecycleExpirePassword",
+                "deprecated": 0,
+                "parameters": [
+                    {
+                        "name": "Content",
+                        "in": "header",
+                        "description": ""
+                    },
+                    {
+                        "name": "Accept",
+                        "in": "header",
+                        "description": ""
+                    },
+                    {
+                        "name": "userId",
+                        "in": "path",
+                        "description": ""
+                    }
+                ]
+            }
+        },
+        "\/users\/{userId}\/groups": {
+            "get": {
+                "summary": "Get Groups for User",
+                "description": "Get groups for user.",
+                "operationId": "GetUsersUserGroups",
+                "deprecated": 0,
+                "parameters": [
+                    {
+                        "name": "Accept",
+                        "in": "header",
+                        "description": ""
+                    },
+                    {
+                        "name": "Content",
+                        "in": "header",
+                        "description": ""
+                    },
+                    {
+                        "name": "userId",
+                        "in": "path",
+                        "description": ""
+                    }
+                ]
+            }
+        },
+        "\/users\/me": {
+            "get": {
+                "summary": "Get Current User",
+                "description": "Get current user.",
+                "operationId": "GetUsersMe",
+                "deprecated": 0,
+                "parameters": [
+                    {
+                        "name": "Accept",
+                        "in": "header",
+                        "description": ""
+                    },
+                    {
+                        "name": "Content",
+                        "in": "header",
+                        "description": ""
+                    }
+                ]
+            }
+        },
+        "\/users\/{userId}\/lifecycle\/deactivate": {
+            "post": {
+                "summary": "Deactivate User",
+                "description": "Deactivate user.",
+                "operationId": "PostUsersUserLifecycleDeactivate",
+                "deprecated": 0,
+                "parameters": [
+                    {
+                        "name": "Content",
+                        "in": "header",
+                        "description": ""
+                    },
+                    {
+                        "name": "Accept",
+                        "in": "header",
+                        "description": ""
+                    },
+                    {
+                        "name": "userId",
+                        "in": "path",
+                        "description": ""
+                    }
+                ]
+            }
+        },
+        "\/users\/{userId}\/lifecycle\/unlock": {
+            "post": {
+                "summary": "Unlock User",
+                "description": "Unlock user.",
+                "operationId": "PostUsersUserLifecycleUnlock",
+                "deprecated": 0,
+                "parameters": [
+                    {
+                        "name": "Content",
+                        "in": "header",
+                        "description": ""
+                    },
+                    {
+                        "name": "Accept",
+                        "in": "header",
+                        "description": ""
+                    },
+                    {
+                        "name": "userId",
+                        "in": "path",
+                        "description": ""
+                    }
+                ]
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "SetRecoveryCredentialrequest": {
+                "type": "object"
+            },
+            "Credentials": {
+                "type": "object"
+            },
+            "RecoveryQuestion": {
+                "type": "object",
+                "properties": {
+                    "question": {
+                        "description": "",
+                        "type": "post"
+                    },
+                    "answer": {
+                        "description": "",
+                        "type": "post"
+                    }
+                }
+            },
+            "ForgotPassword(validateSecurityAnswer)request": {
+                "type": "object"
+            },
+            "Password": {
+                "type": "object",
+                "properties": {
+                    "value": {
+                        "description": "",
+                        "type": "post"
+                    }
+                }
+            },
+            "RecoveryQuestion5": {
+                "type": "object",
+                "properties": {
+                    "answer": {
+                        "description": "",
+                        "type": "post"
+                    }
+                }
+            },
+            "ChangePasswordrequest": {
+                "type": "object"
+            },
+            "OldPassword": {
+                "type": "object",
+                "properties": {
+                    "value": {
+                        "description": "",
+                        "type": "post"
+                    }
+                }
+            },
+            "NewPassword": {
+                "type": "object",
+                "properties": {
+                    "value": {
+                        "description": "",
+                        "type": "post"
+                    }
+                }
+            },
+            "CreateUserWithRecoveryQuestionrequest": {
+                "type": "object"
+            },
+            "Profile": {
+                "type": "object",
+                "properties": {
+                    "firstName": {
+                        "description": "",
+                        "type": "post"
+                    },
+                    "lastName": {
+                        "description": "",
+                        "type": "post"
+                    },
+                    "email": {
+                        "description": "",
+                        "type": "post"
+                    },
+                    "login": {
+                        "description": "",
+                        "type": "post"
+                    }
+                }
+            },
+            "CreateUserWithPassword&RecoveryQuestionrequest": {
+                "type": "object"
+            },
+            "Credentials15": {
+                "type": "object"
+            },
+            "ChangeRecoveryQuestionrequest": {
+                "type": "object"
+            },
+            "CreateActivatedUserWithoutCredentialsrequest": {
+                "type": "object"
+            },
+            "CreateActivatedUserWithPassword&RecoveryQuestionrequest": {
+                "type": "object"
+            },
+            "CreateActivatedUserWithRecoveryQuestionrequest": {
+                "type": "object"
+            },
+            "CreateActivatedUserWithPasswordrequest": {
+                "type": "object"
+            },
+            "Credentials34": {
+                "type": "object"
+            },
+            "CreateUserWithPasswordrequest": {
+                "type": "object"
+            },
+            "CreateUserInGrouprequest": {
+                "type": "object",
+                "properties": {
+                    "groupIds": {
+                        "description": "",
+                        "type": "post"
+                    }
+                }
+            },
+            "CreateUserWithoutCredentialsrequest": {
+                "type": "object"
+            },
+            "SetPasswordrequest": {
+                "type": "object"
+            }
+        }
+    }
+}
