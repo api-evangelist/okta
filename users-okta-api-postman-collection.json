@@ -1,5 +1,5 @@
 {
-    "id": "eba5006deff87aeef1c94c4bbfc2bfb7",
+    "id": "ba725bfb0762c1f9ce9322534c6fd06e",
     "name": "Users (Okta API)",
     "description": null,
     "auth": null,
@@ -10,7 +10,7 @@
     "folders": [],
     "requests": [
         {
-            "id": "260d186d95ca437ae3a73f5bf1e38c0e",
+            "id": "6698c2a0c7ec974fdd1f50c4d2f33a7a",
             "name": "Get User",
             "url": "httpsexample.com\/api\/v1\/users\/{userId}",
             "description": "Get user.",
@@ -51,11 +51,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "eba5006deff87aeef1c94c4bbfc2bfb7",
+            "collectionId": "ba725bfb0762c1f9ce9322534c6fd06e",
             "rawModeData": ""
         },
         {
-            "id": "86b97555bf5154451a4f5c067e299124",
+            "id": "41ab2ef33fee9fce6084a663daa5fcee",
             "name": "Set Password",
             "url": "httpsexample.com\/api\/v1\/users\/{userId}",
             "description": "Set password.",
@@ -103,11 +103,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "eba5006deff87aeef1c94c4bbfc2bfb7",
+            "collectionId": "ba725bfb0762c1f9ce9322534c6fd06e",
             "rawModeData": ""
         },
         {
-            "id": "fe7f248da7106dac9f96bfb823849e82",
+            "id": "9a5b2373e9c600d50fbe6ca2c69d342a",
             "name": "List Password Expired Users",
             "url": "httpsexample.com\/api\/v1\/users",
             "description": "List password expired users.",
@@ -155,11 +155,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "eba5006deff87aeef1c94c4bbfc2bfb7",
+            "collectionId": "ba725bfb0762c1f9ce9322534c6fd06e",
             "rawModeData": ""
         },
         {
-            "id": "3563b2a37b245d8e2fae9d01359ae0d2",
+            "id": "2e59a07604348ccfa42343fa76689c7a",
             "name": "Create User without Credentials",
             "url": "httpsexample.com\/api\/v1\/users",
             "description": "Create user without credentials.",
@@ -207,11 +207,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "eba5006deff87aeef1c94c4bbfc2bfb7",
+            "collectionId": "ba725bfb0762c1f9ce9322534c6fd06e",
             "rawModeData": ""
         },
         {
-            "id": "4c4a9a5a920c7faeff449732347d3529",
+            "id": "d6e5c5ee11dd9de5fc9be9f587300531",
             "name": "Reset Factors",
             "url": "httpsexample.com\/api\/v1\/users\/{userId}\/lifecycle\/reset_factors",
             "description": "Reset factors.",
@@ -252,11 +252,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "eba5006deff87aeef1c94c4bbfc2bfb7",
+            "collectionId": "ba725bfb0762c1f9ce9322534c6fd06e",
             "rawModeData": ""
         },
         {
-            "id": "9ec97821d32677594edb0503e7af62a6",
+            "id": "0a3d7596f9098d2e79ca5bdc00c34f0e",
             "name": "Suspend User",
             "url": "httpsexample.com\/api\/v1\/users\/{userId}\/lifecycle\/suspend",
             "description": "Suspend user.",
@@ -297,11 +297,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "eba5006deff87aeef1c94c4bbfc2bfb7",
+            "collectionId": "ba725bfb0762c1f9ce9322534c6fd06e",
             "rawModeData": ""
         },
         {
-            "id": "a3d51c9c56d879011514112c54c8de7b",
+            "id": "158c3d2d8d95a6740d20523a9f37df84",
             "name": "Forgot Password (One Time Code)",
             "url": "httpsexample.com\/api\/v1\/users\/{userId}\/credentials\/forgot_password",
             "description": "Forgot password (one time code).",
@@ -349,11 +349,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "eba5006deff87aeef1c94c4bbfc2bfb7",
+            "collectionId": "ba725bfb0762c1f9ce9322534c6fd06e",
             "rawModeData": ""
         },
         {
-            "id": "d1e999af498b00350968cb48697d3971",
+            "id": "d2f243f0d69bc82704c499cd1f25cadd",
             "name": "Change Password",
             "url": "httpsexample.com\/api\/v1\/users\/{userId}\/credentials\/change_password",
             "description": "Change password.",
@@ -401,11 +401,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "eba5006deff87aeef1c94c4bbfc2bfb7",
+            "collectionId": "ba725bfb0762c1f9ce9322534c6fd06e",
             "rawModeData": ""
         },
         {
-            "id": "f1cd83b8af05ad8753c0cd47cc4d7091",
+            "id": "6871ae064225e6b1f9aae548c05a0ebc",
             "name": "Reset Password",
             "url": "httpsexample.com\/api\/v1\/users\/{userId}\/lifecycle\/reset_password",
             "description": "Reset password.",
@@ -453,11 +453,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "eba5006deff87aeef1c94c4bbfc2bfb7",
+            "collectionId": "ba725bfb0762c1f9ce9322534c6fd06e",
             "rawModeData": ""
         },
         {
-            "id": "e353992a8fccecbc3c84938e5e927534",
+            "id": "8e0c6c3914e1e7e66d9b9f199943eed2",
             "name": "Change Recovery Question",
             "url": "httpsexample.com\/api\/v1\/users\/{userId}\/credentials\/change_recovery_question",
             "description": "Change recovery question.",
@@ -505,11 +505,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "eba5006deff87aeef1c94c4bbfc2bfb7",
+            "collectionId": "ba725bfb0762c1f9ce9322534c6fd06e",
             "rawModeData": ""
         },
         {
-            "id": "bc7dfd45ce9c1e944404b32523a840f3",
+            "id": "4aa4800cb84cff6c4e3e234899eb946d",
             "name": "Activate User",
             "url": "httpsexample.com\/api\/v1\/users\/{userId}\/lifecycle\/activate",
             "description": "Activate user.",
@@ -557,11 +557,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "eba5006deff87aeef1c94c4bbfc2bfb7",
+            "collectionId": "ba725bfb0762c1f9ce9322534c6fd06e",
             "rawModeData": ""
         },
         {
-            "id": "f3463472e672b10de0894e3c9cd9caca",
+            "id": "d6626d080db45e1675da4631a70048da",
             "name": "Clear User Sessions",
             "url": "httpsexample.com\/api\/v1\/users\/{userId}\/sessions",
             "description": "Clear user sessions.",
@@ -602,11 +602,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "eba5006deff87aeef1c94c4bbfc2bfb7",
+            "collectionId": "ba725bfb0762c1f9ce9322534c6fd06e",
             "rawModeData": ""
         },
         {
-            "id": "e3b0c5d2223795a8a20ae9cb9ea63745",
+            "id": "746e790fcb98335cdca9c4eeb5a46628",
             "name": "Get Assigned App Links",
             "url": "httpsexample.com\/api\/v1\/users\/{userId}\/appLinks",
             "description": "Get assigned app links.",
@@ -647,11 +647,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "eba5006deff87aeef1c94c4bbfc2bfb7",
+            "collectionId": "ba725bfb0762c1f9ce9322534c6fd06e",
             "rawModeData": ""
         },
         {
-            "id": "104743a809299a83d7de937648ea821d",
+            "id": "a04f82f3fe3208f4111a8a218aa1a178",
             "name": "Unsuspend User",
             "url": "httpsexample.com\/api\/v1\/users\/{userId}\/lifecycle\/unsuspend",
             "description": "Unsuspend user.",
@@ -692,11 +692,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "eba5006deff87aeef1c94c4bbfc2bfb7",
+            "collectionId": "ba725bfb0762c1f9ce9322534c6fd06e",
             "rawModeData": ""
         },
         {
-            "id": "1ca1032f517851be1a4fb910ed79921f",
+            "id": "1f756fda917b282bf8843efe203d153d",
             "name": "Expire Password",
             "url": "httpsexample.com\/api\/v1\/users\/{userId}\/lifecycle\/expire_password",
             "description": "Expire password.",
@@ -737,11 +737,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "eba5006deff87aeef1c94c4bbfc2bfb7",
+            "collectionId": "ba725bfb0762c1f9ce9322534c6fd06e",
             "rawModeData": ""
         },
         {
-            "id": "bcc47f3d1fe8c396d6b826b2159c6ef6",
+            "id": "98a97d4b2d964f0bbcae44ca32ebdabd",
             "name": "Get Groups for User",
             "url": "httpsexample.com\/api\/v1\/users\/{userId}\/groups",
             "description": "Get groups for user.",
@@ -782,11 +782,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "eba5006deff87aeef1c94c4bbfc2bfb7",
+            "collectionId": "ba725bfb0762c1f9ce9322534c6fd06e",
             "rawModeData": ""
         },
         {
-            "id": "7ea9fde382d9fca12bdf9701c8ceafa1",
+            "id": "05563d876dac4f5d23ffc600708b8c0a",
             "name": "Get Current User",
             "url": "httpsexample.com\/api\/v1\/users\/me",
             "description": "Get current user.",
@@ -820,11 +820,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "eba5006deff87aeef1c94c4bbfc2bfb7",
+            "collectionId": "ba725bfb0762c1f9ce9322534c6fd06e",
             "rawModeData": ""
         },
         {
-            "id": "c7fd8c4bcab5551fede62c0673baaab5",
+            "id": "60c0ac70410982c91012d1702274165f",
             "name": "Deactivate User",
             "url": "httpsexample.com\/api\/v1\/users\/{userId}\/lifecycle\/deactivate",
             "description": "Deactivate user.",
@@ -865,11 +865,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "eba5006deff87aeef1c94c4bbfc2bfb7",
+            "collectionId": "ba725bfb0762c1f9ce9322534c6fd06e",
             "rawModeData": ""
         },
         {
-            "id": "65ee7f01fb684b7f774d370cbde5b967",
+            "id": "4bb714401f7bc33704f6f4c4352ffd43",
             "name": "Unlock User",
             "url": "httpsexample.com\/api\/v1\/users\/{userId}\/lifecycle\/unlock",
             "description": "Unlock user.",
@@ -910,7 +910,7 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "eba5006deff87aeef1c94c4bbfc2bfb7",
+            "collectionId": "ba725bfb0762c1f9ce9322534c6fd06e",
             "rawModeData": ""
         }
     ]
