@@ -1,6 +1,6 @@
 aid: okta
 url: >-
-  https://raw.githubusercontent.com/api-search/infrastructure/main/_apis/okta/apis.md
+  https://raw.githubusercontent.com/api-evangelist/okta/refs/heads/main/apis.yml
 apis:
   - aid: okta:okta-apps-api
     name: Okta Apps API
@@ -520,7 +520,7 @@ common:
       https://www.okta.com/privacy-policy/?_gl=1*7t4881*_gcl_au*ODA3ODU4ODM3LjE2OTg3MDkwODg.*_ga*NDIzNDM3NzgxLjE2OTg3MDkwODg.*_ga_QKMSDV5369*MTcwMDUzMTM5NS4yLjEuMTcwMDUzMTY2Ni4xOC4wLjA.&_ga=2.30811191.940567833.1700531395-423437781.1698709088
     type: Privacy Policy
 created: '2023-11-20T00:00:00.000Z'
-modified: '2025-01-13'
+modified: '2026-03-16'
 position: Consuming
 description: |-
   Okta connects any person with any application on any device. It's an
@@ -530,7 +530,6 @@ description: |-
   secure, reliable, extensively audited platform, which integrates deeply with
   on-premises applications, directories, and identity management systems.
 maintainers:
-  - FN: API Evangelist
-    url: http://apievangelist.com
-    email: info@apievangelist.com
+  - FN: Kin Lane
+    email: kin@apievangelist.com
 specificationVersion: '0.18'
