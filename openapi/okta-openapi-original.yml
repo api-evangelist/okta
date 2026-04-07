@@ -17323,3 +17323,30 @@ components:
       description: "SSWS {API Token}"
       name: Authorization
       in: header
+tags:
+  - name: Application
+  - name: Authenticator
+  - name: AuthorizationServer
+  - name: Brand
+  - name: Domain
+  - name: EventHook
+  - name: Feature
+  - name: Group
+  - name: GroupSchema
+  - name: IdentityProvider
+  - name: InlineHook
+  - name: LinkedObject
+  - name: Log
+  - name: NetworkZone
+  - name: Org
+  - name: Policy
+  - name: ProfileMapping
+  - name: Session
+  - name: Subscription
+  - name: Template
+  - name: ThreatInsight
+  - name: TrustedOrigin
+  - name: User
+  - name: UserFactor
+  - name: UserSchema
+  - name: UserType
