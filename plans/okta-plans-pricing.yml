@@ -1,0 +1,116 @@
+specification: API Commons Plans
+specificationVersion: '0.1'
+schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/Plans
+provider: Okta
+providerId: okta
+created: '2026-05-04'
+modified: '2026-05-04'
+reconciled: true
+tags:
+  - Identity
+  - SSO
+  - MFA
+  - Workforce
+description: Okta Workforce Identity per-user pricing.
+sources:
+  - https://www.okta.com/pricing/
+plans:
+  - id: okta-starter
+    name: Starter
+    type: paid
+    description: $6/user/month.
+    entries:
+      - label: Per user
+        name: seat
+        type: subscription
+        metric: user
+        limit: -1
+        timeFrame: month
+        geo: global
+        unit: 1
+        price: '6.00'
+        userMultiplied: true
+    elements:
+      - name: Single Sign-On
+      - name: Multi-Factor Authentication
+      - name: Universal Directory
+      - name: 5 Workflows
+  - id: okta-core-essentials
+    name: Core Essentials
+    type: paid
+    description: $14/user/month.
+    entries:
+      - label: Per user
+        name: seat
+        type: subscription
+        metric: user
+        limit: -1
+        timeFrame: month
+        geo: global
+        unit: 1
+        price: '14.00'
+        userMultiplied: true
+    elements:
+      - name: Adaptive MFA
+      - name: Privileged Access
+      - name: Lifecycle Management
+      - name: Access Governance
+      - name: 5 Workflows
+  - id: okta-essentials
+    name: Essentials
+    type: paid
+    description: $17/user/month.
+    entries:
+      - label: Per user
+        name: seat
+        type: subscription
+        metric: user
+        limit: -1
+        timeFrame: month
+        geo: global
+        unit: 1
+        price: '17.00'
+        userMultiplied: true
+    elements:
+      - name: All Core Essentials
+      - name: 50 Workflows
+  - id: okta-professional
+    name: Professional
+    type: enterprise
+    description: Inquire for pricing.
+    entries:
+      - label: Per user (custom)
+        name: seat
+        type: subscription
+        metric: user
+        limit: -1
+        timeFrame: month
+        geo: global
+        unit: 1
+        price: custom
+        userMultiplied: true
+    elements:
+      - name: Device Access
+      - name: Identity Security Posture Management
+      - name: Identity Threat Protection
+      - name: Sandbox
+      - name: Unlimited Workflows
+  - id: okta-enterprise
+    name: Enterprise
+    type: enterprise
+    description: Inquire for pricing.
+    entries:
+      - label: Per user (custom)
+        name: seat
+        type: subscription
+        metric: user
+        limit: -1
+        timeFrame: month
+        geo: global
+        unit: 1
+        price: custom
+        userMultiplied: true
+    elements:
+      - name: API Access Management
+      - name: Access Gateway
+      - name: Machine-to-Machine Tokens

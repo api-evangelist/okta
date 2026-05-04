@@ -1,0 +1,57 @@
+specification: FinOps Framework
+specificationVersion: '1.0'
+schema: https://www.finops.org/framework/
+provider: Okta
+providerId: okta
+created: '2026-05-04'
+modified: '2026-05-04'
+reconciled: true
+tags:
+  - FinOps
+  - FOCUS
+  - Identity
+description: FOCUS-aligned FinOps for Okta.
+sources:
+  - https://www.okta.com/pricing/
+alignedWith:
+  framework: FinOps Foundation Framework
+  frameworkUrl: https://www.finops.org/framework/
+  dataSpec: FOCUS
+  dataSpecVersion: '1.3'
+  dataSpecUrl: https://focus.finops.org/focus-specification/v1-3/
+publisherName: Okta
+serviceCategory: Identity
+billingModel:
+  pricingCategory: Per-User Subscription
+  billingFrequency: Monthly
+  billingCurrency: USD
+focusColumns:
+  ServiceName: Okta
+  ServiceCategory: Identity
+  ProviderName: Okta
+  PublisherName: Okta
+  BillingCurrency: USD
+meters:
+  - name: user_licenses
+    unit: license-month
+    aggregation: max
+    dimensions:
+      - sku
+  - name: workflow_executions
+    unit: execution
+    aggregation: sum
+  - name: device_licenses
+    unit: device-month
+    aggregation: max
+  - name: api_requests
+    unit: request
+    aggregation: sum
+principles:
+  - name: Visibility
+    description: Track Okta consumption monthly.
+  - name: Allocation
+    description: Tag usage to teams/cost centers.
+  - name: Optimization
+    description: Right-size tier; reclaim unused entitlements.
+  - name: Accountability
+    description: Set spend alerts; quarterly review.
