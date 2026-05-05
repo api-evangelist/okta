@@ -1,0 +1,13 @@
+{
+  "repo": "okta",
+  "feeds": [
+    {
+      "source": "https://developer.okta.com/blog/",
+      "feed_url": "https://developer.okta.com/feed.xml",
+      "saved": 8,
+      "title": "Okta Developer"
+    }
+  ],
+  "post_count": 8,
+  "fetched": "2026-05-03T23:32:52Z"
+}
