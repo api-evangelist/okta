@@ -1,0 +1,3082 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Okta API
+  description: Allows customers to easily access the Okta API
+  tags:
+  - Okta
+  - API
+  created: '2026-05-06'
+  modified: '2026-05-06'
+capability:
+  consumes:
+  - type: http
+    namespace: okta
+    baseUri: https://your-subdomain.okta.com
+    description: Okta API HTTP API.
+    authentication:
+      type: apikey
+      in: header
+      name: Authorization
+      value: '{{OKTA_TOKEN}}'
+    resources:
+    - name: api-v1-apps
+      path: /api/v1/apps
+      operations:
+      - name: listapplications
+        method: GET
+        description: Okta List Applications
+        inputParameters:
+        - name: q
+          in: query
+          type: string
+        - name: after
+          in: query
+          type: string
+          description: Specifies the pagination cursor for the next page of apps
+        - name: limit
+          in: query
+          type: integer
+          description: Specifies the number of results for a page
+        - name: filter
+          in: query
+          type: string
+          description: Filters apps by status, user.id, group.id or credentials.signing.kid expression
+        - name: expand
+          in: query
+          type: string
+          description: Traverses users link relationship and optionally embeds Application User resource
+        - name: includeNonDeleted
+          in: query
+          type: boolean
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: createapplication
+        method: POST
+        description: Okta Add Application
+        inputParameters:
+        - name: activate
+          in: query
+          type: boolean
+          description: Executes activation lifecycle operation when creating the app
+        - name: OktaAccessGateway-Agent
+          in: header
+          type: string
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: api-v1-apps-appid
+      path: /api/v1/apps/{appId}
+      operations:
+      - name: getapplication
+        method: GET
+        description: Okta Get Application
+        inputParameters:
+        - name: appId
+          in: path
+          type: string
+          required: true
+        - name: expand
+          in: query
+          type: string
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: updateapplication
+        method: PUT
+        description: Okta Update Application
+        inputParameters:
+        - name: appId
+          in: path
+          type: string
+          required: true
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: deleteapplication
+        method: DELETE
+        description: Okta Delete Application
+        inputParameters:
+        - name: appId
+          in: path
+          type: string
+          required: true
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: api-v1-apps-appid-connections-default
+      path: /api/v1/apps/{appId}/connections/default
+      operations:
+      - name: getdefaultprovisioningconnectionforapplication
+        method: GET
+        description: Okta Fetches the default Provisioning Connection for an application.
+        inputParameters:
+        - name: appId
+          in: path
+          type: string
+          required: true
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: setdefaultprovisioningconnectionforapplication
+        method: POST
+        description: Okta Sets the default Provisioning Connection for an application.
+        inputParameters:
+        - name: appId
+          in: path
+          type: string
+          required: true
+        - name: activate
+          in: query
+          type: boolean
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: api-v1-apps-appid-connections-default-lifecycle-
+      path: /api/v1/apps/{appId}/connections/default/lifecycle/activate
+      operations:
+      - name: activatedefaultprovisioningconnectionforapplicat
+        method: POST
+        description: Okta Activate default Provisioning Connection for application
+        inputParameters:
+        - name: appId
+          in: path
+          type: string
+          required: true
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: api-v1-apps-appid-connections-default-lifecycle-
+      path: /api/v1/apps/{appId}/connections/default/lifecycle/deactivate
+      operations:
+      - name: deactivatedefaultprovisioningconnectionforapplic
+        method: POST
+        description: Okta Deactivate default Provisioning Connection for application
+        inputParameters:
+        - name: appId
+          in: path
+          type: string
+          required: true
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: api-v1-apps-appid-credentials-csrs
+      path: /api/v1/apps/{appId}/credentials/csrs
+      operations:
+      - name: listcsrsforapplication
+        method: GET
+        description: Okta List Certificate Signing Requests for Application
+        inputParameters:
+        - name: appId
+          in: path
+          type: string
+          required: true
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: generatecsrforapplication
+        method: POST
+        description: Okta Generate Certificate Signing Request for Application
+        inputParameters:
+        - name: appId
+          in: path
+          type: string
+          required: true
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: api-v1-apps-appid-credentials-csrs-csrid
+      path: /api/v1/apps/{appId}/credentials/csrs/{csrId}
+      operations:
+      - name: getcsrforapplication
+        method: GET
+        description: GET /api/v1/apps/{appId}/credentials/csrs/{csrId}
+        inputParameters:
+        - name: appId
+          in: path
+          type: string
+          required: true
+        - name: csrId
+          in: path
+          type: string
+          required: true
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: revokecsrfromapplication
+        method: DELETE
+        description: DELETE /api/v1/apps/{appId}/credentials/csrs/{csrId}
+        inputParameters:
+        - name: appId
+          in: path
+          type: string
+          required: true
+        - name: csrId
+          in: path
+          type: string
+          required: true
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: api-v1-apps-appid-credentials-csrs-csrid-lifecyc
+      path: /api/v1/apps/{appId}/credentials/csrs/{csrId}/lifecycle/publish
+      operations:
+      - name: post-api-v1-apps-appid-credentials-csrs-csrid-li
+        method: POST
+        description: POST /api/v1/apps/{appId}/credentials/csrs/{csrId}/lifecycle/publish
+        inputParameters:
+        - name: appId
+          in: path
+          type: string
+          required: true
+        - name: csrId
+          in: path
+          type: string
+          required: true
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: api-v1-apps-appid-credentials-keys
+      path: /api/v1/apps/{appId}/credentials/keys
+      operations:
+      - name: listapplicationkeys
+        method: GET
+        description: Okta List Key Credentials for Application
+        inputParameters:
+        - name: appId
+          in: path
+          type: string
+          required: true
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: api-v1-apps-appid-credentials-keys-generate
+      path: /api/v1/apps/{appId}/credentials/keys/generate
+      operations:
+      - name: generateapplicationkey
+        method: POST
+        description: Generates a new X.509 certificate for an application key credential
+        inputParameters:
+        - name: appId
+          in: path
+          type: string
+          required: true
+        - name: validityYears
+          in: query
+          type: integer
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: api-v1-apps-appid-credentials-keys-keyid
+      path: /api/v1/apps/{appId}/credentials/keys/{keyId}
+      operations:
+      - name: getapplicationkey
+        method: GET
+        description: Okta Get Key Credential for Application
+        inputParameters:
+        - name: appId
+          in: path
+          type: string
+          required: true
+        - name: keyId
+          in: path
+          type: string
+          required: true
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: api-v1-apps-appid-credentials-keys-keyid-clone
+      path: /api/v1/apps/{appId}/credentials/keys/{keyId}/clone
+      operations:
+      - name: cloneapplicationkey
+        method: POST
+        description: Okta Clone Application Key Credential
+        inputParameters:
+        - name: appId
+          in: path
+          type: string
+          required: true
+        - name: keyId
+          in: path
+          type: string
+          required: true
+        - name: targetAid
+          in: query
+          type: string
+          required: true
+          description: Unique key of the target Application
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: api-v1-apps-appid-credentials-secrets
+      path: /api/v1/apps/{appId}/credentials/secrets
+      operations:
+      - name: listclientsecretsforapplication
+        method: GET
+        description: Okta List client secrets
+        inputParameters:
+        - name: appId
+          in: path
+          type: string
+          required: true
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: createnewclientsecretforapplication
+        method: POST
+        description: Okta Add new client secret
+        inputParameters:
+        - name: appId
+          in: path
+          type: string
+          required: true
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: api-v1-apps-appid-credentials-secrets-secretid
+      path: /api/v1/apps/{appId}/credentials/secrets/{secretId}
+      operations:
+      - name: getclientsecretforapplication
+        method: GET
+        description: Okta Get client secret
+        inputParameters:
+        - name: appId
+          in: path
+          type: string
+          required: true
+        - name: secretId
+          in: path
+          type: string
+          required: true
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: deleteclientsecretforapplication
+        method: DELETE
+        description: Removes a secret from the client's collection of secrets.
+        inputParameters:
+        - name: appId
+          in: path
+          type: string
+          required: true
+        - name: secretId
+          in: path
+          type: string
+          required: true
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: api-v1-apps-appid-credentials-secrets-secretid-l
+      path: /api/v1/apps/{appId}/credentials/secrets/{secretId}/lifecycle/activate
+      operations:
+      - name: activateclientsecretforapplication
+        method: POST
+        description: Okta Activate a client secret
+        inputParameters:
+        - name: appId
+          in: path
+          type: string
+          required: true
+        - name: secretId
+          in: path
+          type: string
+          required: true
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: api-v1-apps-appid-credentials-secrets-secretid-l
+      path: /api/v1/apps/{appId}/credentials/secrets/{secretId}/lifecycle/deactivate
+      operations:
+      - name: deactivateclientsecretforapplication
+        method: POST
+        description: Okta Deactivate a client secret
+        inputParameters:
+        - name: appId
+          in: path
+          type: string
+          required: true
+        - name: secretId
+          in: path
+          type: string
+          required: true
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: api-v1-apps-appid-features
+      path: /api/v1/apps/{appId}/features
+      operations:
+      - name: listfeaturesforapplication
+        method: GET
+        description: Okta Fetches the Feature objects for an application.
+        inputParameters:
+        - name: appId
+          in: path
+          type: string
+          required: true
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: api-v1-apps-appid-features-name
+      path: /api/v1/apps/{appId}/features/{name}
+      operations:
+      - name: getfeatureforapplication
+        method: GET
+        description: Okta Fetches a Feature object for an application.
+        inputParameters:
+        - name: appId
+          in: path
+          type: string
+          required: true
+        - name: name
+          in: path
+          type: string
+          required: true
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: updatefeatureforapplication
+        method: PUT
+        description: Okta Updates a Feature object for an application.
+        inputParameters:
+        - name: appId
+          in: path
+          type: string
+          required: true
+        - name: name
+          in: path
+          type: string
+          required: true
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: api-v1-apps-appid-grants
+      path: /api/v1/apps/{appId}/grants
+      operations:
+      - name: listscopeconsentgrants
+        method: GET
+        description: Lists all scope consent grants for the application
+        inputParameters:
+        - name: appId
+          in: path
+          type: string
+          required: true
+        - name: expand
+          in: query
+          type: string
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: grantconsenttoscope
+        method: POST
+        description: Grants consent for the application to request an OAuth 2.0 Okta scope
+        inputParameters:
+        - name: appId
+          in: path
+          type: string
+          required: true
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: api-v1-apps-appid-grants-grantid
+      path: /api/v1/apps/{appId}/grants/{grantId}
+      operations:
+      - name: getscopeconsentgrant
+        method: GET
+        description: Fetches a single scope consent grant for the application
+        inputParameters:
+        - name: appId
+          in: path
+          type: string
+          required: true
+        - name: grantId
+          in: path
+          type: string
+          required: true
+        - name: expand
+          in: query
+          type: string
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: revokescopeconsentgrant
+        method: DELETE
+        description: Revokes permission for the application to request the given scope
+        inputParameters:
+        - name: appId
+          in: path
+          type: string
+          required: true
+        - name: grantId
+          in: path
+          type: string
+          required: true
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: api-v1-apps-appid-groups
+      path: /api/v1/apps/{appId}/groups
+      operations:
+      - name: listapplicationgroupassignments
+        method: GET
+        description: Okta List Groups Assigned to Application
+        inputParameters:
+        - name: appId
+          in: path
+          type: string
+          required: true
+        - name: q
+          in: query
+          type: string
+        - name: after
+          in: query
+          type: string
+          description: Specifies the pagination cursor for the next page of assignments
+        - name: limit
+          in: query
+          type: integer
+          description: Specifies the number of results for a page
+        - name: expand
+          in: query
+          type: string
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: api-v1-apps-appid-groups-groupid
+      path: /api/v1/apps/{appId}/groups/{groupId}
+      operations:
+      - name: getapplicationgroupassignment
+        method: GET
+        description: Okta Get Assigned Group for Application
+        inputParameters:
+        - name: appId
+          in: path
+          type: string
+          required: true
+        - name: groupId
+          in: path
+          type: string
+          required: true
+        - name: expand
+          in: query
+          type: string
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: createapplicationgroupassignment
+        method: PUT
+        description: Okta Assign Group to Application
+        inputParameters:
+        - name: appId
+          in: path
+          type: string
+          required: true
+        - name: groupId
+          in: path
+          type: string
+          required: true
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: deleteapplicationgroupassignment
+        method: DELETE
+        description: Okta Remove Group from Application
+        inputParameters:
+        - name: appId
+          in: path
+          type: string
+          required: true
+        - name: groupId
+          in: path
+          type: string
+          required: true
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: api-v1-apps-appid-lifecycle-activate
+      path: /api/v1/apps/{appId}/lifecycle/activate
+      operations:
+      - name: activateapplication
+        method: POST
+        description: Okta Activate Application
+        inputParameters:
+        - name: appId
+          in: path
+          type: string
+          required: true
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: api-v1-apps-appid-lifecycle-deactivate
+      path: /api/v1/apps/{appId}/lifecycle/deactivate
+      operations:
+      - name: deactivateapplication
+        method: POST
+        description: Okta Deactivate Application
+        inputParameters:
+        - name: appId
+          in: path
+          type: string
+          required: true
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: api-v1-apps-appid-logo
+      path: /api/v1/apps/{appId}/logo
+      operations:
+      - name: uploadapplicationlogo
+        method: POST
+        description: Okta The file must be in PNG, JPG, or GIF format, and less than 1 MB in size. For best results use landscape
+          orientation, a transparent background, and a minimum size of 420px by 120px to prevent upscaling.
+        inputParameters:
+        - name: appId
+          in: path
+          type: string
+          required: true
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: api-v1-apps-appid-policies-policyid
+      path: /api/v1/apps/{appId}/policies/{policyId}
+      operations:
+      - name: updateapplicationpolicy
+        method: PUT
+        description: Okta Update application policy
+        inputParameters:
+        - name: appId
+          in: path
+          type: string
+          required: true
+        - name: policyId
+          in: path
+          type: string
+          required: true
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: api-v1-apps-appid-sso-saml-metadata
+      path: /api/v1/apps/{appId}/sso/saml/metadata
+      operations:
+      - name: previewsamlappmetadata
+        method: GET
+        description: Previews SAML metadata based on a specific key credential for an application
+        inputParameters:
+        - name: appId
+          in: path
+          type: string
+          required: true
+        - name: kid
+          in: query
+          type: string
+          required: true
+          description: unique key identifier of an Application Key Credential
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: api-v1-apps-appid-tokens
+      path: /api/v1/apps/{appId}/tokens
+      operations:
+      - name: listoauth2tokensforapplication
+        method: GET
+        description: Lists all tokens for the application
+        inputParameters:
+        - name: appId
+          in: path
+          type: string
+          required: true
+        - name: expand
+          in: query
+          type: string
+        - name: after
+          in: query
+          type: string
+        - name: limit
+          in: query
+          type: integer
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: revokeoauth2tokensforapplication
+        method: DELETE
+        description: Revokes all tokens for the specified application
+        inputParameters:
+        - name: appId
+          in: path
+          type: string
+          required: true
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: api-v1-apps-appid-tokens-tokenid
+      path: /api/v1/apps/{appId}/tokens/{tokenId}
+      operations:
+      - name: getoauth2tokenforapplication
+        method: GET
+        description: Gets a token for the specified application
+        inputParameters:
+        - name: appId
+          in: path
+          type: string
+          required: true
+        - name: tokenId
+          in: path
+          type: string
+          required: true
+        - name: expand
+          in: query
+          type: string
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: revokeoauth2tokenforapplication
+        method: DELETE
+        description: Revokes the specified token for the specified application
+        inputParameters:
+        - name: appId
+          in: path
+          type: string
+          required: true
+        - name: tokenId
+          in: path
+          type: string
+          required: true
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: api-v1-apps-appid-users
+      path: /api/v1/apps/{appId}/users
+      operations:
+      - name: listapplicationusers
+        method: GET
+        description: Okta List Users Assigned to Application
+        inputParameters:
+        - name: appId
+          in: path
+          type: string
+          required: true
+        - name: q
+          in: query
+          type: string
+        - name: query_scope
+          in: query
+          type: string
+        - name: after
+          in: query
+          type: string
+          description: specifies the pagination cursor for the next page of assignments
+        - name: limit
+          in: query
+          type: integer
+          description: specifies the number of results for a page
+        - name: filter
+          in: query
+          type: string
+        - name: expand
+          in: query
+          type: string
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: assignusertoapplication
+        method: POST
+        description: Okta Assign User to Application for SSO & Provisioning
+        inputParameters:
+        - name: appId
+          in: path
+          type: string
+          required: true
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: api-v1-apps-appid-users-userid
+      path: /api/v1/apps/{appId}/users/{userId}
+      operations:
+      - name: getapplicationuser
+        method: GET
+        description: Okta Get Assigned User for Application
+        inputParameters:
+        - name: appId
+          in: path
+          type: string
+          required: true
+        - name: userId
+          in: path
+          type: string
+          required: true
+        - name: expand
+          in: query
+          type: string
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: updateapplicationuser
+        method: POST
+        description: Okta Update Application Profile for Assigned User
+        inputParameters:
+        - name: appId
+          in: path
+          type: string
+          required: true
+        - name: userId
+          in: path
+          type: string
+          required: true
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: deleteapplicationuser
+        method: DELETE
+        description: Okta Remove User from Application
+        inputParameters:
+        - name: appId
+          in: path
+          type: string
+          required: true
+        - name: userId
+          in: path
+          type: string
+          required: true
+        - name: sendEmail
+          in: query
+          type: boolean
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: api-v1-authenticators
+      path: /api/v1/authenticators
+      operations:
+      - name: listauthenticators
+        method: GET
+        description: Okta Lists all available Authenticators
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: createauthenticator
+        method: POST
+        description: Okta Create an Authenticator
+        inputParameters:
+        - name: activate
+          in: query
+          type: boolean
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: api-v1-authenticators-authenticatorid
+      path: /api/v1/authenticators/{authenticatorId}
+      operations:
+      - name: getauthenticator
+        method: GET
+        description: Success
+        inputParameters:
+        - name: authenticatorId
+          in: path
+          type: string
+          required: true
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: updateauthenticator
+        method: PUT
+        description: Okta Update Authenticator
+        inputParameters:
+        - name: authenticatorId
+          in: path
+          type: string
+          required: true
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: api-v1-authenticators-authenticatorid-lifecycle-
+      path: /api/v1/authenticators/{authenticatorId}/lifecycle/activate
+      operations:
+      - name: activateauthenticator
+        method: POST
+        description: Success
+        inputParameters:
+        - name: authenticatorId
+          in: path
+          type: string
+          required: true
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: api-v1-authenticators-authenticatorid-lifecycle-
+      path: /api/v1/authenticators/{authenticatorId}/lifecycle/deactivate
+      operations:
+      - name: deactivateauthenticator
+        method: POST
+        description: Success
+        inputParameters:
+        - name: authenticatorId
+          in: path
+          type: string
+          required: true
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: api-v1-authorizationservers
+      path: /api/v1/authorizationServers
+      operations:
+      - name: listauthorizationservers
+        method: GET
+        description: Success
+        inputParameters:
+        - name: q
+          in: query
+          type: string
+        - name: limit
+          in: query
+          type: string
+        - name: after
+          in: query
+          type: string
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: createauthorizationserver
+        method: POST
+        description: Success
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: api-v1-authorizationservers-authserverid
+      path: /api/v1/authorizationServers/{authServerId}
+      operations:
+      - name: getauthorizationserver
+        method: GET
+        description: Success
+        inputParameters:
+        - name: authServerId
+          in: path
+          type: string
+          required: true
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: updateauthorizationserver
+        method: PUT
+        description: Success
+        inputParameters:
+        - name: authServerId
+          in: path
+          type: string
+          required: true
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: deleteauthorizationserver
+        method: DELETE
+        description: Success
+        inputParameters:
+        - name: authServerId
+          in: path
+          type: string
+          required: true
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+  exposes:
+  - type: rest
+    port: 8080
+    namespace: okta-rest
+    description: REST adapter for Okta API.
+    resources:
+    - path: /api/v1/apps
+      name: listapplications
+      operations:
+      - method: GET
+        name: listapplications
+        description: Okta List Applications
+        call: okta.listapplications
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /api/v1/apps
+      name: createapplication
+      operations:
+      - method: POST
+        name: createapplication
+        description: Okta Add Application
+        call: okta.createapplication
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /api/v1/apps/{appId}
+      name: getapplication
+      operations:
+      - method: GET
+        name: getapplication
+        description: Okta Get Application
+        call: okta.getapplication
+        with:
+          appId: rest.appId
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /api/v1/apps/{appId}
+      name: updateapplication
+      operations:
+      - method: PUT
+        name: updateapplication
+        description: Okta Update Application
+        call: okta.updateapplication
+        with:
+          appId: rest.appId
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /api/v1/apps/{appId}
+      name: deleteapplication
+      operations:
+      - method: DELETE
+        name: deleteapplication
+        description: Okta Delete Application
+        call: okta.deleteapplication
+        with:
+          appId: rest.appId
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /api/v1/apps/{appId}/connections/default
+      name: getdefaultprovisioningconnectionforapplication
+      operations:
+      - method: GET
+        name: getdefaultprovisioningconnectionforapplication
+        description: Okta Fetches the default Provisioning Connection for an application.
+        call: okta.getdefaultprovisioningconnectionforapplication
+        with:
+          appId: rest.appId
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /api/v1/apps/{appId}/connections/default
+      name: setdefaultprovisioningconnectionforapplication
+      operations:
+      - method: POST
+        name: setdefaultprovisioningconnectionforapplication
+        description: Okta Sets the default Provisioning Connection for an application.
+        call: okta.setdefaultprovisioningconnectionforapplication
+        with:
+          appId: rest.appId
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /api/v1/apps/{appId}/connections/default/lifecycle/activate
+      name: activatedefaultprovisioningconnectionforapplicat
+      operations:
+      - method: POST
+        name: activatedefaultprovisioningconnectionforapplicat
+        description: Okta Activate default Provisioning Connection for application
+        call: okta.activatedefaultprovisioningconnectionforapplicat
+        with:
+          appId: rest.appId
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /api/v1/apps/{appId}/connections/default/lifecycle/deactivate
+      name: deactivatedefaultprovisioningconnectionforapplic
+      operations:
+      - method: POST
+        name: deactivatedefaultprovisioningconnectionforapplic
+        description: Okta Deactivate default Provisioning Connection for application
+        call: okta.deactivatedefaultprovisioningconnectionforapplic
+        with:
+          appId: rest.appId
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /api/v1/apps/{appId}/credentials/csrs
+      name: listcsrsforapplication
+      operations:
+      - method: GET
+        name: listcsrsforapplication
+        description: Okta List Certificate Signing Requests for Application
+        call: okta.listcsrsforapplication
+        with:
+          appId: rest.appId
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /api/v1/apps/{appId}/credentials/csrs
+      name: generatecsrforapplication
+      operations:
+      - method: POST
+        name: generatecsrforapplication
+        description: Okta Generate Certificate Signing Request for Application
+        call: okta.generatecsrforapplication
+        with:
+          appId: rest.appId
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /api/v1/apps/{appId}/credentials/csrs/{csrId}
+      name: getcsrforapplication
+      operations:
+      - method: GET
+        name: getcsrforapplication
+        description: GET /api/v1/apps/{appId}/credentials/csrs/{csrId}
+        call: okta.getcsrforapplication
+        with:
+          appId: rest.appId
+          csrId: rest.csrId
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /api/v1/apps/{appId}/credentials/csrs/{csrId}
+      name: revokecsrfromapplication
+      operations:
+      - method: DELETE
+        name: revokecsrfromapplication
+        description: DELETE /api/v1/apps/{appId}/credentials/csrs/{csrId}
+        call: okta.revokecsrfromapplication
+        with:
+          appId: rest.appId
+          csrId: rest.csrId
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /api/v1/apps/{appId}/credentials/csrs/{csrId}/lifecycle/publish
+      name: post-api-v1-apps-appid-credentials-csrs-csrid-li
+      operations:
+      - method: POST
+        name: post-api-v1-apps-appid-credentials-csrs-csrid-li
+        description: POST /api/v1/apps/{appId}/credentials/csrs/{csrId}/lifecycle/publish
+        call: okta.post-api-v1-apps-appid-credentials-csrs-csrid-li
+        with:
+          appId: rest.appId
+          csrId: rest.csrId
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /api/v1/apps/{appId}/credentials/keys
+      name: listapplicationkeys
+      operations:
+      - method: GET
+        name: listapplicationkeys
+        description: Okta List Key Credentials for Application
+        call: okta.listapplicationkeys
+        with:
+          appId: rest.appId
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /api/v1/apps/{appId}/credentials/keys/generate
+      name: generateapplicationkey
+      operations:
+      - method: POST
+        name: generateapplicationkey
+        description: Generates a new X.509 certificate for an application key credential
+        call: okta.generateapplicationkey
+        with:
+          appId: rest.appId
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /api/v1/apps/{appId}/credentials/keys/{keyId}
+      name: getapplicationkey
+      operations:
+      - method: GET
+        name: getapplicationkey
+        description: Okta Get Key Credential for Application
+        call: okta.getapplicationkey
+        with:
+          appId: rest.appId
+          keyId: rest.keyId
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /api/v1/apps/{appId}/credentials/keys/{keyId}/clone
+      name: cloneapplicationkey
+      operations:
+      - method: POST
+        name: cloneapplicationkey
+        description: Okta Clone Application Key Credential
+        call: okta.cloneapplicationkey
+        with:
+          appId: rest.appId
+          keyId: rest.keyId
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /api/v1/apps/{appId}/credentials/secrets
+      name: listclientsecretsforapplication
+      operations:
+      - method: GET
+        name: listclientsecretsforapplication
+        description: Okta List client secrets
+        call: okta.listclientsecretsforapplication
+        with:
+          appId: rest.appId
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /api/v1/apps/{appId}/credentials/secrets
+      name: createnewclientsecretforapplication
+      operations:
+      - method: POST
+        name: createnewclientsecretforapplication
+        description: Okta Add new client secret
+        call: okta.createnewclientsecretforapplication
+        with:
+          appId: rest.appId
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /api/v1/apps/{appId}/credentials/secrets/{secretId}
+      name: getclientsecretforapplication
+      operations:
+      - method: GET
+        name: getclientsecretforapplication
+        description: Okta Get client secret
+        call: okta.getclientsecretforapplication
+        with:
+          appId: rest.appId
+          secretId: rest.secretId
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /api/v1/apps/{appId}/credentials/secrets/{secretId}
+      name: deleteclientsecretforapplication
+      operations:
+      - method: DELETE
+        name: deleteclientsecretforapplication
+        description: Removes a secret from the client's collection of secrets.
+        call: okta.deleteclientsecretforapplication
+        with:
+          appId: rest.appId
+          secretId: rest.secretId
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /api/v1/apps/{appId}/credentials/secrets/{secretId}/lifecycle/activate
+      name: activateclientsecretforapplication
+      operations:
+      - method: POST
+        name: activateclientsecretforapplication
+        description: Okta Activate a client secret
+        call: okta.activateclientsecretforapplication
+        with:
+          appId: rest.appId
+          secretId: rest.secretId
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /api/v1/apps/{appId}/credentials/secrets/{secretId}/lifecycle/deactivate
+      name: deactivateclientsecretforapplication
+      operations:
+      - method: POST
+        name: deactivateclientsecretforapplication
+        description: Okta Deactivate a client secret
+        call: okta.deactivateclientsecretforapplication
+        with:
+          appId: rest.appId
+          secretId: rest.secretId
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /api/v1/apps/{appId}/features
+      name: listfeaturesforapplication
+      operations:
+      - method: GET
+        name: listfeaturesforapplication
+        description: Okta Fetches the Feature objects for an application.
+        call: okta.listfeaturesforapplication
+        with:
+          appId: rest.appId
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /api/v1/apps/{appId}/features/{name}
+      name: getfeatureforapplication
+      operations:
+      - method: GET
+        name: getfeatureforapplication
+        description: Okta Fetches a Feature object for an application.
+        call: okta.getfeatureforapplication
+        with:
+          appId: rest.appId
+          name: rest.name
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /api/v1/apps/{appId}/features/{name}
+      name: updatefeatureforapplication
+      operations:
+      - method: PUT
+        name: updatefeatureforapplication
+        description: Okta Updates a Feature object for an application.
+        call: okta.updatefeatureforapplication
+        with:
+          appId: rest.appId
+          name: rest.name
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /api/v1/apps/{appId}/grants
+      name: listscopeconsentgrants
+      operations:
+      - method: GET
+        name: listscopeconsentgrants
+        description: Lists all scope consent grants for the application
+        call: okta.listscopeconsentgrants
+        with:
+          appId: rest.appId
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /api/v1/apps/{appId}/grants
+      name: grantconsenttoscope
+      operations:
+      - method: POST
+        name: grantconsenttoscope
+        description: Grants consent for the application to request an OAuth 2.0 Okta scope
+        call: okta.grantconsenttoscope
+        with:
+          appId: rest.appId
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /api/v1/apps/{appId}/grants/{grantId}
+      name: getscopeconsentgrant
+      operations:
+      - method: GET
+        name: getscopeconsentgrant
+        description: Fetches a single scope consent grant for the application
+        call: okta.getscopeconsentgrant
+        with:
+          appId: rest.appId
+          grantId: rest.grantId
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /api/v1/apps/{appId}/grants/{grantId}
+      name: revokescopeconsentgrant
+      operations:
+      - method: DELETE
+        name: revokescopeconsentgrant
+        description: Revokes permission for the application to request the given scope
+        call: okta.revokescopeconsentgrant
+        with:
+          appId: rest.appId
+          grantId: rest.grantId
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /api/v1/apps/{appId}/groups
+      name: listapplicationgroupassignments
+      operations:
+      - method: GET
+        name: listapplicationgroupassignments
+        description: Okta List Groups Assigned to Application
+        call: okta.listapplicationgroupassignments
+        with:
+          appId: rest.appId
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /api/v1/apps/{appId}/groups/{groupId}
+      name: getapplicationgroupassignment
+      operations:
+      - method: GET
+        name: getapplicationgroupassignment
+        description: Okta Get Assigned Group for Application
+        call: okta.getapplicationgroupassignment
+        with:
+          appId: rest.appId
+          groupId: rest.groupId
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /api/v1/apps/{appId}/groups/{groupId}
+      name: createapplicationgroupassignment
+      operations:
+      - method: PUT
+        name: createapplicationgroupassignment
+        description: Okta Assign Group to Application
+        call: okta.createapplicationgroupassignment
+        with:
+          appId: rest.appId
+          groupId: rest.groupId
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /api/v1/apps/{appId}/groups/{groupId}
+      name: deleteapplicationgroupassignment
+      operations:
+      - method: DELETE
+        name: deleteapplicationgroupassignment
+        description: Okta Remove Group from Application
+        call: okta.deleteapplicationgroupassignment
+        with:
+          appId: rest.appId
+          groupId: rest.groupId
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /api/v1/apps/{appId}/lifecycle/activate
+      name: activateapplication
+      operations:
+      - method: POST
+        name: activateapplication
+        description: Okta Activate Application
+        call: okta.activateapplication
+        with:
+          appId: rest.appId
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /api/v1/apps/{appId}/lifecycle/deactivate
+      name: deactivateapplication
+      operations:
+      - method: POST
+        name: deactivateapplication
+        description: Okta Deactivate Application
+        call: okta.deactivateapplication
+        with:
+          appId: rest.appId
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /api/v1/apps/{appId}/logo
+      name: uploadapplicationlogo
+      operations:
+      - method: POST
+        name: uploadapplicationlogo
+        description: Okta The file must be in PNG, JPG, or GIF format, and less than 1 MB in size. For best results use landscape
+          orientation, a transparent background, and a minimum size of 420px by 120px to prevent upscaling.
+        call: okta.uploadapplicationlogo
+        with:
+          appId: rest.appId
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /api/v1/apps/{appId}/policies/{policyId}
+      name: updateapplicationpolicy
+      operations:
+      - method: PUT
+        name: updateapplicationpolicy
+        description: Okta Update application policy
+        call: okta.updateapplicationpolicy
+        with:
+          appId: rest.appId
+          policyId: rest.policyId
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /api/v1/apps/{appId}/sso/saml/metadata
+      name: previewsamlappmetadata
+      operations:
+      - method: GET
+        name: previewsamlappmetadata
+        description: Previews SAML metadata based on a specific key credential for an application
+        call: okta.previewsamlappmetadata
+        with:
+          appId: rest.appId
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /api/v1/apps/{appId}/tokens
+      name: listoauth2tokensforapplication
+      operations:
+      - method: GET
+        name: listoauth2tokensforapplication
+        description: Lists all tokens for the application
+        call: okta.listoauth2tokensforapplication
+        with:
+          appId: rest.appId
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /api/v1/apps/{appId}/tokens
+      name: revokeoauth2tokensforapplication
+      operations:
+      - method: DELETE
+        name: revokeoauth2tokensforapplication
+        description: Revokes all tokens for the specified application
+        call: okta.revokeoauth2tokensforapplication
+        with:
+          appId: rest.appId
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /api/v1/apps/{appId}/tokens/{tokenId}
+      name: getoauth2tokenforapplication
+      operations:
+      - method: GET
+        name: getoauth2tokenforapplication
+        description: Gets a token for the specified application
+        call: okta.getoauth2tokenforapplication
+        with:
+          appId: rest.appId
+          tokenId: rest.tokenId
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /api/v1/apps/{appId}/tokens/{tokenId}
+      name: revokeoauth2tokenforapplication
+      operations:
+      - method: DELETE
+        name: revokeoauth2tokenforapplication
+        description: Revokes the specified token for the specified application
+        call: okta.revokeoauth2tokenforapplication
+        with:
+          appId: rest.appId
+          tokenId: rest.tokenId
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /api/v1/apps/{appId}/users
+      name: listapplicationusers
+      operations:
+      - method: GET
+        name: listapplicationusers
+        description: Okta List Users Assigned to Application
+        call: okta.listapplicationusers
+        with:
+          appId: rest.appId
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /api/v1/apps/{appId}/users
+      name: assignusertoapplication
+      operations:
+      - method: POST
+        name: assignusertoapplication
+        description: Okta Assign User to Application for SSO & Provisioning
+        call: okta.assignusertoapplication
+        with:
+          appId: rest.appId
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /api/v1/apps/{appId}/users/{userId}
+      name: getapplicationuser
+      operations:
+      - method: GET
+        name: getapplicationuser
+        description: Okta Get Assigned User for Application
+        call: okta.getapplicationuser
+        with:
+          appId: rest.appId
+          userId: rest.userId
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /api/v1/apps/{appId}/users/{userId}
+      name: updateapplicationuser
+      operations:
+      - method: POST
+        name: updateapplicationuser
+        description: Okta Update Application Profile for Assigned User
+        call: okta.updateapplicationuser
+        with:
+          appId: rest.appId
+          userId: rest.userId
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /api/v1/apps/{appId}/users/{userId}
+      name: deleteapplicationuser
+      operations:
+      - method: DELETE
+        name: deleteapplicationuser
+        description: Okta Remove User from Application
+        call: okta.deleteapplicationuser
+        with:
+          appId: rest.appId
+          userId: rest.userId
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /api/v1/authenticators
+      name: listauthenticators
+      operations:
+      - method: GET
+        name: listauthenticators
+        description: Okta Lists all available Authenticators
+        call: okta.listauthenticators
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /api/v1/authenticators
+      name: createauthenticator
+      operations:
+      - method: POST
+        name: createauthenticator
+        description: Okta Create an Authenticator
+        call: okta.createauthenticator
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /api/v1/authenticators/{authenticatorId}
+      name: getauthenticator
+      operations:
+      - method: GET
+        name: getauthenticator
+        description: Success
+        call: okta.getauthenticator
+        with:
+          authenticatorId: rest.authenticatorId
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /api/v1/authenticators/{authenticatorId}
+      name: updateauthenticator
+      operations:
+      - method: PUT
+        name: updateauthenticator
+        description: Okta Update Authenticator
+        call: okta.updateauthenticator
+        with:
+          authenticatorId: rest.authenticatorId
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /api/v1/authenticators/{authenticatorId}/lifecycle/activate
+      name: activateauthenticator
+      operations:
+      - method: POST
+        name: activateauthenticator
+        description: Success
+        call: okta.activateauthenticator
+        with:
+          authenticatorId: rest.authenticatorId
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /api/v1/authenticators/{authenticatorId}/lifecycle/deactivate
+      name: deactivateauthenticator
+      operations:
+      - method: POST
+        name: deactivateauthenticator
+        description: Success
+        call: okta.deactivateauthenticator
+        with:
+          authenticatorId: rest.authenticatorId
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /api/v1/authorizationServers
+      name: listauthorizationservers
+      operations:
+      - method: GET
+        name: listauthorizationservers
+        description: Success
+        call: okta.listauthorizationservers
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /api/v1/authorizationServers
+      name: createauthorizationserver
+      operations:
+      - method: POST
+        name: createauthorizationserver
+        description: Success
+        call: okta.createauthorizationserver
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /api/v1/authorizationServers/{authServerId}
+      name: getauthorizationserver
+      operations:
+      - method: GET
+        name: getauthorizationserver
+        description: Success
+        call: okta.getauthorizationserver
+        with:
+          authServerId: rest.authServerId
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /api/v1/authorizationServers/{authServerId}
+      name: updateauthorizationserver
+      operations:
+      - method: PUT
+        name: updateauthorizationserver
+        description: Success
+        call: okta.updateauthorizationserver
+        with:
+          authServerId: rest.authServerId
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /api/v1/authorizationServers/{authServerId}
+      name: deleteauthorizationserver
+      operations:
+      - method: DELETE
+        name: deleteauthorizationserver
+        description: Success
+        call: okta.deleteauthorizationserver
+        with:
+          authServerId: rest.authServerId
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    port: 9090
+    namespace: okta-mcp
+    transport: http
+    description: MCP adapter for Okta API for AI agent use.
+    tools:
+    - name: listapplications
+      description: Okta List Applications
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: okta.listapplications
+      with:
+        q: tools.q
+        after: tools.after
+        limit: tools.limit
+        filter: tools.filter
+        expand: tools.expand
+        includeNonDeleted: tools.includeNonDeleted
+      inputParameters:
+      - name: q
+        type: string
+        description: q
+      - name: after
+        type: string
+        description: Specifies the pagination cursor for the next page of apps
+      - name: limit
+        type: integer
+        description: Specifies the number of results for a page
+      - name: filter
+        type: string
+        description: Filters apps by status, user.id, group.id or credentials.signing.kid expression
+      - name: expand
+        type: string
+        description: Traverses users link relationship and optionally embeds Application User resource
+      - name: includeNonDeleted
+        type: boolean
+        description: includeNonDeleted
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: createapplication
+      description: Okta Add Application
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: okta.createapplication
+      with:
+        activate: tools.activate
+      inputParameters:
+      - name: activate
+        type: boolean
+        description: Executes activation lifecycle operation when creating the app
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: getapplication
+      description: Okta Get Application
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: okta.getapplication
+      with:
+        appId: tools.appId
+        expand: tools.expand
+      inputParameters:
+      - name: appId
+        type: string
+        description: appId
+        required: true
+      - name: expand
+        type: string
+        description: expand
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: updateapplication
+      description: Okta Update Application
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: okta.updateapplication
+      with:
+        appId: tools.appId
+      inputParameters:
+      - name: appId
+        type: string
+        description: appId
+        required: true
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: deleteapplication
+      description: Okta Delete Application
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: okta.deleteapplication
+      with:
+        appId: tools.appId
+      inputParameters:
+      - name: appId
+        type: string
+        description: appId
+        required: true
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: getdefaultprovisioningconnectionforapplication
+      description: Okta Fetches the default Provisioning Connection for an application.
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: okta.getdefaultprovisioningconnectionforapplication
+      with:
+        appId: tools.appId
+      inputParameters:
+      - name: appId
+        type: string
+        description: appId
+        required: true
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: setdefaultprovisioningconnectionforapplication
+      description: Okta Sets the default Provisioning Connection for an application.
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: okta.setdefaultprovisioningconnectionforapplication
+      with:
+        appId: tools.appId
+        activate: tools.activate
+      inputParameters:
+      - name: appId
+        type: string
+        description: appId
+        required: true
+      - name: activate
+        type: boolean
+        description: activate
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: activatedefaultprovisioningconnectionforapplicat
+      description: Okta Activate default Provisioning Connection for application
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: okta.activatedefaultprovisioningconnectionforapplicat
+      with:
+        appId: tools.appId
+      inputParameters:
+      - name: appId
+        type: string
+        description: appId
+        required: true
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: deactivatedefaultprovisioningconnectionforapplic
+      description: Okta Deactivate default Provisioning Connection for application
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: okta.deactivatedefaultprovisioningconnectionforapplic
+      with:
+        appId: tools.appId
+      inputParameters:
+      - name: appId
+        type: string
+        description: appId
+        required: true
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: listcsrsforapplication
+      description: Okta List Certificate Signing Requests for Application
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: okta.listcsrsforapplication
+      with:
+        appId: tools.appId
+      inputParameters:
+      - name: appId
+        type: string
+        description: appId
+        required: true
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: generatecsrforapplication
+      description: Okta Generate Certificate Signing Request for Application
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: okta.generatecsrforapplication
+      with:
+        appId: tools.appId
+      inputParameters:
+      - name: appId
+        type: string
+        description: appId
+        required: true
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: getcsrforapplication
+      description: GET /api/v1/apps/{appId}/credentials/csrs/{csrId}
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: okta.getcsrforapplication
+      with:
+        appId: tools.appId
+        csrId: tools.csrId
+      inputParameters:
+      - name: appId
+        type: string
+        description: appId
+        required: true
+      - name: csrId
+        type: string
+        description: csrId
+        required: true
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: revokecsrfromapplication
+      description: DELETE /api/v1/apps/{appId}/credentials/csrs/{csrId}
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: okta.revokecsrfromapplication
+      with:
+        appId: tools.appId
+        csrId: tools.csrId
+      inputParameters:
+      - name: appId
+        type: string
+        description: appId
+        required: true
+      - name: csrId
+        type: string
+        description: csrId
+        required: true
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: post-api-v1-apps-appid-credentials-csrs-csrid-li
+      description: POST /api/v1/apps/{appId}/credentials/csrs/{csrId}/lifecycle/publish
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: okta.post-api-v1-apps-appid-credentials-csrs-csrid-li
+      with:
+        appId: tools.appId
+        csrId: tools.csrId
+      inputParameters:
+      - name: appId
+        type: string
+        description: appId
+        required: true
+      - name: csrId
+        type: string
+        description: csrId
+        required: true
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: listapplicationkeys
+      description: Okta List Key Credentials for Application
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: okta.listapplicationkeys
+      with:
+        appId: tools.appId
+      inputParameters:
+      - name: appId
+        type: string
+        description: appId
+        required: true
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: generateapplicationkey
+      description: Generates a new X.509 certificate for an application key credential
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: okta.generateapplicationkey
+      with:
+        appId: tools.appId
+        validityYears: tools.validityYears
+      inputParameters:
+      - name: appId
+        type: string
+        description: appId
+        required: true
+      - name: validityYears
+        type: integer
+        description: validityYears
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: getapplicationkey
+      description: Okta Get Key Credential for Application
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: okta.getapplicationkey
+      with:
+        appId: tools.appId
+        keyId: tools.keyId
+      inputParameters:
+      - name: appId
+        type: string
+        description: appId
+        required: true
+      - name: keyId
+        type: string
+        description: keyId
+        required: true
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: cloneapplicationkey
+      description: Okta Clone Application Key Credential
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: okta.cloneapplicationkey
+      with:
+        appId: tools.appId
+        keyId: tools.keyId
+        targetAid: tools.targetAid
+      inputParameters:
+      - name: appId
+        type: string
+        description: appId
+        required: true
+      - name: keyId
+        type: string
+        description: keyId
+        required: true
+      - name: targetAid
+        type: string
+        description: Unique key of the target Application
+        required: true
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: listclientsecretsforapplication
+      description: Okta List client secrets
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: okta.listclientsecretsforapplication
+      with:
+        appId: tools.appId
+      inputParameters:
+      - name: appId
+        type: string
+        description: appId
+        required: true
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: createnewclientsecretforapplication
+      description: Okta Add new client secret
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: okta.createnewclientsecretforapplication
+      with:
+        appId: tools.appId
+      inputParameters:
+      - name: appId
+        type: string
+        description: appId
+        required: true
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: getclientsecretforapplication
+      description: Okta Get client secret
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: okta.getclientsecretforapplication
+      with:
+        appId: tools.appId
+        secretId: tools.secretId
+      inputParameters:
+      - name: appId
+        type: string
+        description: appId
+        required: true
+      - name: secretId
+        type: string
+        description: secretId
+        required: true
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: deleteclientsecretforapplication
+      description: Removes a secret from the client's collection of secrets.
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: okta.deleteclientsecretforapplication
+      with:
+        appId: tools.appId
+        secretId: tools.secretId
+      inputParameters:
+      - name: appId
+        type: string
+        description: appId
+        required: true
+      - name: secretId
+        type: string
+        description: secretId
+        required: true
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: activateclientsecretforapplication
+      description: Okta Activate a client secret
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: okta.activateclientsecretforapplication
+      with:
+        appId: tools.appId
+        secretId: tools.secretId
+      inputParameters:
+      - name: appId
+        type: string
+        description: appId
+        required: true
+      - name: secretId
+        type: string
+        description: secretId
+        required: true
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: deactivateclientsecretforapplication
+      description: Okta Deactivate a client secret
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: okta.deactivateclientsecretforapplication
+      with:
+        appId: tools.appId
+        secretId: tools.secretId
+      inputParameters:
+      - name: appId
+        type: string
+        description: appId
+        required: true
+      - name: secretId
+        type: string
+        description: secretId
+        required: true
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: listfeaturesforapplication
+      description: Okta Fetches the Feature objects for an application.
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: okta.listfeaturesforapplication
+      with:
+        appId: tools.appId
+      inputParameters:
+      - name: appId
+        type: string
+        description: appId
+        required: true
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: getfeatureforapplication
+      description: Okta Fetches a Feature object for an application.
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: okta.getfeatureforapplication
+      with:
+        appId: tools.appId
+        name: tools.name
+      inputParameters:
+      - name: appId
+        type: string
+        description: appId
+        required: true
+      - name: name
+        type: string
+        description: name
+        required: true
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: updatefeatureforapplication
+      description: Okta Updates a Feature object for an application.
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: okta.updatefeatureforapplication
+      with:
+        appId: tools.appId
+        name: tools.name
+      inputParameters:
+      - name: appId
+        type: string
+        description: appId
+        required: true
+      - name: name
+        type: string
+        description: name
+        required: true
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: listscopeconsentgrants
+      description: Lists all scope consent grants for the application
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: okta.listscopeconsentgrants
+      with:
+        appId: tools.appId
+        expand: tools.expand
+      inputParameters:
+      - name: appId
+        type: string
+        description: appId
+        required: true
+      - name: expand
+        type: string
+        description: expand
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: grantconsenttoscope
+      description: Grants consent for the application to request an OAuth 2.0 Okta scope
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: okta.grantconsenttoscope
+      with:
+        appId: tools.appId
+      inputParameters:
+      - name: appId
+        type: string
+        description: appId
+        required: true
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: getscopeconsentgrant
+      description: Fetches a single scope consent grant for the application
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: okta.getscopeconsentgrant
+      with:
+        appId: tools.appId
+        grantId: tools.grantId
+        expand: tools.expand
+      inputParameters:
+      - name: appId
+        type: string
+        description: appId
+        required: true
+      - name: grantId
+        type: string
+        description: grantId
+        required: true
+      - name: expand
+        type: string
+        description: expand
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: revokescopeconsentgrant
+      description: Revokes permission for the application to request the given scope
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: okta.revokescopeconsentgrant
+      with:
+        appId: tools.appId
+        grantId: tools.grantId
+      inputParameters:
+      - name: appId
+        type: string
+        description: appId
+        required: true
+      - name: grantId
+        type: string
+        description: grantId
+        required: true
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: listapplicationgroupassignments
+      description: Okta List Groups Assigned to Application
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: okta.listapplicationgroupassignments
+      with:
+        appId: tools.appId
+        q: tools.q
+        after: tools.after
+        limit: tools.limit
+        expand: tools.expand
+      inputParameters:
+      - name: appId
+        type: string
+        description: appId
+        required: true
+      - name: q
+        type: string
+        description: q
+      - name: after
+        type: string
+        description: Specifies the pagination cursor for the next page of assignments
+      - name: limit
+        type: integer
+        description: Specifies the number of results for a page
+      - name: expand
+        type: string
+        description: expand
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: getapplicationgroupassignment
+      description: Okta Get Assigned Group for Application
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: okta.getapplicationgroupassignment
+      with:
+        appId: tools.appId
+        groupId: tools.groupId
+        expand: tools.expand
+      inputParameters:
+      - name: appId
+        type: string
+        description: appId
+        required: true
+      - name: groupId
+        type: string
+        description: groupId
+        required: true
+      - name: expand
+        type: string
+        description: expand
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: createapplicationgroupassignment
+      description: Okta Assign Group to Application
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: okta.createapplicationgroupassignment
+      with:
+        appId: tools.appId
+        groupId: tools.groupId
+      inputParameters:
+      - name: appId
+        type: string
+        description: appId
+        required: true
+      - name: groupId
+        type: string
+        description: groupId
+        required: true
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: deleteapplicationgroupassignment
+      description: Okta Remove Group from Application
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: okta.deleteapplicationgroupassignment
+      with:
+        appId: tools.appId
+        groupId: tools.groupId
+      inputParameters:
+      - name: appId
+        type: string
+        description: appId
+        required: true
+      - name: groupId
+        type: string
+        description: groupId
+        required: true
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: activateapplication
+      description: Okta Activate Application
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: okta.activateapplication
+      with:
+        appId: tools.appId
+      inputParameters:
+      - name: appId
+        type: string
+        description: appId
+        required: true
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: deactivateapplication
+      description: Okta Deactivate Application
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: okta.deactivateapplication
+      with:
+        appId: tools.appId
+      inputParameters:
+      - name: appId
+        type: string
+        description: appId
+        required: true
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: uploadapplicationlogo
+      description: Okta The file must be in PNG, JPG, or GIF format, and less than 1 MB in size. For best results use landscape
+        orientation, a transparent background, and a minimum size of 420px by 120px to prevent upscaling.
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: okta.uploadapplicationlogo
+      with:
+        appId: tools.appId
+      inputParameters:
+      - name: appId
+        type: string
+        description: appId
+        required: true
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: updateapplicationpolicy
+      description: Okta Update application policy
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: okta.updateapplicationpolicy
+      with:
+        appId: tools.appId
+        policyId: tools.policyId
+      inputParameters:
+      - name: appId
+        type: string
+        description: appId
+        required: true
+      - name: policyId
+        type: string
+        description: policyId
+        required: true
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: previewsamlappmetadata
+      description: Previews SAML metadata based on a specific key credential for an application
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: okta.previewsamlappmetadata
+      with:
+        appId: tools.appId
+        kid: tools.kid
+      inputParameters:
+      - name: appId
+        type: string
+        description: appId
+        required: true
+      - name: kid
+        type: string
+        description: unique key identifier of an Application Key Credential
+        required: true
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: listoauth2tokensforapplication
+      description: Lists all tokens for the application
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: okta.listoauth2tokensforapplication
+      with:
+        appId: tools.appId
+        expand: tools.expand
+        after: tools.after
+        limit: tools.limit
+      inputParameters:
+      - name: appId
+        type: string
+        description: appId
+        required: true
+      - name: expand
+        type: string
+        description: expand
+      - name: after
+        type: string
+        description: after
+      - name: limit
+        type: integer
+        description: limit
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: revokeoauth2tokensforapplication
+      description: Revokes all tokens for the specified application
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: okta.revokeoauth2tokensforapplication
+      with:
+        appId: tools.appId
+      inputParameters:
+      - name: appId
+        type: string
+        description: appId
+        required: true
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: getoauth2tokenforapplication
+      description: Gets a token for the specified application
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: okta.getoauth2tokenforapplication
+      with:
+        appId: tools.appId
+        tokenId: tools.tokenId
+        expand: tools.expand
+      inputParameters:
+      - name: appId
+        type: string
+        description: appId
+        required: true
+      - name: tokenId
+        type: string
+        description: tokenId
+        required: true
+      - name: expand
+        type: string
+        description: expand
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: revokeoauth2tokenforapplication
+      description: Revokes the specified token for the specified application
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: okta.revokeoauth2tokenforapplication
+      with:
+        appId: tools.appId
+        tokenId: tools.tokenId
+      inputParameters:
+      - name: appId
+        type: string
+        description: appId
+        required: true
+      - name: tokenId
+        type: string
+        description: tokenId
+        required: true
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: listapplicationusers
+      description: Okta List Users Assigned to Application
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: okta.listapplicationusers
+      with:
+        appId: tools.appId
+        q: tools.q
+        query_scope: tools.query_scope
+        after: tools.after
+        limit: tools.limit
+        filter: tools.filter
+        expand: tools.expand
+      inputParameters:
+      - name: appId
+        type: string
+        description: appId
+        required: true
+      - name: q
+        type: string
+        description: q
+      - name: query_scope
+        type: string
+        description: query_scope
+      - name: after
+        type: string
+        description: specifies the pagination cursor for the next page of assignments
+      - name: limit
+        type: integer
+        description: specifies the number of results for a page
+      - name: filter
+        type: string
+        description: filter
+      - name: expand
+        type: string
+        description: expand
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: assignusertoapplication
+      description: Okta Assign User to Application for SSO & Provisioning
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: okta.assignusertoapplication
+      with:
+        appId: tools.appId
+      inputParameters:
+      - name: appId
+        type: string
+        description: appId
+        required: true
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: getapplicationuser
+      description: Okta Get Assigned User for Application
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: okta.getapplicationuser
+      with:
+        appId: tools.appId
+        userId: tools.userId
+        expand: tools.expand
+      inputParameters:
+      - name: appId
+        type: string
+        description: appId
+        required: true
+      - name: userId
+        type: string
+        description: userId
+        required: true
+      - name: expand
+        type: string
+        description: expand
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: updateapplicationuser
+      description: Okta Update Application Profile for Assigned User
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: okta.updateapplicationuser
+      with:
+        appId: tools.appId
+        userId: tools.userId
+      inputParameters:
+      - name: appId
+        type: string
+        description: appId
+        required: true
+      - name: userId
+        type: string
+        description: userId
+        required: true
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: deleteapplicationuser
+      description: Okta Remove User from Application
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: okta.deleteapplicationuser
+      with:
+        appId: tools.appId
+        userId: tools.userId
+        sendEmail: tools.sendEmail
+      inputParameters:
+      - name: appId
+        type: string
+        description: appId
+        required: true
+      - name: userId
+        type: string
+        description: userId
+        required: true
+      - name: sendEmail
+        type: boolean
+        description: sendEmail
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: listauthenticators
+      description: Okta Lists all available Authenticators
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: okta.listauthenticators
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: createauthenticator
+      description: Okta Create an Authenticator
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: okta.createauthenticator
+      with:
+        activate: tools.activate
+      inputParameters:
+      - name: activate
+        type: boolean
+        description: activate
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: getauthenticator
+      description: Success
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: okta.getauthenticator
+      with:
+        authenticatorId: tools.authenticatorId
+      inputParameters:
+      - name: authenticatorId
+        type: string
+        description: authenticatorId
+        required: true
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: updateauthenticator
+      description: Okta Update Authenticator
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: okta.updateauthenticator
+      with:
+        authenticatorId: tools.authenticatorId
+      inputParameters:
+      - name: authenticatorId
+        type: string
+        description: authenticatorId
+        required: true
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: activateauthenticator
+      description: Success
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: okta.activateauthenticator
+      with:
+        authenticatorId: tools.authenticatorId
+      inputParameters:
+      - name: authenticatorId
+        type: string
+        description: authenticatorId
+        required: true
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: deactivateauthenticator
+      description: Success
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: okta.deactivateauthenticator
+      with:
+        authenticatorId: tools.authenticatorId
+      inputParameters:
+      - name: authenticatorId
+        type: string
+        description: authenticatorId
+        required: true
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: listauthorizationservers
+      description: Success
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: okta.listauthorizationservers
+      with:
+        q: tools.q
+        limit: tools.limit
+        after: tools.after
+      inputParameters:
+      - name: q
+        type: string
+        description: q
+      - name: limit
+        type: string
+        description: limit
+      - name: after
+        type: string
+        description: after
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: createauthorizationserver
+      description: Success
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: okta.createauthorizationserver
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: getauthorizationserver
+      description: Success
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: okta.getauthorizationserver
+      with:
+        authServerId: tools.authServerId
+      inputParameters:
+      - name: authServerId
+        type: string
+        description: authServerId
+        required: true
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: updateauthorizationserver
+      description: Success
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: okta.updateauthorizationserver
+      with:
+        authServerId: tools.authServerId
+      inputParameters:
+      - name: authServerId
+        type: string
+        description: authServerId
+        required: true
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: deleteauthorizationserver
+      description: Success
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: okta.deleteauthorizationserver
+      with:
+        authServerId: tools.authServerId
+      inputParameters:
+      - name: authServerId
+        type: string
+        description: authServerId
+        required: true
+      outputParameters:
+      - type: object
+        mapping: $.
+binds:
+- namespace: env
+  keys:
+    OKTA_TOKEN: OKTA_TOKEN
