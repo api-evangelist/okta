@@ -95,6 +95,12 @@ common:
     sources:
       - https://www.okta.com/pricing/
     updated: '2026-05-04'
+  - type: Integrations
+    url: https://www.okta.com/integrations/
+integrations:
+  - name: Cross App Access Protocol
+  - name: Secure Identity Integrations
+  - name: See Details
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
