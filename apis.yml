@@ -5,7 +5,7 @@ description: Okta connects any person with any application on any device. It's a
   IT can manage any employee's access to any application or device. Okta runs in the cloud, on a secure,
   reliable, extensively audited platform, which integrates deeply with on-premises applications, directories,
   and identity management systems.
-type: Contract
+kind: contract
 image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
 tags:
   - Authentication
@@ -48,7 +48,7 @@ common:
     url: https://developer.okta.com/docs/reference/api/authn/
   - type: GitHubOrganization
     url: https://github.com/okta
-  - type: Status
+  - type: StatusPage
     url: https://status.okta.com/
   - type: Support
     url: https://support.okta.com/
@@ -58,11 +58,11 @@ common:
     url: https://developer.okta.com/docs/guides/
   - type: SDKs
     url: https://developer.okta.com/code/
-  - type: Change Log
+  - type: ChangeLog
     url: https://developer.okta.com/docs/release-notes/
   - type: Login
     url: https://developer.okta.com/login/
-  - type: Sign Up
+  - type: SignUp
     url: https://developer.okta.com/signup/
   - type: Blog
     url: https://developer.okta.com/blog/
@@ -70,9 +70,9 @@ common:
     url: https://www.okta.com/pricing/
   - type: Forum
     url: https://devforum.okta.com/
-  - type: Terms of Service
+  - type: TermsOfService
     url: https://developer.okta.com/terms/
-  - type: Privacy Policy
+  - type: PrivacyPolicy
     url: https://www.okta.com/privacy-policy/
   - type: Features
     data:
