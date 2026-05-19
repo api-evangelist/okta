@@ -1,0 +1,498 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Okta API — UserFactor
+  description: 'Okta API — UserFactor. 9 operations. Lead operation: Okta Enroll Factor. Self-contained Naftiko capability
+    covering one Okta business surface.'
+  tags:
+  - Okta
+  - UserFactor
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    OKTA_API_KEY: OKTA_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: okta-userfactor
+    baseUri: https://your-subdomain.okta.com
+    description: Okta API — UserFactor business capability. Self-contained, no shared references.
+    resources:
+    - name: api-v1-users-userId-factors
+      path: /api/v1/users/{userId}/factors
+      operations:
+      - name: listfactors
+        method: GET
+        description: Enumerates all the enrolled factors for the specified user
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: userId
+          in: path
+          type: string
+          required: true
+      - name: enrollfactor
+        method: POST
+        description: Okta Enroll Factor
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: userId
+          in: path
+          type: string
+          required: true
+        - name: updatePhone
+          in: query
+          type: boolean
+        - name: templateId
+          in: query
+          type: string
+          description: id of SMS template (only for SMS factor)
+        - name: tokenLifetimeSeconds
+          in: query
+          type: integer
+        - name: activate
+          in: query
+          type: boolean
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: api-v1-users-userId-factors-catalog
+      path: /api/v1/users/{userId}/factors/catalog
+      operations:
+      - name: listsupportedfactors
+        method: GET
+        description: Enumerates all the supported factors that can be enrolled for the specified user
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: userId
+          in: path
+          type: string
+          required: true
+    - name: api-v1-users-userId-factors-questions
+      path: /api/v1/users/{userId}/factors/questions
+      operations:
+      - name: listsupportedsecurityquestions
+        method: GET
+        description: Enumerates all available security questions for a user's `question` factor
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: userId
+          in: path
+          type: string
+          required: true
+    - name: api-v1-users-userId-factors-factorId
+      path: /api/v1/users/{userId}/factors/{factorId}
+      operations:
+      - name: getfactor
+        method: GET
+        description: Fetches a factor for the specified user
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: userId
+          in: path
+          type: string
+          required: true
+        - name: factorId
+          in: path
+          type: string
+          required: true
+      - name: deletefactor
+        method: DELETE
+        description: Unenrolls an existing factor for the specified user, allowing the user to enroll a new factor.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: userId
+          in: path
+          type: string
+          required: true
+        - name: factorId
+          in: path
+          type: string
+          required: true
+    - name: api-v1-users-userId-factors-factorId-lifecycle-activate
+      path: /api/v1/users/{userId}/factors/{factorId}/lifecycle/activate
+      operations:
+      - name: activatefactor
+        method: POST
+        description: Okta Activate Factor
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: userId
+          in: path
+          type: string
+          required: true
+        - name: factorId
+          in: path
+          type: string
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+    - name: api-v1-users-userId-factors-factorId-transactions-transactionId
+      path: /api/v1/users/{userId}/factors/{factorId}/transactions/{transactionId}
+      operations:
+      - name: getfactortransactionstatus
+        method: GET
+        description: Polls factors verification transaction for status.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: userId
+          in: path
+          type: string
+          required: true
+        - name: factorId
+          in: path
+          type: string
+          required: true
+        - name: transactionId
+          in: path
+          type: string
+          required: true
+    - name: api-v1-users-userId-factors-factorId-verify
+      path: /api/v1/users/{userId}/factors/{factorId}/verify
+      operations:
+      - name: verifyfactor
+        method: POST
+        description: Okta Verify MFA Factor
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: userId
+          in: path
+          type: string
+          required: true
+        - name: factorId
+          in: path
+          type: string
+          required: true
+        - name: templateId
+          in: query
+          type: string
+        - name: tokenLifetimeSeconds
+          in: query
+          type: integer
+        - name: X-Forwarded-For
+          in: header
+          type: string
+        - name: User-Agent
+          in: header
+          type: string
+        - name: Accept-Language
+          in: header
+          type: string
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+    authentication:
+      type: apikey
+      key: Authorization
+      value: '{{env.OKTA_API_KEY}}'
+      placement: header
+  exposes:
+  - type: rest
+    namespace: okta-userfactor-rest
+    port: 8080
+    description: REST adapter for Okta API — UserFactor. One Spectral-compliant resource per consumed operation, prefixed
+      with /v1.
+    resources:
+    - path: /v1/api/v1/users/{userid}/factors
+      name: api-v1-users-userid-factors
+      description: REST surface for api-v1-users-userId-factors.
+      operations:
+      - method: GET
+        name: listfactors
+        description: Enumerates all the enrolled factors for the specified user
+        call: okta-userfactor.listfactors
+        with:
+          userId: rest.userId
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: enrollfactor
+        description: Okta Enroll Factor
+        call: okta-userfactor.enrollfactor
+        with:
+          userId: rest.userId
+          updatePhone: rest.updatePhone
+          templateId: rest.templateId
+          tokenLifetimeSeconds: rest.tokenLifetimeSeconds
+          activate: rest.activate
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v1/users/{userid}/factors/catalog
+      name: api-v1-users-userid-factors-catalog
+      description: REST surface for api-v1-users-userId-factors-catalog.
+      operations:
+      - method: GET
+        name: listsupportedfactors
+        description: Enumerates all the supported factors that can be enrolled for the specified user
+        call: okta-userfactor.listsupportedfactors
+        with:
+          userId: rest.userId
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v1/users/{userid}/factors/questions
+      name: api-v1-users-userid-factors-questions
+      description: REST surface for api-v1-users-userId-factors-questions.
+      operations:
+      - method: GET
+        name: listsupportedsecurityquestions
+        description: Enumerates all available security questions for a user's `question` factor
+        call: okta-userfactor.listsupportedsecurityquestions
+        with:
+          userId: rest.userId
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v1/users/{userid}/factors/{factorid}
+      name: api-v1-users-userid-factors-factorid
+      description: REST surface for api-v1-users-userId-factors-factorId.
+      operations:
+      - method: GET
+        name: getfactor
+        description: Fetches a factor for the specified user
+        call: okta-userfactor.getfactor
+        with:
+          userId: rest.userId
+          factorId: rest.factorId
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: deletefactor
+        description: Unenrolls an existing factor for the specified user, allowing the user to enroll a new factor.
+        call: okta-userfactor.deletefactor
+        with:
+          userId: rest.userId
+          factorId: rest.factorId
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v1/users/{userid}/factors/{factorid}/lifecycle/activate
+      name: api-v1-users-userid-factors-factorid-lifecycle-activate
+      description: REST surface for api-v1-users-userId-factors-factorId-lifecycle-activate.
+      operations:
+      - method: POST
+        name: activatefactor
+        description: Okta Activate Factor
+        call: okta-userfactor.activatefactor
+        with:
+          userId: rest.userId
+          factorId: rest.factorId
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v1/users/{userid}/factors/{factorid}/transactions/{transactionid}
+      name: api-v1-users-userid-factors-factorid-transactions-transactionid
+      description: REST surface for api-v1-users-userId-factors-factorId-transactions-transactionId.
+      operations:
+      - method: GET
+        name: getfactortransactionstatus
+        description: Polls factors verification transaction for status.
+        call: okta-userfactor.getfactortransactionstatus
+        with:
+          userId: rest.userId
+          factorId: rest.factorId
+          transactionId: rest.transactionId
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v1/users/{userid}/factors/{factorid}/verify
+      name: api-v1-users-userid-factors-factorid-verify
+      description: REST surface for api-v1-users-userId-factors-factorId-verify.
+      operations:
+      - method: POST
+        name: verifyfactor
+        description: Okta Verify MFA Factor
+        call: okta-userfactor.verifyfactor
+        with:
+          userId: rest.userId
+          factorId: rest.factorId
+          templateId: rest.templateId
+          tokenLifetimeSeconds: rest.tokenLifetimeSeconds
+          X-Forwarded-For: rest.X-Forwarded-For
+          User-Agent: rest.User-Agent
+          Accept-Language: rest.Accept-Language
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: okta-userfactor-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Okta API — UserFactor. One tool per consumed operation, routed inline through this capability's
+      consumes block.
+    tools:
+    - name: enumerates-all-enrolled-factors-specified
+      description: Enumerates all the enrolled factors for the specified user
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: okta-userfactor.listfactors
+      with:
+        userId: tools.userId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: okta-enroll-factor
+      description: Okta Enroll Factor
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: okta-userfactor.enrollfactor
+      with:
+        userId: tools.userId
+        updatePhone: tools.updatePhone
+        templateId: tools.templateId
+        tokenLifetimeSeconds: tools.tokenLifetimeSeconds
+        activate: tools.activate
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: enumerates-all-supported-factors-that
+      description: Enumerates all the supported factors that can be enrolled for the specified user
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: okta-userfactor.listsupportedfactors
+      with:
+        userId: tools.userId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: enumerates-all-available-security-questions
+      description: Enumerates all available security questions for a user's `question` factor
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: okta-userfactor.listsupportedsecurityquestions
+      with:
+        userId: tools.userId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: fetches-factor-specified-user
+      description: Fetches a factor for the specified user
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: okta-userfactor.getfactor
+      with:
+        userId: tools.userId
+        factorId: tools.factorId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: unenrolls-existing-factor-specified-user
+      description: Unenrolls an existing factor for the specified user, allowing the user to enroll a new factor.
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: okta-userfactor.deletefactor
+      with:
+        userId: tools.userId
+        factorId: tools.factorId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: okta-activate-factor
+      description: Okta Activate Factor
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: okta-userfactor.activatefactor
+      with:
+        userId: tools.userId
+        factorId: tools.factorId
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: polls-factors-verification-transaction-status
+      description: Polls factors verification transaction for status.
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: okta-userfactor.getfactortransactionstatus
+      with:
+        userId: tools.userId
+        factorId: tools.factorId
+        transactionId: tools.transactionId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: okta-verify-mfa-factor
+      description: Okta Verify MFA Factor
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: okta-userfactor.verifyfactor
+      with:
+        userId: tools.userId
+        factorId: tools.factorId
+        templateId: tools.templateId
+        tokenLifetimeSeconds: tools.tokenLifetimeSeconds
+        X-Forwarded-For: tools.X-Forwarded-For
+        User-Agent: tools.User-Agent
+        Accept-Language: tools.Accept-Language
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.

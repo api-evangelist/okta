@@ -1,0 +1,1367 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Okta API — Group
+  description: 'Okta API — Group. 28 operations. Lead operation: Okta List Groups. Self-contained Naftiko capability covering
+    one Okta business surface.'
+  tags:
+  - Okta
+  - Group
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    OKTA_API_KEY: OKTA_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: okta-group
+    baseUri: https://your-subdomain.okta.com
+    description: Okta API — Group business capability. Self-contained, no shared references.
+    resources:
+    - name: api-v1-groups
+      path: /api/v1/groups
+      operations:
+      - name: listgroups
+        method: GET
+        description: Okta List Groups
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: q
+          in: query
+          type: string
+          description: Searches the name property of groups for matching value
+        - name: filter
+          in: query
+          type: string
+          description: Filter expression for groups
+        - name: after
+          in: query
+          type: string
+          description: Specifies the pagination cursor for the next page of groups
+        - name: limit
+          in: query
+          type: integer
+          description: Specifies the number of group results in a page
+        - name: expand
+          in: query
+          type: string
+          description: If specified, it causes additional metadata to be included in the response.
+        - name: search
+          in: query
+          type: string
+          description: Searches for groups with a supported filtering expression for all attributes except for _embedded,
+            _links, and objectClass
+      - name: creategroup
+        method: POST
+        description: Okta Add Group
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: api-v1-groups-rules
+      path: /api/v1/groups/rules
+      operations:
+      - name: listgrouprules
+        method: GET
+        description: Okta List Group Rules
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: limit
+          in: query
+          type: integer
+          description: Specifies the number of rule results in a page
+        - name: after
+          in: query
+          type: string
+          description: Specifies the pagination cursor for the next page of rules
+        - name: search
+          in: query
+          type: string
+          description: Specifies the keyword to search fules for
+        - name: expand
+          in: query
+          type: string
+          description: If specified as `groupIdToGroupNameMap`, then show group names
+      - name: creategrouprule
+        method: POST
+        description: Okta Create Group Rule
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: api-v1-groups-rules-ruleId
+      path: /api/v1/groups/rules/{ruleId}
+      operations:
+      - name: getgrouprule
+        method: GET
+        description: Okta Get Group Rule
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: ruleId
+          in: path
+          type: string
+          required: true
+        - name: expand
+          in: query
+          type: string
+      - name: updategrouprule
+        method: PUT
+        description: Updates a group rule. Only `INACTIVE` rules can be updated.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: ruleId
+          in: path
+          type: string
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+      - name: deletegrouprule
+        method: DELETE
+        description: Okta Delete a group Rule
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: ruleId
+          in: path
+          type: string
+          required: true
+        - name: removeUsers
+          in: query
+          type: boolean
+          description: Indicates whether to keep or remove users from groups assigned by this rule.
+    - name: api-v1-groups-rules-ruleId-lifecycle-activate
+      path: /api/v1/groups/rules/{ruleId}/lifecycle/activate
+      operations:
+      - name: activategrouprule
+        method: POST
+        description: Okta Activate a group Rule
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: ruleId
+          in: path
+          type: string
+          required: true
+    - name: api-v1-groups-rules-ruleId-lifecycle-deactivate
+      path: /api/v1/groups/rules/{ruleId}/lifecycle/deactivate
+      operations:
+      - name: deactivategrouprule
+        method: POST
+        description: Okta Deactivate a group Rule
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: ruleId
+          in: path
+          type: string
+          required: true
+    - name: api-v1-groups-groupId
+      path: /api/v1/groups/{groupId}
+      operations:
+      - name: getgroup
+        method: GET
+        description: Okta List Group Rules
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: groupId
+          in: path
+          type: string
+          required: true
+      - name: updategroup
+        method: PUT
+        description: Okta Update Group
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: groupId
+          in: path
+          type: string
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+      - name: deletegroup
+        method: DELETE
+        description: Okta Remove Group
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: groupId
+          in: path
+          type: string
+          required: true
+    - name: api-v1-groups-groupId-apps
+      path: /api/v1/groups/{groupId}/apps
+      operations:
+      - name: listassignedapplicationsforgroup
+        method: GET
+        description: Okta List Assigned Applications
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: groupId
+          in: path
+          type: string
+          required: true
+        - name: after
+          in: query
+          type: string
+          description: Specifies the pagination cursor for the next page of apps
+        - name: limit
+          in: query
+          type: integer
+          description: Specifies the number of app results for a page
+    - name: api-v1-groups-groupId-roles
+      path: /api/v1/groups/{groupId}/roles
+      operations:
+      - name: listgroupassignedroles
+        method: GET
+        description: Success
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: groupId
+          in: path
+          type: string
+          required: true
+        - name: expand
+          in: query
+          type: string
+      - name: assignroletogroup
+        method: POST
+        description: Assigns a Role to a Group
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: groupId
+          in: path
+          type: string
+          required: true
+        - name: disableNotifications
+          in: query
+          type: boolean
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: api-v1-groups-groupId-roles-roleId
+      path: /api/v1/groups/{groupId}/roles/{roleId}
+      operations:
+      - name: getrole
+        method: GET
+        description: Success
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: groupId
+          in: path
+          type: string
+          required: true
+        - name: roleId
+          in: path
+          type: string
+          required: true
+      - name: removerolefromgroup
+        method: DELETE
+        description: Unassigns a Role from a Group
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: groupId
+          in: path
+          type: string
+          required: true
+        - name: roleId
+          in: path
+          type: string
+          required: true
+    - name: api-v1-groups-groupId-roles-roleId-targets-catalog-apps
+      path: /api/v1/groups/{groupId}/roles/{roleId}/targets/catalog/apps
+      operations:
+      - name: listapplicationtargetsforapplicationadministratorroleforgroup
+        method: GET
+        description: Lists all App targets for an `APP_ADMIN` Role assigned to a Group. This methods return list may include
+          full Applications or Instances. The response for an instance will have an `ID` value, while Application will not
+          have an ID.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: groupId
+          in: path
+          type: string
+          required: true
+        - name: roleId
+          in: path
+          type: string
+          required: true
+        - name: after
+          in: query
+          type: string
+        - name: limit
+          in: query
+          type: integer
+    - name: api-v1-groups-groupId-roles-roleId-targets-catalog-apps-appName
+      path: /api/v1/groups/{groupId}/roles/{roleId}/targets/catalog/apps/{appName}
+      operations:
+      - name: addapplicationtargettoadminrolegiventogroup
+        method: PUT
+        description: Success
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: groupId
+          in: path
+          type: string
+          required: true
+        - name: roleId
+          in: path
+          type: string
+          required: true
+        - name: appName
+          in: path
+          type: string
+          required: true
+      - name: removeapplicationtargetfromapplicationadministratorrolegiventogroup
+        method: DELETE
+        description: Success
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: groupId
+          in: path
+          type: string
+          required: true
+        - name: roleId
+          in: path
+          type: string
+          required: true
+        - name: appName
+          in: path
+          type: string
+          required: true
+    - name: api-v1-groups-groupId-roles-roleId-targets-catalog-apps-appName-applicationId
+      path: /api/v1/groups/{groupId}/roles/{roleId}/targets/catalog/apps/{appName}/{applicationId}
+      operations:
+      - name: addapplicationinstancetargettoappadminrolegiventogroup
+        method: PUT
+        description: Okta Add App Instance Target to App Administrator Role given to a Group
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: groupId
+          in: path
+          type: string
+          required: true
+        - name: roleId
+          in: path
+          type: string
+          required: true
+        - name: appName
+          in: path
+          type: string
+          required: true
+        - name: applicationId
+          in: path
+          type: string
+          required: true
+      - name: removeapplicationtargetfromadministratorrolegiventogroup
+        method: DELETE
+        description: Okta Remove App Instance Target to App Administrator Role given to a Group
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: groupId
+          in: path
+          type: string
+          required: true
+        - name: roleId
+          in: path
+          type: string
+          required: true
+        - name: appName
+          in: path
+          type: string
+          required: true
+        - name: applicationId
+          in: path
+          type: string
+          required: true
+    - name: api-v1-groups-groupId-roles-roleId-targets-groups
+      path: /api/v1/groups/{groupId}/roles/{roleId}/targets/groups
+      operations:
+      - name: listgrouptargetsforgrouprole
+        method: GET
+        description: Success
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: groupId
+          in: path
+          type: string
+          required: true
+        - name: roleId
+          in: path
+          type: string
+          required: true
+        - name: after
+          in: query
+          type: string
+        - name: limit
+          in: query
+          type: integer
+    - name: api-v1-groups-groupId-roles-roleId-targets-groups-targetGroupId
+      path: /api/v1/groups/{groupId}/roles/{roleId}/targets/groups/{targetGroupId}
+      operations:
+      - name: addgrouptargettogroupadministratorroleforgroup
+        method: PUT
+        description: ''
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: groupId
+          in: path
+          type: string
+          required: true
+        - name: roleId
+          in: path
+          type: string
+          required: true
+        - name: targetGroupId
+          in: path
+          type: string
+          required: true
+      - name: removegrouptargetfromgroupadministratorrolegiventogroup
+        method: DELETE
+        description: ''
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: groupId
+          in: path
+          type: string
+          required: true
+        - name: roleId
+          in: path
+          type: string
+          required: true
+        - name: targetGroupId
+          in: path
+          type: string
+          required: true
+    - name: api-v1-groups-groupId-users
+      path: /api/v1/groups/{groupId}/users
+      operations:
+      - name: listgroupusers
+        method: GET
+        description: Okta List Group Members
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: groupId
+          in: path
+          type: string
+          required: true
+        - name: after
+          in: query
+          type: string
+          description: Specifies the pagination cursor for the next page of users
+        - name: limit
+          in: query
+          type: integer
+          description: Specifies the number of user results in a page
+    - name: api-v1-groups-groupId-users-userId
+      path: /api/v1/groups/{groupId}/users/{userId}
+      operations:
+      - name: addusertogroup
+        method: PUT
+        description: Okta Add User to Group
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: groupId
+          in: path
+          type: string
+          required: true
+        - name: userId
+          in: path
+          type: string
+          required: true
+      - name: removeuserfromgroup
+        method: DELETE
+        description: Okta Remove User from Group
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: groupId
+          in: path
+          type: string
+          required: true
+        - name: userId
+          in: path
+          type: string
+          required: true
+    authentication:
+      type: apikey
+      key: Authorization
+      value: '{{env.OKTA_API_KEY}}'
+      placement: header
+  exposes:
+  - type: rest
+    namespace: okta-group-rest
+    port: 8080
+    description: REST adapter for Okta API — Group. One Spectral-compliant resource per consumed operation, prefixed with
+      /v1.
+    resources:
+    - path: /v1/api/v1/groups
+      name: api-v1-groups
+      description: REST surface for api-v1-groups.
+      operations:
+      - method: GET
+        name: listgroups
+        description: Okta List Groups
+        call: okta-group.listgroups
+        with:
+          q: rest.q
+          filter: rest.filter
+          after: rest.after
+          limit: rest.limit
+          expand: rest.expand
+          search: rest.search
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: creategroup
+        description: Okta Add Group
+        call: okta-group.creategroup
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v1/groups/rules
+      name: api-v1-groups-rules
+      description: REST surface for api-v1-groups-rules.
+      operations:
+      - method: GET
+        name: listgrouprules
+        description: Okta List Group Rules
+        call: okta-group.listgrouprules
+        with:
+          limit: rest.limit
+          after: rest.after
+          search: rest.search
+          expand: rest.expand
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: creategrouprule
+        description: Okta Create Group Rule
+        call: okta-group.creategrouprule
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v1/groups/rules/{ruleid}
+      name: api-v1-groups-rules-ruleid
+      description: REST surface for api-v1-groups-rules-ruleId.
+      operations:
+      - method: GET
+        name: getgrouprule
+        description: Okta Get Group Rule
+        call: okta-group.getgrouprule
+        with:
+          ruleId: rest.ruleId
+          expand: rest.expand
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PUT
+        name: updategrouprule
+        description: Updates a group rule. Only `INACTIVE` rules can be updated.
+        call: okta-group.updategrouprule
+        with:
+          ruleId: rest.ruleId
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: deletegrouprule
+        description: Okta Delete a group Rule
+        call: okta-group.deletegrouprule
+        with:
+          ruleId: rest.ruleId
+          removeUsers: rest.removeUsers
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v1/groups/rules/{ruleid}/lifecycle/activate
+      name: api-v1-groups-rules-ruleid-lifecycle-activate
+      description: REST surface for api-v1-groups-rules-ruleId-lifecycle-activate.
+      operations:
+      - method: POST
+        name: activategrouprule
+        description: Okta Activate a group Rule
+        call: okta-group.activategrouprule
+        with:
+          ruleId: rest.ruleId
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v1/groups/rules/{ruleid}/lifecycle/deactivate
+      name: api-v1-groups-rules-ruleid-lifecycle-deactivate
+      description: REST surface for api-v1-groups-rules-ruleId-lifecycle-deactivate.
+      operations:
+      - method: POST
+        name: deactivategrouprule
+        description: Okta Deactivate a group Rule
+        call: okta-group.deactivategrouprule
+        with:
+          ruleId: rest.ruleId
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v1/groups/{groupid}
+      name: api-v1-groups-groupid
+      description: REST surface for api-v1-groups-groupId.
+      operations:
+      - method: GET
+        name: getgroup
+        description: Okta List Group Rules
+        call: okta-group.getgroup
+        with:
+          groupId: rest.groupId
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PUT
+        name: updategroup
+        description: Okta Update Group
+        call: okta-group.updategroup
+        with:
+          groupId: rest.groupId
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: deletegroup
+        description: Okta Remove Group
+        call: okta-group.deletegroup
+        with:
+          groupId: rest.groupId
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v1/groups/{groupid}/apps
+      name: api-v1-groups-groupid-apps
+      description: REST surface for api-v1-groups-groupId-apps.
+      operations:
+      - method: GET
+        name: listassignedapplicationsforgroup
+        description: Okta List Assigned Applications
+        call: okta-group.listassignedapplicationsforgroup
+        with:
+          groupId: rest.groupId
+          after: rest.after
+          limit: rest.limit
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v1/groups/{groupid}/roles
+      name: api-v1-groups-groupid-roles
+      description: REST surface for api-v1-groups-groupId-roles.
+      operations:
+      - method: GET
+        name: listgroupassignedroles
+        description: Success
+        call: okta-group.listgroupassignedroles
+        with:
+          groupId: rest.groupId
+          expand: rest.expand
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: assignroletogroup
+        description: Assigns a Role to a Group
+        call: okta-group.assignroletogroup
+        with:
+          groupId: rest.groupId
+          disableNotifications: rest.disableNotifications
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v1/groups/{groupid}/roles/{roleid}
+      name: api-v1-groups-groupid-roles-roleid
+      description: REST surface for api-v1-groups-groupId-roles-roleId.
+      operations:
+      - method: GET
+        name: getrole
+        description: Success
+        call: okta-group.getrole
+        with:
+          groupId: rest.groupId
+          roleId: rest.roleId
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: removerolefromgroup
+        description: Unassigns a Role from a Group
+        call: okta-group.removerolefromgroup
+        with:
+          groupId: rest.groupId
+          roleId: rest.roleId
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v1/groups/{groupid}/roles/{roleid}/targets/catalog/apps
+      name: api-v1-groups-groupid-roles-roleid-targets-catalog-apps
+      description: REST surface for api-v1-groups-groupId-roles-roleId-targets-catalog-apps.
+      operations:
+      - method: GET
+        name: listapplicationtargetsforapplicationadministratorroleforgroup
+        description: Lists all App targets for an `APP_ADMIN` Role assigned to a Group. This methods return list may include
+          full Applications or Instances. The response for an instance will have an `ID` value, while Application will not
+          have an ID.
+        call: okta-group.listapplicationtargetsforapplicationadministratorroleforgroup
+        with:
+          groupId: rest.groupId
+          roleId: rest.roleId
+          after: rest.after
+          limit: rest.limit
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v1/groups/{groupid}/roles/{roleid}/targets/catalog/apps/{appname}
+      name: api-v1-groups-groupid-roles-roleid-targets-catalog-apps-appname
+      description: REST surface for api-v1-groups-groupId-roles-roleId-targets-catalog-apps-appName.
+      operations:
+      - method: PUT
+        name: addapplicationtargettoadminrolegiventogroup
+        description: Success
+        call: okta-group.addapplicationtargettoadminrolegiventogroup
+        with:
+          groupId: rest.groupId
+          roleId: rest.roleId
+          appName: rest.appName
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: removeapplicationtargetfromapplicationadministratorrolegiventogroup
+        description: Success
+        call: okta-group.removeapplicationtargetfromapplicationadministratorrolegiventogroup
+        with:
+          groupId: rest.groupId
+          roleId: rest.roleId
+          appName: rest.appName
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v1/groups/{groupid}/roles/{roleid}/targets/catalog/apps/{appname}/{applicationid}
+      name: api-v1-groups-groupid-roles-roleid-targets-catalog-apps-appname-applicationid
+      description: REST surface for api-v1-groups-groupId-roles-roleId-targets-catalog-apps-appName-applicationId.
+      operations:
+      - method: PUT
+        name: addapplicationinstancetargettoappadminrolegiventogroup
+        description: Okta Add App Instance Target to App Administrator Role given to a Group
+        call: okta-group.addapplicationinstancetargettoappadminrolegiventogroup
+        with:
+          groupId: rest.groupId
+          roleId: rest.roleId
+          appName: rest.appName
+          applicationId: rest.applicationId
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: removeapplicationtargetfromadministratorrolegiventogroup
+        description: Okta Remove App Instance Target to App Administrator Role given to a Group
+        call: okta-group.removeapplicationtargetfromadministratorrolegiventogroup
+        with:
+          groupId: rest.groupId
+          roleId: rest.roleId
+          appName: rest.appName
+          applicationId: rest.applicationId
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v1/groups/{groupid}/roles/{roleid}/targets/groups
+      name: api-v1-groups-groupid-roles-roleid-targets-groups
+      description: REST surface for api-v1-groups-groupId-roles-roleId-targets-groups.
+      operations:
+      - method: GET
+        name: listgrouptargetsforgrouprole
+        description: Success
+        call: okta-group.listgrouptargetsforgrouprole
+        with:
+          groupId: rest.groupId
+          roleId: rest.roleId
+          after: rest.after
+          limit: rest.limit
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v1/groups/{groupid}/roles/{roleid}/targets/groups/{targetgroupid}
+      name: api-v1-groups-groupid-roles-roleid-targets-groups-targetgroupid
+      description: REST surface for api-v1-groups-groupId-roles-roleId-targets-groups-targetGroupId.
+      operations:
+      - method: PUT
+        name: addgrouptargettogroupadministratorroleforgroup
+        description: addgrouptargettogroupadministratorroleforgroup
+        call: okta-group.addgrouptargettogroupadministratorroleforgroup
+        with:
+          groupId: rest.groupId
+          roleId: rest.roleId
+          targetGroupId: rest.targetGroupId
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: removegrouptargetfromgroupadministratorrolegiventogroup
+        description: removegrouptargetfromgroupadministratorrolegiventogroup
+        call: okta-group.removegrouptargetfromgroupadministratorrolegiventogroup
+        with:
+          groupId: rest.groupId
+          roleId: rest.roleId
+          targetGroupId: rest.targetGroupId
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v1/groups/{groupid}/users
+      name: api-v1-groups-groupid-users
+      description: REST surface for api-v1-groups-groupId-users.
+      operations:
+      - method: GET
+        name: listgroupusers
+        description: Okta List Group Members
+        call: okta-group.listgroupusers
+        with:
+          groupId: rest.groupId
+          after: rest.after
+          limit: rest.limit
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v1/groups/{groupid}/users/{userid}
+      name: api-v1-groups-groupid-users-userid
+      description: REST surface for api-v1-groups-groupId-users-userId.
+      operations:
+      - method: PUT
+        name: addusertogroup
+        description: Okta Add User to Group
+        call: okta-group.addusertogroup
+        with:
+          groupId: rest.groupId
+          userId: rest.userId
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: removeuserfromgroup
+        description: Okta Remove User from Group
+        call: okta-group.removeuserfromgroup
+        with:
+          groupId: rest.groupId
+          userId: rest.userId
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: okta-group-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Okta API — Group. One tool per consumed operation, routed inline through this capability's
+      consumes block.
+    tools:
+    - name: okta-list-groups
+      description: Okta List Groups
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: okta-group.listgroups
+      with:
+        q: tools.q
+        filter: tools.filter
+        after: tools.after
+        limit: tools.limit
+        expand: tools.expand
+        search: tools.search
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: okta-add-group
+      description: Okta Add Group
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: okta-group.creategroup
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: okta-list-group-rules
+      description: Okta List Group Rules
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: okta-group.listgrouprules
+      with:
+        limit: tools.limit
+        after: tools.after
+        search: tools.search
+        expand: tools.expand
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: okta-create-group-rule
+      description: Okta Create Group Rule
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: okta-group.creategrouprule
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: okta-get-group-rule
+      description: Okta Get Group Rule
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: okta-group.getgrouprule
+      with:
+        ruleId: tools.ruleId
+        expand: tools.expand
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: updates-group-rule-only-inactive
+      description: Updates a group rule. Only `INACTIVE` rules can be updated.
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: okta-group.updategrouprule
+      with:
+        ruleId: tools.ruleId
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: okta-delete-group-rule
+      description: Okta Delete a group Rule
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: okta-group.deletegrouprule
+      with:
+        ruleId: tools.ruleId
+        removeUsers: tools.removeUsers
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: okta-activate-group-rule
+      description: Okta Activate a group Rule
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: okta-group.activategrouprule
+      with:
+        ruleId: tools.ruleId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: okta-deactivate-group-rule
+      description: Okta Deactivate a group Rule
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: okta-group.deactivategrouprule
+      with:
+        ruleId: tools.ruleId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: okta-list-group-rules-2
+      description: Okta List Group Rules
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: okta-group.getgroup
+      with:
+        groupId: tools.groupId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: okta-update-group
+      description: Okta Update Group
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: okta-group.updategroup
+      with:
+        groupId: tools.groupId
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: okta-remove-group
+      description: Okta Remove Group
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: okta-group.deletegroup
+      with:
+        groupId: tools.groupId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: okta-list-assigned-applications
+      description: Okta List Assigned Applications
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: okta-group.listassignedapplicationsforgroup
+      with:
+        groupId: tools.groupId
+        after: tools.after
+        limit: tools.limit
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: success
+      description: Success
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: okta-group.listgroupassignedroles
+      with:
+        groupId: tools.groupId
+        expand: tools.expand
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: assigns-role-group
+      description: Assigns a Role to a Group
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: okta-group.assignroletogroup
+      with:
+        groupId: tools.groupId
+        disableNotifications: tools.disableNotifications
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: success-2
+      description: Success
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: okta-group.getrole
+      with:
+        groupId: tools.groupId
+        roleId: tools.roleId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: unassigns-role-group
+      description: Unassigns a Role from a Group
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: okta-group.removerolefromgroup
+      with:
+        groupId: tools.groupId
+        roleId: tools.roleId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: lists-all-app-targets-app
+      description: Lists all App targets for an `APP_ADMIN` Role assigned to a Group. This methods return list may include
+        full Applications or Instances. The response for an instance will have an `ID` value, while Application will not have
+        an ID.
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: okta-group.listapplicationtargetsforapplicationadministratorroleforgroup
+      with:
+        groupId: tools.groupId
+        roleId: tools.roleId
+        after: tools.after
+        limit: tools.limit
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: success-3
+      description: Success
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: okta-group.addapplicationtargettoadminrolegiventogroup
+      with:
+        groupId: tools.groupId
+        roleId: tools.roleId
+        appName: tools.appName
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: success-4
+      description: Success
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: okta-group.removeapplicationtargetfromapplicationadministratorrolegiventogroup
+      with:
+        groupId: tools.groupId
+        roleId: tools.roleId
+        appName: tools.appName
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: okta-add-app-instance-target
+      description: Okta Add App Instance Target to App Administrator Role given to a Group
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: okta-group.addapplicationinstancetargettoappadminrolegiventogroup
+      with:
+        groupId: tools.groupId
+        roleId: tools.roleId
+        appName: tools.appName
+        applicationId: tools.applicationId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: okta-remove-app-instance-target
+      description: Okta Remove App Instance Target to App Administrator Role given to a Group
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: okta-group.removeapplicationtargetfromadministratorrolegiventogroup
+      with:
+        groupId: tools.groupId
+        roleId: tools.roleId
+        appName: tools.appName
+        applicationId: tools.applicationId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: success-5
+      description: Success
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: okta-group.listgrouptargetsforgrouprole
+      with:
+        groupId: tools.groupId
+        roleId: tools.roleId
+        after: tools.after
+        limit: tools.limit
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: addgrouptargettogroupadministratorroleforgroup
+      description: addgrouptargettogroupadministratorroleforgroup
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: okta-group.addgrouptargettogroupadministratorroleforgroup
+      with:
+        groupId: tools.groupId
+        roleId: tools.roleId
+        targetGroupId: tools.targetGroupId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: removegrouptargetfromgroupadministratorrolegiventogroup
+      description: removegrouptargetfromgroupadministratorrolegiventogroup
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: okta-group.removegrouptargetfromgroupadministratorrolegiventogroup
+      with:
+        groupId: tools.groupId
+        roleId: tools.roleId
+        targetGroupId: tools.targetGroupId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: okta-list-group-members
+      description: Okta List Group Members
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: okta-group.listgroupusers
+      with:
+        groupId: tools.groupId
+        after: tools.after
+        limit: tools.limit
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: okta-add-user-group
+      description: Okta Add User to Group
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: okta-group.addusertogroup
+      with:
+        groupId: tools.groupId
+        userId: tools.userId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: okta-remove-user-group
+      description: Okta Remove User from Group
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: okta-group.removeuserfromgroup
+      with:
+        groupId: tools.groupId
+        userId: tools.userId
+      outputParameters:
+      - type: object
+        mapping: $.

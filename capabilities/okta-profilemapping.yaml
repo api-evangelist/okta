@@ -1,0 +1,177 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Okta API — ProfileMapping
+  description: 'Okta API — ProfileMapping. 3 operations. Lead operation: Okta Get Profile Mapping. Self-contained Naftiko
+    capability covering one Okta business surface.'
+  tags:
+  - Okta
+  - ProfileMapping
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    OKTA_API_KEY: OKTA_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: okta-profilemapping
+    baseUri: https://your-subdomain.okta.com
+    description: Okta API — ProfileMapping business capability. Self-contained, no shared references.
+    resources:
+    - name: api-v1-mappings
+      path: /api/v1/mappings
+      operations:
+      - name: listprofilemappings
+        method: GET
+        description: Enumerates Profile Mappings in your organization with pagination.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: after
+          in: query
+          type: string
+        - name: limit
+          in: query
+          type: integer
+        - name: sourceId
+          in: query
+          type: string
+        - name: targetId
+          in: query
+          type: string
+    - name: api-v1-mappings-mappingId
+      path: /api/v1/mappings/{mappingId}
+      operations:
+      - name: getprofilemapping
+        method: GET
+        description: Okta Get Profile Mapping
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: mappingId
+          in: path
+          type: string
+          required: true
+      - name: updateprofilemapping
+        method: POST
+        description: Okta Update Profile Mapping
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: mappingId
+          in: path
+          type: string
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    authentication:
+      type: apikey
+      key: Authorization
+      value: '{{env.OKTA_API_KEY}}'
+      placement: header
+  exposes:
+  - type: rest
+    namespace: okta-profilemapping-rest
+    port: 8080
+    description: REST adapter for Okta API — ProfileMapping. One Spectral-compliant resource per consumed operation, prefixed
+      with /v1.
+    resources:
+    - path: /v1/api/v1/mappings
+      name: api-v1-mappings
+      description: REST surface for api-v1-mappings.
+      operations:
+      - method: GET
+        name: listprofilemappings
+        description: Enumerates Profile Mappings in your organization with pagination.
+        call: okta-profilemapping.listprofilemappings
+        with:
+          after: rest.after
+          limit: rest.limit
+          sourceId: rest.sourceId
+          targetId: rest.targetId
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v1/mappings/{mappingid}
+      name: api-v1-mappings-mappingid
+      description: REST surface for api-v1-mappings-mappingId.
+      operations:
+      - method: GET
+        name: getprofilemapping
+        description: Okta Get Profile Mapping
+        call: okta-profilemapping.getprofilemapping
+        with:
+          mappingId: rest.mappingId
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: updateprofilemapping
+        description: Okta Update Profile Mapping
+        call: okta-profilemapping.updateprofilemapping
+        with:
+          mappingId: rest.mappingId
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: okta-profilemapping-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Okta API — ProfileMapping. One tool per consumed operation, routed inline through this capability's
+      consumes block.
+    tools:
+    - name: enumerates-profile-mappings-your-organization
+      description: Enumerates Profile Mappings in your organization with pagination.
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: okta-profilemapping.listprofilemappings
+      with:
+        after: tools.after
+        limit: tools.limit
+        sourceId: tools.sourceId
+        targetId: tools.targetId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: okta-get-profile-mapping
+      description: Okta Get Profile Mapping
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: okta-profilemapping.getprofilemapping
+      with:
+        mappingId: tools.mappingId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: okta-update-profile-mapping
+      description: Okta Update Profile Mapping
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: okta-profilemapping.updateprofilemapping
+      with:
+        mappingId: tools.mappingId
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.

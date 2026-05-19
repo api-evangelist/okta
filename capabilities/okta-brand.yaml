@@ -1,0 +1,1158 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Okta API — Brand
+  description: 'Okta API — Brand. 24 operations. Lead operation: Okta List Brands. Self-contained Naftiko capability covering
+    one Okta business surface.'
+  tags:
+  - Okta
+  - Brand
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    OKTA_API_KEY: OKTA_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: okta-brand
+    baseUri: https://your-subdomain.okta.com
+    description: Okta API — Brand business capability. Self-contained, no shared references.
+    resources:
+    - name: api-v1-brands
+      path: /api/v1/brands
+      operations:
+      - name: listbrands
+        method: GET
+        description: Okta List Brands
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: api-v1-brands-brandId
+      path: /api/v1/brands/{brandId}
+      operations:
+      - name: getbrand
+        method: GET
+        description: Okta Get Brand
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: brandId
+          in: path
+          type: string
+          required: true
+      - name: updatebrand
+        method: PUT
+        description: Okta Update Brand
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: brandId
+          in: path
+          type: string
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: api-v1-brands-brandId-templates-email
+      path: /api/v1/brands/{brandId}/templates/email
+      operations:
+      - name: listemailtemplates
+        method: GET
+        description: Okta List Email Templates
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: brandId
+          in: path
+          type: string
+          required: true
+        - name: after
+          in: query
+          type: string
+          description: Specifies the pagination cursor for the next page of email templates.
+        - name: limit
+          in: query
+          type: integer
+          description: Specifies the number of results returned (maximum 200)
+    - name: api-v1-brands-brandId-templates-email-templateName
+      path: /api/v1/brands/{brandId}/templates/email/{templateName}
+      operations:
+      - name: getemailtemplate
+        method: GET
+        description: Okta Get Email Template
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: brandId
+          in: path
+          type: string
+          required: true
+        - name: templateName
+          in: path
+          type: string
+          required: true
+    - name: api-v1-brands-brandId-templates-email-templateName-customizations
+      path: /api/v1/brands/{brandId}/templates/email/{templateName}/customizations
+      operations:
+      - name: listemailtemplatecustomizations
+        method: GET
+        description: Okta List Email Template Customization
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: brandId
+          in: path
+          type: string
+          required: true
+        - name: templateName
+          in: path
+          type: string
+          required: true
+      - name: createemailtemplatecustomization
+        method: POST
+        description: Okta Create Email Template Customization
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: brandId
+          in: path
+          type: string
+          required: true
+        - name: templateName
+          in: path
+          type: string
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+      - name: deleteemailtemplatecustomizations
+        method: DELETE
+        description: Okta Delete Email Template Customization
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: brandId
+          in: path
+          type: string
+          required: true
+        - name: templateName
+          in: path
+          type: string
+          required: true
+    - name: api-v1-brands-brandId-templates-email-templateName-customizations-customizationI
+      path: /api/v1/brands/{brandId}/templates/email/{templateName}/customizations/{customizationId}
+      operations:
+      - name: getemailtemplatecustomization
+        method: GET
+        description: Okta Get Email Template Customization
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: brandId
+          in: path
+          type: string
+          required: true
+        - name: templateName
+          in: path
+          type: string
+          required: true
+        - name: customizationId
+          in: path
+          type: string
+          required: true
+      - name: updateemailtemplatecustomization
+        method: PUT
+        description: Okta Update Email Customization
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: brandId
+          in: path
+          type: string
+          required: true
+        - name: templateName
+          in: path
+          type: string
+          required: true
+        - name: customizationId
+          in: path
+          type: string
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+      - name: deleteemailtemplatecustomization
+        method: DELETE
+        description: Okta Delete Email Customization
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: brandId
+          in: path
+          type: string
+          required: true
+        - name: templateName
+          in: path
+          type: string
+          required: true
+        - name: customizationId
+          in: path
+          type: string
+          required: true
+    - name: api-v1-brands-brandId-templates-email-templateName-customizations-customizationI
+      path: /api/v1/brands/{brandId}/templates/email/{templateName}/customizations/{customizationId}/preview
+      operations:
+      - name: getemailtemplatecustomizationpreview
+        method: GET
+        description: Okta Get Preview Content of Email Customization
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: brandId
+          in: path
+          type: string
+          required: true
+        - name: templateName
+          in: path
+          type: string
+          required: true
+        - name: customizationId
+          in: path
+          type: string
+          required: true
+    - name: api-v1-brands-brandId-templates-email-templateName-default-content
+      path: /api/v1/brands/{brandId}/templates/email/{templateName}/default-content
+      operations:
+      - name: getemailtemplatedefaultcontent
+        method: GET
+        description: Okta Get Default Content of Email Template
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: brandId
+          in: path
+          type: string
+          required: true
+        - name: templateName
+          in: path
+          type: string
+          required: true
+    - name: api-v1-brands-brandId-templates-email-templateName-default-content-preview
+      path: /api/v1/brands/{brandId}/templates/email/{templateName}/default-content/preview
+      operations:
+      - name: getemailtemplatedefaultcontentpreview
+        method: GET
+        description: Okta Get Preview of Email Template Default Content
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: brandId
+          in: path
+          type: string
+          required: true
+        - name: templateName
+          in: path
+          type: string
+          required: true
+    - name: api-v1-brands-brandId-templates-email-templateName-test
+      path: /api/v1/brands/{brandId}/templates/email/{templateName}/test
+      operations:
+      - name: sendtestemail
+        method: POST
+        description: Okta Get Preview of Email Template Default Content
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: brandId
+          in: path
+          type: string
+          required: true
+        - name: templateName
+          in: path
+          type: string
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: api-v1-brands-brandId-themes
+      path: /api/v1/brands/{brandId}/themes
+      operations:
+      - name: listbrandthemes
+        method: GET
+        description: Okta Get Brand Themes
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: brandId
+          in: path
+          type: string
+          required: true
+    - name: api-v1-brands-brandId-themes-themeId
+      path: /api/v1/brands/{brandId}/themes/{themeId}
+      operations:
+      - name: getbrandtheme
+        method: GET
+        description: Okta Get a theme for a brand
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: brandId
+          in: path
+          type: string
+          required: true
+        - name: themeId
+          in: path
+          type: string
+          required: true
+      - name: updatebrandtheme
+        method: PUT
+        description: Okta Update a theme for a brand
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: brandId
+          in: path
+          type: string
+          required: true
+        - name: themeId
+          in: path
+          type: string
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: api-v1-brands-brandId-themes-themeId-background-image
+      path: /api/v1/brands/{brandId}/themes/{themeId}/background-image
+      operations:
+      - name: uploadbrandthemebackgroundimage
+        method: POST
+        description: Okta Updates the background image for your Theme
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: brandId
+          in: path
+          type: string
+          required: true
+        - name: themeId
+          in: path
+          type: string
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+      - name: deletebrandthemebackgroundimage
+        method: DELETE
+        description: Okta Deletes a Theme background image
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: brandId
+          in: path
+          type: string
+          required: true
+        - name: themeId
+          in: path
+          type: string
+          required: true
+    - name: api-v1-brands-brandId-themes-themeId-favicon
+      path: /api/v1/brands/{brandId}/themes/{themeId}/favicon
+      operations:
+      - name: uploadbrandthemefavicon
+        method: POST
+        description: Okta Updates the favicon for your theme
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: brandId
+          in: path
+          type: string
+          required: true
+        - name: themeId
+          in: path
+          type: string
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+      - name: deletebrandthemefavicon
+        method: DELETE
+        description: Deletes a Theme favicon. The org then uses the Okta default favicon.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: brandId
+          in: path
+          type: string
+          required: true
+        - name: themeId
+          in: path
+          type: string
+          required: true
+    - name: api-v1-brands-brandId-themes-themeId-logo
+      path: /api/v1/brands/{brandId}/themes/{themeId}/logo
+      operations:
+      - name: uploadbrandthemelogo
+        method: POST
+        description: Okta Update a themes logo
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: brandId
+          in: path
+          type: string
+          required: true
+        - name: themeId
+          in: path
+          type: string
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+      - name: deletebrandthemelogo
+        method: DELETE
+        description: Deletes a Theme logo. The org then uses the Okta default logo.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: brandId
+          in: path
+          type: string
+          required: true
+        - name: themeId
+          in: path
+          type: string
+          required: true
+    authentication:
+      type: apikey
+      key: Authorization
+      value: '{{env.OKTA_API_KEY}}'
+      placement: header
+  exposes:
+  - type: rest
+    namespace: okta-brand-rest
+    port: 8080
+    description: REST adapter for Okta API — Brand. One Spectral-compliant resource per consumed operation, prefixed with
+      /v1.
+    resources:
+    - path: /v1/api/v1/brands
+      name: api-v1-brands
+      description: REST surface for api-v1-brands.
+      operations:
+      - method: GET
+        name: listbrands
+        description: Okta List Brands
+        call: okta-brand.listbrands
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v1/brands/{brandid}
+      name: api-v1-brands-brandid
+      description: REST surface for api-v1-brands-brandId.
+      operations:
+      - method: GET
+        name: getbrand
+        description: Okta Get Brand
+        call: okta-brand.getbrand
+        with:
+          brandId: rest.brandId
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PUT
+        name: updatebrand
+        description: Okta Update Brand
+        call: okta-brand.updatebrand
+        with:
+          brandId: rest.brandId
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v1/brands/{brandid}/templates/email
+      name: api-v1-brands-brandid-templates-email
+      description: REST surface for api-v1-brands-brandId-templates-email.
+      operations:
+      - method: GET
+        name: listemailtemplates
+        description: Okta List Email Templates
+        call: okta-brand.listemailtemplates
+        with:
+          brandId: rest.brandId
+          after: rest.after
+          limit: rest.limit
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v1/brands/{brandid}/templates/email/{templatename}
+      name: api-v1-brands-brandid-templates-email-templatename
+      description: REST surface for api-v1-brands-brandId-templates-email-templateName.
+      operations:
+      - method: GET
+        name: getemailtemplate
+        description: Okta Get Email Template
+        call: okta-brand.getemailtemplate
+        with:
+          brandId: rest.brandId
+          templateName: rest.templateName
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v1/brands/{brandid}/templates/email/{templatename}/customizations
+      name: api-v1-brands-brandid-templates-email-templatename-customizations
+      description: REST surface for api-v1-brands-brandId-templates-email-templateName-customizations.
+      operations:
+      - method: GET
+        name: listemailtemplatecustomizations
+        description: Okta List Email Template Customization
+        call: okta-brand.listemailtemplatecustomizations
+        with:
+          brandId: rest.brandId
+          templateName: rest.templateName
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: createemailtemplatecustomization
+        description: Okta Create Email Template Customization
+        call: okta-brand.createemailtemplatecustomization
+        with:
+          brandId: rest.brandId
+          templateName: rest.templateName
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: deleteemailtemplatecustomizations
+        description: Okta Delete Email Template Customization
+        call: okta-brand.deleteemailtemplatecustomizations
+        with:
+          brandId: rest.brandId
+          templateName: rest.templateName
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v1/brands/{brandid}/templates/email/{templatename}/customizations/{customizationid}
+      name: api-v1-brands-brandid-templates-email-templatename-customizations-customizationi
+      description: REST surface for api-v1-brands-brandId-templates-email-templateName-customizations-customizationI.
+      operations:
+      - method: GET
+        name: getemailtemplatecustomization
+        description: Okta Get Email Template Customization
+        call: okta-brand.getemailtemplatecustomization
+        with:
+          brandId: rest.brandId
+          templateName: rest.templateName
+          customizationId: rest.customizationId
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PUT
+        name: updateemailtemplatecustomization
+        description: Okta Update Email Customization
+        call: okta-brand.updateemailtemplatecustomization
+        with:
+          brandId: rest.brandId
+          templateName: rest.templateName
+          customizationId: rest.customizationId
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: deleteemailtemplatecustomization
+        description: Okta Delete Email Customization
+        call: okta-brand.deleteemailtemplatecustomization
+        with:
+          brandId: rest.brandId
+          templateName: rest.templateName
+          customizationId: rest.customizationId
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v1/brands/{brandid}/templates/email/{templatename}/customizations/{customizationid}/preview
+      name: api-v1-brands-brandid-templates-email-templatename-customizations-customizationi
+      description: REST surface for api-v1-brands-brandId-templates-email-templateName-customizations-customizationI.
+      operations:
+      - method: GET
+        name: getemailtemplatecustomizationpreview
+        description: Okta Get Preview Content of Email Customization
+        call: okta-brand.getemailtemplatecustomizationpreview
+        with:
+          brandId: rest.brandId
+          templateName: rest.templateName
+          customizationId: rest.customizationId
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v1/brands/{brandid}/templates/email/{templatename}/default-content
+      name: api-v1-brands-brandid-templates-email-templatename-default-content
+      description: REST surface for api-v1-brands-brandId-templates-email-templateName-default-content.
+      operations:
+      - method: GET
+        name: getemailtemplatedefaultcontent
+        description: Okta Get Default Content of Email Template
+        call: okta-brand.getemailtemplatedefaultcontent
+        with:
+          brandId: rest.brandId
+          templateName: rest.templateName
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v1/brands/{brandid}/templates/email/{templatename}/default-content/preview
+      name: api-v1-brands-brandid-templates-email-templatename-default-content-preview
+      description: REST surface for api-v1-brands-brandId-templates-email-templateName-default-content-preview.
+      operations:
+      - method: GET
+        name: getemailtemplatedefaultcontentpreview
+        description: Okta Get Preview of Email Template Default Content
+        call: okta-brand.getemailtemplatedefaultcontentpreview
+        with:
+          brandId: rest.brandId
+          templateName: rest.templateName
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v1/brands/{brandid}/templates/email/{templatename}/test
+      name: api-v1-brands-brandid-templates-email-templatename-test
+      description: REST surface for api-v1-brands-brandId-templates-email-templateName-test.
+      operations:
+      - method: POST
+        name: sendtestemail
+        description: Okta Get Preview of Email Template Default Content
+        call: okta-brand.sendtestemail
+        with:
+          brandId: rest.brandId
+          templateName: rest.templateName
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v1/brands/{brandid}/themes
+      name: api-v1-brands-brandid-themes
+      description: REST surface for api-v1-brands-brandId-themes.
+      operations:
+      - method: GET
+        name: listbrandthemes
+        description: Okta Get Brand Themes
+        call: okta-brand.listbrandthemes
+        with:
+          brandId: rest.brandId
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v1/brands/{brandid}/themes/{themeid}
+      name: api-v1-brands-brandid-themes-themeid
+      description: REST surface for api-v1-brands-brandId-themes-themeId.
+      operations:
+      - method: GET
+        name: getbrandtheme
+        description: Okta Get a theme for a brand
+        call: okta-brand.getbrandtheme
+        with:
+          brandId: rest.brandId
+          themeId: rest.themeId
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PUT
+        name: updatebrandtheme
+        description: Okta Update a theme for a brand
+        call: okta-brand.updatebrandtheme
+        with:
+          brandId: rest.brandId
+          themeId: rest.themeId
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v1/brands/{brandid}/themes/{themeid}/background-image
+      name: api-v1-brands-brandid-themes-themeid-background-image
+      description: REST surface for api-v1-brands-brandId-themes-themeId-background-image.
+      operations:
+      - method: POST
+        name: uploadbrandthemebackgroundimage
+        description: Okta Updates the background image for your Theme
+        call: okta-brand.uploadbrandthemebackgroundimage
+        with:
+          brandId: rest.brandId
+          themeId: rest.themeId
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: deletebrandthemebackgroundimage
+        description: Okta Deletes a Theme background image
+        call: okta-brand.deletebrandthemebackgroundimage
+        with:
+          brandId: rest.brandId
+          themeId: rest.themeId
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v1/brands/{brandid}/themes/{themeid}/favicon
+      name: api-v1-brands-brandid-themes-themeid-favicon
+      description: REST surface for api-v1-brands-brandId-themes-themeId-favicon.
+      operations:
+      - method: POST
+        name: uploadbrandthemefavicon
+        description: Okta Updates the favicon for your theme
+        call: okta-brand.uploadbrandthemefavicon
+        with:
+          brandId: rest.brandId
+          themeId: rest.themeId
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: deletebrandthemefavicon
+        description: Deletes a Theme favicon. The org then uses the Okta default favicon.
+        call: okta-brand.deletebrandthemefavicon
+        with:
+          brandId: rest.brandId
+          themeId: rest.themeId
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v1/brands/{brandid}/themes/{themeid}/logo
+      name: api-v1-brands-brandid-themes-themeid-logo
+      description: REST surface for api-v1-brands-brandId-themes-themeId-logo.
+      operations:
+      - method: POST
+        name: uploadbrandthemelogo
+        description: Okta Update a themes logo
+        call: okta-brand.uploadbrandthemelogo
+        with:
+          brandId: rest.brandId
+          themeId: rest.themeId
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: deletebrandthemelogo
+        description: Deletes a Theme logo. The org then uses the Okta default logo.
+        call: okta-brand.deletebrandthemelogo
+        with:
+          brandId: rest.brandId
+          themeId: rest.themeId
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: okta-brand-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Okta API — Brand. One tool per consumed operation, routed inline through this capability's
+      consumes block.
+    tools:
+    - name: okta-list-brands
+      description: Okta List Brands
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: okta-brand.listbrands
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: okta-get-brand
+      description: Okta Get Brand
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: okta-brand.getbrand
+      with:
+        brandId: tools.brandId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: okta-update-brand
+      description: Okta Update Brand
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: okta-brand.updatebrand
+      with:
+        brandId: tools.brandId
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: okta-list-email-templates
+      description: Okta List Email Templates
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: okta-brand.listemailtemplates
+      with:
+        brandId: tools.brandId
+        after: tools.after
+        limit: tools.limit
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: okta-get-email-template
+      description: Okta Get Email Template
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: okta-brand.getemailtemplate
+      with:
+        brandId: tools.brandId
+        templateName: tools.templateName
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: okta-list-email-template-customization
+      description: Okta List Email Template Customization
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: okta-brand.listemailtemplatecustomizations
+      with:
+        brandId: tools.brandId
+        templateName: tools.templateName
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: okta-create-email-template-customization
+      description: Okta Create Email Template Customization
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: okta-brand.createemailtemplatecustomization
+      with:
+        brandId: tools.brandId
+        templateName: tools.templateName
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: okta-delete-email-template-customization
+      description: Okta Delete Email Template Customization
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: okta-brand.deleteemailtemplatecustomizations
+      with:
+        brandId: tools.brandId
+        templateName: tools.templateName
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: okta-get-email-template-customization
+      description: Okta Get Email Template Customization
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: okta-brand.getemailtemplatecustomization
+      with:
+        brandId: tools.brandId
+        templateName: tools.templateName
+        customizationId: tools.customizationId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: okta-update-email-customization
+      description: Okta Update Email Customization
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: okta-brand.updateemailtemplatecustomization
+      with:
+        brandId: tools.brandId
+        templateName: tools.templateName
+        customizationId: tools.customizationId
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: okta-delete-email-customization
+      description: Okta Delete Email Customization
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: okta-brand.deleteemailtemplatecustomization
+      with:
+        brandId: tools.brandId
+        templateName: tools.templateName
+        customizationId: tools.customizationId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: okta-get-preview-content-email
+      description: Okta Get Preview Content of Email Customization
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: okta-brand.getemailtemplatecustomizationpreview
+      with:
+        brandId: tools.brandId
+        templateName: tools.templateName
+        customizationId: tools.customizationId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: okta-get-default-content-email
+      description: Okta Get Default Content of Email Template
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: okta-brand.getemailtemplatedefaultcontent
+      with:
+        brandId: tools.brandId
+        templateName: tools.templateName
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: okta-get-preview-email-template
+      description: Okta Get Preview of Email Template Default Content
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: okta-brand.getemailtemplatedefaultcontentpreview
+      with:
+        brandId: tools.brandId
+        templateName: tools.templateName
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: okta-get-preview-email-template-2
+      description: Okta Get Preview of Email Template Default Content
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: false
+      call: okta-brand.sendtestemail
+      with:
+        brandId: tools.brandId
+        templateName: tools.templateName
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: okta-get-brand-themes
+      description: Okta Get Brand Themes
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: okta-brand.listbrandthemes
+      with:
+        brandId: tools.brandId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: okta-get-theme-brand
+      description: Okta Get a theme for a brand
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: okta-brand.getbrandtheme
+      with:
+        brandId: tools.brandId
+        themeId: tools.themeId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: okta-update-theme-brand
+      description: Okta Update a theme for a brand
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: okta-brand.updatebrandtheme
+      with:
+        brandId: tools.brandId
+        themeId: tools.themeId
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: okta-updates-background-image-your
+      description: Okta Updates the background image for your Theme
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: okta-brand.uploadbrandthemebackgroundimage
+      with:
+        brandId: tools.brandId
+        themeId: tools.themeId
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: okta-deletes-theme-background-image
+      description: Okta Deletes a Theme background image
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: okta-brand.deletebrandthemebackgroundimage
+      with:
+        brandId: tools.brandId
+        themeId: tools.themeId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: okta-updates-favicon-your-theme
+      description: Okta Updates the favicon for your theme
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: okta-brand.uploadbrandthemefavicon
+      with:
+        brandId: tools.brandId
+        themeId: tools.themeId
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: deletes-theme-favicon-org-then
+      description: Deletes a Theme favicon. The org then uses the Okta default favicon.
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: okta-brand.deletebrandthemefavicon
+      with:
+        brandId: tools.brandId
+        themeId: tools.themeId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: okta-update-themes-logo
+      description: Okta Update a themes logo
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: okta-brand.uploadbrandthemelogo
+      with:
+        brandId: tools.brandId
+        themeId: tools.themeId
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: deletes-theme-logo-org-then
+      description: Deletes a Theme logo. The org then uses the Okta default logo.
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: okta-brand.deletebrandthemelogo
+      with:
+        brandId: tools.brandId
+        themeId: tools.themeId
+      outputParameters:
+      - type: object
+        mapping: $.

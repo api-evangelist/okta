@@ -1,0 +1,346 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Okta API — EventHook
+  description: 'Okta API — EventHook. 8 operations. Lead operation: EventHook. Self-contained Naftiko capability covering
+    one Okta business surface.'
+  tags:
+  - Okta
+  - EventHook
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    OKTA_API_KEY: OKTA_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: okta-eventhook
+    baseUri: https://your-subdomain.okta.com
+    description: Okta API — EventHook business capability. Self-contained, no shared references.
+    resources:
+    - name: api-v1-eventHooks
+      path: /api/v1/eventHooks
+      operations:
+      - name: listeventhooks
+        method: GET
+        description: Success
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: createeventhook
+        method: POST
+        description: Success
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: api-v1-eventHooks-eventHookId
+      path: /api/v1/eventHooks/{eventHookId}
+      operations:
+      - name: geteventhook
+        method: GET
+        description: Success
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: eventHookId
+          in: path
+          type: string
+          required: true
+      - name: updateeventhook
+        method: PUT
+        description: Success
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: eventHookId
+          in: path
+          type: string
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+      - name: deleteeventhook
+        method: DELETE
+        description: Success
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: eventHookId
+          in: path
+          type: string
+          required: true
+    - name: api-v1-eventHooks-eventHookId-lifecycle-activate
+      path: /api/v1/eventHooks/{eventHookId}/lifecycle/activate
+      operations:
+      - name: activateeventhook
+        method: POST
+        description: Success
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: eventHookId
+          in: path
+          type: string
+          required: true
+    - name: api-v1-eventHooks-eventHookId-lifecycle-deactivate
+      path: /api/v1/eventHooks/{eventHookId}/lifecycle/deactivate
+      operations:
+      - name: deactivateeventhook
+        method: POST
+        description: Success
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: eventHookId
+          in: path
+          type: string
+          required: true
+    - name: api-v1-eventHooks-eventHookId-lifecycle-verify
+      path: /api/v1/eventHooks/{eventHookId}/lifecycle/verify
+      operations:
+      - name: verifyeventhook
+        method: POST
+        description: Success
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: eventHookId
+          in: path
+          type: string
+          required: true
+    authentication:
+      type: apikey
+      key: Authorization
+      value: '{{env.OKTA_API_KEY}}'
+      placement: header
+  exposes:
+  - type: rest
+    namespace: okta-eventhook-rest
+    port: 8080
+    description: REST adapter for Okta API — EventHook. One Spectral-compliant resource per consumed operation, prefixed with
+      /v1.
+    resources:
+    - path: /v1/api/v1/eventhooks
+      name: api-v1-eventhooks
+      description: REST surface for api-v1-eventHooks.
+      operations:
+      - method: GET
+        name: listeventhooks
+        description: Success
+        call: okta-eventhook.listeventhooks
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: createeventhook
+        description: Success
+        call: okta-eventhook.createeventhook
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v1/eventhooks/{eventhookid}
+      name: api-v1-eventhooks-eventhookid
+      description: REST surface for api-v1-eventHooks-eventHookId.
+      operations:
+      - method: GET
+        name: geteventhook
+        description: Success
+        call: okta-eventhook.geteventhook
+        with:
+          eventHookId: rest.eventHookId
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PUT
+        name: updateeventhook
+        description: Success
+        call: okta-eventhook.updateeventhook
+        with:
+          eventHookId: rest.eventHookId
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: deleteeventhook
+        description: Success
+        call: okta-eventhook.deleteeventhook
+        with:
+          eventHookId: rest.eventHookId
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v1/eventhooks/{eventhookid}/lifecycle/activate
+      name: api-v1-eventhooks-eventhookid-lifecycle-activate
+      description: REST surface for api-v1-eventHooks-eventHookId-lifecycle-activate.
+      operations:
+      - method: POST
+        name: activateeventhook
+        description: Success
+        call: okta-eventhook.activateeventhook
+        with:
+          eventHookId: rest.eventHookId
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v1/eventhooks/{eventhookid}/lifecycle/deactivate
+      name: api-v1-eventhooks-eventhookid-lifecycle-deactivate
+      description: REST surface for api-v1-eventHooks-eventHookId-lifecycle-deactivate.
+      operations:
+      - method: POST
+        name: deactivateeventhook
+        description: Success
+        call: okta-eventhook.deactivateeventhook
+        with:
+          eventHookId: rest.eventHookId
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v1/eventhooks/{eventhookid}/lifecycle/verify
+      name: api-v1-eventhooks-eventhookid-lifecycle-verify
+      description: REST surface for api-v1-eventHooks-eventHookId-lifecycle-verify.
+      operations:
+      - method: POST
+        name: verifyeventhook
+        description: Success
+        call: okta-eventhook.verifyeventhook
+        with:
+          eventHookId: rest.eventHookId
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: okta-eventhook-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Okta API — EventHook. One tool per consumed operation, routed inline through this capability's
+      consumes block.
+    tools:
+    - name: success
+      description: Success
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: okta-eventhook.listeventhooks
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: success-2
+      description: Success
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: okta-eventhook.createeventhook
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: success-3
+      description: Success
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: okta-eventhook.geteventhook
+      with:
+        eventHookId: tools.eventHookId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: success-4
+      description: Success
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: okta-eventhook.updateeventhook
+      with:
+        eventHookId: tools.eventHookId
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: success-5
+      description: Success
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: okta-eventhook.deleteeventhook
+      with:
+        eventHookId: tools.eventHookId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: success-6
+      description: Success
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: okta-eventhook.activateeventhook
+      with:
+        eventHookId: tools.eventHookId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: success-7
+      description: Success
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: okta-eventhook.deactivateeventhook
+      with:
+        eventHookId: tools.eventHookId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: success-8
+      description: Success
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: okta-eventhook.verifyeventhook
+      with:
+        eventHookId: tools.eventHookId
+      outputParameters:
+      - type: object
+        mapping: $.

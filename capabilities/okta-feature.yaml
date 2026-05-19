@@ -1,0 +1,247 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Okta API — Feature
+  description: 'Okta API — Feature. 5 operations. Lead operation: Feature. Self-contained Naftiko capability covering one
+    Okta business surface.'
+  tags:
+  - Okta
+  - Feature
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    OKTA_API_KEY: OKTA_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: okta-feature
+    baseUri: https://your-subdomain.okta.com
+    description: Okta API — Feature business capability. Self-contained, no shared references.
+    resources:
+    - name: api-v1-features
+      path: /api/v1/features
+      operations:
+      - name: listfeatures
+        method: GET
+        description: Success
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: api-v1-features-featureId
+      path: /api/v1/features/{featureId}
+      operations:
+      - name: getfeature
+        method: GET
+        description: Success
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: featureId
+          in: path
+          type: string
+          required: true
+    - name: api-v1-features-featureId-dependencies
+      path: /api/v1/features/{featureId}/dependencies
+      operations:
+      - name: listfeaturedependencies
+        method: GET
+        description: Success
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: featureId
+          in: path
+          type: string
+          required: true
+    - name: api-v1-features-featureId-dependents
+      path: /api/v1/features/{featureId}/dependents
+      operations:
+      - name: listfeaturedependents
+        method: GET
+        description: Success
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: featureId
+          in: path
+          type: string
+          required: true
+    - name: api-v1-features-featureId-lifecycle
+      path: /api/v1/features/{featureId}/{lifecycle}
+      operations:
+      - name: updatefeaturelifecycle
+        method: POST
+        description: Success
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: featureId
+          in: path
+          type: string
+          required: true
+        - name: lifecycle
+          in: path
+          type: string
+          required: true
+        - name: mode
+          in: query
+          type: string
+    authentication:
+      type: apikey
+      key: Authorization
+      value: '{{env.OKTA_API_KEY}}'
+      placement: header
+  exposes:
+  - type: rest
+    namespace: okta-feature-rest
+    port: 8080
+    description: REST adapter for Okta API — Feature. One Spectral-compliant resource per consumed operation, prefixed with
+      /v1.
+    resources:
+    - path: /v1/api/v1/features
+      name: api-v1-features
+      description: REST surface for api-v1-features.
+      operations:
+      - method: GET
+        name: listfeatures
+        description: Success
+        call: okta-feature.listfeatures
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v1/features/{featureid}
+      name: api-v1-features-featureid
+      description: REST surface for api-v1-features-featureId.
+      operations:
+      - method: GET
+        name: getfeature
+        description: Success
+        call: okta-feature.getfeature
+        with:
+          featureId: rest.featureId
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v1/features/{featureid}/dependencies
+      name: api-v1-features-featureid-dependencies
+      description: REST surface for api-v1-features-featureId-dependencies.
+      operations:
+      - method: GET
+        name: listfeaturedependencies
+        description: Success
+        call: okta-feature.listfeaturedependencies
+        with:
+          featureId: rest.featureId
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v1/features/{featureid}/dependents
+      name: api-v1-features-featureid-dependents
+      description: REST surface for api-v1-features-featureId-dependents.
+      operations:
+      - method: GET
+        name: listfeaturedependents
+        description: Success
+        call: okta-feature.listfeaturedependents
+        with:
+          featureId: rest.featureId
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v1/features/{featureid}/{lifecycle}
+      name: api-v1-features-featureid-lifecycle
+      description: REST surface for api-v1-features-featureId-lifecycle.
+      operations:
+      - method: POST
+        name: updatefeaturelifecycle
+        description: Success
+        call: okta-feature.updatefeaturelifecycle
+        with:
+          featureId: rest.featureId
+          lifecycle: rest.lifecycle
+          mode: rest.mode
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: okta-feature-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Okta API — Feature. One tool per consumed operation, routed inline through this capability's
+      consumes block.
+    tools:
+    - name: success
+      description: Success
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: okta-feature.listfeatures
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: success-2
+      description: Success
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: okta-feature.getfeature
+      with:
+        featureId: tools.featureId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: success-3
+      description: Success
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: okta-feature.listfeaturedependencies
+      with:
+        featureId: tools.featureId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: success-4
+      description: Success
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: okta-feature.listfeaturedependents
+      with:
+        featureId: tools.featureId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: success-5
+      description: Success
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: okta-feature.updatefeaturelifecycle
+      with:
+        featureId: tools.featureId
+        lifecycle: tools.lifecycle
+        mode: tools.mode
+      outputParameters:
+      - type: object
+        mapping: $.

@@ -1,101 +1,161 @@
 aid: okta
 name: Okta
-description: Okta connects any person with any application on any device. It's an enterprise-grade, identity management service, built for the cloud, but compatible with many on-premises applications. With Okta, IT can manage any employee's access to any application or device. Okta runs in the cloud, on a secure, reliable, extensively audited platform, which integrates deeply with on-premises applications, directories, and identity management systems.
+description: Okta connects any person with any application on any device. It's an enterprise-grade, identity management service,
+  built for the cloud, but compatible with many on-premises applications. With Okta, IT can manage any employee's access to
+  any application or device. Okta runs in the cloud, on a secure, reliable, extensively audited platform, which integrates
+  deeply with on-premises applications, directories, and identity management systems.
 kind: contract
 image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
 tags:
-  - Authentication
-  - Authorization
-  - Identity
-  - Platform
-  - Single Sign-On
+- Authentication
+- Authorization
+- Identity
+- Platform
+- Single Sign-On
 url: https://raw.githubusercontent.com/api-evangelist/okta/refs/heads/main/apis.yml
 created: '2023-11-20'
 modified: '2026-05-19'
 specificationVersion: '0.19'
 apis:
-  - aid: okta:okta-api
-    name: Okta API
-    description: The Okta API is a unified identity and access management interface that allows developers to integrate authentication, authorization, user management, group management, application provisioning, policies, sessions, hooks, logs, and more into their applications. It provides programmatic access to the full Okta Identity Cloud platform for managing identity lifecycle and security across enterprise systems.
-    humanURL: https://developer.okta.com/docs/reference/
-    baseURL: https://your-subdomain.okta.com
-    image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
-    tags:
-      - Authentication
-      - Authorization
-      - Identity
-    properties:
-      - type: Documentation
-        url: https://developer.okta.com/docs/reference/
-      - type: OpenAPI
-        url: openapi/okta-openapi-original.yml
-common:
-  - type: Website
-    url: https://www.okta.com/
-  - type: Portal
-    url: https://developer.okta.com/
+- aid: okta:okta-api
+  name: Okta API
+  description: The Okta API is a unified identity and access management interface that allows developers to integrate authentication,
+    authorization, user management, group management, application provisioning, policies, sessions, hooks, logs, and more
+    into their applications. It provides programmatic access to the full Okta Identity Cloud platform for managing identity
+    lifecycle and security across enterprise systems.
+  humanURL: https://developer.okta.com/docs/reference/
+  baseURL: https://your-subdomain.okta.com
+  image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+  tags:
+  - Authentication
+  - Authorization
+  - Identity
+  properties:
   - type: Documentation
     url: https://developer.okta.com/docs/reference/
-  - type: Authentication
-    url: https://developer.okta.com/docs/reference/api/authn/
-  - type: GitHubOrganization
-    url: https://github.com/okta
-  - type: StatusPage
-    url: https://status.okta.com/
-  - type: Support
-    url: https://support.okta.com/
-  - type: Concepts
-    url: https://developer.okta.com/docs/concepts/
-  - type: Guides
-    url: https://developer.okta.com/docs/guides/
-  - type: SDKs
-    url: https://developer.okta.com/code/
-  - type: ChangeLog
-    url: https://developer.okta.com/docs/release-notes/
-  - type: Login
-    url: https://developer.okta.com/login/
-  - type: SignUp
-    url: https://developer.okta.com/signup/
-  - type: Blog
-    url: https://developer.okta.com/blog/
-  - type: Plans
-    url: https://www.okta.com/pricing/
-  - type: Forum
-    url: https://devforum.okta.com/
-  - type: TermsOfService
-    url: https://developer.okta.com/terms/
-  - type: PrivacyPolicy
-    url: https://www.okta.com/privacy-policy/
-  - type: Features
-    data:
-      - 'Starter at $6/user/mo: SSO + MFA + Universal Directory'
-      - 'Core Essentials at $14/user/mo: Adaptive MFA, PAM, Lifecycle Mgmt'
-      - 'Essentials at $17/user/mo: 50 Workflows'
-      - 'Professional: Device Access, ITP, ISPM, unlimited Workflows'
-      - 'Enterprise: API Access Management, Access Gateway, M2M Tokens'
-      - 'REST APIs: Authentication, Authorization, Users, Groups, Apps, Policies'
-      - Default rate limits 600 req/min on most endpoints
-      - OAuth /token at 1,000 req/min
-      - Logs endpoint capped at 120 req/min
-      - OIDC, SAML, WS-Fed protocols
-      - Universal Directory with custom attributes
-      - Workflows for no-code automation
-      - Lifecycle Management for provisioning
-      - Adaptive MFA with risk-based policies
-      - Identity Threat Protection (Professional+)
-      - API Access Management (Enterprise) with OAuth as a Service
-    sources:
-      - https://www.okta.com/pricing/
-    updated: '2026-05-04'
-  - type: Integrations
-    url: https://www.okta.com/integrations/
-  - name: MCP Server
-    url: https://github.com/okta/okta-mcp-server
-    type: MCPServer
+  - type: OpenAPI
+    url: openapi/okta-openapi-original.yml
+  - type: NaftikoCapability
+    url: capabilities/okta-application.yaml
+  - type: NaftikoCapability
+    url: capabilities/okta-authenticator.yaml
+  - type: NaftikoCapability
+    url: capabilities/okta-authorizationserver.yaml
+  - type: NaftikoCapability
+    url: capabilities/okta-brand.yaml
+  - type: NaftikoCapability
+    url: capabilities/okta-domain.yaml
+  - type: NaftikoCapability
+    url: capabilities/okta-eventhook.yaml
+  - type: NaftikoCapability
+    url: capabilities/okta-feature.yaml
+  - type: NaftikoCapability
+    url: capabilities/okta-group.yaml
+  - type: NaftikoCapability
+    url: capabilities/okta-groupschema.yaml
+  - type: NaftikoCapability
+    url: capabilities/okta-identityprovider.yaml
+  - type: NaftikoCapability
+    url: capabilities/okta-inlinehook.yaml
+  - type: NaftikoCapability
+    url: capabilities/okta-linkedobject.yaml
+  - type: NaftikoCapability
+    url: capabilities/okta-log.yaml
+  - type: NaftikoCapability
+    url: capabilities/okta-networkzone.yaml
+  - type: NaftikoCapability
+    url: capabilities/okta-org.yaml
+  - type: NaftikoCapability
+    url: capabilities/okta-policy.yaml
+  - type: NaftikoCapability
+    url: capabilities/okta-profilemapping.yaml
+  - type: NaftikoCapability
+    url: capabilities/okta-session.yaml
+  - type: NaftikoCapability
+    url: capabilities/okta-subscription.yaml
+  - type: NaftikoCapability
+    url: capabilities/okta-template.yaml
+  - type: NaftikoCapability
+    url: capabilities/okta-threatinsight.yaml
+  - type: NaftikoCapability
+    url: capabilities/okta-trustedorigin.yaml
+  - type: NaftikoCapability
+    url: capabilities/okta-user.yaml
+  - type: NaftikoCapability
+    url: capabilities/okta-userfactor.yaml
+  - type: NaftikoCapability
+    url: capabilities/okta-userschema.yaml
+  - type: NaftikoCapability
+    url: capabilities/okta-usertype.yaml
+common:
+- type: LinkedIn
+  url: https://www.linkedin.com/company/okta-inc-
+- type: Website
+  url: https://www.okta.com/
+- type: Portal
+  url: https://developer.okta.com/
+- type: Documentation
+  url: https://developer.okta.com/docs/reference/
+- type: Authentication
+  url: https://developer.okta.com/docs/reference/api/authn/
+- type: GitHubOrganization
+  url: https://github.com/okta
+- type: StatusPage
+  url: https://status.okta.com/
+- type: Support
+  url: https://support.okta.com/
+- type: Concepts
+  url: https://developer.okta.com/docs/concepts/
+- type: Guides
+  url: https://developer.okta.com/docs/guides/
+- type: SDKs
+  url: https://developer.okta.com/code/
+- type: ChangeLog
+  url: https://developer.okta.com/docs/release-notes/
+- type: Login
+  url: https://developer.okta.com/login/
+- type: SignUp
+  url: https://developer.okta.com/signup/
+- type: Blog
+  url: https://developer.okta.com/blog/
+- type: Plans
+  url: https://www.okta.com/pricing/
+- type: Forum
+  url: https://devforum.okta.com/
+- type: TermsOfService
+  url: https://developer.okta.com/terms/
+- type: PrivacyPolicy
+  url: https://www.okta.com/privacy-policy/
+- type: Features
+  data:
+  - 'Starter at $6/user/mo: SSO + MFA + Universal Directory'
+  - 'Core Essentials at $14/user/mo: Adaptive MFA, PAM, Lifecycle Mgmt'
+  - 'Essentials at $17/user/mo: 50 Workflows'
+  - 'Professional: Device Access, ITP, ISPM, unlimited Workflows'
+  - 'Enterprise: API Access Management, Access Gateway, M2M Tokens'
+  - 'REST APIs: Authentication, Authorization, Users, Groups, Apps, Policies'
+  - Default rate limits 600 req/min on most endpoints
+  - OAuth /token at 1,000 req/min
+  - Logs endpoint capped at 120 req/min
+  - OIDC, SAML, WS-Fed protocols
+  - Universal Directory with custom attributes
+  - Workflows for no-code automation
+  - Lifecycle Management for provisioning
+  - Adaptive MFA with risk-based policies
+  - Identity Threat Protection (Professional+)
+  - API Access Management (Enterprise) with OAuth as a Service
+  sources:
+  - https://www.okta.com/pricing/
+  updated: '2026-05-04'
+- type: Integrations
+  url: https://www.okta.com/integrations/
+- name: MCP Server
+  url: https://github.com/okta/okta-mcp-server
+  type: MCPServer
 integrations:
-  - name: Cross App Access Protocol
-  - name: Secure Identity Integrations
-  - name: See Details
+- name: Cross App Access Protocol
+- name: Secure Identity Integrations
+- name: See Details
 maintainers:
-  - FN: Kin Lane
-    email: kin@apievangelist.com
+- FN: Kin Lane
+  email: kin@apievangelist.com

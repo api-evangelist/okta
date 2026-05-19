@@ -1,0 +1,1119 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Okta API — IdentityProvider
+  description: 'Okta API — IdentityProvider. 25 operations. Lead operation: Okta List Identity Providers. Self-contained Naftiko
+    capability covering one Okta business surface.'
+  tags:
+  - Okta
+  - IdentityProvider
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    OKTA_API_KEY: OKTA_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: okta-identityprovider
+    baseUri: https://your-subdomain.okta.com
+    description: Okta API — IdentityProvider business capability. Self-contained, no shared references.
+    resources:
+    - name: api-v1-idps
+      path: /api/v1/idps
+      operations:
+      - name: listidentityproviders
+        method: GET
+        description: Okta List Identity Providers
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: q
+          in: query
+          type: string
+          description: Searches the name property of IdPs for matching value
+        - name: after
+          in: query
+          type: string
+          description: Specifies the pagination cursor for the next page of IdPs
+        - name: limit
+          in: query
+          type: integer
+          description: Specifies the number of IdP results in a page
+        - name: type
+          in: query
+          type: string
+          description: Filters IdPs by type
+      - name: createidentityprovider
+        method: POST
+        description: Okta Add Identity Provider
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: api-v1-idps-credentials-keys
+      path: /api/v1/idps/credentials/keys
+      operations:
+      - name: listidentityproviderkeys
+        method: GET
+        description: Okta List Keys
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: after
+          in: query
+          type: string
+          description: Specifies the pagination cursor for the next page of keys
+        - name: limit
+          in: query
+          type: integer
+          description: Specifies the number of key results in a page
+      - name: createidentityproviderkey
+        method: POST
+        description: Okta Add X.509 Certificate Public Key
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: api-v1-idps-credentials-keys-keyId
+      path: /api/v1/idps/credentials/keys/{keyId}
+      operations:
+      - name: getidentityproviderkey
+        method: GET
+        description: Okta Get Key
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: keyId
+          in: path
+          type: string
+          required: true
+      - name: deleteidentityproviderkey
+        method: DELETE
+        description: Okta Delete Key
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: keyId
+          in: path
+          type: string
+          required: true
+    - name: api-v1-idps-idpId
+      path: /api/v1/idps/{idpId}
+      operations:
+      - name: getidentityprovider
+        method: GET
+        description: Okta Get Identity Provider
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: idpId
+          in: path
+          type: string
+          required: true
+      - name: updateidentityprovider
+        method: PUT
+        description: Okta Update Identity Provider
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: idpId
+          in: path
+          type: string
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+      - name: deleteidentityprovider
+        method: DELETE
+        description: Okta Delete Identity Provider
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: idpId
+          in: path
+          type: string
+          required: true
+    - name: api-v1-idps-idpId-credentials-csrs
+      path: /api/v1/idps/{idpId}/credentials/csrs
+      operations:
+      - name: listcsrsforidentityprovider
+        method: GET
+        description: Okta List Certificate Signing Requests for IdP
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: idpId
+          in: path
+          type: string
+          required: true
+      - name: generatecsrforidentityprovider
+        method: POST
+        description: Okta Generate Certificate Signing Request for IdP
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: idpId
+          in: path
+          type: string
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: api-v1-idps-idpId-credentials-csrs-csrId
+      path: /api/v1/idps/{idpId}/credentials/csrs/{csrId}
+      operations:
+      - name: getcsrforidentityprovider
+        method: GET
+        description: Gets a specific Certificate Signing Request model by id
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: idpId
+          in: path
+          type: string
+          required: true
+        - name: csrId
+          in: path
+          type: string
+          required: true
+      - name: revokecsrforidentityprovider
+        method: DELETE
+        description: Revoke a Certificate Signing Request and delete the key pair from the IdP
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: idpId
+          in: path
+          type: string
+          required: true
+        - name: csrId
+          in: path
+          type: string
+          required: true
+    - name: api-v1-idps-idpId-credentials-csrs-csrId-lifecycle-publish
+      path: /api/v1/idps/{idpId}/credentials/csrs/{csrId}/lifecycle/publish
+      operations:
+      - name: post
+        method: POST
+        description: Update the Certificate Signing Request with a signed X.509 certificate and add it into the signing key
+          credentials for the IdP.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: idpId
+          in: path
+          type: string
+          required: true
+        - name: csrId
+          in: path
+          type: string
+          required: true
+    - name: api-v1-idps-idpId-credentials-keys
+      path: /api/v1/idps/{idpId}/credentials/keys
+      operations:
+      - name: listidentityprovidersigningkeys
+        method: GET
+        description: Okta List Signing Key Credentials for IdP
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: idpId
+          in: path
+          type: string
+          required: true
+    - name: api-v1-idps-idpId-credentials-keys-generate
+      path: /api/v1/idps/{idpId}/credentials/keys/generate
+      operations:
+      - name: generateidentityprovidersigningkey
+        method: POST
+        description: Okta Generate New IdP Signing Key Credential
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: idpId
+          in: path
+          type: string
+          required: true
+        - name: validityYears
+          in: query
+          type: integer
+          description: expiry of the IdP Key Credential
+          required: true
+    - name: api-v1-idps-idpId-credentials-keys-keyId
+      path: /api/v1/idps/{idpId}/credentials/keys/{keyId}
+      operations:
+      - name: getidentityprovidersigningkey
+        method: GET
+        description: Okta Get Signing Key Credential for IdP
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: idpId
+          in: path
+          type: string
+          required: true
+        - name: keyId
+          in: path
+          type: string
+          required: true
+    - name: api-v1-idps-idpId-credentials-keys-keyId-clone
+      path: /api/v1/idps/{idpId}/credentials/keys/{keyId}/clone
+      operations:
+      - name: cloneidentityproviderkey
+        method: POST
+        description: Okta Clone Signing Key Credential for IdP
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: idpId
+          in: path
+          type: string
+          required: true
+        - name: keyId
+          in: path
+          type: string
+          required: true
+        - name: targetIdpId
+          in: query
+          type: string
+          required: true
+    - name: api-v1-idps-idpId-lifecycle-activate
+      path: /api/v1/idps/{idpId}/lifecycle/activate
+      operations:
+      - name: activateidentityprovider
+        method: POST
+        description: Okta Activate Identity Provider
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: idpId
+          in: path
+          type: string
+          required: true
+    - name: api-v1-idps-idpId-lifecycle-deactivate
+      path: /api/v1/idps/{idpId}/lifecycle/deactivate
+      operations:
+      - name: deactivateidentityprovider
+        method: POST
+        description: Okta Deactivate Identity Provider
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: idpId
+          in: path
+          type: string
+          required: true
+    - name: api-v1-idps-idpId-users
+      path: /api/v1/idps/{idpId}/users
+      operations:
+      - name: listidentityproviderapplicationusers
+        method: GET
+        description: Okta Find Users
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: idpId
+          in: path
+          type: string
+          required: true
+    - name: api-v1-idps-idpId-users-userId
+      path: /api/v1/idps/{idpId}/users/{userId}
+      operations:
+      - name: getidentityproviderapplicationuser
+        method: GET
+        description: Fetches a linked IdP user by ID
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: idpId
+          in: path
+          type: string
+          required: true
+        - name: userId
+          in: path
+          type: string
+          required: true
+      - name: linkusertoidentityprovider
+        method: POST
+        description: Okta Link a user to a Social IdP without a transaction
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: idpId
+          in: path
+          type: string
+          required: true
+        - name: userId
+          in: path
+          type: string
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+      - name: unlinkuserfromidentityprovider
+        method: DELETE
+        description: Okta Unlink User from IdP
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: idpId
+          in: path
+          type: string
+          required: true
+        - name: userId
+          in: path
+          type: string
+          required: true
+    - name: api-v1-idps-idpId-users-userId-credentials-tokens
+      path: /api/v1/idps/{idpId}/users/{userId}/credentials/tokens
+      operations:
+      - name: listsocialauthtokens
+        method: GET
+        description: Okta Social Authentication Token Operation
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: idpId
+          in: path
+          type: string
+          required: true
+        - name: userId
+          in: path
+          type: string
+          required: true
+    authentication:
+      type: apikey
+      key: Authorization
+      value: '{{env.OKTA_API_KEY}}'
+      placement: header
+  exposes:
+  - type: rest
+    namespace: okta-identityprovider-rest
+    port: 8080
+    description: REST adapter for Okta API — IdentityProvider. One Spectral-compliant resource per consumed operation, prefixed
+      with /v1.
+    resources:
+    - path: /v1/api/v1/idps
+      name: api-v1-idps
+      description: REST surface for api-v1-idps.
+      operations:
+      - method: GET
+        name: listidentityproviders
+        description: Okta List Identity Providers
+        call: okta-identityprovider.listidentityproviders
+        with:
+          q: rest.q
+          after: rest.after
+          limit: rest.limit
+          type: rest.type
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: createidentityprovider
+        description: Okta Add Identity Provider
+        call: okta-identityprovider.createidentityprovider
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v1/idps/credentials/keys
+      name: api-v1-idps-credentials-keys
+      description: REST surface for api-v1-idps-credentials-keys.
+      operations:
+      - method: GET
+        name: listidentityproviderkeys
+        description: Okta List Keys
+        call: okta-identityprovider.listidentityproviderkeys
+        with:
+          after: rest.after
+          limit: rest.limit
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: createidentityproviderkey
+        description: Okta Add X.509 Certificate Public Key
+        call: okta-identityprovider.createidentityproviderkey
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v1/idps/credentials/keys/{keyid}
+      name: api-v1-idps-credentials-keys-keyid
+      description: REST surface for api-v1-idps-credentials-keys-keyId.
+      operations:
+      - method: GET
+        name: getidentityproviderkey
+        description: Okta Get Key
+        call: okta-identityprovider.getidentityproviderkey
+        with:
+          keyId: rest.keyId
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: deleteidentityproviderkey
+        description: Okta Delete Key
+        call: okta-identityprovider.deleteidentityproviderkey
+        with:
+          keyId: rest.keyId
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v1/idps/{idpid}
+      name: api-v1-idps-idpid
+      description: REST surface for api-v1-idps-idpId.
+      operations:
+      - method: GET
+        name: getidentityprovider
+        description: Okta Get Identity Provider
+        call: okta-identityprovider.getidentityprovider
+        with:
+          idpId: rest.idpId
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PUT
+        name: updateidentityprovider
+        description: Okta Update Identity Provider
+        call: okta-identityprovider.updateidentityprovider
+        with:
+          idpId: rest.idpId
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: deleteidentityprovider
+        description: Okta Delete Identity Provider
+        call: okta-identityprovider.deleteidentityprovider
+        with:
+          idpId: rest.idpId
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v1/idps/{idpid}/credentials/csrs
+      name: api-v1-idps-idpid-credentials-csrs
+      description: REST surface for api-v1-idps-idpId-credentials-csrs.
+      operations:
+      - method: GET
+        name: listcsrsforidentityprovider
+        description: Okta List Certificate Signing Requests for IdP
+        call: okta-identityprovider.listcsrsforidentityprovider
+        with:
+          idpId: rest.idpId
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: generatecsrforidentityprovider
+        description: Okta Generate Certificate Signing Request for IdP
+        call: okta-identityprovider.generatecsrforidentityprovider
+        with:
+          idpId: rest.idpId
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v1/idps/{idpid}/credentials/csrs/{csrid}
+      name: api-v1-idps-idpid-credentials-csrs-csrid
+      description: REST surface for api-v1-idps-idpId-credentials-csrs-csrId.
+      operations:
+      - method: GET
+        name: getcsrforidentityprovider
+        description: Gets a specific Certificate Signing Request model by id
+        call: okta-identityprovider.getcsrforidentityprovider
+        with:
+          idpId: rest.idpId
+          csrId: rest.csrId
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: revokecsrforidentityprovider
+        description: Revoke a Certificate Signing Request and delete the key pair from the IdP
+        call: okta-identityprovider.revokecsrforidentityprovider
+        with:
+          idpId: rest.idpId
+          csrId: rest.csrId
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v1/idps/{idpid}/credentials/csrs/{csrid}/lifecycle/publish
+      name: api-v1-idps-idpid-credentials-csrs-csrid-lifecycle-publish
+      description: REST surface for api-v1-idps-idpId-credentials-csrs-csrId-lifecycle-publish.
+      operations:
+      - method: POST
+        name: post
+        description: Update the Certificate Signing Request with a signed X.509 certificate and add it into the signing key
+          credentials for the IdP.
+        call: okta-identityprovider.post
+        with:
+          idpId: rest.idpId
+          csrId: rest.csrId
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v1/idps/{idpid}/credentials/keys
+      name: api-v1-idps-idpid-credentials-keys
+      description: REST surface for api-v1-idps-idpId-credentials-keys.
+      operations:
+      - method: GET
+        name: listidentityprovidersigningkeys
+        description: Okta List Signing Key Credentials for IdP
+        call: okta-identityprovider.listidentityprovidersigningkeys
+        with:
+          idpId: rest.idpId
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v1/idps/{idpid}/credentials/keys/generate
+      name: api-v1-idps-idpid-credentials-keys-generate
+      description: REST surface for api-v1-idps-idpId-credentials-keys-generate.
+      operations:
+      - method: POST
+        name: generateidentityprovidersigningkey
+        description: Okta Generate New IdP Signing Key Credential
+        call: okta-identityprovider.generateidentityprovidersigningkey
+        with:
+          idpId: rest.idpId
+          validityYears: rest.validityYears
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v1/idps/{idpid}/credentials/keys/{keyid}
+      name: api-v1-idps-idpid-credentials-keys-keyid
+      description: REST surface for api-v1-idps-idpId-credentials-keys-keyId.
+      operations:
+      - method: GET
+        name: getidentityprovidersigningkey
+        description: Okta Get Signing Key Credential for IdP
+        call: okta-identityprovider.getidentityprovidersigningkey
+        with:
+          idpId: rest.idpId
+          keyId: rest.keyId
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v1/idps/{idpid}/credentials/keys/{keyid}/clone
+      name: api-v1-idps-idpid-credentials-keys-keyid-clone
+      description: REST surface for api-v1-idps-idpId-credentials-keys-keyId-clone.
+      operations:
+      - method: POST
+        name: cloneidentityproviderkey
+        description: Okta Clone Signing Key Credential for IdP
+        call: okta-identityprovider.cloneidentityproviderkey
+        with:
+          idpId: rest.idpId
+          keyId: rest.keyId
+          targetIdpId: rest.targetIdpId
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v1/idps/{idpid}/lifecycle/activate
+      name: api-v1-idps-idpid-lifecycle-activate
+      description: REST surface for api-v1-idps-idpId-lifecycle-activate.
+      operations:
+      - method: POST
+        name: activateidentityprovider
+        description: Okta Activate Identity Provider
+        call: okta-identityprovider.activateidentityprovider
+        with:
+          idpId: rest.idpId
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v1/idps/{idpid}/lifecycle/deactivate
+      name: api-v1-idps-idpid-lifecycle-deactivate
+      description: REST surface for api-v1-idps-idpId-lifecycle-deactivate.
+      operations:
+      - method: POST
+        name: deactivateidentityprovider
+        description: Okta Deactivate Identity Provider
+        call: okta-identityprovider.deactivateidentityprovider
+        with:
+          idpId: rest.idpId
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v1/idps/{idpid}/users
+      name: api-v1-idps-idpid-users
+      description: REST surface for api-v1-idps-idpId-users.
+      operations:
+      - method: GET
+        name: listidentityproviderapplicationusers
+        description: Okta Find Users
+        call: okta-identityprovider.listidentityproviderapplicationusers
+        with:
+          idpId: rest.idpId
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v1/idps/{idpid}/users/{userid}
+      name: api-v1-idps-idpid-users-userid
+      description: REST surface for api-v1-idps-idpId-users-userId.
+      operations:
+      - method: GET
+        name: getidentityproviderapplicationuser
+        description: Fetches a linked IdP user by ID
+        call: okta-identityprovider.getidentityproviderapplicationuser
+        with:
+          idpId: rest.idpId
+          userId: rest.userId
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: linkusertoidentityprovider
+        description: Okta Link a user to a Social IdP without a transaction
+        call: okta-identityprovider.linkusertoidentityprovider
+        with:
+          idpId: rest.idpId
+          userId: rest.userId
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: unlinkuserfromidentityprovider
+        description: Okta Unlink User from IdP
+        call: okta-identityprovider.unlinkuserfromidentityprovider
+        with:
+          idpId: rest.idpId
+          userId: rest.userId
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v1/idps/{idpid}/users/{userid}/credentials/tokens
+      name: api-v1-idps-idpid-users-userid-credentials-tokens
+      description: REST surface for api-v1-idps-idpId-users-userId-credentials-tokens.
+      operations:
+      - method: GET
+        name: listsocialauthtokens
+        description: Okta Social Authentication Token Operation
+        call: okta-identityprovider.listsocialauthtokens
+        with:
+          idpId: rest.idpId
+          userId: rest.userId
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: okta-identityprovider-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Okta API — IdentityProvider. One tool per consumed operation, routed inline through this
+      capability's consumes block.
+    tools:
+    - name: okta-list-identity-providers
+      description: Okta List Identity Providers
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: okta-identityprovider.listidentityproviders
+      with:
+        q: tools.q
+        after: tools.after
+        limit: tools.limit
+        type: tools.type
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: okta-add-identity-provider
+      description: Okta Add Identity Provider
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: okta-identityprovider.createidentityprovider
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: okta-list-keys
+      description: Okta List Keys
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: okta-identityprovider.listidentityproviderkeys
+      with:
+        after: tools.after
+        limit: tools.limit
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: okta-add-x-509-certificate-public
+      description: Okta Add X.509 Certificate Public Key
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: okta-identityprovider.createidentityproviderkey
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: okta-get-key
+      description: Okta Get Key
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: okta-identityprovider.getidentityproviderkey
+      with:
+        keyId: tools.keyId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: okta-delete-key
+      description: Okta Delete Key
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: okta-identityprovider.deleteidentityproviderkey
+      with:
+        keyId: tools.keyId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: okta-get-identity-provider
+      description: Okta Get Identity Provider
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: okta-identityprovider.getidentityprovider
+      with:
+        idpId: tools.idpId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: okta-update-identity-provider
+      description: Okta Update Identity Provider
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: okta-identityprovider.updateidentityprovider
+      with:
+        idpId: tools.idpId
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: okta-delete-identity-provider
+      description: Okta Delete Identity Provider
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: okta-identityprovider.deleteidentityprovider
+      with:
+        idpId: tools.idpId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: okta-list-certificate-signing-requests
+      description: Okta List Certificate Signing Requests for IdP
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: okta-identityprovider.listcsrsforidentityprovider
+      with:
+        idpId: tools.idpId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: okta-generate-certificate-signing-request
+      description: Okta Generate Certificate Signing Request for IdP
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: okta-identityprovider.generatecsrforidentityprovider
+      with:
+        idpId: tools.idpId
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: gets-specific-certificate-signing-request
+      description: Gets a specific Certificate Signing Request model by id
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: okta-identityprovider.getcsrforidentityprovider
+      with:
+        idpId: tools.idpId
+        csrId: tools.csrId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: revoke-certificate-signing-request-and
+      description: Revoke a Certificate Signing Request and delete the key pair from the IdP
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: okta-identityprovider.revokecsrforidentityprovider
+      with:
+        idpId: tools.idpId
+        csrId: tools.csrId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: update-certificate-signing-request-signed
+      description: Update the Certificate Signing Request with a signed X.509 certificate and add it into the signing key
+        credentials for the IdP.
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: okta-identityprovider.post
+      with:
+        idpId: tools.idpId
+        csrId: tools.csrId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: okta-list-signing-key-credentials
+      description: Okta List Signing Key Credentials for IdP
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: okta-identityprovider.listidentityprovidersigningkeys
+      with:
+        idpId: tools.idpId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: okta-generate-new-idp-signing
+      description: Okta Generate New IdP Signing Key Credential
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: okta-identityprovider.generateidentityprovidersigningkey
+      with:
+        idpId: tools.idpId
+        validityYears: tools.validityYears
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: okta-get-signing-key-credential
+      description: Okta Get Signing Key Credential for IdP
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: okta-identityprovider.getidentityprovidersigningkey
+      with:
+        idpId: tools.idpId
+        keyId: tools.keyId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: okta-clone-signing-key-credential
+      description: Okta Clone Signing Key Credential for IdP
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: okta-identityprovider.cloneidentityproviderkey
+      with:
+        idpId: tools.idpId
+        keyId: tools.keyId
+        targetIdpId: tools.targetIdpId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: okta-activate-identity-provider
+      description: Okta Activate Identity Provider
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: okta-identityprovider.activateidentityprovider
+      with:
+        idpId: tools.idpId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: okta-deactivate-identity-provider
+      description: Okta Deactivate Identity Provider
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: okta-identityprovider.deactivateidentityprovider
+      with:
+        idpId: tools.idpId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: okta-find-users
+      description: Okta Find Users
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: okta-identityprovider.listidentityproviderapplicationusers
+      with:
+        idpId: tools.idpId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: fetches-linked-idp-user-id
+      description: Fetches a linked IdP user by ID
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: okta-identityprovider.getidentityproviderapplicationuser
+      with:
+        idpId: tools.idpId
+        userId: tools.userId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: okta-link-user-social-idp
+      description: Okta Link a user to a Social IdP without a transaction
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: okta-identityprovider.linkusertoidentityprovider
+      with:
+        idpId: tools.idpId
+        userId: tools.userId
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: okta-unlink-user-idp
+      description: Okta Unlink User from IdP
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: okta-identityprovider.unlinkuserfromidentityprovider
+      with:
+        idpId: tools.idpId
+        userId: tools.userId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: okta-social-authentication-token-operation
+      description: Okta Social Authentication Token Operation
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: okta-identityprovider.listsocialauthtokens
+      with:
+        idpId: tools.idpId
+        userId: tools.userId
+      outputParameters:
+      - type: object
+        mapping: $.

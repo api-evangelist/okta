@@ -1,0 +1,2521 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Okta API — User
+  description: 'Okta API — User. 52 operations. Lead operation: Okta List Users. Self-contained Naftiko capability covering
+    one Okta business surface.'
+  tags:
+  - Okta
+  - User
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    OKTA_API_KEY: OKTA_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: okta-user
+    baseUri: https://your-subdomain.okta.com
+    description: Okta API — User business capability. Self-contained, no shared references.
+    resources:
+    - name: api-v1-users
+      path: /api/v1/users
+      operations:
+      - name: listusers
+        method: GET
+        description: Okta List Users
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: q
+          in: query
+          type: string
+          description: Finds a user that matches firstName, lastName, and email properties
+        - name: after
+          in: query
+          type: string
+          description: Specifies the pagination cursor for the next page of users
+        - name: limit
+          in: query
+          type: integer
+          description: Specifies the number of results returned
+        - name: filter
+          in: query
+          type: string
+          description: Filters users with a supported expression for a subset of properties
+        - name: search
+          in: query
+          type: string
+          description: Searches for users with a supported filtering  expression for most properties
+        - name: sortBy
+          in: query
+          type: string
+        - name: sortOrder
+          in: query
+          type: string
+      - name: createuser
+        method: POST
+        description: Okta Create User
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: activate
+          in: query
+          type: boolean
+          description: Executes activation lifecycle operation when creating the user
+        - name: provider
+          in: query
+          type: boolean
+          description: Indicates whether to create a user with a specified authentication provider
+        - name: nextLogin
+          in: query
+          type: string
+          description: With activate=true, set nextLogin to "changePassword" to have the password be EXPIRED, so user must
+            change it the next time they log in.
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: api-v1-users-associatedUserId-linkedObjects-primaryRelationshipName-primaryUserI
+      path: /api/v1/users/{associatedUserId}/linkedObjects/{primaryRelationshipName}/{primaryUserId}
+      operations:
+      - name: setlinkedobjectforuser
+        method: PUT
+        description: ''
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: associatedUserId
+          in: path
+          type: string
+          required: true
+        - name: primaryRelationshipName
+          in: path
+          type: string
+          required: true
+        - name: primaryUserId
+          in: path
+          type: string
+          required: true
+    - name: api-v1-users-userId
+      path: /api/v1/users/{userId}
+      operations:
+      - name: getuser
+        method: GET
+        description: Okta Get User
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: userId
+          in: path
+          type: string
+          required: true
+      - name: updateuser
+        method: PUT
+        description: Okta Update User
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: userId
+          in: path
+          type: string
+          required: true
+        - name: strict
+          in: query
+          type: boolean
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+      - name: partialupdateuser
+        method: POST
+        description: Update a user's profile or credentials with partial update semantics.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: userId
+          in: path
+          type: string
+          required: true
+        - name: strict
+          in: query
+          type: boolean
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+      - name: deactivateordeleteuser
+        method: DELETE
+        description: Okta Delete User
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: userId
+          in: path
+          type: string
+          required: true
+        - name: sendEmail
+          in: query
+          type: boolean
+    - name: api-v1-users-userId-appLinks
+      path: /api/v1/users/{userId}/appLinks
+      operations:
+      - name: listapplinks
+        method: GET
+        description: Okta Get Assigned App Links
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: userId
+          in: path
+          type: string
+          required: true
+    - name: api-v1-users-userId-clients
+      path: /api/v1/users/{userId}/clients
+      operations:
+      - name: listuserclients
+        method: GET
+        description: Lists all client resources for which the specified user has grants or tokens.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: userId
+          in: path
+          type: string
+          required: true
+    - name: api-v1-users-userId-clients-clientId-grants
+      path: /api/v1/users/{userId}/clients/{clientId}/grants
+      operations:
+      - name: listgrantsforuserandclient
+        method: GET
+        description: Lists all grants for a specified user and client
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: userId
+          in: path
+          type: string
+          required: true
+        - name: clientId
+          in: path
+          type: string
+          required: true
+        - name: expand
+          in: query
+          type: string
+        - name: after
+          in: query
+          type: string
+        - name: limit
+          in: query
+          type: integer
+      - name: revokegrantsforuserandclient
+        method: DELETE
+        description: Revokes all grants for the specified user and client
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: userId
+          in: path
+          type: string
+          required: true
+        - name: clientId
+          in: path
+          type: string
+          required: true
+    - name: api-v1-users-userId-clients-clientId-tokens
+      path: /api/v1/users/{userId}/clients/{clientId}/tokens
+      operations:
+      - name: listrefreshtokensforuserandclient
+        method: GET
+        description: Lists all refresh tokens issued for the specified User and Client.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: userId
+          in: path
+          type: string
+          required: true
+        - name: clientId
+          in: path
+          type: string
+          required: true
+        - name: expand
+          in: query
+          type: string
+        - name: after
+          in: query
+          type: string
+        - name: limit
+          in: query
+          type: integer
+      - name: revoketokensforuserandclient
+        method: DELETE
+        description: Revokes all refresh tokens issued for the specified User and Client.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: userId
+          in: path
+          type: string
+          required: true
+        - name: clientId
+          in: path
+          type: string
+          required: true
+    - name: api-v1-users-userId-clients-clientId-tokens-tokenId
+      path: /api/v1/users/{userId}/clients/{clientId}/tokens/{tokenId}
+      operations:
+      - name: getrefreshtokenforuserandclient
+        method: GET
+        description: Gets a refresh token issued for the specified User and Client.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: userId
+          in: path
+          type: string
+          required: true
+        - name: clientId
+          in: path
+          type: string
+          required: true
+        - name: tokenId
+          in: path
+          type: string
+          required: true
+        - name: expand
+          in: query
+          type: string
+        - name: limit
+          in: query
+          type: integer
+        - name: after
+          in: query
+          type: string
+      - name: revoketokenforuserandclient
+        method: DELETE
+        description: Revokes the specified refresh token.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: userId
+          in: path
+          type: string
+          required: true
+        - name: clientId
+          in: path
+          type: string
+          required: true
+        - name: tokenId
+          in: path
+          type: string
+          required: true
+    - name: api-v1-users-userId-credentials-change_password
+      path: /api/v1/users/{userId}/credentials/change_password
+      operations:
+      - name: changepassword
+        method: POST
+        description: Okta Change Password
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: userId
+          in: path
+          type: string
+          required: true
+        - name: strict
+          in: query
+          type: boolean
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: api-v1-users-userId-credentials-change_recovery_question
+      path: /api/v1/users/{userId}/credentials/change_recovery_question
+      operations:
+      - name: changerecoveryquestion
+        method: POST
+        description: Okta Change Recovery Question
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: userId
+          in: path
+          type: string
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: api-v1-users-userId-credentials-forgot_password
+      path: /api/v1/users/{userId}/credentials/forgot_password
+      operations:
+      - name: post
+        method: POST
+        description: Okta Forgot Password
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: userId
+          in: path
+          type: string
+          required: true
+    - name: api-v1-users-userId-grants
+      path: /api/v1/users/{userId}/grants
+      operations:
+      - name: listusergrants
+        method: GET
+        description: Lists all grants for the specified user
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: userId
+          in: path
+          type: string
+          required: true
+        - name: scopeId
+          in: query
+          type: string
+        - name: expand
+          in: query
+          type: string
+        - name: after
+          in: query
+          type: string
+        - name: limit
+          in: query
+          type: integer
+      - name: revokeusergrants
+        method: DELETE
+        description: Revokes all grants for a specified user
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: userId
+          in: path
+          type: string
+          required: true
+    - name: api-v1-users-userId-grants-grantId
+      path: /api/v1/users/{userId}/grants/{grantId}
+      operations:
+      - name: getusergrant
+        method: GET
+        description: Gets a grant for the specified user
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: userId
+          in: path
+          type: string
+          required: true
+        - name: grantId
+          in: path
+          type: string
+          required: true
+        - name: expand
+          in: query
+          type: string
+      - name: revokeusergrant
+        method: DELETE
+        description: Revokes one grant for a specified user
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: userId
+          in: path
+          type: string
+          required: true
+        - name: grantId
+          in: path
+          type: string
+          required: true
+    - name: api-v1-users-userId-groups
+      path: /api/v1/users/{userId}/groups
+      operations:
+      - name: listusergroups
+        method: GET
+        description: Okta Get Member Groups
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: userId
+          in: path
+          type: string
+          required: true
+    - name: api-v1-users-userId-idps
+      path: /api/v1/users/{userId}/idps
+      operations:
+      - name: listuseridentityproviders
+        method: GET
+        description: Okta Listing IdPs associated with a user
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: userId
+          in: path
+          type: string
+          required: true
+    - name: api-v1-users-userId-lifecycle-activate
+      path: /api/v1/users/{userId}/lifecycle/activate
+      operations:
+      - name: activateuser
+        method: POST
+        description: Okta Activate User
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: userId
+          in: path
+          type: string
+          required: true
+        - name: sendEmail
+          in: query
+          type: boolean
+          description: Sends an activation email to the user if true
+          required: true
+    - name: api-v1-users-userId-lifecycle-deactivate
+      path: /api/v1/users/{userId}/lifecycle/deactivate
+      operations:
+      - name: deactivateuser
+        method: POST
+        description: Okta Deactivate User
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: userId
+          in: path
+          type: string
+          required: true
+        - name: sendEmail
+          in: query
+          type: boolean
+    - name: api-v1-users-userId-lifecycle-expire_password?tempPassword=false
+      path: /api/v1/users/{userId}/lifecycle/expire_password?tempPassword=false
+      operations:
+      - name: expirepassword
+        method: POST
+        description: Okta Expire Password
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: userId
+          in: path
+          type: string
+          required: true
+    - name: api-v1-users-userId-lifecycle-expire_password?tempPassword=true
+      path: /api/v1/users/{userId}/lifecycle/expire_password?tempPassword=true
+      operations:
+      - name: expirepasswordandgettemporarypassword
+        method: POST
+        description: Okta Expire Password
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: userId
+          in: path
+          type: string
+          required: true
+    - name: api-v1-users-userId-lifecycle-reactivate
+      path: /api/v1/users/{userId}/lifecycle/reactivate
+      operations:
+      - name: reactivateuser
+        method: POST
+        description: Okta Reactivate User
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: userId
+          in: path
+          type: string
+          required: true
+        - name: sendEmail
+          in: query
+          type: boolean
+          description: Sends an activation email to the user if true
+    - name: api-v1-users-userId-lifecycle-reset_factors
+      path: /api/v1/users/{userId}/lifecycle/reset_factors
+      operations:
+      - name: resetfactors
+        method: POST
+        description: Okta Reset Factors
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: userId
+          in: path
+          type: string
+          required: true
+    - name: api-v1-users-userId-lifecycle-reset_password
+      path: /api/v1/users/{userId}/lifecycle/reset_password
+      operations:
+      - name: resetpassword
+        method: POST
+        description: Okta Reset Password
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: userId
+          in: path
+          type: string
+          required: true
+        - name: sendEmail
+          in: query
+          type: boolean
+          required: true
+    - name: api-v1-users-userId-lifecycle-suspend
+      path: /api/v1/users/{userId}/lifecycle/suspend
+      operations:
+      - name: suspenduser
+        method: POST
+        description: Okta Suspend User
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: userId
+          in: path
+          type: string
+          required: true
+    - name: api-v1-users-userId-lifecycle-unlock
+      path: /api/v1/users/{userId}/lifecycle/unlock
+      operations:
+      - name: unlockuser
+        method: POST
+        description: Okta Unlock User
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: userId
+          in: path
+          type: string
+          required: true
+    - name: api-v1-users-userId-lifecycle-unsuspend
+      path: /api/v1/users/{userId}/lifecycle/unsuspend
+      operations:
+      - name: unsuspenduser
+        method: POST
+        description: Okta Unsuspend User
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: userId
+          in: path
+          type: string
+          required: true
+    - name: api-v1-users-userId-linkedObjects-relationshipName
+      path: /api/v1/users/{userId}/linkedObjects/{relationshipName}
+      operations:
+      - name: getlinkedobjectsforuser
+        method: GET
+        description: Get linked objects for a user, relationshipName can be a primary or associated relationship name
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: userId
+          in: path
+          type: string
+          required: true
+        - name: relationshipName
+          in: path
+          type: string
+          required: true
+        - name: after
+          in: query
+          type: string
+        - name: limit
+          in: query
+          type: integer
+      - name: removelinkedobjectforuser
+        method: DELETE
+        description: Delete linked objects for a user, relationshipName can be ONLY a primary relationship name
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: userId
+          in: path
+          type: string
+          required: true
+        - name: relationshipName
+          in: path
+          type: string
+          required: true
+    - name: api-v1-users-userId-roles
+      path: /api/v1/users/{userId}/roles
+      operations:
+      - name: listassignedrolesforuser
+        method: GET
+        description: Lists all roles assigned to a user.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: userId
+          in: path
+          type: string
+          required: true
+        - name: expand
+          in: query
+          type: string
+      - name: assignroletouser
+        method: POST
+        description: Assigns a role to a user.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: userId
+          in: path
+          type: string
+          required: true
+        - name: disableNotifications
+          in: query
+          type: boolean
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: api-v1-users-userId-roles-roleId
+      path: /api/v1/users/{userId}/roles/{roleId}
+      operations:
+      - name: getuserrole
+        method: GET
+        description: Gets role that is assigne to user.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: userId
+          in: path
+          type: string
+          required: true
+        - name: roleId
+          in: path
+          type: string
+          required: true
+      - name: removerolefromuser
+        method: DELETE
+        description: Unassigns a role from a user.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: userId
+          in: path
+          type: string
+          required: true
+        - name: roleId
+          in: path
+          type: string
+          required: true
+    - name: api-v1-users-userId-roles-roleId-targets-catalog-apps
+      path: /api/v1/users/{userId}/roles/{roleId}/targets/catalog/apps
+      operations:
+      - name: listapplicationtargetsforapplicationadministratorroleforuser
+        method: GET
+        description: Lists all App targets for an `APP_ADMIN` Role assigned to a User. This methods return list may include
+          full Applications or Instances. The response for an instance will have an `ID` value, while Application will not
+          have an ID.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: userId
+          in: path
+          type: string
+          required: true
+        - name: roleId
+          in: path
+          type: string
+          required: true
+        - name: after
+          in: query
+          type: string
+        - name: limit
+          in: query
+          type: integer
+      - name: addallappsastargettorole
+        method: PUT
+        description: Success
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: userId
+          in: path
+          type: string
+          required: true
+        - name: roleId
+          in: path
+          type: string
+          required: true
+    - name: api-v1-users-userId-roles-roleId-targets-catalog-apps-appName
+      path: /api/v1/users/{userId}/roles/{roleId}/targets/catalog/apps/{appName}
+      operations:
+      - name: addapplicationtargettoadminroleforuser
+        method: PUT
+        description: Success
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: userId
+          in: path
+          type: string
+          required: true
+        - name: roleId
+          in: path
+          type: string
+          required: true
+        - name: appName
+          in: path
+          type: string
+          required: true
+      - name: removeapplicationtargetfromapplicationadministratorroleforuser
+        method: DELETE
+        description: Success
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: userId
+          in: path
+          type: string
+          required: true
+        - name: roleId
+          in: path
+          type: string
+          required: true
+        - name: appName
+          in: path
+          type: string
+          required: true
+    - name: api-v1-users-userId-roles-roleId-targets-catalog-apps-appName-applicationId
+      path: /api/v1/users/{userId}/roles/{roleId}/targets/catalog/apps/{appName}/{applicationId}
+      operations:
+      - name: addapplicationtargettoappadminroleforuser
+        method: PUT
+        description: Okta Add App Instance Target to App Administrator Role given to a User
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: userId
+          in: path
+          type: string
+          required: true
+        - name: roleId
+          in: path
+          type: string
+          required: true
+        - name: appName
+          in: path
+          type: string
+          required: true
+        - name: applicationId
+          in: path
+          type: string
+          required: true
+      - name: removeapplicationtargetfromadministratorroleforuser
+        method: DELETE
+        description: Okta Remove App Instance Target to App Administrator Role given to a User
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: userId
+          in: path
+          type: string
+          required: true
+        - name: roleId
+          in: path
+          type: string
+          required: true
+        - name: appName
+          in: path
+          type: string
+          required: true
+        - name: applicationId
+          in: path
+          type: string
+          required: true
+    - name: api-v1-users-userId-roles-roleId-targets-groups
+      path: /api/v1/users/{userId}/roles/{roleId}/targets/groups
+      operations:
+      - name: listgrouptargetsforrole
+        method: GET
+        description: Success
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: userId
+          in: path
+          type: string
+          required: true
+        - name: roleId
+          in: path
+          type: string
+          required: true
+        - name: after
+          in: query
+          type: string
+        - name: limit
+          in: query
+          type: integer
+    - name: api-v1-users-userId-roles-roleId-targets-groups-groupId
+      path: /api/v1/users/{userId}/roles/{roleId}/targets/groups/{groupId}
+      operations:
+      - name: addgrouptargettorole
+        method: PUT
+        description: Success
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: userId
+          in: path
+          type: string
+          required: true
+        - name: roleId
+          in: path
+          type: string
+          required: true
+        - name: groupId
+          in: path
+          type: string
+          required: true
+      - name: removegrouptargetfromrole
+        method: DELETE
+        description: Success
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: userId
+          in: path
+          type: string
+          required: true
+        - name: roleId
+          in: path
+          type: string
+          required: true
+        - name: groupId
+          in: path
+          type: string
+          required: true
+    - name: api-v1-users-userId-sessions
+      path: /api/v1/users/{userId}/sessions
+      operations:
+      - name: clearusersessions
+        method: DELETE
+        description: Removes all active identity provider sessions. This forces the user to authenticate on the next operation.
+          Optionally revokes OpenID Connect and OAuth refresh and access tokens issued to the user.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: userId
+          in: path
+          type: string
+          required: true
+        - name: oauthTokens
+          in: query
+          type: boolean
+          description: Revoke issued OpenID Connect and OAuth refresh and access tokens
+    - name: api-v1-users-userId-subscriptions
+      path: /api/v1/users/{userId}/subscriptions
+      operations:
+      - name: listusersubscriptions
+        method: GET
+        description: Okta List subscriptions of a User
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: userId
+          in: path
+          type: string
+          required: true
+    - name: api-v1-users-userId-subscriptions-notificationType
+      path: /api/v1/users/{userId}/subscriptions/{notificationType}
+      operations:
+      - name: getusersubscriptionbynotificationtype
+        method: GET
+        description: Okta Get the subscription of a User with a specific notification type
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: userId
+          in: path
+          type: string
+          required: true
+        - name: notificationType
+          in: path
+          type: string
+          required: true
+    authentication:
+      type: apikey
+      key: Authorization
+      value: '{{env.OKTA_API_KEY}}'
+      placement: header
+  exposes:
+  - type: rest
+    namespace: okta-user-rest
+    port: 8080
+    description: REST adapter for Okta API — User. One Spectral-compliant resource per consumed operation, prefixed with /v1.
+    resources:
+    - path: /v1/api/v1/users
+      name: api-v1-users
+      description: REST surface for api-v1-users.
+      operations:
+      - method: GET
+        name: listusers
+        description: Okta List Users
+        call: okta-user.listusers
+        with:
+          q: rest.q
+          after: rest.after
+          limit: rest.limit
+          filter: rest.filter
+          search: rest.search
+          sortBy: rest.sortBy
+          sortOrder: rest.sortOrder
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: createuser
+        description: Okta Create User
+        call: okta-user.createuser
+        with:
+          activate: rest.activate
+          provider: rest.provider
+          nextLogin: rest.nextLogin
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v1/users/{associateduserid}/linkedobjects/{primaryrelationshipname}/{primaryuserid}
+      name: api-v1-users-associateduserid-linkedobjects-primaryrelationshipname-primaryuseri
+      description: REST surface for api-v1-users-associatedUserId-linkedObjects-primaryRelationshipName-primaryUserI.
+      operations:
+      - method: PUT
+        name: setlinkedobjectforuser
+        description: setlinkedobjectforuser
+        call: okta-user.setlinkedobjectforuser
+        with:
+          associatedUserId: rest.associatedUserId
+          primaryRelationshipName: rest.primaryRelationshipName
+          primaryUserId: rest.primaryUserId
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v1/users/{userid}
+      name: api-v1-users-userid
+      description: REST surface for api-v1-users-userId.
+      operations:
+      - method: GET
+        name: getuser
+        description: Okta Get User
+        call: okta-user.getuser
+        with:
+          userId: rest.userId
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PUT
+        name: updateuser
+        description: Okta Update User
+        call: okta-user.updateuser
+        with:
+          userId: rest.userId
+          strict: rest.strict
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: partialupdateuser
+        description: Update a user's profile or credentials with partial update semantics.
+        call: okta-user.partialupdateuser
+        with:
+          userId: rest.userId
+          strict: rest.strict
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: deactivateordeleteuser
+        description: Okta Delete User
+        call: okta-user.deactivateordeleteuser
+        with:
+          userId: rest.userId
+          sendEmail: rest.sendEmail
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v1/users/{userid}/applinks
+      name: api-v1-users-userid-applinks
+      description: REST surface for api-v1-users-userId-appLinks.
+      operations:
+      - method: GET
+        name: listapplinks
+        description: Okta Get Assigned App Links
+        call: okta-user.listapplinks
+        with:
+          userId: rest.userId
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v1/users/{userid}/clients
+      name: api-v1-users-userid-clients
+      description: REST surface for api-v1-users-userId-clients.
+      operations:
+      - method: GET
+        name: listuserclients
+        description: Lists all client resources for which the specified user has grants or tokens.
+        call: okta-user.listuserclients
+        with:
+          userId: rest.userId
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v1/users/{userid}/clients/{clientid}/grants
+      name: api-v1-users-userid-clients-clientid-grants
+      description: REST surface for api-v1-users-userId-clients-clientId-grants.
+      operations:
+      - method: GET
+        name: listgrantsforuserandclient
+        description: Lists all grants for a specified user and client
+        call: okta-user.listgrantsforuserandclient
+        with:
+          userId: rest.userId
+          clientId: rest.clientId
+          expand: rest.expand
+          after: rest.after
+          limit: rest.limit
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: revokegrantsforuserandclient
+        description: Revokes all grants for the specified user and client
+        call: okta-user.revokegrantsforuserandclient
+        with:
+          userId: rest.userId
+          clientId: rest.clientId
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v1/users/{userid}/clients/{clientid}/tokens
+      name: api-v1-users-userid-clients-clientid-tokens
+      description: REST surface for api-v1-users-userId-clients-clientId-tokens.
+      operations:
+      - method: GET
+        name: listrefreshtokensforuserandclient
+        description: Lists all refresh tokens issued for the specified User and Client.
+        call: okta-user.listrefreshtokensforuserandclient
+        with:
+          userId: rest.userId
+          clientId: rest.clientId
+          expand: rest.expand
+          after: rest.after
+          limit: rest.limit
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: revoketokensforuserandclient
+        description: Revokes all refresh tokens issued for the specified User and Client.
+        call: okta-user.revoketokensforuserandclient
+        with:
+          userId: rest.userId
+          clientId: rest.clientId
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v1/users/{userid}/clients/{clientid}/tokens/{tokenid}
+      name: api-v1-users-userid-clients-clientid-tokens-tokenid
+      description: REST surface for api-v1-users-userId-clients-clientId-tokens-tokenId.
+      operations:
+      - method: GET
+        name: getrefreshtokenforuserandclient
+        description: Gets a refresh token issued for the specified User and Client.
+        call: okta-user.getrefreshtokenforuserandclient
+        with:
+          userId: rest.userId
+          clientId: rest.clientId
+          tokenId: rest.tokenId
+          expand: rest.expand
+          limit: rest.limit
+          after: rest.after
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: revoketokenforuserandclient
+        description: Revokes the specified refresh token.
+        call: okta-user.revoketokenforuserandclient
+        with:
+          userId: rest.userId
+          clientId: rest.clientId
+          tokenId: rest.tokenId
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v1/users/{userid}/credentials/change-password
+      name: api-v1-users-userid-credentials-change-password
+      description: REST surface for api-v1-users-userId-credentials-change_password.
+      operations:
+      - method: POST
+        name: changepassword
+        description: Okta Change Password
+        call: okta-user.changepassword
+        with:
+          userId: rest.userId
+          strict: rest.strict
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v1/users/{userid}/credentials/change-recovery-question
+      name: api-v1-users-userid-credentials-change-recovery-question
+      description: REST surface for api-v1-users-userId-credentials-change_recovery_question.
+      operations:
+      - method: POST
+        name: changerecoveryquestion
+        description: Okta Change Recovery Question
+        call: okta-user.changerecoveryquestion
+        with:
+          userId: rest.userId
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v1/users/{userid}/credentials/forgot-password
+      name: api-v1-users-userid-credentials-forgot-password
+      description: REST surface for api-v1-users-userId-credentials-forgot_password.
+      operations:
+      - method: POST
+        name: post
+        description: Okta Forgot Password
+        call: okta-user.post
+        with:
+          userId: rest.userId
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v1/users/{userid}/grants
+      name: api-v1-users-userid-grants
+      description: REST surface for api-v1-users-userId-grants.
+      operations:
+      - method: GET
+        name: listusergrants
+        description: Lists all grants for the specified user
+        call: okta-user.listusergrants
+        with:
+          userId: rest.userId
+          scopeId: rest.scopeId
+          expand: rest.expand
+          after: rest.after
+          limit: rest.limit
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: revokeusergrants
+        description: Revokes all grants for a specified user
+        call: okta-user.revokeusergrants
+        with:
+          userId: rest.userId
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v1/users/{userid}/grants/{grantid}
+      name: api-v1-users-userid-grants-grantid
+      description: REST surface for api-v1-users-userId-grants-grantId.
+      operations:
+      - method: GET
+        name: getusergrant
+        description: Gets a grant for the specified user
+        call: okta-user.getusergrant
+        with:
+          userId: rest.userId
+          grantId: rest.grantId
+          expand: rest.expand
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: revokeusergrant
+        description: Revokes one grant for a specified user
+        call: okta-user.revokeusergrant
+        with:
+          userId: rest.userId
+          grantId: rest.grantId
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v1/users/{userid}/groups
+      name: api-v1-users-userid-groups
+      description: REST surface for api-v1-users-userId-groups.
+      operations:
+      - method: GET
+        name: listusergroups
+        description: Okta Get Member Groups
+        call: okta-user.listusergroups
+        with:
+          userId: rest.userId
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v1/users/{userid}/idps
+      name: api-v1-users-userid-idps
+      description: REST surface for api-v1-users-userId-idps.
+      operations:
+      - method: GET
+        name: listuseridentityproviders
+        description: Okta Listing IdPs associated with a user
+        call: okta-user.listuseridentityproviders
+        with:
+          userId: rest.userId
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v1/users/{userid}/lifecycle/activate
+      name: api-v1-users-userid-lifecycle-activate
+      description: REST surface for api-v1-users-userId-lifecycle-activate.
+      operations:
+      - method: POST
+        name: activateuser
+        description: Okta Activate User
+        call: okta-user.activateuser
+        with:
+          userId: rest.userId
+          sendEmail: rest.sendEmail
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v1/users/{userid}/lifecycle/deactivate
+      name: api-v1-users-userid-lifecycle-deactivate
+      description: REST surface for api-v1-users-userId-lifecycle-deactivate.
+      operations:
+      - method: POST
+        name: deactivateuser
+        description: Okta Deactivate User
+        call: okta-user.deactivateuser
+        with:
+          userId: rest.userId
+          sendEmail: rest.sendEmail
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v1/users/{userid}/lifecycle/expire-password-temppassword-false
+      name: api-v1-users-userid-lifecycle-expire-password-temppassword-false
+      description: REST surface for api-v1-users-userId-lifecycle-expire_password?tempPassword=false.
+      operations:
+      - method: POST
+        name: expirepassword
+        description: Okta Expire Password
+        call: okta-user.expirepassword
+        with:
+          userId: rest.userId
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v1/users/{userid}/lifecycle/expire-password-temppassword-true
+      name: api-v1-users-userid-lifecycle-expire-password-temppassword-true
+      description: REST surface for api-v1-users-userId-lifecycle-expire_password?tempPassword=true.
+      operations:
+      - method: POST
+        name: expirepasswordandgettemporarypassword
+        description: Okta Expire Password
+        call: okta-user.expirepasswordandgettemporarypassword
+        with:
+          userId: rest.userId
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v1/users/{userid}/lifecycle/reactivate
+      name: api-v1-users-userid-lifecycle-reactivate
+      description: REST surface for api-v1-users-userId-lifecycle-reactivate.
+      operations:
+      - method: POST
+        name: reactivateuser
+        description: Okta Reactivate User
+        call: okta-user.reactivateuser
+        with:
+          userId: rest.userId
+          sendEmail: rest.sendEmail
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v1/users/{userid}/lifecycle/reset-factors
+      name: api-v1-users-userid-lifecycle-reset-factors
+      description: REST surface for api-v1-users-userId-lifecycle-reset_factors.
+      operations:
+      - method: POST
+        name: resetfactors
+        description: Okta Reset Factors
+        call: okta-user.resetfactors
+        with:
+          userId: rest.userId
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v1/users/{userid}/lifecycle/reset-password
+      name: api-v1-users-userid-lifecycle-reset-password
+      description: REST surface for api-v1-users-userId-lifecycle-reset_password.
+      operations:
+      - method: POST
+        name: resetpassword
+        description: Okta Reset Password
+        call: okta-user.resetpassword
+        with:
+          userId: rest.userId
+          sendEmail: rest.sendEmail
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v1/users/{userid}/lifecycle/suspend
+      name: api-v1-users-userid-lifecycle-suspend
+      description: REST surface for api-v1-users-userId-lifecycle-suspend.
+      operations:
+      - method: POST
+        name: suspenduser
+        description: Okta Suspend User
+        call: okta-user.suspenduser
+        with:
+          userId: rest.userId
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v1/users/{userid}/lifecycle/unlock
+      name: api-v1-users-userid-lifecycle-unlock
+      description: REST surface for api-v1-users-userId-lifecycle-unlock.
+      operations:
+      - method: POST
+        name: unlockuser
+        description: Okta Unlock User
+        call: okta-user.unlockuser
+        with:
+          userId: rest.userId
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v1/users/{userid}/lifecycle/unsuspend
+      name: api-v1-users-userid-lifecycle-unsuspend
+      description: REST surface for api-v1-users-userId-lifecycle-unsuspend.
+      operations:
+      - method: POST
+        name: unsuspenduser
+        description: Okta Unsuspend User
+        call: okta-user.unsuspenduser
+        with:
+          userId: rest.userId
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v1/users/{userid}/linkedobjects/{relationshipname}
+      name: api-v1-users-userid-linkedobjects-relationshipname
+      description: REST surface for api-v1-users-userId-linkedObjects-relationshipName.
+      operations:
+      - method: GET
+        name: getlinkedobjectsforuser
+        description: Get linked objects for a user, relationshipName can be a primary or associated relationship name
+        call: okta-user.getlinkedobjectsforuser
+        with:
+          userId: rest.userId
+          relationshipName: rest.relationshipName
+          after: rest.after
+          limit: rest.limit
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: removelinkedobjectforuser
+        description: Delete linked objects for a user, relationshipName can be ONLY a primary relationship name
+        call: okta-user.removelinkedobjectforuser
+        with:
+          userId: rest.userId
+          relationshipName: rest.relationshipName
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v1/users/{userid}/roles
+      name: api-v1-users-userid-roles
+      description: REST surface for api-v1-users-userId-roles.
+      operations:
+      - method: GET
+        name: listassignedrolesforuser
+        description: Lists all roles assigned to a user.
+        call: okta-user.listassignedrolesforuser
+        with:
+          userId: rest.userId
+          expand: rest.expand
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: assignroletouser
+        description: Assigns a role to a user.
+        call: okta-user.assignroletouser
+        with:
+          userId: rest.userId
+          disableNotifications: rest.disableNotifications
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v1/users/{userid}/roles/{roleid}
+      name: api-v1-users-userid-roles-roleid
+      description: REST surface for api-v1-users-userId-roles-roleId.
+      operations:
+      - method: GET
+        name: getuserrole
+        description: Gets role that is assigne to user.
+        call: okta-user.getuserrole
+        with:
+          userId: rest.userId
+          roleId: rest.roleId
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: removerolefromuser
+        description: Unassigns a role from a user.
+        call: okta-user.removerolefromuser
+        with:
+          userId: rest.userId
+          roleId: rest.roleId
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v1/users/{userid}/roles/{roleid}/targets/catalog/apps
+      name: api-v1-users-userid-roles-roleid-targets-catalog-apps
+      description: REST surface for api-v1-users-userId-roles-roleId-targets-catalog-apps.
+      operations:
+      - method: GET
+        name: listapplicationtargetsforapplicationadministratorroleforuser
+        description: Lists all App targets for an `APP_ADMIN` Role assigned to a User. This methods return list may include
+          full Applications or Instances. The response for an instance will have an `ID` value, while Application will not
+          have an ID.
+        call: okta-user.listapplicationtargetsforapplicationadministratorroleforuser
+        with:
+          userId: rest.userId
+          roleId: rest.roleId
+          after: rest.after
+          limit: rest.limit
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PUT
+        name: addallappsastargettorole
+        description: Success
+        call: okta-user.addallappsastargettorole
+        with:
+          userId: rest.userId
+          roleId: rest.roleId
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v1/users/{userid}/roles/{roleid}/targets/catalog/apps/{appname}
+      name: api-v1-users-userid-roles-roleid-targets-catalog-apps-appname
+      description: REST surface for api-v1-users-userId-roles-roleId-targets-catalog-apps-appName.
+      operations:
+      - method: PUT
+        name: addapplicationtargettoadminroleforuser
+        description: Success
+        call: okta-user.addapplicationtargettoadminroleforuser
+        with:
+          userId: rest.userId
+          roleId: rest.roleId
+          appName: rest.appName
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: removeapplicationtargetfromapplicationadministratorroleforuser
+        description: Success
+        call: okta-user.removeapplicationtargetfromapplicationadministratorroleforuser
+        with:
+          userId: rest.userId
+          roleId: rest.roleId
+          appName: rest.appName
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v1/users/{userid}/roles/{roleid}/targets/catalog/apps/{appname}/{applicationid}
+      name: api-v1-users-userid-roles-roleid-targets-catalog-apps-appname-applicationid
+      description: REST surface for api-v1-users-userId-roles-roleId-targets-catalog-apps-appName-applicationId.
+      operations:
+      - method: PUT
+        name: addapplicationtargettoappadminroleforuser
+        description: Okta Add App Instance Target to App Administrator Role given to a User
+        call: okta-user.addapplicationtargettoappadminroleforuser
+        with:
+          userId: rest.userId
+          roleId: rest.roleId
+          appName: rest.appName
+          applicationId: rest.applicationId
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: removeapplicationtargetfromadministratorroleforuser
+        description: Okta Remove App Instance Target to App Administrator Role given to a User
+        call: okta-user.removeapplicationtargetfromadministratorroleforuser
+        with:
+          userId: rest.userId
+          roleId: rest.roleId
+          appName: rest.appName
+          applicationId: rest.applicationId
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v1/users/{userid}/roles/{roleid}/targets/groups
+      name: api-v1-users-userid-roles-roleid-targets-groups
+      description: REST surface for api-v1-users-userId-roles-roleId-targets-groups.
+      operations:
+      - method: GET
+        name: listgrouptargetsforrole
+        description: Success
+        call: okta-user.listgrouptargetsforrole
+        with:
+          userId: rest.userId
+          roleId: rest.roleId
+          after: rest.after
+          limit: rest.limit
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v1/users/{userid}/roles/{roleid}/targets/groups/{groupid}
+      name: api-v1-users-userid-roles-roleid-targets-groups-groupid
+      description: REST surface for api-v1-users-userId-roles-roleId-targets-groups-groupId.
+      operations:
+      - method: PUT
+        name: addgrouptargettorole
+        description: Success
+        call: okta-user.addgrouptargettorole
+        with:
+          userId: rest.userId
+          roleId: rest.roleId
+          groupId: rest.groupId
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: removegrouptargetfromrole
+        description: Success
+        call: okta-user.removegrouptargetfromrole
+        with:
+          userId: rest.userId
+          roleId: rest.roleId
+          groupId: rest.groupId
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v1/users/{userid}/sessions
+      name: api-v1-users-userid-sessions
+      description: REST surface for api-v1-users-userId-sessions.
+      operations:
+      - method: DELETE
+        name: clearusersessions
+        description: Removes all active identity provider sessions. This forces the user to authenticate on the next operation.
+          Optionally revokes OpenID Connect and OAuth refresh and access tokens issued to the user.
+        call: okta-user.clearusersessions
+        with:
+          userId: rest.userId
+          oauthTokens: rest.oauthTokens
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v1/users/{userid}/subscriptions
+      name: api-v1-users-userid-subscriptions
+      description: REST surface for api-v1-users-userId-subscriptions.
+      operations:
+      - method: GET
+        name: listusersubscriptions
+        description: Okta List subscriptions of a User
+        call: okta-user.listusersubscriptions
+        with:
+          userId: rest.userId
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v1/users/{userid}/subscriptions/{notificationtype}
+      name: api-v1-users-userid-subscriptions-notificationtype
+      description: REST surface for api-v1-users-userId-subscriptions-notificationType.
+      operations:
+      - method: GET
+        name: getusersubscriptionbynotificationtype
+        description: Okta Get the subscription of a User with a specific notification type
+        call: okta-user.getusersubscriptionbynotificationtype
+        with:
+          userId: rest.userId
+          notificationType: rest.notificationType
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: okta-user-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Okta API — User. One tool per consumed operation, routed inline through this capability's
+      consumes block.
+    tools:
+    - name: okta-list-users
+      description: Okta List Users
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: okta-user.listusers
+      with:
+        q: tools.q
+        after: tools.after
+        limit: tools.limit
+        filter: tools.filter
+        search: tools.search
+        sortBy: tools.sortBy
+        sortOrder: tools.sortOrder
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: okta-create-user
+      description: Okta Create User
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: okta-user.createuser
+      with:
+        activate: tools.activate
+        provider: tools.provider
+        nextLogin: tools.nextLogin
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: setlinkedobjectforuser
+      description: setlinkedobjectforuser
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: okta-user.setlinkedobjectforuser
+      with:
+        associatedUserId: tools.associatedUserId
+        primaryRelationshipName: tools.primaryRelationshipName
+        primaryUserId: tools.primaryUserId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: okta-get-user
+      description: Okta Get User
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: okta-user.getuser
+      with:
+        userId: tools.userId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: okta-update-user
+      description: Okta Update User
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: okta-user.updateuser
+      with:
+        userId: tools.userId
+        strict: tools.strict
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: update-user-s-profile-credentials-partial
+      description: Update a user's profile or credentials with partial update semantics.
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: okta-user.partialupdateuser
+      with:
+        userId: tools.userId
+        strict: tools.strict
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: okta-delete-user
+      description: Okta Delete User
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: okta-user.deactivateordeleteuser
+      with:
+        userId: tools.userId
+        sendEmail: tools.sendEmail
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: okta-get-assigned-app-links
+      description: Okta Get Assigned App Links
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: okta-user.listapplinks
+      with:
+        userId: tools.userId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: lists-all-client-resources-which
+      description: Lists all client resources for which the specified user has grants or tokens.
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: okta-user.listuserclients
+      with:
+        userId: tools.userId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: lists-all-grants-specified-user
+      description: Lists all grants for a specified user and client
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: okta-user.listgrantsforuserandclient
+      with:
+        userId: tools.userId
+        clientId: tools.clientId
+        expand: tools.expand
+        after: tools.after
+        limit: tools.limit
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: revokes-all-grants-specified-user
+      description: Revokes all grants for the specified user and client
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: okta-user.revokegrantsforuserandclient
+      with:
+        userId: tools.userId
+        clientId: tools.clientId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: lists-all-refresh-tokens-issued
+      description: Lists all refresh tokens issued for the specified User and Client.
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: okta-user.listrefreshtokensforuserandclient
+      with:
+        userId: tools.userId
+        clientId: tools.clientId
+        expand: tools.expand
+        after: tools.after
+        limit: tools.limit
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: revokes-all-refresh-tokens-issued
+      description: Revokes all refresh tokens issued for the specified User and Client.
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: okta-user.revoketokensforuserandclient
+      with:
+        userId: tools.userId
+        clientId: tools.clientId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: gets-refresh-token-issued-specified
+      description: Gets a refresh token issued for the specified User and Client.
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: okta-user.getrefreshtokenforuserandclient
+      with:
+        userId: tools.userId
+        clientId: tools.clientId
+        tokenId: tools.tokenId
+        expand: tools.expand
+        limit: tools.limit
+        after: tools.after
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: revokes-specified-refresh-token
+      description: Revokes the specified refresh token.
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: okta-user.revoketokenforuserandclient
+      with:
+        userId: tools.userId
+        clientId: tools.clientId
+        tokenId: tools.tokenId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: okta-change-password
+      description: Okta Change Password
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: okta-user.changepassword
+      with:
+        userId: tools.userId
+        strict: tools.strict
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: okta-change-recovery-question
+      description: Okta Change Recovery Question
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: okta-user.changerecoveryquestion
+      with:
+        userId: tools.userId
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: okta-forgot-password
+      description: Okta Forgot Password
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: okta-user.post
+      with:
+        userId: tools.userId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: lists-all-grants-specified-user-2
+      description: Lists all grants for the specified user
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: okta-user.listusergrants
+      with:
+        userId: tools.userId
+        scopeId: tools.scopeId
+        expand: tools.expand
+        after: tools.after
+        limit: tools.limit
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: revokes-all-grants-specified-user-2
+      description: Revokes all grants for a specified user
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: okta-user.revokeusergrants
+      with:
+        userId: tools.userId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: gets-grant-specified-user
+      description: Gets a grant for the specified user
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: okta-user.getusergrant
+      with:
+        userId: tools.userId
+        grantId: tools.grantId
+        expand: tools.expand
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: revokes-one-grant-specified-user
+      description: Revokes one grant for a specified user
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: okta-user.revokeusergrant
+      with:
+        userId: tools.userId
+        grantId: tools.grantId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: okta-get-member-groups
+      description: Okta Get Member Groups
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: okta-user.listusergroups
+      with:
+        userId: tools.userId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: okta-listing-idps-associated-user
+      description: Okta Listing IdPs associated with a user
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: okta-user.listuseridentityproviders
+      with:
+        userId: tools.userId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: okta-activate-user
+      description: Okta Activate User
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: okta-user.activateuser
+      with:
+        userId: tools.userId
+        sendEmail: tools.sendEmail
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: okta-deactivate-user
+      description: Okta Deactivate User
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: okta-user.deactivateuser
+      with:
+        userId: tools.userId
+        sendEmail: tools.sendEmail
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: okta-expire-password
+      description: Okta Expire Password
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: okta-user.expirepassword
+      with:
+        userId: tools.userId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: okta-expire-password-2
+      description: Okta Expire Password
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: okta-user.expirepasswordandgettemporarypassword
+      with:
+        userId: tools.userId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: okta-reactivate-user
+      description: Okta Reactivate User
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: okta-user.reactivateuser
+      with:
+        userId: tools.userId
+        sendEmail: tools.sendEmail
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: okta-reset-factors
+      description: Okta Reset Factors
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: okta-user.resetfactors
+      with:
+        userId: tools.userId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: okta-reset-password
+      description: Okta Reset Password
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: okta-user.resetpassword
+      with:
+        userId: tools.userId
+        sendEmail: tools.sendEmail
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: okta-suspend-user
+      description: Okta Suspend User
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: okta-user.suspenduser
+      with:
+        userId: tools.userId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: okta-unlock-user
+      description: Okta Unlock User
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: okta-user.unlockuser
+      with:
+        userId: tools.userId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: okta-unsuspend-user
+      description: Okta Unsuspend User
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: okta-user.unsuspenduser
+      with:
+        userId: tools.userId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-linked-objects-user-relationshipname
+      description: Get linked objects for a user, relationshipName can be a primary or associated relationship name
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: okta-user.getlinkedobjectsforuser
+      with:
+        userId: tools.userId
+        relationshipName: tools.relationshipName
+        after: tools.after
+        limit: tools.limit
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: delete-linked-objects-user-relationshipname
+      description: Delete linked objects for a user, relationshipName can be ONLY a primary relationship name
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: okta-user.removelinkedobjectforuser
+      with:
+        userId: tools.userId
+        relationshipName: tools.relationshipName
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: lists-all-roles-assigned-user
+      description: Lists all roles assigned to a user.
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: okta-user.listassignedrolesforuser
+      with:
+        userId: tools.userId
+        expand: tools.expand
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: assigns-role-user
+      description: Assigns a role to a user.
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: okta-user.assignroletouser
+      with:
+        userId: tools.userId
+        disableNotifications: tools.disableNotifications
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: gets-role-that-is-assigne
+      description: Gets role that is assigne to user.
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: okta-user.getuserrole
+      with:
+        userId: tools.userId
+        roleId: tools.roleId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: unassigns-role-user
+      description: Unassigns a role from a user.
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: okta-user.removerolefromuser
+      with:
+        userId: tools.userId
+        roleId: tools.roleId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: lists-all-app-targets-app
+      description: Lists all App targets for an `APP_ADMIN` Role assigned to a User. This methods return list may include
+        full Applications or Instances. The response for an instance will have an `ID` value, while Application will not have
+        an ID.
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: okta-user.listapplicationtargetsforapplicationadministratorroleforuser
+      with:
+        userId: tools.userId
+        roleId: tools.roleId
+        after: tools.after
+        limit: tools.limit
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: success
+      description: Success
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: okta-user.addallappsastargettorole
+      with:
+        userId: tools.userId
+        roleId: tools.roleId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: success-2
+      description: Success
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: okta-user.addapplicationtargettoadminroleforuser
+      with:
+        userId: tools.userId
+        roleId: tools.roleId
+        appName: tools.appName
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: success-3
+      description: Success
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: okta-user.removeapplicationtargetfromapplicationadministratorroleforuser
+      with:
+        userId: tools.userId
+        roleId: tools.roleId
+        appName: tools.appName
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: okta-add-app-instance-target
+      description: Okta Add App Instance Target to App Administrator Role given to a User
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: okta-user.addapplicationtargettoappadminroleforuser
+      with:
+        userId: tools.userId
+        roleId: tools.roleId
+        appName: tools.appName
+        applicationId: tools.applicationId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: okta-remove-app-instance-target
+      description: Okta Remove App Instance Target to App Administrator Role given to a User
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: okta-user.removeapplicationtargetfromadministratorroleforuser
+      with:
+        userId: tools.userId
+        roleId: tools.roleId
+        appName: tools.appName
+        applicationId: tools.applicationId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: success-4
+      description: Success
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: okta-user.listgrouptargetsforrole
+      with:
+        userId: tools.userId
+        roleId: tools.roleId
+        after: tools.after
+        limit: tools.limit
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: success-5
+      description: Success
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: okta-user.addgrouptargettorole
+      with:
+        userId: tools.userId
+        roleId: tools.roleId
+        groupId: tools.groupId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: success-6
+      description: Success
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: okta-user.removegrouptargetfromrole
+      with:
+        userId: tools.userId
+        roleId: tools.roleId
+        groupId: tools.groupId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: removes-all-active-identity-provider
+      description: Removes all active identity provider sessions. This forces the user to authenticate on the next operation.
+        Optionally revokes OpenID Connect and OAuth refresh and access tokens issued to the user.
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: okta-user.clearusersessions
+      with:
+        userId: tools.userId
+        oauthTokens: tools.oauthTokens
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: okta-list-subscriptions-user
+      description: Okta List subscriptions of a User
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: okta-user.listusersubscriptions
+      with:
+        userId: tools.userId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: okta-get-subscription-user-specific
+      description: Okta Get the subscription of a User with a specific notification type
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: okta-user.getusersubscriptionbynotificationtype
+      with:
+        userId: tools.userId
+        notificationType: tools.notificationType
+      outputParameters:
+      - type: object
+        mapping: $.

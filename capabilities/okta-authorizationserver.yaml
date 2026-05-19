@@ -1,0 +1,1775 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Okta API — AuthorizationServer
+  description: 'Okta API — AuthorizationServer. 38 operations. Lead operation: AuthorizationServer. Self-contained Naftiko
+    capability covering one Okta business surface.'
+  tags:
+  - Okta
+  - AuthorizationServer
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    OKTA_API_KEY: OKTA_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: okta-authorizationserver
+    baseUri: https://your-subdomain.okta.com
+    description: Okta API — AuthorizationServer business capability. Self-contained, no shared references.
+    resources:
+    - name: api-v1-authorizationServers
+      path: /api/v1/authorizationServers
+      operations:
+      - name: listauthorizationservers
+        method: GET
+        description: Success
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: q
+          in: query
+          type: string
+        - name: limit
+          in: query
+          type: string
+        - name: after
+          in: query
+          type: string
+      - name: createauthorizationserver
+        method: POST
+        description: Success
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: api-v1-authorizationServers-authServerId
+      path: /api/v1/authorizationServers/{authServerId}
+      operations:
+      - name: getauthorizationserver
+        method: GET
+        description: Success
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: authServerId
+          in: path
+          type: string
+          required: true
+      - name: updateauthorizationserver
+        method: PUT
+        description: Success
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: authServerId
+          in: path
+          type: string
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+      - name: deleteauthorizationserver
+        method: DELETE
+        description: Success
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: authServerId
+          in: path
+          type: string
+          required: true
+    - name: api-v1-authorizationServers-authServerId-claims
+      path: /api/v1/authorizationServers/{authServerId}/claims
+      operations:
+      - name: listoauth2claims
+        method: GET
+        description: Success
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: authServerId
+          in: path
+          type: string
+          required: true
+      - name: createoauth2claim
+        method: POST
+        description: Success
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: authServerId
+          in: path
+          type: string
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: api-v1-authorizationServers-authServerId-claims-claimId
+      path: /api/v1/authorizationServers/{authServerId}/claims/{claimId}
+      operations:
+      - name: getoauth2claim
+        method: GET
+        description: Success
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: authServerId
+          in: path
+          type: string
+          required: true
+        - name: claimId
+          in: path
+          type: string
+          required: true
+      - name: updateoauth2claim
+        method: PUT
+        description: Success
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: authServerId
+          in: path
+          type: string
+          required: true
+        - name: claimId
+          in: path
+          type: string
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+      - name: deleteoauth2claim
+        method: DELETE
+        description: Success
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: authServerId
+          in: path
+          type: string
+          required: true
+        - name: claimId
+          in: path
+          type: string
+          required: true
+    - name: api-v1-authorizationServers-authServerId-clients
+      path: /api/v1/authorizationServers/{authServerId}/clients
+      operations:
+      - name: listoauth2clientsforauthorizationserver
+        method: GET
+        description: Success
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: authServerId
+          in: path
+          type: string
+          required: true
+    - name: api-v1-authorizationServers-authServerId-clients-clientId-tokens
+      path: /api/v1/authorizationServers/{authServerId}/clients/{clientId}/tokens
+      operations:
+      - name: listrefreshtokensforauthorizationserverandclient
+        method: GET
+        description: Success
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: authServerId
+          in: path
+          type: string
+          required: true
+        - name: clientId
+          in: path
+          type: string
+          required: true
+        - name: expand
+          in: query
+          type: string
+        - name: after
+          in: query
+          type: string
+        - name: limit
+          in: query
+          type: integer
+      - name: revokerefreshtokensforauthorizationserverandclient
+        method: DELETE
+        description: Success
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: authServerId
+          in: path
+          type: string
+          required: true
+        - name: clientId
+          in: path
+          type: string
+          required: true
+    - name: api-v1-authorizationServers-authServerId-clients-clientId-tokens-tokenId
+      path: /api/v1/authorizationServers/{authServerId}/clients/{clientId}/tokens/{tokenId}
+      operations:
+      - name: getrefreshtokenforauthorizationserverandclient
+        method: GET
+        description: Success
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: authServerId
+          in: path
+          type: string
+          required: true
+        - name: clientId
+          in: path
+          type: string
+          required: true
+        - name: tokenId
+          in: path
+          type: string
+          required: true
+        - name: expand
+          in: query
+          type: string
+      - name: revokerefreshtokenforauthorizationserverandclient
+        method: DELETE
+        description: Success
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: authServerId
+          in: path
+          type: string
+          required: true
+        - name: clientId
+          in: path
+          type: string
+          required: true
+        - name: tokenId
+          in: path
+          type: string
+          required: true
+    - name: api-v1-authorizationServers-authServerId-credentials-keys
+      path: /api/v1/authorizationServers/{authServerId}/credentials/keys
+      operations:
+      - name: listauthorizationserverkeys
+        method: GET
+        description: Success
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: authServerId
+          in: path
+          type: string
+          required: true
+    - name: api-v1-authorizationServers-authServerId-credentials-lifecycle-keyRotate
+      path: /api/v1/authorizationServers/{authServerId}/credentials/lifecycle/keyRotate
+      operations:
+      - name: rotateauthorizationserverkeys
+        method: POST
+        description: Success
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: authServerId
+          in: path
+          type: string
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: api-v1-authorizationServers-authServerId-lifecycle-activate
+      path: /api/v1/authorizationServers/{authServerId}/lifecycle/activate
+      operations:
+      - name: activateauthorizationserver
+        method: POST
+        description: Success
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: authServerId
+          in: path
+          type: string
+          required: true
+    - name: api-v1-authorizationServers-authServerId-lifecycle-deactivate
+      path: /api/v1/authorizationServers/{authServerId}/lifecycle/deactivate
+      operations:
+      - name: deactivateauthorizationserver
+        method: POST
+        description: Success
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: authServerId
+          in: path
+          type: string
+          required: true
+    - name: api-v1-authorizationServers-authServerId-policies
+      path: /api/v1/authorizationServers/{authServerId}/policies
+      operations:
+      - name: listauthorizationserverpolicies
+        method: GET
+        description: Success
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: authServerId
+          in: path
+          type: string
+          required: true
+      - name: createauthorizationserverpolicy
+        method: POST
+        description: Success
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: authServerId
+          in: path
+          type: string
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: api-v1-authorizationServers-authServerId-policies-policyId
+      path: /api/v1/authorizationServers/{authServerId}/policies/{policyId}
+      operations:
+      - name: getauthorizationserverpolicy
+        method: GET
+        description: Success
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: authServerId
+          in: path
+          type: string
+          required: true
+        - name: policyId
+          in: path
+          type: string
+          required: true
+      - name: updateauthorizationserverpolicy
+        method: PUT
+        description: Success
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: authServerId
+          in: path
+          type: string
+          required: true
+        - name: policyId
+          in: path
+          type: string
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+      - name: deleteauthorizationserverpolicy
+        method: DELETE
+        description: Success
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: authServerId
+          in: path
+          type: string
+          required: true
+        - name: policyId
+          in: path
+          type: string
+          required: true
+    - name: api-v1-authorizationServers-authServerId-policies-policyId-lifecycle-activate
+      path: /api/v1/authorizationServers/{authServerId}/policies/{policyId}/lifecycle/activate
+      operations:
+      - name: activateauthorizationserverpolicy
+        method: POST
+        description: Activate Authorization Server Policy
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: authServerId
+          in: path
+          type: string
+          required: true
+        - name: policyId
+          in: path
+          type: string
+          required: true
+    - name: api-v1-authorizationServers-authServerId-policies-policyId-lifecycle-deactivate
+      path: /api/v1/authorizationServers/{authServerId}/policies/{policyId}/lifecycle/deactivate
+      operations:
+      - name: deactivateauthorizationserverpolicy
+        method: POST
+        description: Deactivate Authorization Server Policy
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: authServerId
+          in: path
+          type: string
+          required: true
+        - name: policyId
+          in: path
+          type: string
+          required: true
+    - name: api-v1-authorizationServers-authServerId-policies-policyId-rules
+      path: /api/v1/authorizationServers/{authServerId}/policies/{policyId}/rules
+      operations:
+      - name: listauthorizationserverpolicyrules
+        method: GET
+        description: Enumerates all policy rules for the specified Custom Authorization Server and Policy.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: authServerId
+          in: path
+          type: string
+          required: true
+        - name: policyId
+          in: path
+          type: string
+          required: true
+      - name: createauthorizationserverpolicyrule
+        method: POST
+        description: Creates a policy rule for the specified Custom Authorization Server and Policy.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: authServerId
+          in: path
+          type: string
+          required: true
+        - name: policyId
+          in: path
+          type: string
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: api-v1-authorizationServers-authServerId-policies-policyId-rules-ruleId
+      path: /api/v1/authorizationServers/{authServerId}/policies/{policyId}/rules/{ruleId}
+      operations:
+      - name: getauthorizationserverpolicyrule
+        method: GET
+        description: Returns a Policy Rule by ID that is defined in the specified Custom Authorization Server and Policy.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: authServerId
+          in: path
+          type: string
+          required: true
+        - name: policyId
+          in: path
+          type: string
+          required: true
+        - name: ruleId
+          in: path
+          type: string
+          required: true
+      - name: updateauthorizationserverpolicyrule
+        method: PUT
+        description: Updates the configuration of the Policy Rule defined in the specified Custom Authorization Server and
+          Policy.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: authServerId
+          in: path
+          type: string
+          required: true
+        - name: policyId
+          in: path
+          type: string
+          required: true
+        - name: ruleId
+          in: path
+          type: string
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+      - name: deleteauthorizationserverpolicyrule
+        method: DELETE
+        description: Deletes a Policy Rule defined in the specified Custom Authorization Server and Policy.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: authServerId
+          in: path
+          type: string
+          required: true
+        - name: policyId
+          in: path
+          type: string
+          required: true
+        - name: ruleId
+          in: path
+          type: string
+          required: true
+    - name: api-v1-authorizationServers-authServerId-policies-policyId-rules-ruleId-lifecycl
+      path: /api/v1/authorizationServers/{authServerId}/policies/{policyId}/rules/{ruleId}/lifecycle/activate
+      operations:
+      - name: activateauthorizationserverpolicyrule
+        method: POST
+        description: Activate Authorization Server Policy Rule
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: authServerId
+          in: path
+          type: string
+          required: true
+        - name: policyId
+          in: path
+          type: string
+          required: true
+        - name: ruleId
+          in: path
+          type: string
+          required: true
+    - name: api-v1-authorizationServers-authServerId-policies-policyId-rules-ruleId-lifecycl
+      path: /api/v1/authorizationServers/{authServerId}/policies/{policyId}/rules/{ruleId}/lifecycle/deactivate
+      operations:
+      - name: deactivateauthorizationserverpolicyrule
+        method: POST
+        description: Deactivate Authorization Server Policy Rule
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: authServerId
+          in: path
+          type: string
+          required: true
+        - name: policyId
+          in: path
+          type: string
+          required: true
+        - name: ruleId
+          in: path
+          type: string
+          required: true
+    - name: api-v1-authorizationServers-authServerId-scopes
+      path: /api/v1/authorizationServers/{authServerId}/scopes
+      operations:
+      - name: listoauth2scopes
+        method: GET
+        description: Success
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: authServerId
+          in: path
+          type: string
+          required: true
+        - name: q
+          in: query
+          type: string
+        - name: filter
+          in: query
+          type: string
+        - name: cursor
+          in: query
+          type: string
+        - name: limit
+          in: query
+          type: integer
+      - name: createoauth2scope
+        method: POST
+        description: Success
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: authServerId
+          in: path
+          type: string
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: api-v1-authorizationServers-authServerId-scopes-scopeId
+      path: /api/v1/authorizationServers/{authServerId}/scopes/{scopeId}
+      operations:
+      - name: getoauth2scope
+        method: GET
+        description: Success
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: authServerId
+          in: path
+          type: string
+          required: true
+        - name: scopeId
+          in: path
+          type: string
+          required: true
+      - name: updateoauth2scope
+        method: PUT
+        description: Success
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: authServerId
+          in: path
+          type: string
+          required: true
+        - name: scopeId
+          in: path
+          type: string
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+      - name: deleteoauth2scope
+        method: DELETE
+        description: Success
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: authServerId
+          in: path
+          type: string
+          required: true
+        - name: scopeId
+          in: path
+          type: string
+          required: true
+    authentication:
+      type: apikey
+      key: Authorization
+      value: '{{env.OKTA_API_KEY}}'
+      placement: header
+  exposes:
+  - type: rest
+    namespace: okta-authorizationserver-rest
+    port: 8080
+    description: REST adapter for Okta API — AuthorizationServer. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/api/v1/authorizationservers
+      name: api-v1-authorizationservers
+      description: REST surface for api-v1-authorizationServers.
+      operations:
+      - method: GET
+        name: listauthorizationservers
+        description: Success
+        call: okta-authorizationserver.listauthorizationservers
+        with:
+          q: rest.q
+          limit: rest.limit
+          after: rest.after
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: createauthorizationserver
+        description: Success
+        call: okta-authorizationserver.createauthorizationserver
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v1/authorizationservers/{authserverid}
+      name: api-v1-authorizationservers-authserverid
+      description: REST surface for api-v1-authorizationServers-authServerId.
+      operations:
+      - method: GET
+        name: getauthorizationserver
+        description: Success
+        call: okta-authorizationserver.getauthorizationserver
+        with:
+          authServerId: rest.authServerId
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PUT
+        name: updateauthorizationserver
+        description: Success
+        call: okta-authorizationserver.updateauthorizationserver
+        with:
+          authServerId: rest.authServerId
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: deleteauthorizationserver
+        description: Success
+        call: okta-authorizationserver.deleteauthorizationserver
+        with:
+          authServerId: rest.authServerId
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v1/authorizationservers/{authserverid}/claims
+      name: api-v1-authorizationservers-authserverid-claims
+      description: REST surface for api-v1-authorizationServers-authServerId-claims.
+      operations:
+      - method: GET
+        name: listoauth2claims
+        description: Success
+        call: okta-authorizationserver.listoauth2claims
+        with:
+          authServerId: rest.authServerId
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: createoauth2claim
+        description: Success
+        call: okta-authorizationserver.createoauth2claim
+        with:
+          authServerId: rest.authServerId
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v1/authorizationservers/{authserverid}/claims/{claimid}
+      name: api-v1-authorizationservers-authserverid-claims-claimid
+      description: REST surface for api-v1-authorizationServers-authServerId-claims-claimId.
+      operations:
+      - method: GET
+        name: getoauth2claim
+        description: Success
+        call: okta-authorizationserver.getoauth2claim
+        with:
+          authServerId: rest.authServerId
+          claimId: rest.claimId
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PUT
+        name: updateoauth2claim
+        description: Success
+        call: okta-authorizationserver.updateoauth2claim
+        with:
+          authServerId: rest.authServerId
+          claimId: rest.claimId
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: deleteoauth2claim
+        description: Success
+        call: okta-authorizationserver.deleteoauth2claim
+        with:
+          authServerId: rest.authServerId
+          claimId: rest.claimId
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v1/authorizationservers/{authserverid}/clients
+      name: api-v1-authorizationservers-authserverid-clients
+      description: REST surface for api-v1-authorizationServers-authServerId-clients.
+      operations:
+      - method: GET
+        name: listoauth2clientsforauthorizationserver
+        description: Success
+        call: okta-authorizationserver.listoauth2clientsforauthorizationserver
+        with:
+          authServerId: rest.authServerId
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v1/authorizationservers/{authserverid}/clients/{clientid}/tokens
+      name: api-v1-authorizationservers-authserverid-clients-clientid-tokens
+      description: REST surface for api-v1-authorizationServers-authServerId-clients-clientId-tokens.
+      operations:
+      - method: GET
+        name: listrefreshtokensforauthorizationserverandclient
+        description: Success
+        call: okta-authorizationserver.listrefreshtokensforauthorizationserverandclient
+        with:
+          authServerId: rest.authServerId
+          clientId: rest.clientId
+          expand: rest.expand
+          after: rest.after
+          limit: rest.limit
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: revokerefreshtokensforauthorizationserverandclient
+        description: Success
+        call: okta-authorizationserver.revokerefreshtokensforauthorizationserverandclient
+        with:
+          authServerId: rest.authServerId
+          clientId: rest.clientId
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v1/authorizationservers/{authserverid}/clients/{clientid}/tokens/{tokenid}
+      name: api-v1-authorizationservers-authserverid-clients-clientid-tokens-tokenid
+      description: REST surface for api-v1-authorizationServers-authServerId-clients-clientId-tokens-tokenId.
+      operations:
+      - method: GET
+        name: getrefreshtokenforauthorizationserverandclient
+        description: Success
+        call: okta-authorizationserver.getrefreshtokenforauthorizationserverandclient
+        with:
+          authServerId: rest.authServerId
+          clientId: rest.clientId
+          tokenId: rest.tokenId
+          expand: rest.expand
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: revokerefreshtokenforauthorizationserverandclient
+        description: Success
+        call: okta-authorizationserver.revokerefreshtokenforauthorizationserverandclient
+        with:
+          authServerId: rest.authServerId
+          clientId: rest.clientId
+          tokenId: rest.tokenId
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v1/authorizationservers/{authserverid}/credentials/keys
+      name: api-v1-authorizationservers-authserverid-credentials-keys
+      description: REST surface for api-v1-authorizationServers-authServerId-credentials-keys.
+      operations:
+      - method: GET
+        name: listauthorizationserverkeys
+        description: Success
+        call: okta-authorizationserver.listauthorizationserverkeys
+        with:
+          authServerId: rest.authServerId
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v1/authorizationservers/{authserverid}/credentials/lifecycle/keyrotate
+      name: api-v1-authorizationservers-authserverid-credentials-lifecycle-keyrotate
+      description: REST surface for api-v1-authorizationServers-authServerId-credentials-lifecycle-keyRotate.
+      operations:
+      - method: POST
+        name: rotateauthorizationserverkeys
+        description: Success
+        call: okta-authorizationserver.rotateauthorizationserverkeys
+        with:
+          authServerId: rest.authServerId
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v1/authorizationservers/{authserverid}/lifecycle/activate
+      name: api-v1-authorizationservers-authserverid-lifecycle-activate
+      description: REST surface for api-v1-authorizationServers-authServerId-lifecycle-activate.
+      operations:
+      - method: POST
+        name: activateauthorizationserver
+        description: Success
+        call: okta-authorizationserver.activateauthorizationserver
+        with:
+          authServerId: rest.authServerId
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v1/authorizationservers/{authserverid}/lifecycle/deactivate
+      name: api-v1-authorizationservers-authserverid-lifecycle-deactivate
+      description: REST surface for api-v1-authorizationServers-authServerId-lifecycle-deactivate.
+      operations:
+      - method: POST
+        name: deactivateauthorizationserver
+        description: Success
+        call: okta-authorizationserver.deactivateauthorizationserver
+        with:
+          authServerId: rest.authServerId
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v1/authorizationservers/{authserverid}/policies
+      name: api-v1-authorizationservers-authserverid-policies
+      description: REST surface for api-v1-authorizationServers-authServerId-policies.
+      operations:
+      - method: GET
+        name: listauthorizationserverpolicies
+        description: Success
+        call: okta-authorizationserver.listauthorizationserverpolicies
+        with:
+          authServerId: rest.authServerId
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: createauthorizationserverpolicy
+        description: Success
+        call: okta-authorizationserver.createauthorizationserverpolicy
+        with:
+          authServerId: rest.authServerId
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v1/authorizationservers/{authserverid}/policies/{policyid}
+      name: api-v1-authorizationservers-authserverid-policies-policyid
+      description: REST surface for api-v1-authorizationServers-authServerId-policies-policyId.
+      operations:
+      - method: GET
+        name: getauthorizationserverpolicy
+        description: Success
+        call: okta-authorizationserver.getauthorizationserverpolicy
+        with:
+          authServerId: rest.authServerId
+          policyId: rest.policyId
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PUT
+        name: updateauthorizationserverpolicy
+        description: Success
+        call: okta-authorizationserver.updateauthorizationserverpolicy
+        with:
+          authServerId: rest.authServerId
+          policyId: rest.policyId
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: deleteauthorizationserverpolicy
+        description: Success
+        call: okta-authorizationserver.deleteauthorizationserverpolicy
+        with:
+          authServerId: rest.authServerId
+          policyId: rest.policyId
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v1/authorizationservers/{authserverid}/policies/{policyid}/lifecycle/activate
+      name: api-v1-authorizationservers-authserverid-policies-policyid-lifecycle-activate
+      description: REST surface for api-v1-authorizationServers-authServerId-policies-policyId-lifecycle-activate.
+      operations:
+      - method: POST
+        name: activateauthorizationserverpolicy
+        description: Activate Authorization Server Policy
+        call: okta-authorizationserver.activateauthorizationserverpolicy
+        with:
+          authServerId: rest.authServerId
+          policyId: rest.policyId
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v1/authorizationservers/{authserverid}/policies/{policyid}/lifecycle/deactivate
+      name: api-v1-authorizationservers-authserverid-policies-policyid-lifecycle-deactivate
+      description: REST surface for api-v1-authorizationServers-authServerId-policies-policyId-lifecycle-deactivate.
+      operations:
+      - method: POST
+        name: deactivateauthorizationserverpolicy
+        description: Deactivate Authorization Server Policy
+        call: okta-authorizationserver.deactivateauthorizationserverpolicy
+        with:
+          authServerId: rest.authServerId
+          policyId: rest.policyId
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v1/authorizationservers/{authserverid}/policies/{policyid}/rules
+      name: api-v1-authorizationservers-authserverid-policies-policyid-rules
+      description: REST surface for api-v1-authorizationServers-authServerId-policies-policyId-rules.
+      operations:
+      - method: GET
+        name: listauthorizationserverpolicyrules
+        description: Enumerates all policy rules for the specified Custom Authorization Server and Policy.
+        call: okta-authorizationserver.listauthorizationserverpolicyrules
+        with:
+          authServerId: rest.authServerId
+          policyId: rest.policyId
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: createauthorizationserverpolicyrule
+        description: Creates a policy rule for the specified Custom Authorization Server and Policy.
+        call: okta-authorizationserver.createauthorizationserverpolicyrule
+        with:
+          authServerId: rest.authServerId
+          policyId: rest.policyId
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v1/authorizationservers/{authserverid}/policies/{policyid}/rules/{ruleid}
+      name: api-v1-authorizationservers-authserverid-policies-policyid-rules-ruleid
+      description: REST surface for api-v1-authorizationServers-authServerId-policies-policyId-rules-ruleId.
+      operations:
+      - method: GET
+        name: getauthorizationserverpolicyrule
+        description: Returns a Policy Rule by ID that is defined in the specified Custom Authorization Server and Policy.
+        call: okta-authorizationserver.getauthorizationserverpolicyrule
+        with:
+          authServerId: rest.authServerId
+          policyId: rest.policyId
+          ruleId: rest.ruleId
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PUT
+        name: updateauthorizationserverpolicyrule
+        description: Updates the configuration of the Policy Rule defined in the specified Custom Authorization Server and
+          Policy.
+        call: okta-authorizationserver.updateauthorizationserverpolicyrule
+        with:
+          authServerId: rest.authServerId
+          policyId: rest.policyId
+          ruleId: rest.ruleId
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: deleteauthorizationserverpolicyrule
+        description: Deletes a Policy Rule defined in the specified Custom Authorization Server and Policy.
+        call: okta-authorizationserver.deleteauthorizationserverpolicyrule
+        with:
+          authServerId: rest.authServerId
+          policyId: rest.policyId
+          ruleId: rest.ruleId
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v1/authorizationservers/{authserverid}/policies/{policyid}/rules/{ruleid}/lifecycle/activate
+      name: api-v1-authorizationservers-authserverid-policies-policyid-rules-ruleid-lifecycl
+      description: REST surface for api-v1-authorizationServers-authServerId-policies-policyId-rules-ruleId-lifecycl.
+      operations:
+      - method: POST
+        name: activateauthorizationserverpolicyrule
+        description: Activate Authorization Server Policy Rule
+        call: okta-authorizationserver.activateauthorizationserverpolicyrule
+        with:
+          authServerId: rest.authServerId
+          policyId: rest.policyId
+          ruleId: rest.ruleId
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v1/authorizationservers/{authserverid}/policies/{policyid}/rules/{ruleid}/lifecycle/deactivate
+      name: api-v1-authorizationservers-authserverid-policies-policyid-rules-ruleid-lifecycl
+      description: REST surface for api-v1-authorizationServers-authServerId-policies-policyId-rules-ruleId-lifecycl.
+      operations:
+      - method: POST
+        name: deactivateauthorizationserverpolicyrule
+        description: Deactivate Authorization Server Policy Rule
+        call: okta-authorizationserver.deactivateauthorizationserverpolicyrule
+        with:
+          authServerId: rest.authServerId
+          policyId: rest.policyId
+          ruleId: rest.ruleId
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v1/authorizationservers/{authserverid}/scopes
+      name: api-v1-authorizationservers-authserverid-scopes
+      description: REST surface for api-v1-authorizationServers-authServerId-scopes.
+      operations:
+      - method: GET
+        name: listoauth2scopes
+        description: Success
+        call: okta-authorizationserver.listoauth2scopes
+        with:
+          authServerId: rest.authServerId
+          q: rest.q
+          filter: rest.filter
+          cursor: rest.cursor
+          limit: rest.limit
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: createoauth2scope
+        description: Success
+        call: okta-authorizationserver.createoauth2scope
+        with:
+          authServerId: rest.authServerId
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v1/authorizationservers/{authserverid}/scopes/{scopeid}
+      name: api-v1-authorizationservers-authserverid-scopes-scopeid
+      description: REST surface for api-v1-authorizationServers-authServerId-scopes-scopeId.
+      operations:
+      - method: GET
+        name: getoauth2scope
+        description: Success
+        call: okta-authorizationserver.getoauth2scope
+        with:
+          authServerId: rest.authServerId
+          scopeId: rest.scopeId
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PUT
+        name: updateoauth2scope
+        description: Success
+        call: okta-authorizationserver.updateoauth2scope
+        with:
+          authServerId: rest.authServerId
+          scopeId: rest.scopeId
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: deleteoauth2scope
+        description: Success
+        call: okta-authorizationserver.deleteoauth2scope
+        with:
+          authServerId: rest.authServerId
+          scopeId: rest.scopeId
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: okta-authorizationserver-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Okta API — AuthorizationServer. One tool per consumed operation, routed inline through this
+      capability's consumes block.
+    tools:
+    - name: success
+      description: Success
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: okta-authorizationserver.listauthorizationservers
+      with:
+        q: tools.q
+        limit: tools.limit
+        after: tools.after
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: success-2
+      description: Success
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: okta-authorizationserver.createauthorizationserver
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: success-3
+      description: Success
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: okta-authorizationserver.getauthorizationserver
+      with:
+        authServerId: tools.authServerId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: success-4
+      description: Success
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: okta-authorizationserver.updateauthorizationserver
+      with:
+        authServerId: tools.authServerId
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: success-5
+      description: Success
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: okta-authorizationserver.deleteauthorizationserver
+      with:
+        authServerId: tools.authServerId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: success-6
+      description: Success
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: okta-authorizationserver.listoauth2claims
+      with:
+        authServerId: tools.authServerId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: success-7
+      description: Success
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: okta-authorizationserver.createoauth2claim
+      with:
+        authServerId: tools.authServerId
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: success-8
+      description: Success
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: okta-authorizationserver.getoauth2claim
+      with:
+        authServerId: tools.authServerId
+        claimId: tools.claimId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: success-9
+      description: Success
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: okta-authorizationserver.updateoauth2claim
+      with:
+        authServerId: tools.authServerId
+        claimId: tools.claimId
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: success-10
+      description: Success
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: okta-authorizationserver.deleteoauth2claim
+      with:
+        authServerId: tools.authServerId
+        claimId: tools.claimId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: success-11
+      description: Success
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: okta-authorizationserver.listoauth2clientsforauthorizationserver
+      with:
+        authServerId: tools.authServerId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: success-12
+      description: Success
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: okta-authorizationserver.listrefreshtokensforauthorizationserverandclient
+      with:
+        authServerId: tools.authServerId
+        clientId: tools.clientId
+        expand: tools.expand
+        after: tools.after
+        limit: tools.limit
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: success-13
+      description: Success
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: okta-authorizationserver.revokerefreshtokensforauthorizationserverandclient
+      with:
+        authServerId: tools.authServerId
+        clientId: tools.clientId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: success-14
+      description: Success
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: okta-authorizationserver.getrefreshtokenforauthorizationserverandclient
+      with:
+        authServerId: tools.authServerId
+        clientId: tools.clientId
+        tokenId: tools.tokenId
+        expand: tools.expand
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: success-15
+      description: Success
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: okta-authorizationserver.revokerefreshtokenforauthorizationserverandclient
+      with:
+        authServerId: tools.authServerId
+        clientId: tools.clientId
+        tokenId: tools.tokenId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: success-16
+      description: Success
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: okta-authorizationserver.listauthorizationserverkeys
+      with:
+        authServerId: tools.authServerId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: success-17
+      description: Success
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: okta-authorizationserver.rotateauthorizationserverkeys
+      with:
+        authServerId: tools.authServerId
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: success-18
+      description: Success
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: okta-authorizationserver.activateauthorizationserver
+      with:
+        authServerId: tools.authServerId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: success-19
+      description: Success
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: okta-authorizationserver.deactivateauthorizationserver
+      with:
+        authServerId: tools.authServerId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: success-20
+      description: Success
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: okta-authorizationserver.listauthorizationserverpolicies
+      with:
+        authServerId: tools.authServerId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: success-21
+      description: Success
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: okta-authorizationserver.createauthorizationserverpolicy
+      with:
+        authServerId: tools.authServerId
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: success-22
+      description: Success
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: okta-authorizationserver.getauthorizationserverpolicy
+      with:
+        authServerId: tools.authServerId
+        policyId: tools.policyId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: success-23
+      description: Success
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: okta-authorizationserver.updateauthorizationserverpolicy
+      with:
+        authServerId: tools.authServerId
+        policyId: tools.policyId
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: success-24
+      description: Success
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: okta-authorizationserver.deleteauthorizationserverpolicy
+      with:
+        authServerId: tools.authServerId
+        policyId: tools.policyId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: activate-authorization-server-policy
+      description: Activate Authorization Server Policy
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: okta-authorizationserver.activateauthorizationserverpolicy
+      with:
+        authServerId: tools.authServerId
+        policyId: tools.policyId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: deactivate-authorization-server-policy
+      description: Deactivate Authorization Server Policy
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: okta-authorizationserver.deactivateauthorizationserverpolicy
+      with:
+        authServerId: tools.authServerId
+        policyId: tools.policyId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: enumerates-all-policy-rules-specified
+      description: Enumerates all policy rules for the specified Custom Authorization Server and Policy.
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: okta-authorizationserver.listauthorizationserverpolicyrules
+      with:
+        authServerId: tools.authServerId
+        policyId: tools.policyId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: creates-policy-rule-specified-custom
+      description: Creates a policy rule for the specified Custom Authorization Server and Policy.
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: okta-authorizationserver.createauthorizationserverpolicyrule
+      with:
+        authServerId: tools.authServerId
+        policyId: tools.policyId
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: returns-policy-rule-id-that
+      description: Returns a Policy Rule by ID that is defined in the specified Custom Authorization Server and Policy.
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: okta-authorizationserver.getauthorizationserverpolicyrule
+      with:
+        authServerId: tools.authServerId
+        policyId: tools.policyId
+        ruleId: tools.ruleId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: updates-configuration-policy-rule-defined
+      description: Updates the configuration of the Policy Rule defined in the specified Custom Authorization Server and Policy.
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: okta-authorizationserver.updateauthorizationserverpolicyrule
+      with:
+        authServerId: tools.authServerId
+        policyId: tools.policyId
+        ruleId: tools.ruleId
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: deletes-policy-rule-defined-specified
+      description: Deletes a Policy Rule defined in the specified Custom Authorization Server and Policy.
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: okta-authorizationserver.deleteauthorizationserverpolicyrule
+      with:
+        authServerId: tools.authServerId
+        policyId: tools.policyId
+        ruleId: tools.ruleId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: activate-authorization-server-policy-rule
+      description: Activate Authorization Server Policy Rule
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: okta-authorizationserver.activateauthorizationserverpolicyrule
+      with:
+        authServerId: tools.authServerId
+        policyId: tools.policyId
+        ruleId: tools.ruleId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: deactivate-authorization-server-policy-rule
+      description: Deactivate Authorization Server Policy Rule
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: okta-authorizationserver.deactivateauthorizationserverpolicyrule
+      with:
+        authServerId: tools.authServerId
+        policyId: tools.policyId
+        ruleId: tools.ruleId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: success-25
+      description: Success
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: okta-authorizationserver.listoauth2scopes
+      with:
+        authServerId: tools.authServerId
+        q: tools.q
+        filter: tools.filter
+        cursor: tools.cursor
+        limit: tools.limit
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: success-26
+      description: Success
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: okta-authorizationserver.createoauth2scope
+      with:
+        authServerId: tools.authServerId
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: success-27
+      description: Success
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: okta-authorizationserver.getoauth2scope
+      with:
+        authServerId: tools.authServerId
+        scopeId: tools.scopeId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: success-28
+      description: Success
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: okta-authorizationserver.updateoauth2scope
+      with:
+        authServerId: tools.authServerId
+        scopeId: tools.scopeId
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: success-29
+      description: Success
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: okta-authorizationserver.deleteoauth2scope
+      with:
+        authServerId: tools.authServerId
+        scopeId: tools.scopeId
+      outputParameters:
+      - type: object
+        mapping: $.

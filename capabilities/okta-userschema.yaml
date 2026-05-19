@@ -1,0 +1,204 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Okta API — UserSchema
+  description: 'Okta API — UserSchema. 4 operations. Lead operation: Okta Fetches the Schema for an App User. Self-contained
+    Naftiko capability covering one Okta business surface.'
+  tags:
+  - Okta
+  - UserSchema
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    OKTA_API_KEY: OKTA_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: okta-userschema
+    baseUri: https://your-subdomain.okta.com
+    description: Okta API — UserSchema business capability. Self-contained, no shared references.
+    resources:
+    - name: api-v1-meta-schemas-apps-appInstanceId-default
+      path: /api/v1/meta/schemas/apps/{appInstanceId}/default
+      operations:
+      - name: getapplicationuserschema
+        method: GET
+        description: Okta Fetches the Schema for an App User
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: appInstanceId
+          in: path
+          type: string
+          required: true
+      - name: updateapplicationuserprofile
+        method: POST
+        description: Okta Partial updates on the User Profile properties of the Application User Schema.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: appInstanceId
+          in: path
+          type: string
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+    - name: api-v1-meta-schemas-user-schemaId
+      path: /api/v1/meta/schemas/user/{schemaId}
+      operations:
+      - name: getuserschema
+        method: GET
+        description: Okta Fetches the schema for a Schema Id.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: schemaId
+          in: path
+          type: string
+          required: true
+      - name: updateuserprofile
+        method: POST
+        description: Partial updates on the User Profile properties of the user schema.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: schemaId
+          in: path
+          type: string
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    authentication:
+      type: apikey
+      key: Authorization
+      value: '{{env.OKTA_API_KEY}}'
+      placement: header
+  exposes:
+  - type: rest
+    namespace: okta-userschema-rest
+    port: 8080
+    description: REST adapter for Okta API — UserSchema. One Spectral-compliant resource per consumed operation, prefixed
+      with /v1.
+    resources:
+    - path: /v1/api/v1/meta/schemas/apps/{appinstanceid}/default
+      name: api-v1-meta-schemas-apps-appinstanceid-default
+      description: REST surface for api-v1-meta-schemas-apps-appInstanceId-default.
+      operations:
+      - method: GET
+        name: getapplicationuserschema
+        description: Okta Fetches the Schema for an App User
+        call: okta-userschema.getapplicationuserschema
+        with:
+          appInstanceId: rest.appInstanceId
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: updateapplicationuserprofile
+        description: Okta Partial updates on the User Profile properties of the Application User Schema.
+        call: okta-userschema.updateapplicationuserprofile
+        with:
+          appInstanceId: rest.appInstanceId
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v1/meta/schemas/user/{schemaid}
+      name: api-v1-meta-schemas-user-schemaid
+      description: REST surface for api-v1-meta-schemas-user-schemaId.
+      operations:
+      - method: GET
+        name: getuserschema
+        description: Okta Fetches the schema for a Schema Id.
+        call: okta-userschema.getuserschema
+        with:
+          schemaId: rest.schemaId
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: updateuserprofile
+        description: Partial updates on the User Profile properties of the user schema.
+        call: okta-userschema.updateuserprofile
+        with:
+          schemaId: rest.schemaId
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: okta-userschema-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Okta API — UserSchema. One tool per consumed operation, routed inline through this capability's
+      consumes block.
+    tools:
+    - name: okta-fetches-schema-app-user
+      description: Okta Fetches the Schema for an App User
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: okta-userschema.getapplicationuserschema
+      with:
+        appInstanceId: tools.appInstanceId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: okta-partial-updates-user-profile
+      description: Okta Partial updates on the User Profile properties of the Application User Schema.
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: okta-userschema.updateapplicationuserprofile
+      with:
+        appInstanceId: tools.appInstanceId
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: okta-fetches-schema-schema-id
+      description: Okta Fetches the schema for a Schema Id.
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: okta-userschema.getuserschema
+      with:
+        schemaId: tools.schemaId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: partial-updates-user-profile-properties
+      description: Partial updates on the User Profile properties of the user schema.
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: okta-userschema.updateuserprofile
+      with:
+        schemaId: tools.schemaId
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.

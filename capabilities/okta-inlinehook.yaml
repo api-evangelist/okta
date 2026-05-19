@@ -1,0 +1,370 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Okta API — InlineHook
+  description: 'Okta API — InlineHook. 8 operations. Lead operation: InlineHook. Self-contained Naftiko capability covering
+    one Okta business surface.'
+  tags:
+  - Okta
+  - InlineHook
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    OKTA_API_KEY: OKTA_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: okta-inlinehook
+    baseUri: https://your-subdomain.okta.com
+    description: Okta API — InlineHook business capability. Self-contained, no shared references.
+    resources:
+    - name: api-v1-inlineHooks
+      path: /api/v1/inlineHooks
+      operations:
+      - name: listinlinehooks
+        method: GET
+        description: Success
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: type
+          in: query
+          type: string
+      - name: createinlinehook
+        method: POST
+        description: Success
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: api-v1-inlineHooks-inlineHookId
+      path: /api/v1/inlineHooks/{inlineHookId}
+      operations:
+      - name: getinlinehook
+        method: GET
+        description: Gets an inline hook by ID
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: inlineHookId
+          in: path
+          type: string
+          required: true
+      - name: updateinlinehook
+        method: PUT
+        description: Updates an inline hook by ID
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: inlineHookId
+          in: path
+          type: string
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+      - name: deleteinlinehook
+        method: DELETE
+        description: Deletes the Inline Hook matching the provided id. Once deleted, the Inline Hook is unrecoverable. As
+          a safety precaution, only Inline Hooks with a status of INACTIVE are eligible for deletion.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: inlineHookId
+          in: path
+          type: string
+          required: true
+    - name: api-v1-inlineHooks-inlineHookId-execute
+      path: /api/v1/inlineHooks/{inlineHookId}/execute
+      operations:
+      - name: executeinlinehook
+        method: POST
+        description: Executes the Inline Hook matching the provided inlineHookId using the request body as the input. This
+          will send the provided data through the Channel and return a response if it matches the correct data contract. This
+          execution endpoint sho
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: inlineHookId
+          in: path
+          type: string
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: api-v1-inlineHooks-inlineHookId-lifecycle-activate
+      path: /api/v1/inlineHooks/{inlineHookId}/lifecycle/activate
+      operations:
+      - name: activateinlinehook
+        method: POST
+        description: Activates the Inline Hook matching the provided id
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: inlineHookId
+          in: path
+          type: string
+          required: true
+    - name: api-v1-inlineHooks-inlineHookId-lifecycle-deactivate
+      path: /api/v1/inlineHooks/{inlineHookId}/lifecycle/deactivate
+      operations:
+      - name: deactivateinlinehook
+        method: POST
+        description: Deactivates the Inline Hook matching the provided id
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: inlineHookId
+          in: path
+          type: string
+          required: true
+    authentication:
+      type: apikey
+      key: Authorization
+      value: '{{env.OKTA_API_KEY}}'
+      placement: header
+  exposes:
+  - type: rest
+    namespace: okta-inlinehook-rest
+    port: 8080
+    description: REST adapter for Okta API — InlineHook. One Spectral-compliant resource per consumed operation, prefixed
+      with /v1.
+    resources:
+    - path: /v1/api/v1/inlinehooks
+      name: api-v1-inlinehooks
+      description: REST surface for api-v1-inlineHooks.
+      operations:
+      - method: GET
+        name: listinlinehooks
+        description: Success
+        call: okta-inlinehook.listinlinehooks
+        with:
+          type: rest.type
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: createinlinehook
+        description: Success
+        call: okta-inlinehook.createinlinehook
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v1/inlinehooks/{inlinehookid}
+      name: api-v1-inlinehooks-inlinehookid
+      description: REST surface for api-v1-inlineHooks-inlineHookId.
+      operations:
+      - method: GET
+        name: getinlinehook
+        description: Gets an inline hook by ID
+        call: okta-inlinehook.getinlinehook
+        with:
+          inlineHookId: rest.inlineHookId
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PUT
+        name: updateinlinehook
+        description: Updates an inline hook by ID
+        call: okta-inlinehook.updateinlinehook
+        with:
+          inlineHookId: rest.inlineHookId
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: deleteinlinehook
+        description: Deletes the Inline Hook matching the provided id. Once deleted, the Inline Hook is unrecoverable. As
+          a safety precaution, only Inline Hooks with a status of INACTIVE are eligible for deletion.
+        call: okta-inlinehook.deleteinlinehook
+        with:
+          inlineHookId: rest.inlineHookId
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v1/inlinehooks/{inlinehookid}/execute
+      name: api-v1-inlinehooks-inlinehookid-execute
+      description: REST surface for api-v1-inlineHooks-inlineHookId-execute.
+      operations:
+      - method: POST
+        name: executeinlinehook
+        description: Executes the Inline Hook matching the provided inlineHookId using the request body as the input. This
+          will send the provided data through the Channel and return a response if it matches the correct data contract. This
+          execution endpoint sho
+        call: okta-inlinehook.executeinlinehook
+        with:
+          inlineHookId: rest.inlineHookId
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v1/inlinehooks/{inlinehookid}/lifecycle/activate
+      name: api-v1-inlinehooks-inlinehookid-lifecycle-activate
+      description: REST surface for api-v1-inlineHooks-inlineHookId-lifecycle-activate.
+      operations:
+      - method: POST
+        name: activateinlinehook
+        description: Activates the Inline Hook matching the provided id
+        call: okta-inlinehook.activateinlinehook
+        with:
+          inlineHookId: rest.inlineHookId
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v1/inlinehooks/{inlinehookid}/lifecycle/deactivate
+      name: api-v1-inlinehooks-inlinehookid-lifecycle-deactivate
+      description: REST surface for api-v1-inlineHooks-inlineHookId-lifecycle-deactivate.
+      operations:
+      - method: POST
+        name: deactivateinlinehook
+        description: Deactivates the Inline Hook matching the provided id
+        call: okta-inlinehook.deactivateinlinehook
+        with:
+          inlineHookId: rest.inlineHookId
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: okta-inlinehook-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Okta API — InlineHook. One tool per consumed operation, routed inline through this capability's
+      consumes block.
+    tools:
+    - name: success
+      description: Success
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: okta-inlinehook.listinlinehooks
+      with:
+        type: tools.type
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: success-2
+      description: Success
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: okta-inlinehook.createinlinehook
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: gets-inline-hook-id
+      description: Gets an inline hook by ID
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: okta-inlinehook.getinlinehook
+      with:
+        inlineHookId: tools.inlineHookId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: updates-inline-hook-id
+      description: Updates an inline hook by ID
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: okta-inlinehook.updateinlinehook
+      with:
+        inlineHookId: tools.inlineHookId
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: deletes-inline-hook-matching-provided
+      description: Deletes the Inline Hook matching the provided id. Once deleted, the Inline Hook is unrecoverable. As a
+        safety precaution, only Inline Hooks with a status of INACTIVE are eligible for deletion.
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: okta-inlinehook.deleteinlinehook
+      with:
+        inlineHookId: tools.inlineHookId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: executes-inline-hook-matching-provided
+      description: Executes the Inline Hook matching the provided inlineHookId using the request body as the input. This will
+        send the provided data through the Channel and return a response if it matches the correct data contract. This execution
+        endpoint sho
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: okta-inlinehook.executeinlinehook
+      with:
+        inlineHookId: tools.inlineHookId
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: activates-inline-hook-matching-provided
+      description: Activates the Inline Hook matching the provided id
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: okta-inlinehook.activateinlinehook
+      with:
+        inlineHookId: tools.inlineHookId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: deactivates-inline-hook-matching-provided
+      description: Deactivates the Inline Hook matching the provided id
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: okta-inlinehook.deactivateinlinehook
+      with:
+        inlineHookId: tools.inlineHookId
+      outputParameters:
+      - type: object
+        mapping: $.

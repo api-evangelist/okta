@@ -1,0 +1,326 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Okta API — NetworkZone
+  description: 'Okta API — NetworkZone. 7 operations. Lead operation: Okta List Network Zones. Self-contained Naftiko capability
+    covering one Okta business surface.'
+  tags:
+  - Okta
+  - NetworkZone
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    OKTA_API_KEY: OKTA_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: okta-networkzone
+    baseUri: https://your-subdomain.okta.com
+    description: Okta API — NetworkZone business capability. Self-contained, no shared references.
+    resources:
+    - name: api-v1-zones
+      path: /api/v1/zones
+      operations:
+      - name: listnetworkzones
+        method: GET
+        description: Okta List Network Zones
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: after
+          in: query
+          type: string
+          description: Specifies the pagination cursor for the next page of network zones
+        - name: limit
+          in: query
+          type: integer
+          description: Specifies the number of results for a page
+        - name: filter
+          in: query
+          type: string
+          description: Filters zones by usage or id expression
+      - name: createnetworkzone
+        method: POST
+        description: Okta Add Network Zone
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: api-v1-zones-zoneId
+      path: /api/v1/zones/{zoneId}
+      operations:
+      - name: getnetworkzone
+        method: GET
+        description: Okta Get Network Zone
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: zoneId
+          in: path
+          type: string
+          required: true
+      - name: updatenetworkzone
+        method: PUT
+        description: Okta Update Network Zone
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: zoneId
+          in: path
+          type: string
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+      - name: deletenetworkzone
+        method: DELETE
+        description: Okta Delete Network Zone
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: zoneId
+          in: path
+          type: string
+          required: true
+    - name: api-v1-zones-zoneId-lifecycle-activate
+      path: /api/v1/zones/{zoneId}/lifecycle/activate
+      operations:
+      - name: activatenetworkzone
+        method: POST
+        description: Okta Activate Network Zone
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: zoneId
+          in: path
+          type: string
+          required: true
+    - name: api-v1-zones-zoneId-lifecycle-deactivate
+      path: /api/v1/zones/{zoneId}/lifecycle/deactivate
+      operations:
+      - name: deactivatenetworkzone
+        method: POST
+        description: Okta Deactivate Network Zone
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: zoneId
+          in: path
+          type: string
+          required: true
+    authentication:
+      type: apikey
+      key: Authorization
+      value: '{{env.OKTA_API_KEY}}'
+      placement: header
+  exposes:
+  - type: rest
+    namespace: okta-networkzone-rest
+    port: 8080
+    description: REST adapter for Okta API — NetworkZone. One Spectral-compliant resource per consumed operation, prefixed
+      with /v1.
+    resources:
+    - path: /v1/api/v1/zones
+      name: api-v1-zones
+      description: REST surface for api-v1-zones.
+      operations:
+      - method: GET
+        name: listnetworkzones
+        description: Okta List Network Zones
+        call: okta-networkzone.listnetworkzones
+        with:
+          after: rest.after
+          limit: rest.limit
+          filter: rest.filter
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: createnetworkzone
+        description: Okta Add Network Zone
+        call: okta-networkzone.createnetworkzone
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v1/zones/{zoneid}
+      name: api-v1-zones-zoneid
+      description: REST surface for api-v1-zones-zoneId.
+      operations:
+      - method: GET
+        name: getnetworkzone
+        description: Okta Get Network Zone
+        call: okta-networkzone.getnetworkzone
+        with:
+          zoneId: rest.zoneId
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PUT
+        name: updatenetworkzone
+        description: Okta Update Network Zone
+        call: okta-networkzone.updatenetworkzone
+        with:
+          zoneId: rest.zoneId
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: deletenetworkzone
+        description: Okta Delete Network Zone
+        call: okta-networkzone.deletenetworkzone
+        with:
+          zoneId: rest.zoneId
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v1/zones/{zoneid}/lifecycle/activate
+      name: api-v1-zones-zoneid-lifecycle-activate
+      description: REST surface for api-v1-zones-zoneId-lifecycle-activate.
+      operations:
+      - method: POST
+        name: activatenetworkzone
+        description: Okta Activate Network Zone
+        call: okta-networkzone.activatenetworkzone
+        with:
+          zoneId: rest.zoneId
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v1/zones/{zoneid}/lifecycle/deactivate
+      name: api-v1-zones-zoneid-lifecycle-deactivate
+      description: REST surface for api-v1-zones-zoneId-lifecycle-deactivate.
+      operations:
+      - method: POST
+        name: deactivatenetworkzone
+        description: Okta Deactivate Network Zone
+        call: okta-networkzone.deactivatenetworkzone
+        with:
+          zoneId: rest.zoneId
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: okta-networkzone-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Okta API — NetworkZone. One tool per consumed operation, routed inline through this capability's
+      consumes block.
+    tools:
+    - name: okta-list-network-zones
+      description: Okta List Network Zones
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: okta-networkzone.listnetworkzones
+      with:
+        after: tools.after
+        limit: tools.limit
+        filter: tools.filter
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: okta-add-network-zone
+      description: Okta Add Network Zone
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: okta-networkzone.createnetworkzone
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: okta-get-network-zone
+      description: Okta Get Network Zone
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: okta-networkzone.getnetworkzone
+      with:
+        zoneId: tools.zoneId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: okta-update-network-zone
+      description: Okta Update Network Zone
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: okta-networkzone.updatenetworkzone
+      with:
+        zoneId: tools.zoneId
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: okta-delete-network-zone
+      description: Okta Delete Network Zone
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: okta-networkzone.deletenetworkzone
+      with:
+        zoneId: tools.zoneId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: okta-activate-network-zone
+      description: Okta Activate Network Zone
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: okta-networkzone.activatenetworkzone
+      with:
+        zoneId: tools.zoneId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: okta-deactivate-network-zone
+      description: Okta Deactivate Network Zone
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: okta-networkzone.deactivatenetworkzone
+      with:
+        zoneId: tools.zoneId
+      outputParameters:
+      - type: object
+        mapping: $.
