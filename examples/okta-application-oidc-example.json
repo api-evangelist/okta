@@ -1,0 +1,35 @@
+{
+  "id": "0oa1a2b3c4D5E6F7G8H9",
+  "name": "oidc_client",
+  "label": "Internal Tools",
+  "status": "ACTIVE",
+  "lastUpdated": "2026-05-10T13:21:54.000Z",
+  "created": "2025-09-18T11:14:09.000Z",
+  "accessibility": { "selfService": false },
+  "visibility": {
+    "autoSubmitToolbar": false,
+    "hide": { "iOS": false, "web": false }
+  },
+  "features": [],
+  "signOnMode": "OPENID_CONNECT",
+  "credentials": {
+    "userNameTemplate": {
+      "template": "${source.login}",
+      "type": "BUILT_IN"
+    },
+    "oauthClient": {
+      "client_id": "0oa1a2b3c4D5E6F7G8H9",
+      "token_endpoint_auth_method": "client_secret_basic",
+      "autoKeyRotation": true
+    }
+  },
+  "settings": {
+    "oauthClient": {
+      "redirect_uris": ["https://internal.example.com/authorization-code/callback"],
+      "response_types": ["code"],
+      "grant_types": ["authorization_code", "refresh_token"],
+      "application_type": "web",
+      "consent_method": "REQUIRED"
+    }
+  }
+}

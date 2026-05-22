@@ -1,0 +1,123 @@
+name: Okta Vocabulary
+description: Operational and capability vocabulary for the Okta Workforce Identity Platform and adjacent surfaces
+  (Cross-App Access, Okta for AI Agents, Okta MCP Server).
+provider: Okta
+providerId: okta
+modified: '2026-05-22'
+sources:
+  - https://developer.okta.com/docs/reference/
+  - https://developer.okta.com/docs/concepts/
+  - https://github.com/okta/okta-management-openapi-spec
+  - https://xaa.dev/
+  - https://datatracker.ietf.org/doc/html/draft-ietf-oauth-identity-assertion-authz-grant
+dimensions:
+  identity:
+    - User
+    - Group
+    - GroupSchema
+    - UserSchema
+    - UserType
+    - LinkedObject
+    - Org
+    - ProfileMapping
+  application:
+    - Application
+    - Brand
+    - Domain
+    - Template
+    - Feature
+  access:
+    - Policy
+    - Session
+    - AuthorizationServer
+    - Authenticator
+    - UserFactor
+    - NetworkZone
+    - TrustedOrigin
+  governance:
+    - Subscription
+    - Log
+    - ThreatInsight
+  automation:
+    - InlineHook
+    - EventHook
+    - Workflows
+  ai-agent:
+    - Agent
+    - AgentOwner
+    - AgentScope
+    - CrossAppAccess
+    - IDJAGAssertion
+  protocols:
+    - OIDC
+    - OAuth2
+    - SAML
+    - SCIM
+    - WS-Fed
+    - ID-JAG
+terms:
+  Application: An app integration in the Okta org (OIDC, SAML, SWA, or bookmark).
+  Authenticator: A factor used to verify a user (password, push, WebAuthn, TOTP, email, SMS).
+  AuthorizationServer: An Okta-hosted OAuth 2.0 server (default or custom) issuing scoped access tokens.
+  Brand: A customizable branding context (sign-in page, email theme) tied to a Domain.
+  CrossAppAccess: An emerging OAuth profile (ID-JAG draft) by which an IdP-minted identity assertion is exchanged
+    for a scoped resource access token, replacing long-lived app-to-app credentials and securing AI agent fan-out.
+  Domain: A custom domain bound to a Brand for branded sign-in URLs.
+  EventHook: An outbound webhook fired on Okta events.
+  Group: A collection of users used for application/policy assignment.
+  IDJAG: OAuth Identity Assertion Authorization Grant — the draft IETF spec underlying Cross-App Access.
+  IdentityProvider: An external IdP (social, SAML, OIDC) federated into Okta.
+  InlineHook: A synchronous callout that pauses an Okta flow for external decisioning (token mint, registration,
+    SAML assertion, password import).
+  IdentityThreatProtection: Continuous, post-authentication risk evaluation (ITP) sold on Professional+.
+  IdentitySecurityPostureManagement: Identity attack-surface analytics (ISPM) sold on Professional+.
+  LinkedObject: A typed relationship between two users (e.g., manager/report).
+  Log: A system log event entry.
+  MCPServer: Okta's open-source Model Context Protocol server exposing administrative tools to LLM agents under
+    confirmation gates.
+  NetworkZone: A named set of IP ranges used in policy conditions.
+  Org: The Okta tenant.
+  OktaForAIAgents: Add-on covering agent discovery, registration, ownership, least-privilege scope, monitoring,
+    and revocation.
+  Policy: A rule-driven gate (sign-on, MFA enrollment, password, profile enrollment, IdP routing).
+  ProfileMapping: A directional attribute transformation between two profile sources.
+  Session: An authenticated Okta session.
+  Subscription: An admin notification subscription.
+  Template: An SMS/email template.
+  ThreatInsight: Okta's network-threat reputation feed.
+  TrustedOrigin: A whitelisted CORS / redirect origin.
+  User: An identity principal in the Okta org.
+  UserFactor: An enrolled factor on a user.
+  UserSchema: The custom-attribute schema for a UserType.
+  UserType: A typed user profile (e.g., Employee vs Contractor).
+  WorkforceIdentity: Okta's primary product line — employee, contractor, partner identity.
+  CustomerIdentity: The Auth0 surface — consumer-facing identity (separate platform, same parent company).
+  Workflows: Okta's no-code automation product (5 / 50 / unlimited executions per SKU).
+relationships:
+  - subject: User
+    predicate: memberOf
+    object: Group
+  - subject: User
+    predicate: enrolledIn
+    object: UserFactor
+  - subject: User
+    predicate: assignedTo
+    object: Application
+  - subject: Group
+    predicate: assignedTo
+    object: Application
+  - subject: Application
+    predicate: governedBy
+    object: Policy
+  - subject: Application
+    predicate: secures
+    object: CrossAppAccess
+  - subject: AuthorizationServer
+    predicate: issues
+    object: AccessToken
+  - subject: EventHook
+    predicate: triggeredBy
+    object: Log
+  - subject: Agent
+    predicate: ownedBy
+    object: User

@@ -4,14 +4,17 @@ schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main
 provider: Okta
 providerId: okta
 created: '2026-05-04'
-modified: '2026-05-04'
+modified: '2026-05-22'
 reconciled: true
 tags:
   - Identity
   - SSO
   - MFA
   - Workforce
-description: Okta Workforce Identity per-user pricing.
+  - Customer Identity
+  - AI Agents
+description: Okta Workforce Identity per-user pricing plus the Customer Identity (Auth0) base platform. Okta for AI
+  Agents and Cross-App Access are positioned as add-ons across SKUs.
 sources:
   - https://www.okta.com/pricing/
 plans:
@@ -114,3 +117,48 @@ plans:
       - name: API Access Management
       - name: Access Gateway
       - name: Machine-to-Machine Tokens
+  - id: okta-customer-identity-enterprise-base
+    name: Customer Identity Enterprise Base (Auth0)
+    type: enterprise
+    description: $3K/month base platform for customer identity (Auth0). B2C and B2B suites priced separately.
+    entries:
+      - label: Base platform
+        name: base
+        type: subscription
+        metric: tenant
+        limit: -1
+        timeFrame: month
+        geo: global
+        unit: 1
+        price: '3000.00'
+        userMultiplied: false
+    elements:
+      - name: Unlimited OIDC & Outbound SAML apps
+      - name: Robust Okta APIs
+      - name: Enterprise Grade SLAs
+addOns:
+  - name: Okta for AI Agents
+    description: Add-on covering AI agent discovery, registration with mandatory owner, least-privilege scope, monitoring,
+      and revocation.
+    pricing: custom
+  - name: Cross-App Access
+    description: OAuth ID-JAG profile for agent-to-app authorization, available via Okta IdP.
+    pricing: included-or-add-on
+  - name: Identity Threat Protection
+    pricing: custom
+  - name: Identity Security Posture Management
+    pricing: custom
+  - name: Device Access
+    pricing: custom
+  - name: API Access Management
+    pricing: custom
+  - name: Access Gateway
+    pricing: custom
+  - name: Privileged Access
+    pricing: custom
+  - name: Identity Governance
+    pricing: custom
+  - name: Lifecycle Management
+    pricing: custom
+  - name: Workflows (additional executions)
+    pricing: custom

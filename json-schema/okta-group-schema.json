@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/okta/main/json-schema/okta-group-schema.json",
+  "title": "Okta Group",
+  "description": "A group of users in the Okta org, used for app and policy assignment.",
+  "type": "object",
+  "required": ["id", "type", "profile"],
+  "properties": {
+    "id": { "type": "string" },
+    "created": { "type": "string", "format": "date-time" },
+    "lastUpdated": { "type": "string", "format": "date-time" },
+    "lastMembershipUpdated": { "type": "string", "format": "date-time" },
+    "objectClass": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "type": {
+      "type": "string",
+      "enum": ["OKTA_GROUP", "APP_GROUP", "BUILT_IN"]
+    },
+    "profile": {
+      "type": "object",
+      "required": ["name"],
+      "properties": {
+        "name": { "type": "string" },
+        "description": { "type": ["string", "null"] }
+      },
+      "additionalProperties": true
+    },
+    "_links": { "type": "object" }
+  },
+  "additionalProperties": false
+}

@@ -1,0 +1,31 @@
+{
+  "$comment": "Illustrative Cross-App Access (XAA) token exchange following the IETF draft 'OAuth Identity Assertion Authorization Grant' (ID-JAG). Subject token is issued by the IdP (Okta), exchanged at the resource app's authorization server for a scoped access token.",
+  "exchange": {
+    "endpoint": "https://resource-app.example.com/oauth2/token",
+    "request": {
+      "grant_type": "urn:ietf:params:oauth:grant-type:token-exchange",
+      "subject_token": "<id_jag.assertion.jwt>",
+      "subject_token_type": "urn:ietf:params:oauth:token-type:id_jag",
+      "audience": "https://resource-app.example.com/",
+      "scope": "documents.read"
+    },
+    "response": {
+      "access_token": "ya29.scoped.example.access.token",
+      "issued_token_type": "urn:ietf:params:oauth:token-type:access_token",
+      "token_type": "Bearer",
+      "expires_in": 600,
+      "scope": "documents.read"
+    }
+  },
+  "assertion_claims": {
+    "iss": "https://example.okta.com",
+    "sub": "00u1a2b3c4D5E6F7G8H9",
+    "aud": "https://resource-app.example.com/",
+    "client_id": "0oaRequestingAgentAppId",
+    "agent_id": "agent-7af12",
+    "agent_owner": "amina.okafor@example.com",
+    "scope": "documents.read",
+    "iat": 1748563200,
+    "exp": 1748566800
+  }
+}

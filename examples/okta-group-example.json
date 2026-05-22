@@ -1,0 +1,17 @@
+{
+  "id": "00g1a2b3c4D5E6F7G8H9",
+  "created": "2025-11-04T12:01:55.000Z",
+  "lastUpdated": "2026-05-01T08:33:12.000Z",
+  "lastMembershipUpdated": "2026-05-20T18:47:21.000Z",
+  "objectClass": ["okta:user_group"],
+  "type": "OKTA_GROUP",
+  "profile": {
+    "name": "Platform Engineering",
+    "description": "Engineers maintaining the core platform."
+  },
+  "_links": {
+    "self": { "href": "https://example.okta.com/api/v1/groups/00g1a2b3c4D5E6F7G8H9" },
+    "users": { "href": "https://example.okta.com/api/v1/groups/00g1a2b3c4D5E6F7G8H9/users" },
+    "apps": { "href": "https://example.okta.com/api/v1/groups/00g1a2b3c4D5E6F7G8H9/apps" }
+  }
+}

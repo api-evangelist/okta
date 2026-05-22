@@ -1,0 +1,63 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/okta/main/json-schema/okta-application-schema.json",
+  "title": "Okta Application",
+  "description": "An application integration (OIDC, SAML, SWA, bookmark) in the Okta org.",
+  "type": "object",
+  "required": ["id", "name", "label", "status", "signOnMode"],
+  "properties": {
+    "id": { "type": "string" },
+    "name": { "type": "string", "description": "Application template name." },
+    "label": { "type": "string" },
+    "status": {
+      "type": "string",
+      "enum": ["ACTIVE", "INACTIVE", "DELETED"]
+    },
+    "lastUpdated": { "type": "string", "format": "date-time" },
+    "created": { "type": "string", "format": "date-time" },
+    "accessibility": {
+      "type": "object",
+      "properties": {
+        "selfService": { "type": "boolean" },
+        "errorRedirectUrl": { "type": ["string", "null"] },
+        "loginRedirectUrl": { "type": ["string", "null"] }
+      }
+    },
+    "visibility": {
+      "type": "object",
+      "properties": {
+        "autoSubmitToolbar": { "type": "boolean" },
+        "hide": {
+          "type": "object",
+          "properties": {
+            "iOS": { "type": "boolean" },
+            "web": { "type": "boolean" }
+          }
+        }
+      }
+    },
+    "features": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "signOnMode": {
+      "type": "string",
+      "enum": [
+        "BOOKMARK",
+        "BASIC_AUTH",
+        "BROWSER_PLUGIN",
+        "SECURE_PASSWORD_STORE",
+        "SAML_2_0",
+        "SAML_1_1",
+        "WS_FEDERATION",
+        "AUTO_LOGIN",
+        "OPENID_CONNECT",
+        "Custom"
+      ]
+    },
+    "credentials": { "type": "object" },
+    "settings": { "type": "object" },
+    "_links": { "type": "object" }
+  },
+  "additionalProperties": false
+}

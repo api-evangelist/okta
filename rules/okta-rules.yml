@@ -1,0 +1,128 @@
+extends:
+  - [spectral:oas, all]
+rules:
+  okta-operation-id-camelcase:
+    description: Okta operationIds must be camelCase (e.g., listApplications, createUser).
+    given: $.paths[*][get,post,put,patch,delete].operationId
+    severity: error
+    then:
+      function: pattern
+      functionOptions:
+        match: "^[a-z][A-Za-z0-9]*$"
+
+  okta-operation-summary-title-case:
+    description: Operation summaries should be Title Case.
+    given: $.paths[*][get,post,put,patch,delete].summary
+    severity: warn
+    then:
+      function: pattern
+      functionOptions:
+        match: "^([A-Z][A-Za-z0-9]*)( [A-Za-z0-9]+)*$|^Okta .*$"
+
+  okta-operation-must-have-summary:
+    description: Every operation must have a summary.
+    given: $.paths[*][get,post,put,patch,delete]
+    severity: error
+    then:
+      field: summary
+      function: truthy
+
+  okta-operation-must-have-tag:
+    description: Every operation must declare exactly one Okta resource tag.
+    given: $.paths[*][get,post,put,patch,delete].tags
+    severity: error
+    then:
+      function: schema
+      functionOptions:
+        schema:
+          type: array
+          minItems: 1
+          maxItems: 1
+          items:
+            type: string
+            enum:
+              - Application
+              - Authenticator
+              - AuthorizationServer
+              - Brand
+              - Domain
+              - EventHook
+              - Feature
+              - Group
+              - GroupSchema
+              - IdentityProvider
+              - InlineHook
+              - LinkedObject
+              - Log
+              - NetworkZone
+              - Org
+              - Policy
+              - ProfileMapping
+              - Session
+              - Subscription
+              - Template
+              - ThreatInsight
+              - TrustedOrigin
+              - User
+              - UserFactor
+              - UserSchema
+              - UserType
+
+  okta-paths-must-be-v1-prefixed:
+    description: All Management API paths must start with /api/v1/.
+    given: $.paths
+    severity: error
+    then:
+      function: schema
+      functionOptions:
+        schema:
+          type: object
+          propertyNames:
+            pattern: "^/api/v1/"
+
+  okta-security-must-be-oauth2-or-apitoken:
+    description: Okta endpoints should use OAuth2 (scoped) or API Token security.
+    given: $.components.securitySchemes
+    severity: warn
+    then:
+      function: truthy
+
+  okta-info-must-have-license:
+    description: The spec must declare Apache-2.0 license to match Okta's published spec.
+    given: $.info.license
+    severity: warn
+    then:
+      function: schema
+      functionOptions:
+        schema:
+          type: object
+          required: [name]
+          properties:
+            name:
+              const: Apache-2.0
+
+  okta-server-must-be-okta-domain:
+    description: Server URL should be the parametric Okta subdomain.
+    given: $.servers[*].url
+    severity: warn
+    then:
+      function: pattern
+      functionOptions:
+        match: "okta\\.com"
+
+  okta-camelcase-properties:
+    description: Schema property names should be camelCase (matches Okta's published wire format).
+    given: $.components.schemas[*].properties[*]~
+    severity: info
+    then:
+      function: casing
+      functionOptions:
+        type: camel
+
+  okta-deprecated-must-have-description:
+    description: Deprecated operations must explain replacement in description.
+    given: $.paths[*][get,post,put,patch,delete][?(@.deprecated==true)]
+    severity: warn
+    then:
+      field: description
+      function: truthy

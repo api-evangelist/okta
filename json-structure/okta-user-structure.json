@@ -1,0 +1,65 @@
+{
+  "$id": "https://raw.githubusercontent.com/api-evangelist/okta/main/json-structure/okta-user-structure.json",
+  "name": "okta-user-structure",
+  "description": "Structural description of the Okta User resource — properties, ownership, lifecycle states, and relationships across the Management API surface.",
+  "version": "1.0.0",
+  "provider": "Okta",
+  "providerId": "okta",
+  "modified": "2026-05-22",
+  "resource": "User",
+  "lifecycle": {
+    "states": [
+      "STAGED",
+      "PROVISIONED",
+      "ACTIVE",
+      "RECOVERY",
+      "LOCKED_OUT",
+      "PASSWORD_EXPIRED",
+      "SUSPENDED",
+      "DEPROVISIONED"
+    ],
+    "transitions": [
+      { "from": "STAGED", "to": "PROVISIONED", "via": "activate" },
+      { "from": "PROVISIONED", "to": "ACTIVE", "via": "first password set" },
+      { "from": "ACTIVE", "to": "SUSPENDED", "via": "suspend" },
+      { "from": "SUSPENDED", "to": "ACTIVE", "via": "unsuspend" },
+      { "from": "ACTIVE", "to": "DEPROVISIONED", "via": "deactivate" }
+    ]
+  },
+  "primaryKey": "id",
+  "humanKey": "profile.login",
+  "ownership": {
+    "owningTenant": "Org",
+    "creator": "OktaAdmin | IdpImport | Self-Registration | API"
+  },
+  "core": [
+    { "name": "id", "type": "string", "writable": false },
+    { "name": "status", "type": "enum" },
+    { "name": "type.id", "type": "ref", "ref": "UserType" },
+    { "name": "profile", "type": "object", "ref": "UserSchema" },
+    { "name": "credentials", "type": "object" }
+  ],
+  "timestamps": [
+    "created",
+    "activated",
+    "statusChanged",
+    "lastLogin",
+    "lastUpdated",
+    "passwordChanged"
+  ],
+  "relationships": [
+    { "predicate": "memberOf", "target": "Group", "cardinality": "many" },
+    { "predicate": "enrolledIn", "target": "UserFactor", "cardinality": "many" },
+    { "predicate": "assignedTo", "target": "Application", "cardinality": "many" },
+    { "predicate": "linkedTo", "target": "User", "via": "LinkedObject" },
+    { "predicate": "owns", "target": "Agent", "cardinality": "many", "note": "Okta for AI Agents requires human owner." }
+  ],
+  "credentialProviders": [
+    "OKTA",
+    "ACTIVE_DIRECTORY",
+    "LDAP",
+    "FEDERATION",
+    "SOCIAL",
+    "IMPORT"
+  ]
+}

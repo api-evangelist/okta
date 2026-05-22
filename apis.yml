@@ -1,40 +1,64 @@
 aid: okta
 name: Okta
-description: Okta connects any person with any application on any device. It's an enterprise-grade, identity management service,
-  built for the cloud, but compatible with many on-premises applications. With Okta, IT can manage any employee's access to
-  any application or device. Okta runs in the cloud, on a secure, reliable, extensively audited platform, which integrates
-  deeply with on-premises applications, directories, and identity management systems.
+description: Okta is the workforce identity incumbent — its Identity Cloud platform (also called the Okta Workforce
+  Identity Platform) covers Single Sign-On, Adaptive MFA, Universal Directory, Lifecycle Management, Identity Governance,
+  Privileged Access, Device Access, Identity Threat Protection, Identity Security Posture Management, Access Gateway,
+  and API Access Management. Customer identity is handled by Auth0, which Okta acquired in 2021 and now operates as
+  its consumer-facing identity arm. The platform now extends to securing AI agents via Okta for AI Agents and the
+  Cross-App Access (XAA) protocol — an emerging OAuth profile based on the IETF ID-JAG draft for agent-to-app
+  authorization. The Okta Management API is the primary developer surface, with an official MCP server (okta-mcp-server)
+  exposing administrative operations to LLM agents under human-in-the-loop confirmation.
 kind: contract
 image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
 tags:
+- Identity
+- Workforce Identity
+- Customer Identity
 - Authentication
 - Authorization
-- Identity
-- Platform
 - Single Sign-On
+- Multi-Factor Authentication
+- Identity Governance
+- Privileged Access
+- AI Agents
+- Cross-App Access
+- MCP
+- Platform
 url: https://raw.githubusercontent.com/api-evangelist/okta/refs/heads/main/apis.yml
 created: '2023-11-20'
-modified: '2026-05-19'
+modified: '2026-05-22'
 specificationVersion: '0.19'
 apis:
 - aid: okta:okta-api
   name: Okta API
-  description: The Okta API is a unified identity and access management interface that allows developers to integrate authentication,
-    authorization, user management, group management, application provisioning, policies, sessions, hooks, logs, and more
-    into their applications. It provides programmatic access to the full Okta Identity Cloud platform for managing identity
-    lifecycle and security across enterprise systems.
+  description: The Okta Management API is the unified identity and access management interface for the Okta Workforce
+    Identity Platform. It allows developers to integrate authentication, authorization, user/group/application management,
+    policies, sessions, hooks, system logs, identity providers, authorization servers, brands, network zones, and
+    governance into their applications. Access uses scoped OAuth 2.0 tokens or legacy API tokens, with rate limiting
+    per org and SKU. The canonical OpenAPI spec is published at github.com/okta/okta-management-openapi-spec under
+    dist/current/.
   humanURL: https://developer.okta.com/docs/reference/
   baseURL: https://your-subdomain.okta.com
   image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
   tags:
+  - Identity
   - Authentication
   - Authorization
-  - Identity
+  - Single Sign-On
+  - Multi-Factor Authentication
+  - Universal Directory
+  - Lifecycle Management
   properties:
   - type: Documentation
     url: https://developer.okta.com/docs/reference/
   - type: OpenAPI
     url: openapi/okta-openapi-original.yml
+  - type: OpenAPISource
+    url: https://github.com/okta/okta-management-openapi-spec
+  - type: Authentication
+    url: https://developer.okta.com/docs/guides/implement-grant-type/authcodepkce/main/
+  - type: RateLimits
+    url: rate-limits/okta-rate-limits.yml
   - type: NaftikoCapability
     url: capabilities/okta-application.yaml
   - type: NaftikoCapability
@@ -87,6 +111,69 @@ apis:
     url: capabilities/okta-userschema.yaml
   - type: NaftikoCapability
     url: capabilities/okta-usertype.yaml
+  - type: JSONSchema
+    url: json-schema/okta-user-schema.json
+  - type: JSONSchema
+    url: json-schema/okta-group-schema.json
+  - type: JSONSchema
+    url: json-schema/okta-application-schema.json
+  - type: JSONStructure
+    url: json-structure/okta-user-structure.json
+  - type: JSONLD
+    url: json-ld/okta-context.jsonld
+  - type: SpectralRules
+    url: rules/okta-rules.yml
+  - type: Vocabulary
+    url: vocabulary/okta-vocabulary.yml
+  - type: Plans
+    url: plans/okta-plans-pricing.yml
+  - type: FinOps
+    url: finops/okta-finops.yml
+- aid: okta:okta-cross-app-access
+  name: Cross-App Access (XAA)
+  description: Cross-App Access is Okta's emerging OAuth profile for secure agent-to-app and app-to-app authorization,
+    based on the IETF draft "OAuth Identity Assertion Authorization Grant" (ID-JAG, draft-ietf-oauth-identity-assertion-authz-grant).
+    It lets an Identity Provider mint an identity assertion that downstream resource applications can exchange for
+    a scoped access token, eliminating long-lived unmanaged credentials between AI agents and SaaS apps. Okta operates
+    xaa.dev as a public sandbox for testing requesting and resource application implementations.
+  humanURL: https://xaa.dev/
+  baseURL: https://xaa.dev
+  image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+  tags:
+  - Cross-App Access
+  - AI Agents
+  - OAuth
+  - ID-JAG
+  - Authorization
+  properties:
+  - type: Documentation
+    url: https://xaa.dev/
+  - type: Specification
+    url: https://datatracker.ietf.org/doc/html/draft-ietf-oauth-identity-assertion-authz-grant
+  - type: Sandbox
+    url: https://xaa.dev/
+  - type: Blog
+    url: https://developer.okta.com/blog/2026/01/20/introducing-xaadev-a-playground-for-cross-app-access
+  - type: Blog
+    url: https://developer.okta.com/blog/2026/02/10/make-secure-app-to-app-connections-using-cross-app-access
+- aid: okta:okta-for-ai-agents
+  name: Okta for AI Agents
+  description: Okta for AI Agents secures the full lifecycle of AI agents — discovery, registration with mandatory
+    human ownership, least-privilege scope enforcement, runtime monitoring, and instant revocation — within the Okta
+    identity control plane. It complements Cross-App Access (XAA) which secures the agent-to-app connection itself.
+    Distributed as an add-on across Workforce Identity SKUs.
+  humanURL: https://www.okta.com/
+  image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+  tags:
+  - AI Agents
+  - Identity
+  - Governance
+  - Least Privilege
+  properties:
+  - type: Documentation
+    url: https://www.okta.com/
+  - type: Pricing
+    url: https://www.okta.com/pricing/
 common:
 - type: LinkedIn
   url: https://www.linkedin.com/company/okta-inc-
@@ -128,34 +215,125 @@ common:
   url: https://www.okta.com/privacy-policy/
 - type: Features
   data:
-  - 'Starter at $6/user/mo: SSO + MFA + Universal Directory'
-  - 'Core Essentials at $14/user/mo: Adaptive MFA, PAM, Lifecycle Mgmt'
-  - 'Essentials at $17/user/mo: 50 Workflows'
-  - 'Professional: Device Access, ITP, ISPM, unlimited Workflows'
-  - 'Enterprise: API Access Management, Access Gateway, M2M Tokens'
-  - 'REST APIs: Authentication, Authorization, Users, Groups, Apps, Policies'
+  - 'Workforce Identity Starter at $6/user/mo: SSO + MFA + Universal Directory + 5 Workflows ($1,500/yr minimum)'
+  - 'Core Essentials at $14/user/mo: Adaptive MFA, Privileged Access, Lifecycle Mgmt, Access Governance'
+  - 'Essentials at $17/user/mo: All Core Essentials + 50 Workflows'
+  - 'Professional: Device Access, ISPM, Identity Threat Protection, Sandbox, Unlimited Workflows (custom pricing)'
+  - 'Enterprise: API Access Management, Access Gateway, M2M Tokens (custom pricing)'
+  - 'Customer Identity (Auth0) Enterprise Base: $3K/mo base + B2C / B2B suites'
   - Default rate limits 600 req/min on most endpoints
   - OAuth /token at 1,000 req/min
-  - Logs endpoint capped at 120 req/min
-  - OIDC, SAML, WS-Fed protocols
+  - System Log endpoint capped at 120 req/min
+  - 'Protocols: OIDC, SAML, WS-Fed, SCIM'
   - Universal Directory with custom attributes
-  - Workflows for no-code automation
-  - Lifecycle Management for provisioning
+  - Workflows for no-code automation (5 / 50 / unlimited by SKU)
   - Adaptive MFA with risk-based policies
   - Identity Threat Protection (Professional+)
-  - API Access Management (Enterprise) with OAuth as a Service
+  - Identity Security Posture Management (Professional+)
+  - API Access Management (Enterprise) — OAuth as a Service
+  - 'Okta for AI Agents: agent discovery, registration, ownership, least-privilege, revocation'
+  - 'Cross-App Access (XAA): OAuth ID-JAG draft for agent-to-app authorization'
+  - 'Okta MCP Server: Python, LLM-facing admin CRUD with confirmation gates'
   sources:
   - https://www.okta.com/pricing/
-  updated: '2026-05-04'
+  - https://www.okta.com/
+  - https://xaa.dev/
+  - https://github.com/okta/okta-mcp-server
+  updated: '2026-05-22'
 - type: Integrations
   url: https://www.okta.com/integrations/
-- name: MCP Server
+- type: OpenIntegrationNetwork
+  url: https://www.okta.com/integrations/
+- name: Okta MCP Server
   url: https://github.com/okta/okta-mcp-server
   type: MCPServer
+- name: Okta CLI
+  url: https://github.com/okta/okta-cli
+  type: CLI
+- name: Okta CLI Client (Go)
+  url: https://github.com/okta/okta-cli-client
+  type: CLI
+- name: Terraform Provider for Okta
+  url: https://github.com/okta/terraform-provider-okta
+  type: Terraform
+- name: Terraform Provider for Okta PAM
+  url: https://github.com/okta/terraform-provider-oktapam
+  type: Terraform
+- name: Okta Management OpenAPI Spec
+  url: https://github.com/okta/okta-management-openapi-spec
+  type: OpenAPISource
+- name: Java SDK
+  url: https://github.com/okta/okta-sdk-java
+  type: SDK
+- name: .NET SDK
+  url: https://github.com/okta/okta-sdk-dotnet
+  type: SDK
+- name: Go SDK
+  url: https://github.com/okta/okta-sdk-golang
+  type: SDK
+- name: Python SDK
+  url: https://github.com/okta/okta-sdk-python
+  type: SDK
+- name: Node.js SDK
+  url: https://github.com/okta/okta-sdk-nodejs
+  type: SDK
+- name: JavaScript Auth SDK
+  url: https://github.com/okta/okta-auth-js
+  type: SDK
+- name: React SDK
+  url: https://github.com/okta/okta-react
+  type: SDK
+- name: Angular SDK
+  url: https://github.com/okta/okta-angular
+  type: SDK
+- name: Vue SDK
+  url: https://github.com/okta/okta-vue
+  type: SDK
+- name: React Native SDK
+  url: https://github.com/okta/okta-react-native
+  type: SDK
+- name: Swift Mobile SDK
+  url: https://github.com/okta/okta-mobile-swift
+  type: SDK
+- name: Kotlin Mobile SDK
+  url: https://github.com/okta/okta-mobile-kotlin
+  type: SDK
+- name: Spring Boot Starter
+  url: https://github.com/okta/okta-spring-boot
+  type: SDK
+- name: Okta Sign-In Widget
+  url: https://github.com/okta/okta-signin-widget
+  type: SDK
+- name: OIDC Middleware (Node)
+  url: https://github.com/okta/okta-oidc-middleware
+  type: SDK
+- name: JWT Verifier (Java)
+  url: https://github.com/okta/okta-jwt-verifier-java
+  type: SDK
+- name: JWT Verifier (Python)
+  url: https://github.com/okta/okta-jwt-verifier-python
+  type: SDK
+- name: Odyssey Design System
+  url: https://github.com/okta/odyssey
+  type: DesignSystem
+- name: Workflows Templates
+  url: https://github.com/okta/workflows-templates
+  type: Samples
+- name: Customer Detections
+  url: https://github.com/okta/customer-detections
+  type: Samples
+- name: Cross-App Access Sandbox
+  url: https://xaa.dev/
+  type: Sandbox
 integrations:
-- name: Cross App Access Protocol
-- name: Secure Identity Integrations
-- name: See Details
+- name: Auth0 (Customer Identity sibling)
+  url: https://auth0.com/
+- name: Cross App Access Protocol (XAA / ID-JAG)
+  url: https://datatracker.ietf.org/doc/html/draft-ietf-oauth-identity-assertion-authz-grant
+- name: Okta Integration Network
+  url: https://www.okta.com/integrations/
+- name: Model Context Protocol (MCP)
+  url: https://github.com/okta/okta-mcp-server
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
