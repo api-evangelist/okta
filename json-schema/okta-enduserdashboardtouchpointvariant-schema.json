@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/EndUserDashboardTouchPointVariant",
+  "title": "EndUserDashboardTouchPointVariant",
+  "type": "string",
+  "enum": [
+    "OKTA_DEFAULT",
+    "WHITE_LOGO_BACKGROUND",
+    "FULL_THEME",
+    "LOGO_ON_FULL_WHITE_BACKGROUND"
+  ],
+  "x-okta-tags": [
+    "Brand"
+  ]
+}

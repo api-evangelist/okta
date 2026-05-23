@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/UserSchemaPublic",
+  "title": "UserSchemaPublic",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "readOnly": true
+    },
+    "properties": {
+      "type": "object",
+      "additionalProperties": {
+        "$ref": "#/components/schemas/UserSchemaAttribute"
+      }
+    },
+    "required": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "type": {
+      "type": "string"
+    }
+  },
+  "x-okta-tags": [
+    "UserSchema"
+  ]
+}

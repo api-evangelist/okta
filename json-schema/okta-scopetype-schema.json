@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/ScopeType",
+  "title": "ScopeType",
+  "type": "string",
+  "enum": [
+    "CORS",
+    "REDIRECT",
+    "IFRAME_EMBED"
+  ],
+  "x-okta-tags": [
+    "Role"
+  ]
+}

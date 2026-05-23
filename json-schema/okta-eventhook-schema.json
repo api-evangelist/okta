@@ -1,0 +1,132 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/EventHook",
+  "title": "EventHook",
+  "type": "object",
+  "properties": {
+    "_links": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "properties": {}
+      },
+      "readOnly": true
+    },
+    "channel": {
+      "$ref": "#/components/schemas/EventHookChannel"
+    },
+    "created": {
+      "type": "string",
+      "format": "date-time",
+      "readOnly": true
+    },
+    "createdBy": {
+      "type": "string"
+    },
+    "events": {
+      "$ref": "#/components/schemas/EventSubscriptions"
+    },
+    "id": {
+      "type": "string",
+      "readOnly": true
+    },
+    "lastUpdated": {
+      "type": "string",
+      "format": "date-time",
+      "readOnly": true
+    },
+    "name": {
+      "type": "string"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "ACTIVE",
+        "INACTIVE"
+      ]
+    },
+    "verificationStatus": {
+      "type": "string",
+      "enum": [
+        "UNVERIFIED",
+        "VERIFIED"
+      ]
+    }
+  },
+  "x-okta-crud": [
+    {
+      "alias": "create",
+      "arguments": [
+        {
+          "dest": "eventHook",
+          "self": true
+        }
+      ],
+      "operationId": "createEventHook"
+    },
+    {
+      "alias": "read",
+      "arguments": [],
+      "operationId": "getEventHook"
+    },
+    {
+      "alias": "update",
+      "arguments": [
+        {
+          "dest": "eventHookId",
+          "src": "id"
+        },
+        {
+          "dest": "eventHook",
+          "self": true
+        }
+      ],
+      "operationId": "updateEventHook"
+    },
+    {
+      "alias": "delete",
+      "arguments": [
+        {
+          "dest": "eventHookId",
+          "src": "id"
+        }
+      ],
+      "operationId": "deleteEventHook"
+    }
+  ],
+  "x-okta-operations": [
+    {
+      "alias": "activate",
+      "arguments": [
+        {
+          "dest": "eventHookId",
+          "src": "id"
+        }
+      ],
+      "operationId": "activateEventHook"
+    },
+    {
+      "alias": "deactivate",
+      "arguments": [
+        {
+          "dest": "eventHookId",
+          "src": "id"
+        }
+      ],
+      "operationId": "deactivateEventHook"
+    },
+    {
+      "alias": "verify",
+      "arguments": [
+        {
+          "dest": "eventHookId",
+          "src": "id"
+        }
+      ],
+      "operationId": "verifyEventHook"
+    }
+  ],
+  "x-okta-tags": [
+    "EventHook"
+  ]
+}

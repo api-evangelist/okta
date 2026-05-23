@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/ProtocolAlgorithms",
+  "title": "ProtocolAlgorithms",
+  "type": "object",
+  "properties": {
+    "request": {
+      "$ref": "#/components/schemas/ProtocolAlgorithmType"
+    },
+    "response": {
+      "$ref": "#/components/schemas/ProtocolAlgorithmType"
+    }
+  },
+  "x-okta-tags": [
+    "IdentityProvider"
+  ]
+}

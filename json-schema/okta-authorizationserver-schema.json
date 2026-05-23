@@ -1,0 +1,357 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/AuthorizationServer",
+  "title": "AuthorizationServer",
+  "type": "object",
+  "properties": {
+    "_links": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "properties": {}
+      },
+      "readOnly": true
+    },
+    "audiences": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "created": {
+      "type": "string",
+      "format": "date-time",
+      "readOnly": true
+    },
+    "credentials": {
+      "$ref": "#/components/schemas/AuthorizationServerCredentials"
+    },
+    "default": {
+      "type": "boolean",
+      "readOnly": true
+    },
+    "description": {
+      "type": "string"
+    },
+    "id": {
+      "type": "string",
+      "readOnly": true
+    },
+    "issuer": {
+      "type": "string"
+    },
+    "issuerMode": {
+      "type": "string",
+      "enum": [
+        "ORG_URL",
+        "CUSTOM_URL",
+        "DYNAMIC"
+      ]
+    },
+    "lastUpdated": {
+      "type": "string",
+      "format": "date-time",
+      "readOnly": true
+    },
+    "name": {
+      "type": "string"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "ACTIVE",
+        "INACTIVE"
+      ]
+    }
+  },
+  "x-okta-crud": [
+    {
+      "alias": "create",
+      "arguments": [
+        {
+          "dest": "authorizationServer",
+          "self": true
+        }
+      ],
+      "operationId": "createAuthorizationServer"
+    },
+    {
+      "alias": "read",
+      "arguments": [],
+      "operationId": "getAuthorizationServer"
+    },
+    {
+      "alias": "update",
+      "arguments": [
+        {
+          "dest": "authServerId",
+          "src": "id"
+        },
+        {
+          "dest": "authorizationServer",
+          "self": true
+        }
+      ],
+      "operationId": "updateAuthorizationServer"
+    },
+    {
+      "alias": "delete",
+      "arguments": [
+        {
+          "dest": "authServerId",
+          "src": "id"
+        },
+        {
+          "dest": "authorizationServer",
+          "self": true
+        }
+      ],
+      "operationId": "deleteAuthorizationServer"
+    }
+  ],
+  "x-okta-operations": [
+    {
+      "alias": "listOAuth2Claims",
+      "arguments": [
+        {
+          "dest": "authServerId",
+          "src": "id"
+        }
+      ],
+      "operationId": "listOAuth2Claims"
+    },
+    {
+      "alias": "createOAuth2Claim",
+      "arguments": [
+        {
+          "dest": "authServerId",
+          "src": "id"
+        }
+      ],
+      "operationId": "createOAuth2Claim"
+    },
+    {
+      "alias": "deleteOAuth2Claim",
+      "arguments": [
+        {
+          "dest": "authServerId",
+          "src": "id"
+        }
+      ],
+      "operationId": "deleteOAuth2Claim"
+    },
+    {
+      "alias": "getOAuth2Claim",
+      "arguments": [
+        {
+          "dest": "authServerId",
+          "src": "id"
+        }
+      ],
+      "operationId": "getOAuth2Claim"
+    },
+    {
+      "alias": "updateOAuth2Claim",
+      "arguments": [
+        {
+          "dest": "authServerId",
+          "src": "id"
+        }
+      ],
+      "operationId": "updateOAuth2Claim"
+    },
+    {
+      "alias": "listOAuth2Clients",
+      "arguments": [
+        {
+          "dest": "authServerId",
+          "src": "id"
+        }
+      ],
+      "operationId": "listOAuth2ClientsForAuthorizationServer"
+    },
+    {
+      "alias": "revokeRefreshTokensForClient",
+      "arguments": [
+        {
+          "dest": "authServerId",
+          "src": "id"
+        }
+      ],
+      "operationId": "revokeRefreshTokensForAuthorizationServerAndClient"
+    },
+    {
+      "alias": "listRefreshTokensForClient",
+      "arguments": [
+        {
+          "dest": "authServerId",
+          "src": "id"
+        }
+      ],
+      "operationId": "listRefreshTokensForAuthorizationServerAndClient"
+    },
+    {
+      "alias": "getRefreshTokenForClient",
+      "arguments": [
+        {
+          "dest": "authServerId",
+          "src": "id"
+        }
+      ],
+      "operationId": "getRefreshTokenForAuthorizationServerAndClient"
+    },
+    {
+      "alias": "revokeRefreshTokenForClient",
+      "arguments": [
+        {
+          "dest": "authServerId",
+          "src": "id"
+        }
+      ],
+      "operationId": "revokeRefreshTokenForAuthorizationServerAndClient"
+    },
+    {
+      "alias": "listKeys",
+      "arguments": [
+        {
+          "dest": "authServerId",
+          "src": "id"
+        }
+      ],
+      "operationId": "listAuthorizationServerKeys"
+    },
+    {
+      "alias": "rotateKeys",
+      "arguments": [
+        {
+          "dest": "authServerId",
+          "src": "id"
+        }
+      ],
+      "operationId": "rotateAuthorizationServerKeys"
+    },
+    {
+      "alias": "activate",
+      "arguments": [
+        {
+          "dest": "authServerId",
+          "src": "id"
+        }
+      ],
+      "operationId": "activateAuthorizationServer"
+    },
+    {
+      "alias": "deactivate",
+      "arguments": [
+        {
+          "dest": "authServerId",
+          "src": "id"
+        }
+      ],
+      "operationId": "deactivateAuthorizationServer"
+    },
+    {
+      "alias": "listPolicies",
+      "arguments": [
+        {
+          "dest": "authServerId",
+          "src": "id"
+        }
+      ],
+      "operationId": "listAuthorizationServerPolicies"
+    },
+    {
+      "alias": "createPolicy",
+      "arguments": [
+        {
+          "dest": "authServerId",
+          "src": "id"
+        }
+      ],
+      "operationId": "createAuthorizationServerPolicy"
+    },
+    {
+      "alias": "deletePolicy",
+      "arguments": [
+        {
+          "dest": "authServerId",
+          "src": "id"
+        }
+      ],
+      "operationId": "deleteAuthorizationServerPolicy"
+    },
+    {
+      "alias": "getPolicy",
+      "arguments": [
+        {
+          "dest": "authServerId",
+          "src": "id"
+        }
+      ],
+      "operationId": "getAuthorizationServerPolicy"
+    },
+    {
+      "alias": "updatePolicy",
+      "arguments": [
+        {
+          "dest": "authServerId",
+          "src": "id"
+        }
+      ],
+      "operationId": "updateAuthorizationServerPolicy"
+    },
+    {
+      "alias": "listOAuth2Scopes",
+      "arguments": [
+        {
+          "dest": "authServerId",
+          "src": "id"
+        }
+      ],
+      "operationId": "listOAuth2Scopes"
+    },
+    {
+      "alias": "createOAuth2Scope",
+      "arguments": [
+        {
+          "dest": "authServerId",
+          "src": "id"
+        }
+      ],
+      "operationId": "createOAuth2Scope"
+    },
+    {
+      "alias": "deleteOAuth2Scope",
+      "arguments": [
+        {
+          "dest": "authServerId",
+          "src": "id"
+        }
+      ],
+      "operationId": "deleteOAuth2Scope"
+    },
+    {
+      "alias": "getOAuth2Scope",
+      "arguments": [
+        {
+          "dest": "authServerId",
+          "src": "id"
+        }
+      ],
+      "operationId": "getOAuth2Scope"
+    },
+    {
+      "alias": "updateOAuth2Scope",
+      "arguments": [
+        {
+          "dest": "authServerId",
+          "src": "id"
+        }
+      ],
+      "operationId": "updateOAuth2Scope"
+    }
+  ],
+  "x-okta-tags": [
+    "AuthorizationServer"
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/U2fUserFactor",
+  "title": "U2fUserFactor",
+  "type": "object",
+  "properties": {
+    "profile": {
+      "$ref": "#/components/schemas/U2fUserFactorProfile"
+    }
+  },
+  "x-okta-parent": "#/definitions/UserFactor",
+  "x-okta-tags": [
+    "UserFactor"
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/TokenAuthorizationServerPolicyRuleAction",
+  "title": "TokenAuthorizationServerPolicyRuleAction",
+  "type": "object",
+  "properties": {
+    "accessTokenLifetimeMinutes": {
+      "type": "integer"
+    },
+    "inlineHook": {
+      "$ref": "#/components/schemas/TokenAuthorizationServerPolicyRuleActionInlineHook"
+    },
+    "refreshTokenLifetimeMinutes": {
+      "type": "integer"
+    },
+    "refreshTokenWindowMinutes": {
+      "type": "integer"
+    }
+  },
+  "x-okta-tags": [
+    "AuthorizationServerPolicy"
+  ]
+}

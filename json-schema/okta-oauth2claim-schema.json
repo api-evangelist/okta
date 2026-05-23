@@ -1,0 +1,69 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/OAuth2Claim",
+  "title": "OAuth2Claim",
+  "type": "object",
+  "properties": {
+    "_links": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "properties": {}
+      },
+      "readOnly": true
+    },
+    "alwaysIncludeInToken": {
+      "type": "boolean"
+    },
+    "claimType": {
+      "type": "string",
+      "enum": [
+        "IDENTITY",
+        "RESOURCE"
+      ]
+    },
+    "conditions": {
+      "$ref": "#/components/schemas/OAuth2ClaimConditions"
+    },
+    "group_filter_type": {
+      "type": "string",
+      "enum": [
+        "STARTS_WITH",
+        "EQUALS",
+        "CONTAINS",
+        "REGEX"
+      ]
+    },
+    "id": {
+      "type": "string",
+      "readOnly": true
+    },
+    "name": {
+      "type": "string"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "ACTIVE",
+        "INACTIVE"
+      ]
+    },
+    "system": {
+      "type": "boolean"
+    },
+    "value": {
+      "type": "string"
+    },
+    "valueType": {
+      "type": "string",
+      "enum": [
+        "EXPRESSION",
+        "GROUPS",
+        "SYSTEM"
+      ]
+    }
+  },
+  "x-okta-tags": [
+    "Application"
+  ]
+}

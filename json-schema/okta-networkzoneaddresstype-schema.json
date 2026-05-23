@@ -1,0 +1,13 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/NetworkZoneAddressType",
+  "title": "NetworkZoneAddressType",
+  "type": "string",
+  "enum": [
+    "CIDR",
+    "RANGE"
+  ],
+  "x-okta-tags": [
+    "NetworkZone"
+  ]
+}

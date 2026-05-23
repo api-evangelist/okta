@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/PushUserFactorProfile",
+  "title": "PushUserFactorProfile",
+  "type": "object",
+  "properties": {
+    "credentialId": {
+      "type": "string"
+    },
+    "deviceToken": {
+      "type": "string"
+    },
+    "deviceType": {
+      "type": "string"
+    },
+    "name": {
+      "type": "string"
+    },
+    "platform": {
+      "type": "string"
+    },
+    "version": {
+      "type": "string"
+    }
+  },
+  "x-okta-tags": [
+    "UserFactor"
+  ]
+}

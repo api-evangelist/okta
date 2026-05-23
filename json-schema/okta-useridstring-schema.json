@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/UserIdString",
+  "title": "UserIdString",
+  "type": "object",
+  "properties": {
+    "userId": {
+      "type": "string"
+    }
+  },
+  "x-okta-parent": "#/definitions/OrgContactUser",
+  "x-okta-tags": [
+    "Org"
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/AccessPolicyConstraints",
+  "title": "AccessPolicyConstraints",
+  "type": "object",
+  "properties": {
+    "knowledge": {
+      "$ref": "#/components/schemas/KnowledgeConstraint"
+    },
+    "possession": {
+      "$ref": "#/components/schemas/PossessionConstraint"
+    }
+  },
+  "x-okta-tags": [
+    "Policy"
+  ]
+}

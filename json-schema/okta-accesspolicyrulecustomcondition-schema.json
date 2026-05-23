@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/AccessPolicyRuleCustomCondition",
+  "title": "AccessPolicyRuleCustomCondition",
+  "type": "object",
+  "properties": {
+    "condition": {
+      "type": "string"
+    }
+  },
+  "x-okta-tags": [
+    "Policy"
+  ]
+}

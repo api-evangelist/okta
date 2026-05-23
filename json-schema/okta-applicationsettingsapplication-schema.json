@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/ApplicationSettingsApplication",
+  "title": "ApplicationSettingsApplication",
+  "type": "object",
+  "properties": {
+    "acsUrl": {
+      "type": "string"
+    },
+    "buttonField": {
+      "type": "string"
+    },
+    "loginUrlRegex": {
+      "type": "string"
+    },
+    "orgName": {
+      "type": "string"
+    },
+    "passwordField": {
+      "type": "string"
+    },
+    "url": {
+      "type": "string"
+    },
+    "usernameField": {
+      "type": "string"
+    }
+  },
+  "x-okta-tags": [
+    "Application"
+  ]
+}

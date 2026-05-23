@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/OrgOktaCommunicationSetting",
+  "title": "OrgOktaCommunicationSetting",
+  "type": "object",
+  "properties": {
+    "_links": {
+      "type": "object"
+    },
+    "optOutEmailUsers": {
+      "type": "boolean",
+      "readOnly": true
+    }
+  },
+  "x-okta-operations": [
+    {
+      "alias": "optInUsersToOktaCommunicationEmails",
+      "operationId": "optInUsersToOktaCommunicationEmails"
+    },
+    {
+      "alias": "optOutUsersFromOktaCommunicationEmails",
+      "operationId": "optOutUsersFromOktaCommunicationEmails"
+    }
+  ],
+  "x-okta-tags": [
+    "Org"
+  ]
+}

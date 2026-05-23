@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/ProvisioningConnectionProfile",
+  "title": "ProvisioningConnectionProfile",
+  "type": "object",
+  "properties": {
+    "authScheme": {
+      "$ref": "#/components/schemas/ProvisioningConnectionAuthScheme"
+    },
+    "token": {
+      "type": "string"
+    }
+  },
+  "x-okta-operations": [
+    {
+      "alias": "setDefaultProvisioningConnectionForApplication",
+      "operationId": "setDefaultProvisioningConnectionForApplication"
+    }
+  ],
+  "x-okta-tags": [
+    "Application"
+  ]
+}

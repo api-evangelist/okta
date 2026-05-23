@@ -1,0 +1,13 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/OpenIdConnectRefreshTokenRotationType",
+  "title": "OpenIdConnectRefreshTokenRotationType",
+  "type": "string",
+  "enum": [
+    "rotate",
+    "static"
+  ],
+  "x-okta-tags": [
+    "Application"
+  ]
+}

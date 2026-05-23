@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/ApplicationSettingsNotifications",
+  "title": "ApplicationSettingsNotifications",
+  "type": "object",
+  "properties": {
+    "vpn": {
+      "$ref": "#/components/schemas/ApplicationSettingsNotificationsVpn"
+    }
+  },
+  "x-okta-tags": [
+    "Application"
+  ]
+}

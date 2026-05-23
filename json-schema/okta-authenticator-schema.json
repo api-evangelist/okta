@@ -1,0 +1,94 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/Authenticator",
+  "title": "Authenticator",
+  "type": "object",
+  "properties": {
+    "_links": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "properties": {}
+      },
+      "readOnly": true
+    },
+    "created": {
+      "type": "string",
+      "format": "date-time",
+      "readOnly": true
+    },
+    "id": {
+      "type": "string",
+      "readOnly": true
+    },
+    "key": {
+      "type": "string"
+    },
+    "lastUpdated": {
+      "type": "string",
+      "format": "date-time",
+      "readOnly": true
+    },
+    "name": {
+      "type": "string"
+    },
+    "provider": {
+      "$ref": "#/components/schemas/AuthenticatorProvider"
+    },
+    "settings": {
+      "$ref": "#/components/schemas/AuthenticatorSettings"
+    },
+    "status": {
+      "$ref": "#/components/schemas/AuthenticatorStatus"
+    },
+    "type": {
+      "$ref": "#/components/schemas/AuthenticatorType"
+    }
+  },
+  "x-okta-crud": [
+    {
+      "alias": "read",
+      "arguments": [],
+      "operationId": "getAuthenticator"
+    },
+    {
+      "alias": "update",
+      "arguments": [
+        {
+          "dest": "authenticatorId",
+          "src": "id"
+        },
+        {
+          "dest": "authenticator",
+          "self": true
+        }
+      ],
+      "operationId": "updateAuthenticator"
+    }
+  ],
+  "x-okta-operations": [
+    {
+      "alias": "activate",
+      "arguments": [
+        {
+          "dest": "authenticatorId",
+          "src": "id"
+        }
+      ],
+      "operationId": "activateAuthenticator"
+    },
+    {
+      "alias": "deactivate",
+      "arguments": [
+        {
+          "dest": "authenticatorId",
+          "src": "id"
+        }
+      ],
+      "operationId": "deactivateAuthenticator"
+    }
+  ],
+  "x-okta-tags": [
+    "Authenticator"
+  ]
+}

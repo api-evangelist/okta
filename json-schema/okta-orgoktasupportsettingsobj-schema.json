@@ -1,0 +1,36 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/OrgOktaSupportSettingsObj",
+  "title": "OrgOktaSupportSettingsObj",
+  "type": "object",
+  "properties": {
+    "_links": {
+      "type": "object"
+    },
+    "expiration": {
+      "type": "string",
+      "format": "date-time",
+      "readOnly": true
+    },
+    "support": {
+      "$ref": "#/components/schemas/OrgOktaSupportSetting"
+    }
+  },
+  "x-okta-operations": [
+    {
+      "alias": "extendOktaSupport",
+      "operationId": "extendOktaSupport"
+    },
+    {
+      "alias": "grantOktaSupport",
+      "operationId": "grantOktaSupport"
+    },
+    {
+      "alias": "revokeOktaSupport",
+      "operationId": "revokeOktaSupport"
+    }
+  ],
+  "x-okta-tags": [
+    "Org"
+  ]
+}

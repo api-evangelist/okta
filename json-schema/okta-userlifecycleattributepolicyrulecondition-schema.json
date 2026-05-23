@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/UserLifecycleAttributePolicyRuleCondition",
+  "title": "UserLifecycleAttributePolicyRuleCondition",
+  "type": "object",
+  "properties": {
+    "attributeName": {
+      "type": "string"
+    },
+    "matchingValue": {
+      "type": "string"
+    }
+  },
+  "x-okta-tags": [
+    "Policy"
+  ]
+}

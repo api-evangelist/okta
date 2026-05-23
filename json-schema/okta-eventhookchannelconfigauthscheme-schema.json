@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/EventHookChannelConfigAuthScheme",
+  "title": "EventHookChannelConfigAuthScheme",
+  "type": "object",
+  "properties": {
+    "key": {
+      "type": "string"
+    },
+    "type": {
+      "$ref": "#/components/schemas/EventHookChannelConfigAuthSchemeType"
+    },
+    "value": {
+      "type": "string"
+    }
+  },
+  "x-okta-tags": [
+    "EventHook"
+  ]
+}

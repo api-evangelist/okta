@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/SwaThreeFieldApplicationSettingsApplication",
+  "title": "SwaThreeFieldApplicationSettingsApplication",
+  "type": "object",
+  "properties": {
+    "buttonSelector": {
+      "type": "string"
+    },
+    "extraFieldSelector": {
+      "type": "string"
+    },
+    "extraFieldValue": {
+      "type": "string"
+    },
+    "loginUrlRegex": {
+      "type": "string"
+    },
+    "passwordSelector": {
+      "type": "string"
+    },
+    "targetURL": {
+      "type": "string"
+    },
+    "userNameSelector": {
+      "type": "string"
+    }
+  },
+  "x-okta-parent": "#/definitions/ApplicationSettingsApplication",
+  "x-okta-tags": [
+    "Application"
+  ]
+}

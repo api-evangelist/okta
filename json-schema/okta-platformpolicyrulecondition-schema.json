@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/PlatformPolicyRuleCondition",
+  "title": "PlatformPolicyRuleCondition",
+  "type": "object",
+  "properties": {
+    "exclude": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/PlatformConditionEvaluatorPlatform"
+      }
+    },
+    "include": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/PlatformConditionEvaluatorPlatform"
+      }
+    }
+  },
+  "x-okta-tags": [
+    "Policy"
+  ]
+}

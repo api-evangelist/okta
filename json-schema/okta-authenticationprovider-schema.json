@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/AuthenticationProvider",
+  "title": "AuthenticationProvider",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string"
+    },
+    "type": {
+      "$ref": "#/components/schemas/AuthenticationProviderType"
+    }
+  },
+  "x-okta-tags": [
+    "User"
+  ]
+}

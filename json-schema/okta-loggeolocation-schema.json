@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/LogGeolocation",
+  "title": "LogGeolocation",
+  "type": "object",
+  "properties": {
+    "lat": {
+      "type": "number",
+      "format": "double",
+      "readOnly": true
+    },
+    "lon": {
+      "type": "number",
+      "format": "double",
+      "readOnly": true
+    }
+  },
+  "x-okta-tags": [
+    "Log"
+  ]
+}

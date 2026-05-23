@@ -1,0 +1,65 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/Subscription",
+  "title": "Subscription",
+  "type": "object",
+  "properties": {
+    "_links": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "properties": {}
+      },
+      "readOnly": true
+    },
+    "channels": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "notificationType": {
+      "$ref": "#/components/schemas/NotificationType"
+    },
+    "status": {
+      "$ref": "#/components/schemas/SubscriptionStatus"
+    }
+  },
+  "x-okta-operations": [
+    {
+      "alias": "listRoleSubscriptions",
+      "operationId": "listRoleSubscriptions"
+    },
+    {
+      "alias": "getRoleSubscriptionByNotificationType",
+      "operationId": "getRoleSubscriptionByNotificationType"
+    },
+    {
+      "alias": "getUserSubscriptionByNotificationType",
+      "operationId": "getUserSubscriptionByNotificationType"
+    },
+    {
+      "alias": "listUserSubscriptions",
+      "operationId": "listUserSubscriptions"
+    },
+    {
+      "alias": "subscribeUserSubscriptionByNotificationType",
+      "operationId": "subscribeUserSubscriptionByNotificationType"
+    },
+    {
+      "alias": "unsubscribeRoleSubscriptionByNotificationType",
+      "operationId": "unsubscribeRoleSubscriptionByNotificationType"
+    },
+    {
+      "alias": "subscribeRoleSubscriptionByNotificationType",
+      "operationId": "subscribeRoleSubscriptionByNotificationType"
+    },
+    {
+      "alias": "unsubscribeUserSubscriptionByNotificationType",
+      "operationId": "unsubscribeUserSubscriptionByNotificationType"
+    }
+  ],
+  "x-okta-tags": [
+    "Role"
+  ]
+}

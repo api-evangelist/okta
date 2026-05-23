@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/ContextPolicyRuleCondition",
+  "title": "ContextPolicyRuleCondition",
+  "type": "object",
+  "properties": {
+    "expression": {
+      "type": "string"
+    }
+  },
+  "x-okta-tags": [
+    "Policy"
+  ]
+}

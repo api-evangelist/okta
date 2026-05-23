@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/LinkedObjectDetails",
+  "title": "LinkedObjectDetails",
+  "type": "object",
+  "properties": {
+    "description": {
+      "type": "string"
+    },
+    "name": {
+      "type": "string"
+    },
+    "title": {
+      "type": "string"
+    },
+    "type": {
+      "$ref": "#/components/schemas/LinkedObjectDetailsType"
+    }
+  },
+  "x-okta-tags": [
+    "LinkedObject"
+  ]
+}

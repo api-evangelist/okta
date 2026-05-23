@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/UserSchemaPropertiesProfile",
+  "title": "UserSchemaPropertiesProfile",
+  "type": "object",
+  "properties": {
+    "allOf": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/UserSchemaPropertiesProfileItem"
+      }
+    }
+  },
+  "x-okta-tags": [
+    "UserSchema"
+  ]
+}

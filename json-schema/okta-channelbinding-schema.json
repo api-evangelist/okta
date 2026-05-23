@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/ChannelBinding",
+  "title": "ChannelBinding",
+  "type": "object",
+  "properties": {
+    "required": {
+      "$ref": "#/components/schemas/RequiredEnum"
+    },
+    "style": {
+      "type": "string"
+    }
+  },
+  "x-okta-tags": [
+    "Authenticator"
+  ]
+}

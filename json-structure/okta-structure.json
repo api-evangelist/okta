@@ -1,0 +1,5853 @@
+{
+  "provider": "Okta",
+  "providerId": "okta",
+  "kind": "json-structure",
+  "description": "Structural overview of the Okta API surface; extracted from openapi/.",
+  "schemaCount": 462,
+  "operationCount": 341,
+  "schemas": [
+    {
+      "name": "AccessPolicy",
+      "type": "object",
+      "propertyCount": 0,
+      "required": []
+    },
+    {
+      "name": "AccessPolicyConstraint",
+      "type": "object",
+      "propertyCount": 3,
+      "required": []
+    },
+    {
+      "name": "AccessPolicyConstraints",
+      "type": "object",
+      "propertyCount": 2,
+      "required": []
+    },
+    {
+      "name": "AccessPolicyRule",
+      "type": "object",
+      "propertyCount": 3,
+      "required": []
+    },
+    {
+      "name": "AccessPolicyRuleActions",
+      "type": "object",
+      "propertyCount": 1,
+      "required": []
+    },
+    {
+      "name": "AccessPolicyRuleApplicationSignOn",
+      "type": "object",
+      "propertyCount": 2,
+      "required": []
+    },
+    {
+      "name": "AccessPolicyRuleConditions",
+      "type": "object",
+      "propertyCount": 3,
+      "required": []
+    },
+    {
+      "name": "AccessPolicyRuleCustomCondition",
+      "type": "object",
+      "propertyCount": 1,
+      "required": []
+    },
+    {
+      "name": "AcsEndpoint",
+      "type": "object",
+      "propertyCount": 2,
+      "required": []
+    },
+    {
+      "name": "ActivateFactorRequest",
+      "type": "object",
+      "propertyCount": 5,
+      "required": []
+    },
+    {
+      "name": "AllowedForEnum",
+      "type": "string",
+      "propertyCount": 0,
+      "required": []
+    },
+    {
+      "name": "AppAndInstanceConditionEvaluatorAppOrInstance",
+      "type": "object",
+      "propertyCount": 3,
+      "required": []
+    },
+    {
+      "name": "AppAndInstancePolicyRuleCondition",
+      "type": "object",
+      "propertyCount": 2,
+      "required": []
+    },
+    {
+      "name": "AppInstancePolicyRuleCondition",
+      "type": "object",
+      "propertyCount": 2,
+      "required": []
+    },
+    {
+      "name": "AppLink",
+      "type": "object",
+      "propertyCount": 10,
+      "required": []
+    },
+    {
+      "name": "AppUser",
+      "type": "object",
+      "propertyCount": 14,
+      "required": []
+    },
+    {
+      "name": "AppUserCredentials",
+      "type": "object",
+      "propertyCount": 2,
+      "required": []
+    },
+    {
+      "name": "AppUserPasswordCredential",
+      "type": "object",
+      "propertyCount": 1,
+      "required": []
+    },
+    {
+      "name": "Application",
+      "type": "object",
+      "propertyCount": 16,
+      "required": []
+    },
+    {
+      "name": "ApplicationAccessibility",
+      "type": "object",
+      "propertyCount": 3,
+      "required": []
+    },
+    {
+      "name": "ApplicationCredentials",
+      "type": "object",
+      "propertyCount": 2,
+      "required": []
+    },
+    {
+      "name": "ApplicationCredentialsOAuthClient",
+      "type": "object",
+      "propertyCount": 5,
+      "required": []
+    },
+    {
+      "name": "ApplicationCredentialsScheme",
+      "type": "string",
+      "propertyCount": 0,
+      "required": []
+    },
+    {
+      "name": "ApplicationCredentialsSigning",
+      "type": "object",
+      "propertyCount": 5,
+      "required": []
+    },
+    {
+      "name": "ApplicationCredentialsSigningUse",
+      "type": "string",
+      "propertyCount": 0,
+      "required": []
+    },
+    {
+      "name": "ApplicationCredentialsUsernameTemplate",
+      "type": "object",
+      "propertyCount": 4,
+      "required": []
+    },
+    {
+      "name": "ApplicationFeature",
+      "type": "object",
+      "propertyCount": 5,
+      "required": []
+    },
+    {
+      "name": "ApplicationGroupAssignment",
+      "type": "object",
+      "propertyCount": 6,
+      "required": []
+    },
+    {
+      "name": "ApplicationLicensing",
+      "type": "object",
+      "propertyCount": 1,
+      "required": []
+    },
+    {
+      "name": "ApplicationSettings",
+      "type": "object",
+      "propertyCount": 5,
+      "required": []
+    },
+    {
+      "name": "ApplicationSettingsApplication",
+      "type": "object",
+      "propertyCount": 7,
+      "required": []
+    },
+    {
+      "name": "ApplicationSettingsNotes",
+      "type": "object",
+      "propertyCount": 2,
+      "required": []
+    },
+    {
+      "name": "ApplicationSettingsNotifications",
+      "type": "object",
+      "propertyCount": 1,
+      "required": []
+    },
+    {
+      "name": "ApplicationSettingsNotificationsVpn",
+      "type": "object",
+      "propertyCount": 3,
+      "required": []
+    },
+    {
+      "name": "ApplicationSettingsNotificationsVpnNetwork",
+      "type": "object",
+      "propertyCount": 3,
+      "required": []
+    },
+    {
+      "name": "ApplicationSignOnMode",
+      "type": "string",
+      "propertyCount": 0,
+      "required": []
+    },
+    {
+      "name": "ApplicationVisibility",
+      "type": "object",
+      "propertyCount": 4,
+      "required": []
+    },
+    {
+      "name": "ApplicationVisibilityHide",
+      "type": "object",
+      "propertyCount": 2,
+      "required": []
+    },
+    {
+      "name": "AssignRoleRequest",
+      "type": "object",
+      "propertyCount": 1,
+      "required": []
+    },
+    {
+      "name": "AuthenticationProvider",
+      "type": "object",
+      "propertyCount": 2,
+      "required": []
+    },
+    {
+      "name": "AuthenticationProviderType",
+      "type": "string",
+      "propertyCount": 0,
+      "required": []
+    },
+    {
+      "name": "Authenticator",
+      "type": "object",
+      "propertyCount": 10,
+      "required": []
+    },
+    {
+      "name": "AuthenticatorProvider",
+      "type": "object",
+      "propertyCount": 2,
+      "required": []
+    },
+    {
+      "name": "AuthenticatorProviderConfiguration",
+      "type": "object",
+      "propertyCount": 8,
+      "required": []
+    },
+    {
+      "name": "AuthenticatorProviderConfigurationUserNamePlate",
+      "type": "object",
+      "propertyCount": 1,
+      "required": []
+    },
+    {
+      "name": "AuthenticatorSettings",
+      "type": "object",
+      "propertyCount": 6,
+      "required": []
+    },
+    {
+      "name": "AuthenticatorStatus",
+      "type": "string",
+      "propertyCount": 0,
+      "required": []
+    },
+    {
+      "name": "AuthenticatorType",
+      "type": "string",
+      "propertyCount": 0,
+      "required": []
+    },
+    {
+      "name": "AuthorizationServer",
+      "type": "object",
+      "propertyCount": 12,
+      "required": []
+    },
+    {
+      "name": "AuthorizationServerCredentials",
+      "type": "object",
+      "propertyCount": 1,
+      "required": []
+    },
+    {
+      "name": "AuthorizationServerCredentialsRotationMode",
+      "type": "string",
+      "propertyCount": 0,
+      "required": []
+    },
+    {
+      "name": "AuthorizationServerCredentialsSigningConfig",
+      "type": "object",
+      "propertyCount": 5,
+      "required": []
+    },
+    {
+      "name": "AuthorizationServerCredentialsUse",
+      "type": "string",
+      "propertyCount": 0,
+      "required": []
+    },
+    {
+      "name": "AuthorizationServerPolicy",
+      "type": "object",
+      "propertyCount": 12,
+      "required": []
+    },
+    {
+      "name": "AuthorizationServerPolicyRule",
+      "type": "object",
+      "propertyCount": 10,
+      "required": []
+    },
+    {
+      "name": "AuthorizationServerPolicyRuleActions",
+      "type": "object",
+      "propertyCount": 1,
+      "required": []
+    },
+    {
+      "name": "AuthorizationServerPolicyRuleConditions",
+      "type": "object",
+      "propertyCount": 4,
+      "required": []
+    },
+    {
+      "name": "AutoLoginApplication",
+      "type": "object",
+      "propertyCount": 2,
+      "required": []
+    },
+    {
+      "name": "AutoLoginApplicationSettings",
+      "type": "object",
+      "propertyCount": 1,
+      "required": []
+    },
+    {
+      "name": "AutoLoginApplicationSettingsSignOn",
+      "type": "object",
+      "propertyCount": 2,
+      "required": []
+    },
+    {
+      "name": "BasicApplicationSettings",
+      "type": "object",
+      "propertyCount": 1,
+      "required": []
+    },
+    {
+      "name": "BasicApplicationSettingsApplication",
+      "type": "object",
+      "propertyCount": 2,
+      "required": []
+    },
+    {
+      "name": "BasicAuthApplication",
+      "type": "object",
+      "propertyCount": 3,
+      "required": []
+    },
+    {
+      "name": "BeforeScheduledActionPolicyRuleCondition",
+      "type": "object",
+      "propertyCount": 2,
+      "required": []
+    },
+    {
+      "name": "BookmarkApplication",
+      "type": "object",
+      "propertyCount": 2,
+      "required": []
+    },
+    {
+      "name": "BookmarkApplicationSettings",
+      "type": "object",
+      "propertyCount": 1,
+      "required": []
+    },
+    {
+      "name": "BookmarkApplicationSettingsApplication",
+      "type": "object",
+      "propertyCount": 2,
+      "required": []
+    },
+    {
+      "name": "Brand",
+      "type": "object",
+      "propertyCount": 5,
+      "required": []
+    },
+    {
+      "name": "BrowserPluginApplication",
+      "type": "object",
+      "propertyCount": 1,
+      "required": []
+    },
+    {
+      "name": "CallUserFactor",
+      "type": "object",
+      "propertyCount": 1,
+      "required": []
+    },
+    {
+      "name": "CallUserFactorProfile",
+      "type": "object",
+      "propertyCount": 2,
+      "required": []
+    },
+    {
+      "name": "CapabilitiesCreateObject",
+      "type": "object",
+      "propertyCount": 1,
+      "required": []
+    },
+    {
+      "name": "CapabilitiesObject",
+      "type": "object",
+      "propertyCount": 2,
+      "required": []
+    },
+    {
+      "name": "CapabilitiesUpdateObject",
+      "type": "object",
+      "propertyCount": 3,
+      "required": []
+    },
+    {
+      "name": "CatalogApplication",
+      "type": "object",
+      "propertyCount": 12,
+      "required": []
+    },
+    {
+      "name": "CatalogApplicationStatus",
+      "type": "string",
+      "propertyCount": 0,
+      "required": []
+    },
+    {
+      "name": "ChangeEnum",
+      "type": "string",
+      "propertyCount": 0,
+      "required": []
+    },
+    {
+      "name": "ChangePasswordRequest",
+      "type": "object",
+      "propertyCount": 2,
+      "required": []
+    },
+    {
+      "name": "ChannelBinding",
+      "type": "object",
+      "propertyCount": 2,
+      "required": []
+    },
+    {
+      "name": "ClientPolicyCondition",
+      "type": "object",
+      "propertyCount": 1,
+      "required": []
+    },
+    {
+      "name": "ClientSecret",
+      "type": "object",
+      "propertyCount": 7,
+      "required": []
+    },
+    {
+      "name": "ClientSecretMetadata",
+      "type": "object",
+      "propertyCount": 1,
+      "required": []
+    },
+    {
+      "name": "Compliance",
+      "type": "object",
+      "propertyCount": 1,
+      "required": []
+    },
+    {
+      "name": "ContextPolicyRuleCondition",
+      "type": "object",
+      "propertyCount": 1,
+      "required": []
+    },
+    {
+      "name": "CreateSessionRequest",
+      "type": "object",
+      "propertyCount": 1,
+      "required": []
+    },
+    {
+      "name": "CreateUserRequest",
+      "type": "object",
+      "propertyCount": 4,
+      "required": []
+    },
+    {
+      "name": "Csr",
+      "type": "object",
+      "propertyCount": 4,
+      "required": []
+    },
+    {
+      "name": "CsrMetadata",
+      "type": "object",
+      "propertyCount": 2,
+      "required": []
+    },
+    {
+      "name": "CsrMetadataSubject",
+      "type": "object",
+      "propertyCount": 6,
+      "required": []
+    },
+    {
+      "name": "CsrMetadataSubjectAltNames",
+      "type": "object",
+      "propertyCount": 1,
+      "required": []
+    },
+    {
+      "name": "CustomHotpUserFactor",
+      "type": "object",
+      "propertyCount": 2,
+      "required": []
+    },
+    {
+      "name": "CustomHotpUserFactorProfile",
+      "type": "object",
+      "propertyCount": 1,
+      "required": []
+    },
+    {
+      "name": "DNSRecord",
+      "type": "object",
+      "propertyCount": 4,
+      "required": []
+    },
+    {
+      "name": "DNSRecordType",
+      "type": "string",
+      "propertyCount": 0,
+      "required": []
+    },
+    {
+      "name": "DeviceAccessPolicyRuleCondition",
+      "type": "object",
+      "propertyCount": 2,
+      "required": []
+    },
+    {
+      "name": "DevicePolicyRuleCondition",
+      "type": "object",
+      "propertyCount": 4,
+      "required": []
+    },
+    {
+      "name": "DevicePolicyRuleConditionPlatform",
+      "type": "object",
+      "propertyCount": 2,
+      "required": []
+    },
+    {
+      "name": "Domain",
+      "type": "object",
+      "propertyCount": 6,
+      "required": []
+    },
+    {
+      "name": "DomainCertificate",
+      "type": "object",
+      "propertyCount": 4,
+      "required": []
+    },
+    {
+      "name": "DomainCertificateMetadata",
+      "type": "object",
+      "propertyCount": 3,
+      "required": []
+    },
+    {
+      "name": "DomainCertificateSourceType",
+      "type": "string",
+      "propertyCount": 0,
+      "required": []
+    },
+    {
+      "name": "DomainCertificateType",
+      "type": "string",
+      "propertyCount": 0,
+      "required": []
+    },
+    {
+      "name": "DomainListResponse",
+      "type": "object",
+      "propertyCount": 1,
+      "required": []
+    },
+    {
+      "name": "DomainValidationStatus",
+      "type": "string",
+      "propertyCount": 0,
+      "required": []
+    },
+    {
+      "name": "Duration",
+      "type": "object",
+      "propertyCount": 2,
+      "required": []
+    },
+    {
+      "name": "EmailTemplate",
+      "type": "object",
+      "propertyCount": 2,
+      "required": []
+    },
+    {
+      "name": "EmailTemplateContent",
+      "type": "object",
+      "propertyCount": 5,
+      "required": []
+    },
+    {
+      "name": "EmailTemplateCustomization",
+      "type": "object",
+      "propertyCount": 8,
+      "required": []
+    },
+    {
+      "name": "EmailTemplateCustomizationRequest",
+      "type": "object",
+      "propertyCount": 4,
+      "required": []
+    },
+    {
+      "name": "EmailTemplateTestRequest",
+      "type": "object",
+      "propertyCount": 1,
+      "required": []
+    },
+    {
+      "name": "EmailTemplateTouchPointVariant",
+      "type": "string",
+      "propertyCount": 0,
+      "required": []
+    },
+    {
+      "name": "EmailUserFactor",
+      "type": "object",
+      "propertyCount": 1,
+      "required": []
+    },
+    {
+      "name": "EmailUserFactorProfile",
+      "type": "object",
+      "propertyCount": 1,
+      "required": []
+    },
+    {
+      "name": "EnabledStatus",
+      "type": "string",
+      "propertyCount": 0,
+      "required": []
+    },
+    {
+      "name": "EndUserDashboardTouchPointVariant",
+      "type": "string",
+      "propertyCount": 0,
+      "required": []
+    },
+    {
+      "name": "ErrorPageTouchPointVariant",
+      "type": "string",
+      "propertyCount": 0,
+      "required": []
+    },
+    {
+      "name": "EventHook",
+      "type": "object",
+      "propertyCount": 10,
+      "required": []
+    },
+    {
+      "name": "EventHookChannel",
+      "type": "object",
+      "propertyCount": 3,
+      "required": []
+    },
+    {
+      "name": "EventHookChannelConfig",
+      "type": "object",
+      "propertyCount": 3,
+      "required": []
+    },
+    {
+      "name": "EventHookChannelConfigAuthScheme",
+      "type": "object",
+      "propertyCount": 3,
+      "required": []
+    },
+    {
+      "name": "EventHookChannelConfigAuthSchemeType",
+      "type": "string",
+      "propertyCount": 0,
+      "required": []
+    },
+    {
+      "name": "EventHookChannelConfigHeader",
+      "type": "object",
+      "propertyCount": 2,
+      "required": []
+    },
+    {
+      "name": "EventSubscriptions",
+      "type": "object",
+      "propertyCount": 2,
+      "required": []
+    },
+    {
+      "name": "FactorProvider",
+      "type": "string",
+      "propertyCount": 0,
+      "required": []
+    },
+    {
+      "name": "FactorResultType",
+      "type": "string",
+      "propertyCount": 0,
+      "required": []
+    },
+    {
+      "name": "FactorStatus",
+      "type": "string",
+      "propertyCount": 0,
+      "required": []
+    },
+    {
+      "name": "FactorType",
+      "type": "string",
+      "propertyCount": 0,
+      "required": []
+    },
+    {
+      "name": "Feature",
+      "type": "object",
+      "propertyCount": 7,
+      "required": []
+    },
+    {
+      "name": "FeatureStage",
+      "type": "object",
+      "propertyCount": 2,
+      "required": []
+    },
+    {
+      "name": "FeatureStageState",
+      "type": "string",
+      "propertyCount": 0,
+      "required": []
+    },
+    {
+      "name": "FeatureStageValue",
+      "type": "string",
+      "propertyCount": 0,
+      "required": []
+    },
+    {
+      "name": "FeatureType",
+      "type": "string",
+      "propertyCount": 0,
+      "required": []
+    },
+    {
+      "name": "FipsEnum",
+      "type": "string",
+      "propertyCount": 0,
+      "required": []
+    },
+    {
+      "name": "ForgotPasswordResponse",
+      "type": "object",
+      "propertyCount": 1,
+      "required": []
+    },
+    {
+      "name": "GrantTypePolicyRuleCondition",
+      "type": "object",
+      "propertyCount": 1,
+      "required": []
+    },
+    {
+      "name": "Group",
+      "type": "object",
+      "propertyCount": 9,
+      "required": []
+    },
+    {
+      "name": "GroupCondition",
+      "type": "object",
+      "propertyCount": 2,
+      "required": []
+    },
+    {
+      "name": "GroupPolicyRuleCondition",
+      "type": "object",
+      "propertyCount": 2,
+      "required": []
+    },
+    {
+      "name": "GroupProfile",
+      "type": "object",
+      "propertyCount": 2,
+      "required": []
+    },
+    {
+      "name": "GroupRule",
+      "type": "object",
+      "propertyCount": 8,
+      "required": []
+    },
+    {
+      "name": "GroupRuleAction",
+      "type": "object",
+      "propertyCount": 1,
+      "required": []
+    },
+    {
+      "name": "GroupRuleConditions",
+      "type": "object",
+      "propertyCount": 2,
+      "required": []
+    },
+    {
+      "name": "GroupRuleExpression",
+      "type": "object",
+      "propertyCount": 2,
+      "required": []
+    },
+    {
+      "name": "GroupRuleGroupAssignment",
+      "type": "object",
+      "propertyCount": 1,
+      "required": []
+    },
+    {
+      "name": "GroupRuleGroupCondition",
+      "type": "object",
+      "propertyCount": 2,
+      "required": []
+    },
+    {
+      "name": "GroupRulePeopleCondition",
+      "type": "object",
+      "propertyCount": 2,
+      "required": []
+    },
+    {
+      "name": "GroupRuleStatus",
+      "type": "string",
+      "propertyCount": 0,
+      "required": []
+    },
+    {
+      "name": "GroupRuleUserCondition",
+      "type": "object",
+      "propertyCount": 2,
+      "required": []
+    },
+    {
+      "name": "GroupSchema",
+      "type": "object",
+      "propertyCount": 11,
+      "required": []
+    },
+    {
+      "name": "GroupSchemaAttribute",
+      "type": "object",
+      "propertyCount": 17,
+      "required": []
+    },
+    {
+      "name": "GroupSchemaBase",
+      "type": "object",
+      "propertyCount": 4,
+      "required": []
+    },
+    {
+      "name": "GroupSchemaBaseProperties",
+      "type": "object",
+      "propertyCount": 2,
+      "required": []
+    },
+    {
+      "name": "GroupSchemaCustom",
+      "type": "object",
+      "propertyCount": 4,
+      "required": []
+    },
+    {
+      "name": "GroupSchemaDefinitions",
+      "type": "object",
+      "propertyCount": 2,
+      "required": []
+    },
+    {
+      "name": "GroupType",
+      "type": "string",
+      "propertyCount": 0,
+      "required": []
+    },
+    {
+      "name": "HardwareUserFactor",
+      "type": "object",
+      "propertyCount": 1,
+      "required": []
+    },
+    {
+      "name": "HardwareUserFactorProfile",
+      "type": "object",
+      "propertyCount": 1,
+      "required": []
+    },
+    {
+      "name": "IdentityProvider",
+      "type": "object",
+      "propertyCount": 10,
+      "required": []
+    },
+    {
+      "name": "IdentityProviderApplicationUser",
+      "type": "object",
+      "propertyCount": 7,
+      "required": []
+    },
+    {
+      "name": "IdentityProviderCredentials",
+      "type": "object",
+      "propertyCount": 3,
+      "required": []
+    },
+    {
+      "name": "IdentityProviderCredentialsClient",
+      "type": "object",
+      "propertyCount": 2,
+      "required": []
+    },
+    {
+      "name": "IdentityProviderCredentialsSigning",
+      "type": "object",
+      "propertyCount": 3,
+      "required": []
+    },
+    {
+      "name": "IdentityProviderCredentialsTrust",
+      "type": "object",
+      "propertyCount": 5,
+      "required": []
+    },
+    {
+      "name": "IdentityProviderPolicy",
+      "type": "object",
+      "propertyCount": 4,
+      "required": []
+    },
+    {
+      "name": "IdentityProviderPolicyRuleCondition",
+      "type": "object",
+      "propertyCount": 2,
+      "required": []
+    },
+    {
+      "name": "IdpPolicyRuleAction",
+      "type": "object",
+      "propertyCount": 1,
+      "required": []
+    },
+    {
+      "name": "IdpPolicyRuleActionProvider",
+      "type": "object",
+      "propertyCount": 2,
+      "required": []
+    },
+    {
+      "name": "IframeEmbedScopeAllowedApps",
+      "type": "string",
+      "propertyCount": 0,
+      "required": []
+    },
+    {
+      "name": "ImageUploadResponse",
+      "type": "object",
+      "propertyCount": 1,
+      "required": []
+    },
+    {
+      "name": "InactivityPolicyRuleCondition",
+      "type": "object",
+      "propertyCount": 2,
+      "required": []
+    },
+    {
+      "name": "InlineHook",
+      "type": "object",
+      "propertyCount": 9,
+      "required": []
+    },
+    {
+      "name": "InlineHookChannel",
+      "type": "object",
+      "propertyCount": 3,
+      "required": []
+    },
+    {
+      "name": "InlineHookChannelConfig",
+      "type": "object",
+      "propertyCount": 4,
+      "required": []
+    },
+    {
+      "name": "InlineHookChannelConfigAuthScheme",
+      "type": "object",
+      "propertyCount": 3,
+      "required": []
+    },
+    {
+      "name": "InlineHookChannelConfigHeaders",
+      "type": "object",
+      "propertyCount": 2,
+      "required": []
+    },
+    {
+      "name": "InlineHookPayload",
+      "type": "object",
+      "propertyCount": 0,
+      "required": []
+    },
+    {
+      "name": "InlineHookResponse",
+      "type": "object",
+      "propertyCount": 1,
+      "required": []
+    },
+    {
+      "name": "InlineHookResponseCommandValue",
+      "type": "object",
+      "propertyCount": 3,
+      "required": []
+    },
+    {
+      "name": "InlineHookResponseCommands",
+      "type": "object",
+      "propertyCount": 2,
+      "required": []
+    },
+    {
+      "name": "InlineHookStatus",
+      "type": "string",
+      "propertyCount": 0,
+      "required": []
+    },
+    {
+      "name": "InlineHookType",
+      "type": "string",
+      "propertyCount": 0,
+      "required": []
+    },
+    {
+      "name": "IonField",
+      "type": "object",
+      "propertyCount": 9,
+      "required": []
+    },
+    {
+      "name": "IonForm",
+      "type": "object",
+      "propertyCount": 9,
+      "required": []
+    },
+    {
+      "name": "JsonWebKey",
+      "type": "object",
+      "propertyCount": 16,
+      "required": []
+    },
+    {
+      "name": "JwkUse",
+      "type": "object",
+      "propertyCount": 1,
+      "required": []
+    },
+    {
+      "name": "KnowledgeConstraint",
+      "type": "object",
+      "propertyCount": 0,
+      "required": []
+    },
+    {
+      "name": "LifecycleCreateSettingObject",
+      "type": "object",
+      "propertyCount": 1,
+      "required": []
+    },
+    {
+      "name": "LifecycleDeactivateSettingObject",
+      "type": "object",
+      "propertyCount": 1,
+      "required": []
+    },
+    {
+      "name": "LifecycleExpirationPolicyRuleCondition",
+      "type": "object",
+      "propertyCount": 3,
+      "required": []
+    },
+    {
+      "name": "LinkedObject",
+      "type": "object",
+      "propertyCount": 3,
+      "required": []
+    },
+    {
+      "name": "LinkedObjectDetails",
+      "type": "object",
+      "propertyCount": 4,
+      "required": []
+    },
+    {
+      "name": "LinkedObjectDetailsType",
+      "type": "string",
+      "propertyCount": 0,
+      "required": []
+    },
+    {
+      "name": "LogActor",
+      "type": "object",
+      "propertyCount": 5,
+      "required": []
+    },
+    {
+      "name": "LogAuthenticationContext",
+      "type": "object",
+      "propertyCount": 7,
+      "required": []
+    },
+    {
+      "name": "LogAuthenticationProvider",
+      "type": "string",
+      "propertyCount": 0,
+      "required": []
+    },
+    {
+      "name": "LogClient",
+      "type": "object",
+      "propertyCount": 6,
+      "required": []
+    },
+    {
+      "name": "LogCredentialProvider",
+      "type": "string",
+      "propertyCount": 0,
+      "required": []
+    },
+    {
+      "name": "LogCredentialType",
+      "type": "string",
+      "propertyCount": 0,
+      "required": []
+    },
+    {
+      "name": "LogDebugContext",
+      "type": "object",
+      "propertyCount": 1,
+      "required": []
+    },
+    {
+      "name": "LogEvent",
+      "type": "object",
+      "propertyCount": 16,
+      "required": []
+    },
+    {
+      "name": "LogGeographicalContext",
+      "type": "object",
+      "propertyCount": 5,
+      "required": []
+    },
+    {
+      "name": "LogGeolocation",
+      "type": "object",
+      "propertyCount": 2,
+      "required": []
+    },
+    {
+      "name": "LogIpAddress",
+      "type": "object",
+      "propertyCount": 4,
+      "required": []
+    },
+    {
+      "name": "LogIssuer",
+      "type": "object",
+      "propertyCount": 2,
+      "required": []
+    },
+    {
+      "name": "LogOutcome",
+      "type": "object",
+      "propertyCount": 2,
+      "required": []
+    },
+    {
+      "name": "LogRequest",
+      "type": "object",
+      "propertyCount": 1,
+      "required": []
+    },
+    {
+      "name": "LogSecurityContext",
+      "type": "object",
+      "propertyCount": 5,
+      "required": []
+    },
+    {
+      "name": "LogSeverity",
+      "type": "string",
+      "propertyCount": 0,
+      "required": []
+    },
+    {
+      "name": "LogTarget",
+      "type": "object",
+      "propertyCount": 5,
+      "required": []
+    },
+    {
+      "name": "LogTransaction",
+      "type": "object",
+      "propertyCount": 3,
+      "required": []
+    },
+    {
+      "name": "LogUserAgent",
+      "type": "object",
+      "propertyCount": 3,
+      "required": []
+    },
+    {
+      "name": "MDMEnrollmentPolicyRuleCondition",
+      "type": "object",
+      "propertyCount": 2,
+      "required": []
+    },
+    {
+      "name": "MultifactorEnrollmentPolicy",
+      "type": null,
+      "propertyCount": 0,
+      "required": []
+    },
+    {
+      "name": "MultifactorEnrollmentPolicyAuthenticatorSettings",
+      "type": "object",
+      "propertyCount": 3,
+      "required": []
+    },
+    {
+      "name": "MultifactorEnrollmentPolicyAuthenticatorStatus",
+      "type": "string",
+      "propertyCount": 0,
+      "required": []
+    },
+    {
+      "name": "MultifactorEnrollmentPolicyAuthenticatorType",
+      "type": "string",
+      "propertyCount": 0,
+      "required": []
+    },
+    {
+      "name": "MultifactorEnrollmentPolicySettings",
+      "type": "object",
+      "propertyCount": 2,
+      "required": []
+    },
+    {
+      "name": "MultifactorEnrollmentPolicySettingsType",
+      "type": "string",
+      "propertyCount": 0,
+      "required": []
+    },
+    {
+      "name": "NetworkZone",
+      "type": "object",
+      "propertyCount": 14,
+      "required": []
+    },
+    {
+      "name": "NetworkZoneAddress",
+      "type": "object",
+      "propertyCount": 2,
+      "required": []
+    },
+    {
+      "name": "NetworkZoneAddressType",
+      "type": "string",
+      "propertyCount": 0,
+      "required": []
+    },
+    {
+      "name": "NetworkZoneLocation",
+      "type": "object",
+      "propertyCount": 2,
+      "required": []
+    },
+    {
+      "name": "NetworkZoneStatus",
+      "type": "string",
+      "propertyCount": 0,
+      "required": []
+    },
+    {
+      "name": "NetworkZoneType",
+      "type": "string",
+      "propertyCount": 0,
+      "required": []
+    },
+    {
+      "name": "NetworkZoneUsage",
+      "type": "string",
+      "propertyCount": 0,
+      "required": []
+    },
+    {
+      "name": "NotificationType",
+      "type": "string",
+      "propertyCount": 0,
+      "required": []
+    },
+    {
+      "name": "OAuth2Actor",
+      "type": "object",
+      "propertyCount": 2,
+      "required": []
+    },
+    {
+      "name": "OAuth2Claim",
+      "type": "object",
+      "propertyCount": 11,
+      "required": []
+    },
+    {
+      "name": "OAuth2ClaimConditions",
+      "type": "object",
+      "propertyCount": 1,
+      "required": []
+    },
+    {
+      "name": "OAuth2Client",
+      "type": "object",
+      "propertyCount": 5,
+      "required": []
+    },
+    {
+      "name": "OAuth2RefreshToken",
+      "type": "object",
+      "propertyCount": 12,
+      "required": []
+    },
+    {
+      "name": "OAuth2Scope",
+      "type": "object",
+      "propertyCount": 8,
+      "required": []
+    },
+    {
+      "name": "OAuth2ScopeConsentGrant",
+      "type": "object",
+      "propertyCount": 12,
+      "required": []
+    },
+    {
+      "name": "OAuth2ScopeConsentGrantSource",
+      "type": "string",
+      "propertyCount": 0,
+      "required": []
+    },
+    {
+      "name": "OAuth2ScopeConsentGrantStatus",
+      "type": "string",
+      "propertyCount": 0,
+      "required": []
+    },
+    {
+      "name": "OAuth2ScopesMediationPolicyRuleCondition",
+      "type": "object",
+      "propertyCount": 1,
+      "required": []
+    },
+    {
+      "name": "OAuth2Token",
+      "type": "object",
+      "propertyCount": 11,
+      "required": []
+    },
+    {
+      "name": "OAuthApplicationCredentials",
+      "type": "object",
+      "propertyCount": 1,
+      "required": []
+    },
+    {
+      "name": "OAuthAuthorizationPolicy",
+      "type": "object",
+      "propertyCount": 0,
+      "required": []
+    },
+    {
+      "name": "OAuthEndpointAuthenticationMethod",
+      "type": "string",
+      "propertyCount": 0,
+      "required": []
+    },
+    {
+      "name": "OAuthGrantType",
+      "type": "string",
+      "propertyCount": 0,
+      "required": []
+    },
+    {
+      "name": "OAuthResponseType",
+      "type": "string",
+      "propertyCount": 0,
+      "required": []
+    },
+    {
+      "name": "OktaSignOnPolicy",
+      "type": "object",
+      "propertyCount": 1,
+      "required": []
+    },
+    {
+      "name": "OktaSignOnPolicyConditions",
+      "type": "object",
+      "propertyCount": 1,
+      "required": []
+    },
+    {
+      "name": "OktaSignOnPolicyRule",
+      "type": "object",
+      "propertyCount": 3,
+      "required": []
+    },
+    {
+      "name": "OktaSignOnPolicyRuleActions",
+      "type": "object",
+      "propertyCount": 1,
+      "required": []
+    },
+    {
+      "name": "OktaSignOnPolicyRuleConditions",
+      "type": "object",
+      "propertyCount": 3,
+      "required": []
+    },
+    {
+      "name": "OktaSignOnPolicyRuleSignonActions",
+      "type": "object",
+      "propertyCount": 6,
+      "required": []
+    },
+    {
+      "name": "OktaSignOnPolicyRuleSignonSessionActions",
+      "type": "object",
+      "propertyCount": 3,
+      "required": []
+    },
+    {
+      "name": "OpenIdConnectApplication",
+      "type": "object",
+      "propertyCount": 3,
+      "required": []
+    },
+    {
+      "name": "OpenIdConnectApplicationConsentMethod",
+      "type": "string",
+      "propertyCount": 0,
+      "required": []
+    },
+    {
+      "name": "OpenIdConnectApplicationIdpInitiatedLogin",
+      "type": "object",
+      "propertyCount": 2,
+      "required": []
+    },
+    {
+      "name": "OpenIdConnectApplicationIssuerMode",
+      "type": "string",
+      "propertyCount": 0,
+      "required": []
+    },
+    {
+      "name": "OpenIdConnectApplicationSettings",
+      "type": "object",
+      "propertyCount": 1,
+      "required": []
+    },
+    {
+      "name": "OpenIdConnectApplicationSettingsClient",
+      "type": "object",
+      "propertyCount": 16,
+      "required": []
+    },
+    {
+      "name": "OpenIdConnectApplicationSettingsClientKeys",
+      "type": "object",
+      "propertyCount": 1,
+      "required": []
+    },
+    {
+      "name": "OpenIdConnectApplicationSettingsRefreshToken",
+      "type": "object",
+      "propertyCount": 2,
+      "required": []
+    },
+    {
+      "name": "OpenIdConnectApplicationType",
+      "type": "string",
+      "propertyCount": 0,
+      "required": []
+    },
+    {
+      "name": "OpenIdConnectRefreshTokenRotationType",
+      "type": "string",
+      "propertyCount": 0,
+      "required": []
+    },
+    {
+      "name": "Org2OrgApplication",
+      "type": "object",
+      "propertyCount": 2,
+      "required": []
+    },
+    {
+      "name": "Org2OrgApplicationSettings",
+      "type": "object",
+      "propertyCount": 1,
+      "required": []
+    },
+    {
+      "name": "Org2OrgApplicationSettingsApp",
+      "type": "object",
+      "propertyCount": 3,
+      "required": []
+    },
+    {
+      "name": "OrgContactType",
+      "type": "string",
+      "propertyCount": 0,
+      "required": []
+    },
+    {
+      "name": "OrgContactTypeObj",
+      "type": "object",
+      "propertyCount": 2,
+      "required": []
+    },
+    {
+      "name": "OrgContactUser",
+      "type": "object",
+      "propertyCount": 2,
+      "required": []
+    },
+    {
+      "name": "OrgOktaCommunicationSetting",
+      "type": "object",
+      "propertyCount": 2,
+      "required": []
+    },
+    {
+      "name": "OrgOktaSupportSetting",
+      "type": "string",
+      "propertyCount": 0,
+      "required": []
+    },
+    {
+      "name": "OrgOktaSupportSettingsObj",
+      "type": "object",
+      "propertyCount": 3,
+      "required": []
+    },
+    {
+      "name": "OrgPreferences",
+      "type": "object",
+      "propertyCount": 2,
+      "required": []
+    },
+    {
+      "name": "OrgSetting",
+      "type": "object",
+      "propertyCount": 18,
+      "required": []
+    },
+    {
+      "name": "PasswordCredential",
+      "type": "object",
+      "propertyCount": 3,
+      "required": []
+    },
+    {
+      "name": "PasswordCredentialHash",
+      "type": "object",
+      "propertyCount": 5,
+      "required": []
+    },
+    {
+      "name": "PasswordCredentialHashAlgorithm",
+      "type": "string",
+      "propertyCount": 0,
+      "required": []
+    },
+    {
+      "name": "PasswordCredentialHook",
+      "type": "object",
+      "propertyCount": 1,
+      "required": []
+    },
+    {
+      "name": "PasswordDictionary",
+      "type": "object",
+      "propertyCount": 1,
+      "required": []
+    },
+    {
+      "name": "PasswordDictionaryCommon",
+      "type": "object",
+      "propertyCount": 1,
+      "required": []
+    },
+    {
+      "name": "PasswordExpirationPolicyRuleCondition",
+      "type": "object",
+      "propertyCount": 2,
+      "required": []
+    },
+    {
+      "name": "PasswordPolicy",
+      "type": "object",
+      "propertyCount": 2,
+      "required": []
+    },
+    {
+      "name": "PasswordPolicyAuthenticationProviderCondition",
+      "type": "object",
+      "propertyCount": 2,
+      "required": []
+    },
+    {
+      "name": "PasswordPolicyConditions",
+      "type": "object",
+      "propertyCount": 2,
+      "required": []
+    },
+    {
+      "name": "PasswordPolicyDelegationSettings",
+      "type": "object",
+      "propertyCount": 1,
+      "required": []
+    },
+    {
+      "name": "PasswordPolicyDelegationSettingsOptions",
+      "type": "object",
+      "propertyCount": 1,
+      "required": []
+    },
+    {
+      "name": "PasswordPolicyPasswordSettings",
+      "type": "object",
+      "propertyCount": 3,
+      "required": []
+    },
+    {
+      "name": "PasswordPolicyPasswordSettingsAge",
+      "type": "object",
+      "propertyCount": 4,
+      "required": []
+    },
+    {
+      "name": "PasswordPolicyPasswordSettingsComplexity",
+      "type": "object",
+      "propertyCount": 8,
+      "required": []
+    },
+    {
+      "name": "PasswordPolicyPasswordSettingsLockout",
+      "type": "object",
+      "propertyCount": 4,
+      "required": []
+    },
+    {
+      "name": "PasswordPolicyRecoveryEmail",
+      "type": "object",
+      "propertyCount": 2,
+      "required": []
+    },
+    {
+      "name": "PasswordPolicyRecoveryEmailProperties",
+      "type": "object",
+      "propertyCount": 1,
+      "required": []
+    },
+    {
+      "name": "PasswordPolicyRecoveryEmailRecoveryToken",
+      "type": "object",
+      "propertyCount": 1,
+      "required": []
+    },
+    {
+      "name": "PasswordPolicyRecoveryFactorSettings",
+      "type": "object",
+      "propertyCount": 1,
+      "required": []
+    },
+    {
+      "name": "PasswordPolicyRecoveryFactors",
+      "type": "object",
+      "propertyCount": 4,
+      "required": []
+    },
+    {
+      "name": "PasswordPolicyRecoveryQuestion",
+      "type": "object",
+      "propertyCount": 2,
+      "required": []
+    },
+    {
+      "name": "PasswordPolicyRecoveryQuestionComplexity",
+      "type": "object",
+      "propertyCount": 1,
+      "required": []
+    },
+    {
+      "name": "PasswordPolicyRecoveryQuestionProperties",
+      "type": "object",
+      "propertyCount": 1,
+      "required": []
+    },
+    {
+      "name": "PasswordPolicyRecoverySettings",
+      "type": "object",
+      "propertyCount": 1,
+      "required": []
+    },
+    {
+      "name": "PasswordPolicyRule",
+      "type": "object",
+      "propertyCount": 3,
+      "required": []
+    },
+    {
+      "name": "PasswordPolicyRuleAction",
+      "type": "object",
+      "propertyCount": 1,
+      "required": []
+    },
+    {
+      "name": "PasswordPolicyRuleActions",
+      "type": "object",
+      "propertyCount": 3,
+      "required": []
+    },
+    {
+      "name": "PasswordPolicyRuleConditions",
+      "type": "object",
+      "propertyCount": 2,
+      "required": []
+    },
+    {
+      "name": "PasswordPolicySettings",
+      "type": "object",
+      "propertyCount": 3,
+      "required": []
+    },
+    {
+      "name": "PasswordSettingObject",
+      "type": "object",
+      "propertyCount": 3,
+      "required": []
+    },
+    {
+      "name": "PlatformConditionEvaluatorPlatform",
+      "type": "object",
+      "propertyCount": 2,
+      "required": []
+    },
+    {
+      "name": "PlatformConditionEvaluatorPlatformOperatingSystem",
+      "type": "object",
+      "propertyCount": 3,
+      "required": []
+    },
+    {
+      "name": "PlatformConditionEvaluatorPlatformOperatingSystemVersion",
+      "type": "object",
+      "propertyCount": 2,
+      "required": []
+    },
+    {
+      "name": "PlatformPolicyRuleCondition",
+      "type": "object",
+      "propertyCount": 2,
+      "required": []
+    },
+    {
+      "name": "Policy",
+      "type": "object",
+      "propertyCount": 12,
+      "required": []
+    },
+    {
+      "name": "PolicyAccountLink",
+      "type": "object",
+      "propertyCount": 2,
+      "required": []
+    },
+    {
+      "name": "PolicyAccountLinkFilter",
+      "type": "object",
+      "propertyCount": 1,
+      "required": []
+    },
+    {
+      "name": "PolicyAccountLinkFilterGroups",
+      "type": "object",
+      "propertyCount": 1,
+      "required": []
+    },
+    {
+      "name": "PolicyNetworkCondition",
+      "type": "object",
+      "propertyCount": 3,
+      "required": []
+    },
+    {
+      "name": "PolicyPeopleCondition",
+      "type": "object",
+      "propertyCount": 2,
+      "required": []
+    },
+    {
+      "name": "PolicyRule",
+      "type": "object",
+      "propertyCount": 10,
+      "required": []
+    },
+    {
+      "name": "PolicyRuleActions",
+      "type": "object",
+      "propertyCount": 6,
+      "required": []
+    },
+    {
+      "name": "PolicyRuleActionsEnroll",
+      "type": "object",
+      "propertyCount": 1,
+      "required": []
+    },
+    {
+      "name": "PolicyRuleActionsEnrollSelf",
+      "type": "string",
+      "propertyCount": 0,
+      "required": []
+    },
+    {
+      "name": "PolicyRuleAuthContextCondition",
+      "type": "object",
+      "propertyCount": 1,
+      "required": []
+    },
+    {
+      "name": "PolicyRuleConditions",
+      "type": "object",
+      "propertyCount": 21,
+      "required": []
+    },
+    {
+      "name": "PolicySubject",
+      "type": "object",
+      "propertyCount": 5,
+      "required": []
+    },
+    {
+      "name": "PolicySubjectMatchType",
+      "type": "string",
+      "propertyCount": 0,
+      "required": []
+    },
+    {
+      "name": "PolicyType",
+      "type": "string",
+      "propertyCount": 0,
+      "required": []
+    },
+    {
+      "name": "PolicyUserNameTemplate",
+      "type": "object",
+      "propertyCount": 1,
+      "required": []
+    },
+    {
+      "name": "PossessionConstraint",
+      "type": "object",
+      "propertyCount": 4,
+      "required": []
+    },
+    {
+      "name": "PreRegistrationInlineHook",
+      "type": "object",
+      "propertyCount": 1,
+      "required": []
+    },
+    {
+      "name": "ProfileEnrollmentPolicy",
+      "type": "object",
+      "propertyCount": 0,
+      "required": []
+    },
+    {
+      "name": "ProfileEnrollmentPolicyRule",
+      "type": "object",
+      "propertyCount": 2,
+      "required": []
+    },
+    {
+      "name": "ProfileEnrollmentPolicyRuleAction",
+      "type": "object",
+      "propertyCount": 7,
+      "required": []
+    },
+    {
+      "name": "ProfileEnrollmentPolicyRuleActions",
+      "type": "object",
+      "propertyCount": 1,
+      "required": []
+    },
+    {
+      "name": "ProfileEnrollmentPolicyRuleActivationRequirement",
+      "type": "object",
+      "propertyCount": 1,
+      "required": []
+    },
+    {
+      "name": "ProfileEnrollmentPolicyRuleProfileAttribute",
+      "type": "object",
+      "propertyCount": 3,
+      "required": []
+    },
+    {
+      "name": "ProfileMapping",
+      "type": "object",
+      "propertyCount": 5,
+      "required": []
+    },
+    {
+      "name": "ProfileMappingProperty",
+      "type": "object",
+      "propertyCount": 2,
+      "required": []
+    },
+    {
+      "name": "ProfileMappingPropertyPushStatus",
+      "type": "object",
+      "propertyCount": 0,
+      "required": []
+    },
+    {
+      "name": "ProfileMappingSource",
+      "type": "object",
+      "propertyCount": 4,
+      "required": []
+    },
+    {
+      "name": "ProfileSettingObject",
+      "type": "object",
+      "propertyCount": 1,
+      "required": []
+    },
+    {
+      "name": "Protocol",
+      "type": "object",
+      "propertyCount": 8,
+      "required": []
+    },
+    {
+      "name": "ProtocolAlgorithmType",
+      "type": "object",
+      "propertyCount": 1,
+      "required": []
+    },
+    {
+      "name": "ProtocolAlgorithmTypeSignature",
+      "type": "object",
+      "propertyCount": 2,
+      "required": []
+    },
+    {
+      "name": "ProtocolAlgorithms",
+      "type": "object",
+      "propertyCount": 2,
+      "required": []
+    },
+    {
+      "name": "ProtocolEndpoint",
+      "type": "object",
+      "propertyCount": 4,
+      "required": []
+    },
+    {
+      "name": "ProtocolEndpoints",
+      "type": "object",
+      "propertyCount": 8,
+      "required": []
+    },
+    {
+      "name": "ProtocolRelayState",
+      "type": "object",
+      "propertyCount": 1,
+      "required": []
+    },
+    {
+      "name": "ProtocolRelayStateFormat",
+      "type": "string",
+      "propertyCount": 0,
+      "required": []
+    },
+    {
+      "name": "ProtocolSettings",
+      "type": "object",
+      "propertyCount": 1,
+      "required": []
+    },
+    {
+      "name": "Provisioning",
+      "type": "object",
+      "propertyCount": 4,
+      "required": []
+    },
+    {
+      "name": "ProvisioningConditions",
+      "type": "object",
+      "propertyCount": 2,
+      "required": []
+    },
+    {
+      "name": "ProvisioningConnection",
+      "type": "object",
+      "propertyCount": 3,
+      "required": []
+    },
+    {
+      "name": "ProvisioningConnectionAuthScheme",
+      "type": "string",
+      "propertyCount": 0,
+      "required": []
+    },
+    {
+      "name": "ProvisioningConnectionProfile",
+      "type": "object",
+      "propertyCount": 2,
+      "required": []
+    },
+    {
+      "name": "ProvisioningConnectionRequest",
+      "type": "object",
+      "propertyCount": 1,
+      "required": []
+    },
+    {
+      "name": "ProvisioningConnectionStatus",
+      "type": "string",
+      "propertyCount": 0,
+      "required": []
+    },
+    {
+      "name": "ProvisioningDeprovisionedCondition",
+      "type": "object",
+      "propertyCount": 1,
+      "required": []
+    },
+    {
+      "name": "ProvisioningGroups",
+      "type": "object",
+      "propertyCount": 4,
+      "required": []
+    },
+    {
+      "name": "ProvisioningSuspendedCondition",
+      "type": "object",
+      "propertyCount": 1,
+      "required": []
+    },
+    {
+      "name": "PushUserFactor",
+      "type": "object",
+      "propertyCount": 3,
+      "required": []
+    },
+    {
+      "name": "PushUserFactorProfile",
+      "type": "object",
+      "propertyCount": 6,
+      "required": []
+    },
+    {
+      "name": "RecoveryQuestionCredential",
+      "type": "object",
+      "propertyCount": 2,
+      "required": []
+    },
+    {
+      "name": "RequiredEnum",
+      "type": "string",
+      "propertyCount": 0,
+      "required": []
+    },
+    {
+      "name": "ResetPasswordToken",
+      "type": "object",
+      "propertyCount": 1,
+      "required": []
+    },
+    {
+      "name": "ResponseLinks",
+      "type": "object",
+      "propertyCount": 1,
+      "required": []
+    },
+    {
+      "name": "RiskPolicyRuleCondition",
+      "type": "object",
+      "propertyCount": 1,
+      "required": []
+    },
+    {
+      "name": "RiskScorePolicyRuleCondition",
+      "type": "object",
+      "propertyCount": 1,
+      "required": []
+    },
+    {
+      "name": "Role",
+      "type": "object",
+      "propertyCount": 10,
+      "required": []
+    },
+    {
+      "name": "RoleAssignmentType",
+      "type": "string",
+      "propertyCount": 0,
+      "required": []
+    },
+    {
+      "name": "RoleStatus",
+      "type": "string",
+      "propertyCount": 0,
+      "required": []
+    },
+    {
+      "name": "RoleType",
+      "type": "string",
+      "propertyCount": 0,
+      "required": []
+    },
+    {
+      "name": "SamlApplication",
+      "type": "object",
+      "propertyCount": 1,
+      "required": []
+    },
+    {
+      "name": "SamlApplicationSettings",
+      "type": "object",
+      "propertyCount": 1,
+      "required": []
+    },
+    {
+      "name": "SamlApplicationSettingsSignOn",
+      "type": "object",
+      "propertyCount": 27,
+      "required": []
+    },
+    {
+      "name": "SamlAttributeStatement",
+      "type": "object",
+      "propertyCount": 6,
+      "required": []
+    },
+    {
+      "name": "ScheduledUserLifecycleAction",
+      "type": "object",
+      "propertyCount": 1,
+      "required": []
+    },
+    {
+      "name": "SchemeApplicationCredentials",
+      "type": "object",
+      "propertyCount": 5,
+      "required": []
+    },
+    {
+      "name": "Scope",
+      "type": "object",
+      "propertyCount": 3,
+      "required": []
+    },
+    {
+      "name": "ScopeType",
+      "type": "string",
+      "propertyCount": 0,
+      "required": []
+    },
+    {
+      "name": "SecurePasswordStoreApplication",
+      "type": "object",
+      "propertyCount": 3,
+      "required": []
+    },
+    {
+      "name": "SecurePasswordStoreApplicationSettings",
+      "type": "object",
+      "propertyCount": 1,
+      "required": []
+    },
+    {
+      "name": "SecurePasswordStoreApplicationSettingsApplication",
+      "type": "object",
+      "propertyCount": 9,
+      "required": []
+    },
+    {
+      "name": "SecurityQuestion",
+      "type": "object",
+      "propertyCount": 3,
+      "required": []
+    },
+    {
+      "name": "SecurityQuestionUserFactor",
+      "type": "object",
+      "propertyCount": 1,
+      "required": []
+    },
+    {
+      "name": "SecurityQuestionUserFactorProfile",
+      "type": "object",
+      "propertyCount": 3,
+      "required": []
+    },
+    {
+      "name": "SeedEnum",
+      "type": "string",
+      "propertyCount": 0,
+      "required": []
+    },
+    {
+      "name": "Session",
+      "type": "object",
+      "propertyCount": 11,
+      "required": []
+    },
+    {
+      "name": "SessionAuthenticationMethod",
+      "type": "string",
+      "propertyCount": 0,
+      "required": []
+    },
+    {
+      "name": "SessionIdentityProvider",
+      "type": "object",
+      "propertyCount": 2,
+      "required": []
+    },
+    {
+      "name": "SessionIdentityProviderType",
+      "type": "string",
+      "propertyCount": 0,
+      "required": []
+    },
+    {
+      "name": "SessionStatus",
+      "type": "string",
+      "propertyCount": 0,
+      "required": []
+    },
+    {
+      "name": "SignInPageTouchPointVariant",
+      "type": "string",
+      "propertyCount": 0,
+      "required": []
+    },
+    {
+      "name": "SignOnInlineHook",
+      "type": "object",
+      "propertyCount": 1,
+      "required": []
+    },
+    {
+      "name": "SingleLogout",
+      "type": "object",
+      "propertyCount": 3,
+      "required": []
+    },
+    {
+      "name": "SmsTemplate",
+      "type": "object",
+      "propertyCount": 7,
+      "required": []
+    },
+    {
+      "name": "SmsTemplateTranslations",
+      "type": "object",
+      "propertyCount": 0,
+      "required": []
+    },
+    {
+      "name": "SmsTemplateType",
+      "type": "string",
+      "propertyCount": 0,
+      "required": []
+    },
+    {
+      "name": "SmsUserFactor",
+      "type": "object",
+      "propertyCount": 1,
+      "required": []
+    },
+    {
+      "name": "SmsUserFactorProfile",
+      "type": "object",
+      "propertyCount": 1,
+      "required": []
+    },
+    {
+      "name": "SocialAuthToken",
+      "type": "object",
+      "propertyCount": 6,
+      "required": []
+    },
+    {
+      "name": "SpCertificate",
+      "type": "object",
+      "propertyCount": 1,
+      "required": []
+    },
+    {
+      "name": "Subscription",
+      "type": "object",
+      "propertyCount": 4,
+      "required": []
+    },
+    {
+      "name": "SubscriptionStatus",
+      "type": "string",
+      "propertyCount": 0,
+      "required": []
+    },
+    {
+      "name": "SwaApplication",
+      "type": "object",
+      "propertyCount": 2,
+      "required": []
+    },
+    {
+      "name": "SwaApplicationSettings",
+      "type": "object",
+      "propertyCount": 1,
+      "required": []
+    },
+    {
+      "name": "SwaApplicationSettingsApplication",
+      "type": "object",
+      "propertyCount": 7,
+      "required": []
+    },
+    {
+      "name": "SwaThreeFieldApplication",
+      "type": "object",
+      "propertyCount": 2,
+      "required": []
+    },
+    {
+      "name": "SwaThreeFieldApplicationSettings",
+      "type": "object",
+      "propertyCount": 1,
+      "required": []
+    },
+    {
+      "name": "SwaThreeFieldApplicationSettingsApplication",
+      "type": "object",
+      "propertyCount": 7,
+      "required": []
+    },
+    {
+      "name": "TempPassword",
+      "type": "object",
+      "propertyCount": 1,
+      "required": []
+    },
+    {
+      "name": "Theme",
+      "type": "object",
+      "propertyCount": 10,
+      "required": []
+    },
+    {
+      "name": "ThemeResponse",
+      "type": "object",
+      "propertyCount": 13,
+      "required": []
+    },
+    {
+      "name": "ThreatInsightConfiguration",
+      "type": "object",
+      "propertyCount": 5,
+      "required": []
+    },
+    {
+      "name": "TokenAuthorizationServerPolicyRuleAction",
+      "type": "object",
+      "propertyCount": 4,
+      "required": []
+    },
+    {
+      "name": "TokenAuthorizationServerPolicyRuleActionInlineHook",
+      "type": "object",
+      "propertyCount": 1,
+      "required": []
+    },
+    {
+      "name": "TokenUserFactor",
+      "type": "object",
+      "propertyCount": 1,
+      "required": []
+    },
+    {
+      "name": "TokenUserFactorProfile",
+      "type": "object",
+      "propertyCount": 1,
+      "required": []
+    },
+    {
+      "name": "TotpUserFactor",
+      "type": "object",
+      "propertyCount": 1,
+      "required": []
+    },
+    {
+      "name": "TotpUserFactorProfile",
+      "type": "object",
+      "propertyCount": 1,
+      "required": []
+    },
+    {
+      "name": "TrustedOrigin",
+      "type": "object",
+      "propertyCount": 10,
+      "required": []
+    },
+    {
+      "name": "U2fUserFactor",
+      "type": "object",
+      "propertyCount": 1,
+      "required": []
+    },
+    {
+      "name": "U2fUserFactorProfile",
+      "type": "object",
+      "propertyCount": 1,
+      "required": []
+    },
+    {
+      "name": "User",
+      "type": "object",
+      "propertyCount": 14,
+      "required": []
+    },
+    {
+      "name": "UserActivationToken",
+      "type": "object",
+      "propertyCount": 2,
+      "required": []
+    },
+    {
+      "name": "UserCondition",
+      "type": "object",
+      "propertyCount": 2,
+      "required": []
+    },
+    {
+      "name": "UserCredentials",
+      "type": "object",
+      "propertyCount": 3,
+      "required": []
+    },
+    {
+      "name": "UserFactor",
+      "type": "object",
+      "propertyCount": 9,
+      "required": []
+    },
+    {
+      "name": "UserIdString",
+      "type": "object",
+      "propertyCount": 1,
+      "required": []
+    },
+    {
+      "name": "UserIdentifierConditionEvaluatorPattern",
+      "type": "object",
+      "propertyCount": 2,
+      "required": []
+    },
+    {
+      "name": "UserIdentifierPolicyRuleCondition",
+      "type": "object",
+      "propertyCount": 3,
+      "required": []
+    },
+    {
+      "name": "UserIdentityProviderLinkRequest",
+      "type": "object",
+      "propertyCount": 1,
+      "required": []
+    },
+    {
+      "name": "UserLifecycleAttributePolicyRuleCondition",
+      "type": "object",
+      "propertyCount": 2,
+      "required": []
+    },
+    {
+      "name": "UserNextLogin",
+      "type": "string",
+      "propertyCount": 0,
+      "required": []
+    },
+    {
+      "name": "UserPolicyRuleCondition",
+      "type": "object",
+      "propertyCount": 6,
+      "required": []
+    },
+    {
+      "name": "UserProfile",
+      "type": "object",
+      "propertyCount": 31,
+      "required": []
+    },
+    {
+      "name": "UserSchema",
+      "type": "object",
+      "propertyCount": 10,
+      "required": []
+    },
+    {
+      "name": "UserSchemaAttribute",
+      "type": "object",
+      "propertyCount": 18,
+      "required": []
+    },
+    {
+      "name": "UserSchemaAttributeEnum",
+      "type": "object",
+      "propertyCount": 2,
+      "required": []
+    },
+    {
+      "name": "UserSchemaAttributeItems",
+      "type": "object",
+      "propertyCount": 3,
+      "required": []
+    },
+    {
+      "name": "UserSchemaAttributeMaster",
+      "type": "object",
+      "propertyCount": 2,
+      "required": []
+    },
+    {
+      "name": "UserSchemaAttributeMasterPriority",
+      "type": "object",
+      "propertyCount": 2,
+      "required": []
+    },
+    {
+      "name": "UserSchemaAttributeMasterType",
+      "type": "string",
+      "propertyCount": 0,
+      "required": []
+    },
+    {
+      "name": "UserSchemaAttributePermission",
+      "type": "object",
+      "propertyCount": 2,
+      "required": []
+    },
+    {
+      "name": "UserSchemaAttributeScope",
+      "type": "object",
+      "propertyCount": 0,
+      "required": []
+    },
+    {
+      "name": "UserSchemaAttributeType",
+      "type": "string",
+      "propertyCount": 0,
+      "required": []
+    },
+    {
+      "name": "UserSchemaAttributeUnion",
+      "type": "object",
+      "propertyCount": 0,
+      "required": []
+    },
+    {
+      "name": "UserSchemaBase",
+      "type": "object",
+      "propertyCount": 4,
+      "required": []
+    },
+    {
+      "name": "UserSchemaBaseProperties",
+      "type": "object",
+      "propertyCount": 31,
+      "required": []
+    },
+    {
+      "name": "UserSchemaDefinitions",
+      "type": "object",
+      "propertyCount": 2,
+      "required": []
+    },
+    {
+      "name": "UserSchemaProperties",
+      "type": "object",
+      "propertyCount": 1,
+      "required": []
+    },
+    {
+      "name": "UserSchemaPropertiesProfile",
+      "type": "object",
+      "propertyCount": 1,
+      "required": []
+    },
+    {
+      "name": "UserSchemaPropertiesProfileItem",
+      "type": "object",
+      "propertyCount": 1,
+      "required": []
+    },
+    {
+      "name": "UserSchemaPublic",
+      "type": "object",
+      "propertyCount": 4,
+      "required": []
+    },
+    {
+      "name": "UserStatus",
+      "type": "string",
+      "propertyCount": 0,
+      "required": []
+    },
+    {
+      "name": "UserStatusPolicyRuleCondition",
+      "type": "object",
+      "propertyCount": 1,
+      "required": []
+    },
+    {
+      "name": "UserType",
+      "type": "object",
+      "propertyCount": 10,
+      "required": []
+    },
+    {
+      "name": "UserTypeCondition",
+      "type": "object",
+      "propertyCount": 2,
+      "required": []
+    },
+    {
+      "name": "UserVerificationEnum",
+      "type": "string",
+      "propertyCount": 0,
+      "required": []
+    },
+    {
+      "name": "VerificationMethod",
+      "type": "object",
+      "propertyCount": 5,
+      "required": []
+    },
+    {
+      "name": "VerifyFactorRequest",
+      "type": "object",
+      "propertyCount": 8,
+      "required": []
+    },
+    {
+      "name": "VerifyUserFactorResponse",
+      "type": "object",
+      "propertyCount": 5,
+      "required": []
+    },
+    {
+      "name": "WebAuthnUserFactor",
+      "type": "object",
+      "propertyCount": 1,
+      "required": []
+    },
+    {
+      "name": "WebAuthnUserFactorProfile",
+      "type": "object",
+      "propertyCount": 2,
+      "required": []
+    },
+    {
+      "name": "WebUserFactor",
+      "type": "object",
+      "propertyCount": 1,
+      "required": []
+    },
+    {
+      "name": "WebUserFactorProfile",
+      "type": "object",
+      "propertyCount": 1,
+      "required": []
+    },
+    {
+      "name": "WsFederationApplication",
+      "type": "object",
+      "propertyCount": 2,
+      "required": []
+    },
+    {
+      "name": "WsFederationApplicationSettings",
+      "type": "object",
+      "propertyCount": 1,
+      "required": []
+    },
+    {
+      "name": "WsFederationApplicationSettingsApplication",
+      "type": "object",
+      "propertyCount": 12,
+      "required": []
+    }
+  ],
+  "operations": [
+    {
+      "method": "GET",
+      "path": "/api/v1/apps",
+      "operationId": "listApplications",
+      "summary": "Okta List Applications",
+      "tags": [
+        "Application"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/apps",
+      "operationId": "createApplication",
+      "summary": "Okta Add Application",
+      "tags": [
+        "Application"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/apps/{appId}",
+      "operationId": "getApplication",
+      "summary": "Okta Get Application",
+      "tags": [
+        "Application"
+      ]
+    },
+    {
+      "method": "PUT",
+      "path": "/api/v1/apps/{appId}",
+      "operationId": "updateApplication",
+      "summary": "Okta Update Application",
+      "tags": [
+        "Application"
+      ]
+    },
+    {
+      "method": "DELETE",
+      "path": "/api/v1/apps/{appId}",
+      "operationId": "deleteApplication",
+      "summary": "Okta Delete Application",
+      "tags": [
+        "Application"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/apps/{appId}/connections/default",
+      "operationId": "getDefaultProvisioningConnectionForApplication",
+      "summary": "Okta Fetches the default Provisioning Connection for an application.",
+      "tags": [
+        "Application"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/apps/{appId}/connections/default",
+      "operationId": "setDefaultProvisioningConnectionForApplication",
+      "summary": "Okta Sets the default Provisioning Connection for an application.",
+      "tags": [
+        "Application"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/apps/{appId}/connections/default/lifecycle/activate",
+      "operationId": "activateDefaultProvisioningConnectionForApplication",
+      "summary": "Okta Activate default Provisioning Connection for application",
+      "tags": [
+        "Application"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/apps/{appId}/connections/default/lifecycle/deactivate",
+      "operationId": "deactivateDefaultProvisioningConnectionForApplication",
+      "summary": "Okta Deactivate default Provisioning Connection for application",
+      "tags": [
+        "Application"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/apps/{appId}/credentials/csrs",
+      "operationId": "listCsrsForApplication",
+      "summary": "Okta List Certificate Signing Requests for Application",
+      "tags": [
+        "Application"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/apps/{appId}/credentials/csrs",
+      "operationId": "generateCsrForApplication",
+      "summary": "Okta Generate Certificate Signing Request for Application",
+      "tags": [
+        "Application"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/apps/{appId}/credentials/csrs/{csrId}",
+      "operationId": "getCsrForApplication",
+      "summary": null,
+      "tags": [
+        "Application"
+      ]
+    },
+    {
+      "method": "DELETE",
+      "path": "/api/v1/apps/{appId}/credentials/csrs/{csrId}",
+      "operationId": "revokeCsrFromApplication",
+      "summary": null,
+      "tags": [
+        "Application"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/apps/{appId}/credentials/csrs/{csrId}/lifecycle/publish",
+      "operationId": null,
+      "summary": null,
+      "tags": [
+        "Application"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/apps/{appId}/credentials/keys",
+      "operationId": "listApplicationKeys",
+      "summary": "Okta List Key Credentials for Application",
+      "tags": [
+        "Application"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/apps/{appId}/credentials/keys/generate",
+      "operationId": "generateApplicationKey",
+      "summary": null,
+      "tags": [
+        "Application"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/apps/{appId}/credentials/keys/{keyId}",
+      "operationId": "getApplicationKey",
+      "summary": "Okta Get Key Credential for Application",
+      "tags": [
+        "Application"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/apps/{appId}/credentials/keys/{keyId}/clone",
+      "operationId": "cloneApplicationKey",
+      "summary": "Okta Clone Application Key Credential",
+      "tags": [
+        "Application"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/apps/{appId}/credentials/secrets",
+      "operationId": "listClientSecretsForApplication",
+      "summary": "Okta List client secrets",
+      "tags": [
+        "Application"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/apps/{appId}/credentials/secrets",
+      "operationId": "createNewClientSecretForApplication",
+      "summary": "Okta Add new client secret",
+      "tags": [
+        "Application"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/apps/{appId}/credentials/secrets/{secretId}",
+      "operationId": "getClientSecretForApplication",
+      "summary": "Okta Get client secret",
+      "tags": [
+        "Application"
+      ]
+    },
+    {
+      "method": "DELETE",
+      "path": "/api/v1/apps/{appId}/credentials/secrets/{secretId}",
+      "operationId": "deleteClientSecretForApplication",
+      "summary": null,
+      "tags": [
+        "Application"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/apps/{appId}/credentials/secrets/{secretId}/lifecycle/activate",
+      "operationId": "activateClientSecretForApplication",
+      "summary": "Okta Activate a client secret",
+      "tags": [
+        "Application"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/apps/{appId}/credentials/secrets/{secretId}/lifecycle/deactivate",
+      "operationId": "deactivateClientSecretForApplication",
+      "summary": "Okta Deactivate a client secret",
+      "tags": [
+        "Application"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/apps/{appId}/features",
+      "operationId": "listFeaturesForApplication",
+      "summary": "Okta Fetches the Feature objects for an application.",
+      "tags": [
+        "Application"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/apps/{appId}/features/{name}",
+      "operationId": "getFeatureForApplication",
+      "summary": "Okta Fetches a Feature object for an application.",
+      "tags": [
+        "Application"
+      ]
+    },
+    {
+      "method": "PUT",
+      "path": "/api/v1/apps/{appId}/features/{name}",
+      "operationId": "updateFeatureForApplication",
+      "summary": "Okta Updates a Feature object for an application.",
+      "tags": [
+        "Application"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/apps/{appId}/grants",
+      "operationId": "listScopeConsentGrants",
+      "summary": null,
+      "tags": [
+        "Application"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/apps/{appId}/grants",
+      "operationId": "grantConsentToScope",
+      "summary": null,
+      "tags": [
+        "Application"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/apps/{appId}/grants/{grantId}",
+      "operationId": "getScopeConsentGrant",
+      "summary": null,
+      "tags": [
+        "Application"
+      ]
+    },
+    {
+      "method": "DELETE",
+      "path": "/api/v1/apps/{appId}/grants/{grantId}",
+      "operationId": "revokeScopeConsentGrant",
+      "summary": null,
+      "tags": [
+        "Application"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/apps/{appId}/groups",
+      "operationId": "listApplicationGroupAssignments",
+      "summary": "Okta List Groups Assigned to Application",
+      "tags": [
+        "Application"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/apps/{appId}/groups/{groupId}",
+      "operationId": "getApplicationGroupAssignment",
+      "summary": "Okta Get Assigned Group for Application",
+      "tags": [
+        "Application"
+      ]
+    },
+    {
+      "method": "PUT",
+      "path": "/api/v1/apps/{appId}/groups/{groupId}",
+      "operationId": "createApplicationGroupAssignment",
+      "summary": "Okta Assign Group to Application",
+      "tags": [
+        "Application"
+      ]
+    },
+    {
+      "method": "DELETE",
+      "path": "/api/v1/apps/{appId}/groups/{groupId}",
+      "operationId": "deleteApplicationGroupAssignment",
+      "summary": "Okta Remove Group from Application",
+      "tags": [
+        "Application"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/apps/{appId}/lifecycle/activate",
+      "operationId": "activateApplication",
+      "summary": "Okta Activate Application",
+      "tags": [
+        "Application"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/apps/{appId}/lifecycle/deactivate",
+      "operationId": "deactivateApplication",
+      "summary": "Okta Deactivate Application",
+      "tags": [
+        "Application"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/apps/{appId}/logo",
+      "operationId": "uploadApplicationLogo",
+      "summary": "Okta The file must be in PNG, JPG, or GIF format, and less than 1 MB in size. For best results use landscape orientation, a transparent background, and a minimum size of 420px by 120px to prevent upscaling.",
+      "tags": [
+        "Application"
+      ]
+    },
+    {
+      "method": "PUT",
+      "path": "/api/v1/apps/{appId}/policies/{policyId}",
+      "operationId": "updateApplicationPolicy",
+      "summary": "Okta Update application policy",
+      "tags": [
+        "Application"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/apps/{appId}/sso/saml/metadata",
+      "operationId": "previewSAMLAppMetadata",
+      "summary": null,
+      "tags": [
+        "Application"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/apps/{appId}/tokens",
+      "operationId": "listOAuth2TokensForApplication",
+      "summary": null,
+      "tags": [
+        "Application"
+      ]
+    },
+    {
+      "method": "DELETE",
+      "path": "/api/v1/apps/{appId}/tokens",
+      "operationId": "revokeOAuth2TokensForApplication",
+      "summary": null,
+      "tags": [
+        "Application"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/apps/{appId}/tokens/{tokenId}",
+      "operationId": "getOAuth2TokenForApplication",
+      "summary": null,
+      "tags": [
+        "Application"
+      ]
+    },
+    {
+      "method": "DELETE",
+      "path": "/api/v1/apps/{appId}/tokens/{tokenId}",
+      "operationId": "revokeOAuth2TokenForApplication",
+      "summary": null,
+      "tags": [
+        "Application"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/apps/{appId}/users",
+      "operationId": "listApplicationUsers",
+      "summary": "Okta List Users Assigned to Application",
+      "tags": [
+        "Application"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/apps/{appId}/users",
+      "operationId": "assignUserToApplication",
+      "summary": "Okta Assign User to Application for SSO & Provisioning",
+      "tags": [
+        "Application"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/apps/{appId}/users/{userId}",
+      "operationId": "getApplicationUser",
+      "summary": "Okta Get Assigned User for Application",
+      "tags": [
+        "Application"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/apps/{appId}/users/{userId}",
+      "operationId": "updateApplicationUser",
+      "summary": "Okta Update Application Profile for Assigned User",
+      "tags": [
+        "Application"
+      ]
+    },
+    {
+      "method": "DELETE",
+      "path": "/api/v1/apps/{appId}/users/{userId}",
+      "operationId": "deleteApplicationUser",
+      "summary": "Okta Remove User from Application",
+      "tags": [
+        "Application"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/authenticators",
+      "operationId": "listAuthenticators",
+      "summary": "Okta Lists all available Authenticators",
+      "tags": [
+        "Authenticator"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/authenticators",
+      "operationId": "createAuthenticator",
+      "summary": "Okta Create an Authenticator",
+      "tags": [
+        "Authenticator"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/authenticators/{authenticatorId}",
+      "operationId": "getAuthenticator",
+      "summary": null,
+      "tags": [
+        "Authenticator"
+      ]
+    },
+    {
+      "method": "PUT",
+      "path": "/api/v1/authenticators/{authenticatorId}",
+      "operationId": "updateAuthenticator",
+      "summary": "Okta Update Authenticator",
+      "tags": [
+        "Authenticator"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/authenticators/{authenticatorId}/lifecycle/activate",
+      "operationId": "activateAuthenticator",
+      "summary": null,
+      "tags": [
+        "Authenticator"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/authenticators/{authenticatorId}/lifecycle/deactivate",
+      "operationId": "deactivateAuthenticator",
+      "summary": null,
+      "tags": [
+        "Authenticator"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/authorizationServers",
+      "operationId": "listAuthorizationServers",
+      "summary": null,
+      "tags": [
+        "AuthorizationServer"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/authorizationServers",
+      "operationId": "createAuthorizationServer",
+      "summary": null,
+      "tags": [
+        "AuthorizationServer"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/authorizationServers/{authServerId}",
+      "operationId": "getAuthorizationServer",
+      "summary": null,
+      "tags": [
+        "AuthorizationServer"
+      ]
+    },
+    {
+      "method": "PUT",
+      "path": "/api/v1/authorizationServers/{authServerId}",
+      "operationId": "updateAuthorizationServer",
+      "summary": null,
+      "tags": [
+        "AuthorizationServer"
+      ]
+    },
+    {
+      "method": "DELETE",
+      "path": "/api/v1/authorizationServers/{authServerId}",
+      "operationId": "deleteAuthorizationServer",
+      "summary": null,
+      "tags": [
+        "AuthorizationServer"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/authorizationServers/{authServerId}/claims",
+      "operationId": "listOAuth2Claims",
+      "summary": null,
+      "tags": [
+        "AuthorizationServer"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/authorizationServers/{authServerId}/claims",
+      "operationId": "createOAuth2Claim",
+      "summary": null,
+      "tags": [
+        "AuthorizationServer"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/authorizationServers/{authServerId}/claims/{claimId}",
+      "operationId": "getOAuth2Claim",
+      "summary": null,
+      "tags": [
+        "AuthorizationServer"
+      ]
+    },
+    {
+      "method": "PUT",
+      "path": "/api/v1/authorizationServers/{authServerId}/claims/{claimId}",
+      "operationId": "updateOAuth2Claim",
+      "summary": null,
+      "tags": [
+        "AuthorizationServer"
+      ]
+    },
+    {
+      "method": "DELETE",
+      "path": "/api/v1/authorizationServers/{authServerId}/claims/{claimId}",
+      "operationId": "deleteOAuth2Claim",
+      "summary": null,
+      "tags": [
+        "AuthorizationServer"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/authorizationServers/{authServerId}/clients",
+      "operationId": "listOAuth2ClientsForAuthorizationServer",
+      "summary": null,
+      "tags": [
+        "AuthorizationServer"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/authorizationServers/{authServerId}/clients/{clientId}/tokens",
+      "operationId": "listRefreshTokensForAuthorizationServerAndClient",
+      "summary": null,
+      "tags": [
+        "AuthorizationServer"
+      ]
+    },
+    {
+      "method": "DELETE",
+      "path": "/api/v1/authorizationServers/{authServerId}/clients/{clientId}/tokens",
+      "operationId": "revokeRefreshTokensForAuthorizationServerAndClient",
+      "summary": null,
+      "tags": [
+        "AuthorizationServer"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/authorizationServers/{authServerId}/clients/{clientId}/tokens/{tokenId}",
+      "operationId": "getRefreshTokenForAuthorizationServerAndClient",
+      "summary": null,
+      "tags": [
+        "AuthorizationServer"
+      ]
+    },
+    {
+      "method": "DELETE",
+      "path": "/api/v1/authorizationServers/{authServerId}/clients/{clientId}/tokens/{tokenId}",
+      "operationId": "revokeRefreshTokenForAuthorizationServerAndClient",
+      "summary": null,
+      "tags": [
+        "AuthorizationServer"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/authorizationServers/{authServerId}/credentials/keys",
+      "operationId": "listAuthorizationServerKeys",
+      "summary": null,
+      "tags": [
+        "AuthorizationServer"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/authorizationServers/{authServerId}/credentials/lifecycle/keyRotate",
+      "operationId": "rotateAuthorizationServerKeys",
+      "summary": null,
+      "tags": [
+        "AuthorizationServer"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/authorizationServers/{authServerId}/lifecycle/activate",
+      "operationId": "activateAuthorizationServer",
+      "summary": null,
+      "tags": [
+        "AuthorizationServer"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/authorizationServers/{authServerId}/lifecycle/deactivate",
+      "operationId": "deactivateAuthorizationServer",
+      "summary": null,
+      "tags": [
+        "AuthorizationServer"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/authorizationServers/{authServerId}/policies",
+      "operationId": "listAuthorizationServerPolicies",
+      "summary": null,
+      "tags": [
+        "AuthorizationServer"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/authorizationServers/{authServerId}/policies",
+      "operationId": "createAuthorizationServerPolicy",
+      "summary": null,
+      "tags": [
+        "AuthorizationServer"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/authorizationServers/{authServerId}/policies/{policyId}",
+      "operationId": "getAuthorizationServerPolicy",
+      "summary": null,
+      "tags": [
+        "AuthorizationServer"
+      ]
+    },
+    {
+      "method": "PUT",
+      "path": "/api/v1/authorizationServers/{authServerId}/policies/{policyId}",
+      "operationId": "updateAuthorizationServerPolicy",
+      "summary": null,
+      "tags": [
+        "AuthorizationServer"
+      ]
+    },
+    {
+      "method": "DELETE",
+      "path": "/api/v1/authorizationServers/{authServerId}/policies/{policyId}",
+      "operationId": "deleteAuthorizationServerPolicy",
+      "summary": null,
+      "tags": [
+        "AuthorizationServer"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/authorizationServers/{authServerId}/policies/{policyId}/lifecycle/activate",
+      "operationId": "activateAuthorizationServerPolicy",
+      "summary": null,
+      "tags": [
+        "AuthorizationServer"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/authorizationServers/{authServerId}/policies/{policyId}/lifecycle/deactivate",
+      "operationId": "deactivateAuthorizationServerPolicy",
+      "summary": null,
+      "tags": [
+        "AuthorizationServer"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/authorizationServers/{authServerId}/policies/{policyId}/rules",
+      "operationId": "listAuthorizationServerPolicyRules",
+      "summary": null,
+      "tags": [
+        "AuthorizationServer"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/authorizationServers/{authServerId}/policies/{policyId}/rules",
+      "operationId": "createAuthorizationServerPolicyRule",
+      "summary": null,
+      "tags": [
+        "AuthorizationServer"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/authorizationServers/{authServerId}/policies/{policyId}/rules/{ruleId}",
+      "operationId": "getAuthorizationServerPolicyRule",
+      "summary": null,
+      "tags": [
+        "AuthorizationServer"
+      ]
+    },
+    {
+      "method": "PUT",
+      "path": "/api/v1/authorizationServers/{authServerId}/policies/{policyId}/rules/{ruleId}",
+      "operationId": "updateAuthorizationServerPolicyRule",
+      "summary": null,
+      "tags": [
+        "AuthorizationServer"
+      ]
+    },
+    {
+      "method": "DELETE",
+      "path": "/api/v1/authorizationServers/{authServerId}/policies/{policyId}/rules/{ruleId}",
+      "operationId": "deleteAuthorizationServerPolicyRule",
+      "summary": null,
+      "tags": [
+        "AuthorizationServer"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/authorizationServers/{authServerId}/policies/{policyId}/rules/{ruleId}/lifecycle/activate",
+      "operationId": "activateAuthorizationServerPolicyRule",
+      "summary": null,
+      "tags": [
+        "AuthorizationServer"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/authorizationServers/{authServerId}/policies/{policyId}/rules/{ruleId}/lifecycle/deactivate",
+      "operationId": "deactivateAuthorizationServerPolicyRule",
+      "summary": null,
+      "tags": [
+        "AuthorizationServer"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/authorizationServers/{authServerId}/scopes",
+      "operationId": "listOAuth2Scopes",
+      "summary": null,
+      "tags": [
+        "AuthorizationServer"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/authorizationServers/{authServerId}/scopes",
+      "operationId": "createOAuth2Scope",
+      "summary": null,
+      "tags": [
+        "AuthorizationServer"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/authorizationServers/{authServerId}/scopes/{scopeId}",
+      "operationId": "getOAuth2Scope",
+      "summary": null,
+      "tags": [
+        "AuthorizationServer"
+      ]
+    },
+    {
+      "method": "PUT",
+      "path": "/api/v1/authorizationServers/{authServerId}/scopes/{scopeId}",
+      "operationId": "updateOAuth2Scope",
+      "summary": null,
+      "tags": [
+        "AuthorizationServer"
+      ]
+    },
+    {
+      "method": "DELETE",
+      "path": "/api/v1/authorizationServers/{authServerId}/scopes/{scopeId}",
+      "operationId": "deleteOAuth2Scope",
+      "summary": null,
+      "tags": [
+        "AuthorizationServer"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/brands",
+      "operationId": "listBrands",
+      "summary": "Okta List Brands",
+      "tags": [
+        "Brand"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/brands/{brandId}",
+      "operationId": "getBrand",
+      "summary": "Okta Get Brand",
+      "tags": [
+        "Brand"
+      ]
+    },
+    {
+      "method": "PUT",
+      "path": "/api/v1/brands/{brandId}",
+      "operationId": "updateBrand",
+      "summary": "Okta Update Brand",
+      "tags": [
+        "Brand"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/brands/{brandId}/templates/email",
+      "operationId": "listEmailTemplates",
+      "summary": "Okta List Email Templates",
+      "tags": [
+        "Brand"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/brands/{brandId}/templates/email/{templateName}",
+      "operationId": "getEmailTemplate",
+      "summary": "Okta Get Email Template",
+      "tags": [
+        "Brand"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/brands/{brandId}/templates/email/{templateName}/customizations",
+      "operationId": "listEmailTemplateCustomizations",
+      "summary": "Okta List Email Template Customization",
+      "tags": [
+        "Brand"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/brands/{brandId}/templates/email/{templateName}/customizations",
+      "operationId": "createEmailTemplateCustomization",
+      "summary": "Okta Create Email Template Customization",
+      "tags": [
+        "Brand"
+      ]
+    },
+    {
+      "method": "DELETE",
+      "path": "/api/v1/brands/{brandId}/templates/email/{templateName}/customizations",
+      "operationId": "deleteEmailTemplateCustomizations",
+      "summary": "Okta Delete Email Template Customization",
+      "tags": [
+        "Brand"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/brands/{brandId}/templates/email/{templateName}/customizations/{customizationId}",
+      "operationId": "getEmailTemplateCustomization",
+      "summary": "Okta Get Email Template Customization",
+      "tags": [
+        "Brand"
+      ]
+    },
+    {
+      "method": "PUT",
+      "path": "/api/v1/brands/{brandId}/templates/email/{templateName}/customizations/{customizationId}",
+      "operationId": "updateEmailTemplateCustomization",
+      "summary": "Okta Update Email Customization",
+      "tags": [
+        "Brand"
+      ]
+    },
+    {
+      "method": "DELETE",
+      "path": "/api/v1/brands/{brandId}/templates/email/{templateName}/customizations/{customizationId}",
+      "operationId": "deleteEmailTemplateCustomization",
+      "summary": "Okta Delete Email Customization",
+      "tags": [
+        "Brand"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/brands/{brandId}/templates/email/{templateName}/customizations/{customizationId}/preview",
+      "operationId": "getEmailTemplateCustomizationPreview",
+      "summary": "Okta Get Preview Content of Email Customization",
+      "tags": [
+        "Brand"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/brands/{brandId}/templates/email/{templateName}/default-content",
+      "operationId": "getEmailTemplateDefaultContent",
+      "summary": "Okta Get Default Content of Email Template",
+      "tags": [
+        "Brand"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/brands/{brandId}/templates/email/{templateName}/default-content/preview",
+      "operationId": "getEmailTemplateDefaultContentPreview",
+      "summary": "Okta Get Preview of Email Template Default Content",
+      "tags": [
+        "Brand"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/brands/{brandId}/templates/email/{templateName}/test",
+      "operationId": "sendTestEmail",
+      "summary": "Okta Get Preview of Email Template Default Content",
+      "tags": [
+        "Brand"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/brands/{brandId}/themes",
+      "operationId": "listBrandThemes",
+      "summary": "Okta Get Brand Themes",
+      "tags": [
+        "Brand"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/brands/{brandId}/themes/{themeId}",
+      "operationId": "getBrandTheme",
+      "summary": "Okta Get a theme for a brand",
+      "tags": [
+        "Brand"
+      ]
+    },
+    {
+      "method": "PUT",
+      "path": "/api/v1/brands/{brandId}/themes/{themeId}",
+      "operationId": "updateBrandTheme",
+      "summary": "Okta Update a theme for a brand",
+      "tags": [
+        "Brand"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/brands/{brandId}/themes/{themeId}/background-image",
+      "operationId": "uploadBrandThemeBackgroundImage",
+      "summary": "Okta Updates the background image for your Theme",
+      "tags": [
+        "Brand"
+      ]
+    },
+    {
+      "method": "DELETE",
+      "path": "/api/v1/brands/{brandId}/themes/{themeId}/background-image",
+      "operationId": "deleteBrandThemeBackgroundImage",
+      "summary": "Okta Deletes a Theme background image",
+      "tags": [
+        "Brand"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/brands/{brandId}/themes/{themeId}/favicon",
+      "operationId": "uploadBrandThemeFavicon",
+      "summary": "Okta Updates the favicon for your theme",
+      "tags": [
+        "Brand"
+      ]
+    },
+    {
+      "method": "DELETE",
+      "path": "/api/v1/brands/{brandId}/themes/{themeId}/favicon",
+      "operationId": "deleteBrandThemeFavicon",
+      "summary": "Deletes a Theme favicon. The org then uses the Okta default favicon.",
+      "tags": [
+        "Brand"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/brands/{brandId}/themes/{themeId}/logo",
+      "operationId": "uploadBrandThemeLogo",
+      "summary": "Okta Update a themes logo",
+      "tags": [
+        "Brand"
+      ]
+    },
+    {
+      "method": "DELETE",
+      "path": "/api/v1/brands/{brandId}/themes/{themeId}/logo",
+      "operationId": "deleteBrandThemeLogo",
+      "summary": "Deletes a Theme logo. The org then uses the Okta default logo.",
+      "tags": [
+        "Brand"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/domains",
+      "operationId": "listDomains",
+      "summary": "Okta List Domains",
+      "tags": [
+        "Domain"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/domains",
+      "operationId": "createDomain",
+      "summary": "Okta Create Domain",
+      "tags": [
+        "Domain"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/domains/{domainId}",
+      "operationId": "getDomain",
+      "summary": "Okta Get Domain",
+      "tags": [
+        "Domain"
+      ]
+    },
+    {
+      "method": "DELETE",
+      "path": "/api/v1/domains/{domainId}",
+      "operationId": "deleteDomain",
+      "summary": "Okta Delete Domain",
+      "tags": [
+        "Domain"
+      ]
+    },
+    {
+      "method": "PUT",
+      "path": "/api/v1/domains/{domainId}/certificate",
+      "operationId": "createCertificate",
+      "summary": "Okta Create Certificate",
+      "tags": [
+        "Domain"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/domains/{domainId}/verify",
+      "operationId": "verifyDomain",
+      "summary": "Okta Verify Domain",
+      "tags": [
+        "Domain"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/eventHooks",
+      "operationId": "listEventHooks",
+      "summary": null,
+      "tags": [
+        "EventHook"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/eventHooks",
+      "operationId": "createEventHook",
+      "summary": null,
+      "tags": [
+        "EventHook"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/eventHooks/{eventHookId}",
+      "operationId": "getEventHook",
+      "summary": null,
+      "tags": [
+        "EventHook"
+      ]
+    },
+    {
+      "method": "PUT",
+      "path": "/api/v1/eventHooks/{eventHookId}",
+      "operationId": "updateEventHook",
+      "summary": null,
+      "tags": [
+        "EventHook"
+      ]
+    },
+    {
+      "method": "DELETE",
+      "path": "/api/v1/eventHooks/{eventHookId}",
+      "operationId": "deleteEventHook",
+      "summary": null,
+      "tags": [
+        "EventHook"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/eventHooks/{eventHookId}/lifecycle/activate",
+      "operationId": "activateEventHook",
+      "summary": null,
+      "tags": [
+        "EventHook"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/eventHooks/{eventHookId}/lifecycle/deactivate",
+      "operationId": "deactivateEventHook",
+      "summary": null,
+      "tags": [
+        "EventHook"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/eventHooks/{eventHookId}/lifecycle/verify",
+      "operationId": "verifyEventHook",
+      "summary": null,
+      "tags": [
+        "EventHook"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/features",
+      "operationId": "listFeatures",
+      "summary": null,
+      "tags": [
+        "Feature"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/features/{featureId}",
+      "operationId": "getFeature",
+      "summary": null,
+      "tags": [
+        "Feature"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/features/{featureId}/dependencies",
+      "operationId": "listFeatureDependencies",
+      "summary": null,
+      "tags": [
+        "Feature"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/features/{featureId}/dependents",
+      "operationId": "listFeatureDependents",
+      "summary": null,
+      "tags": [
+        "Feature"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/features/{featureId}/{lifecycle}",
+      "operationId": "updateFeatureLifecycle",
+      "summary": null,
+      "tags": [
+        "Feature"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/groups",
+      "operationId": "listGroups",
+      "summary": "Okta List Groups",
+      "tags": [
+        "Group"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/groups",
+      "operationId": "createGroup",
+      "summary": "Okta Add Group",
+      "tags": [
+        "Group"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/groups/rules",
+      "operationId": "listGroupRules",
+      "summary": "Okta List Group Rules",
+      "tags": [
+        "Group"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/groups/rules",
+      "operationId": "createGroupRule",
+      "summary": "Okta Create Group Rule",
+      "tags": [
+        "Group"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/groups/rules/{ruleId}",
+      "operationId": "getGroupRule",
+      "summary": "Okta Get Group Rule",
+      "tags": [
+        "Group"
+      ]
+    },
+    {
+      "method": "PUT",
+      "path": "/api/v1/groups/rules/{ruleId}",
+      "operationId": "updateGroupRule",
+      "summary": null,
+      "tags": [
+        "Group"
+      ]
+    },
+    {
+      "method": "DELETE",
+      "path": "/api/v1/groups/rules/{ruleId}",
+      "operationId": "deleteGroupRule",
+      "summary": "Okta Delete a group Rule",
+      "tags": [
+        "Group"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/groups/rules/{ruleId}/lifecycle/activate",
+      "operationId": "activateGroupRule",
+      "summary": "Okta Activate a group Rule",
+      "tags": [
+        "Group"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/groups/rules/{ruleId}/lifecycle/deactivate",
+      "operationId": "deactivateGroupRule",
+      "summary": "Okta Deactivate a group Rule",
+      "tags": [
+        "Group"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/groups/{groupId}",
+      "operationId": "getGroup",
+      "summary": "Okta List Group Rules",
+      "tags": [
+        "Group"
+      ]
+    },
+    {
+      "method": "PUT",
+      "path": "/api/v1/groups/{groupId}",
+      "operationId": "updateGroup",
+      "summary": "Okta Update Group",
+      "tags": [
+        "Group"
+      ]
+    },
+    {
+      "method": "DELETE",
+      "path": "/api/v1/groups/{groupId}",
+      "operationId": "deleteGroup",
+      "summary": "Okta Remove Group",
+      "tags": [
+        "Group"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/groups/{groupId}/apps",
+      "operationId": "listAssignedApplicationsForGroup",
+      "summary": "Okta List Assigned Applications",
+      "tags": [
+        "Group"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/groups/{groupId}/roles",
+      "operationId": "listGroupAssignedRoles",
+      "summary": null,
+      "tags": [
+        "Group"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/groups/{groupId}/roles",
+      "operationId": "assignRoleToGroup",
+      "summary": null,
+      "tags": [
+        "Group"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/groups/{groupId}/roles/{roleId}",
+      "operationId": "getRole",
+      "summary": null,
+      "tags": [
+        "Group"
+      ]
+    },
+    {
+      "method": "DELETE",
+      "path": "/api/v1/groups/{groupId}/roles/{roleId}",
+      "operationId": "removeRoleFromGroup",
+      "summary": null,
+      "tags": [
+        "Group"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/groups/{groupId}/roles/{roleId}/targets/catalog/apps",
+      "operationId": "listApplicationTargetsForApplicationAdministratorRoleForGroup",
+      "summary": null,
+      "tags": [
+        "Group"
+      ]
+    },
+    {
+      "method": "PUT",
+      "path": "/api/v1/groups/{groupId}/roles/{roleId}/targets/catalog/apps/{appName}",
+      "operationId": "addApplicationTargetToAdminRoleGivenToGroup",
+      "summary": null,
+      "tags": [
+        "Group"
+      ]
+    },
+    {
+      "method": "DELETE",
+      "path": "/api/v1/groups/{groupId}/roles/{roleId}/targets/catalog/apps/{appName}",
+      "operationId": "removeApplicationTargetFromApplicationAdministratorRoleGivenToGroup",
+      "summary": null,
+      "tags": [
+        "Group"
+      ]
+    },
+    {
+      "method": "PUT",
+      "path": "/api/v1/groups/{groupId}/roles/{roleId}/targets/catalog/apps/{appName}/{applicationId}",
+      "operationId": "addApplicationInstanceTargetToAppAdminRoleGivenToGroup",
+      "summary": "Okta Add App Instance Target to App Administrator Role given to a Group",
+      "tags": [
+        "Group"
+      ]
+    },
+    {
+      "method": "DELETE",
+      "path": "/api/v1/groups/{groupId}/roles/{roleId}/targets/catalog/apps/{appName}/{applicationId}",
+      "operationId": "removeApplicationTargetFromAdministratorRoleGivenToGroup",
+      "summary": "Okta Remove App Instance Target to App Administrator Role given to a Group",
+      "tags": [
+        "Group"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/groups/{groupId}/roles/{roleId}/targets/groups",
+      "operationId": "listGroupTargetsForGroupRole",
+      "summary": null,
+      "tags": [
+        "Group"
+      ]
+    },
+    {
+      "method": "PUT",
+      "path": "/api/v1/groups/{groupId}/roles/{roleId}/targets/groups/{targetGroupId}",
+      "operationId": "addGroupTargetToGroupAdministratorRoleForGroup",
+      "summary": null,
+      "tags": [
+        "Group"
+      ]
+    },
+    {
+      "method": "DELETE",
+      "path": "/api/v1/groups/{groupId}/roles/{roleId}/targets/groups/{targetGroupId}",
+      "operationId": "removeGroupTargetFromGroupAdministratorRoleGivenToGroup",
+      "summary": null,
+      "tags": [
+        "Group"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/groups/{groupId}/users",
+      "operationId": "listGroupUsers",
+      "summary": "Okta List Group Members",
+      "tags": [
+        "Group"
+      ]
+    },
+    {
+      "method": "PUT",
+      "path": "/api/v1/groups/{groupId}/users/{userId}",
+      "operationId": "addUserToGroup",
+      "summary": "Okta Add User to Group",
+      "tags": [
+        "Group"
+      ]
+    },
+    {
+      "method": "DELETE",
+      "path": "/api/v1/groups/{groupId}/users/{userId}",
+      "operationId": "removeUserFromGroup",
+      "summary": "Okta Remove User from Group",
+      "tags": [
+        "Group"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/idps",
+      "operationId": "listIdentityProviders",
+      "summary": "Okta List Identity Providers",
+      "tags": [
+        "IdentityProvider"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/idps",
+      "operationId": "createIdentityProvider",
+      "summary": "Okta Add Identity Provider",
+      "tags": [
+        "IdentityProvider"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/idps/credentials/keys",
+      "operationId": "listIdentityProviderKeys",
+      "summary": "Okta List Keys",
+      "tags": [
+        "IdentityProvider"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/idps/credentials/keys",
+      "operationId": "createIdentityProviderKey",
+      "summary": "Okta Add X.509 Certificate Public Key",
+      "tags": [
+        "IdentityProvider"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/idps/credentials/keys/{keyId}",
+      "operationId": "getIdentityProviderKey",
+      "summary": "Okta Get Key",
+      "tags": [
+        "IdentityProvider"
+      ]
+    },
+    {
+      "method": "DELETE",
+      "path": "/api/v1/idps/credentials/keys/{keyId}",
+      "operationId": "deleteIdentityProviderKey",
+      "summary": "Okta Delete Key",
+      "tags": [
+        "IdentityProvider"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/idps/{idpId}",
+      "operationId": "getIdentityProvider",
+      "summary": "Okta Get Identity Provider",
+      "tags": [
+        "IdentityProvider"
+      ]
+    },
+    {
+      "method": "PUT",
+      "path": "/api/v1/idps/{idpId}",
+      "operationId": "updateIdentityProvider",
+      "summary": "Okta Update Identity Provider",
+      "tags": [
+        "IdentityProvider"
+      ]
+    },
+    {
+      "method": "DELETE",
+      "path": "/api/v1/idps/{idpId}",
+      "operationId": "deleteIdentityProvider",
+      "summary": "Okta Delete Identity Provider",
+      "tags": [
+        "IdentityProvider"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/idps/{idpId}/credentials/csrs",
+      "operationId": "listCsrsForIdentityProvider",
+      "summary": "Okta List Certificate Signing Requests for IdP",
+      "tags": [
+        "IdentityProvider"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/idps/{idpId}/credentials/csrs",
+      "operationId": "generateCsrForIdentityProvider",
+      "summary": "Okta Generate Certificate Signing Request for IdP",
+      "tags": [
+        "IdentityProvider"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/idps/{idpId}/credentials/csrs/{csrId}",
+      "operationId": "getCsrForIdentityProvider",
+      "summary": null,
+      "tags": [
+        "IdentityProvider"
+      ]
+    },
+    {
+      "method": "DELETE",
+      "path": "/api/v1/idps/{idpId}/credentials/csrs/{csrId}",
+      "operationId": "revokeCsrForIdentityProvider",
+      "summary": null,
+      "tags": [
+        "IdentityProvider"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/idps/{idpId}/credentials/csrs/{csrId}/lifecycle/publish",
+      "operationId": null,
+      "summary": null,
+      "tags": [
+        "IdentityProvider"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/idps/{idpId}/credentials/keys",
+      "operationId": "listIdentityProviderSigningKeys",
+      "summary": "Okta List Signing Key Credentials for IdP",
+      "tags": [
+        "IdentityProvider"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/idps/{idpId}/credentials/keys/generate",
+      "operationId": "generateIdentityProviderSigningKey",
+      "summary": "Okta Generate New IdP Signing Key Credential",
+      "tags": [
+        "IdentityProvider"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/idps/{idpId}/credentials/keys/{keyId}",
+      "operationId": "getIdentityProviderSigningKey",
+      "summary": "Okta Get Signing Key Credential for IdP",
+      "tags": [
+        "IdentityProvider"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/idps/{idpId}/credentials/keys/{keyId}/clone",
+      "operationId": "cloneIdentityProviderKey",
+      "summary": "Okta Clone Signing Key Credential for IdP",
+      "tags": [
+        "IdentityProvider"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/idps/{idpId}/lifecycle/activate",
+      "operationId": "activateIdentityProvider",
+      "summary": "Okta Activate Identity Provider",
+      "tags": [
+        "IdentityProvider"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/idps/{idpId}/lifecycle/deactivate",
+      "operationId": "deactivateIdentityProvider",
+      "summary": "Okta Deactivate Identity Provider",
+      "tags": [
+        "IdentityProvider"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/idps/{idpId}/users",
+      "operationId": "listIdentityProviderApplicationUsers",
+      "summary": "Okta Find Users",
+      "tags": [
+        "IdentityProvider"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/idps/{idpId}/users/{userId}",
+      "operationId": "getIdentityProviderApplicationUser",
+      "summary": null,
+      "tags": [
+        "IdentityProvider"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/idps/{idpId}/users/{userId}",
+      "operationId": "linkUserToIdentityProvider",
+      "summary": "Okta Link a user to a Social IdP without a transaction",
+      "tags": [
+        "IdentityProvider"
+      ]
+    },
+    {
+      "method": "DELETE",
+      "path": "/api/v1/idps/{idpId}/users/{userId}",
+      "operationId": "unlinkUserFromIdentityProvider",
+      "summary": "Okta Unlink User from IdP",
+      "tags": [
+        "IdentityProvider"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/idps/{idpId}/users/{userId}/credentials/tokens",
+      "operationId": "listSocialAuthTokens",
+      "summary": "Okta Social Authentication Token Operation",
+      "tags": [
+        "IdentityProvider"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/inlineHooks",
+      "operationId": "listInlineHooks",
+      "summary": null,
+      "tags": [
+        "InlineHook"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/inlineHooks",
+      "operationId": "createInlineHook",
+      "summary": null,
+      "tags": [
+        "InlineHook"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/inlineHooks/{inlineHookId}",
+      "operationId": "getInlineHook",
+      "summary": null,
+      "tags": [
+        "InlineHook"
+      ]
+    },
+    {
+      "method": "PUT",
+      "path": "/api/v1/inlineHooks/{inlineHookId}",
+      "operationId": "updateInlineHook",
+      "summary": null,
+      "tags": [
+        "InlineHook"
+      ]
+    },
+    {
+      "method": "DELETE",
+      "path": "/api/v1/inlineHooks/{inlineHookId}",
+      "operationId": "deleteInlineHook",
+      "summary": null,
+      "tags": [
+        "InlineHook"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/inlineHooks/{inlineHookId}/execute",
+      "operationId": "executeInlineHook",
+      "summary": null,
+      "tags": [
+        "InlineHook"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/inlineHooks/{inlineHookId}/lifecycle/activate",
+      "operationId": "activateInlineHook",
+      "summary": null,
+      "tags": [
+        "InlineHook"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/inlineHooks/{inlineHookId}/lifecycle/deactivate",
+      "operationId": "deactivateInlineHook",
+      "summary": null,
+      "tags": [
+        "InlineHook"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/logs",
+      "operationId": "getLogs",
+      "summary": "Fetch a list of events from your Okta organization system log.",
+      "tags": [
+        "Log"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/mappings",
+      "operationId": "listProfileMappings",
+      "summary": null,
+      "tags": [
+        "ProfileMapping"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/mappings/{mappingId}",
+      "operationId": "getProfileMapping",
+      "summary": "Okta Get Profile Mapping",
+      "tags": [
+        "ProfileMapping"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/mappings/{mappingId}",
+      "operationId": "updateProfileMapping",
+      "summary": "Okta Update Profile Mapping",
+      "tags": [
+        "ProfileMapping"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/meta/schemas/apps/{appInstanceId}/default",
+      "operationId": "getApplicationUserSchema",
+      "summary": "Okta Fetches the Schema for an App User",
+      "tags": [
+        "UserSchema"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/meta/schemas/apps/{appInstanceId}/default",
+      "operationId": "updateApplicationUserProfile",
+      "summary": "Okta Partial updates on the User Profile properties of the Application User Schema.",
+      "tags": [
+        "UserSchema"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/meta/schemas/group/default",
+      "operationId": "getGroupSchema",
+      "summary": "Okta Fetches the group schema",
+      "tags": [
+        "GroupSchema"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/meta/schemas/group/default",
+      "operationId": "updateGroupSchema",
+      "summary": "Okta Updates, adds ore removes one or more custom Group Profile properties in the schema",
+      "tags": [
+        "GroupSchema"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/meta/schemas/user/linkedObjects",
+      "operationId": "listLinkedObjectDefinitions",
+      "summary": null,
+      "tags": [
+        "LinkedObject"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/meta/schemas/user/linkedObjects",
+      "operationId": "addLinkedObjectDefinition",
+      "summary": null,
+      "tags": [
+        "LinkedObject"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/meta/schemas/user/linkedObjects/{linkedObjectName}",
+      "operationId": "getLinkedObjectDefinition",
+      "summary": null,
+      "tags": [
+        "LinkedObject"
+      ]
+    },
+    {
+      "method": "DELETE",
+      "path": "/api/v1/meta/schemas/user/linkedObjects/{linkedObjectName}",
+      "operationId": "deleteLinkedObjectDefinition",
+      "summary": null,
+      "tags": [
+        "LinkedObject"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/meta/schemas/user/{schemaId}",
+      "operationId": "getUserSchema",
+      "summary": "Okta Fetches the schema for a Schema Id.",
+      "tags": [
+        "UserSchema"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/meta/schemas/user/{schemaId}",
+      "operationId": "updateUserProfile",
+      "summary": null,
+      "tags": [
+        "UserSchema"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/meta/types/user",
+      "operationId": "listUserTypes",
+      "summary": null,
+      "tags": [
+        "UserType"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/meta/types/user",
+      "operationId": "createUserType",
+      "summary": null,
+      "tags": [
+        "UserType"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/meta/types/user/{typeId}",
+      "operationId": "getUserType",
+      "summary": null,
+      "tags": [
+        "UserType"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/meta/types/user/{typeId}",
+      "operationId": "updateUserType",
+      "summary": null,
+      "tags": [
+        "UserType"
+      ]
+    },
+    {
+      "method": "PUT",
+      "path": "/api/v1/meta/types/user/{typeId}",
+      "operationId": "replaceUserType",
+      "summary": null,
+      "tags": [
+        "UserType"
+      ]
+    },
+    {
+      "method": "DELETE",
+      "path": "/api/v1/meta/types/user/{typeId}",
+      "operationId": "deleteUserType",
+      "summary": null,
+      "tags": [
+        "UserType"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/org",
+      "operationId": "getOrgSettings",
+      "summary": "Okta Get org settings",
+      "tags": [
+        "Org"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/org",
+      "operationId": "partialUpdateOrgSetting",
+      "summary": "Okta Partial update Org setting",
+      "tags": [
+        "Org"
+      ]
+    },
+    {
+      "method": "PUT",
+      "path": "/api/v1/org",
+      "operationId": "updateOrgSetting",
+      "summary": "Okta Update Org setting",
+      "tags": [
+        "Org"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/org/contacts",
+      "operationId": "getOrgContactTypes",
+      "summary": "Okta Get org contact types",
+      "tags": [
+        "Org"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/org/contacts/{contactType}",
+      "operationId": "getOrgContactUser",
+      "summary": "Okta Get org contact user",
+      "tags": [
+        "Org"
+      ]
+    },
+    {
+      "method": "PUT",
+      "path": "/api/v1/org/contacts/{contactType}",
+      "operationId": "updateOrgContactUser",
+      "summary": "Okta Update org contact user",
+      "tags": [
+        "Org"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/org/logo",
+      "operationId": "updateOrgLogo",
+      "summary": "Okta Update org logo",
+      "tags": [
+        "Org"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/org/preferences",
+      "operationId": "getOrgPreferences",
+      "summary": "Okta Get org preferences",
+      "tags": [
+        "Org"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/org/preferences/hideEndUserFooter",
+      "operationId": "hideOktaUIFooter",
+      "summary": "Show Okta UI Footer",
+      "tags": [
+        "Org"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/org/preferences/showEndUserFooter",
+      "operationId": "showOktaUIFooter",
+      "summary": "Show Okta UI Footer",
+      "tags": [
+        "Org"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/org/privacy/oktaCommunication",
+      "operationId": "getOktaCommunicationSettings",
+      "summary": "Get Okta Communication Settings",
+      "tags": [
+        "Org"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/org/privacy/oktaCommunication/optIn",
+      "operationId": "optInUsersToOktaCommunicationEmails",
+      "summary": "Opt in all users to Okta Communication emails",
+      "tags": [
+        "Org"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/org/privacy/oktaCommunication/optOut",
+      "operationId": "optOutUsersFromOktaCommunicationEmails",
+      "summary": "Opt out all users from Okta Communication emails",
+      "tags": [
+        "Org"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/org/privacy/oktaSupport",
+      "operationId": "getOrgOktaSupportSettings",
+      "summary": "Get Okta Support settings",
+      "tags": [
+        "Org"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/org/privacy/oktaSupport/extend",
+      "operationId": "extendOktaSupport",
+      "summary": "Extend Okta Support",
+      "tags": [
+        "Org"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/org/privacy/oktaSupport/grant",
+      "operationId": "grantOktaSupport",
+      "summary": "Grant Okta Support",
+      "tags": [
+        "Org"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/org/privacy/oktaSupport/revoke",
+      "operationId": "revokeOktaSupport",
+      "summary": "Extend Okta Support",
+      "tags": [
+        "Org"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/policies",
+      "operationId": "listPolicies",
+      "summary": null,
+      "tags": [
+        "Policy"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/policies",
+      "operationId": "createPolicy",
+      "summary": null,
+      "tags": [
+        "Policy"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/policies/{policyId}",
+      "operationId": "getPolicy",
+      "summary": null,
+      "tags": [
+        "Policy"
+      ]
+    },
+    {
+      "method": "PUT",
+      "path": "/api/v1/policies/{policyId}",
+      "operationId": "updatePolicy",
+      "summary": null,
+      "tags": [
+        "Policy"
+      ]
+    },
+    {
+      "method": "DELETE",
+      "path": "/api/v1/policies/{policyId}",
+      "operationId": "deletePolicy",
+      "summary": null,
+      "tags": [
+        "Policy"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/policies/{policyId}/lifecycle/activate",
+      "operationId": "activatePolicy",
+      "summary": null,
+      "tags": [
+        "Policy"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/policies/{policyId}/lifecycle/deactivate",
+      "operationId": "deactivatePolicy",
+      "summary": null,
+      "tags": [
+        "Policy"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/policies/{policyId}/rules",
+      "operationId": "listPolicyRules",
+      "summary": null,
+      "tags": [
+        "Policy"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/policies/{policyId}/rules",
+      "operationId": "createPolicyRule",
+      "summary": null,
+      "tags": [
+        "Policy"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/policies/{policyId}/rules/{ruleId}",
+      "operationId": "getPolicyRule",
+      "summary": null,
+      "tags": [
+        "Policy"
+      ]
+    },
+    {
+      "method": "PUT",
+      "path": "/api/v1/policies/{policyId}/rules/{ruleId}",
+      "operationId": "updatePolicyRule",
+      "summary": null,
+      "tags": [
+        "Policy"
+      ]
+    },
+    {
+      "method": "DELETE",
+      "path": "/api/v1/policies/{policyId}/rules/{ruleId}",
+      "operationId": "deletePolicyRule",
+      "summary": null,
+      "tags": [
+        "Policy"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/policies/{policyId}/rules/{ruleId}/lifecycle/activate",
+      "operationId": "activatePolicyRule",
+      "summary": null,
+      "tags": [
+        "Policy"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/policies/{policyId}/rules/{ruleId}/lifecycle/deactivate",
+      "operationId": "deactivatePolicyRule",
+      "summary": null,
+      "tags": [
+        "Policy"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/roles/{roleTypeOrRoleId}/subscriptions",
+      "operationId": "listRoleSubscriptions",
+      "summary": "Okta List all subscriptions of a Custom Role",
+      "tags": [
+        "Subscription"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/roles/{roleTypeOrRoleId}/subscriptions/{notificationType}",
+      "operationId": "getRoleSubscriptionByNotificationType",
+      "summary": "Okta Get subscriptions of a Custom Role with a specific notification type",
+      "tags": [
+        "Subscription"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/roles/{roleTypeOrRoleId}/subscriptions/{notificationType}/subscribe",
+      "operationId": "subscribeRoleSubscriptionByNotificationType",
+      "summary": "Okta Subscribe a Custom Role to a specific notification type",
+      "tags": [
+        "Subscription"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/roles/{roleTypeOrRoleId}/subscriptions/{notificationType}/unsubscribe",
+      "operationId": "unsubscribeRoleSubscriptionByNotificationType",
+      "summary": "Okta Unsubscribe a Custom Role from a specific notification type",
+      "tags": [
+        "Subscription"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/sessions",
+      "operationId": "createSession",
+      "summary": "Okta Create Session with Session Token",
+      "tags": [
+        "Session"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/sessions/{sessionId}",
+      "operationId": "getSession",
+      "summary": null,
+      "tags": [
+        "Session"
+      ]
+    },
+    {
+      "method": "DELETE",
+      "path": "/api/v1/sessions/{sessionId}",
+      "operationId": "endSession",
+      "summary": "Okta Close Session",
+      "tags": [
+        "Session"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/sessions/{sessionId}/lifecycle/refresh",
+      "operationId": "refreshSession",
+      "summary": "Okta Refresh Session",
+      "tags": [
+        "Session"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/templates/sms",
+      "operationId": "listSmsTemplates",
+      "summary": "Okta List SMS Templates",
+      "tags": [
+        "Template"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/templates/sms",
+      "operationId": "createSmsTemplate",
+      "summary": "Okta Add SMS Template",
+      "tags": [
+        "Template"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/templates/sms/{templateId}",
+      "operationId": "getSmsTemplate",
+      "summary": "Okta Get SMS Template",
+      "tags": [
+        "Template"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/templates/sms/{templateId}",
+      "operationId": "partialUpdateSmsTemplate",
+      "summary": "Okta Partial SMS Template Update",
+      "tags": [
+        "Template"
+      ]
+    },
+    {
+      "method": "PUT",
+      "path": "/api/v1/templates/sms/{templateId}",
+      "operationId": "updateSmsTemplate",
+      "summary": "Okta Update SMS Template",
+      "tags": [
+        "Template"
+      ]
+    },
+    {
+      "method": "DELETE",
+      "path": "/api/v1/templates/sms/{templateId}",
+      "operationId": "deleteSmsTemplate",
+      "summary": "Okta Remove SMS Template",
+      "tags": [
+        "Template"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/threats/configuration",
+      "operationId": "getCurrentConfiguration",
+      "summary": null,
+      "tags": [
+        "ThreatInsight"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/threats/configuration",
+      "operationId": "updateConfiguration",
+      "summary": null,
+      "tags": [
+        "ThreatInsight"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/trustedOrigins",
+      "operationId": "listOrigins",
+      "summary": null,
+      "tags": [
+        "TrustedOrigin"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/trustedOrigins",
+      "operationId": "createOrigin",
+      "summary": null,
+      "tags": [
+        "TrustedOrigin"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/trustedOrigins/{trustedOriginId}",
+      "operationId": "getOrigin",
+      "summary": null,
+      "tags": [
+        "TrustedOrigin"
+      ]
+    },
+    {
+      "method": "PUT",
+      "path": "/api/v1/trustedOrigins/{trustedOriginId}",
+      "operationId": "updateOrigin",
+      "summary": null,
+      "tags": [
+        "TrustedOrigin"
+      ]
+    },
+    {
+      "method": "DELETE",
+      "path": "/api/v1/trustedOrigins/{trustedOriginId}",
+      "operationId": "deleteOrigin",
+      "summary": null,
+      "tags": [
+        "TrustedOrigin"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/trustedOrigins/{trustedOriginId}/lifecycle/activate",
+      "operationId": "activateOrigin",
+      "summary": null,
+      "tags": [
+        "TrustedOrigin"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/trustedOrigins/{trustedOriginId}/lifecycle/deactivate",
+      "operationId": "deactivateOrigin",
+      "summary": null,
+      "tags": [
+        "TrustedOrigin"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/users",
+      "operationId": "listUsers",
+      "summary": "Okta List Users",
+      "tags": [
+        "User"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/users",
+      "operationId": "createUser",
+      "summary": "Okta Create User",
+      "tags": [
+        "User"
+      ]
+    },
+    {
+      "method": "PUT",
+      "path": "/api/v1/users/{associatedUserId}/linkedObjects/{primaryRelationshipName}/{primaryUserId}",
+      "operationId": "setLinkedObjectForUser",
+      "summary": null,
+      "tags": [
+        "User"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/users/{userId}",
+      "operationId": "getUser",
+      "summary": "Okta Get User",
+      "tags": [
+        "User"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/users/{userId}",
+      "operationId": "partialUpdateUser",
+      "summary": null,
+      "tags": [
+        "User"
+      ]
+    },
+    {
+      "method": "PUT",
+      "path": "/api/v1/users/{userId}",
+      "operationId": "updateUser",
+      "summary": "Okta Update User",
+      "tags": [
+        "User"
+      ]
+    },
+    {
+      "method": "DELETE",
+      "path": "/api/v1/users/{userId}",
+      "operationId": "deactivateOrDeleteUser",
+      "summary": "Okta Delete User",
+      "tags": [
+        "User"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/users/{userId}/appLinks",
+      "operationId": "listAppLinks",
+      "summary": "Okta Get Assigned App Links",
+      "tags": [
+        "User"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/users/{userId}/clients",
+      "operationId": "listUserClients",
+      "summary": null,
+      "tags": [
+        "User"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/users/{userId}/clients/{clientId}/grants",
+      "operationId": "listGrantsForUserAndClient",
+      "summary": null,
+      "tags": [
+        "User"
+      ]
+    },
+    {
+      "method": "DELETE",
+      "path": "/api/v1/users/{userId}/clients/{clientId}/grants",
+      "operationId": "revokeGrantsForUserAndClient",
+      "summary": null,
+      "tags": [
+        "User"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/users/{userId}/clients/{clientId}/tokens",
+      "operationId": "listRefreshTokensForUserAndClient",
+      "summary": null,
+      "tags": [
+        "User"
+      ]
+    },
+    {
+      "method": "DELETE",
+      "path": "/api/v1/users/{userId}/clients/{clientId}/tokens",
+      "operationId": "revokeTokensForUserAndClient",
+      "summary": null,
+      "tags": [
+        "User"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/users/{userId}/clients/{clientId}/tokens/{tokenId}",
+      "operationId": "getRefreshTokenForUserAndClient",
+      "summary": null,
+      "tags": [
+        "User"
+      ]
+    },
+    {
+      "method": "DELETE",
+      "path": "/api/v1/users/{userId}/clients/{clientId}/tokens/{tokenId}",
+      "operationId": "revokeTokenForUserAndClient",
+      "summary": null,
+      "tags": [
+        "User"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/users/{userId}/credentials/change_password",
+      "operationId": "changePassword",
+      "summary": "Okta Change Password",
+      "tags": [
+        "User"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/users/{userId}/credentials/change_recovery_question",
+      "operationId": "changeRecoveryQuestion",
+      "summary": "Okta Change Recovery Question",
+      "tags": [
+        "User"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/users/{userId}/credentials/forgot_password",
+      "operationId": null,
+      "summary": "Okta Forgot Password",
+      "tags": [
+        "User"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/users/{userId}/factors",
+      "operationId": "listFactors",
+      "summary": null,
+      "tags": [
+        "UserFactor"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/users/{userId}/factors",
+      "operationId": "enrollFactor",
+      "summary": "Okta Enroll Factor",
+      "tags": [
+        "UserFactor"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/users/{userId}/factors/catalog",
+      "operationId": "listSupportedFactors",
+      "summary": null,
+      "tags": [
+        "UserFactor"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/users/{userId}/factors/questions",
+      "operationId": "listSupportedSecurityQuestions",
+      "summary": null,
+      "tags": [
+        "UserFactor"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/users/{userId}/factors/{factorId}",
+      "operationId": "getFactor",
+      "summary": null,
+      "tags": [
+        "UserFactor"
+      ]
+    },
+    {
+      "method": "DELETE",
+      "path": "/api/v1/users/{userId}/factors/{factorId}",
+      "operationId": "deleteFactor",
+      "summary": null,
+      "tags": [
+        "UserFactor"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/users/{userId}/factors/{factorId}/lifecycle/activate",
+      "operationId": "activateFactor",
+      "summary": "Okta Activate Factor",
+      "tags": [
+        "UserFactor"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/users/{userId}/factors/{factorId}/transactions/{transactionId}",
+      "operationId": "getFactorTransactionStatus",
+      "summary": null,
+      "tags": [
+        "UserFactor"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/users/{userId}/factors/{factorId}/verify",
+      "operationId": "verifyFactor",
+      "summary": "Okta Verify MFA Factor",
+      "tags": [
+        "UserFactor"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/users/{userId}/grants",
+      "operationId": "listUserGrants",
+      "summary": null,
+      "tags": [
+        "User"
+      ]
+    },
+    {
+      "method": "DELETE",
+      "path": "/api/v1/users/{userId}/grants",
+      "operationId": "revokeUserGrants",
+      "summary": null,
+      "tags": [
+        "User"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/users/{userId}/grants/{grantId}",
+      "operationId": "getUserGrant",
+      "summary": null,
+      "tags": [
+        "User"
+      ]
+    },
+    {
+      "method": "DELETE",
+      "path": "/api/v1/users/{userId}/grants/{grantId}",
+      "operationId": "revokeUserGrant",
+      "summary": null,
+      "tags": [
+        "User"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/users/{userId}/groups",
+      "operationId": "listUserGroups",
+      "summary": "Okta Get Member Groups",
+      "tags": [
+        "User"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/users/{userId}/idps",
+      "operationId": "listUserIdentityProviders",
+      "summary": "Okta Listing IdPs associated with a user",
+      "tags": [
+        "User"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/users/{userId}/lifecycle/activate",
+      "operationId": "activateUser",
+      "summary": "Okta Activate User",
+      "tags": [
+        "User"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/users/{userId}/lifecycle/deactivate",
+      "operationId": "deactivateUser",
+      "summary": "Okta Deactivate User",
+      "tags": [
+        "User"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/users/{userId}/lifecycle/expire_password?tempPassword=false",
+      "operationId": "expirePassword",
+      "summary": "Okta Expire Password",
+      "tags": [
+        "User"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/users/{userId}/lifecycle/expire_password?tempPassword=true",
+      "operationId": "expirePasswordAndGetTemporaryPassword",
+      "summary": "Okta Expire Password",
+      "tags": [
+        "User"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/users/{userId}/lifecycle/reactivate",
+      "operationId": "reactivateUser",
+      "summary": "Okta Reactivate User",
+      "tags": [
+        "User"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/users/{userId}/lifecycle/reset_factors",
+      "operationId": "resetFactors",
+      "summary": "Okta Reset Factors",
+      "tags": [
+        "User"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/users/{userId}/lifecycle/reset_password",
+      "operationId": "resetPassword",
+      "summary": "Okta Reset Password",
+      "tags": [
+        "User"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/users/{userId}/lifecycle/suspend",
+      "operationId": "suspendUser",
+      "summary": "Okta Suspend User",
+      "tags": [
+        "User"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/users/{userId}/lifecycle/unlock",
+      "operationId": "unlockUser",
+      "summary": "Okta Unlock User",
+      "tags": [
+        "User"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/users/{userId}/lifecycle/unsuspend",
+      "operationId": "unsuspendUser",
+      "summary": "Okta Unsuspend User",
+      "tags": [
+        "User"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/users/{userId}/linkedObjects/{relationshipName}",
+      "operationId": "getLinkedObjectsForUser",
+      "summary": null,
+      "tags": [
+        "User"
+      ]
+    },
+    {
+      "method": "DELETE",
+      "path": "/api/v1/users/{userId}/linkedObjects/{relationshipName}",
+      "operationId": "removeLinkedObjectForUser",
+      "summary": null,
+      "tags": [
+        "User"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/users/{userId}/roles",
+      "operationId": "listAssignedRolesForUser",
+      "summary": null,
+      "tags": [
+        "User"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/users/{userId}/roles",
+      "operationId": "assignRoleToUser",
+      "summary": null,
+      "tags": [
+        "User"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/users/{userId}/roles/{roleId}",
+      "operationId": "getUserRole",
+      "summary": null,
+      "tags": [
+        "User"
+      ]
+    },
+    {
+      "method": "DELETE",
+      "path": "/api/v1/users/{userId}/roles/{roleId}",
+      "operationId": "removeRoleFromUser",
+      "summary": null,
+      "tags": [
+        "User"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/users/{userId}/roles/{roleId}/targets/catalog/apps",
+      "operationId": "listApplicationTargetsForApplicationAdministratorRoleForUser",
+      "summary": null,
+      "tags": [
+        "User"
+      ]
+    },
+    {
+      "method": "PUT",
+      "path": "/api/v1/users/{userId}/roles/{roleId}/targets/catalog/apps",
+      "operationId": "addAllAppsAsTargetToRole",
+      "summary": null,
+      "tags": [
+        "User"
+      ]
+    },
+    {
+      "method": "PUT",
+      "path": "/api/v1/users/{userId}/roles/{roleId}/targets/catalog/apps/{appName}",
+      "operationId": "addApplicationTargetToAdminRoleForUser",
+      "summary": null,
+      "tags": [
+        "User"
+      ]
+    },
+    {
+      "method": "DELETE",
+      "path": "/api/v1/users/{userId}/roles/{roleId}/targets/catalog/apps/{appName}",
+      "operationId": "removeApplicationTargetFromApplicationAdministratorRoleForUser",
+      "summary": null,
+      "tags": [
+        "User"
+      ]
+    },
+    {
+      "method": "PUT",
+      "path": "/api/v1/users/{userId}/roles/{roleId}/targets/catalog/apps/{appName}/{applicationId}",
+      "operationId": "addApplicationTargetToAppAdminRoleForUser",
+      "summary": "Okta Add App Instance Target to App Administrator Role given to a User",
+      "tags": [
+        "User"
+      ]
+    },
+    {
+      "method": "DELETE",
+      "path": "/api/v1/users/{userId}/roles/{roleId}/targets/catalog/apps/{appName}/{applicationId}",
+      "operationId": "removeApplicationTargetFromAdministratorRoleForUser",
+      "summary": "Okta Remove App Instance Target to App Administrator Role given to a User",
+      "tags": [
+        "User"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/users/{userId}/roles/{roleId}/targets/groups",
+      "operationId": "listGroupTargetsForRole",
+      "summary": null,
+      "tags": [
+        "User"
+      ]
+    },
+    {
+      "method": "PUT",
+      "path": "/api/v1/users/{userId}/roles/{roleId}/targets/groups/{groupId}",
+      "operationId": "addGroupTargetToRole",
+      "summary": null,
+      "tags": [
+        "User"
+      ]
+    },
+    {
+      "method": "DELETE",
+      "path": "/api/v1/users/{userId}/roles/{roleId}/targets/groups/{groupId}",
+      "operationId": "removeGroupTargetFromRole",
+      "summary": null,
+      "tags": [
+        "User"
+      ]
+    },
+    {
+      "method": "DELETE",
+      "path": "/api/v1/users/{userId}/sessions",
+      "operationId": "clearUserSessions",
+      "summary": null,
+      "tags": [
+        "User"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/users/{userId}/subscriptions",
+      "operationId": "listUserSubscriptions",
+      "summary": "Okta List subscriptions of a User",
+      "tags": [
+        "User"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/users/{userId}/subscriptions/{notificationType}",
+      "operationId": "getUserSubscriptionByNotificationType",
+      "summary": "Okta Get the subscription of a User with a specific notification type",
+      "tags": [
+        "User"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/users/{userId}/subscriptions/{notificationType}/subscribe",
+      "operationId": "subscribeUserSubscriptionByNotificationType",
+      "summary": "Okta Subscribe to a specific notification type",
+      "tags": [
+        "Subscription"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/users/{userId}/subscriptions/{notificationType}/unsubscribe",
+      "operationId": "unsubscribeUserSubscriptionByNotificationType",
+      "summary": "Okta Unsubscribe from a specific notification type",
+      "tags": [
+        "Subscription"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/zones",
+      "operationId": "listNetworkZones",
+      "summary": "Okta List Network Zones",
+      "tags": [
+        "NetworkZone"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/zones",
+      "operationId": "createNetworkZone",
+      "summary": "Okta Add Network Zone",
+      "tags": [
+        "NetworkZone"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/zones/{zoneId}",
+      "operationId": "getNetworkZone",
+      "summary": "Okta Get Network Zone",
+      "tags": [
+        "NetworkZone"
+      ]
+    },
+    {
+      "method": "PUT",
+      "path": "/api/v1/zones/{zoneId}",
+      "operationId": "updateNetworkZone",
+      "summary": "Okta Update Network Zone",
+      "tags": [
+        "NetworkZone"
+      ]
+    },
+    {
+      "method": "DELETE",
+      "path": "/api/v1/zones/{zoneId}",
+      "operationId": "deleteNetworkZone",
+      "summary": "Okta Delete Network Zone",
+      "tags": [
+        "NetworkZone"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/zones/{zoneId}/lifecycle/activate",
+      "operationId": "activateNetworkZone",
+      "summary": "Okta Activate Network Zone",
+      "tags": [
+        "NetworkZone"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/zones/{zoneId}/lifecycle/deactivate",
+      "operationId": "deactivateNetworkZone",
+      "summary": "Okta Deactivate Network Zone",
+      "tags": [
+        "NetworkZone"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/FactorStatus",
+  "title": "FactorStatus",
+  "type": "string",
+  "enum": [
+    "PENDING_ACTIVATION",
+    "ACTIVE",
+    "INACTIVE",
+    "NOT_SETUP",
+    "ENROLLED",
+    "DISABLED",
+    "EXPIRED"
+  ],
+  "x-okta-tags": [
+    "UserFactor"
+  ]
+}

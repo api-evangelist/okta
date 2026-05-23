@@ -1,0 +1,42 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/IonField",
+  "title": "IonField",
+  "type": "object",
+  "properties": {
+    "form": {
+      "$ref": "#/components/schemas/IonForm"
+    },
+    "label": {
+      "type": "string"
+    },
+    "mutable": {
+      "type": "boolean"
+    },
+    "name": {
+      "type": "string"
+    },
+    "required": {
+      "type": "boolean"
+    },
+    "secret": {
+      "type": "boolean"
+    },
+    "type": {
+      "type": "string"
+    },
+    "value": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "properties": {}
+      }
+    },
+    "visible": {
+      "type": "boolean"
+    }
+  },
+  "x-okta-tags": [
+    "Ion"
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/AppAndInstanceConditionEvaluatorAppOrInstance",
+  "title": "AppAndInstanceConditionEvaluatorAppOrInstance",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "readOnly": true
+    },
+    "name": {
+      "type": "string"
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "APP_TYPE",
+        "APP"
+      ]
+    }
+  },
+  "x-okta-tags": [
+    "Policy"
+  ]
+}

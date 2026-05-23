@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/OAuth2ScopesMediationPolicyRuleCondition",
+  "title": "OAuth2ScopesMediationPolicyRuleCondition",
+  "type": "object",
+  "properties": {
+    "include": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "x-okta-tags": [
+    "Application"
+  ]
+}

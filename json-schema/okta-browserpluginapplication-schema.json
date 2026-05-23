@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/BrowserPluginApplication",
+  "title": "BrowserPluginApplication",
+  "type": "object",
+  "properties": {
+    "credentials": {
+      "$ref": "#/components/schemas/SchemeApplicationCredentials"
+    }
+  },
+  "x-okta-parent": "#/definitions/Application",
+  "x-okta-tags": [
+    "Application"
+  ],
+  "x-openapi-v3-discriminator": {
+    "mapping": {
+      "template_swa": "#/definitions/SwaApplication",
+      "template_swa3field": "#/definitions/SwaThreeFieldApplication"
+    },
+    "propertyName": "name"
+  }
+}

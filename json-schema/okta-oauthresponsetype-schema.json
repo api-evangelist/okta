@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/OAuthResponseType",
+  "title": "OAuthResponseType",
+  "type": "string",
+  "enum": [
+    "code",
+    "token",
+    "id_token"
+  ],
+  "x-okta-tags": [
+    "Application"
+  ]
+}

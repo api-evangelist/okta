@@ -1,0 +1,73 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/JsonWebKey",
+  "title": "JsonWebKey",
+  "type": "object",
+  "properties": {
+    "_links": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "properties": {}
+      },
+      "readOnly": true
+    },
+    "alg": {
+      "type": "string"
+    },
+    "created": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "e": {
+      "type": "string"
+    },
+    "expiresAt": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "key_ops": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "kid": {
+      "type": "string"
+    },
+    "kty": {
+      "type": "string"
+    },
+    "lastUpdated": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "n": {
+      "type": "string"
+    },
+    "status": {
+      "type": "string"
+    },
+    "use": {
+      "type": "string"
+    },
+    "x5c": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "x5t": {
+      "type": "string"
+    },
+    "x5t#S256": {
+      "type": "string"
+    },
+    "x5u": {
+      "type": "string"
+    }
+  },
+  "x-okta-tags": [
+    "Application"
+  ]
+}

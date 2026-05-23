@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/OpenIdConnectApplication",
+  "title": "OpenIdConnectApplication",
+  "type": "object",
+  "properties": {
+    "credentials": {
+      "$ref": "#/components/schemas/OAuthApplicationCredentials"
+    },
+    "name": {
+      "type": "object"
+    },
+    "settings": {
+      "$ref": "#/components/schemas/OpenIdConnectApplicationSettings"
+    }
+  },
+  "x-okta-defined-as": {
+    "name": "oidc_client"
+  },
+  "x-okta-parent": "#/definitions/Application",
+  "x-okta-tags": [
+    "Application"
+  ]
+}

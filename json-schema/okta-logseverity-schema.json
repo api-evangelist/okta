@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/LogSeverity",
+  "title": "LogSeverity",
+  "type": "string",
+  "enum": [
+    "DEBUG",
+    "INFO",
+    "WARN",
+    "ERROR"
+  ],
+  "x-okta-tags": [
+    "Log"
+  ]
+}

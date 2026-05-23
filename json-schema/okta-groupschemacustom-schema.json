@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/GroupSchemaCustom",
+  "title": "GroupSchemaCustom",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "readOnly": true
+    },
+    "properties": {
+      "type": "object",
+      "additionalProperties": {
+        "$ref": "#/components/schemas/GroupSchemaAttribute"
+      }
+    },
+    "required": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "type": {
+      "type": "string"
+    }
+  },
+  "x-okta-tags": [
+    "GroupSchema"
+  ]
+}

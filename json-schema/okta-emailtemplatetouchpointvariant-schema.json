@@ -1,0 +1,13 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/EmailTemplateTouchPointVariant",
+  "title": "EmailTemplateTouchPointVariant",
+  "type": "string",
+  "enum": [
+    "OKTA_DEFAULT",
+    "FULL_THEME"
+  ],
+  "x-okta-tags": [
+    "Brand"
+  ]
+}

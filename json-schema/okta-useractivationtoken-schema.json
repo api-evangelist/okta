@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/UserActivationToken",
+  "title": "UserActivationToken",
+  "type": "object",
+  "properties": {
+    "activationToken": {
+      "type": "string",
+      "readOnly": true
+    },
+    "activationUrl": {
+      "type": "string",
+      "readOnly": true
+    }
+  },
+  "x-okta-tags": [
+    "User"
+  ]
+}

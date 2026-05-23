@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/ProfileEnrollmentPolicyRuleActivationRequirement",
+  "title": "ProfileEnrollmentPolicyRuleActivationRequirement",
+  "type": "object",
+  "properties": {
+    "emailVerification": {
+      "type": "boolean"
+    }
+  },
+  "x-okta-tags": [
+    "Policy"
+  ]
+}

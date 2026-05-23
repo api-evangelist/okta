@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/PolicyNetworkCondition",
+  "title": "PolicyNetworkCondition",
+  "type": "object",
+  "properties": {
+    "connection": {
+      "type": "string",
+      "enum": [
+        "ANYWHERE",
+        "ZONE"
+      ]
+    },
+    "exclude": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "include": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "x-okta-tags": [
+    "Policy"
+  ]
+}

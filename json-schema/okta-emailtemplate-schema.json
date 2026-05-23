@@ -1,0 +1,75 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/EmailTemplate",
+  "title": "EmailTemplate",
+  "type": "object",
+  "properties": {
+    "_links": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "properties": {}
+      },
+      "readOnly": true
+    },
+    "name": {
+      "type": "string",
+      "readOnly": true
+    }
+  },
+  "x-okta-crud": [
+    {
+      "alias": "read",
+      "operationId": "getEmailTemplate"
+    }
+  ],
+  "x-okta-operations": [
+    {
+      "alias": "getEmailTemplate",
+      "operationId": "getEmailTemplate"
+    },
+    {
+      "alias": "deleteEmailTemplateCustomizations",
+      "operationId": "deleteEmailTemplateCustomizations"
+    },
+    {
+      "alias": "listEmailTemplateCustomizations",
+      "operationId": "listEmailTemplateCustomizations"
+    },
+    {
+      "alias": "createEmailTemplateCustomization",
+      "operationId": "createEmailTemplateCustomization"
+    },
+    {
+      "alias": "deleteEmailTemplateCustomization",
+      "operationId": "deleteEmailTemplateCustomization"
+    },
+    {
+      "alias": "getEmailTemplateCustomization",
+      "operationId": "getEmailTemplateCustomization"
+    },
+    {
+      "alias": "updateEmailTemplateCustomization",
+      "operationId": "updateEmailTemplateCustomization"
+    },
+    {
+      "alias": "getEmailTemplateCustomizationPreview",
+      "operationId": "getEmailTemplateCustomizationPreview"
+    },
+    {
+      "alias": "getEmailTemplateDefaultContent",
+      "operationId": "getEmailTemplateDefaultContent"
+    },
+    {
+      "alias": "getEmailTemplateDefaultContentPreview",
+      "operationId": "getEmailTemplateDefaultContentPreview"
+    },
+    {
+      "alias": "sendTestEmail",
+      "operationId": "sendTestEmail"
+    }
+  ],
+  "x-okta-tags": [
+    "Brands"
+  ]
+}

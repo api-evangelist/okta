@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/CapabilitiesObject",
+  "title": "CapabilitiesObject",
+  "type": "object",
+  "properties": {
+    "create": {
+      "$ref": "#/components/schemas/CapabilitiesCreateObject"
+    },
+    "update": {
+      "$ref": "#/components/schemas/CapabilitiesUpdateObject"
+    }
+  },
+  "x-okta-tags": [
+    "Application"
+  ]
+}

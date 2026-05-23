@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/InlineHookResponseCommandValue",
+  "title": "InlineHookResponseCommandValue",
+  "type": "object",
+  "properties": {
+    "op": {
+      "type": "string"
+    },
+    "path": {
+      "type": "string"
+    },
+    "value": {
+      "type": "string"
+    }
+  },
+  "x-okta-tags": [
+    "InlineHook"
+  ]
+}

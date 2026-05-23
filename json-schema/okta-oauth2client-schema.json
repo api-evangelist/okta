@@ -1,0 +1,35 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/OAuth2Client",
+  "title": "OAuth2Client",
+  "type": "object",
+  "properties": {
+    "_links": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "properties": {}
+      },
+      "readOnly": true
+    },
+    "client_id": {
+      "type": "string",
+      "readOnly": true
+    },
+    "client_name": {
+      "type": "string",
+      "readOnly": true
+    },
+    "client_uri": {
+      "type": "string",
+      "readOnly": true
+    },
+    "logo_uri": {
+      "type": "string",
+      "readOnly": true
+    }
+  },
+  "x-okta-tags": [
+    "Application"
+  ]
+}

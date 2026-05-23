@@ -1,0 +1,18 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/SessionIdentityProvider",
+  "title": "SessionIdentityProvider",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "readOnly": true
+    },
+    "type": {
+      "$ref": "#/components/schemas/SessionIdentityProviderType"
+    }
+  },
+  "x-okta-tags": [
+    "Session"
+  ]
+}

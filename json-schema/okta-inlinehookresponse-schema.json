@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/InlineHookResponse",
+  "title": "InlineHookResponse",
+  "type": "object",
+  "properties": {
+    "commands": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/InlineHookResponseCommands"
+      }
+    }
+  },
+  "x-okta-tags": [
+    "InlineHook"
+  ]
+}

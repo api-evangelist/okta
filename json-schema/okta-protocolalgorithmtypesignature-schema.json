@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/ProtocolAlgorithmTypeSignature",
+  "title": "ProtocolAlgorithmTypeSignature",
+  "type": "object",
+  "properties": {
+    "algorithm": {
+      "type": "string"
+    },
+    "scope": {
+      "type": "string",
+      "enum": [
+        "RESPONSE",
+        "TOKEN",
+        "ANY",
+        "REQUEST",
+        "NONE"
+      ]
+    }
+  },
+  "x-okta-tags": [
+    "IdentityProvider"
+  ]
+}

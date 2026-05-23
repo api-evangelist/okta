@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/UserSchemaAttributePermission",
+  "title": "UserSchemaAttributePermission",
+  "type": "object",
+  "properties": {
+    "action": {
+      "type": "string"
+    },
+    "principal": {
+      "type": "string"
+    }
+  },
+  "x-okta-tags": [
+    "UserSchema"
+  ]
+}

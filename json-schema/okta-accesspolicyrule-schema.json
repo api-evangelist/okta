@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/AccessPolicyRule",
+  "title": "AccessPolicyRule",
+  "type": "object",
+  "properties": {
+    "actions": {
+      "$ref": "#/components/schemas/AccessPolicyRuleActions"
+    },
+    "conditions": {
+      "$ref": "#/components/schemas/AccessPolicyRuleConditions"
+    },
+    "name": {
+      "type": "string"
+    }
+  },
+  "x-okta-parent": "#/definitions/PolicyRule",
+  "x-okta-tags": [
+    "Policy"
+  ]
+}

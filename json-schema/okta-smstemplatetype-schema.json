@@ -1,0 +1,12 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/SmsTemplateType",
+  "title": "SmsTemplateType",
+  "type": "string",
+  "enum": [
+    "SMS_VERIFY_CODE"
+  ],
+  "x-okta-tags": [
+    "Template"
+  ]
+}

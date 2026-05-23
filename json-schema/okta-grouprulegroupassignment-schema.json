@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/GroupRuleGroupAssignment",
+  "title": "GroupRuleGroupAssignment",
+  "type": "object",
+  "properties": {
+    "groupIds": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "x-okta-tags": [
+    "GroupRule"
+  ]
+}

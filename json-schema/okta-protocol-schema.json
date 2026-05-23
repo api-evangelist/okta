@@ -1,0 +1,44 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/Protocol",
+  "title": "Protocol",
+  "type": "object",
+  "properties": {
+    "algorithms": {
+      "$ref": "#/components/schemas/ProtocolAlgorithms"
+    },
+    "credentials": {
+      "$ref": "#/components/schemas/IdentityProviderCredentials"
+    },
+    "endpoints": {
+      "$ref": "#/components/schemas/ProtocolEndpoints"
+    },
+    "issuer": {
+      "$ref": "#/components/schemas/ProtocolEndpoint"
+    },
+    "relayState": {
+      "$ref": "#/components/schemas/ProtocolRelayState"
+    },
+    "scopes": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "settings": {
+      "$ref": "#/components/schemas/ProtocolSettings"
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "SAML2",
+        "OIDC",
+        "OAUTH2",
+        "MTLS"
+      ]
+    }
+  },
+  "x-okta-tags": [
+    "IdentityProvider"
+  ]
+}

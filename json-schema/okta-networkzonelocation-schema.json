@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/NetworkZoneLocation",
+  "title": "NetworkZoneLocation",
+  "type": "object",
+  "properties": {
+    "country": {
+      "type": "string"
+    },
+    "region": {
+      "type": "string"
+    }
+  },
+  "x-okta-tags": [
+    "NetworkZone"
+  ]
+}

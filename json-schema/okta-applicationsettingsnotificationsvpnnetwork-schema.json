@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/ApplicationSettingsNotificationsVpnNetwork",
+  "title": "ApplicationSettingsNotificationsVpnNetwork",
+  "type": "object",
+  "properties": {
+    "connection": {
+      "type": "string"
+    },
+    "exclude": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "include": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "x-okta-tags": [
+    "Application"
+  ]
+}

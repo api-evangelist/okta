@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/JwkUse",
+  "title": "JwkUse",
+  "type": "object",
+  "properties": {
+    "use": {
+      "type": "string",
+      "enum": [
+        "sig"
+      ]
+    }
+  },
+  "x-okta-tags": [
+    "Application"
+  ]
+}

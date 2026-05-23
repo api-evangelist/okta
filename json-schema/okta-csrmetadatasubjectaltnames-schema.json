@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/CsrMetadataSubjectAltNames",
+  "title": "CsrMetadataSubjectAltNames",
+  "type": "object",
+  "properties": {
+    "dnsNames": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "x-okta-tags": [
+    "Application"
+  ]
+}

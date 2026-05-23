@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/OAuthGrantType",
+  "title": "OAuthGrantType",
+  "type": "string",
+  "enum": [
+    "authorization_code",
+    "implicit",
+    "password",
+    "refresh_token",
+    "client_credentials",
+    "saml2_bearer",
+    "device_code",
+    "token_exchange",
+    "interaction_code"
+  ],
+  "x-okta-tags": [
+    "Application"
+  ]
+}

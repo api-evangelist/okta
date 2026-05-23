@@ -1,0 +1,35 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/ProtocolEndpoints",
+  "title": "ProtocolEndpoints",
+  "type": "object",
+  "properties": {
+    "acs": {
+      "$ref": "#/components/schemas/ProtocolEndpoint"
+    },
+    "authorization": {
+      "$ref": "#/components/schemas/ProtocolEndpoint"
+    },
+    "jwks": {
+      "$ref": "#/components/schemas/ProtocolEndpoint"
+    },
+    "metadata": {
+      "$ref": "#/components/schemas/ProtocolEndpoint"
+    },
+    "slo": {
+      "$ref": "#/components/schemas/ProtocolEndpoint"
+    },
+    "sso": {
+      "$ref": "#/components/schemas/ProtocolEndpoint"
+    },
+    "token": {
+      "$ref": "#/components/schemas/ProtocolEndpoint"
+    },
+    "userInfo": {
+      "$ref": "#/components/schemas/ProtocolEndpoint"
+    }
+  },
+  "x-okta-tags": [
+    "IdentityProvider"
+  ]
+}

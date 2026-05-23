@@ -1,0 +1,27 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/UserIdentifierPolicyRuleCondition",
+  "title": "UserIdentifierPolicyRuleCondition",
+  "type": "object",
+  "properties": {
+    "attribute": {
+      "type": "string"
+    },
+    "patterns": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/UserIdentifierConditionEvaluatorPattern"
+      }
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "IDENTIFIER",
+        "ATTRIBUTE"
+      ]
+    }
+  },
+  "x-okta-tags": [
+    "Policy"
+  ]
+}

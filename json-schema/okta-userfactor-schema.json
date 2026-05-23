@@ -1,0 +1,117 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/UserFactor",
+  "title": "UserFactor",
+  "type": "object",
+  "properties": {
+    "_embedded": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "properties": {}
+      },
+      "readOnly": true
+    },
+    "_links": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "properties": {}
+      },
+      "readOnly": true
+    },
+    "created": {
+      "type": "string",
+      "format": "date-time",
+      "readOnly": true
+    },
+    "factorType": {
+      "$ref": "#/components/schemas/FactorType"
+    },
+    "id": {
+      "type": "string",
+      "readOnly": true
+    },
+    "lastUpdated": {
+      "type": "string",
+      "format": "date-time",
+      "readOnly": true
+    },
+    "provider": {
+      "$ref": "#/components/schemas/FactorProvider"
+    },
+    "status": {
+      "$ref": "#/components/schemas/FactorStatus"
+    },
+    "verify": {
+      "$ref": "#/components/schemas/VerifyFactorRequest"
+    }
+  },
+  "x-okta-crud": [
+    {
+      "alias": "delete",
+      "arguments": [
+        {
+          "dest": "factorId",
+          "src": "id"
+        },
+        {
+          "dest": "userId",
+          "parentSrc": "id"
+        }
+      ],
+      "operationId": "deleteFactor"
+    }
+  ],
+  "x-okta-operations": [
+    {
+      "alias": "activate",
+      "arguments": [
+        {
+          "dest": "factorId",
+          "src": "id"
+        },
+        {
+          "dest": "userId",
+          "parentSrc": "id"
+        }
+      ],
+      "operationId": "activateFactor"
+    },
+    {
+      "alias": "verify",
+      "arguments": [
+        {
+          "dest": "factorId",
+          "src": "id"
+        },
+        {
+          "dest": "userId",
+          "parentSrc": "id"
+        }
+      ],
+      "operationId": "verifyFactor"
+    }
+  ],
+  "x-okta-tags": [
+    "UserFactor"
+  ],
+  "x-openapi-v3-discriminator": {
+    "mapping": {
+      "call": "#/definitions/CallUserFactor",
+      "email": "#/definitions/EmailUserFactor",
+      "hotp": "#/definitions/CustomHotpUserFactor",
+      "push": "#/definitions/PushUserFactor",
+      "question": "#/definitions/SecurityQuestionUserFactor",
+      "sms": "#/definitions/SmsUserFactor",
+      "token": "#/definitions/TokenUserFactor",
+      "token:hardware": "#/definitions/HardwareUserFactor",
+      "token:hotp": "#/definitions/CustomHotpUserFactor",
+      "token:software:totp": "#/definitions/TotpUserFactor",
+      "u2f": "#/definitions/U2fUserFactor",
+      "web": "#/definitions/WebUserFactor",
+      "webauthn": "#/definitions/WebAuthnUserFactor"
+    },
+    "propertyName": "factorType"
+  }
+}

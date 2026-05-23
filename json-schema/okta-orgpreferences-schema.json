@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/OrgPreferences",
+  "title": "OrgPreferences",
+  "type": "object",
+  "properties": {
+    "_links": {
+      "type": "object"
+    },
+    "showEndUserFooter": {
+      "type": "boolean",
+      "readOnly": true
+    }
+  },
+  "x-okta-operations": [
+    {
+      "alias": "hideEndUserFooter",
+      "operationId": "hideOktaUIFooter"
+    },
+    {
+      "alias": "showEndUserFooter",
+      "operationId": "showOktaUIFooter"
+    }
+  ],
+  "x-okta-tags": [
+    "Org"
+  ]
+}

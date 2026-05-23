@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/BasicAuthApplication",
+  "title": "BasicAuthApplication",
+  "type": "object",
+  "properties": {
+    "credentials": {
+      "$ref": "#/components/schemas/SchemeApplicationCredentials"
+    },
+    "name": {
+      "type": "object"
+    },
+    "settings": {
+      "$ref": "#/components/schemas/BasicApplicationSettings"
+    }
+  },
+  "x-okta-defined-as": {
+    "name": "template_basic_auth"
+  },
+  "x-okta-parent": "#/definitions/Application",
+  "x-okta-tags": [
+    "Application"
+  ]
+}

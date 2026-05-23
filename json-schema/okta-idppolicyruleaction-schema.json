@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/IdpPolicyRuleAction",
+  "title": "IdpPolicyRuleAction",
+  "type": "object",
+  "properties": {
+    "providers": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/IdpPolicyRuleActionProvider"
+      }
+    }
+  },
+  "x-okta-tags": [
+    "Policy"
+  ]
+}

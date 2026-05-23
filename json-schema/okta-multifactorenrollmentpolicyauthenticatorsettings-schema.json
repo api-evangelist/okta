@@ -1,0 +1,38 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/MultifactorEnrollmentPolicyAuthenticatorSettings",
+  "title": "MultifactorEnrollmentPolicyAuthenticatorSettings",
+  "type": "object",
+  "properties": {
+    "constraints": {
+      "type": "object",
+      "properties": {
+        "aaguidGroups": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "x-okta-lifecycle": {
+        "features": [
+          "WEBAUTHN_MDS_CATALOG_BASED_AAGUID_ALLOWLIST"
+        ]
+      }
+    },
+    "enroll": {
+      "type": "object",
+      "properties": {
+        "self": {
+          "$ref": "#/components/schemas/MultifactorEnrollmentPolicyAuthenticatorStatus"
+        }
+      }
+    },
+    "key": {
+      "$ref": "#/components/schemas/MultifactorEnrollmentPolicyAuthenticatorType"
+    }
+  },
+  "x-okta-tags": [
+    "Policy"
+  ]
+}

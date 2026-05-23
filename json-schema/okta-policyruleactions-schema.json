@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/PolicyRuleActions",
+  "title": "PolicyRuleActions",
+  "type": "object",
+  "properties": {
+    "enroll": {
+      "$ref": "#/components/schemas/PolicyRuleActionsEnroll"
+    },
+    "idp": {
+      "$ref": "#/components/schemas/IdpPolicyRuleAction"
+    },
+    "passwordChange": {
+      "$ref": "#/components/schemas/PasswordPolicyRuleAction"
+    },
+    "selfServicePasswordReset": {
+      "$ref": "#/components/schemas/PasswordPolicyRuleAction"
+    },
+    "selfServiceUnlock": {
+      "$ref": "#/components/schemas/PasswordPolicyRuleAction"
+    },
+    "signon": {
+      "$ref": "#/components/schemas/OktaSignOnPolicyRuleSignonActions"
+    }
+  },
+  "x-okta-tags": [
+    "Policy"
+  ]
+}

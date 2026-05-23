@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/UserSchemaAttributeItems",
+  "title": "UserSchemaAttributeItems",
+  "type": "object",
+  "properties": {
+    "enum": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "oneOf": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/UserSchemaAttributeEnum"
+      }
+    },
+    "type": {
+      "type": "string"
+    }
+  },
+  "x-okta-tags": [
+    "UserSchema"
+  ]
+}

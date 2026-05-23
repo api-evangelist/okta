@@ -1,0 +1,18 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/PolicyType",
+  "title": "PolicyType",
+  "type": "string",
+  "enum": [
+    "OAUTH_AUTHORIZATION_POLICY",
+    "OKTA_SIGN_ON",
+    "PASSWORD",
+    "IDP_DISCOVERY",
+    "PROFILE_ENROLLMENT",
+    "ACCESS_POLICY",
+    "MFA_ENROLL"
+  ],
+  "x-okta-tags": [
+    "Policy"
+  ]
+}

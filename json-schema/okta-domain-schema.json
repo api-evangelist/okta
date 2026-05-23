@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/Domain",
+  "title": "Domain",
+  "type": "object",
+  "properties": {
+    "certificateSourceType": {
+      "$ref": "#/components/schemas/DomainCertificateSourceType"
+    },
+    "dnsRecords": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/DNSRecord"
+      }
+    },
+    "domain": {
+      "type": "string"
+    },
+    "id": {
+      "type": "string",
+      "readOnly": true
+    },
+    "publicCertificate": {
+      "$ref": "#/components/schemas/DomainCertificateMetadata"
+    },
+    "validationStatus": {
+      "$ref": "#/components/schemas/DomainValidationStatus"
+    }
+  },
+  "x-okta-tags": [
+    "Domain"
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/ProvisioningConnectionAuthScheme",
+  "title": "ProvisioningConnectionAuthScheme",
+  "type": "string",
+  "enum": [
+    "TOKEN",
+    "UNKNOWN"
+  ],
+  "x-okta-tags": [
+    "Application"
+  ]
+}

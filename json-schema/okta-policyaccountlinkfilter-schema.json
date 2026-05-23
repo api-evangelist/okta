@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/PolicyAccountLinkFilter",
+  "title": "PolicyAccountLinkFilter",
+  "type": "object",
+  "properties": {
+    "groups": {
+      "$ref": "#/components/schemas/PolicyAccountLinkFilterGroups"
+    }
+  },
+  "x-okta-tags": [
+    "Policy"
+  ]
+}

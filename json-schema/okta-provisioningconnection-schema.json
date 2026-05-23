@@ -1,0 +1,39 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/ProvisioningConnection",
+  "title": "ProvisioningConnection",
+  "type": "object",
+  "properties": {
+    "_links": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "properties": {}
+      },
+      "readOnly": true
+    },
+    "authScheme": {
+      "$ref": "#/components/schemas/ProvisioningConnectionAuthScheme"
+    },
+    "status": {
+      "$ref": "#/components/schemas/ProvisioningConnectionStatus"
+    }
+  },
+  "x-okta-operations": [
+    {
+      "alias": "getDefaultProvisioningConnectionForApplication",
+      "operationId": "getDefaultProvisioningConnectionForApplication"
+    },
+    {
+      "alias": "activateDefaultProvisioningConnectionForApplication",
+      "operationId": "activateDefaultProvisioningConnectionForApplication"
+    },
+    {
+      "alias": "deactivateDefaultProvisioningConnectionForApplication",
+      "operationId": "deactivateDefaultProvisioningConnectionForApplication"
+    }
+  ],
+  "x-okta-tags": [
+    "Application"
+  ]
+}

@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/ProtocolEndpoint",
+  "title": "ProtocolEndpoint",
+  "type": "object",
+  "properties": {
+    "binding": {
+      "type": "string",
+      "enum": [
+        "HTTP-POST",
+        "HTTP-REDIRECT"
+      ]
+    },
+    "destination": {
+      "type": "string"
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "INSTANCE",
+        "ORG"
+      ]
+    },
+    "url": {
+      "type": "string"
+    }
+  },
+  "x-okta-tags": [
+    "IdentityProvider"
+  ]
+}

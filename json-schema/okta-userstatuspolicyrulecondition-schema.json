@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/UserStatusPolicyRuleCondition",
+  "title": "UserStatusPolicyRuleCondition",
+  "type": "object",
+  "properties": {
+    "value": {
+      "type": "string",
+      "enum": [
+        "ACTIVE",
+        "INACTIVE",
+        "PENDING",
+        "DELETED",
+        "EXPIRED_PASSWORD",
+        "ACTIVATING",
+        "SUSPENDED",
+        "DELETING"
+      ]
+    }
+  },
+  "x-okta-tags": [
+    "Policy"
+  ]
+}

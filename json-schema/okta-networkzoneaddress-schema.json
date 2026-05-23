@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/NetworkZoneAddress",
+  "title": "NetworkZoneAddress",
+  "type": "object",
+  "properties": {
+    "type": {
+      "$ref": "#/components/schemas/NetworkZoneAddressType"
+    },
+    "value": {
+      "type": "string"
+    }
+  },
+  "x-okta-tags": [
+    "NetworkZone"
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/ProfileEnrollmentPolicyRuleProfileAttribute",
+  "title": "ProfileEnrollmentPolicyRuleProfileAttribute",
+  "type": "object",
+  "properties": {
+    "label": {
+      "type": "string"
+    },
+    "name": {
+      "type": "string"
+    },
+    "required": {
+      "type": "boolean"
+    }
+  },
+  "x-okta-tags": [
+    "Policy"
+  ]
+}

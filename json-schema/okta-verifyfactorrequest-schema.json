@@ -1,0 +1,35 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/VerifyFactorRequest",
+  "title": "VerifyFactorRequest",
+  "type": "object",
+  "properties": {
+    "activationToken": {
+      "type": "string"
+    },
+    "answer": {
+      "type": "string"
+    },
+    "attestation": {
+      "type": "string"
+    },
+    "clientData": {
+      "type": "string"
+    },
+    "nextPassCode": {
+      "type": "string"
+    },
+    "passCode": {
+      "type": "string"
+    },
+    "registrationData": {
+      "type": "string"
+    },
+    "stateToken": {
+      "type": "string"
+    }
+  },
+  "x-okta-tags": [
+    "UserFactor"
+  ]
+}

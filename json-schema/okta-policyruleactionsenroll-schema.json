@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/PolicyRuleActionsEnroll",
+  "title": "PolicyRuleActionsEnroll",
+  "type": "object",
+  "properties": {
+    "self": {
+      "$ref": "#/components/schemas/PolicyRuleActionsEnrollSelf"
+    }
+  },
+  "x-okta-tags": [
+    "Policy"
+  ]
+}

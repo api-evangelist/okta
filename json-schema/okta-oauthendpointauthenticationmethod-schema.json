@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/OAuthEndpointAuthenticationMethod",
+  "title": "OAuthEndpointAuthenticationMethod",
+  "type": "string",
+  "enum": [
+    "none",
+    "client_secret_post",
+    "client_secret_basic",
+    "client_secret_jwt",
+    "private_key_jwt"
+  ],
+  "x-okta-tags": [
+    "Application"
+  ]
+}

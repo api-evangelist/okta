@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/InlineHookType",
+  "title": "InlineHookType",
+  "type": "string",
+  "enum": [
+    "com.okta.oauth2.tokens.transform",
+    "com.okta.import.transform",
+    "com.okta.saml.tokens.transform",
+    "com.okta.user.pre-registration",
+    "com.okta.user.credential.password.import"
+  ],
+  "x-okta-tags": [
+    "InlineHook"
+  ]
+}

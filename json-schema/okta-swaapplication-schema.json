@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/SwaApplication",
+  "title": "SwaApplication",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "object"
+    },
+    "settings": {
+      "$ref": "#/components/schemas/SwaApplicationSettings"
+    }
+  },
+  "x-okta-defined-as": {
+    "name": "template_swa"
+  },
+  "x-okta-parent": "#/definitions/BrowserPluginApplication",
+  "x-okta-tags": [
+    "Application"
+  ]
+}

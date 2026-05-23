@@ -1,0 +1,13 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/RoleAssignmentType",
+  "title": "RoleAssignmentType",
+  "type": "string",
+  "enum": [
+    "GROUP",
+    "USER"
+  ],
+  "x-okta-tags": [
+    "Role"
+  ]
+}

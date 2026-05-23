@@ -1,0 +1,143 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/Role",
+  "title": "Role",
+  "type": "object",
+  "properties": {
+    "_embedded": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "properties": {}
+      },
+      "readOnly": true
+    },
+    "_links": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "properties": {}
+      },
+      "readOnly": true
+    },
+    "assignmentType": {
+      "$ref": "#/components/schemas/RoleAssignmentType"
+    },
+    "created": {
+      "type": "string",
+      "format": "date-time",
+      "readOnly": true
+    },
+    "description": {
+      "type": "string"
+    },
+    "id": {
+      "type": "string",
+      "readOnly": true
+    },
+    "label": {
+      "type": "string",
+      "readOnly": true
+    },
+    "lastUpdated": {
+      "type": "string",
+      "format": "date-time",
+      "readOnly": true
+    },
+    "status": {
+      "$ref": "#/components/schemas/RoleStatus"
+    },
+    "type": {
+      "$ref": "#/components/schemas/RoleType"
+    }
+  },
+  "x-okta-operations": [
+    {
+      "alias": "addAdminGroupTarget",
+      "arguments": [
+        {
+          "dest": "roleId",
+          "src": "id"
+        },
+        {
+          "dest": "groupId",
+          "parentSrc": "id"
+        }
+      ],
+      "operationId": "addGroupTargetToGroupAdministratorRoleForGroup"
+    },
+    {
+      "alias": "addAppInstanceTargetToAdminRole",
+      "arguments": [
+        {
+          "dest": "roleId",
+          "src": "id"
+        },
+        {
+          "dest": "groupId",
+          "parentSrc": "id"
+        }
+      ],
+      "operationId": "addApplicationInstanceTargetToAppAdminRoleGivenToGroup"
+    },
+    {
+      "alias": "addAppTargetToAdminRole",
+      "arguments": [
+        {
+          "dest": "roleId",
+          "src": "id"
+        },
+        {
+          "dest": "groupId",
+          "parentSrc": "id"
+        }
+      ],
+      "operationId": "addApplicationTargetToAdminRoleGivenToGroup"
+    },
+    {
+      "alias": "addAllAppsAsTargetToRole",
+      "arguments": [
+        {
+          "dest": "roleId",
+          "src": "id"
+        },
+        {
+          "dest": "userId",
+          "parentSrc": "id"
+        }
+      ],
+      "operationId": "addAllAppsAsTargetToRole"
+    },
+    {
+      "alias": "addAppTargetToAppAdminRoleForUser",
+      "arguments": [
+        {
+          "dest": "roleId",
+          "src": "id"
+        },
+        {
+          "dest": "userId",
+          "parentSrc": "id"
+        }
+      ],
+      "operationId": "addApplicationTargetToAppAdminRoleForUser"
+    },
+    {
+      "alias": "addAppTargetToAdminRoleForUser",
+      "arguments": [
+        {
+          "dest": "roleId",
+          "src": "id"
+        },
+        {
+          "dest": "userId",
+          "parentSrc": "id"
+        }
+      ],
+      "operationId": "addApplicationTargetToAdminRoleForUser"
+    }
+  ],
+  "x-okta-tags": [
+    "User"
+  ]
+}

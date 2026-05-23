@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/UserSchemaAttributeType",
+  "title": "UserSchemaAttributeType",
+  "type": "string",
+  "enum": [
+    "string",
+    "boolean",
+    "number",
+    "integer",
+    "array"
+  ],
+  "x-okta-tags": [
+    "UserSchema"
+  ]
+}

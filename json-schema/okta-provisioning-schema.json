@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/Provisioning",
+  "title": "Provisioning",
+  "type": "object",
+  "properties": {
+    "action": {
+      "type": "string",
+      "enum": [
+        "AUTO",
+        "CALLOUT",
+        "DISABLED"
+      ]
+    },
+    "conditions": {
+      "$ref": "#/components/schemas/ProvisioningConditions"
+    },
+    "groups": {
+      "$ref": "#/components/schemas/ProvisioningGroups"
+    },
+    "profileMaster": {
+      "type": "boolean"
+    }
+  },
+  "x-okta-tags": [
+    "IdentityProvider"
+  ]
+}

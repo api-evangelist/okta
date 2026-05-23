@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/Org2OrgApplicationSettings",
+  "title": "Org2OrgApplicationSettings",
+  "type": "object",
+  "properties": {
+    "app": {
+      "$ref": "#/components/schemas/Org2OrgApplicationSettingsApp"
+    }
+  },
+  "x-okta-parent": "#/definitions/SamlApplicationSettings",
+  "x-okta-tags": [
+    "Application"
+  ]
+}

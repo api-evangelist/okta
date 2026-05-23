@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/MultifactorEnrollmentPolicy",
+  "title": "MultifactorEnrollmentPolicy",
+  "allOf": [
+    {
+      "$ref": "#/components/schemas/Policy"
+    },
+    {
+      "type": "object",
+      "properties": {
+        "conditions": {
+          "$ref": "#/components/schemas/PolicyRuleConditions"
+        },
+        "settings": {
+          "$ref": "#/components/schemas/MultifactorEnrollmentPolicySettings"
+        }
+      }
+    }
+  ],
+  "x-okta-parent": "#/definitions/Policy",
+  "x-okta-tags": [
+    "Policy"
+  ]
+}

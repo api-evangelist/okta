@@ -1,0 +1,13 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/OrgOktaSupportSetting",
+  "title": "OrgOktaSupportSetting",
+  "type": "string",
+  "enum": [
+    "DISABLED",
+    "ENABLED"
+  ],
+  "x-okta-tags": [
+    "Org"
+  ]
+}

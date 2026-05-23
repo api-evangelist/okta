@@ -1,0 +1,13 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/DomainCertificateSourceType",
+  "title": "DomainCertificateSourceType",
+  "type": "string",
+  "enum": [
+    "MANUAL",
+    "OKTA_MANAGED"
+  ],
+  "x-okta-tags": [
+    "Domain"
+  ]
+}

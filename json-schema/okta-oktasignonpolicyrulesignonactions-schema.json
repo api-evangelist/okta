@@ -1,0 +1,40 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/OktaSignOnPolicyRuleSignonActions",
+  "title": "OktaSignOnPolicyRuleSignonActions",
+  "type": "object",
+  "properties": {
+    "access": {
+      "type": "string",
+      "enum": [
+        "ALLOW",
+        "DENY"
+      ]
+    },
+    "factorLifetime": {
+      "type": "integer"
+    },
+    "factorPromptMode": {
+      "type": "string",
+      "enum": [
+        "ALWAYS",
+        "DEVICE",
+        "SESSION"
+      ]
+    },
+    "rememberDeviceByDefault": {
+      "type": "boolean",
+      "default": false
+    },
+    "requireFactor": {
+      "type": "boolean",
+      "default": false
+    },
+    "session": {
+      "$ref": "#/components/schemas/OktaSignOnPolicyRuleSignonSessionActions"
+    }
+  },
+  "x-okta-tags": [
+    "Policy"
+  ]
+}

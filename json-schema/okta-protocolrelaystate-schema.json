@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/ProtocolRelayState",
+  "title": "ProtocolRelayState",
+  "type": "object",
+  "properties": {
+    "format": {
+      "$ref": "#/components/schemas/ProtocolRelayStateFormat"
+    }
+  },
+  "x-okta-tags": [
+    "IdentityProvider"
+  ]
+}

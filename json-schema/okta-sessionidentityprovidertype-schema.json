@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/SessionIdentityProviderType",
+  "title": "SessionIdentityProviderType",
+  "type": "string",
+  "enum": [
+    "ACTIVE_DIRECTORY",
+    "LDAP",
+    "OKTA",
+    "FEDERATION",
+    "SOCIAL"
+  ],
+  "x-okta-tags": [
+    "Session"
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/RequiredEnum",
+  "title": "RequiredEnum",
+  "type": "string",
+  "enum": [
+    "ALWAYS",
+    "HIGH_RISK_ONLY",
+    "NEVER"
+  ],
+  "x-okta-tags": [
+    "Authenticator"
+  ]
+}

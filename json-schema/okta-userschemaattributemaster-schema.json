@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/UserSchemaAttributeMaster",
+  "title": "UserSchemaAttributeMaster",
+  "type": "object",
+  "properties": {
+    "priority": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/UserSchemaAttributeMasterPriority"
+      }
+    },
+    "type": {
+      "$ref": "#/components/schemas/UserSchemaAttributeMasterType"
+    }
+  },
+  "x-okta-tags": [
+    "UserSchema"
+  ]
+}

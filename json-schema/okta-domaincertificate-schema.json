@@ -1,0 +1,35 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/DomainCertificate",
+  "title": "DomainCertificate",
+  "type": "object",
+  "properties": {
+    "certificate": {
+      "type": "string"
+    },
+    "certificateChain": {
+      "type": "string"
+    },
+    "privateKey": {
+      "type": "string"
+    },
+    "type": {
+      "$ref": "#/components/schemas/DomainCertificateType"
+    }
+  },
+  "x-okta-operations": [
+    {
+      "alias": "createCertificate",
+      "arguments": [
+        {
+          "dest": "certificate",
+          "self": true
+        }
+      ],
+      "operationId": "createCertificate"
+    }
+  ],
+  "x-okta-tags": [
+    "Domain"
+  ]
+}

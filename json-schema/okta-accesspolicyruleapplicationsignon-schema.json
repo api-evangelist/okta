@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/AccessPolicyRuleApplicationSignOn",
+  "title": "AccessPolicyRuleApplicationSignOn",
+  "type": "object",
+  "properties": {
+    "access": {
+      "type": "string"
+    },
+    "verificationMethod": {
+      "$ref": "#/components/schemas/VerificationMethod"
+    }
+  },
+  "x-okta-tags": [
+    "Policy"
+  ]
+}

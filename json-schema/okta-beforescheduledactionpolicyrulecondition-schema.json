@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/BeforeScheduledActionPolicyRuleCondition",
+  "title": "BeforeScheduledActionPolicyRuleCondition",
+  "type": "object",
+  "properties": {
+    "duration": {
+      "$ref": "#/components/schemas/Duration"
+    },
+    "lifecycleAction": {
+      "$ref": "#/components/schemas/ScheduledUserLifecycleAction"
+    }
+  },
+  "x-okta-tags": [
+    "Policy"
+  ]
+}

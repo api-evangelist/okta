@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/SamlApplicationSettings",
+  "title": "SamlApplicationSettings",
+  "type": "object",
+  "properties": {
+    "signOn": {
+      "$ref": "#/components/schemas/SamlApplicationSettingsSignOn"
+    }
+  },
+  "x-okta-parent": "#/definitions/ApplicationSettings",
+  "x-okta-tags": [
+    "Application"
+  ]
+}

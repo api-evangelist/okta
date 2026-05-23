@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/Org2OrgApplication",
+  "title": "Org2OrgApplication",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "object"
+    },
+    "settings": {
+      "$ref": "#/components/schemas/Org2OrgApplicationSettings"
+    }
+  },
+  "x-okta-defined-as": {
+    "name": "okta_org2org"
+  },
+  "x-okta-parent": "#/definitions/SamlApplication",
+  "x-okta-tags": [
+    "Application"
+  ]
+}

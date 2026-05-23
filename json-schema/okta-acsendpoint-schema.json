@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/AcsEndpoint",
+  "title": "AcsEndpoint",
+  "type": "object",
+  "properties": {
+    "index": {
+      "type": "integer"
+    },
+    "url": {
+      "type": "string"
+    }
+  },
+  "x-okta-tags": [
+    "Application"
+  ]
+}

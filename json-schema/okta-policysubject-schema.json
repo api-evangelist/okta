@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/PolicySubject",
+  "title": "PolicySubject",
+  "type": "object",
+  "properties": {
+    "filter": {
+      "type": "string"
+    },
+    "format": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "matchAttribute": {
+      "type": "string"
+    },
+    "matchType": {
+      "$ref": "#/components/schemas/PolicySubjectMatchType"
+    },
+    "userNameTemplate": {
+      "$ref": "#/components/schemas/PolicyUserNameTemplate"
+    }
+  },
+  "x-okta-tags": [
+    "Policy"
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/LinkedObjectDetailsType",
+  "title": "LinkedObjectDetailsType",
+  "type": "string",
+  "enum": [
+    "USER"
+  ],
+  "x-okta-tags": [
+    "LinkedObject"
+  ]
+}

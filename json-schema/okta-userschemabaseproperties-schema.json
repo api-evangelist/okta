@@ -1,0 +1,104 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/UserSchemaBaseProperties",
+  "title": "UserSchemaBaseProperties",
+  "type": "object",
+  "properties": {
+    "city": {
+      "$ref": "#/components/schemas/UserSchemaAttribute"
+    },
+    "costCenter": {
+      "$ref": "#/components/schemas/UserSchemaAttribute"
+    },
+    "countryCode": {
+      "$ref": "#/components/schemas/UserSchemaAttribute"
+    },
+    "department": {
+      "$ref": "#/components/schemas/UserSchemaAttribute"
+    },
+    "displayName": {
+      "$ref": "#/components/schemas/UserSchemaAttribute"
+    },
+    "division": {
+      "$ref": "#/components/schemas/UserSchemaAttribute"
+    },
+    "email": {
+      "$ref": "#/components/schemas/UserSchemaAttribute"
+    },
+    "employeeNumber": {
+      "$ref": "#/components/schemas/UserSchemaAttribute"
+    },
+    "firstName": {
+      "$ref": "#/components/schemas/UserSchemaAttribute"
+    },
+    "honorificPrefix": {
+      "$ref": "#/components/schemas/UserSchemaAttribute"
+    },
+    "honorificSuffix": {
+      "$ref": "#/components/schemas/UserSchemaAttribute"
+    },
+    "lastName": {
+      "$ref": "#/components/schemas/UserSchemaAttribute"
+    },
+    "locale": {
+      "$ref": "#/components/schemas/UserSchemaAttribute"
+    },
+    "login": {
+      "$ref": "#/components/schemas/UserSchemaAttribute"
+    },
+    "manager": {
+      "$ref": "#/components/schemas/UserSchemaAttribute"
+    },
+    "managerId": {
+      "$ref": "#/components/schemas/UserSchemaAttribute"
+    },
+    "middleName": {
+      "$ref": "#/components/schemas/UserSchemaAttribute"
+    },
+    "mobilePhone": {
+      "$ref": "#/components/schemas/UserSchemaAttribute"
+    },
+    "nickName": {
+      "$ref": "#/components/schemas/UserSchemaAttribute"
+    },
+    "organization": {
+      "$ref": "#/components/schemas/UserSchemaAttribute"
+    },
+    "postalAddress": {
+      "$ref": "#/components/schemas/UserSchemaAttribute"
+    },
+    "preferredLanguage": {
+      "$ref": "#/components/schemas/UserSchemaAttribute"
+    },
+    "primaryPhone": {
+      "$ref": "#/components/schemas/UserSchemaAttribute"
+    },
+    "profileUrl": {
+      "$ref": "#/components/schemas/UserSchemaAttribute"
+    },
+    "secondEmail": {
+      "$ref": "#/components/schemas/UserSchemaAttribute"
+    },
+    "state": {
+      "$ref": "#/components/schemas/UserSchemaAttribute"
+    },
+    "streetAddress": {
+      "$ref": "#/components/schemas/UserSchemaAttribute"
+    },
+    "timezone": {
+      "$ref": "#/components/schemas/UserSchemaAttribute"
+    },
+    "title": {
+      "$ref": "#/components/schemas/UserSchemaAttribute"
+    },
+    "userType": {
+      "$ref": "#/components/schemas/UserSchemaAttribute"
+    },
+    "zipCode": {
+      "$ref": "#/components/schemas/UserSchemaAttribute"
+    }
+  },
+  "x-okta-tags": [
+    "UserSchema"
+  ]
+}

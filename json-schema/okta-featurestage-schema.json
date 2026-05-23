@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/FeatureStage",
+  "title": "FeatureStage",
+  "type": "object",
+  "properties": {
+    "state": {
+      "$ref": "#/components/schemas/FeatureStageState"
+    },
+    "value": {
+      "$ref": "#/components/schemas/FeatureStageValue"
+    }
+  },
+  "x-okta-tags": [
+    "Feature"
+  ]
+}

@@ -1,0 +1,35 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/UserPolicyRuleCondition",
+  "title": "UserPolicyRuleCondition",
+  "type": "object",
+  "properties": {
+    "exclude": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "inactivity": {
+      "$ref": "#/components/schemas/InactivityPolicyRuleCondition"
+    },
+    "include": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "lifecycleExpiration": {
+      "$ref": "#/components/schemas/LifecycleExpirationPolicyRuleCondition"
+    },
+    "passwordExpiration": {
+      "$ref": "#/components/schemas/PasswordExpirationPolicyRuleCondition"
+    },
+    "userLifecycleAttribute": {
+      "$ref": "#/components/schemas/UserLifecycleAttributePolicyRuleCondition"
+    }
+  },
+  "x-okta-tags": [
+    "Policy"
+  ]
+}

@@ -1,0 +1,121 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/InlineHook",
+  "title": "InlineHook",
+  "type": "object",
+  "properties": {
+    "_links": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "properties": {}
+      },
+      "readOnly": true
+    },
+    "channel": {
+      "$ref": "#/components/schemas/InlineHookChannel"
+    },
+    "created": {
+      "type": "string",
+      "format": "date-time",
+      "readOnly": true
+    },
+    "id": {
+      "type": "string",
+      "readOnly": true
+    },
+    "lastUpdated": {
+      "type": "string",
+      "format": "date-time",
+      "readOnly": true
+    },
+    "name": {
+      "type": "string"
+    },
+    "status": {
+      "$ref": "#/components/schemas/InlineHookStatus"
+    },
+    "type": {
+      "$ref": "#/components/schemas/InlineHookType"
+    },
+    "version": {
+      "type": "string"
+    }
+  },
+  "x-okta-crud": [
+    {
+      "alias": "create",
+      "arguments": [
+        {
+          "dest": "inlineHook",
+          "self": true
+        }
+      ],
+      "operationId": "createInlineHook"
+    },
+    {
+      "alias": "read",
+      "arguments": [],
+      "operationId": "getInlineHook"
+    },
+    {
+      "alias": "update",
+      "arguments": [
+        {
+          "dest": "inlineHookId",
+          "src": "id"
+        },
+        {
+          "dest": "inlineHook",
+          "self": true
+        }
+      ],
+      "operationId": "updateInlineHook"
+    },
+    {
+      "alias": "delete",
+      "arguments": [
+        {
+          "dest": "inlineHookId",
+          "src": "id"
+        }
+      ],
+      "operationId": "deleteInlineHook"
+    }
+  ],
+  "x-okta-operations": [
+    {
+      "alias": "activate",
+      "arguments": [
+        {
+          "dest": "inlineHookId",
+          "src": "id"
+        }
+      ],
+      "operationId": "activateInlineHook"
+    },
+    {
+      "alias": "deactivate",
+      "arguments": [
+        {
+          "dest": "inlineHookId",
+          "src": "id"
+        }
+      ],
+      "operationId": "deactivateInlineHook"
+    },
+    {
+      "alias": "execute",
+      "arguments": [
+        {
+          "dest": "inlineHookId",
+          "src": "id"
+        }
+      ],
+      "operationId": "executeInlineHook"
+    }
+  ],
+  "x-okta-tags": [
+    "InlineHook"
+  ]
+}

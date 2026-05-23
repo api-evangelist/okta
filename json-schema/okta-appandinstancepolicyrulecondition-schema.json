@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/AppAndInstancePolicyRuleCondition",
+  "title": "AppAndInstancePolicyRuleCondition",
+  "type": "object",
+  "properties": {
+    "exclude": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/AppAndInstanceConditionEvaluatorAppOrInstance"
+      }
+    },
+    "include": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/AppAndInstanceConditionEvaluatorAppOrInstance"
+      }
+    }
+  },
+  "x-okta-tags": [
+    "Policy"
+  ]
+}

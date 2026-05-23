@@ -1,0 +1,59 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/ThemeResponse",
+  "title": "ThemeResponse",
+  "type": "object",
+  "properties": {
+    "_links": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "properties": {}
+      },
+      "readOnly": true
+    },
+    "backgroundImage": {
+      "type": "string",
+      "readOnly": true
+    },
+    "emailTemplateTouchPointVariant": {
+      "$ref": "#/components/schemas/EmailTemplateTouchPointVariant"
+    },
+    "endUserDashboardTouchPointVariant": {
+      "$ref": "#/components/schemas/EndUserDashboardTouchPointVariant"
+    },
+    "errorPageTouchPointVariant": {
+      "$ref": "#/components/schemas/ErrorPageTouchPointVariant"
+    },
+    "favicon": {
+      "type": "string",
+      "readOnly": true
+    },
+    "id": {
+      "type": "string",
+      "readOnly": true
+    },
+    "logo": {
+      "type": "string",
+      "readOnly": true
+    },
+    "primaryColorContrastHex": {
+      "type": "string"
+    },
+    "primaryColorHex": {
+      "type": "string"
+    },
+    "secondaryColorContrastHex": {
+      "type": "string"
+    },
+    "secondaryColorHex": {
+      "type": "string"
+    },
+    "signInPageTouchPointVariant": {
+      "$ref": "#/components/schemas/SignInPageTouchPointVariant"
+    }
+  },
+  "x-okta-tags": [
+    "Brand"
+  ]
+}

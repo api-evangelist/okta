@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/LogUserAgent",
+  "title": "LogUserAgent",
+  "type": "object",
+  "properties": {
+    "browser": {
+      "type": "string",
+      "readOnly": true
+    },
+    "os": {
+      "type": "string",
+      "readOnly": true
+    },
+    "rawUserAgent": {
+      "type": "string",
+      "readOnly": true
+    }
+  },
+  "x-okta-tags": [
+    "Log"
+  ]
+}

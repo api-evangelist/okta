@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/PossessionConstraint",
+  "title": "PossessionConstraint",
+  "type": "object",
+  "properties": {
+    "deviceBound": {
+      "type": "string"
+    },
+    "hardwareProtection": {
+      "type": "string"
+    },
+    "phishingResistant": {
+      "type": "string"
+    },
+    "userPresence": {
+      "type": "string"
+    }
+  },
+  "x-okta-parent": "#/definitions/AccessPolicyConstraint",
+  "x-okta-tags": [
+    "Policy"
+  ]
+}

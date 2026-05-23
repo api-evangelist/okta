@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/EmailTemplateContent",
+  "title": "EmailTemplateContent",
+  "type": "object",
+  "properties": {
+    "_links": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "properties": {}
+      },
+      "readOnly": true
+    },
+    "body": {
+      "type": "string"
+    },
+    "fromAddress": {
+      "type": "string"
+    },
+    "fromName": {
+      "type": "string"
+    },
+    "subject": {
+      "type": "string"
+    }
+  },
+  "x-okta-tags": [
+    "Brands"
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/GroupType",
+  "title": "GroupType",
+  "type": "string",
+  "enum": [
+    "OKTA_GROUP",
+    "APP_GROUP",
+    "BUILT_IN"
+  ],
+  "x-okta-tags": [
+    "Group"
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/LogAuthenticationProvider",
+  "title": "LogAuthenticationProvider",
+  "type": "string",
+  "enum": [
+    "OKTA_AUTHENTICATION_PROVIDER",
+    "ACTIVE_DIRECTORY",
+    "LDAP",
+    "FEDERATION",
+    "SOCIAL",
+    "FACTOR_PROVIDER"
+  ],
+  "x-okta-tags": [
+    "Log"
+  ]
+}

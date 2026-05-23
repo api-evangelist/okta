@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/GroupSchemaBaseProperties",
+  "title": "GroupSchemaBaseProperties",
+  "type": "object",
+  "properties": {
+    "description": {
+      "$ref": "#/components/schemas/GroupSchemaAttribute"
+    },
+    "name": {
+      "$ref": "#/components/schemas/GroupSchemaAttribute"
+    }
+  },
+  "x-okta-tags": [
+    "GroupSchema"
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/PolicyAccountLink",
+  "title": "PolicyAccountLink",
+  "type": "object",
+  "properties": {
+    "action": {
+      "type": "string",
+      "enum": [
+        "AUTO",
+        "DISABLED"
+      ]
+    },
+    "filter": {
+      "$ref": "#/components/schemas/PolicyAccountLinkFilter"
+    }
+  },
+  "x-okta-tags": [
+    "Policy"
+  ]
+}

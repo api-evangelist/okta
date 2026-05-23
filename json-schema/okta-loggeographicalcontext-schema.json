@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/LogGeographicalContext",
+  "title": "LogGeographicalContext",
+  "type": "object",
+  "properties": {
+    "city": {
+      "type": "string",
+      "readOnly": true
+    },
+    "country": {
+      "type": "string",
+      "readOnly": true
+    },
+    "geolocation": {
+      "$ref": "#/components/schemas/LogGeolocation"
+    },
+    "postalCode": {
+      "type": "string",
+      "readOnly": true
+    },
+    "state": {
+      "type": "string",
+      "readOnly": true
+    }
+  },
+  "x-okta-tags": [
+    "Log"
+  ]
+}

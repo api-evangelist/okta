@@ -1,0 +1,35 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/ProvisioningGroups",
+  "title": "ProvisioningGroups",
+  "type": "object",
+  "properties": {
+    "action": {
+      "type": "string",
+      "enum": [
+        "NONE",
+        "APPEND",
+        "SYNC",
+        "ASSIGN"
+      ]
+    },
+    "assignments": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "filter": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "sourceAttributeName": {
+      "type": "string"
+    }
+  },
+  "x-okta-tags": [
+    "IdentityProvider"
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/ApplicationSettings",
+  "title": "ApplicationSettings",
+  "type": "object",
+  "properties": {
+    "app": {
+      "$ref": "#/components/schemas/ApplicationSettingsApplication"
+    },
+    "implicitAssignment": {
+      "type": "boolean"
+    },
+    "inlineHookId": {
+      "type": "string"
+    },
+    "notes": {
+      "$ref": "#/components/schemas/ApplicationSettingsNotes"
+    },
+    "notifications": {
+      "$ref": "#/components/schemas/ApplicationSettingsNotifications"
+    }
+  },
+  "x-okta-tags": [
+    "Application"
+  ]
+}

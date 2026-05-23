@@ -1,0 +1,98 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/Session",
+  "title": "Session",
+  "type": "object",
+  "properties": {
+    "_links": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "properties": {}
+      },
+      "readOnly": true
+    },
+    "amr": {
+      "type": "array",
+      "readOnly": true,
+      "items": {
+        "$ref": "#/components/schemas/SessionAuthenticationMethod"
+      }
+    },
+    "createdAt": {
+      "type": "string",
+      "format": "date-time",
+      "readOnly": true
+    },
+    "expiresAt": {
+      "type": "string",
+      "format": "date-time",
+      "readOnly": true
+    },
+    "id": {
+      "type": "string",
+      "readOnly": true
+    },
+    "idp": {
+      "$ref": "#/components/schemas/SessionIdentityProvider"
+    },
+    "lastFactorVerification": {
+      "type": "string",
+      "format": "date-time",
+      "readOnly": true
+    },
+    "lastPasswordVerification": {
+      "type": "string",
+      "format": "date-time",
+      "readOnly": true
+    },
+    "login": {
+      "type": "string",
+      "readOnly": true
+    },
+    "status": {
+      "$ref": "#/components/schemas/SessionStatus"
+    },
+    "userId": {
+      "type": "string",
+      "readOnly": true
+    }
+  },
+  "x-okta-crud": [
+    {
+      "alias": "read",
+      "arguments": [
+        {
+          "dest": "sessionId",
+          "src": "id"
+        }
+      ],
+      "operationId": "getSession"
+    },
+    {
+      "alias": "delete",
+      "arguments": [
+        {
+          "dest": "sessionId",
+          "src": "id"
+        }
+      ],
+      "operationId": "endSession"
+    }
+  ],
+  "x-okta-operations": [
+    {
+      "alias": "refresh",
+      "arguments": [
+        {
+          "dest": "sessionId",
+          "src": "id"
+        }
+      ],
+      "operationId": "refreshSession"
+    }
+  ],
+  "x-okta-tags": [
+    "Session"
+  ]
+}

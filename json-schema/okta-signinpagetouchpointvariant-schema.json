@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/SignInPageTouchPointVariant",
+  "title": "SignInPageTouchPointVariant",
+  "type": "string",
+  "enum": [
+    "OKTA_DEFAULT",
+    "BACKGROUND_SECONDARY_COLOR",
+    "BACKGROUND_IMAGE"
+  ],
+  "x-okta-tags": [
+    "Brand"
+  ]
+}

@@ -1,0 +1,119 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/AuthorizationServerPolicyRule",
+  "title": "AuthorizationServerPolicyRule",
+  "type": "object",
+  "properties": {
+    "actions": {
+      "$ref": "#/components/schemas/AuthorizationServerPolicyRuleActions"
+    },
+    "conditions": {
+      "$ref": "#/components/schemas/AuthorizationServerPolicyRuleConditions"
+    },
+    "created": {
+      "type": "string",
+      "format": "date-time",
+      "readOnly": true
+    },
+    "id": {
+      "type": "string",
+      "readOnly": true
+    },
+    "lastUpdated": {
+      "type": "string",
+      "format": "date-time",
+      "readOnly": true
+    },
+    "name": {
+      "type": "string"
+    },
+    "priority": {
+      "type": "integer"
+    },
+    "status": {
+      "type": "string",
+      "default": "ACTIVE",
+      "enum": [
+        "ACTIVE",
+        "INACTIVE"
+      ]
+    },
+    "system": {
+      "type": "boolean",
+      "default": false
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "RESOURCE_ACCESS"
+      ]
+    }
+  },
+  "x-okta-crud": [
+    {
+      "alias": "update",
+      "arguments": [
+        {
+          "dest": "ruleId",
+          "src": "id"
+        },
+        {
+          "dest": "policyRule",
+          "self": true
+        },
+        {
+          "dest": "policyId",
+          "parentSrc": "id"
+        }
+      ],
+      "operationId": "updateAuthorizationServerPolicyRule"
+    },
+    {
+      "alias": "delete",
+      "arguments": [
+        {
+          "dest": "ruleId",
+          "src": "id"
+        },
+        {
+          "dest": "policyId",
+          "parentSrc": "policyId"
+        }
+      ],
+      "operationId": "deleteAuthorizationServerPolicyRule"
+    }
+  ],
+  "x-okta-operations": [
+    {
+      "alias": "activate",
+      "arguments": [
+        {
+          "dest": "ruleId",
+          "src": "id"
+        },
+        {
+          "dest": "policyId",
+          "parentSrc": "policyId"
+        }
+      ],
+      "operationId": "activateAuthorizationServerPolicyRule"
+    },
+    {
+      "alias": "deactivate",
+      "arguments": [
+        {
+          "dest": "ruleId",
+          "src": "id"
+        },
+        {
+          "dest": "policyId",
+          "parentSrc": "policyId"
+        }
+      ],
+      "operationId": "deactivateAuthorizationServerPolicyRule"
+    }
+  ],
+  "x-okta-tags": [
+    "AuthorizationServerPolicy"
+  ]
+}

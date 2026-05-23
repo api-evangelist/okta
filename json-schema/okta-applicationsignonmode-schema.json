@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/ApplicationSignOnMode",
+  "title": "ApplicationSignOnMode",
+  "type": "string",
+  "enum": [
+    "BOOKMARK",
+    "BASIC_AUTH",
+    "BROWSER_PLUGIN",
+    "SECURE_PASSWORD_STORE",
+    "AUTO_LOGIN",
+    "WS_FEDERATION",
+    "SAML_2_0",
+    "OPENID_CONNECT",
+    "SAML_1_1"
+  ],
+  "x-okta-tags": [
+    "Application"
+  ]
+}

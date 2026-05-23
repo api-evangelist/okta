@@ -1,0 +1,13 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/OAuth2ScopeConsentGrantStatus",
+  "title": "OAuth2ScopeConsentGrantStatus",
+  "type": "string",
+  "enum": [
+    "ACTIVE",
+    "REVOKED"
+  ],
+  "x-okta-tags": [
+    "Application"
+  ]
+}

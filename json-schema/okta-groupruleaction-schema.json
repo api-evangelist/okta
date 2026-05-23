@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/GroupRuleAction",
+  "title": "GroupRuleAction",
+  "type": "object",
+  "properties": {
+    "assignUserToGroups": {
+      "$ref": "#/components/schemas/GroupRuleGroupAssignment"
+    }
+  },
+  "x-okta-tags": [
+    "GroupRule"
+  ]
+}

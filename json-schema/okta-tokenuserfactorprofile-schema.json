@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/TokenUserFactorProfile",
+  "title": "TokenUserFactorProfile",
+  "type": "object",
+  "properties": {
+    "credentialId": {
+      "type": "string"
+    }
+  },
+  "x-okta-tags": [
+    "UserFactor"
+  ]
+}

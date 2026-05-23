@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/ProfileMappingProperty",
+  "title": "ProfileMappingProperty",
+  "type": "object",
+  "properties": {
+    "expression": {
+      "type": "string"
+    },
+    "pushStatus": {
+      "$ref": "#/components/schemas/ProfileMappingPropertyPushStatus"
+    }
+  },
+  "x-okta-tags": [
+    "ProfileMapping"
+  ]
+}

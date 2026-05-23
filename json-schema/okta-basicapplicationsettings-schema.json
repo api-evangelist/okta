@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/BasicApplicationSettings",
+  "title": "BasicApplicationSettings",
+  "type": "object",
+  "properties": {
+    "app": {
+      "$ref": "#/components/schemas/BasicApplicationSettingsApplication"
+    }
+  },
+  "x-okta-parent": "#/definitions/ApplicationSettings",
+  "x-okta-tags": [
+    "Application"
+  ]
+}

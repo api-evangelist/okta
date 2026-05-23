@@ -1,0 +1,13 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/NetworkZoneType",
+  "title": "NetworkZoneType",
+  "type": "string",
+  "enum": [
+    "IP",
+    "DYNAMIC"
+  ],
+  "x-okta-tags": [
+    "NetworkZone"
+  ]
+}

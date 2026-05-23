@@ -1,0 +1,13 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/ChangeEnum",
+  "title": "ChangeEnum",
+  "type": "string",
+  "enum": [
+    "KEEP_EXISTING",
+    "CHANGE"
+  ],
+  "x-okta-tags": [
+    "Application"
+  ]
+}

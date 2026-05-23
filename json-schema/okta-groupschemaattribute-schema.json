@@ -1,0 +1,71 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/GroupSchemaAttribute",
+  "title": "GroupSchemaAttribute",
+  "type": "object",
+  "properties": {
+    "description": {
+      "type": "string"
+    },
+    "enum": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "externalName": {
+      "type": "string"
+    },
+    "externalNamespace": {
+      "type": "string"
+    },
+    "items": {
+      "$ref": "#/components/schemas/UserSchemaAttributeItems"
+    },
+    "master": {
+      "$ref": "#/components/schemas/UserSchemaAttributeMaster"
+    },
+    "maxLength": {
+      "type": "integer"
+    },
+    "minLength": {
+      "type": "integer"
+    },
+    "mutability": {
+      "type": "string"
+    },
+    "oneOf": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/UserSchemaAttributeEnum"
+      }
+    },
+    "permissions": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/UserSchemaAttributePermission"
+      }
+    },
+    "required": {
+      "type": "boolean"
+    },
+    "scope": {
+      "$ref": "#/components/schemas/UserSchemaAttributeScope"
+    },
+    "title": {
+      "type": "string"
+    },
+    "type": {
+      "$ref": "#/components/schemas/UserSchemaAttributeType"
+    },
+    "union": {
+      "$ref": "#/components/schemas/UserSchemaAttributeUnion"
+    },
+    "unique": {
+      "type": "string"
+    }
+  },
+  "x-okta-tags": [
+    "GroupSchema"
+  ]
+}

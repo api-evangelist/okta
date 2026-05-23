@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/PlatformConditionEvaluatorPlatformOperatingSystem",
+  "title": "PlatformConditionEvaluatorPlatformOperatingSystem",
+  "type": "object",
+  "properties": {
+    "expression": {
+      "type": "string"
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "ANDROID",
+        "IOS",
+        "WINDOWS",
+        "OSX",
+        "OTHER",
+        "ANY"
+      ]
+    },
+    "version": {
+      "$ref": "#/components/schemas/PlatformConditionEvaluatorPlatformOperatingSystemVersion"
+    }
+  },
+  "x-okta-tags": [
+    "Policy"
+  ]
+}

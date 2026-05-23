@@ -1,0 +1,50 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/VerifyUserFactorResponse",
+  "title": "VerifyUserFactorResponse",
+  "type": "object",
+  "properties": {
+    "_embedded": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "properties": {}
+      },
+      "readOnly": true
+    },
+    "_links": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "properties": {}
+      },
+      "readOnly": true
+    },
+    "expiresAt": {
+      "type": "string",
+      "format": "date-time",
+      "readOnly": true
+    },
+    "factorResult": {
+      "type": "string",
+      "enum": [
+        "SUCCESS",
+        "EXPIRED",
+        "CHALLENGE",
+        "WAITING",
+        "FAILED",
+        "REJECTED",
+        "TIMEOUT",
+        "TIME_WINDOW_EXCEEDED",
+        "PASSCODE_REPLAYED",
+        "ERROR"
+      ]
+    },
+    "factorResultMessage": {
+      "type": "string"
+    }
+  },
+  "x-okta-tags": [
+    "UserFactor"
+  ]
+}

@@ -1,0 +1,35 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/SocialAuthToken",
+  "title": "SocialAuthToken",
+  "type": "object",
+  "properties": {
+    "expiresAt": {
+      "type": "string",
+      "format": "date-time",
+      "readOnly": true
+    },
+    "id": {
+      "type": "string",
+      "readOnly": true
+    },
+    "scopes": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "token": {
+      "type": "string"
+    },
+    "tokenAuthScheme": {
+      "type": "string"
+    },
+    "tokenType": {
+      "type": "string"
+    }
+  },
+  "x-okta-tags": [
+    "IdentityProvider"
+  ]
+}

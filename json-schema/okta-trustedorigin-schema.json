@@ -1,0 +1,95 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/TrustedOrigin",
+  "title": "TrustedOrigin",
+  "type": "object",
+  "properties": {
+    "_links": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "properties": {}
+      },
+      "readOnly": true
+    },
+    "created": {
+      "type": "string",
+      "format": "date-time",
+      "readOnly": true
+    },
+    "createdBy": {
+      "type": "string"
+    },
+    "id": {
+      "type": "string",
+      "readOnly": true
+    },
+    "lastUpdated": {
+      "type": "string",
+      "format": "date-time",
+      "readOnly": true
+    },
+    "lastUpdatedBy": {
+      "type": "string"
+    },
+    "name": {
+      "type": "string"
+    },
+    "origin": {
+      "type": "string"
+    },
+    "scopes": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/Scope"
+      }
+    },
+    "status": {
+      "type": "string"
+    }
+  },
+  "x-okta-crud": [
+    {
+      "alias": "create",
+      "arguments": [
+        {
+          "dest": "trustedOrigin",
+          "self": true
+        }
+      ],
+      "operationId": "createOrigin"
+    },
+    {
+      "alias": "read",
+      "arguments": [],
+      "operationId": "getOrigin"
+    },
+    {
+      "alias": "update",
+      "arguments": [
+        {
+          "dest": "trustedOriginId",
+          "src": "id"
+        },
+        {
+          "dest": "trustedOrigin",
+          "self": true
+        }
+      ],
+      "operationId": "updateOrigin"
+    },
+    {
+      "alias": "delete",
+      "arguments": [
+        {
+          "dest": "trustedOriginId",
+          "src": "id"
+        }
+      ],
+      "operationId": "deleteOrigin"
+    }
+  ],
+  "x-okta-tags": [
+    "TrustedOrigin"
+  ]
+}

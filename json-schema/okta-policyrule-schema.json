@@ -1,0 +1,129 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/PolicyRule",
+  "title": "PolicyRule",
+  "type": "object",
+  "properties": {
+    "actions": {
+      "$ref": "#/components/schemas/PolicyRuleActions"
+    },
+    "conditions": {
+      "$ref": "#/components/schemas/PolicyRuleConditions"
+    },
+    "created": {
+      "type": "string",
+      "format": "date-time",
+      "readOnly": true
+    },
+    "id": {
+      "type": "string",
+      "readOnly": true
+    },
+    "lastUpdated": {
+      "type": "string",
+      "format": "date-time",
+      "readOnly": true
+    },
+    "name": {
+      "type": "string"
+    },
+    "priority": {
+      "type": "integer"
+    },
+    "status": {
+      "type": "string",
+      "default": "ACTIVE",
+      "enum": [
+        "ACTIVE",
+        "INACTIVE"
+      ]
+    },
+    "system": {
+      "type": "boolean",
+      "default": false
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "SIGN_ON",
+        "PASSWORD"
+      ]
+    }
+  },
+  "x-okta-crud": [
+    {
+      "alias": "update",
+      "arguments": [
+        {
+          "dest": "ruleId",
+          "src": "id"
+        },
+        {
+          "dest": "policyRule",
+          "self": true
+        },
+        {
+          "dest": "policyId",
+          "parentSrc": "id"
+        }
+      ],
+      "operationId": "updatePolicyRule"
+    },
+    {
+      "alias": "delete",
+      "arguments": [
+        {
+          "dest": "ruleId",
+          "src": "id"
+        },
+        {
+          "dest": "policyId",
+          "parentSrc": "policyId"
+        }
+      ],
+      "operationId": "deletePolicyRule"
+    }
+  ],
+  "x-okta-operations": [
+    {
+      "alias": "activate",
+      "arguments": [
+        {
+          "dest": "ruleId",
+          "src": "id"
+        },
+        {
+          "dest": "policyId",
+          "parentSrc": "policyId"
+        }
+      ],
+      "operationId": "activatePolicyRule"
+    },
+    {
+      "alias": "deactivate",
+      "arguments": [
+        {
+          "dest": "ruleId",
+          "src": "id"
+        },
+        {
+          "dest": "policyId",
+          "parentSrc": "policyId"
+        }
+      ],
+      "operationId": "deactivatePolicyRule"
+    }
+  ],
+  "x-okta-tags": [
+    "Policy"
+  ],
+  "x-openapi-v3-discriminator": {
+    "mapping": {
+      "ACCESS_POLICY": "#/definitions/AccessPolicyRule",
+      "PASSWORD": "#/definitions/PasswordPolicyRule",
+      "PROFILE_ENROLLMENT": "#/definitions/ProfileEnrollmentPolicyRule",
+      "SIGN_ON": "#/definitions/OktaSignOnPolicyRule"
+    },
+    "propertyName": "type"
+  }
+}

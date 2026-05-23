@@ -1,0 +1,35 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/LogAuthenticationContext",
+  "title": "LogAuthenticationContext",
+  "type": "object",
+  "properties": {
+    "authenticationProvider": {
+      "$ref": "#/components/schemas/LogAuthenticationProvider"
+    },
+    "authenticationStep": {
+      "type": "integer",
+      "readOnly": true
+    },
+    "credentialProvider": {
+      "$ref": "#/components/schemas/LogCredentialProvider"
+    },
+    "credentialType": {
+      "$ref": "#/components/schemas/LogCredentialType"
+    },
+    "externalSessionId": {
+      "type": "string",
+      "readOnly": true
+    },
+    "interface": {
+      "type": "string",
+      "readOnly": true
+    },
+    "issuer": {
+      "$ref": "#/components/schemas/LogIssuer"
+    }
+  },
+  "x-okta-tags": [
+    "Log"
+  ]
+}

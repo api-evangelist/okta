@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/CapabilitiesUpdateObject",
+  "title": "CapabilitiesUpdateObject",
+  "type": "object",
+  "properties": {
+    "lifecycleDeactivate": {
+      "$ref": "#/components/schemas/LifecycleDeactivateSettingObject"
+    },
+    "password": {
+      "$ref": "#/components/schemas/PasswordSettingObject"
+    },
+    "profile": {
+      "$ref": "#/components/schemas/ProfileSettingObject"
+    }
+  },
+  "x-okta-tags": [
+    "Application"
+  ]
+}

@@ -1,0 +1,62 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/ApplicationGroupAssignment",
+  "title": "ApplicationGroupAssignment",
+  "type": "object",
+  "properties": {
+    "_embedded": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "properties": {}
+      },
+      "readOnly": true
+    },
+    "_links": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "properties": {}
+      },
+      "readOnly": true
+    },
+    "id": {
+      "type": "string",
+      "readOnly": true
+    },
+    "lastUpdated": {
+      "type": "string",
+      "format": "date-time",
+      "readOnly": true
+    },
+    "priority": {
+      "type": "integer"
+    },
+    "profile": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "properties": {}
+      }
+    }
+  },
+  "x-okta-crud": [
+    {
+      "alias": "delete",
+      "arguments": [
+        {
+          "dest": "appId",
+          "parentSrc": "appId"
+        },
+        {
+          "dest": "groupId",
+          "src": "id"
+        }
+      ],
+      "operationId": "deleteApplicationGroupAssignment"
+    }
+  ],
+  "x-okta-tags": [
+    "Application"
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/SwaThreeFieldApplicationSettings",
+  "title": "SwaThreeFieldApplicationSettings",
+  "type": "object",
+  "properties": {
+    "app": {
+      "$ref": "#/components/schemas/SwaThreeFieldApplicationSettingsApplication"
+    }
+  },
+  "x-okta-parent": "#/definitions/ApplicationSettings",
+  "x-okta-tags": [
+    "Application"
+  ]
+}

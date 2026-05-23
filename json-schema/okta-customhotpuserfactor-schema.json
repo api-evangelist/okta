@@ -1,0 +1,18 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/CustomHotpUserFactor",
+  "title": "CustomHotpUserFactor",
+  "type": "object",
+  "properties": {
+    "factorProfileId": {
+      "type": "string"
+    },
+    "profile": {
+      "$ref": "#/components/schemas/CustomHotpUserFactorProfile"
+    }
+  },
+  "x-okta-parent": "#/definitions/UserFactor",
+  "x-okta-tags": [
+    "UserFactor"
+  ]
+}

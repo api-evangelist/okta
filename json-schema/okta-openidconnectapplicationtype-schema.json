@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/OpenIdConnectApplicationType",
+  "title": "OpenIdConnectApplicationType",
+  "type": "string",
+  "enum": [
+    "web",
+    "native",
+    "browser",
+    "service"
+  ],
+  "x-okta-tags": [
+    "Application"
+  ]
+}

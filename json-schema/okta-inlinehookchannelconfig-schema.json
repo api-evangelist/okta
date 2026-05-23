@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/InlineHookChannelConfig",
+  "title": "InlineHookChannelConfig",
+  "type": "object",
+  "properties": {
+    "authScheme": {
+      "$ref": "#/components/schemas/InlineHookChannelConfigAuthScheme"
+    },
+    "headers": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/InlineHookChannelConfigHeaders"
+      }
+    },
+    "method": {
+      "type": "string"
+    },
+    "uri": {
+      "type": "string"
+    }
+  },
+  "x-okta-tags": [
+    "InlineHook"
+  ]
+}

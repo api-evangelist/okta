@@ -1,0 +1,10 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/SmsTemplateTranslations",
+  "title": "SmsTemplateTranslations",
+  "type": "object",
+  "x-okta-extensible": true,
+  "x-okta-tags": [
+    "Template"
+  ]
+}

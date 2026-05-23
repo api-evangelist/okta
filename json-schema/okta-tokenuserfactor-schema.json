@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/TokenUserFactor",
+  "title": "TokenUserFactor",
+  "type": "object",
+  "properties": {
+    "profile": {
+      "$ref": "#/components/schemas/TokenUserFactorProfile"
+    }
+  },
+  "x-okta-parent": "#/definitions/UserFactor",
+  "x-okta-tags": [
+    "UserFactor"
+  ]
+}

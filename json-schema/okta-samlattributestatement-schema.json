@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/SamlAttributeStatement",
+  "title": "SamlAttributeStatement",
+  "type": "object",
+  "properties": {
+    "filterType": {
+      "type": "string"
+    },
+    "filterValue": {
+      "type": "string"
+    },
+    "name": {
+      "type": "string"
+    },
+    "namespace": {
+      "type": "string"
+    },
+    "type": {
+      "type": "string"
+    },
+    "values": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "x-okta-tags": [
+    "Application"
+  ]
+}

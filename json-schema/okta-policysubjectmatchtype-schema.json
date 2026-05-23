@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/PolicySubjectMatchType",
+  "title": "PolicySubjectMatchType",
+  "type": "string",
+  "enum": [
+    "USERNAME",
+    "EMAIL",
+    "USERNAME_OR_EMAIL",
+    "CUSTOM_ATTRIBUTE"
+  ],
+  "x-okta-tags": [
+    "Policy"
+  ]
+}

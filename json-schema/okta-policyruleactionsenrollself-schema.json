@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/PolicyRuleActionsEnrollSelf",
+  "title": "PolicyRuleActionsEnrollSelf",
+  "type": "string",
+  "enum": [
+    "CHALLENGE",
+    "LOGIN",
+    "NEVER"
+  ],
+  "x-okta-tags": [
+    "Policy"
+  ]
+}

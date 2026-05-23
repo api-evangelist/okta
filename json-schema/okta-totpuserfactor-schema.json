@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/TotpUserFactor",
+  "title": "TotpUserFactor",
+  "type": "object",
+  "properties": {
+    "profile": {
+      "$ref": "#/components/schemas/TotpUserFactorProfile"
+    }
+  },
+  "x-okta-parent": "#/definitions/UserFactor",
+  "x-okta-tags": [
+    "UserFactor"
+  ]
+}

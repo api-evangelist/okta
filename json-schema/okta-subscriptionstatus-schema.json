@@ -1,0 +1,13 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/SubscriptionStatus",
+  "title": "SubscriptionStatus",
+  "type": "string",
+  "enum": [
+    "subscribed",
+    "unsubscribed"
+  ],
+  "x-okta-tags": [
+    "Role"
+  ]
+}

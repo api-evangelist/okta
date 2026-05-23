@@ -1,0 +1,71 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/OpenIdConnectApplicationSettingsClient",
+  "title": "OpenIdConnectApplicationSettingsClient",
+  "type": "object",
+  "properties": {
+    "application_type": {
+      "$ref": "#/components/schemas/OpenIdConnectApplicationType"
+    },
+    "client_uri": {
+      "type": "string"
+    },
+    "consent_method": {
+      "$ref": "#/components/schemas/OpenIdConnectApplicationConsentMethod"
+    },
+    "grant_types": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/OAuthGrantType"
+      }
+    },
+    "idp_initiated_login": {
+      "$ref": "#/components/schemas/OpenIdConnectApplicationIdpInitiatedLogin"
+    },
+    "initiate_login_uri": {
+      "type": "string"
+    },
+    "issuer_mode": {
+      "$ref": "#/components/schemas/OpenIdConnectApplicationIssuerMode"
+    },
+    "jwks": {
+      "$ref": "#/components/schemas/OpenIdConnectApplicationSettingsClientKeys"
+    },
+    "logo_uri": {
+      "type": "string"
+    },
+    "policy_uri": {
+      "type": "string"
+    },
+    "post_logout_redirect_uris": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "redirect_uris": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "refresh_token": {
+      "$ref": "#/components/schemas/OpenIdConnectApplicationSettingsRefreshToken"
+    },
+    "response_types": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/OAuthResponseType"
+      }
+    },
+    "tos_uri": {
+      "type": "string"
+    },
+    "wildcard_redirect": {
+      "type": "string"
+    }
+  },
+  "x-okta-tags": [
+    "Application"
+  ]
+}

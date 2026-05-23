@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/ApplicationAccessibility",
+  "title": "ApplicationAccessibility",
+  "type": "object",
+  "properties": {
+    "errorRedirectUrl": {
+      "type": "string"
+    },
+    "loginRedirectUrl": {
+      "type": "string"
+    },
+    "selfService": {
+      "type": "boolean"
+    }
+  },
+  "x-okta-tags": [
+    "Application"
+  ]
+}

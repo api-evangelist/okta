@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/OktaSignOnPolicyRuleActions",
+  "title": "OktaSignOnPolicyRuleActions",
+  "type": "object",
+  "properties": {
+    "signon": {
+      "$ref": "#/components/schemas/OktaSignOnPolicyRuleSignonActions"
+    }
+  },
+  "x-okta-parent": "#/definitions/PolicyRuleActions",
+  "x-okta-tags": [
+    "Policy"
+  ]
+}

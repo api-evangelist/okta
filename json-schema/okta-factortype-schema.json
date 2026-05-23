@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/FactorType",
+  "title": "FactorType",
+  "type": "string",
+  "enum": [
+    "call",
+    "email",
+    "hotp",
+    "push",
+    "question",
+    "signed_nonce",
+    "sms",
+    "token:hardware",
+    "token:hotp",
+    "token:software:totp",
+    "token",
+    "u2f",
+    "web",
+    "webauthn"
+  ],
+  "x-okta-tags": [
+    "UserFactor"
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/OktaSignOnPolicyRuleSignonSessionActions",
+  "title": "OktaSignOnPolicyRuleSignonSessionActions",
+  "type": "object",
+  "properties": {
+    "maxSessionIdleMinutes": {
+      "type": "integer"
+    },
+    "maxSessionLifetimeMinutes": {
+      "type": "integer"
+    },
+    "usePersistentCookie": {
+      "type": "boolean",
+      "default": false
+    }
+  },
+  "x-okta-tags": [
+    "Policy"
+  ]
+}

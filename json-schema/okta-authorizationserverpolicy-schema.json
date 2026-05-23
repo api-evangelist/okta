@@ -1,0 +1,164 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/AuthorizationServerPolicy",
+  "title": "AuthorizationServerPolicy",
+  "type": "object",
+  "properties": {
+    "_embedded": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "properties": {}
+      },
+      "readOnly": true
+    },
+    "_links": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "properties": {}
+      },
+      "readOnly": true
+    },
+    "conditions": {
+      "$ref": "#/components/schemas/PolicyRuleConditions"
+    },
+    "created": {
+      "type": "string",
+      "format": "date-time",
+      "readOnly": true
+    },
+    "description": {
+      "type": "string"
+    },
+    "id": {
+      "type": "string",
+      "readOnly": true
+    },
+    "lastUpdated": {
+      "type": "string",
+      "format": "date-time",
+      "readOnly": true
+    },
+    "name": {
+      "type": "string"
+    },
+    "priority": {
+      "type": "integer"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "ACTIVE",
+        "INACTIVE"
+      ]
+    },
+    "system": {
+      "type": "boolean"
+    },
+    "type": {
+      "$ref": "#/components/schemas/PolicyType"
+    }
+  },
+  "x-okta-crud": [
+    {
+      "alias": "read",
+      "arguments": [
+        {
+          "dest": "policyId",
+          "src": "id"
+        }
+      ],
+      "operationId": "getAuthorizationServerPolicy"
+    },
+    {
+      "alias": "update",
+      "arguments": [
+        {
+          "dest": "policyId",
+          "src": "id"
+        },
+        {
+          "dest": "policy",
+          "self": true
+        }
+      ],
+      "operationId": "updateAuthorizationServerPolicy"
+    },
+    {
+      "alias": "delete",
+      "arguments": [
+        {
+          "dest": "policyId",
+          "src": "id"
+        }
+      ],
+      "operationId": "deleteAuthorizationServerPolicy"
+    }
+  ],
+  "x-okta-operations": [
+    {
+      "alias": "listPolicyRules",
+      "arguments": [
+        {
+          "dest": "policyId",
+          "src": "id"
+        }
+      ],
+      "operationId": "listAuthorizationServerPolicyRules"
+    },
+    {
+      "alias": "createPolicyRule",
+      "arguments": [
+        {
+          "dest": "policyId",
+          "src": "id"
+        }
+      ],
+      "operationId": "createAuthorizationServerPolicyRule"
+    },
+    {
+      "alias": "getPolicyRule",
+      "arguments": [
+        {
+          "dest": "policyId",
+          "src": "id"
+        }
+      ],
+      "operationId": "getAuthorizationServerPolicyRule"
+    },
+    {
+      "alias": "deletePolicyRule",
+      "arguments": [
+        {
+          "dest": "policyId",
+          "src": "id"
+        }
+      ],
+      "operationId": "deleteAuthorizationServerPolicyRule"
+    },
+    {
+      "alias": "activate",
+      "arguments": [
+        {
+          "dest": "policyId",
+          "src": "id"
+        }
+      ],
+      "operationId": "activateAuthorizationServerPolicy"
+    },
+    {
+      "alias": "deactivate",
+      "arguments": [
+        {
+          "dest": "policyId",
+          "src": "id"
+        }
+      ],
+      "operationId": "deactivateAuthorizationServerPolicy"
+    }
+  ],
+  "x-okta-tags": [
+    "AuthorizationServer"
+  ]
+}

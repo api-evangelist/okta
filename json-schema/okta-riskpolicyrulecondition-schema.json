@@ -1,0 +1,18 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/RiskPolicyRuleCondition",
+  "title": "RiskPolicyRuleCondition",
+  "type": "object",
+  "properties": {
+    "behaviors": {
+      "uniqueItems": true,
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "x-okta-tags": [
+    "Policy"
+  ]
+}

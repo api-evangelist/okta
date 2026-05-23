@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/SamlApplication",
+  "title": "SamlApplication",
+  "type": "object",
+  "properties": {
+    "settings": {
+      "$ref": "#/components/schemas/SamlApplicationSettings"
+    }
+  },
+  "x-okta-parent": "#/definitions/Application",
+  "x-okta-tags": [
+    "Application"
+  ],
+  "x-openapi-v3-discriminator": {
+    "mapping": {
+      "okta_org2org": "#/definitions/Org2OrgApplication"
+    },
+    "propertyName": "name"
+  }
+}

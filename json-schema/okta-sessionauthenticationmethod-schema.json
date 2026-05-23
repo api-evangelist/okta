@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/SessionAuthenticationMethod",
+  "title": "SessionAuthenticationMethod",
+  "type": "string",
+  "enum": [
+    "pwd",
+    "swk",
+    "hwk",
+    "otp",
+    "sms",
+    "tel",
+    "geo",
+    "fpt",
+    "kba",
+    "mfa",
+    "mca",
+    "sc"
+  ],
+  "x-okta-tags": [
+    "Session"
+  ]
+}

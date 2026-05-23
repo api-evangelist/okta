@@ -1,0 +1,51 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/AppLink",
+  "title": "AppLink",
+  "type": "object",
+  "properties": {
+    "appAssignmentId": {
+      "type": "string",
+      "readOnly": true
+    },
+    "appInstanceId": {
+      "type": "string",
+      "readOnly": true
+    },
+    "appName": {
+      "type": "string",
+      "readOnly": true
+    },
+    "credentialsSetup": {
+      "type": "boolean",
+      "readOnly": true
+    },
+    "hidden": {
+      "type": "boolean",
+      "readOnly": true
+    },
+    "id": {
+      "type": "string",
+      "readOnly": true
+    },
+    "label": {
+      "type": "string",
+      "readOnly": true
+    },
+    "linkUrl": {
+      "type": "string",
+      "readOnly": true
+    },
+    "logoUrl": {
+      "type": "string",
+      "readOnly": true
+    },
+    "sortOrder": {
+      "type": "integer",
+      "readOnly": true
+    }
+  },
+  "x-okta-tags": [
+    "User"
+  ]
+}

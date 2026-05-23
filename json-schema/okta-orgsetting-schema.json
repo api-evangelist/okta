@@ -1,0 +1,152 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/OrgSetting",
+  "title": "OrgSetting",
+  "type": "object",
+  "properties": {
+    "_links": {
+      "type": "object"
+    },
+    "address1": {
+      "type": "string"
+    },
+    "address2": {
+      "type": "string"
+    },
+    "city": {
+      "type": "string"
+    },
+    "companyName": {
+      "type": "string"
+    },
+    "country": {
+      "type": "string"
+    },
+    "created": {
+      "type": "string",
+      "format": "date-time",
+      "readOnly": true
+    },
+    "endUserSupportHelpURL": {
+      "type": "string"
+    },
+    "expiresAt": {
+      "type": "string",
+      "format": "date-time",
+      "readOnly": true
+    },
+    "id": {
+      "type": "string",
+      "readOnly": true
+    },
+    "lastUpdated": {
+      "type": "string",
+      "format": "date-time",
+      "readOnly": true
+    },
+    "phoneNumber": {
+      "type": "string"
+    },
+    "postalCode": {
+      "type": "string"
+    },
+    "state": {
+      "type": "string"
+    },
+    "status": {
+      "type": "string",
+      "readOnly": true
+    },
+    "subdomain": {
+      "type": "string",
+      "readOnly": true
+    },
+    "supportPhoneNumber": {
+      "type": "string"
+    },
+    "website": {
+      "type": "string"
+    }
+  },
+  "x-okta-crud": [
+    {
+      "alias": "read",
+      "arguments": [
+        {
+          "dest": "orgSetting",
+          "self": true
+        }
+      ],
+      "operationId": "getOrgSettings"
+    },
+    {
+      "alias": "update",
+      "arguments": [
+        {
+          "dest": "orgSetting",
+          "self": true
+        }
+      ],
+      "operationId": "updateOrgSetting"
+    }
+  ],
+  "x-okta-operations": [
+    {
+      "alias": "partialUpdate",
+      "arguments": [
+        {
+          "dest": "orgSetting",
+          "self": true
+        }
+      ],
+      "operationId": "partialUpdateOrgSetting"
+    },
+    {
+      "alias": "getContactTypes",
+      "operationId": "getOrgContactTypes"
+    },
+    {
+      "alias": "getOrgContactUser",
+      "operationId": "getOrgContactUser"
+    },
+    {
+      "alias": "getSupportSettings",
+      "operationId": "getOrgOktaSupportSettings"
+    },
+    {
+      "alias": "communicationSettings",
+      "operationId": "getOktaCommunicationSettings"
+    },
+    {
+      "alias": "orgPreferences",
+      "operationId": "getOrgPreferences"
+    },
+    {
+      "alias": "showFooter",
+      "arguments": [
+        {
+          "dest": "orgSetting",
+          "self": true
+        }
+      ],
+      "operationId": "showOktaUIFooter"
+    },
+    {
+      "alias": "hideFooter",
+      "arguments": [
+        {
+          "dest": "orgSetting",
+          "self": true
+        }
+      ],
+      "operationId": "hideOktaUIFooter"
+    },
+    {
+      "alias": "updateOrgLogo",
+      "operationId": "updateOrgLogo"
+    }
+  ],
+  "x-okta-tags": [
+    "Org"
+  ]
+}

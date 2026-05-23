@@ -1,0 +1,88 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/GroupRule",
+  "title": "GroupRule",
+  "type": "object",
+  "properties": {
+    "actions": {
+      "$ref": "#/components/schemas/GroupRuleAction"
+    },
+    "conditions": {
+      "$ref": "#/components/schemas/GroupRuleConditions"
+    },
+    "created": {
+      "type": "string",
+      "format": "date-time",
+      "readOnly": true
+    },
+    "id": {
+      "type": "string",
+      "readOnly": true
+    },
+    "lastUpdated": {
+      "type": "string",
+      "format": "date-time",
+      "readOnly": true
+    },
+    "name": {
+      "type": "string"
+    },
+    "status": {
+      "$ref": "#/components/schemas/GroupRuleStatus"
+    },
+    "type": {
+      "type": "string"
+    }
+  },
+  "x-okta-crud": [
+    {
+      "alias": "update",
+      "arguments": [
+        {
+          "dest": "ruleId",
+          "src": "id"
+        },
+        {
+          "dest": "groupRule",
+          "self": true
+        }
+      ],
+      "operationId": "updateGroupRule"
+    },
+    {
+      "alias": "delete",
+      "arguments": [
+        {
+          "dest": "ruleId",
+          "src": "id"
+        }
+      ],
+      "operationId": "deleteGroupRule"
+    }
+  ],
+  "x-okta-operations": [
+    {
+      "alias": "activate",
+      "arguments": [
+        {
+          "dest": "ruleId",
+          "src": "id"
+        }
+      ],
+      "operationId": "activateGroupRule"
+    },
+    {
+      "alias": "deactivate",
+      "arguments": [
+        {
+          "dest": "ruleId",
+          "src": "id"
+        }
+      ],
+      "operationId": "deactivateGroupRule"
+    }
+  ],
+  "x-okta-tags": [
+    "GroupRule"
+  ]
+}

@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/SwaApplicationSettingsApplication",
+  "title": "SwaApplicationSettingsApplication",
+  "type": "object",
+  "properties": {
+    "buttonField": {
+      "type": "string"
+    },
+    "checkbox": {
+      "type": "string"
+    },
+    "loginUrlRegex": {
+      "type": "string"
+    },
+    "passwordField": {
+      "type": "string"
+    },
+    "redirectUrl": {
+      "type": "string"
+    },
+    "url": {
+      "type": "string"
+    },
+    "usernameField": {
+      "type": "string"
+    }
+  },
+  "x-okta-parent": "#/definitions/ApplicationSettingsApplication",
+  "x-okta-tags": [
+    "Application"
+  ]
+}

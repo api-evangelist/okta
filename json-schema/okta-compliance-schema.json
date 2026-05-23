@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/Compliance",
+  "title": "Compliance",
+  "type": "object",
+  "properties": {
+    "fips": {
+      "$ref": "#/components/schemas/FipsEnum"
+    }
+  },
+  "x-okta-tags": [
+    "Authenticator"
+  ]
+}

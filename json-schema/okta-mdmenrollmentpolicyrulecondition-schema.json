@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/MDMEnrollmentPolicyRuleCondition",
+  "title": "MDMEnrollmentPolicyRuleCondition",
+  "type": "object",
+  "properties": {
+    "blockNonSafeAndroid": {
+      "type": "boolean"
+    },
+    "enrollment": {
+      "type": "string",
+      "enum": [
+        "OMM",
+        "ANY_OR_NONE"
+      ]
+    }
+  },
+  "x-okta-tags": [
+    "Policy"
+  ]
+}

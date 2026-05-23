@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/EventHookChannel",
+  "title": "EventHookChannel",
+  "type": "object",
+  "properties": {
+    "config": {
+      "$ref": "#/components/schemas/EventHookChannelConfig"
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "HTTP"
+      ]
+    },
+    "version": {
+      "type": "string"
+    }
+  },
+  "x-okta-tags": [
+    "EventHook"
+  ]
+}

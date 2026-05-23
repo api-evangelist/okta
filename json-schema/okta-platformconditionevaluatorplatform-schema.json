@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/PlatformConditionEvaluatorPlatform",
+  "title": "PlatformConditionEvaluatorPlatform",
+  "type": "object",
+  "properties": {
+    "os": {
+      "$ref": "#/components/schemas/PlatformConditionEvaluatorPlatformOperatingSystem"
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "DESKTOP",
+        "MOBILE",
+        "OTHER",
+        "ANY"
+      ]
+    }
+  },
+  "x-okta-tags": [
+    "Policy"
+  ]
+}

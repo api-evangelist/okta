@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/PushUserFactor",
+  "title": "PushUserFactor",
+  "type": "object",
+  "properties": {
+    "expiresAt": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "factorResult": {
+      "$ref": "#/components/schemas/FactorResultType"
+    },
+    "profile": {
+      "$ref": "#/components/schemas/PushUserFactorProfile"
+    }
+  },
+  "x-okta-parent": "#/definitions/UserFactor",
+  "x-okta-tags": [
+    "UserFactor"
+  ]
+}

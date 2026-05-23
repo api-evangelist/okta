@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/ProfileEnrollmentPolicyRuleActions",
+  "title": "ProfileEnrollmentPolicyRuleActions",
+  "type": "object",
+  "properties": {
+    "profileEnrollment": {
+      "$ref": "#/components/schemas/ProfileEnrollmentPolicyRuleAction"
+    }
+  },
+  "x-okta-parent": "#/definitions/PolicyRuleActions",
+  "x-okta-tags": [
+    "Policy"
+  ]
+}

@@ -1,0 +1,47 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/IdentityProviderApplicationUser",
+  "title": "IdentityProviderApplicationUser",
+  "type": "object",
+  "properties": {
+    "_embedded": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "properties": {}
+      },
+      "readOnly": true
+    },
+    "_links": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "properties": {}
+      },
+      "readOnly": true
+    },
+    "created": {
+      "type": "string"
+    },
+    "externalId": {
+      "type": "string"
+    },
+    "id": {
+      "type": "string",
+      "readOnly": true
+    },
+    "lastUpdated": {
+      "type": "string"
+    },
+    "profile": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "properties": {}
+      }
+    }
+  },
+  "x-okta-tags": [
+    "IdentityProvider"
+  ]
+}

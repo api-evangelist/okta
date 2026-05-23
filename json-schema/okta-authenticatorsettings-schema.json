@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/AuthenticatorSettings",
+  "title": "AuthenticatorSettings",
+  "type": "object",
+  "properties": {
+    "allowedFor": {
+      "$ref": "#/components/schemas/AllowedForEnum"
+    },
+    "appInstanceId": {
+      "type": "string"
+    },
+    "channelBinding": {
+      "$ref": "#/components/schemas/ChannelBinding"
+    },
+    "compliance": {
+      "$ref": "#/components/schemas/Compliance"
+    },
+    "tokenLifetimeInMinutes": {
+      "type": "integer"
+    },
+    "userVerification": {
+      "$ref": "#/components/schemas/UserVerificationEnum"
+    }
+  },
+  "x-okta-tags": [
+    "Authenticator"
+  ]
+}

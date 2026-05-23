@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/CsrMetadata",
+  "title": "CsrMetadata",
+  "type": "object",
+  "properties": {
+    "subject": {
+      "$ref": "#/components/schemas/CsrMetadataSubject"
+    },
+    "subjectAltNames": {
+      "$ref": "#/components/schemas/CsrMetadataSubjectAltNames"
+    }
+  },
+  "x-okta-tags": [
+    "Application"
+  ]
+}

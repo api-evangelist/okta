@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/UserSchemaDefinitions",
+  "title": "UserSchemaDefinitions",
+  "type": "object",
+  "properties": {
+    "base": {
+      "$ref": "#/components/schemas/UserSchemaBase"
+    },
+    "custom": {
+      "$ref": "#/components/schemas/UserSchemaPublic"
+    }
+  },
+  "x-okta-tags": [
+    "UserSchema"
+  ]
+}

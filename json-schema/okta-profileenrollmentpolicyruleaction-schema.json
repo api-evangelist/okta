@@ -1,0 +1,41 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/ProfileEnrollmentPolicyRuleAction",
+  "title": "ProfileEnrollmentPolicyRuleAction",
+  "type": "object",
+  "properties": {
+    "access": {
+      "type": "string"
+    },
+    "activationRequirements": {
+      "$ref": "#/components/schemas/ProfileEnrollmentPolicyRuleActivationRequirement"
+    },
+    "preRegistrationInlineHooks": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/PreRegistrationInlineHook"
+      }
+    },
+    "profileAttributes": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/ProfileEnrollmentPolicyRuleProfileAttribute"
+      }
+    },
+    "targetGroupIds": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "uiSchemaId": {
+      "type": "string"
+    },
+    "unknownUserAction": {
+      "type": "string"
+    }
+  },
+  "x-okta-tags": [
+    "Policy"
+  ]
+}

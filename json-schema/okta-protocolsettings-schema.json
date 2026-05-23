@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/ProtocolSettings",
+  "title": "ProtocolSettings",
+  "type": "object",
+  "properties": {
+    "nameFormat": {
+      "type": "string"
+    }
+  },
+  "x-okta-tags": [
+    "IdentityProvider"
+  ]
+}

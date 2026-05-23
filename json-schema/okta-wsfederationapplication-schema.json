@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/WsFederationApplication",
+  "title": "WsFederationApplication",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "object"
+    },
+    "settings": {
+      "$ref": "#/components/schemas/WsFederationApplicationSettings"
+    }
+  },
+  "x-okta-defined-as": {
+    "name": "template_wsfed"
+  },
+  "x-okta-parent": "#/definitions/Application",
+  "x-okta-tags": [
+    "Application"
+  ]
+}

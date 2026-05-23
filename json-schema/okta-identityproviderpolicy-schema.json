@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/IdentityProviderPolicy",
+  "title": "IdentityProviderPolicy",
+  "type": "object",
+  "properties": {
+    "accountLink": {
+      "$ref": "#/components/schemas/PolicyAccountLink"
+    },
+    "maxClockSkew": {
+      "type": "integer"
+    },
+    "provisioning": {
+      "$ref": "#/components/schemas/Provisioning"
+    },
+    "subject": {
+      "$ref": "#/components/schemas/PolicySubject"
+    }
+  },
+  "x-okta-parent": "#/definitions/Policy",
+  "x-okta-tags": [
+    "Policy"
+  ]
+}

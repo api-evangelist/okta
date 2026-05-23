@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/GroupRulePeopleCondition",
+  "title": "GroupRulePeopleCondition",
+  "type": "object",
+  "properties": {
+    "groups": {
+      "$ref": "#/components/schemas/GroupRuleGroupCondition"
+    },
+    "users": {
+      "$ref": "#/components/schemas/GroupRuleUserCondition"
+    }
+  },
+  "x-okta-tags": [
+    "GroupRule"
+  ]
+}

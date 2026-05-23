@@ -1,0 +1,13 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/ProtocolRelayStateFormat",
+  "title": "ProtocolRelayStateFormat",
+  "type": "string",
+  "enum": [
+    "OPAQUE",
+    "FROM_URL"
+  ],
+  "x-okta-tags": [
+    "IdentityProvider"
+  ]
+}

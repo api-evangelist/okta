@@ -1,0 +1,13 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/RoleStatus",
+  "title": "RoleStatus",
+  "type": "string",
+  "enum": [
+    "ACTIVE",
+    "INACTIVE"
+  ],
+  "x-okta-tags": [
+    "User"
+  ]
+}

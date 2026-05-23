@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/EventHookChannelConfigHeader",
+  "title": "EventHookChannelConfigHeader",
+  "type": "object",
+  "properties": {
+    "key": {
+      "type": "string"
+    },
+    "value": {
+      "type": "string"
+    }
+  },
+  "x-okta-tags": [
+    "EventHook"
+  ]
+}

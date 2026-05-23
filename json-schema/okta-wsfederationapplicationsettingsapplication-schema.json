@@ -1,0 +1,48 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/WsFederationApplicationSettingsApplication",
+  "title": "WsFederationApplicationSettingsApplication",
+  "type": "object",
+  "properties": {
+    "attributeStatements": {
+      "type": "string"
+    },
+    "audienceRestriction": {
+      "type": "string"
+    },
+    "authnContextClassRef": {
+      "type": "string"
+    },
+    "groupFilter": {
+      "type": "string"
+    },
+    "groupName": {
+      "type": "string"
+    },
+    "groupValueFormat": {
+      "type": "string"
+    },
+    "nameIDFormat": {
+      "type": "string"
+    },
+    "realm": {
+      "type": "string"
+    },
+    "siteURL": {
+      "type": "string"
+    },
+    "usernameAttribute": {
+      "type": "string"
+    },
+    "wReplyOverride": {
+      "type": "boolean"
+    },
+    "wReplyURL": {
+      "type": "string"
+    }
+  },
+  "x-okta-parent": "#/definitions/ApplicationSettingsApplication",
+  "x-okta-tags": [
+    "Application"
+  ]
+}

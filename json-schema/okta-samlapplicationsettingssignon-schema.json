@@ -1,0 +1,101 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/SamlApplicationSettingsSignOn",
+  "title": "SamlApplicationSettingsSignOn",
+  "type": "object",
+  "properties": {
+    "acsEndpoints": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/AcsEndpoint"
+      }
+    },
+    "allowMultipleAcsEndpoints": {
+      "type": "boolean"
+    },
+    "assertionSigned": {
+      "type": "boolean"
+    },
+    "attributeStatements": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/SamlAttributeStatement"
+      }
+    },
+    "audience": {
+      "type": "string"
+    },
+    "audienceOverride": {
+      "type": "string"
+    },
+    "authnContextClassRef": {
+      "type": "string"
+    },
+    "defaultRelayState": {
+      "type": "string"
+    },
+    "destination": {
+      "type": "string"
+    },
+    "destinationOverride": {
+      "type": "string"
+    },
+    "digestAlgorithm": {
+      "type": "string"
+    },
+    "honorForceAuthn": {
+      "type": "boolean"
+    },
+    "idpIssuer": {
+      "type": "string"
+    },
+    "inlineHooks": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/SignOnInlineHook"
+      }
+    },
+    "recipient": {
+      "type": "string"
+    },
+    "recipientOverride": {
+      "type": "string"
+    },
+    "requestCompressed": {
+      "type": "boolean"
+    },
+    "responseSigned": {
+      "type": "boolean"
+    },
+    "samlSignedRequestEnabled": {
+      "type": "boolean"
+    },
+    "signatureAlgorithm": {
+      "type": "string"
+    },
+    "slo": {
+      "$ref": "#/components/schemas/SingleLogout"
+    },
+    "spCertificate": {
+      "$ref": "#/components/schemas/SpCertificate"
+    },
+    "spIssuer": {
+      "type": "string"
+    },
+    "ssoAcsUrl": {
+      "type": "string"
+    },
+    "ssoAcsUrlOverride": {
+      "type": "string"
+    },
+    "subjectNameIdFormat": {
+      "type": "string"
+    },
+    "subjectNameIdTemplate": {
+      "type": "string"
+    }
+  },
+  "x-okta-tags": [
+    "Application"
+  ]
+}

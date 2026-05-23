@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/ActivateFactorRequest",
+  "title": "ActivateFactorRequest",
+  "type": "object",
+  "properties": {
+    "attestation": {
+      "type": "string"
+    },
+    "clientData": {
+      "type": "string"
+    },
+    "passCode": {
+      "type": "string"
+    },
+    "registrationData": {
+      "type": "string"
+    },
+    "stateToken": {
+      "type": "string"
+    }
+  },
+  "x-okta-tags": [
+    "UserFactor"
+  ]
+}

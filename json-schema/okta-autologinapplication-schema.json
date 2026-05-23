@@ -1,0 +1,18 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/AutoLoginApplication",
+  "title": "AutoLoginApplication",
+  "type": "object",
+  "properties": {
+    "credentials": {
+      "$ref": "#/components/schemas/SchemeApplicationCredentials"
+    },
+    "settings": {
+      "$ref": "#/components/schemas/AutoLoginApplicationSettings"
+    }
+  },
+  "x-okta-parent": "#/definitions/Application",
+  "x-okta-tags": [
+    "Application"
+  ]
+}

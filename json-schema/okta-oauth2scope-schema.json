@@ -1,0 +1,45 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/OAuth2Scope",
+  "title": "OAuth2Scope",
+  "type": "object",
+  "properties": {
+    "consent": {
+      "type": "string",
+      "enum": [
+        "REQUIRED",
+        "IMPLICIT",
+        "ADMIN"
+      ]
+    },
+    "default": {
+      "type": "boolean"
+    },
+    "description": {
+      "type": "string"
+    },
+    "displayName": {
+      "type": "string"
+    },
+    "id": {
+      "type": "string",
+      "readOnly": true
+    },
+    "metadataPublish": {
+      "type": "string",
+      "enum": [
+        "ALL_CLIENTS",
+        "NO_CLIENTS"
+      ]
+    },
+    "name": {
+      "type": "string"
+    },
+    "system": {
+      "type": "boolean"
+    }
+  },
+  "x-okta-tags": [
+    "Application"
+  ]
+}

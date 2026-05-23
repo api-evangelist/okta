@@ -1,0 +1,35 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/AuthenticatorProviderConfiguration",
+  "title": "AuthenticatorProviderConfiguration",
+  "type": "object",
+  "properties": {
+    "authPort": {
+      "type": "integer"
+    },
+    "host": {
+      "type": "string"
+    },
+    "hostName": {
+      "type": "string"
+    },
+    "instanceId": {
+      "type": "string"
+    },
+    "integrationKey": {
+      "type": "string"
+    },
+    "secretKey": {
+      "type": "string"
+    },
+    "sharedSecret": {
+      "type": "string"
+    },
+    "userNameTemplate": {
+      "$ref": "#/components/schemas/AuthenticatorProviderConfigurationUserNamePlate"
+    }
+  },
+  "x-okta-tags": [
+    "Authenticator"
+  ]
+}

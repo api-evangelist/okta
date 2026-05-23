@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/ApplicationVisibility",
+  "title": "ApplicationVisibility",
+  "type": "object",
+  "properties": {
+    "appLinks": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "boolean"
+      }
+    },
+    "autoLaunch": {
+      "type": "boolean"
+    },
+    "autoSubmitToolbar": {
+      "type": "boolean"
+    },
+    "hide": {
+      "$ref": "#/components/schemas/ApplicationVisibilityHide"
+    }
+  },
+  "x-okta-tags": [
+    "Application"
+  ]
+}

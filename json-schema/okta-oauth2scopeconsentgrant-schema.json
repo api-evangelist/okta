@@ -1,0 +1,62 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/OAuth2ScopeConsentGrant",
+  "title": "OAuth2ScopeConsentGrant",
+  "type": "object",
+  "properties": {
+    "_embedded": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "properties": {}
+      },
+      "readOnly": true
+    },
+    "_links": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "properties": {}
+      },
+      "readOnly": true
+    },
+    "clientId": {
+      "type": "string"
+    },
+    "created": {
+      "type": "string",
+      "format": "date-time",
+      "readOnly": true
+    },
+    "createdBy": {
+      "$ref": "#/components/schemas/OAuth2Actor"
+    },
+    "id": {
+      "type": "string",
+      "readOnly": true
+    },
+    "issuer": {
+      "type": "string"
+    },
+    "lastUpdated": {
+      "type": "string",
+      "format": "date-time",
+      "readOnly": true
+    },
+    "scopeId": {
+      "type": "string"
+    },
+    "source": {
+      "$ref": "#/components/schemas/OAuth2ScopeConsentGrantSource"
+    },
+    "status": {
+      "$ref": "#/components/schemas/OAuth2ScopeConsentGrantStatus"
+    },
+    "userId": {
+      "type": "string"
+    }
+  },
+  "x-okta-tags": [
+    "Application"
+  ]
+}

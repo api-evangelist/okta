@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/AuthorizationServerPolicyRuleActions",
+  "title": "AuthorizationServerPolicyRuleActions",
+  "type": "object",
+  "properties": {
+    "token": {
+      "$ref": "#/components/schemas/TokenAuthorizationServerPolicyRuleAction"
+    }
+  },
+  "x-okta-tags": [
+    "AuthorizationServerPolicy"
+  ]
+}

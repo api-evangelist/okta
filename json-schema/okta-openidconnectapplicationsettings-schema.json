@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/OpenIdConnectApplicationSettings",
+  "title": "OpenIdConnectApplicationSettings",
+  "type": "object",
+  "properties": {
+    "oauthClient": {
+      "$ref": "#/components/schemas/OpenIdConnectApplicationSettingsClient"
+    }
+  },
+  "x-okta-parent": "#/definitions/ApplicationSettings",
+  "x-okta-tags": [
+    "Application"
+  ]
+}

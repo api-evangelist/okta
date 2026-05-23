@@ -1,0 +1,18 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/PolicyRuleAuthContextCondition",
+  "title": "PolicyRuleAuthContextCondition",
+  "type": "object",
+  "properties": {
+    "authType": {
+      "type": "string",
+      "enum": [
+        "ANY",
+        "RADIUS"
+      ]
+    }
+  },
+  "x-okta-tags": [
+    "Policy"
+  ]
+}

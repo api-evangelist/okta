@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/HardwareUserFactor",
+  "title": "HardwareUserFactor",
+  "type": "object",
+  "properties": {
+    "profile": {
+      "$ref": "#/components/schemas/HardwareUserFactorProfile"
+    }
+  },
+  "x-okta-parent": "#/definitions/UserFactor",
+  "x-okta-tags": [
+    "UserFactor"
+  ]
+}

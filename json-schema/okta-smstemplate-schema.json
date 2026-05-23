@@ -1,0 +1,94 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/SmsTemplate",
+  "title": "SmsTemplate",
+  "type": "object",
+  "properties": {
+    "created": {
+      "type": "string",
+      "format": "date-time",
+      "readOnly": true
+    },
+    "id": {
+      "type": "string",
+      "readOnly": true
+    },
+    "lastUpdated": {
+      "type": "string",
+      "format": "date-time",
+      "readOnly": true
+    },
+    "name": {
+      "type": "string"
+    },
+    "template": {
+      "type": "string"
+    },
+    "translations": {
+      "$ref": "#/components/schemas/SmsTemplateTranslations"
+    },
+    "type": {
+      "$ref": "#/components/schemas/SmsTemplateType"
+    }
+  },
+  "x-okta-crud": [
+    {
+      "alias": "create",
+      "arguments": [
+        {
+          "dest": "smsTemplate",
+          "self": true
+        }
+      ],
+      "operationId": "createSmsTemplate"
+    },
+    {
+      "alias": "read",
+      "arguments": [],
+      "operationId": "getSmsTemplate"
+    },
+    {
+      "alias": "update",
+      "arguments": [
+        {
+          "dest": "templateId",
+          "src": "id"
+        },
+        {
+          "dest": "smsTemplate",
+          "self": true
+        }
+      ],
+      "operationId": "updateSmsTemplate"
+    },
+    {
+      "alias": "delete",
+      "arguments": [
+        {
+          "dest": "templateId",
+          "src": "id"
+        }
+      ],
+      "operationId": "deleteSmsTemplate"
+    }
+  ],
+  "x-okta-operations": [
+    {
+      "alias": "partialUpdate",
+      "arguments": [
+        {
+          "dest": "templateId",
+          "src": "id"
+        },
+        {
+          "dest": "smsTemplate",
+          "self": true
+        }
+      ],
+      "operationId": "partialUpdateSmsTemplate"
+    }
+  ],
+  "x-okta-tags": [
+    "Template"
+  ]
+}

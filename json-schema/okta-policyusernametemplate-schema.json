@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/PolicyUserNameTemplate",
+  "title": "PolicyUserNameTemplate",
+  "type": "object",
+  "properties": {
+    "template": {
+      "type": "string"
+    }
+  },
+  "x-okta-tags": [
+    "Policy"
+  ]
+}

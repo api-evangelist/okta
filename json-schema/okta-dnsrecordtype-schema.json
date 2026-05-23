@@ -1,0 +1,13 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/DNSRecordType",
+  "title": "DNSRecordType",
+  "type": "string",
+  "enum": [
+    "TXT",
+    "CNAME"
+  ],
+  "x-okta-tags": [
+    "Domain"
+  ]
+}

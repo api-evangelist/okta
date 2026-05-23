@@ -1,0 +1,133 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/NetworkZone",
+  "title": "NetworkZone",
+  "type": "object",
+  "properties": {
+    "_links": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "properties": {}
+      },
+      "readOnly": true
+    },
+    "asns": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "created": {
+      "type": "string",
+      "format": "date-time",
+      "readOnly": true
+    },
+    "gateways": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/NetworkZoneAddress"
+      }
+    },
+    "id": {
+      "type": "string",
+      "readOnly": true
+    },
+    "lastUpdated": {
+      "type": "string",
+      "format": "date-time",
+      "readOnly": true
+    },
+    "locations": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/NetworkZoneLocation"
+      }
+    },
+    "name": {
+      "type": "string"
+    },
+    "proxies": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/NetworkZoneAddress"
+      }
+    },
+    "proxyType": {
+      "type": "string"
+    },
+    "status": {
+      "$ref": "#/components/schemas/NetworkZoneStatus"
+    },
+    "system": {
+      "type": "boolean"
+    },
+    "type": {
+      "$ref": "#/components/schemas/NetworkZoneType"
+    },
+    "usage": {
+      "$ref": "#/components/schemas/NetworkZoneUsage"
+    }
+  },
+  "x-okta-crud": [
+    {
+      "alias": "read",
+      "arguments": [
+        {
+          "dest": "zoneId",
+          "src": "id"
+        }
+      ],
+      "operationId": "getNetworkZone"
+    },
+    {
+      "alias": "update",
+      "arguments": [
+        {
+          "dest": "zoneId",
+          "src": "id"
+        },
+        {
+          "dest": "zone",
+          "self": true
+        }
+      ],
+      "operationId": "updateNetworkZone"
+    },
+    {
+      "alias": "delete",
+      "arguments": [
+        {
+          "dest": "zoneId",
+          "src": "id"
+        }
+      ],
+      "operationId": "deleteNetworkZone"
+    }
+  ],
+  "x-okta-operations": [
+    {
+      "alias": "activate",
+      "arguments": [
+        {
+          "dest": "zoneId",
+          "src": "id"
+        }
+      ],
+      "operationId": "activateNetworkZone"
+    },
+    {
+      "alias": "deactivate",
+      "arguments": [
+        {
+          "dest": "zoneId",
+          "src": "id"
+        }
+      ],
+      "operationId": "deactivateNetworkZone"
+    }
+  ],
+  "x-okta-tags": [
+    "NetworkZone"
+  ]
+}

@@ -1,0 +1,114 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/AppUser",
+  "title": "AppUser",
+  "type": "object",
+  "properties": {
+    "_embedded": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "properties": {}
+      },
+      "readOnly": true
+    },
+    "_links": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "properties": {}
+      },
+      "readOnly": true
+    },
+    "created": {
+      "type": "string",
+      "format": "date-time",
+      "readOnly": true
+    },
+    "credentials": {
+      "$ref": "#/components/schemas/AppUserCredentials"
+    },
+    "externalId": {
+      "type": "string",
+      "readOnly": true
+    },
+    "id": {
+      "type": "string"
+    },
+    "lastSync": {
+      "type": "string",
+      "format": "date-time",
+      "readOnly": true
+    },
+    "lastUpdated": {
+      "type": "string",
+      "format": "date-time",
+      "readOnly": true
+    },
+    "passwordChanged": {
+      "type": "string",
+      "format": "date-time",
+      "readOnly": true
+    },
+    "profile": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "properties": {}
+      }
+    },
+    "scope": {
+      "type": "string"
+    },
+    "status": {
+      "type": "string",
+      "readOnly": true
+    },
+    "statusChanged": {
+      "type": "string",
+      "format": "date-time",
+      "readOnly": true
+    },
+    "syncState": {
+      "type": "string",
+      "readOnly": true
+    }
+  },
+  "x-okta-crud": [
+    {
+      "alias": "update",
+      "arguments": [
+        {
+          "dest": "appId",
+          "parentSrc": "appId"
+        },
+        {
+          "dest": "userId",
+          "src": "id"
+        },
+        {
+          "dest": "appUser",
+          "self": true
+        }
+      ],
+      "operationId": "updateApplicationUser"
+    },
+    {
+      "alias": "delete",
+      "arguments": [
+        {
+          "dest": "appId",
+          "parentSrc": "appId"
+        },
+        {
+          "dest": "userId",
+          "src": "id"
+        }
+      ],
+      "operationId": "deleteApplicationUser"
+    }
+  ],
+  "x-okta-tags": [
+    "Application"
+  ]
+}

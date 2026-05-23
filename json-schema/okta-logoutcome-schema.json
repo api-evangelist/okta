@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/LogOutcome",
+  "title": "LogOutcome",
+  "type": "object",
+  "properties": {
+    "reason": {
+      "type": "string",
+      "readOnly": true
+    },
+    "result": {
+      "type": "string",
+      "readOnly": true
+    }
+  },
+  "x-okta-tags": [
+    "Log"
+  ]
+}

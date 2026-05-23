@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/DomainCertificateMetadata",
+  "title": "DomainCertificateMetadata",
+  "type": "object",
+  "properties": {
+    "expiration": {
+      "type": "string"
+    },
+    "fingerprint": {
+      "type": "string"
+    },
+    "subject": {
+      "type": "string"
+    }
+  },
+  "x-okta-tags": [
+    "Domain"
+  ]
+}

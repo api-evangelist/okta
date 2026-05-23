@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/ApplicationSettingsNotes",
+  "title": "ApplicationSettingsNotes",
+  "type": "object",
+  "properties": {
+    "admin": {
+      "type": "string"
+    },
+    "enduser": {
+      "type": "string"
+    }
+  },
+  "x-okta-tags": [
+    "Application"
+  ]
+}

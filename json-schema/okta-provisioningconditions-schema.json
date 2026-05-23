@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/ProvisioningConditions",
+  "title": "ProvisioningConditions",
+  "type": "object",
+  "properties": {
+    "deprovisioned": {
+      "$ref": "#/components/schemas/ProvisioningDeprovisionedCondition"
+    },
+    "suspended": {
+      "$ref": "#/components/schemas/ProvisioningSuspendedCondition"
+    }
+  },
+  "x-okta-tags": [
+    "IdentityProvider"
+  ]
+}

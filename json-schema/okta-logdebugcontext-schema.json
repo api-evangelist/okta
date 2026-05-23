@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/LogDebugContext",
+  "title": "LogDebugContext",
+  "type": "object",
+  "properties": {
+    "debugData": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "properties": {}
+      },
+      "readOnly": true
+    }
+  },
+  "x-okta-tags": [
+    "Log"
+  ]
+}

@@ -1,0 +1,277 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/IdentityProvider",
+  "title": "IdentityProvider",
+  "type": "object",
+  "properties": {
+    "_links": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "properties": {}
+      },
+      "readOnly": true
+    },
+    "created": {
+      "type": "string",
+      "format": "date-time",
+      "readOnly": true
+    },
+    "id": {
+      "type": "string",
+      "readOnly": true
+    },
+    "issuerMode": {
+      "type": "string",
+      "enum": [
+        "ORG_URL",
+        "CUSTOM_URL",
+        "DYNAMIC"
+      ]
+    },
+    "lastUpdated": {
+      "type": "string",
+      "format": "date-time",
+      "readOnly": true
+    },
+    "name": {
+      "type": "string"
+    },
+    "policy": {
+      "$ref": "#/components/schemas/IdentityProviderPolicy"
+    },
+    "protocol": {
+      "$ref": "#/components/schemas/Protocol"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "ACTIVE",
+        "INACTIVE"
+      ]
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "SAML2",
+        "GOOGLE",
+        "FACEBOOK",
+        "LINKEDIN",
+        "MICROSOFT",
+        "OIDC",
+        "OKTA",
+        "IWA",
+        "AgentlessDSSO",
+        "X509"
+      ],
+      "x-okta-known-values": [
+        "SAML2",
+        "GOOGLE",
+        "FACEBOOK",
+        "LINKEDIN",
+        "MICROSOFT",
+        "OIDC",
+        "OKTA",
+        "IWA",
+        "AgentlessDSSO",
+        "X509"
+      ]
+    }
+  },
+  "x-okta-crud": [
+    {
+      "alias": "create",
+      "arguments": [
+        {
+          "dest": "idpTrust",
+          "self": true
+        }
+      ],
+      "operationId": "createIdentityProvider"
+    },
+    {
+      "alias": "read",
+      "arguments": [],
+      "operationId": "getIdentityProvider"
+    },
+    {
+      "alias": "update",
+      "arguments": [
+        {
+          "dest": "idpId",
+          "src": "id"
+        },
+        {
+          "dest": "idpTrust",
+          "self": true
+        }
+      ],
+      "operationId": "updateIdentityProvider"
+    },
+    {
+      "alias": "delete",
+      "arguments": [
+        {
+          "dest": "idpId",
+          "src": "id"
+        }
+      ],
+      "operationId": "deleteIdentityProvider"
+    }
+  ],
+  "x-okta-operations": [
+    {
+      "alias": "listSigningCsrs",
+      "arguments": [
+        {
+          "dest": "idpId",
+          "src": "id"
+        }
+      ],
+      "operationId": "listCsrsForIdentityProvider"
+    },
+    {
+      "alias": "generateCsr",
+      "arguments": [
+        {
+          "dest": "idpId",
+          "src": "id"
+        }
+      ],
+      "operationId": "generateCsrForIdentityProvider"
+    },
+    {
+      "alias": "deleteSigningCsr",
+      "arguments": [
+        {
+          "dest": "idpId",
+          "src": "id"
+        }
+      ],
+      "operationId": "revokeCsrForIdentityProvider"
+    },
+    {
+      "alias": "getSigningCsr",
+      "arguments": [
+        {
+          "dest": "idpId",
+          "src": "id"
+        }
+      ],
+      "operationId": "getCsrForIdentityProvider"
+    },
+    {
+      "alias": "listSigningKeys",
+      "arguments": [
+        {
+          "dest": "idpId",
+          "src": "id"
+        }
+      ],
+      "operationId": "listIdentityProviderSigningKeys"
+    },
+    {
+      "alias": "generateSigningKey",
+      "arguments": [
+        {
+          "dest": "idpId",
+          "src": "id"
+        }
+      ],
+      "operationId": "generateIdentityProviderSigningKey"
+    },
+    {
+      "alias": "getSigningKey",
+      "arguments": [
+        {
+          "dest": "idpId",
+          "src": "id"
+        }
+      ],
+      "operationId": "getIdentityProviderSigningKey"
+    },
+    {
+      "alias": "cloneKey",
+      "arguments": [
+        {
+          "dest": "idpId",
+          "src": "id"
+        }
+      ],
+      "operationId": "cloneIdentityProviderKey"
+    },
+    {
+      "alias": "activate",
+      "arguments": [
+        {
+          "dest": "idpId",
+          "src": "id"
+        }
+      ],
+      "operationId": "activateIdentityProvider"
+    },
+    {
+      "alias": "deactivate",
+      "arguments": [
+        {
+          "dest": "idpId",
+          "src": "id"
+        }
+      ],
+      "operationId": "deactivateIdentityProvider"
+    },
+    {
+      "alias": "listUsers",
+      "arguments": [
+        {
+          "dest": "idpId",
+          "src": "id"
+        }
+      ],
+      "operationId": "listIdentityProviderApplicationUsers"
+    },
+    {
+      "alias": "unlinkUser",
+      "arguments": [
+        {
+          "dest": "idpId",
+          "src": "id"
+        }
+      ],
+      "operationId": "unlinkUserFromIdentityProvider"
+    },
+    {
+      "alias": "getUser",
+      "arguments": [
+        {
+          "dest": "idpId",
+          "src": "id"
+        }
+      ],
+      "operationId": "getIdentityProviderApplicationUser"
+    },
+    {
+      "alias": "linkUser",
+      "arguments": [
+        {
+          "dest": "idpId",
+          "src": "id"
+        }
+      ],
+      "operationId": "linkUserToIdentityProvider"
+    },
+    {
+      "alias": "listSocialAuthTokens",
+      "arguments": [
+        {
+          "dest": "idpId",
+          "src": "id"
+        }
+      ],
+      "operationId": "listSocialAuthTokens"
+    }
+  ],
+  "x-okta-tags": [
+    "IdentityProvider"
+  ]
+}

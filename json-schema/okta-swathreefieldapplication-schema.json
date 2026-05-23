@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/SwaThreeFieldApplication",
+  "title": "SwaThreeFieldApplication",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "object"
+    },
+    "settings": {
+      "$ref": "#/components/schemas/SwaThreeFieldApplicationSettings"
+    }
+  },
+  "x-okta-defined-as": {
+    "name": "template_swa3field"
+  },
+  "x-okta-parent": "#/definitions/BrowserPluginApplication",
+  "x-okta-tags": [
+    "Application"
+  ]
+}

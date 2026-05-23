@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/LogIpAddress",
+  "title": "LogIpAddress",
+  "type": "object",
+  "properties": {
+    "geographicalContext": {
+      "$ref": "#/components/schemas/LogGeographicalContext"
+    },
+    "ip": {
+      "type": "string",
+      "readOnly": true
+    },
+    "source": {
+      "type": "string",
+      "readOnly": true
+    },
+    "version": {
+      "type": "string",
+      "readOnly": true
+    }
+  },
+  "x-okta-tags": [
+    "Log"
+  ]
+}

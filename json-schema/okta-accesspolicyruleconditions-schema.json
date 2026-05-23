@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/AccessPolicyRuleConditions",
+  "title": "AccessPolicyRuleConditions",
+  "type": "object",
+  "properties": {
+    "device": {
+      "$ref": "#/components/schemas/DeviceAccessPolicyRuleCondition"
+    },
+    "elCondition": {
+      "$ref": "#/components/schemas/AccessPolicyRuleCustomCondition"
+    },
+    "userType": {
+      "$ref": "#/components/schemas/UserTypeCondition"
+    }
+  },
+  "x-okta-parent": "#/definitions/PolicyRuleConditions",
+  "x-okta-tags": [
+    "Policy"
+  ]
+}

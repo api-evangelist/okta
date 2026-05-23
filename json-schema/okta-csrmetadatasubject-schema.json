@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/CsrMetadataSubject",
+  "title": "CsrMetadataSubject",
+  "type": "object",
+  "properties": {
+    "commonName": {
+      "type": "string"
+    },
+    "countryName": {
+      "type": "string"
+    },
+    "localityName": {
+      "type": "string"
+    },
+    "organizationName": {
+      "type": "string"
+    },
+    "organizationalUnitName": {
+      "type": "string"
+    },
+    "stateOrProvinceName": {
+      "type": "string"
+    }
+  },
+  "x-okta-tags": [
+    "Application"
+  ]
+}

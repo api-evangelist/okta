@@ -1,0 +1,55 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/ThreatInsightConfiguration",
+  "title": "ThreatInsightConfiguration",
+  "type": "object",
+  "properties": {
+    "_links": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "properties": {}
+      },
+      "readOnly": true
+    },
+    "action": {
+      "type": "string"
+    },
+    "created": {
+      "type": "string",
+      "format": "date-time",
+      "readOnly": true
+    },
+    "excludeZones": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "lastUpdated": {
+      "type": "string",
+      "format": "date-time",
+      "readOnly": true
+    }
+  },
+  "x-okta-crud": [
+    {
+      "alias": "read",
+      "arguments": [],
+      "operationId": "getCurrentConfiguration"
+    },
+    {
+      "alias": "update",
+      "arguments": [
+        {
+          "dest": "threatInsightConfiguration",
+          "self": true
+        }
+      ],
+      "operationId": "updateConfiguration"
+    }
+  ],
+  "x-okta-tags": [
+    "ThreatInsight"
+  ]
+}

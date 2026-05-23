@@ -1,0 +1,48 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/IonForm",
+  "title": "IonForm",
+  "type": "object",
+  "properties": {
+    "accepts": {
+      "type": "string"
+    },
+    "href": {
+      "type": "string"
+    },
+    "method": {
+      "type": "string"
+    },
+    "name": {
+      "type": "string"
+    },
+    "produces": {
+      "type": "string"
+    },
+    "refresh": {
+      "type": "integer"
+    },
+    "rel": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "relatesTo": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "value": {
+      "type": "array",
+      "readOnly": true,
+      "items": {
+        "$ref": "#/components/schemas/IonField"
+      }
+    }
+  },
+  "x-okta-tags": [
+    "Ion"
+  ]
+}

@@ -1,0 +1,52 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/LinkedObject",
+  "title": "LinkedObject",
+  "type": "object",
+  "properties": {
+    "_links": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "properties": {}
+      },
+      "readOnly": true
+    },
+    "associated": {
+      "$ref": "#/components/schemas/LinkedObjectDetails"
+    },
+    "primary": {
+      "$ref": "#/components/schemas/LinkedObjectDetails"
+    }
+  },
+  "x-okta-crud": [
+    {
+      "alias": "create",
+      "arguments": [
+        {
+          "dest": "linkedObjectDefinition",
+          "self": true
+        }
+      ],
+      "operationId": "addLinkedObjectDefinition"
+    },
+    {
+      "alias": "read",
+      "arguments": [],
+      "operationId": "getLinkedObjectDefinition"
+    },
+    {
+      "alias": "delete",
+      "arguments": [
+        {
+          "dest": "linkedObjectName",
+          "self": true
+        }
+      ],
+      "operationId": "deleteLinkedObjectDefinition"
+    }
+  ],
+  "x-okta-tags": [
+    "LinkedObject"
+  ]
+}

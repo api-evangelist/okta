@@ -1,0 +1,74 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/PolicyRuleConditions",
+  "title": "PolicyRuleConditions",
+  "type": "object",
+  "properties": {
+    "app": {
+      "$ref": "#/components/schemas/AppAndInstancePolicyRuleCondition"
+    },
+    "apps": {
+      "$ref": "#/components/schemas/AppInstancePolicyRuleCondition"
+    },
+    "authContext": {
+      "$ref": "#/components/schemas/PolicyRuleAuthContextCondition"
+    },
+    "authProvider": {
+      "$ref": "#/components/schemas/PasswordPolicyAuthenticationProviderCondition"
+    },
+    "beforeScheduledAction": {
+      "$ref": "#/components/schemas/BeforeScheduledActionPolicyRuleCondition"
+    },
+    "clients": {
+      "$ref": "#/components/schemas/ClientPolicyCondition"
+    },
+    "context": {
+      "$ref": "#/components/schemas/ContextPolicyRuleCondition"
+    },
+    "device": {
+      "$ref": "#/components/schemas/DevicePolicyRuleCondition"
+    },
+    "grantTypes": {
+      "$ref": "#/components/schemas/GrantTypePolicyRuleCondition"
+    },
+    "groups": {
+      "$ref": "#/components/schemas/GroupPolicyRuleCondition"
+    },
+    "identityProvider": {
+      "$ref": "#/components/schemas/IdentityProviderPolicyRuleCondition"
+    },
+    "mdmEnrollment": {
+      "$ref": "#/components/schemas/MDMEnrollmentPolicyRuleCondition"
+    },
+    "network": {
+      "$ref": "#/components/schemas/PolicyNetworkCondition"
+    },
+    "people": {
+      "$ref": "#/components/schemas/PolicyPeopleCondition"
+    },
+    "platform": {
+      "$ref": "#/components/schemas/PlatformPolicyRuleCondition"
+    },
+    "risk": {
+      "$ref": "#/components/schemas/RiskPolicyRuleCondition"
+    },
+    "riskScore": {
+      "$ref": "#/components/schemas/RiskScorePolicyRuleCondition"
+    },
+    "scopes": {
+      "$ref": "#/components/schemas/OAuth2ScopesMediationPolicyRuleCondition"
+    },
+    "userIdentifier": {
+      "$ref": "#/components/schemas/UserIdentifierPolicyRuleCondition"
+    },
+    "userStatus": {
+      "$ref": "#/components/schemas/UserStatusPolicyRuleCondition"
+    },
+    "users": {
+      "$ref": "#/components/schemas/UserPolicyRuleCondition"
+    }
+  },
+  "x-okta-tags": [
+    "Policy"
+  ]
+}

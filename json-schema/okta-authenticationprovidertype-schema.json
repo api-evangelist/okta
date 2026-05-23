@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/AuthenticationProviderType",
+  "title": "AuthenticationProviderType",
+  "type": "string",
+  "enum": [
+    "ACTIVE_DIRECTORY",
+    "FEDERATION",
+    "LDAP",
+    "OKTA",
+    "SOCIAL",
+    "IMPORT"
+  ],
+  "x-okta-tags": [
+    "User"
+  ]
+}

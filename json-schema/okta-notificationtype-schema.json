@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/NotificationType",
+  "title": "NotificationType",
+  "type": "string",
+  "enum": [
+    "CONNECTOR_AGENT",
+    "USER_LOCKED_OUT",
+    "APP_IMPORT",
+    "LDAP_AGENT",
+    "AD_AGENT",
+    "OKTA_ANNOUNCEMENT",
+    "OKTA_ISSUE",
+    "OKTA_UPDATE",
+    "IWA_AGENT",
+    "USER_DEPROVISION",
+    "REPORT_SUSPICIOUS_ACTIVITY",
+    "RATELIMIT_NOTIFICATION"
+  ],
+  "x-okta-tags": [
+    "Subscription"
+  ]
+}

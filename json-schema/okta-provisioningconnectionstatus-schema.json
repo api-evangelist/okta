@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/ProvisioningConnectionStatus",
+  "title": "ProvisioningConnectionStatus",
+  "type": "string",
+  "enum": [
+    "DISABLED",
+    "ENABLED",
+    "UNKNOWN"
+  ],
+  "x-okta-tags": [
+    "Application"
+  ]
+}

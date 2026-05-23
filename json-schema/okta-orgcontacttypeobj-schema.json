@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/OrgContactTypeObj",
+  "title": "OrgContactTypeObj",
+  "type": "object",
+  "properties": {
+    "_links": {
+      "type": "object"
+    },
+    "contactType": {
+      "$ref": "#/components/schemas/OrgContactType"
+    }
+  },
+  "x-okta-tags": [
+    "Org"
+  ]
+}

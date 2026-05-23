@@ -1,0 +1,77 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/Feature",
+  "title": "Feature",
+  "type": "object",
+  "properties": {
+    "_links": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "properties": {}
+      },
+      "readOnly": true
+    },
+    "description": {
+      "type": "string"
+    },
+    "id": {
+      "type": "string",
+      "readOnly": true
+    },
+    "name": {
+      "type": "string"
+    },
+    "stage": {
+      "$ref": "#/components/schemas/FeatureStage"
+    },
+    "status": {
+      "$ref": "#/components/schemas/EnabledStatus"
+    },
+    "type": {
+      "$ref": "#/components/schemas/FeatureType"
+    }
+  },
+  "x-okta-crud": [
+    {
+      "alias": "read",
+      "arguments": [],
+      "operationId": "getFeature"
+    }
+  ],
+  "x-okta-operations": [
+    {
+      "alias": "updateLifecycle",
+      "arguments": [
+        {
+          "dest": "featureId",
+          "src": "id"
+        }
+      ],
+      "operationId": "updateFeatureLifecycle"
+    },
+    {
+      "alias": "getDependents",
+      "arguments": [
+        {
+          "dest": "featureId",
+          "src": "id"
+        }
+      ],
+      "operationId": "listFeatureDependents"
+    },
+    {
+      "alias": "getDependencies",
+      "arguments": [
+        {
+          "dest": "featureId",
+          "src": "id"
+        }
+      ],
+      "operationId": "listFeatureDependencies"
+    }
+  ],
+  "x-okta-tags": [
+    "Feature"
+  ]
+}

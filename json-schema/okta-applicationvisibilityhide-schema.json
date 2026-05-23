@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/ApplicationVisibilityHide",
+  "title": "ApplicationVisibilityHide",
+  "type": "object",
+  "properties": {
+    "iOS": {
+      "type": "boolean"
+    },
+    "web": {
+      "type": "boolean"
+    }
+  },
+  "x-okta-tags": [
+    "Application"
+  ]
+}

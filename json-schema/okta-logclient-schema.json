@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/LogClient",
+  "title": "LogClient",
+  "type": "object",
+  "properties": {
+    "device": {
+      "type": "string",
+      "readOnly": true
+    },
+    "geographicalContext": {
+      "$ref": "#/components/schemas/LogGeographicalContext"
+    },
+    "id": {
+      "type": "string",
+      "readOnly": true
+    },
+    "ipAddress": {
+      "type": "string",
+      "readOnly": true
+    },
+    "userAgent": {
+      "$ref": "#/components/schemas/LogUserAgent"
+    },
+    "zone": {
+      "type": "string",
+      "readOnly": true
+    }
+  },
+  "x-okta-tags": [
+    "Log"
+  ]
+}

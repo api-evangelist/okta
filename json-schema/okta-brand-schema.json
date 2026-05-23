@@ -1,0 +1,58 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/Brand",
+  "title": "Brand",
+  "type": "object",
+  "properties": {
+    "_links": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "properties": {}
+      },
+      "readOnly": true
+    },
+    "agreeToCustomPrivacyPolicy": {
+      "type": "boolean"
+    },
+    "customPrivacyPolicyUrl": {
+      "type": "string"
+    },
+    "id": {
+      "type": "string",
+      "readOnly": true
+    },
+    "removePoweredByOkta": {
+      "type": "boolean"
+    }
+  },
+  "x-okta-crud": [
+    {
+      "alias": "read",
+      "arguments": [
+        {
+          "dest": "brandId",
+          "src": "id"
+        }
+      ],
+      "operationId": "getBrand"
+    },
+    {
+      "alias": "update",
+      "arguments": [
+        {
+          "dest": "brandId",
+          "src": "id"
+        },
+        {
+          "dest": "brand",
+          "self": true
+        }
+      ],
+      "operationId": "updateBrand"
+    }
+  ],
+  "x-okta-tags": [
+    "Brand"
+  ]
+}

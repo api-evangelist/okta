@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/PlatformConditionEvaluatorPlatformOperatingSystemVersion",
+  "title": "PlatformConditionEvaluatorPlatformOperatingSystemVersion",
+  "type": "object",
+  "properties": {
+    "matchType": {
+      "type": "string",
+      "enum": [
+        "EXPRESSION",
+        "SEMVER"
+      ]
+    },
+    "value": {
+      "type": "string"
+    }
+  },
+  "x-okta-tags": [
+    "Policy"
+  ]
+}

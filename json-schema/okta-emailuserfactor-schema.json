@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/EmailUserFactor",
+  "title": "EmailUserFactor",
+  "type": "object",
+  "properties": {
+    "profile": {
+      "$ref": "#/components/schemas/EmailUserFactorProfile"
+    }
+  },
+  "x-okta-parent": "#/definitions/UserFactor",
+  "x-okta-tags": [
+    "UserFactor"
+  ]
+}

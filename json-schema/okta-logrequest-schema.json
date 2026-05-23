@@ -1,0 +1,18 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/LogRequest",
+  "title": "LogRequest",
+  "type": "object",
+  "properties": {
+    "ipChain": {
+      "type": "array",
+      "readOnly": true,
+      "items": {
+        "$ref": "#/components/schemas/LogIpAddress"
+      }
+    }
+  },
+  "x-okta-tags": [
+    "Log"
+  ]
+}

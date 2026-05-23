@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/VerificationMethod",
+  "title": "VerificationMethod",
+  "type": "object",
+  "properties": {
+    "constraints": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/AccessPolicyConstraints"
+      }
+    },
+    "factorMode": {
+      "type": "string"
+    },
+    "inactivityPeriod": {
+      "type": "string"
+    },
+    "reauthenticateIn": {
+      "type": "string"
+    },
+    "type": {
+      "type": "string"
+    }
+  },
+  "x-okta-tags": [
+    "Policy"
+  ]
+}

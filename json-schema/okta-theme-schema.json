@@ -1,0 +1,83 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/Theme",
+  "title": "Theme",
+  "type": "object",
+  "properties": {
+    "_links": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "properties": {}
+      },
+      "readOnly": true
+    },
+    "backgroundImage": {
+      "type": "string",
+      "readOnly": true
+    },
+    "emailTemplateTouchPointVariant": {
+      "$ref": "#/components/schemas/EmailTemplateTouchPointVariant"
+    },
+    "endUserDashboardTouchPointVariant": {
+      "$ref": "#/components/schemas/EndUserDashboardTouchPointVariant"
+    },
+    "errorPageTouchPointVariant": {
+      "$ref": "#/components/schemas/ErrorPageTouchPointVariant"
+    },
+    "primaryColorContrastHex": {
+      "type": "string"
+    },
+    "primaryColorHex": {
+      "type": "string"
+    },
+    "secondaryColorContrastHex": {
+      "type": "string"
+    },
+    "secondaryColorHex": {
+      "type": "string"
+    },
+    "signInPageTouchPointVariant": {
+      "$ref": "#/components/schemas/SignInPageTouchPointVariant"
+    }
+  },
+  "x-okta-crud": [
+    {
+      "alias": "read",
+      "operationId": "getBrandTheme"
+    },
+    {
+      "alias": "update",
+      "operationId": "updateBrandTheme"
+    }
+  ],
+  "x-okta-operations": [
+    {
+      "alias": "uploadBrandThemeLogo",
+      "operationId": "uploadBrandThemeLogo"
+    },
+    {
+      "alias": "deleteBrandThemeLogo",
+      "operationId": "deleteBrandThemeLogo"
+    },
+    {
+      "alias": "updateBrandThemeFavicon",
+      "operationId": "uploadBrandThemeFavicon"
+    },
+    {
+      "alias": "deleteBrandThemeFavicon",
+      "operationId": "deleteBrandThemeFavicon"
+    },
+    {
+      "alias": "updateBrandThemeBackgroundImage",
+      "operationId": "uploadBrandThemeBackgroundImage"
+    },
+    {
+      "alias": "deleteBrandThemeBackgroundImage",
+      "operationId": "deleteBrandThemeBackgroundImage"
+    }
+  ],
+  "x-okta-tags": [
+    "Brand"
+  ]
+}

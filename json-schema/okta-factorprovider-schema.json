@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/FactorProvider",
+  "title": "FactorProvider",
+  "type": "string",
+  "enum": [
+    "OKTA",
+    "RSA",
+    "FIDO",
+    "GOOGLE",
+    "SYMANTEC",
+    "DUO",
+    "YUBICO",
+    "CUSTOM",
+    "APPLE"
+  ],
+  "x-okta-tags": [
+    "UserFactor"
+  ]
+}

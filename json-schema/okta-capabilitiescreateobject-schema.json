@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/CapabilitiesCreateObject",
+  "title": "CapabilitiesCreateObject",
+  "type": "object",
+  "properties": {
+    "lifecycleCreate": {
+      "$ref": "#/components/schemas/LifecycleCreateSettingObject"
+    }
+  },
+  "x-okta-tags": [
+    "Application"
+  ]
+}

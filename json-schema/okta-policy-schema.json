@@ -1,0 +1,166 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/Policy",
+  "title": "Policy",
+  "type": "object",
+  "properties": {
+    "_embedded": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "properties": {}
+      },
+      "readOnly": true
+    },
+    "_links": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "properties": {}
+      },
+      "readOnly": true
+    },
+    "conditions": {
+      "$ref": "#/components/schemas/PolicyRuleConditions"
+    },
+    "created": {
+      "type": "string",
+      "format": "date-time",
+      "readOnly": true
+    },
+    "description": {
+      "type": "string"
+    },
+    "id": {
+      "type": "string",
+      "readOnly": true
+    },
+    "lastUpdated": {
+      "type": "string",
+      "format": "date-time",
+      "readOnly": true
+    },
+    "name": {
+      "type": "string"
+    },
+    "priority": {
+      "type": "integer"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "ACTIVE",
+        "INACTIVE"
+      ]
+    },
+    "system": {
+      "type": "boolean"
+    },
+    "type": {
+      "$ref": "#/components/schemas/PolicyType"
+    }
+  },
+  "x-okta-crud": [
+    {
+      "alias": "read",
+      "arguments": [
+        {
+          "dest": "policyId",
+          "src": "id"
+        }
+      ],
+      "operationId": "getPolicy"
+    },
+    {
+      "alias": "update",
+      "arguments": [
+        {
+          "dest": "policyId",
+          "src": "id"
+        },
+        {
+          "dest": "policy",
+          "self": true
+        }
+      ],
+      "operationId": "updatePolicy"
+    },
+    {
+      "alias": "delete",
+      "arguments": [
+        {
+          "dest": "policyId",
+          "src": "id"
+        }
+      ],
+      "operationId": "deletePolicy"
+    }
+  ],
+  "x-okta-operations": [
+    {
+      "alias": "activate",
+      "arguments": [
+        {
+          "dest": "policyId",
+          "src": "id"
+        }
+      ],
+      "operationId": "activatePolicy"
+    },
+    {
+      "alias": "deactivate",
+      "arguments": [
+        {
+          "dest": "policyId",
+          "src": "id"
+        }
+      ],
+      "operationId": "deactivatePolicy"
+    },
+    {
+      "alias": "listPolicyRules",
+      "arguments": [
+        {
+          "dest": "policyId",
+          "src": "id"
+        }
+      ],
+      "operationId": "listPolicyRules"
+    },
+    {
+      "alias": "createRule",
+      "arguments": [
+        {
+          "dest": "policyId",
+          "src": "id"
+        }
+      ],
+      "operationId": "createPolicyRule"
+    },
+    {
+      "alias": "getPolicyRule",
+      "arguments": [
+        {
+          "dest": "policyId",
+          "src": "id"
+        }
+      ],
+      "operationId": "getPolicyRule"
+    }
+  ],
+  "x-okta-tags": [
+    "Policy"
+  ],
+  "x-openapi-v3-discriminator": {
+    "mapping": {
+      "ACCESS_POLICY": "#/definitions/AccessPolicy",
+      "IDP_DISCOVERY": "#/definitions/IdentityProviderPolicy",
+      "MFA_ENROLL": "#/definitions/MultifactorEnrollmentPolicy",
+      "OAUTH_AUTHORIZATION_POLICY": "#/definitions/OAuthAuthorizationPolicy",
+      "OKTA_SIGN_ON": "#/definitions/OktaSignOnPolicy",
+      "PASSWORD": "#/definitions/PasswordPolicy",
+      "PROFILE_ENROLLMENT": "#/definitions/ProfileEnrollmentPolicy"
+    },
+    "propertyName": "type"
+  }
+}

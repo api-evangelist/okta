@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/EmailTemplateTestRequest",
+  "title": "EmailTemplateTestRequest",
+  "type": "object",
+  "properties": {
+    "customizationId": {
+      "type": "string"
+    }
+  },
+  "x-okta-tags": [
+    "Brands"
+  ]
+}

@@ -1,0 +1,58 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/ProfileMapping",
+  "title": "ProfileMapping",
+  "type": "object",
+  "properties": {
+    "_links": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "properties": {}
+      },
+      "readOnly": true
+    },
+    "id": {
+      "type": "string",
+      "readOnly": true
+    },
+    "properties": {
+      "type": "object",
+      "additionalProperties": {
+        "$ref": "#/components/schemas/ProfileMappingProperty"
+      },
+      "readOnly": true
+    },
+    "source": {
+      "$ref": "#/components/schemas/ProfileMappingSource"
+    },
+    "target": {
+      "$ref": "#/components/schemas/ProfileMappingSource"
+    }
+  },
+  "x-okta-crud": [
+    {
+      "alias": "read",
+      "arguments": [
+        {
+          "dest": "mappingId",
+          "src": "id"
+        }
+      ],
+      "operationId": "getProfileMapping"
+    },
+    {
+      "alias": "update",
+      "arguments": [
+        {
+          "dest": "mappingId",
+          "src": "id"
+        }
+      ],
+      "operationId": "updateProfileMapping"
+    }
+  ],
+  "x-okta-tags": [
+    "ProfileMapping"
+  ]
+}

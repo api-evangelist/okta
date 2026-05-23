@@ -1,0 +1,13 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/OAuth2ScopeConsentGrantSource",
+  "title": "OAuth2ScopeConsentGrantSource",
+  "type": "string",
+  "enum": [
+    "END_USER",
+    "ADMIN"
+  ],
+  "x-okta-tags": [
+    "Application"
+  ]
+}

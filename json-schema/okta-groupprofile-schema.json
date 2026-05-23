@@ -1,0 +1,18 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/GroupProfile",
+  "title": "GroupProfile",
+  "type": "object",
+  "properties": {
+    "description": {
+      "type": "string"
+    },
+    "name": {
+      "type": "string"
+    }
+  },
+  "x-okta-extensible": true,
+  "x-okta-tags": [
+    "Group"
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/OktaSignOnPolicyRuleConditions",
+  "title": "OktaSignOnPolicyRuleConditions",
+  "type": "object",
+  "properties": {
+    "authContext": {
+      "$ref": "#/components/schemas/PolicyRuleAuthContextCondition"
+    },
+    "network": {
+      "$ref": "#/components/schemas/PolicyNetworkCondition"
+    },
+    "people": {
+      "$ref": "#/components/schemas/PolicyPeopleCondition"
+    }
+  },
+  "x-okta-parent": "#/definitions/PolicyRuleConditions",
+  "x-okta-tags": [
+    "Policy"
+  ]
+}

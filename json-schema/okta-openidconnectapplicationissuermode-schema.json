@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/OpenIdConnectApplicationIssuerMode",
+  "title": "OpenIdConnectApplicationIssuerMode",
+  "type": "string",
+  "enum": [
+    "CUSTOM_URL",
+    "ORG_URL",
+    "DYNAMIC"
+  ],
+  "x-okta-tags": [
+    "Application"
+  ]
+}

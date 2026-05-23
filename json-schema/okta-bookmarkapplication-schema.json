@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/BookmarkApplication",
+  "title": "BookmarkApplication",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "object"
+    },
+    "settings": {
+      "$ref": "#/components/schemas/BookmarkApplicationSettings"
+    }
+  },
+  "x-okta-defined-as": {
+    "name": "bookmark"
+  },
+  "x-okta-parent": "#/definitions/Application",
+  "x-okta-tags": [
+    "Application"
+  ]
+}

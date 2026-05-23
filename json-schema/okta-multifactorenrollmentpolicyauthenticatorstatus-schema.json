@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/MultifactorEnrollmentPolicyAuthenticatorStatus",
+  "title": "MultifactorEnrollmentPolicyAuthenticatorStatus",
+  "type": "string",
+  "enum": [
+    "NOT_ALLOWED",
+    "OPTIONAL",
+    "REQUIRED"
+  ],
+  "x-okta-tags": [
+    "Policy"
+  ]
+}

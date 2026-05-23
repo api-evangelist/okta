@@ -1,0 +1,12 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/FeatureType",
+  "title": "FeatureType",
+  "type": "string",
+  "enum": [
+    "self-service"
+  ],
+  "x-okta-tags": [
+    "Feature"
+  ]
+}

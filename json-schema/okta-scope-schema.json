@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/Scope",
+  "title": "Scope",
+  "type": "object",
+  "properties": {
+    "allowedOktaApps": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/IframeEmbedScopeAllowedApps"
+      }
+    },
+    "stringValue": {
+      "type": "string"
+    },
+    "type": {
+      "$ref": "#/components/schemas/ScopeType"
+    }
+  },
+  "x-okta-tags": [
+    "Role"
+  ]
+}
