@@ -2,12 +2,31 @@
   "repo": "okta",
   "feeds": [
     {
-      "source": "https://developer.okta.com/blog/",
+      "source": "https://developer.okta.com/feed.xml",
       "feed_url": "https://developer.okta.com/feed.xml",
-      "title": "Okta Developer",
-      "saved": 5
+      "title": "",
+      "saved": 0,
+      "method": "feed"
+    },
+    {
+      "source": "https://xaa.dev/",
+      "feed_url": "https://xaa.dev/",
+      "title": "",
+      "saved": 0,
+      "method": "none"
+    },
+    {
+      "source": "https://developer.okta.com/blog/2026/01/20/introducing-xaadev-a-playground-for-cross-app-access",
+      "error": "HTTPError"
+    },
+    {
+      "source": "https://developer.okta.com/signup/",
+      "feed_url": "https://developer.okta.com/signup/",
+      "title": "",
+      "saved": 0,
+      "method": "none"
     }
   ],
   "post_count": 13,
-  "fetched": "2026-05-17T20:20:35Z"
+  "fetched": "2026-06-01T23:35:02Z"
 }

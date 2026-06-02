@@ -1,0 +1,817 @@
+asyncapi: 2.6.0
+info:
+  title: Okta Event Hooks and Log Streams
+  version: '1.0.0'
+  description: |
+    AsyncAPI description of Okta's two outbound event delivery surfaces:
+
+      1. **Event Hooks** — Okta POSTs a CloudEvents-style envelope to a customer-owned
+         HTTPS endpoint whenever a subscribed System Log event type fires. Subscribers
+         register an endpoint, choose from event types in the Event Types catalog
+         (filtered by `event-hook-eligible`), and complete a one-time GET verification
+         handshake before deliveries begin.
+      2. **Log Streams** — Okta streams the full System Log feed to a managed destination
+         (AWS EventBridge or Splunk Cloud) configured through the
+         `/api/v1/logStreams` Management API.
+
+    Field names, enums, and constraints in this document are drawn verbatim from the
+    Okta Event Hooks concept documentation and the Okta Management OpenAPI spec
+    (`okta/okta-management-openapi-spec`, `dist/current/management-minimal.yaml`).
+  contact:
+    name: Okta Developer Experience
+    url: https://developer.okta.com/docs/concepts/event-hooks/
+  license:
+    name: Okta Developer Terms
+    url: https://developer.okta.com/terms/
+  termsOfService: https://developer.okta.com/terms/
+  x-source-documentation:
+    - https://developer.okta.com/docs/concepts/event-hooks/
+    - https://developer.okta.com/docs/reference/api/event-types/
+    - https://github.com/okta/okta-management-openapi-spec/blob/master/dist/current/management-minimal.yaml
+defaultContentType: application/json
+servers:
+  customerWebhook:
+    url: '{customerEndpoint}'
+    protocol: https
+    description: |
+      Customer-operated HTTPS endpoint that receives Okta Event Hook deliveries.
+      Must be internet-accessible, respond within a three-second timeout, and reply
+      with HTTP 200 or 204. The path is registered as `channel.config.uri` on the
+      Event Hook object.
+    variables:
+      customerEndpoint:
+        description: Fully-qualified HTTPS URL registered with Okta.
+        default: https://your-service.example.com/okta/event-hook
+  awsEventBridge:
+    url: events.{awsRegion}.amazonaws.com
+    protocol: https
+    description: |
+      AWS EventBridge endpoint that receives the System Log stream when a Log Stream
+      object of type `aws_eventbridge` is provisioned. The actual partner event
+      source name and AWS account are configured in `LogStreamSettingsAws`.
+    variables:
+      awsRegion:
+        description: AWS region of the EventBridge partner event source.
+        enum:
+          - ap-northeast-1
+          - ap-northeast-2
+          - ap-northeast-3
+          - ap-south-1
+          - ap-southeast-1
+          - ap-southeast-2
+          - ca-central-1
+          - eu-central-1
+          - eu-north-1
+          - eu-west-1
+          - eu-west-2
+          - eu-west-3
+          - sa-east-1
+          - us-east-1
+          - us-east-2
+          - us-west-1
+          - us-west-2
+        default: us-east-1
+  splunkCloud:
+    url: '{splunkHost}'
+    protocol: https
+    description: |
+      Splunk Cloud HTTP Event Collector (HEC) endpoint that receives the System Log
+      stream when a Log Stream object of type `splunk_cloud_logstreaming` is
+      provisioned. Configured by `LogStreamSettingsSplunk` (`host`, `edition`,
+      `token`).
+    variables:
+      splunkHost:
+        description: Splunk Cloud domain (no scheme), e.g. acme.splunkcloud.com.
+        default: acme.splunkcloud.com
+channels:
+  okta/event-hook/verification:
+    description: |
+      One-time verification handshake. After an Event Hook is created (or its
+      endpoint URL changes), Okta sends a single HTTP GET request to the registered
+      endpoint with an `x-okta-verification-challenge` header. The endpoint must
+      echo the header value back in a JSON body under the property `verification`.
+      The Event Hook's `verificationStatus` transitions from `UNVERIFIED` to
+      `VERIFIED` on success. `UNVERIFIED` event hooks won't receive any events.
+    bindings:
+      http:
+        type: request
+        method: GET
+    subscribe:
+      operationId: receiveEventHookVerification
+      summary: Receive the one-time verification GET from Okta.
+      bindings:
+        http:
+          type: request
+          method: GET
+      message:
+        $ref: '#/components/messages/EventHookVerificationChallenge'
+    publish:
+      operationId: respondEventHookVerification
+      summary: Echo the challenge value in a JSON body to complete verification.
+      message:
+        $ref: '#/components/messages/EventHookVerificationResponse'
+  okta/event-hook/delivery:
+    description: |
+      Event Hook delivery channel. Okta POSTs a CloudEvents 0.1-style envelope to
+      the registered endpoint each time one of the subscribed event types fires.
+      The body contains a `data.events` array of `LogEvent` objects — the same
+      shape returned by the System Log API. Authentication is via a customer-chosen
+      `Authorization` header value (the `EventHookChannelConfigAuthScheme` with
+      `type: HEADER`).
+    bindings:
+      http:
+        type: request
+        method: POST
+    subscribe:
+      operationId: receiveEventHookDelivery
+      summary: Receive a batch of subscribed System Log events.
+      bindings:
+        http:
+          type: request
+          method: POST
+      message:
+        $ref: '#/components/messages/EventHookDelivery'
+  okta/log-stream/aws-eventbridge:
+    description: |
+      System Log events streamed to an AWS EventBridge partner event source. Okta
+      manages the stream when a `LogStream` resource of type `aws_eventbridge` is
+      ACTIVE; payloads are individual `LogEvent` objects.
+    subscribe:
+      operationId: receiveLogStreamEventBridge
+      summary: Receive a System Log event via AWS EventBridge.
+      message:
+        $ref: '#/components/messages/LogStreamEvent'
+  okta/log-stream/splunk-cloud:
+    description: |
+      System Log events streamed to a Splunk Cloud HTTP Event Collector. Okta
+      manages the stream when a `LogStream` resource of type
+      `splunk_cloud_logstreaming` is ACTIVE; payloads are individual `LogEvent`
+      objects wrapped per HEC conventions by Okta.
+    subscribe:
+      operationId: receiveLogStreamSplunk
+      summary: Receive a System Log event via Splunk Cloud HEC.
+      message:
+        $ref: '#/components/messages/LogStreamEvent'
+components:
+  messages:
+    EventHookVerificationChallenge:
+      name: EventHookVerificationChallenge
+      title: Okta Event Hook one-time verification challenge
+      summary: |
+        The single GET request Okta sends to confirm endpoint ownership. The
+        challenge value is in the `x-okta-verification-challenge` header; no
+        request body is sent.
+      contentType: application/json
+      bindings:
+        http:
+          headers:
+            type: object
+            properties:
+              x-okta-verification-challenge:
+                type: string
+                description: |
+                  Random challenge string Okta expects the endpoint to echo back
+                  in the JSON response body.
+            required:
+              - x-okta-verification-challenge
+      payload:
+        type: 'null'
+        description: Verification GET requests have no request body.
+    EventHookVerificationResponse:
+      name: EventHookVerificationResponse
+      title: Okta Event Hook verification response
+      summary: |
+        JSON body the endpoint must return to complete verification — a single
+        property `verification` containing the value of the
+        `x-okta-verification-challenge` header from the GET request.
+      contentType: application/json
+      payload:
+        $ref: '#/components/schemas/EventHookVerificationResponseBody'
+    EventHookDelivery:
+      name: EventHookDelivery
+      title: Okta Event Hook delivery envelope
+      summary: |
+        CloudEvents 0.1-style envelope that Okta POSTs for every batch of
+        subscribed System Log events. Sent with the customer's chosen
+        `Authorization` header value and `Content-Type: application/json`.
+      contentType: application/json
+      bindings:
+        http:
+          headers:
+            type: object
+            properties:
+              Authorization:
+                type: string
+                description: |
+                  Customer-defined secret value registered as the Event Hook's
+                  `channel.config.authScheme.value` (`type: HEADER`). Okta sends
+                  this header on every delivery so the receiver can authenticate
+                  the call.
+              Content-Type:
+                type: string
+                const: application/json
+              Accept:
+                type: string
+                const: application/json
+            required:
+              - Authorization
+              - Content-Type
+      payload:
+        $ref: '#/components/schemas/EventHookDeliveryEnvelope'
+    LogStreamEvent:
+      name: LogStreamEvent
+      title: Okta System Log event delivered via Log Stream
+      summary: |
+        Individual `LogEvent` object emitted to the configured Log Stream
+        destination (AWS EventBridge or Splunk Cloud).
+      contentType: application/json
+      payload:
+        $ref: '#/components/schemas/LogEvent'
+  schemas:
+    EventHookVerificationResponseBody:
+      type: object
+      description: |
+        Body returned by the customer endpoint to complete the verification
+        handshake.
+      properties:
+        verification:
+          type: string
+          description: Echoed value of the `x-okta-verification-challenge` header.
+      required:
+        - verification
+      example:
+        verification: 'OKTA-VERIFICATION-CHALLENGE-VALUE-RECEIVED-IN-HEADER'
+    EventHookDeliveryEnvelope:
+      type: object
+      description: |
+        CloudEvents 0.1-style envelope. Field names taken verbatim from the Okta
+        Event Hooks concept documentation.
+      properties:
+        eventType:
+          type: string
+          const: com.okta.event_hook
+          description: Always `com.okta.event_hook` for Event Hook deliveries.
+        eventTypeVersion:
+          type: string
+          const: '1.0'
+          description: Version of the Event Hook envelope schema.
+        cloudEventsVersion:
+          type: string
+          const: '0.1'
+          description: CloudEvents specification version implemented by Okta.
+        source:
+          type: string
+          format: uri
+          description: |
+            URI identifying the Event Hook that produced the delivery, e.g.
+            `https://{yourOktaDomain}/api/v1/eventHooks/{eventHookId}`.
+        eventId:
+          type: string
+          description: Unique identifier for this delivery.
+        eventTime:
+          type: string
+          format: date-time
+          description: ISO 8601 timestamp when Okta generated the delivery.
+        contentType:
+          type: string
+          const: application/json
+        data:
+          $ref: '#/components/schemas/EventHookDeliveryData'
+      required:
+        - eventType
+        - eventTypeVersion
+        - cloudEventsVersion
+        - source
+        - eventId
+        - eventTime
+        - contentType
+        - data
+    EventHookDeliveryData:
+      type: object
+      description: |
+        Payload wrapper. The `events` array contains one or more `LogEvent`
+        objects matching the subscriber's `EventSubscriptions.items` list.
+      properties:
+        events:
+          type: array
+          description: |
+            Batch of System Log events. The content of each array element is a
+            `LogEvent` object — the same object the System Log API defines.
+          items:
+            $ref: '#/components/schemas/LogEvent'
+      required:
+        - events
+    LogEvent:
+      type: object
+      description: |
+        System Log event as delivered by both Event Hooks (inside
+        `data.events[]`) and Log Streams. Top-level field set taken verbatim from
+        the Okta Event Hooks concept sample payload.
+      properties:
+        uuid:
+          type: string
+          description: Unique identifier for the event.
+        published:
+          type: string
+          format: date-time
+          description: Timestamp when Okta published the event.
+        eventType:
+          type: string
+          description: |
+            Dotted event type from the Okta Event Types catalog. See
+            `EventHookEligibleEventType` for known event-hook-eligible values.
+        version:
+          type: string
+          description: Version of the LogEvent schema.
+        displayMessage:
+          type: string
+          description: Human-readable description of the event.
+        severity:
+          type: string
+          description: Event severity (e.g. INFO, WARN, ERROR).
+        legacyEventType:
+          type: string
+          description: Legacy event identifier preserved for backward compatibility.
+        actor:
+          $ref: '#/components/schemas/LogActor'
+        client:
+          $ref: '#/components/schemas/LogClient'
+        device:
+          type: object
+          description: Device context, when available.
+          additionalProperties: true
+        outcome:
+          type: object
+          description: Outcome of the event (e.g. result, reason).
+          additionalProperties: true
+        target:
+          type: array
+          description: |
+            Objects acted upon by the event. Element shape mirrors the System Log
+            `LogTarget` schema.
+          items:
+            type: object
+            additionalProperties: true
+        transaction:
+          type: object
+          description: Transaction context (id, type).
+          additionalProperties: true
+        debugContext:
+          type: object
+          description: Debug context for the event.
+          additionalProperties: true
+        authenticationContext:
+          type: object
+          description: Authentication context for the actor.
+          additionalProperties: true
+        securityContext:
+          type: object
+          description: Security context (ISP, geo enrichment).
+          additionalProperties: true
+        insertionTimestamp:
+          type: string
+          format: date-time
+          description: Timestamp Okta inserted the event into the System Log.
+      required:
+        - uuid
+        - published
+        - eventType
+        - version
+    LogActor:
+      type: object
+      description: |
+        Actor that initiated the event. Field set taken from the Event Hooks
+        concept sample payload.
+      properties:
+        id:
+          type: string
+        type:
+          type: string
+        alternateId:
+          type: string
+        displayName:
+          type: string
+        detailEntry:
+          type: object
+          additionalProperties: true
+    LogClient:
+      type: object
+      description: |
+        Client context (user agent, network location). Field set taken from the
+        Event Hooks concept sample payload.
+      properties:
+        userAgent:
+          type: object
+          properties:
+            rawUserAgent:
+              type: string
+            os:
+              type: string
+            browser:
+              type: string
+        zone:
+          type: string
+        device:
+          type: string
+        id:
+          type: string
+        ipAddress:
+          type: string
+        geographicalContext:
+          type: object
+          properties:
+            city:
+              type: string
+            state:
+              type: string
+            country:
+              type: string
+            postalCode:
+              type: string
+            geolocation:
+              type: object
+              properties:
+                lat:
+                  type: number
+                lon:
+                  type: number
+        ipChain:
+          type: array
+          items:
+            type: object
+            additionalProperties: true
+    EventHookEligibleEventType:
+      type: string
+      description: |
+        Verified event-hook-eligible event types pulled from the Okta Event Types
+        catalog. This is an open list — Okta adds new eligible event types over
+        time; consult the live catalog and filter by `event-hook-eligible` for the
+        canonical set.
+      enum:
+        # Access requests & reviews
+        - access.request.cancel
+        - access.request.condition.activate
+        - access.request.condition.create
+        - access.request.condition.deactivate
+        - access.request.condition.delete
+        - access.request.condition.invalidate
+        - access.request.condition.update
+        - access.request.create
+        - access.request.expire
+        - access.request.reject
+        - access.request.resolve
+        - access.request.sequence.create
+        - access.request.sequence.delete
+        - access.request.sequence.update
+        - access.request.settings.update
+        - access.request.update
+        - access.review.action
+        - access.review.close
+        - access.review.create
+        - access.review.remediate
+        - access.review.start
+        - access.review.update
+        # Application events
+        - app.access_request.approver.approve
+        - app.access_request.approver.deny
+        - app.access_request.delete
+        - app.access_request.deny
+        - app.access_request.expire
+        - app.access_request.grant
+        - app.access_request.request
+        - app.ad.password_migration_campaign.user.migrate.end
+        - app.interclient_mapping.create
+        - app.interclient_mapping.delete
+        - app.interclient_mapping.delete_all
+        - app.oauth2.as.consent.grant
+        - app.oauth2.as.consent.revoke
+        - app.oauth2.as.consent.revoke.implicit.as
+        - app.oauth2.as.consent.revoke.implicit.client
+        - app.oauth2.as.consent.revoke.implicit.scope
+        - app.oauth2.as.consent.revoke.implicit.user
+        - app.oauth2.as.consent.revoke.user
+        - app.oauth2.as.consent.revoke.user.client
+        - app.oauth2.as.token.grant.access_token
+        - app.oauth2.as.token.grant.interclient_token
+        - app.oauth2.client.privilege.grant
+        - app.oauth2.client.privilege.revoke
+        - app.oauth2.token.grant.interclient_token
+        - app.oauth2.trusted_server.add
+        - app.oauth2.trusted_server.delete
+        - app.user_management
+        - app.user_management.user_group_import.upsert_success
+        - application.lifecycle.activate
+        - application.lifecycle.create
+        - application.lifecycle.deactivate
+        - application.lifecycle.delete
+        - application.lifecycle.update
+        - application.policy.sign_on.deny_access
+        - application.provision.group_push.mapping.update.or.delete.failed.with.error
+        - application.provision.user.import_profile
+        - application.provision.user.push
+        - application.provision.user.push_profile
+        - application.provision.user.reactivate
+        - application.provision.user.sync
+        - application.user_membership.add
+        - application.user_membership.change_password
+        - application.user_membership.remove
+        - application.user_membership.update
+        # Certification campaigns
+        - certification.campaign.close
+        - certification.campaign.context.update
+        - certification.campaign.item.decide
+        - certification.campaign.item.remediate
+        - certification.campaign.launch
+        # Device lifecycle
+        - device.enrollment.create
+        - device.lifecycle.activate
+        - device.lifecycle.deactivate
+        - device.lifecycle.delete
+        - device.lifecycle.suspend
+        - device.lifecycle.unsuspend
+        # User lifecycle
+        - user.lifecycle.activate
+        - user.lifecycle.create
+        - user.lifecycle.deactivate
+        - user.lifecycle.delete
+        - user.lifecycle.suspend
+        - user.lifecycle.unsuspend
+        - user.lifecycle.update
+        # User account
+        - user.account.update_password
+        - user.account.change_recovery_question
+        - user.account.reset_password
+        # User MFA factors
+        - user.mfa.factor.activate
+        - user.mfa.factor.deactivate
+        - user.mfa.factor.delete
+        - user.mfa.factor.update
+        # User sessions
+        - user.session.start
+        - user.session.end
+        - user.session.extend
+        # Group membership / lifecycle
+        - group.user_membership.add
+        - group.user_membership.remove
+        - group.lifecycle.create
+        - group.lifecycle.update
+        - group.lifecycle.delete
+        # Policy lifecycle
+        - policy.lifecycle.create
+        - policy.lifecycle.update
+        - policy.lifecycle.delete
+        # System API tokens
+        - system.api_token.lifecycle.create
+        - system.api_token.lifecycle.update
+        - system.api_token.lifecycle.delete
+        # Network zones
+        - zone.lifecycle.create
+        - zone.lifecycle.update
+        - zone.lifecycle.delete
+        # Directory integrations
+        - directory.lifecycle.create
+        - directory.lifecycle.update
+        - directory.lifecycle.delete
+    EventHookRegistration:
+      type: object
+      description: |
+        Shape of an Event Hook resource as managed via `/api/v1/eventHooks`. Field
+        names and enums taken verbatim from the Okta Management OpenAPI spec
+        (schema `EventHook`).
+      properties:
+        name:
+          type: string
+          description: Display name for the event hook.
+        description:
+          type: string
+          nullable: true
+        status:
+          type: string
+          enum:
+            - ACTIVE
+            - INACTIVE
+        verificationStatus:
+          type: string
+          enum:
+            - UNVERIFIED
+            - VERIFIED
+        events:
+          $ref: '#/components/schemas/EventSubscriptions'
+        channel:
+          $ref: '#/components/schemas/EventHookChannel'
+        id:
+          type: string
+        created:
+          type: string
+          format: date-time
+        createdBy:
+          type: string
+        lastUpdated:
+          type: string
+          format: date-time
+      required:
+        - name
+        - events
+        - channel
+    EventSubscriptions:
+      type: object
+      description: Subscription block on an Event Hook resource.
+      properties:
+        type:
+          type: string
+          enum:
+            - EVENT_TYPE
+          description: The events object type. Currently supports `EVENT_TYPE`.
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/EventHookEligibleEventType'
+          description: Subscribed event types that trigger the event hook.
+        filter:
+          type: object
+          nullable: true
+          description: |
+            Optional Okta Expression Language filter (EA). See `EventHookFilters`
+            in the Management OpenAPI spec.
+      required:
+        - type
+        - items
+    EventHookChannel:
+      type: object
+      description: Delivery channel for an Event Hook resource.
+      properties:
+        type:
+          type: string
+          enum:
+            - HTTP
+          description: The channel type. Currently supports `HTTP`.
+        version:
+          type: string
+          const: 1.0.0
+          description: Channel version. Currently the only supported version is `1.0.0`.
+        config:
+          $ref: '#/components/schemas/EventHookChannelConfig'
+      required:
+        - type
+        - version
+        - config
+    EventHookChannelConfig:
+      type: object
+      properties:
+        uri:
+          type: string
+          format: uri
+          description: HTTPS endpoint Okta calls to deliver the event hook.
+        method:
+          type: string
+          readOnly: true
+          description: HTTP method Okta uses (POST for delivery).
+        headers:
+          type: array
+          items:
+            type: object
+            properties:
+              key:
+                type: string
+              value:
+                type: string
+        authScheme:
+          type: object
+          properties:
+            type:
+              type: string
+              enum:
+                - HEADER
+              description: Currently only `HEADER` is supported.
+            key:
+              type: string
+              description: Header name (e.g. `Authorization`).
+            value:
+              type: string
+              writeOnly: true
+              description: |
+                Secret value Okta sends in the named header on every delivery.
+                Not returned in API responses.
+      required:
+        - uri
+    LogStream:
+      type: object
+      description: |
+        Log Stream resource managed via `/api/v1/logStreams`. Schema and enum
+        values are taken verbatim from `LogStream`, `LogStreamType`, and
+        `LogStreamLinksSelfAndLifecycle` in the Okta Management OpenAPI spec.
+      properties:
+        id:
+          type: string
+          readOnly: true
+        name:
+          type: string
+          description: Unique name for the log stream object.
+        type:
+          type: string
+          enum:
+            - aws_eventbridge
+            - splunk_cloud_logstreaming
+          description: |
+            Streaming provider. `aws_eventbridge` → AWS EventBridge;
+            `splunk_cloud_logstreaming` → Splunk Cloud.
+        status:
+          type: string
+          enum:
+            - ACTIVE
+            - INACTIVE
+          readOnly: true
+        created:
+          type: string
+          format: date-time
+          readOnly: true
+        lastUpdated:
+          type: string
+          format: date-time
+          readOnly: true
+        settings:
+          oneOf:
+            - $ref: '#/components/schemas/LogStreamSettingsAws'
+            - $ref: '#/components/schemas/LogStreamSettingsSplunk'
+      required:
+        - name
+        - type
+        - status
+        - settings
+    LogStreamSettingsAws:
+      type: object
+      description: |
+        Configuration for a `aws_eventbridge` Log Stream. Cannot be modified after
+        creation. Field names verbatim from `LogStreamSettingsAws`.
+      properties:
+        accountId:
+          type: string
+          minLength: 12
+          maxLength: 12
+          description: Your AWS account ID.
+          example: '123456789012'
+        eventSourceName:
+          type: string
+          minLength: 1
+          maxLength: 75
+          description: |
+            Alphanumeric name (no spaces) identifying this event source in AWS
+            EventBridge.
+          example: your-event-source-name
+        region:
+          type: string
+          description: Destination AWS region where the event source lives.
+          enum:
+            - ap-northeast-1
+            - ap-northeast-2
+            - ap-northeast-3
+            - ap-south-1
+            - ap-southeast-1
+            - ap-southeast-2
+            - ca-central-1
+            - eu-central-1
+            - eu-north-1
+            - eu-west-1
+            - eu-west-2
+            - eu-west-3
+            - sa-east-1
+            - us-east-1
+            - us-east-2
+            - us-west-1
+            - us-west-2
+      required:
+        - accountId
+        - eventSourceName
+        - region
+    LogStreamSettingsSplunk:
+      type: object
+      description: |
+        Configuration for a `splunk_cloud_logstreaming` Log Stream. Field names
+        verbatim from `LogStreamSettingsSplunk`.
+      properties:
+        host:
+          type: string
+          minLength: 17
+          maxLength: 116
+          description: |
+            Splunk Cloud domain (no `http`/`https` scheme), e.g.
+            `acme.splunkcloud.com`.
+          example: acme.splunkcloud.com
+        edition:
+          type: string
+          enum:
+            - aws
+            - aws_govcloud
+            - gcp
+          description: Splunk Cloud edition.
+        token:
+          type: string
+          writeOnly: true
+          description: |
+            Splunk HEC token. Set at object creation but not returned in API
+            responses.
+          example: 11111111-1111-2222-2222-222222222222
+      required:
+        - host
+        - edition
+        - token

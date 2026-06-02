@@ -26,7 +26,7 @@ tags:
 - Platform
 url: https://raw.githubusercontent.com/api-evangelist/okta/refs/heads/main/apis.yml
 created: '2023-11-20'
-modified: '2026-05-22'
+modified: '2026-05-30'
 specificationVersion: '0.19'
 apis:
 - aid: okta:okta-api
@@ -55,6 +55,8 @@ apis:
     url: openapi/okta-openapi-original.yml
   - type: OpenAPISource
     url: https://github.com/okta/okta-management-openapi-spec
+  - type: AsyncAPI
+    url: asyncapi/okta-events-asyncapi.yml
   - type: Authentication
     url: https://developer.okta.com/docs/guides/implement-grant-type/authcodepkce/main/
   - type: RateLimits
