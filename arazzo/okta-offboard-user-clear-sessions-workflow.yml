@@ -1,0 +1,70 @@
+arazzo: 1.0.1
+info:
+  title: Okta Offboard User and Clear Sessions
+  summary: Suspend a user and clear all of their active sessions.
+  description: >-
+    Locks a user out immediately during offboarding. The workflow suspends the
+    user so they can no longer sign in, then clears all of the user's existing
+    sessions so any already authenticated devices are signed out at once. The
+    user id is supplied once and reused across both steps. Every step spells out
+    its request inline, including the SSWS API token header, so the flow can be
+    read and executed without opening the underlying OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: oktaApi
+  url: ../openapi/okta-openapi-original.yml
+  type: openapi
+workflows:
+- workflowId: offboard-user-clear-sessions
+  summary: Suspend a user and clear their active sessions.
+  description: >-
+    Suspends the user and then clears all of their sessions, optionally revoking
+    OAuth tokens too.
+  inputs:
+    type: object
+    required:
+    - oktaApiToken
+    - userId
+    properties:
+      oktaApiToken:
+        type: string
+        description: Okta API token used for the SSWS Authorization header.
+      userId:
+        type: string
+        description: The id of the user to suspend and sign out everywhere.
+      oauthTokens:
+        type: boolean
+        description: Whether to also revoke the user's OAuth refresh and access tokens.
+  steps:
+  - stepId: suspendUser
+    description: >-
+      Suspend the user so they can no longer authenticate.
+    operationId: suspendUser
+    parameters:
+    - name: Authorization
+      in: header
+      value: SSWS $inputs.oktaApiToken
+    - name: userId
+      in: path
+      value: $inputs.userId
+    successCriteria:
+    - condition: $statusCode == 200
+  - stepId: clearSessions
+    description: >-
+      Clear all of the user's active sessions, signing out every authenticated
+      device.
+    operationId: clearUserSessions
+    parameters:
+    - name: Authorization
+      in: header
+      value: SSWS $inputs.oktaApiToken
+    - name: userId
+      in: path
+      value: $inputs.userId
+    - name: oauthTokens
+      in: query
+      value: $inputs.oauthTokens
+    successCriteria:
+    - condition: $statusCode == 204
+  outputs:
+    userId: $inputs.userId

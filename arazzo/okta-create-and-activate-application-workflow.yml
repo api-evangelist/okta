@@ -1,0 +1,80 @@
+arazzo: 1.0.1
+info:
+  title: Okta Create and Activate Application
+  summary: Create an application in INACTIVE state and then activate it.
+  description: >-
+    Stands up a new application in Okta and brings it online. The workflow
+    creates the application without activating it, then explicitly activates the
+    application instance so it becomes available for assignment and sign-on. The
+    new application id is chained from creation into the activation lifecycle
+    call. Every step spells out its request inline, including the SSWS API token
+    header, so the flow can be read and executed without opening the underlying
+    OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: oktaApi
+  url: ../openapi/okta-openapi-original.yml
+  type: openapi
+workflows:
+- workflowId: create-and-activate-application
+  summary: Create an application and activate it.
+  description: >-
+    Creates an application with activate=false, then activates it through its
+    lifecycle endpoint.
+  inputs:
+    type: object
+    required:
+    - oktaApiToken
+    - label
+    - signOnMode
+    properties:
+      oktaApiToken:
+        type: string
+        description: Okta API token used for the SSWS Authorization header.
+      label:
+        type: string
+        description: The user-defined display name for the application.
+      signOnMode:
+        type: string
+        description: The application sign-on mode (e.g. BOOKMARK, SAML_2_0, AUTO_LOGIN).
+      name:
+        type: string
+        description: Optional unique key for the app definition (e.g. bookmark).
+  steps:
+  - stepId: createApp
+    description: >-
+      Create the application in an INACTIVE state by passing activate=false.
+    operationId: createApplication
+    parameters:
+    - name: Authorization
+      in: header
+      value: SSWS $inputs.oktaApiToken
+    - name: activate
+      in: query
+      value: false
+    requestBody:
+      contentType: application/json
+      payload:
+        name: $inputs.name
+        label: $inputs.label
+        signOnMode: $inputs.signOnMode
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      appId: $response.body#/id
+      appStatus: $response.body#/status
+  - stepId: activateApp
+    description: >-
+      Activate the newly created application so it is available for use.
+    operationId: activateApplication
+    parameters:
+    - name: Authorization
+      in: header
+      value: SSWS $inputs.oktaApiToken
+    - name: appId
+      in: path
+      value: $steps.createApp.outputs.appId
+    successCriteria:
+    - condition: $statusCode == 200
+  outputs:
+    appId: $steps.createApp.outputs.appId

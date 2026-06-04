@@ -1,0 +1,104 @@
+arazzo: 1.0.1
+info:
+  title: Okta Update Group Rule Expression
+  summary: Deactivate a group rule, update its expression, then reactivate it.
+  description: >-
+    Safely changes the matching logic of an existing dynamic group rule. Okta
+    only allows a rule to be edited while it is inactive, so the workflow first
+    deactivates the rule, updates its name, expression, and target group, and
+    then reactivates the rule so the new logic begins evaluating. The rule id is
+    supplied once and reused across all three steps. Every step spells out its
+    request inline, including the SSWS API token header, so the flow can be read
+    and executed without opening the underlying OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: oktaApi
+  url: ../openapi/okta-openapi-original.yml
+  type: openapi
+workflows:
+- workflowId: update-group-rule-expression
+  summary: Deactivate, update, and reactivate a group rule.
+  description: >-
+    Deactivates an existing group rule, replaces its expression and target
+    group, then reactivates it.
+  inputs:
+    type: object
+    required:
+    - oktaApiToken
+    - ruleId
+    - ruleName
+    - expressionValue
+    - targetGroupId
+    properties:
+      oktaApiToken:
+        type: string
+        description: Okta API token used for the SSWS Authorization header.
+      ruleId:
+        type: string
+        description: The id of the existing group rule to update.
+      ruleName:
+        type: string
+        description: The display name of the rule.
+      expressionValue:
+        type: string
+        description: The new Okta Expression Language condition for the rule.
+      targetGroupId:
+        type: string
+        description: The id of the group matching users should be assigned to.
+  steps:
+  - stepId: deactivateRule
+    description: >-
+      Deactivate the rule so it becomes editable.
+    operationId: deactivateGroupRule
+    parameters:
+    - name: Authorization
+      in: header
+      value: SSWS $inputs.oktaApiToken
+    - name: ruleId
+      in: path
+      value: $inputs.ruleId
+    successCriteria:
+    - condition: $statusCode == 204
+  - stepId: updateRule
+    description: >-
+      Update the deactivated rule with a new expression and target group.
+    operationId: updateGroupRule
+    parameters:
+    - name: Authorization
+      in: header
+      value: SSWS $inputs.oktaApiToken
+    - name: ruleId
+      in: path
+      value: $inputs.ruleId
+    requestBody:
+      contentType: application/json
+      payload:
+        type: group_rule
+        name: $inputs.ruleName
+        conditions:
+          expression:
+            type: urn:okta:expression:1.0
+            value: $inputs.expressionValue
+        actions:
+          assignUserToGroups:
+            groupIds:
+            - $inputs.targetGroupId
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      ruleStatus: $response.body#/status
+  - stepId: reactivateRule
+    description: >-
+      Reactivate the rule so the updated logic begins evaluating again.
+    operationId: activateGroupRule
+    parameters:
+    - name: Authorization
+      in: header
+      value: SSWS $inputs.oktaApiToken
+    - name: ruleId
+      in: path
+      value: $inputs.ruleId
+    successCriteria:
+    - condition: $statusCode == 204
+  outputs:
+    ruleId: $inputs.ruleId

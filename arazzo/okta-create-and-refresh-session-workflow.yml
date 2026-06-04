@@ -1,0 +1,70 @@
+arazzo: 1.0.1
+info:
+  title: Okta Create and Refresh Session
+  summary: Create a session from a session token and extend its lifetime.
+  description: >-
+    Establishes and prolongs an Okta user session. The workflow exchanges a
+    valid session token for a new session and then refreshes that session to
+    extend its expiry. The new session id is chained from creation into the
+    refresh call. Every step spells out its request inline, including the SSWS
+    API token header, so the flow can be read and executed without opening the
+    underlying OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: oktaApi
+  url: ../openapi/okta-openapi-original.yml
+  type: openapi
+workflows:
+- workflowId: create-and-refresh-session
+  summary: Create a session and refresh it.
+  description: >-
+    Creates a session with a session token, then refreshes the new session to
+    extend its lifetime.
+  inputs:
+    type: object
+    required:
+    - oktaApiToken
+    - sessionToken
+    properties:
+      oktaApiToken:
+        type: string
+        description: Okta API token used for the SSWS Authorization header.
+      sessionToken:
+        type: string
+        description: A valid one-time session token obtained from authentication.
+  steps:
+  - stepId: createSession
+    description: >-
+      Exchange the supplied session token for a new Okta session.
+    operationId: createSession
+    parameters:
+    - name: Authorization
+      in: header
+      value: SSWS $inputs.oktaApiToken
+    requestBody:
+      contentType: application/json
+      payload:
+        sessionToken: $inputs.sessionToken
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      sessionId: $response.body#/id
+      userId: $response.body#/userId
+  - stepId: refreshSession
+    description: >-
+      Refresh the newly created session to extend its expiry.
+    operationId: refreshSession
+    parameters:
+    - name: Authorization
+      in: header
+      value: SSWS $inputs.oktaApiToken
+    - name: sessionId
+      in: path
+      value: $steps.createSession.outputs.sessionId
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      expiresAt: $response.body#/expiresAt
+  outputs:
+    sessionId: $steps.createSession.outputs.sessionId
+    expiresAt: $steps.refreshSession.outputs.expiresAt

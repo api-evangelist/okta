@@ -1,0 +1,129 @@
+arazzo: 1.0.1
+info:
+  title: Okta Onboard User to Group and Application
+  summary: Create a user, add them to a group, then assign them to an application.
+  description: >-
+    The canonical Okta identity onboarding flow. This workflow creates a new
+    user in the Okta organization, adds that newly created user to an existing
+    group so they inherit the group's access, and finally assigns the user to a
+    target application for single sign-on and provisioning. Every step spells
+    out its request inline, including the SSWS API token header, so the flow can
+    be read and executed without opening the underlying OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: oktaApi
+  url: ../openapi/okta-openapi-original.yml
+  type: openapi
+workflows:
+- workflowId: onboard-user-to-group-and-app
+  summary: Create an Okta user and grant them group and application access.
+  description: >-
+    Creates and activates a user, adds the user to an existing group, and
+    assigns the user to an application instance, chaining the new user id
+    through each step.
+  inputs:
+    type: object
+    required:
+    - oktaApiToken
+    - login
+    - email
+    - firstName
+    - lastName
+    - groupId
+    - appId
+    properties:
+      oktaApiToken:
+        type: string
+        description: Okta API token used for the SSWS Authorization header.
+      login:
+        type: string
+        description: The unique login (username) for the new user.
+      email:
+        type: string
+        description: The primary email address for the new user.
+      firstName:
+        type: string
+        description: The given name for the new user.
+      lastName:
+        type: string
+        description: The family name for the new user.
+      password:
+        type: string
+        description: Optional plaintext password to set on the new user.
+      groupId:
+        type: string
+        description: The id of the existing group to add the user to.
+      appId:
+        type: string
+        description: The id of the application to assign the user to.
+  steps:
+  - stepId: createUser
+    description: >-
+      Create and immediately activate a new user with the supplied profile and
+      optional credentials.
+    operationId: createUser
+    parameters:
+    - name: Authorization
+      in: header
+      value: SSWS $inputs.oktaApiToken
+    - name: activate
+      in: query
+      value: true
+    requestBody:
+      contentType: application/json
+      payload:
+        profile:
+          login: $inputs.login
+          email: $inputs.email
+          firstName: $inputs.firstName
+          lastName: $inputs.lastName
+        credentials:
+          password:
+            value: $inputs.password
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      userId: $response.body#/id
+      status: $response.body#/status
+  - stepId: addUserToGroup
+    description: >-
+      Add the newly created user to the existing group so they inherit the
+      group's assigned applications and roles.
+    operationId: addUserToGroup
+    parameters:
+    - name: Authorization
+      in: header
+      value: SSWS $inputs.oktaApiToken
+    - name: groupId
+      in: path
+      value: $inputs.groupId
+    - name: userId
+      in: path
+      value: $steps.createUser.outputs.userId
+    successCriteria:
+    - condition: $statusCode == 204
+  - stepId: assignUserToApp
+    description: >-
+      Assign the user to the target application for SSO and provisioning,
+      seeding the app-specific profile with the user id.
+    operationId: assignUserToApplication
+    parameters:
+    - name: Authorization
+      in: header
+      value: SSWS $inputs.oktaApiToken
+    - name: appId
+      in: path
+      value: $inputs.appId
+    requestBody:
+      contentType: application/json
+      payload:
+        id: $steps.createUser.outputs.userId
+        scope: USER
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      appUserId: $response.body#/id
+      appUserStatus: $response.body#/status
+  outputs:
+    userId: $steps.createUser.outputs.userId
+    appUserId: $steps.assignUserToApp.outputs.appUserId

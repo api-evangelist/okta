@@ -1,0 +1,86 @@
+arazzo: 1.0.1
+info:
+  title: Okta Create and Activate Group Rule
+  summary: Create a dynamic group rule and activate it so it begins evaluating.
+  description: >-
+    Sets up automated group membership in Okta. The workflow creates a group
+    rule that assigns matching users to a target group based on a profile
+    expression, then activates the rule so Okta begins evaluating it against
+    users. The new rule id is chained from creation into activation. Every step
+    spells out its request inline, including the SSWS API token header, so the
+    flow can be read and executed without opening the underlying OpenAPI
+    description.
+  version: 1.0.0
+sourceDescriptions:
+- name: oktaApi
+  url: ../openapi/okta-openapi-original.yml
+  type: openapi
+workflows:
+- workflowId: create-and-activate-group-rule
+  summary: Create a dynamic group rule and turn it on.
+  description: >-
+    Creates a group rule whose expression assigns matching users to a group,
+    then activates it.
+  inputs:
+    type: object
+    required:
+    - oktaApiToken
+    - ruleName
+    - expressionValue
+    - targetGroupId
+    properties:
+      oktaApiToken:
+        type: string
+        description: Okta API token used for the SSWS Authorization header.
+      ruleName:
+        type: string
+        description: The display name of the group rule.
+      expressionValue:
+        type: string
+        description: The Okta Expression Language condition (e.g. user.department=="Engineering").
+      targetGroupId:
+        type: string
+        description: The id of the group matching users should be assigned to.
+  steps:
+  - stepId: createRule
+    description: >-
+      Create a group rule that assigns users matching the expression to the
+      target group.
+    operationId: createGroupRule
+    parameters:
+    - name: Authorization
+      in: header
+      value: SSWS $inputs.oktaApiToken
+    requestBody:
+      contentType: application/json
+      payload:
+        type: group_rule
+        name: $inputs.ruleName
+        conditions:
+          expression:
+            type: urn:okta:expression:1.0
+            value: $inputs.expressionValue
+        actions:
+          assignUserToGroups:
+            groupIds:
+            - $inputs.targetGroupId
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      ruleId: $response.body#/id
+      ruleStatus: $response.body#/status
+  - stepId: activateRule
+    description: >-
+      Activate the newly created group rule so Okta begins evaluating it.
+    operationId: activateGroupRule
+    parameters:
+    - name: Authorization
+      in: header
+      value: SSWS $inputs.oktaApiToken
+    - name: ruleId
+      in: path
+      value: $steps.createRule.outputs.ruleId
+    successCriteria:
+    - condition: $statusCode == 204
+  outputs:
+    ruleId: $steps.createRule.outputs.ruleId

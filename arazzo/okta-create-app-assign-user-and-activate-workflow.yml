@@ -1,0 +1,105 @@
+arazzo: 1.0.1
+info:
+  title: Okta Create Application, Assign User, and Activate
+  summary: Create an application, assign a user to it, then activate the application.
+  description: >-
+    A full application provisioning flow. The workflow creates an application in
+    an inactive state, assigns an existing user to it for SSO and provisioning,
+    and finally activates the application so it goes live with its first
+    assignment in place. The new application id is chained from creation through
+    the assignment and activation steps. Every step spells out its request
+    inline, including the SSWS API token header, so the flow can be read and
+    executed without opening the underlying OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: oktaApi
+  url: ../openapi/okta-openapi-original.yml
+  type: openapi
+workflows:
+- workflowId: create-app-assign-user-and-activate
+  summary: Create an application, assign a user, and activate it.
+  description: >-
+    Creates an inactive application, assigns a user to it, then activates the
+    application instance.
+  inputs:
+    type: object
+    required:
+    - oktaApiToken
+    - label
+    - signOnMode
+    - userId
+    properties:
+      oktaApiToken:
+        type: string
+        description: Okta API token used for the SSWS Authorization header.
+      label:
+        type: string
+        description: The user-defined display name for the application.
+      signOnMode:
+        type: string
+        description: The application sign-on mode (e.g. BOOKMARK, SAML_2_0).
+      name:
+        type: string
+        description: Optional unique key for the app definition.
+      userId:
+        type: string
+        description: The id of the existing user to assign to the application.
+  steps:
+  - stepId: createApp
+    description: >-
+      Create the application in an INACTIVE state so it can be configured before
+      going live.
+    operationId: createApplication
+    parameters:
+    - name: Authorization
+      in: header
+      value: SSWS $inputs.oktaApiToken
+    - name: activate
+      in: query
+      value: false
+    requestBody:
+      contentType: application/json
+      payload:
+        name: $inputs.name
+        label: $inputs.label
+        signOnMode: $inputs.signOnMode
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      appId: $response.body#/id
+  - stepId: assignUser
+    description: >-
+      Assign the supplied user to the newly created application.
+    operationId: assignUserToApplication
+    parameters:
+    - name: Authorization
+      in: header
+      value: SSWS $inputs.oktaApiToken
+    - name: appId
+      in: path
+      value: $steps.createApp.outputs.appId
+    requestBody:
+      contentType: application/json
+      payload:
+        id: $inputs.userId
+        scope: USER
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      appUserId: $response.body#/id
+  - stepId: activateApp
+    description: >-
+      Activate the application now that its first user assignment is in place.
+    operationId: activateApplication
+    parameters:
+    - name: Authorization
+      in: header
+      value: SSWS $inputs.oktaApiToken
+    - name: appId
+      in: path
+      value: $steps.createApp.outputs.appId
+    successCriteria:
+    - condition: $statusCode == 200
+  outputs:
+    appId: $steps.createApp.outputs.appId
+    appUserId: $steps.assignUser.outputs.appUserId

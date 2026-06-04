@@ -1,0 +1,78 @@
+arazzo: 1.0.1
+info:
+  title: Okta Create and Activate Authenticator
+  summary: Add an authenticator to the org and activate it for enrollment.
+  description: >-
+    Onboards a new authenticator into an Okta organization. The workflow creates
+    the authenticator from a key and name, then activates the authenticator so
+    it becomes available for users to enroll. The new authenticator id is
+    chained from creation into the activation lifecycle call. Every step spells
+    out its request inline, including the SSWS API token header, so the flow can
+    be read and executed without opening the underlying OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: oktaApi
+  url: ../openapi/okta-openapi-original.yml
+  type: openapi
+workflows:
+- workflowId: create-and-activate-authenticator
+  summary: Create an authenticator and activate it.
+  description: >-
+    Creates an authenticator with activate=false, then activates it through its
+    lifecycle endpoint.
+  inputs:
+    type: object
+    required:
+    - oktaApiToken
+    - key
+    - name
+    properties:
+      oktaApiToken:
+        type: string
+        description: Okta API token used for the SSWS Authorization header.
+      key:
+        type: string
+        description: The authenticator key (e.g. okta_email, phone_number, security_question).
+      name:
+        type: string
+        description: The display name of the authenticator.
+  steps:
+  - stepId: createAuthenticator
+    description: >-
+      Create the authenticator without activating it yet.
+    operationId: createAuthenticator
+    parameters:
+    - name: Authorization
+      in: header
+      value: SSWS $inputs.oktaApiToken
+    - name: activate
+      in: query
+      value: false
+    requestBody:
+      contentType: application/json
+      payload:
+        key: $inputs.key
+        name: $inputs.name
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      authenticatorId: $response.body#/id
+      authenticatorStatus: $response.body#/status
+  - stepId: activateAuthenticator
+    description: >-
+      Activate the newly created authenticator so users can enroll with it.
+    operationId: activateAuthenticator
+    parameters:
+    - name: Authorization
+      in: header
+      value: SSWS $inputs.oktaApiToken
+    - name: authenticatorId
+      in: path
+      value: $steps.createAuthenticator.outputs.authenticatorId
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      activatedStatus: $response.body#/status
+  outputs:
+    authenticatorId: $steps.createAuthenticator.outputs.authenticatorId
+    activatedStatus: $steps.activateAuthenticator.outputs.activatedStatus

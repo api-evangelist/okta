@@ -1,0 +1,77 @@
+arazzo: 1.0.1
+info:
+  title: Okta Assign Admin Role to User
+  summary: Assign an administrator role to a user and verify the assignment.
+  description: >-
+    Grants administrative privileges to a user. The workflow assigns a standard
+    Okta admin role to the user and then lists the user's assigned roles to
+    confirm the new role is present. The user id is supplied once and reused
+    across both steps. Every step spells out its request inline, including the
+    SSWS API token header, so the flow can be read and executed without opening
+    the underlying OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: oktaApi
+  url: ../openapi/okta-openapi-original.yml
+  type: openapi
+workflows:
+- workflowId: assign-admin-role-to-user
+  summary: Assign an admin role to a user and confirm it.
+  description: >-
+    Assigns a role of the supplied type to a user, then lists the user's roles
+    to verify the assignment.
+  inputs:
+    type: object
+    required:
+    - oktaApiToken
+    - userId
+    - roleType
+    properties:
+      oktaApiToken:
+        type: string
+        description: Okta API token used for the SSWS Authorization header.
+      userId:
+        type: string
+        description: The id of the user to grant the role to.
+      roleType:
+        type: string
+        description: The admin role type (e.g. SUPER_ADMIN, ORG_ADMIN, USER_ADMIN, APP_ADMIN).
+  steps:
+  - stepId: assignRole
+    description: >-
+      Assign the supplied admin role type to the user.
+    operationId: assignRoleToUser
+    parameters:
+    - name: Authorization
+      in: header
+      value: SSWS $inputs.oktaApiToken
+    - name: userId
+      in: path
+      value: $inputs.userId
+    requestBody:
+      contentType: application/json
+      payload:
+        type: $inputs.roleType
+    successCriteria:
+    - condition: $statusCode == 201
+    outputs:
+      roleId: $response.body#/id
+      roleStatus: $response.body#/status
+  - stepId: listRoles
+    description: >-
+      List the user's assigned roles to confirm the new role is present.
+    operationId: listAssignedRolesForUser
+    parameters:
+    - name: Authorization
+      in: header
+      value: SSWS $inputs.oktaApiToken
+    - name: userId
+      in: path
+      value: $inputs.userId
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      roleCount: $response.body#/0/id
+  outputs:
+    userId: $inputs.userId
+    roleId: $steps.assignRole.outputs.roleId

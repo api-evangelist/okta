@@ -1,0 +1,96 @@
+arazzo: 1.0.1
+info:
+  title: Okta Provision Admin User
+  summary: Create a user and immediately grant them an administrator role.
+  description: >-
+    Stands up a new administrator in a single flow. The workflow creates and
+    activates a user from a profile, then assigns a standard Okta admin role to
+    that newly created user. The new user id is chained from creation into the
+    role assignment. Every step spells out its request inline, including the
+    SSWS API token header, so the flow can be read and executed without opening
+    the underlying OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: oktaApi
+  url: ../openapi/okta-openapi-original.yml
+  type: openapi
+workflows:
+- workflowId: provision-admin-user
+  summary: Create a user and assign them an admin role.
+  description: >-
+    Creates and activates a user, then assigns a role of the supplied type to
+    the new user.
+  inputs:
+    type: object
+    required:
+    - oktaApiToken
+    - login
+    - email
+    - firstName
+    - lastName
+    - roleType
+    properties:
+      oktaApiToken:
+        type: string
+        description: Okta API token used for the SSWS Authorization header.
+      login:
+        type: string
+        description: The unique login (username) for the new user.
+      email:
+        type: string
+        description: The primary email address for the new user.
+      firstName:
+        type: string
+        description: The given name for the new user.
+      lastName:
+        type: string
+        description: The family name for the new user.
+      roleType:
+        type: string
+        description: The admin role type to grant (e.g. SUPER_ADMIN, ORG_ADMIN, APP_ADMIN).
+  steps:
+  - stepId: createUser
+    description: >-
+      Create and activate the new user from the supplied profile.
+    operationId: createUser
+    parameters:
+    - name: Authorization
+      in: header
+      value: SSWS $inputs.oktaApiToken
+    - name: activate
+      in: query
+      value: true
+    requestBody:
+      contentType: application/json
+      payload:
+        profile:
+          login: $inputs.login
+          email: $inputs.email
+          firstName: $inputs.firstName
+          lastName: $inputs.lastName
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      userId: $response.body#/id
+  - stepId: assignRole
+    description: >-
+      Assign the supplied admin role type to the newly created user.
+    operationId: assignRoleToUser
+    parameters:
+    - name: Authorization
+      in: header
+      value: SSWS $inputs.oktaApiToken
+    - name: userId
+      in: path
+      value: $steps.createUser.outputs.userId
+    requestBody:
+      contentType: application/json
+      payload:
+        type: $inputs.roleType
+    successCriteria:
+    - condition: $statusCode == 201
+    outputs:
+      roleId: $response.body#/id
+  outputs:
+    userId: $steps.createUser.outputs.userId
+    roleId: $steps.assignRole.outputs.roleId

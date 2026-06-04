@@ -1,0 +1,103 @@
+arazzo: 1.0.1
+info:
+  title: Okta Create Policy with Rule and Activate
+  summary: Create a policy, add a rule to it, and activate the policy.
+  description: >-
+    Builds a complete Okta policy in one flow. The workflow creates a policy of
+    a given type, adds a rule under that policy to define its behavior, and then
+    activates the policy so it begins to take effect. The new policy id is
+    chained from creation into both the rule creation and the activation steps.
+    Every step spells out its request inline, including the SSWS API token
+    header, so the flow can be read and executed without opening the underlying
+    OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: oktaApi
+  url: ../openapi/okta-openapi-original.yml
+  type: openapi
+workflows:
+- workflowId: create-policy-with-rule
+  summary: Create a policy, attach a rule, and activate it.
+  description: >-
+    Creates a policy of the supplied type, creates a rule under it, then
+    activates the policy.
+  inputs:
+    type: object
+    required:
+    - oktaApiToken
+    - policyType
+    - policyName
+    - ruleName
+    properties:
+      oktaApiToken:
+        type: string
+        description: Okta API token used for the SSWS Authorization header.
+      policyType:
+        type: string
+        description: The policy type (e.g. OKTA_SIGN_ON, PASSWORD, ACCESS_POLICY, MFA_ENROLL).
+      policyName:
+        type: string
+        description: The display name of the policy.
+      policyDescription:
+        type: string
+        description: An optional description for the policy.
+      ruleName:
+        type: string
+        description: The display name of the rule to attach to the policy.
+  steps:
+  - stepId: createPolicy
+    description: >-
+      Create a policy of the supplied type without activating it yet.
+    operationId: createPolicy
+    parameters:
+    - name: Authorization
+      in: header
+      value: SSWS $inputs.oktaApiToken
+    - name: activate
+      in: query
+      value: false
+    requestBody:
+      contentType: application/json
+      payload:
+        type: $inputs.policyType
+        name: $inputs.policyName
+        description: $inputs.policyDescription
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      policyId: $response.body#/id
+  - stepId: createRule
+    description: >-
+      Create a rule under the newly created policy to define its behavior.
+    operationId: createPolicyRule
+    parameters:
+    - name: Authorization
+      in: header
+      value: SSWS $inputs.oktaApiToken
+    - name: policyId
+      in: path
+      value: $steps.createPolicy.outputs.policyId
+    requestBody:
+      contentType: application/json
+      payload:
+        name: $inputs.ruleName
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      ruleId: $response.body#/id
+  - stepId: activatePolicy
+    description: >-
+      Activate the policy now that it has a rule, so it begins taking effect.
+    operationId: activatePolicy
+    parameters:
+    - name: Authorization
+      in: header
+      value: SSWS $inputs.oktaApiToken
+    - name: policyId
+      in: path
+      value: $steps.createPolicy.outputs.policyId
+    successCriteria:
+    - condition: $statusCode == 204
+  outputs:
+    policyId: $steps.createPolicy.outputs.policyId
+    ruleId: $steps.createRule.outputs.ruleId

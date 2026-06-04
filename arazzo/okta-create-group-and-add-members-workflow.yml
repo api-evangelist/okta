@@ -1,0 +1,98 @@
+arazzo: 1.0.1
+info:
+  title: Okta Create Group and Add Members
+  summary: Create a new Okta group and add two users to it.
+  description: >-
+    Provisions a new OKTA_GROUP and populates its initial membership. The
+    workflow creates the group from a name and description, then adds two
+    supplied users to the freshly created group, chaining the new group id into
+    each membership call. Every step spells out its request inline, including
+    the SSWS API token header, so the flow can be read and executed without
+    opening the underlying OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: oktaApi
+  url: ../openapi/okta-openapi-original.yml
+  type: openapi
+workflows:
+- workflowId: create-group-and-add-members
+  summary: Create a group and seed it with members.
+  description: >-
+    Creates an OKTA_GROUP, then adds a primary and secondary user to the new
+    group by id.
+  inputs:
+    type: object
+    required:
+    - oktaApiToken
+    - groupName
+    - primaryUserId
+    properties:
+      oktaApiToken:
+        type: string
+        description: Okta API token used for the SSWS Authorization header.
+      groupName:
+        type: string
+        description: The display name of the new group.
+      groupDescription:
+        type: string
+        description: An optional description for the new group.
+      primaryUserId:
+        type: string
+        description: The id of the first user to add to the group.
+      secondaryUserId:
+        type: string
+        description: The id of an optional second user to add to the group.
+  steps:
+  - stepId: createGroup
+    description: >-
+      Create a new OKTA_GROUP using the supplied name and optional description.
+    operationId: createGroup
+    parameters:
+    - name: Authorization
+      in: header
+      value: SSWS $inputs.oktaApiToken
+    requestBody:
+      contentType: application/json
+      payload:
+        profile:
+          name: $inputs.groupName
+          description: $inputs.groupDescription
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      groupId: $response.body#/id
+      groupType: $response.body#/type
+  - stepId: addPrimaryMember
+    description: >-
+      Add the primary user to the newly created group.
+    operationId: addUserToGroup
+    parameters:
+    - name: Authorization
+      in: header
+      value: SSWS $inputs.oktaApiToken
+    - name: groupId
+      in: path
+      value: $steps.createGroup.outputs.groupId
+    - name: userId
+      in: path
+      value: $inputs.primaryUserId
+    successCriteria:
+    - condition: $statusCode == 204
+  - stepId: addSecondaryMember
+    description: >-
+      Add the optional second user to the same group.
+    operationId: addUserToGroup
+    parameters:
+    - name: Authorization
+      in: header
+      value: SSWS $inputs.oktaApiToken
+    - name: groupId
+      in: path
+      value: $steps.createGroup.outputs.groupId
+    - name: userId
+      in: path
+      value: $inputs.secondaryUserId
+    successCriteria:
+    - condition: $statusCode == 204
+  outputs:
+    groupId: $steps.createGroup.outputs.groupId

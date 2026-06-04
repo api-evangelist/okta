@@ -1,0 +1,81 @@
+arazzo: 1.0.1
+info:
+  title: Okta Reset and Re-enroll User Factor
+  summary: Reset all of a user's MFA factors and enroll a fresh factor.
+  description: >-
+    Recovers a user's multi-factor authentication after a lost device. The
+    workflow resets all of the user's enrolled factors, returning them to an
+    unenrolled state, and then enrolls a new factor so the user can set up MFA
+    again. The user id is supplied once and reused across both steps. Every step
+    spells out its request inline, including the SSWS API token header, so the
+    flow can be read and executed without opening the underlying OpenAPI
+    description.
+  version: 1.0.0
+sourceDescriptions:
+- name: oktaApi
+  url: ../openapi/okta-openapi-original.yml
+  type: openapi
+workflows:
+- workflowId: reset-and-reenroll-factor
+  summary: Reset a user's factors and enroll a new one.
+  description: >-
+    Resets all factors for a user, then enrolls a fresh factor of the supplied
+    type and provider.
+  inputs:
+    type: object
+    required:
+    - oktaApiToken
+    - userId
+    - factorType
+    - provider
+    properties:
+      oktaApiToken:
+        type: string
+        description: Okta API token used for the SSWS Authorization header.
+      userId:
+        type: string
+        description: The id of the user whose factors are reset and re-enrolled.
+      factorType:
+        type: string
+        description: The factor type to enroll (e.g. sms, token:software:totp, push).
+      provider:
+        type: string
+        description: The factor provider (e.g. OKTA, GOOGLE).
+  steps:
+  - stepId: resetFactors
+    description: >-
+      Reset all of the user's enrolled factors, returning them to unenrolled.
+    operationId: resetFactors
+    parameters:
+    - name: Authorization
+      in: header
+      value: SSWS $inputs.oktaApiToken
+    - name: userId
+      in: path
+      value: $inputs.userId
+    successCriteria:
+    - condition: $statusCode == 200
+  - stepId: enrollFactor
+    description: >-
+      Enroll a fresh factor for the user now that previous factors are cleared.
+    operationId: enrollFactor
+    parameters:
+    - name: Authorization
+      in: header
+      value: SSWS $inputs.oktaApiToken
+    - name: userId
+      in: path
+      value: $inputs.userId
+    requestBody:
+      contentType: application/json
+      payload:
+        factorType: $inputs.factorType
+        provider: $inputs.provider
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      factorId: $response.body#/id
+      factorStatus: $response.body#/status
+  outputs:
+    userId: $inputs.userId
+    factorId: $steps.enrollFactor.outputs.factorId

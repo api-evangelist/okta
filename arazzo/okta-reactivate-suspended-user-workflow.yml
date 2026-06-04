@@ -1,0 +1,66 @@
+arazzo: 1.0.1
+info:
+  title: Okta Restore Suspended User
+  summary: Unsuspend a user and verify they are returned to an active state.
+  description: >-
+    Brings a suspended user back online. The workflow unsuspends a user, which
+    returns them to the ACTIVE state, and then fetches the user to confirm the
+    restored status. The user id is supplied once and reused across both steps.
+    Every step spells out its request inline, including the SSWS API token
+    header, so the flow can be read and executed without opening the underlying
+    OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: oktaApi
+  url: ../openapi/okta-openapi-original.yml
+  type: openapi
+workflows:
+- workflowId: restore-suspended-user
+  summary: Unsuspend a user and confirm they are active.
+  description: >-
+    Unsuspends a SUSPENDED user and reads the user back to verify the ACTIVE
+    status.
+  inputs:
+    type: object
+    required:
+    - oktaApiToken
+    - userId
+    properties:
+      oktaApiToken:
+        type: string
+        description: Okta API token used for the SSWS Authorization header.
+      userId:
+        type: string
+        description: The id of the suspended user to restore.
+  steps:
+  - stepId: unsuspendUser
+    description: >-
+      Unsuspend the user, returning them to the ACTIVE state.
+    operationId: unsuspendUser
+    parameters:
+    - name: Authorization
+      in: header
+      value: SSWS $inputs.oktaApiToken
+    - name: userId
+      in: path
+      value: $inputs.userId
+    successCriteria:
+    - condition: $statusCode == 200
+  - stepId: confirmStatus
+    description: >-
+      Fetch the user to confirm they have returned to an active status.
+    operationId: getUser
+    parameters:
+    - name: Authorization
+      in: header
+      value: SSWS $inputs.oktaApiToken
+    - name: userId
+      in: path
+      value: $inputs.userId
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      status: $response.body#/status
+  outputs:
+    userId: $inputs.userId
+    status: $steps.confirmStatus.outputs.status

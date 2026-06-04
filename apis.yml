@@ -177,6 +177,72 @@ apis:
   - type: Pricing
     url: https://www.okta.com/pricing/
 common:
+- type: ArazzoWorkflows
+  url: arazzo/
+  workflows:
+  - url: arazzo/okta-assign-admin-role-to-group-workflow.yml
+    name: Okta Assign Admin Role to Group
+    summary: Assign an administrator role to a group and verify the assignment.
+  - url: arazzo/okta-assign-admin-role-to-user-workflow.yml
+    name: Okta Assign Admin Role to User
+    summary: Assign an administrator role to a user and verify the assignment.
+  - url: arazzo/okta-assign-group-to-application-workflow.yml
+    name: Okta Assign Group to Application
+    summary: Find a group by name and assign it to an application for bulk access.
+  - url: arazzo/okta-create-and-activate-application-workflow.yml
+    name: Okta Create and Activate Application
+    summary: Create an application in INACTIVE state and then activate it.
+  - url: arazzo/okta-create-and-activate-authenticator-workflow.yml
+    name: Okta Create and Activate Authenticator
+    summary: Add an authenticator to the org and activate it for enrollment.
+  - url: arazzo/okta-create-and-activate-group-rule-workflow.yml
+    name: Okta Create and Activate Group Rule
+    summary: Create a dynamic group rule and activate it so it begins evaluating.
+  - url: arazzo/okta-create-and-refresh-session-workflow.yml
+    name: Okta Create and Refresh Session
+    summary: Create a session from a session token and extend its lifetime.
+  - url: arazzo/okta-create-app-assign-user-and-activate-workflow.yml
+    name: Okta Create Application, Assign User, and Activate
+    summary: Create an application, assign a user to it, then activate the application.
+  - url: arazzo/okta-create-group-and-add-members-workflow.yml
+    name: Okta Create Group and Add Members
+    summary: Create a new Okta group and add two users to it.
+  - url: arazzo/okta-create-policy-with-rule-workflow.yml
+    name: Okta Create Policy with Rule and Activate
+    summary: Create a policy, add a rule to it, and activate the policy.
+  - url: arazzo/okta-create-user-with-group-membership-workflow.yml
+    name: Okta Create User with Group Membership
+    summary: Create a user pre-seeded with groups, then verify their memberships.
+  - url: arazzo/okta-deactivate-and-delete-user-workflow.yml
+    name: Okta Deactivate and Delete User
+    summary: Deactivate a user and then permanently delete the deprovisioned account.
+  - url: arazzo/okta-enroll-and-activate-factor-workflow.yml
+    name: Okta Enroll and Activate User Factor
+    summary: Enroll an MFA factor for a user and activate it with a passcode.
+  - url: arazzo/okta-find-user-and-assign-app-workflow.yml
+    name: Okta Find User and Assign Application
+    summary: Look up a user by login and assign them to an application if found.
+  - url: arazzo/okta-find-user-and-suspend-workflow.yml
+    name: Okta Find User and Suspend
+    summary: Look up a user by login and suspend them if an active match exists.
+  - url: arazzo/okta-offboard-user-clear-sessions-workflow.yml
+    name: Okta Offboard User and Clear Sessions
+    summary: Suspend a user and clear all of their active sessions.
+  - url: arazzo/okta-onboard-user-to-group-and-app-workflow.yml
+    name: Okta Onboard User to Group and Application
+    summary: Create a user, add them to a group, then assign them to an application.
+  - url: arazzo/okta-provision-admin-user-workflow.yml
+    name: Okta Provision Admin User
+    summary: Create a user and immediately grant them an administrator role.
+  - url: arazzo/okta-reactivate-suspended-user-workflow.yml
+    name: Okta Restore Suspended User
+    summary: Unsuspend a user and verify they are returned to an active state.
+  - url: arazzo/okta-reset-and-reenroll-factor-workflow.yml
+    name: Okta Reset and Re-enroll User Factor
+    summary: Reset all of a user's MFA factors and enroll a fresh factor.
+  - url: arazzo/okta-update-group-rule-expression-workflow.yml
+    name: Okta Update Group Rule Expression
+    summary: Deactivate a group rule, update its expression, then reactivate it.
 - type: LinkedIn
   url: https://www.linkedin.com/company/okta-inc-
 - type: Website

@@ -1,0 +1,65 @@
+arazzo: 1.0.1
+info:
+  title: Okta Deactivate and Delete User
+  summary: Deactivate a user and then permanently delete the deprovisioned account.
+  description: >-
+    The two-phase Okta account removal flow. A user must reach a DEPROVISIONED
+    status before it can be permanently deleted, so this workflow first
+    deactivates the user and then issues the delete call against the now
+    deprovisioned account. The user id is supplied once and reused across both
+    lifecycle steps. Every step spells out its request inline, including the
+    SSWS API token header, so the flow can be read and executed without opening
+    the underlying OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: oktaApi
+  url: ../openapi/okta-openapi-original.yml
+  type: openapi
+workflows:
+- workflowId: deactivate-and-delete-user
+  summary: Deactivate then permanently delete a user.
+  description: >-
+    Deactivates a user to move them to DEPROVISIONED, then permanently deletes
+    the account.
+  inputs:
+    type: object
+    required:
+    - oktaApiToken
+    - userId
+    properties:
+      oktaApiToken:
+        type: string
+        description: Okta API token used for the SSWS Authorization header.
+      userId:
+        type: string
+        description: The id of the user to deactivate and delete.
+  steps:
+  - stepId: deactivateUser
+    description: >-
+      Deactivate the user, moving them to a DEPROVISIONED status.
+    operationId: deactivateUser
+    parameters:
+    - name: Authorization
+      in: header
+      value: SSWS $inputs.oktaApiToken
+    - name: userId
+      in: path
+      value: $inputs.userId
+    successCriteria:
+    - condition: $statusCode == 200
+  - stepId: deleteUser
+    description: >-
+      Permanently delete the now deprovisioned user. This action cannot be
+      recovered.
+    operationId: deactivateOrDeleteUser
+    parameters:
+    - name: Authorization
+      in: header
+      value: SSWS $inputs.oktaApiToken
+    - name: userId
+      in: path
+      value: $inputs.userId
+    successCriteria:
+    - condition: $statusCode == 202
+  outputs:
+    deletedUserId: $inputs.userId

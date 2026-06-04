@@ -1,0 +1,77 @@
+arazzo: 1.0.1
+info:
+  title: Okta Assign Admin Role to Group
+  summary: Assign an administrator role to a group and verify the assignment.
+  description: >-
+    Grants administrative privileges to every member of a group. The workflow
+    assigns a standard Okta admin role to the group and then lists the group's
+    assigned roles to confirm the new role is present. The group id is supplied
+    once and reused across both steps. Every step spells out its request inline,
+    including the SSWS API token header, so the flow can be read and executed
+    without opening the underlying OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: oktaApi
+  url: ../openapi/okta-openapi-original.yml
+  type: openapi
+workflows:
+- workflowId: assign-admin-role-to-group
+  summary: Assign an admin role to a group and confirm it.
+  description: >-
+    Assigns a role of the supplied type to a group, then lists the group's roles
+    to verify the assignment.
+  inputs:
+    type: object
+    required:
+    - oktaApiToken
+    - groupId
+    - roleType
+    properties:
+      oktaApiToken:
+        type: string
+        description: Okta API token used for the SSWS Authorization header.
+      groupId:
+        type: string
+        description: The id of the group to grant the role to.
+      roleType:
+        type: string
+        description: The admin role type (e.g. USER_ADMIN, HELP_DESK_ADMIN, GROUP_MEMBERSHIP_ADMIN).
+  steps:
+  - stepId: assignRole
+    description: >-
+      Assign the supplied admin role type to the group.
+    operationId: assignRoleToGroup
+    parameters:
+    - name: Authorization
+      in: header
+      value: SSWS $inputs.oktaApiToken
+    - name: groupId
+      in: path
+      value: $inputs.groupId
+    requestBody:
+      contentType: application/json
+      payload:
+        type: $inputs.roleType
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      roleId: $response.body#/id
+      roleStatus: $response.body#/status
+  - stepId: listRoles
+    description: >-
+      List the group's assigned roles to confirm the new role is present.
+    operationId: listGroupAssignedRoles
+    parameters:
+    - name: Authorization
+      in: header
+      value: SSWS $inputs.oktaApiToken
+    - name: groupId
+      in: path
+      value: $inputs.groupId
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      firstRoleId: $response.body#/0/id
+  outputs:
+    groupId: $inputs.groupId
+    roleId: $steps.assignRole.outputs.roleId
