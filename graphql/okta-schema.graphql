@@ -1,0 +1,2008 @@
+"""
+Okta GraphQL Schema — Conceptual
+Derived from the Okta Management REST API, JSON Schemas, and AsyncAPI Events surface.
+REST reference: https://developer.okta.com/docs/reference/
+OpenAPI source: https://github.com/okta/okta-management-openapi-spec
+Schema source: conceptual
+"""
+
+scalar DateTime
+scalar JSON
+scalar URL
+
+# ──────────────────────────────────────────────
+# Enums
+# ──────────────────────────────────────────────
+
+enum UserStatus {
+  STAGED
+  PROVISIONED
+  ACTIVE
+  RECOVERY
+  LOCKED_OUT
+  PASSWORD_EXPIRED
+  SUSPENDED
+  DEPROVISIONED
+}
+
+enum GroupType {
+  OKTA_GROUP
+  APP_GROUP
+  BUILT_IN
+}
+
+enum ApplicationStatus {
+  ACTIVE
+  INACTIVE
+  DELETED
+}
+
+enum FactorType {
+  TOKEN
+  TOKEN_SOFTWARE_TOTP
+  TOKEN_HARDWARE
+  QUESTION
+  SMS
+  CALL
+  EMAIL
+  PUSH
+  U2F
+  WEBAUTHN
+  SIGNED_NONCE
+}
+
+enum FactorStatus {
+  NOT_SETUP
+  PENDING_ACTIVATION
+  ENROLLED
+  ACTIVE
+  INACTIVE
+  EXPIRED
+}
+
+enum FactorProvider {
+  OKTA
+  RSA
+  SYMANTEC
+  GOOGLE
+  DUO
+  YUBICO
+  FIDO
+  CUSTOM
+}
+
+enum PolicyType {
+  OKTA_SIGN_ON
+  PASSWORD
+  MFA_ENROLL
+  OAUTH_AUTHORIZATION_POLICY
+  IDP_DISCOVERY
+  ACCESS_POLICY
+  PROFILE_ENROLLMENT
+  POST_AUTH_SESSION
+}
+
+enum PolicyStatus {
+  ACTIVE
+  INACTIVE
+}
+
+enum AuthServerStatus {
+  ACTIVE
+  INACTIVE
+  DELETED
+}
+
+enum HookStatus {
+  ACTIVE
+  INACTIVE
+}
+
+enum SeverityLevel {
+  DEBUG
+  INFO
+  WARN
+  ERROR
+}
+
+enum AdminRoleType {
+  SUPER_ADMIN
+  ORG_ADMIN
+  API_ACCESS_MANAGEMENT_ADMIN
+  APP_ADMIN
+  USER_ADMIN
+  READ_ONLY_ADMIN
+  MOBILE_ADMIN
+  REPORT_ADMIN
+  GROUP_MEMBERSHIP_ADMIN
+  HELP_DESK_ADMIN
+  CUSTOM
+}
+
+enum NetworkZoneType {
+  IP
+  DYNAMIC
+  DYNAMIC_V2
+}
+
+enum NetworkZoneStatus {
+  ACTIVE
+  INACTIVE
+}
+
+enum DeviceStatus {
+  NOT_REGISTERED
+  REGISTERED
+}
+
+# ──────────────────────────────────────────────
+# User Domain
+# ──────────────────────────────────────────────
+
+"""
+A user in the Okta Universal Directory.
+"""
+type User {
+  id: ID!
+  status: UserStatus!
+  created: DateTime!
+  activated: DateTime
+  statusChanged: DateTime
+  lastLogin: DateTime
+  lastUpdated: DateTime!
+  passwordChanged: DateTime
+  profile: UserProfile!
+  credentials: UserCredentials
+  type: UserType
+  transitioningToStatus: UserStatus
+  groups: [Group!]!
+  factors: [Factor!]!
+  sessions: [Session!]!
+  roles: [AdminRole!]!
+  linkedObjects(relationship: String!): [User!]!
+  appLinks: [AppLink!]!
+}
+
+"""
+Standard and custom profile attributes for a user.
+Custom attributes are namespace-prefixed (e.g., custom_ns:department).
+"""
+type UserProfile {
+  login: String!
+  email: String!
+  secondEmail: String
+  firstName: String
+  lastName: String
+  middleName: String
+  honorificPrefix: String
+  honorificSuffix: String
+  displayName: String
+  nickName: String
+  profileUrl: URL
+  primaryPhone: String
+  mobilePhone: String
+  streetAddress: String
+  city: String
+  state: String
+  zipCode: String
+  countryCode: String
+  postalAddress: String
+  preferredLanguage: String
+  locale: String
+  timezone: String
+  userType: String
+  employeeNumber: String
+  costCenter: String
+  organization: String
+  division: String
+  department: String
+  managerId: String
+  manager: String
+  customAttributes: JSON
+}
+
+"""
+Credentials container for a user (password, recovery question, provider).
+"""
+type UserCredentials {
+  password: PasswordCredential
+  recoveryQuestion: RecoveryQuestionCredential
+  provider: AuthenticationProvider
+}
+
+type PasswordCredential {
+  value: String
+  hash: PasswordHash
+  hook: PasswordHook
+}
+
+type PasswordHash {
+  algorithm: String!
+  workFactor: Int
+  salt: String
+  saltOrder: String
+  value: String
+}
+
+type PasswordHook {
+  type: String!
+}
+
+type RecoveryQuestionCredential {
+  question: String
+  answer: String
+}
+
+type AuthenticationProvider {
+  type: String!
+  name: String
+}
+
+"""
+User type defining which schema definition a user conforms to.
+"""
+type UserType {
+  id: ID!
+  name: String!
+  displayName: String!
+  description: String
+  default: Boolean!
+  created: DateTime!
+  createdBy: String!
+  lastUpdated: DateTime!
+  lastUpdatedBy: String!
+  schema: UserSchema
+}
+
+"""
+App link — a shortcut to an application assigned to a user.
+"""
+type AppLink {
+  id: ID!
+  label: String!
+  linkUrl: URL!
+  logoUrl: URL
+  appName: String!
+  appInstanceId: ID!
+  appAssignmentId: ID!
+  hidden: Boolean!
+  sortOrder: Int!
+}
+
+# ──────────────────────────────────────────────
+# Group Domain
+# ──────────────────────────────────────────────
+
+"""
+A group of users in the Okta Universal Directory.
+"""
+type Group {
+  id: ID!
+  created: DateTime!
+  lastUpdated: DateTime!
+  lastMembershipUpdated: DateTime!
+  objectClass: [String!]!
+  type: GroupType!
+  profile: GroupProfile!
+  users: [User!]!
+  applications: [Application!]!
+  schema: GroupSchema
+}
+
+type GroupProfile {
+  name: String!
+  description: String
+  samAccountName: String
+  dn: String
+  windowsDomainQualifiedName: String
+  externalId: String
+  customAttributes: JSON
+}
+
+"""
+An explicit membership record linking a user to a group.
+"""
+type GroupMembership {
+  group: Group!
+  user: User!
+  addedAt: DateTime
+}
+
+"""
+A rule that automatically assigns users to a group based on an expression.
+"""
+type GroupRule {
+  id: ID!
+  type: String!
+  name: String!
+  status: String!
+  created: DateTime!
+  lastUpdated: DateTime!
+  conditions: GroupRuleConditions
+  actions: GroupRuleAction!
+}
+
+type GroupRuleConditions {
+  expression: GroupRuleExpression
+  people: GroupRulePeopleCondition
+}
+
+type GroupRuleExpression {
+  type: String!
+  value: String!
+}
+
+type GroupRulePeopleCondition {
+  users: GroupRuleUserCondition
+  groups: GroupRuleGroupCondition
+}
+
+type GroupRuleUserCondition {
+  include: [ID!]!
+  exclude: [ID!]!
+}
+
+type GroupRuleGroupCondition {
+  include: [ID!]!
+  exclude: [ID!]!
+}
+
+type GroupRuleAction {
+  assignUserToGroups: GroupRuleGroupAssignment!
+}
+
+type GroupRuleGroupAssignment {
+  groupIds: [ID!]!
+}
+
+# ──────────────────────────────────────────────
+# Application Domain
+# ──────────────────────────────────────────────
+
+"""
+An application registered in the Okta Integration Network or a custom connector.
+"""
+type Application {
+  id: ID!
+  name: String!
+  label: String!
+  status: ApplicationStatus!
+  created: DateTime!
+  lastUpdated: DateTime!
+  features: [String!]!
+  signOnMode: String!
+  credentials: ApplicationCredentials
+  settings: JSON
+  users: [AppUser!]!
+  groups: [AppGroup!]!
+  sso: SSOProfile
+}
+
+"""
+Credential set for an application (signing key, client secret, scheme).
+"""
+type ApplicationCredentials {
+  scheme: String
+  userNameTemplate: UserNameTemplate
+  signing: SigningCredential
+  oauthClient: OAuthClientCredential
+  revealPassword: Boolean
+  userName: String
+  password: PasswordCredential
+}
+
+type UserNameTemplate {
+  template: String!
+  type: String!
+  suffix: String
+  pushStatus: String
+}
+
+type SigningCredential {
+  kid: ID!
+  lastRotated: DateTime
+  nextRotation: DateTime
+  rotationMode: String
+  use: String
+}
+
+type OAuthClientCredential {
+  autoKeyRotation: Boolean!
+  clientId: ID!
+  clientSecret: String
+  tokenEndpointAuthMethod: String!
+}
+
+"""
+A user's assignment record for a specific application.
+"""
+type AppUser {
+  id: ID!
+  externalId: String
+  created: DateTime!
+  lastUpdated: DateTime!
+  scope: String!
+  status: String!
+  statusChanged: DateTime
+  passwordChanged: DateTime
+  syncState: String!
+  lastSync: DateTime
+  credentials: AppUserCredentials
+  profile: JSON
+  user: User!
+  application: Application!
+}
+
+type AppUserCredentials {
+  userName: String
+  password: PasswordCredential
+}
+
+"""
+A group's assignment record for a specific application.
+"""
+type AppGroup {
+  id: ID!
+  lastUpdated: DateTime!
+  priority: Int!
+  profile: JSON
+  group: Group!
+  application: Application!
+}
+
+# ──────────────────────────────────────────────
+# Session Domain
+# ──────────────────────────────────────────────
+
+"""
+A browser session established after primary authentication.
+"""
+type Session {
+  id: ID!
+  login: String!
+  userId: ID!
+  expiresAt: DateTime!
+  status: String!
+  lastPasswordVerification: DateTime
+  lastFactorVerification: DateTime
+  amr: [String!]!
+  idp: SessionIdentityProvider!
+  mfaActive: Boolean!
+  createdAt: DateTime!
+}
+
+type SessionIdentityProvider {
+  id: ID!
+  type: String!
+}
+
+# ──────────────────────────────────────────────
+# Authentication / MFA Domain
+# ──────────────────────────────────────────────
+
+"""
+An enrolled authenticator factor for a user.
+"""
+type Factor {
+  id: ID!
+  factorType: FactorType!
+  provider: FactorProvider!
+  status: FactorStatus!
+  created: DateTime!
+  lastUpdated: DateTime!
+  profile: FactorProfile
+  vendorName: String
+  user: User!
+}
+
+type FactorProfile {
+  phoneNumber: String
+  email: String
+  questionText: String
+  question: String
+  credentialId: String
+  authenticatorName: String
+  appId: String
+  version: String
+}
+
+"""
+An in-progress MFA verification challenge.
+"""
+type Challenge {
+  factorId: ID!
+  sessionToken: String
+  expiresAt: DateTime
+  status: String!
+  factorResult: String
+  correctAnswer: String
+}
+
+"""
+A conceptual MFA configuration object (alias for factor enrollment metadata).
+"""
+type MFA {
+  id: ID!
+  factorType: FactorType!
+  provider: FactorProvider!
+  status: FactorStatus!
+  enrolledAt: DateTime
+  user: User!
+}
+
+# ──────────────────────────────────────────────
+# Policy Domain
+# ──────────────────────────────────────────────
+
+"""
+A policy container (sign-on, password, MFA enrollment, lifecycle, etc.).
+"""
+type Policy {
+  id: ID!
+  name: String!
+  description: String
+  type: PolicyType!
+  status: PolicyStatus!
+  priority: Int!
+  system: Boolean!
+  created: DateTime!
+  lastUpdated: DateTime!
+  conditions: PolicyCondition
+  rules: [PolicyRule!]!
+}
+
+"""
+Condition predicate for a policy or rule.
+"""
+type PolicyCondition {
+  network: NetworkZoneCondition
+  people: PeopleCondition
+  authContext: AuthContextCondition
+  riskScore: RiskScoreCondition
+  device: DeviceCondition
+  userIdentifier: UserIdentifierCondition
+  application: AppAndInstanceCondition
+}
+
+type NetworkZoneCondition {
+  include: [NetworkZoneReference!]
+  exclude: [NetworkZoneReference!]
+}
+
+type NetworkZoneReference {
+  type: String!
+  id: ID
+}
+
+type PeopleCondition {
+  users: UserCondition
+  groups: GroupCondition
+}
+
+type UserCondition {
+  include: [ID!]!
+  exclude: [ID!]!
+}
+
+type GroupCondition {
+  include: [ID!]!
+  exclude: [ID!]!
+}
+
+type AuthContextCondition {
+  authType: String
+}
+
+type RiskScoreCondition {
+  level: String
+}
+
+type DeviceCondition {
+  registered: Boolean
+  managed: Boolean
+  assurance: DeviceAssuranceCondition
+}
+
+type DeviceAssuranceCondition {
+  id: ID
+}
+
+type UserIdentifierCondition {
+  type: String
+  attribute: String
+  patterns: [UserIdentifierPattern!]
+}
+
+type UserIdentifierPattern {
+  matchType: String!
+  value: String!
+}
+
+type AppAndInstanceCondition {
+  include: [AppInstanceCondition!]
+  exclude: [AppInstanceCondition!]
+}
+
+type AppInstanceCondition {
+  type: String!
+  id: ID
+}
+
+"""
+An ordered condition-action pair within a policy.
+"""
+type PolicyRule {
+  id: ID!
+  name: String!
+  type: String!
+  status: PolicyStatus!
+  priority: Int!
+  system: Boolean!
+  created: DateTime!
+  lastUpdated: DateTime!
+  conditions: PolicyCondition
+  actions: PolicyRuleAction!
+}
+
+type PolicyRuleAction {
+  signon: SignOnAction
+  password: PasswordAction
+  enroll: EnrollAction
+}
+
+type SignOnAction {
+  access: String!
+  requireFactor: Boolean
+  factorPromptMode: String
+  rememberDeviceByDefault: Boolean
+  session: SessionConfigAction
+}
+
+type SessionConfigAction {
+  usePersistentCookie: Boolean!
+  maxSessionIdleMinutes: Int!
+  maxSessionLifetimeMinutes: Int!
+}
+
+type PasswordAction {
+  access: String!
+}
+
+type EnrollAction {
+  self: String!
+}
+
+"""
+Sign-on policy governing when and how re-authentication or step-up is triggered.
+"""
+type SignOnPolicy {
+  id: ID!
+  name: String!
+  status: PolicyStatus!
+  priority: Int!
+  rules: [SignOnPolicyRule!]!
+}
+
+type SignOnPolicyRule {
+  id: ID!
+  name: String!
+  priority: Int!
+  status: PolicyStatus!
+  conditions: PolicyCondition
+  actions: SignOnAction!
+}
+
+"""
+An SSO profile configuration for an application (SAML, OIDC, WS-Fed).
+"""
+type SSOProfile {
+  signOnMode: String!
+  idpBinding: String
+  defaultRelayState: String
+  ssoAcsUrl: URL
+  audience: String
+  recipient: String
+  destination: URL
+  subjectNameIdTemplate: String
+  subjectNameIdFormat: String
+  responseSigned: Boolean
+  assertionSigned: Boolean
+  signatureAlgorithm: String
+  digestAlgorithm: String
+  honorForceAuthn: Boolean
+  authnContextClassRef: String
+  allowMultipleAcsEndpoints: Boolean
+}
+
+# ──────────────────────────────────────────────
+# Authorization Server / OAuth Domain
+# ──────────────────────────────────────────────
+
+"""
+An OAuth 2.0 / OIDC authorization server managed by Okta (API Access Management, Enterprise).
+"""
+type AuthServer {
+  id: ID!
+  name: String!
+  description: String
+  audiences: [String!]!
+  issuer: URL!
+  issuerMode: String!
+  status: AuthServerStatus!
+  created: DateTime!
+  lastUpdated: DateTime!
+  credentials: AuthServerCredentials
+  scopes: [Scope!]!
+  claims: [Claim!]!
+  policies: [Policy!]!
+}
+
+type AuthServerCredentials {
+  signing: SigningCredential!
+}
+
+"""
+An OAuth 2.0 scope defined on an authorization server.
+"""
+type Scope {
+  id: ID!
+  name: String!
+  description: String
+  displayName: String
+  default: Boolean!
+  system: Boolean!
+  consent: String!
+  metadataPublish: String!
+}
+
+"""
+A claim added to tokens issued by an authorization server.
+"""
+type Claim {
+  id: ID!
+  name: String!
+  status: String!
+  claimType: String!
+  valueType: String!
+  value: String!
+  alwaysIncludeInToken: Boolean!
+  system: Boolean!
+  conditions: ClaimConditions
+}
+
+type ClaimConditions {
+  scopes: [String!]!
+}
+
+"""
+A registered OIDC / OAuth 2.0 client application.
+"""
+type OAuthClient {
+  clientId: ID!
+  clientSecret: String
+  clientName: String!
+  clientUri: URL
+  logoUri: URL
+  redirectUris: [URL!]!
+  postLogoutRedirectUris: [URL!]!
+  responseTypes: [String!]!
+  grantTypes: [String!]!
+  tokenEndpointAuthMethod: String!
+  applicationType: String!
+  issuerUri: URL
+  initiateLoginUri: URL
+  jwksUri: URL
+}
+
+"""
+An OAuth 2.0 access token issued by an authorization server.
+"""
+type AccessToken {
+  tokenId: ID!
+  expiresAt: DateTime!
+  status: String!
+  created: DateTime!
+  lastUpdated: DateTime!
+  issuer: URL!
+  subject: String!
+  scopes: [String!]!
+  clientId: ID!
+  userId: ID
+}
+
+"""
+An OAuth 2.0 refresh token.
+"""
+type RefreshToken {
+  tokenId: ID!
+  expiresAt: DateTime!
+  issuer: URL!
+  clientId: ID!
+  userId: ID
+  scopes: [String!]!
+  status: String!
+  created: DateTime!
+  lastUpdated: DateTime!
+}
+
+"""
+The result of an OAuth 2.0 token introspection request.
+"""
+type IntrospectionResult {
+  active: Boolean!
+  scope: String
+  clientId: ID
+  username: String
+  tokenType: String
+  exp: Int
+  iat: Int
+  sub: String
+  aud: String
+  iss: URL
+  jti: ID
+  uid: ID
+}
+
+# ──────────────────────────────────────────────
+# Threat Intelligence and Network Security
+# ──────────────────────────────────────────────
+
+"""
+Okta's IP reputation and anomaly detection configuration (ThreatInsight).
+"""
+type ThreatInsight {
+  action: String!
+  excludeZones: [ID!]!
+  created: DateTime!
+  lastUpdated: DateTime!
+}
+
+"""
+An IP-range or ASN-based network perimeter used in policy conditions.
+"""
+type NetworkZone {
+  id: ID!
+  name: String!
+  type: NetworkZoneType!
+  status: NetworkZoneStatus!
+  system: Boolean!
+  usage: String!
+  created: DateTime!
+  lastUpdated: DateTime!
+  gateways: [NetworkZoneAddress!]
+  proxies: [NetworkZoneAddress!]
+  proxyType: String
+  locations: [NetworkZoneLocation!]
+  asns: [String!]
+}
+
+type NetworkZoneAddress {
+  type: String!
+  value: String!
+}
+
+type NetworkZoneLocation {
+  country: String!
+  include: [String!]
+}
+
+# ──────────────────────────────────────────────
+# System Log / Audit
+# ──────────────────────────────────────────────
+
+"""
+A single immutable audit event from the Okta System Log.
+"""
+type SystemLog {
+  uuid: ID!
+  published: DateTime!
+  eventType: String!
+  version: String!
+  severity: SeverityLevel!
+  legacyEventType: String
+  displayMessage: String!
+  actor: LogActor!
+  client: LogClient
+  outcome: LogOutcome
+  target: [LogTarget!]
+  transaction: LogTransaction
+  debugContext: LogDebugContext
+  authenticationContext: LogAuthenticationContext
+  securityContext: LogSecurityContext
+  request: LogRequest
+}
+
+type LogActor {
+  id: ID!
+  type: String!
+  alternateId: String
+  displayName: String!
+  detail: JSON
+}
+
+type LogClient {
+  id: String
+  ipAddress: String
+  geographicalContext: LogGeographicalContext
+  zone: String
+  userAgent: LogUserAgent
+  device: String
+}
+
+type LogGeographicalContext {
+  city: String
+  state: String
+  country: String
+  postalCode: String
+  geolocation: LogGeolocation
+}
+
+type LogGeolocation {
+  lat: Float!
+  lon: Float!
+}
+
+type LogUserAgent {
+  rawUserAgent: String
+  os: String
+  browser: String
+}
+
+type LogOutcome {
+  result: String!
+  reason: String
+}
+
+type LogTarget {
+  id: ID!
+  type: String!
+  alternateId: String
+  displayName: String!
+  detailEntry: JSON
+}
+
+type LogTransaction {
+  type: String!
+  id: ID!
+  detail: JSON
+}
+
+type LogDebugContext {
+  debugData: JSON
+}
+
+type LogAuthenticationContext {
+  authenticationProvider: String
+  credentialProvider: [String!]
+  credentialType: [String!]
+  issuer: LogIssuer
+  interface: String
+  authenticationStep: Int
+  externalSessionId: ID
+}
+
+type LogIssuer {
+  id: ID
+  type: String
+}
+
+type LogSecurityContext {
+  asNumber: Int
+  asOrg: String
+  isp: String
+  domain: String
+  isProxy: Boolean
+}
+
+type LogRequest {
+  ipChain: [LogIpAddress!]
+}
+
+type LogIpAddress {
+  ip: String!
+  geographicalContext: LogGeographicalContext
+  version: String
+  source: String
+}
+
+# ──────────────────────────────────────────────
+# Hooks and Automation
+# ──────────────────────────────────────────────
+
+"""
+An outbound webhook that delivers Okta system events to an external HTTPS endpoint.
+"""
+type EventHook {
+  id: ID!
+  name: String!
+  status: HookStatus!
+  verificationStatus: String!
+  created: DateTime!
+  lastUpdated: DateTime!
+  events: EventHookEvents!
+  channel: EventHookChannel!
+}
+
+type EventHookEvents {
+  type: String!
+  items: [String!]!
+}
+
+type EventHookChannel {
+  type: String!
+  version: String!
+  config: EventHookChannelConfig!
+}
+
+type EventHookChannelConfig {
+  uri: URL!
+  authScheme: EventHookAuthScheme
+  headers: [EventHookHeader!]
+}
+
+type EventHookAuthScheme {
+  type: String!
+  key: String!
+  value: String
+}
+
+type EventHookHeader {
+  key: String!
+  value: String!
+}
+
+"""
+An inline hook that intercepts an Okta flow for external enrichment.
+"""
+type InlineHook {
+  id: ID!
+  name: String!
+  type: String!
+  status: HookStatus!
+  version: String!
+  created: DateTime!
+  lastUpdated: DateTime!
+  channel: InlineHookChannel!
+}
+
+type InlineHookChannel {
+  type: String!
+  version: String!
+  config: InlineHookChannelConfig!
+}
+
+type InlineHookChannelConfig {
+  uri: URL!
+  headers: [EventHookHeader!]
+  authScheme: EventHookAuthScheme
+}
+
+"""
+The response payload returned by an external inline hook handler.
+"""
+type InlineHookResponse {
+  commands: [InlineHookCommand!]!
+  error: InlineHookError
+}
+
+type InlineHookCommand {
+  type: String!
+  value: [InlineHookCommandValue!]!
+}
+
+type InlineHookCommandValue {
+  op: String!
+  path: String!
+  value: JSON
+}
+
+type InlineHookError {
+  errorSummary: String!
+  errorCauses: [InlineHookErrorCause!]
+}
+
+type InlineHookErrorCause {
+  errorSummary: String!
+}
+
+# ──────────────────────────────────────────────
+# Administration / Governance
+# ──────────────────────────────────────────────
+
+"""
+An administrator role (standard or custom).
+"""
+type AdminRole {
+  id: ID!
+  label: String!
+  type: AdminRoleType!
+  status: String!
+  created: DateTime!
+  lastUpdated: DateTime!
+  assignmentType: String!
+  resource: AdminRoleTarget
+}
+
+"""
+The resource scope of an admin role assignment (group, app, app instance).
+"""
+type AdminRoleTarget {
+  type: String!
+  id: ID
+  displayName: String
+}
+
+"""
+A whitelisted origin for CORS and redirect URI purposes (embedded widget deployments).
+"""
+type TrustedOrigin {
+  id: ID!
+  name: String!
+  origin: URL!
+  scopes: [TrustedOriginScope!]!
+  status: String!
+  created: DateTime!
+  createdBy: String!
+  lastUpdated: DateTime!
+  lastUpdatedBy: String!
+}
+
+type TrustedOriginScope {
+  type: String!
+}
+
+# ──────────────────────────────────────────────
+# Branding and Customization
+# ──────────────────────────────────────────────
+
+"""
+A brand representing the visual identity of an Okta org or custom domain.
+"""
+type Brand {
+  id: ID!
+  name: String!
+  customPrivacyPolicyUrl: URL
+  removePoweredByOkta: Boolean!
+  agreeToCustomPrivacyPolicy: Boolean!
+  defaultApp: BrandDefaultApp
+  emailDomainId: ID
+  locale: String
+  theme: Theme
+  domains: [Domain!]!
+}
+
+type BrandDefaultApp {
+  appInstanceId: ID!
+  appLinkName: String!
+  classicApplicationUri: URL
+}
+
+"""
+Theme (logo, favicon, colors) for a brand.
+"""
+type Theme {
+  id: ID!
+  logo: URL
+  favicon: URL
+  backgroundImage: URL
+  primaryColorHex: String
+  primaryColorContrastHex: String
+  secondaryColorHex: String
+  secondaryColorContrastHex: String
+  signInPageTouchPointVariant: String!
+  endUserDashboardTouchPointVariant: String!
+  errorPageTouchPointVariant: String!
+  emailTemplateTouchPointVariant: String!
+  loadingPageTouchPointVariant: String
+}
+
+"""
+A verified custom DNS domain for white-labeling an Okta org.
+"""
+type Domain {
+  id: ID!
+  domain: String!
+  validationStatus: String!
+  dnsRecords: [DnsRecord!]!
+  publicCertificate: DomainCertificate
+  brandId: ID
+}
+
+type DnsRecord {
+  fqdn: String!
+  recordType: String!
+  values: [String!]!
+  expiration: String
+}
+
+type DomainCertificate {
+  subject: String
+  fingerprint: String
+  expiration: String
+}
+
+"""
+A system email template (e.g., email verification, welcome, password reset).
+"""
+type EmailTemplate {
+  name: String!
+  defaultLanguage: String!
+  subject: String
+  content: EmailTemplateContent
+  customizationCount: Int!
+}
+
+"""
+The locale-specific content of an email template.
+"""
+type EmailTemplateContent {
+  fromName: String
+  fromAddress: String
+  subject: String!
+  body: String!
+}
+
+# ──────────────────────────────────────────────
+# Password Policy
+# ──────────────────────────────────────────────
+
+"""
+A password policy defining complexity, age, lockout, and recovery settings.
+"""
+type PasswordPolicy {
+  id: ID!
+  name: String!
+  status: PolicyStatus!
+  priority: Int!
+  system: Boolean!
+  conditions: PolicyCondition
+  settings: PasswordPolicySettings!
+  rules: [PasswordPolicyRule!]!
+}
+
+type PasswordPolicySettings {
+  password: PasswordComplexity!
+  recovery: PasswordRecovery!
+  lockout: PasswordLockout!
+  delegation: PasswordDelegation
+}
+
+type PasswordComplexity {
+  minLength: Int!
+  minLowerCase: Int!
+  minUpperCase: Int!
+  minNumber: Int!
+  minSymbol: Int!
+  excludeUsername: Boolean!
+  excludeAttributes: [String!]!
+  dictionary: PasswordDictionary
+  age: PasswordAge!
+  historyCount: Int!
+}
+
+type PasswordDictionary {
+  common: PasswordDictionaryCommon
+}
+
+type PasswordDictionaryCommon {
+  exclude: Boolean!
+}
+
+type PasswordAge {
+  maxAgeDays: Int!
+  expireWarnDays: Int!
+  minAgeMinutes: Int!
+}
+
+type PasswordRecovery {
+  factors: PasswordRecoveryFactors!
+}
+
+type PasswordRecoveryFactors {
+  recoveryQuestion: RecoveryQuestionPolicy!
+  okta_email: RecoveryFactorPolicy!
+  okta_sms: RecoveryFactorPolicy!
+  okta_call: RecoveryFactorPolicy!
+}
+
+type RecoveryQuestionPolicy {
+  status: String!
+  properties: RecoveryQuestionProperties
+}
+
+type RecoveryQuestionProperties {
+  complexity: RecoveryQuestionComplexity
+}
+
+type RecoveryQuestionComplexity {
+  minLength: Int!
+}
+
+type RecoveryFactorPolicy {
+  status: String!
+}
+
+type PasswordLockout {
+  maxAttempts: Int!
+  autoUnlockMinutes: Int!
+  showLockoutFailures: Boolean!
+}
+
+type PasswordDelegation {
+  options: PasswordDelegationOptions
+}
+
+type PasswordDelegationOptions {
+  skipUnlockAccount: Boolean!
+}
+
+"""
+A rule within a password policy.
+"""
+type PasswordPolicyRule {
+  id: ID!
+  name: String!
+  status: PolicyStatus!
+  priority: Int!
+  system: Boolean!
+  conditions: PolicyCondition
+  actions: PasswordPolicyRuleActions!
+}
+
+type PasswordPolicyRuleActions {
+  passwordChange: PasswordChangeAction!
+  selfServicePasswordReset: SelfServicePasswordResetAction!
+  selfServiceUnlock: SelfServiceUnlockAction!
+}
+
+type PasswordChangeAction {
+  access: String!
+}
+
+type SelfServicePasswordResetAction {
+  access: String!
+  requirement: SelfServicePasswordResetRequirement
+}
+
+type SelfServicePasswordResetRequirement {
+  primary: SelfServiceRecoveryChannel!
+  secondary: SelfServiceRecoveryChannel
+}
+
+type SelfServiceRecoveryChannel {
+  methodType: String!
+}
+
+type SelfServiceUnlockAction {
+  access: String!
+}
+
+# ──────────────────────────────────────────────
+# Lifecycle Policy
+# ──────────────────────────────────────────────
+
+"""
+A lifecycle (activation/deactivation) policy for user provisioning flows.
+"""
+type LifecyclePolicy {
+  id: ID!
+  name: String!
+  status: PolicyStatus!
+  priority: Int!
+  system: Boolean!
+  conditions: PolicyCondition
+  rules: [PolicyRule!]!
+}
+
+# ──────────────────────────────────────────────
+# Linked Objects (Peer Relationships)
+# ──────────────────────────────────────────────
+
+"""
+A directional peer relationship definition between two users (e.g., manager/subordinate).
+"""
+type LinkedObject {
+  primary: LinkedObjectType!
+  associated: LinkedObjectType!
+}
+
+type LinkedObjectType {
+  name: String!
+  title: String!
+  description: String
+  type: String!
+}
+
+# ──────────────────────────────────────────────
+# Schemas
+# ──────────────────────────────────────────────
+
+"""
+Schema definition for user profiles, including base and custom attributes.
+"""
+type UserSchema {
+  id: ID!
+  schema: URL!
+  name: String!
+  title: String!
+  created: DateTime!
+  lastUpdated: DateTime!
+  definitions: UserSchemaDefinitions!
+  type: String!
+  properties: UserSchemaProperties!
+}
+
+type UserSchemaDefinitions {
+  base: UserSchemaBaseProperties!
+  custom: UserSchemaCustomProperties!
+}
+
+type UserSchemaBaseProperties {
+  id: String!
+  type: String!
+  properties: JSON!
+  required: [String!]!
+}
+
+type UserSchemaCustomProperties {
+  id: String!
+  type: String!
+  properties: JSON!
+}
+
+type UserSchemaProperties {
+  profile: UserSchemaPropertiesProfile!
+}
+
+type UserSchemaPropertiesProfile {
+  allOf: [UserSchemaRef!]!
+}
+
+type UserSchemaRef {
+  ref: String
+}
+
+"""
+Schema definition for group profiles, including base and custom attributes.
+"""
+type GroupSchema {
+  id: ID!
+  schema: URL
+  name: String!
+  title: String!
+  created: DateTime!
+  lastUpdated: DateTime!
+  definitions: GroupSchemaDefinitions!
+  type: String!
+  properties: GroupSchemaProperties!
+}
+
+type GroupSchemaDefinitions {
+  base: GroupSchemaBaseProperties!
+  custom: GroupSchemaCustomProperties!
+}
+
+type GroupSchemaBaseProperties {
+  id: String!
+  type: String!
+  properties: JSON!
+  required: [String!]!
+}
+
+type GroupSchemaCustomProperties {
+  id: String!
+  type: String!
+  properties: JSON!
+}
+
+type GroupSchemaProperties {
+  profile: GroupSchemaPropertiesProfile!
+}
+
+type GroupSchemaPropertiesProfile {
+  allOf: [UserSchemaRef!]!
+}
+
+# ──────────────────────────────────────────────
+# Device Access
+# ──────────────────────────────────────────────
+
+"""
+An endpoint device registered in Okta Device Access.
+"""
+type Device {
+  id: ID!
+  status: DeviceStatus!
+  created: DateTime!
+  lastUpdated: DateTime!
+  profile: DeviceProfile!
+  user: User
+  managementStatus: String
+}
+
+type DeviceProfile {
+  displayName: String!
+  platform: String!
+  manufacturer: String
+  model: String
+  osVersion: String
+  serialNumber: String
+  udid: String
+  imei: String
+  meid: String
+  registered: Boolean!
+  managed: Boolean!
+  diskEncryptionType: String
+  screenLockType: String
+  secureHardwarePresent: Boolean
+  tpmPublicKeyHash: String
+  sid: String
+  integrityJailbreak: Boolean
+}
+
+# ──────────────────────────────────────────────
+# Behavioral Intelligence
+# ──────────────────────────────────────────────
+
+"""
+A behavioral anomaly detection rule (e.g., new device, impossible travel).
+"""
+type BehaviorRule {
+  id: ID!
+  name: String!
+  type: String!
+  status: String!
+  created: DateTime!
+  lastUpdated: DateTime!
+  settings: BehaviorRuleSettings
+}
+
+type BehaviorRuleSettings {
+  historyObject: String
+  number: Int
+  radiusKiloMeters: Int
+  velocityKph: Int
+}
+
+"""
+An instance of a triggered behavioral signal for a user.
+"""
+type BehaviorEvent {
+  id: ID!
+  ruleId: ID!
+  userId: ID!
+  triggeredAt: DateTime!
+  eventType: String!
+  detail: JSON
+}
+
+# ──────────────────────────────────────────────
+# Rate Limit Metadata
+# ──────────────────────────────────────────────
+
+"""
+Rate limit metadata for an Okta API endpoint (conceptual — normally returned as response headers).
+"""
+type RateLimitAdmin {
+  endpoint: String!
+  limit: Int!
+  remaining: Int!
+  reset: DateTime!
+  tier: String
+}
+
+# ──────────────────────────────────────────────
+# Pagination and Connection Helpers
+# ──────────────────────────────────────────────
+
+type PageInfo {
+  hasNextPage: Boolean!
+  hasPreviousPage: Boolean!
+  startCursor: String
+  endCursor: String
+}
+
+type SystemLogConnection {
+  edges: [SystemLogEdge!]!
+  pageInfo: PageInfo!
+  totalCount: Int
+}
+
+type SystemLogEdge {
+  node: SystemLog!
+  cursor: String!
+}
+
+type UserConnection {
+  edges: [UserEdge!]!
+  pageInfo: PageInfo!
+  totalCount: Int
+}
+
+type UserEdge {
+  node: User!
+  cursor: String!
+}
+
+type ApplicationConnection {
+  edges: [ApplicationEdge!]!
+  pageInfo: PageInfo!
+  totalCount: Int
+}
+
+type ApplicationEdge {
+  node: Application!
+  cursor: String!
+}
+
+# ──────────────────────────────────────────────
+# Input Types
+# ──────────────────────────────────────────────
+
+input CreateUserInput {
+  profile: UserProfileInput!
+  credentials: UserCredentialsInput
+  groupIds: [ID!]
+  type: ID
+  activate: Boolean
+  provider: Boolean
+  nextLogin: String
+}
+
+input UserProfileInput {
+  login: String!
+  email: String!
+  firstName: String
+  lastName: String
+  mobilePhone: String
+  secondEmail: String
+  organization: String
+  department: String
+  employeeNumber: String
+  userType: String
+  customAttributes: JSON
+}
+
+input UserCredentialsInput {
+  password: PasswordInput
+  recoveryQuestion: RecoveryQuestionInput
+  provider: ProviderInput
+}
+
+input PasswordInput {
+  value: String
+  hash: PasswordHashInput
+}
+
+input PasswordHashInput {
+  algorithm: String!
+  workFactor: Int
+  salt: String
+  saltOrder: String
+  value: String!
+}
+
+input RecoveryQuestionInput {
+  question: String!
+  answer: String!
+}
+
+input ProviderInput {
+  type: String!
+  name: String
+}
+
+input UpdateUserInput {
+  profile: UserProfileInput
+  credentials: UserCredentialsInput
+}
+
+input CreateGroupInput {
+  profile: GroupProfileInput!
+}
+
+input GroupProfileInput {
+  name: String!
+  description: String
+}
+
+input SystemLogFilter {
+  since: DateTime
+  until: DateTime
+  q: String
+  filter: String
+  limit: Int
+  after: String
+}
+
+input ApplicationFilter {
+  q: String
+  filter: String
+  limit: Int
+  after: String
+  expand: String
+}
+
+input UserFilter {
+  q: String
+  filter: String
+  search: String
+  limit: Int
+  after: String
+}
+
+# ──────────────────────────────────────────────
+# Root Types
+# ──────────────────────────────────────────────
+
+type Query {
+  # Users
+  user(id: ID!): User
+  users(filter: UserFilter): UserConnection!
+  userByLogin(login: String!): User
+
+  # Groups
+  group(id: ID!): Group
+  groups(q: String, limit: Int, after: String, filter: String): [Group!]!
+  groupRule(id: ID!): GroupRule
+  groupRules(limit: Int, after: String): [GroupRule!]!
+
+  # Applications
+  application(id: ID!): Application
+  applications(filter: ApplicationFilter): ApplicationConnection!
+  appUser(appId: ID!, userId: ID!): AppUser
+  appGroup(appId: ID!, groupId: ID!): AppGroup
+
+  # Sessions
+  session(id: ID!): Session
+
+  # Factors / MFA
+  factor(userId: ID!, factorId: ID!): Factor
+  factors(userId: ID!): [Factor!]!
+
+  # Policies
+  policy(id: ID!): Policy
+  policies(type: PolicyType, status: PolicyStatus): [Policy!]!
+  policyRule(policyId: ID!, ruleId: ID!): PolicyRule
+
+  # Authorization Servers
+  authServer(id: ID!): AuthServer
+  authServers: [AuthServer!]!
+  scope(authServerId: ID!, scopeId: ID!): Scope
+  scopes(authServerId: ID!): [Scope!]!
+  claim(authServerId: ID!, claimId: ID!): Claim
+  claims(authServerId: ID!): [Claim!]!
+
+  # OAuth Clients and Tokens
+  oauthClient(clientId: ID!): OAuthClient
+  accessTokens(userId: ID!, appName: String!): [AccessToken!]!
+  refreshTokens(userId: ID!, appName: String!): [RefreshToken!]!
+  introspect(token: String!, tokenTypeHint: String): IntrospectionResult
+
+  # Security
+  threatInsight: ThreatInsight
+  networkZone(id: ID!): NetworkZone
+  networkZones(filter: String): [NetworkZone!]!
+  behaviorRule(id: ID!): BehaviorRule
+  behaviorRules: [BehaviorRule!]!
+
+  # Hooks
+  eventHook(id: ID!): EventHook
+  eventHooks: [EventHook!]!
+  inlineHook(id: ID!): InlineHook
+  inlineHooks(type: String): [InlineHook!]!
+
+  # Admin / Governance
+  adminRole(userId: ID!, roleId: ID!): AdminRole
+  adminRoles(userId: ID!): [AdminRole!]!
+  trustedOrigin(id: ID!): TrustedOrigin
+  trustedOrigins: [TrustedOrigin!]!
+
+  # Branding
+  brand(id: ID!): Brand
+  brands: [Brand!]!
+  domain(id: ID!): Domain
+  domains: [Domain!]!
+  emailTemplate(brandId: ID!, templateName: String!): EmailTemplate
+  emailTemplates(brandId: ID!): [EmailTemplate!]!
+
+  # Schemas
+  userSchema(typeId: ID!): UserSchema
+  groupSchema: GroupSchema
+
+  # Linked Objects
+  linkedObject(name: String!): LinkedObject
+  linkedObjects: [LinkedObject!]!
+
+  # Devices
+  device(id: ID!): Device
+  devices(q: String, limit: Int, after: String): [Device!]!
+
+  # System Log
+  systemLog(uuid: ID!): SystemLog
+  systemLogs(filter: SystemLogFilter!): SystemLogConnection!
+
+  # Rate Limits
+  rateLimits: [RateLimitAdmin!]!
+}
+
+type Mutation {
+  # Users
+  createUser(input: CreateUserInput!): UserMutationResult!
+  updateUser(id: ID!, input: UpdateUserInput!): UserMutationResult!
+  activateUser(id: ID!, sendEmail: Boolean): UserMutationResult!
+  deactivateUser(id: ID!): UserMutationResult!
+  suspendUser(id: ID!): UserMutationResult!
+  unsuspendUser(id: ID!): UserMutationResult!
+  unlockUser(id: ID!): UserMutationResult!
+  deleteUser(id: ID!): DeleteResult!
+  expirePassword(id: ID!, tempPassword: Boolean): UserMutationResult!
+  resetPassword(id: ID!, sendEmail: Boolean): UserMutationResult!
+
+  # Groups
+  createGroup(input: CreateGroupInput!): GroupMutationResult!
+  updateGroup(id: ID!, input: GroupProfileInput!): GroupMutationResult!
+  deleteGroup(id: ID!): DeleteResult!
+  addUserToGroup(groupId: ID!, userId: ID!): DeleteResult!
+  removeUserFromGroup(groupId: ID!, userId: ID!): DeleteResult!
+
+  # Group Rules
+  createGroupRule(name: String!, conditions: JSON!, assignToGroupIds: [ID!]!): GroupRuleMutationResult!
+  activateGroupRule(id: ID!): GroupRuleMutationResult!
+  deactivateGroupRule(id: ID!): GroupRuleMutationResult!
+  deleteGroupRule(id: ID!): DeleteResult!
+
+  # Applications
+  createApplication(label: String!, signOnMode: String!, settings: JSON): ApplicationMutationResult!
+  updateApplication(id: ID!, label: String, settings: JSON): ApplicationMutationResult!
+  activateApplication(id: ID!): ApplicationMutationResult!
+  deactivateApplication(id: ID!): ApplicationMutationResult!
+  deleteApplication(id: ID!): DeleteResult!
+  assignUserToApp(appId: ID!, userId: ID!, profile: JSON): AppUserMutationResult!
+  removeUserFromApp(appId: ID!, userId: ID!): DeleteResult!
+  assignGroupToApp(appId: ID!, groupId: ID!, priority: Int): AppGroupMutationResult!
+  removeGroupFromApp(appId: ID!, groupId: ID!): DeleteResult!
+
+  # Sessions
+  createSession(sessionToken: String!): SessionMutationResult!
+  refreshSession(id: ID!): SessionMutationResult!
+  closeSession(id: ID!): DeleteResult!
+  clearUserSessions(userId: ID!): DeleteResult!
+
+  # Factors
+  enrollFactor(userId: ID!, factorType: FactorType!, provider: FactorProvider!, profile: JSON): FactorMutationResult!
+  activateFactor(userId: ID!, factorId: ID!, passCode: String, answer: String): FactorMutationResult!
+  verifyFactor(userId: ID!, factorId: ID!, passCode: String, answer: String): ChallengeMutationResult!
+  resetFactors(userId: ID!): DeleteResult!
+  deleteFactor(userId: ID!, factorId: ID!): DeleteResult!
+
+  # Admin Roles
+  assignRoleToUser(userId: ID!, type: AdminRoleType!): AdminRoleMutationResult!
+  removeRoleFromUser(userId: ID!, roleId: ID!): DeleteResult!
+  assignRoleToGroup(groupId: ID!, type: AdminRoleType!): AdminRoleMutationResult!
+  removeRoleFromGroup(groupId: ID!, roleId: ID!): DeleteResult!
+
+  # Hooks
+  createEventHook(name: String!, events: [String!]!, uri: URL!, headers: JSON, authScheme: JSON): EventHookMutationResult!
+  activateEventHook(id: ID!): EventHookMutationResult!
+  deactivateEventHook(id: ID!): EventHookMutationResult!
+  deleteEventHook(id: ID!): DeleteResult!
+  createInlineHook(name: String!, type: String!, uri: URL!, headers: JSON, authScheme: JSON): InlineHookMutationResult!
+  activateInlineHook(id: ID!): InlineHookMutationResult!
+  deactivateInlineHook(id: ID!): InlineHookMutationResult!
+  deleteInlineHook(id: ID!): DeleteResult!
+
+  # Network Zones
+  createNetworkZone(name: String!, type: NetworkZoneType!, gateways: [JSON!], proxies: [JSON!], locations: [JSON!], asns: [String!]): NetworkZoneMutationResult!
+  updateNetworkZone(id: ID!, name: String, gateways: [JSON!], proxies: [JSON!]): NetworkZoneMutationResult!
+  activateNetworkZone(id: ID!): NetworkZoneMutationResult!
+  deactivateNetworkZone(id: ID!): NetworkZoneMutationResult!
+  deleteNetworkZone(id: ID!): DeleteResult!
+
+  # Branding
+  updateTheme(brandId: ID!, themeId: ID!, primaryColorHex: String, secondaryColorHex: String, signInPageTouchPointVariant: String, endUserDashboardTouchPointVariant: String): ThemeMutationResult!
+
+  # Trusted Origins
+  createTrustedOrigin(name: String!, origin: URL!, scopes: [JSON!]!): TrustedOriginMutationResult!
+  activateTrustedOrigin(id: ID!): TrustedOriginMutationResult!
+  deactivateTrustedOrigin(id: ID!): TrustedOriginMutationResult!
+  deleteTrustedOrigin(id: ID!): DeleteResult!
+
+  # Threat Insight
+  updateThreatInsight(action: String!, excludeZones: [ID!]): ThreatInsightMutationResult!
+}
+
+# ──────────────────────────────────────────────
+# Mutation Result Types
+# ──────────────────────────────────────────────
+
+type UserMutationResult {
+  user: User
+  errors: [MutationError!]
+}
+
+type GroupMutationResult {
+  group: Group
+  errors: [MutationError!]
+}
+
+type GroupRuleMutationResult {
+  groupRule: GroupRule
+  errors: [MutationError!]
+}
+
+type ApplicationMutationResult {
+  application: Application
+  errors: [MutationError!]
+}
+
+type AppUserMutationResult {
+  appUser: AppUser
+  errors: [MutationError!]
+}
+
+type AppGroupMutationResult {
+  appGroup: AppGroup
+  errors: [MutationError!]
+}
+
+type SessionMutationResult {
+  session: Session
+  errors: [MutationError!]
+}
+
+type FactorMutationResult {
+  factor: Factor
+  errors: [MutationError!]
+}
+
+type ChallengeMutationResult {
+  challenge: Challenge
+  errors: [MutationError!]
+}
+
+type AdminRoleMutationResult {
+  adminRole: AdminRole
+  errors: [MutationError!]
+}
+
+type EventHookMutationResult {
+  eventHook: EventHook
+  errors: [MutationError!]
+}
+
+type InlineHookMutationResult {
+  inlineHook: InlineHook
+  errors: [MutationError!]
+}
+
+type NetworkZoneMutationResult {
+  networkZone: NetworkZone
+  errors: [MutationError!]
+}
+
+type ThemeMutationResult {
+  theme: Theme
+  errors: [MutationError!]
+}
+
+type TrustedOriginMutationResult {
+  trustedOrigin: TrustedOrigin
+  errors: [MutationError!]
+}
+
+type ThreatInsightMutationResult {
+  threatInsight: ThreatInsight
+  errors: [MutationError!]
+}
+
+type DeleteResult {
+  success: Boolean!
+  errors: [MutationError!]
+}
+
+type MutationError {
+  code: String!
+  message: String!
+  field: String
+}

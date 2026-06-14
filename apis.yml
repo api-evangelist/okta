@@ -113,6 +113,8 @@ apis:
     url: capabilities/okta-userschema.yaml
   - type: NaftikoCapability
     url: capabilities/okta-usertype.yaml
+  - type: GraphQL
+    url: graphql/okta-graphql.md
   - type: JSONSchema
     url: json-schema/okta-user-schema.json
   - type: JSONSchema
@@ -177,6 +179,8 @@ apis:
   - type: Pricing
     url: https://www.okta.com/pricing/
 common:
+  - type: PostmanWorkspace
+    url: https://www.postman.com/kinlaneapi/okta/overview
 - type: ArazzoWorkflows
   url: arazzo/
   workflows:
