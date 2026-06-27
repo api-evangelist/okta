@@ -61,57 +61,57 @@ apis:
     url: https://developer.okta.com/docs/guides/implement-grant-type/authcodepkce/main/
   - type: RateLimits
     url: rate-limits/okta-rate-limits.yml
-  - type: NaftikoCapability
+  - type: X-NaftikoCapability
     url: capabilities/okta-application.yaml
-  - type: NaftikoCapability
+  - type: X-NaftikoCapability
     url: capabilities/okta-authenticator.yaml
-  - type: NaftikoCapability
+  - type: X-NaftikoCapability
     url: capabilities/okta-authorizationserver.yaml
-  - type: NaftikoCapability
+  - type: X-NaftikoCapability
     url: capabilities/okta-brand.yaml
-  - type: NaftikoCapability
+  - type: X-NaftikoCapability
     url: capabilities/okta-domain.yaml
-  - type: NaftikoCapability
+  - type: X-NaftikoCapability
     url: capabilities/okta-eventhook.yaml
-  - type: NaftikoCapability
+  - type: X-NaftikoCapability
     url: capabilities/okta-feature.yaml
-  - type: NaftikoCapability
+  - type: X-NaftikoCapability
     url: capabilities/okta-group.yaml
-  - type: NaftikoCapability
+  - type: X-NaftikoCapability
     url: capabilities/okta-groupschema.yaml
-  - type: NaftikoCapability
+  - type: X-NaftikoCapability
     url: capabilities/okta-identityprovider.yaml
-  - type: NaftikoCapability
+  - type: X-NaftikoCapability
     url: capabilities/okta-inlinehook.yaml
-  - type: NaftikoCapability
+  - type: X-NaftikoCapability
     url: capabilities/okta-linkedobject.yaml
-  - type: NaftikoCapability
+  - type: X-NaftikoCapability
     url: capabilities/okta-log.yaml
-  - type: NaftikoCapability
+  - type: X-NaftikoCapability
     url: capabilities/okta-networkzone.yaml
-  - type: NaftikoCapability
+  - type: X-NaftikoCapability
     url: capabilities/okta-org.yaml
-  - type: NaftikoCapability
+  - type: X-NaftikoCapability
     url: capabilities/okta-policy.yaml
-  - type: NaftikoCapability
+  - type: X-NaftikoCapability
     url: capabilities/okta-profilemapping.yaml
-  - type: NaftikoCapability
+  - type: X-NaftikoCapability
     url: capabilities/okta-session.yaml
-  - type: NaftikoCapability
+  - type: X-NaftikoCapability
     url: capabilities/okta-subscription.yaml
-  - type: NaftikoCapability
+  - type: X-NaftikoCapability
     url: capabilities/okta-template.yaml
-  - type: NaftikoCapability
+  - type: X-NaftikoCapability
     url: capabilities/okta-threatinsight.yaml
-  - type: NaftikoCapability
+  - type: X-NaftikoCapability
     url: capabilities/okta-trustedorigin.yaml
-  - type: NaftikoCapability
+  - type: X-NaftikoCapability
     url: capabilities/okta-user.yaml
-  - type: NaftikoCapability
+  - type: X-NaftikoCapability
     url: capabilities/okta-userfactor.yaml
-  - type: NaftikoCapability
+  - type: X-NaftikoCapability
     url: capabilities/okta-userschema.yaml
-  - type: NaftikoCapability
+  - type: X-NaftikoCapability
     url: capabilities/okta-usertype.yaml
   - type: GraphQL
     url: graphql/okta-graphql.md
@@ -181,222 +181,219 @@ apis:
 common:
   - type: PostmanWorkspace
     url: https://www.postman.com/kinlaneapi/okta/overview
-- type: ArazzoWorkflows
-  url: arazzo/
-  workflows:
-  - url: arazzo/okta-assign-admin-role-to-group-workflow.yml
+  - type: Arazzo
+    url: arazzo/okta-assign-admin-role-to-group-workflow.yml
     name: Okta Assign Admin Role to Group
-    summary: Assign an administrator role to a group and verify the assignment.
-  - url: arazzo/okta-assign-admin-role-to-user-workflow.yml
+  - type: Arazzo
+    url: arazzo/okta-assign-admin-role-to-user-workflow.yml
     name: Okta Assign Admin Role to User
-    summary: Assign an administrator role to a user and verify the assignment.
-  - url: arazzo/okta-assign-group-to-application-workflow.yml
+  - type: Arazzo
+    url: arazzo/okta-assign-group-to-application-workflow.yml
     name: Okta Assign Group to Application
-    summary: Find a group by name and assign it to an application for bulk access.
-  - url: arazzo/okta-create-and-activate-application-workflow.yml
+  - type: Arazzo
+    url: arazzo/okta-create-and-activate-application-workflow.yml
     name: Okta Create and Activate Application
-    summary: Create an application in INACTIVE state and then activate it.
-  - url: arazzo/okta-create-and-activate-authenticator-workflow.yml
+  - type: Arazzo
+    url: arazzo/okta-create-and-activate-authenticator-workflow.yml
     name: Okta Create and Activate Authenticator
-    summary: Add an authenticator to the org and activate it for enrollment.
-  - url: arazzo/okta-create-and-activate-group-rule-workflow.yml
+  - type: Arazzo
+    url: arazzo/okta-create-and-activate-group-rule-workflow.yml
     name: Okta Create and Activate Group Rule
-    summary: Create a dynamic group rule and activate it so it begins evaluating.
-  - url: arazzo/okta-create-and-refresh-session-workflow.yml
+  - type: Arazzo
+    url: arazzo/okta-create-and-refresh-session-workflow.yml
     name: Okta Create and Refresh Session
-    summary: Create a session from a session token and extend its lifetime.
-  - url: arazzo/okta-create-app-assign-user-and-activate-workflow.yml
+  - type: Arazzo
+    url: arazzo/okta-create-app-assign-user-and-activate-workflow.yml
     name: Okta Create Application, Assign User, and Activate
-    summary: Create an application, assign a user to it, then activate the application.
-  - url: arazzo/okta-create-group-and-add-members-workflow.yml
+  - type: Arazzo
+    url: arazzo/okta-create-group-and-add-members-workflow.yml
     name: Okta Create Group and Add Members
-    summary: Create a new Okta group and add two users to it.
-  - url: arazzo/okta-create-policy-with-rule-workflow.yml
+  - type: Arazzo
+    url: arazzo/okta-create-policy-with-rule-workflow.yml
     name: Okta Create Policy with Rule and Activate
-    summary: Create a policy, add a rule to it, and activate the policy.
-  - url: arazzo/okta-create-user-with-group-membership-workflow.yml
+  - type: Arazzo
+    url: arazzo/okta-create-user-with-group-membership-workflow.yml
     name: Okta Create User with Group Membership
-    summary: Create a user pre-seeded with groups, then verify their memberships.
-  - url: arazzo/okta-deactivate-and-delete-user-workflow.yml
+  - type: Arazzo
+    url: arazzo/okta-deactivate-and-delete-user-workflow.yml
     name: Okta Deactivate and Delete User
-    summary: Deactivate a user and then permanently delete the deprovisioned account.
-  - url: arazzo/okta-enroll-and-activate-factor-workflow.yml
+  - type: Arazzo
+    url: arazzo/okta-enroll-and-activate-factor-workflow.yml
     name: Okta Enroll and Activate User Factor
-    summary: Enroll an MFA factor for a user and activate it with a passcode.
-  - url: arazzo/okta-find-user-and-assign-app-workflow.yml
+  - type: Arazzo
+    url: arazzo/okta-find-user-and-assign-app-workflow.yml
     name: Okta Find User and Assign Application
-    summary: Look up a user by login and assign them to an application if found.
-  - url: arazzo/okta-find-user-and-suspend-workflow.yml
+  - type: Arazzo
+    url: arazzo/okta-find-user-and-suspend-workflow.yml
     name: Okta Find User and Suspend
-    summary: Look up a user by login and suspend them if an active match exists.
-  - url: arazzo/okta-offboard-user-clear-sessions-workflow.yml
+  - type: Arazzo
+    url: arazzo/okta-offboard-user-clear-sessions-workflow.yml
     name: Okta Offboard User and Clear Sessions
-    summary: Suspend a user and clear all of their active sessions.
-  - url: arazzo/okta-onboard-user-to-group-and-app-workflow.yml
+  - type: Arazzo
+    url: arazzo/okta-onboard-user-to-group-and-app-workflow.yml
     name: Okta Onboard User to Group and Application
-    summary: Create a user, add them to a group, then assign them to an application.
-  - url: arazzo/okta-provision-admin-user-workflow.yml
+  - type: Arazzo
+    url: arazzo/okta-provision-admin-user-workflow.yml
     name: Okta Provision Admin User
-    summary: Create a user and immediately grant them an administrator role.
-  - url: arazzo/okta-reactivate-suspended-user-workflow.yml
+  - type: Arazzo
+    url: arazzo/okta-reactivate-suspended-user-workflow.yml
     name: Okta Restore Suspended User
-    summary: Unsuspend a user and verify they are returned to an active state.
-  - url: arazzo/okta-reset-and-reenroll-factor-workflow.yml
+  - type: Arazzo
+    url: arazzo/okta-reset-and-reenroll-factor-workflow.yml
     name: Okta Reset and Re-enroll User Factor
-    summary: Reset all of a user's MFA factors and enroll a fresh factor.
-  - url: arazzo/okta-update-group-rule-expression-workflow.yml
+  - type: Arazzo
+    url: arazzo/okta-update-group-rule-expression-workflow.yml
     name: Okta Update Group Rule Expression
-    summary: Deactivate a group rule, update its expression, then reactivate it.
-- type: LinkedIn
-  url: https://www.linkedin.com/company/okta-inc-
-- type: Website
-  url: https://www.okta.com/
-- type: Portal
-  url: https://developer.okta.com/
-- type: Documentation
-  url: https://developer.okta.com/docs/reference/
-- type: Authentication
-  url: https://developer.okta.com/docs/reference/api/authn/
-- type: GitHubOrganization
-  url: https://github.com/okta
-- type: StatusPage
-  url: https://status.okta.com/
-- type: Support
-  url: https://support.okta.com/
-- type: Concepts
-  url: https://developer.okta.com/docs/concepts/
-- type: Guides
-  url: https://developer.okta.com/docs/guides/
-- type: SDKs
-  url: https://developer.okta.com/code/
-- type: ChangeLog
-  url: https://developer.okta.com/docs/release-notes/
-- type: Login
-  url: https://developer.okta.com/login/
-- type: SignUp
-  url: https://developer.okta.com/signup/
-- type: Blog
-  url: https://developer.okta.com/blog/
-- type: Plans
-  url: https://www.okta.com/pricing/
-- type: Forum
-  url: https://devforum.okta.com/
-- type: TermsOfService
-  url: https://developer.okta.com/terms/
-- type: PrivacyPolicy
-  url: https://www.okta.com/privacy-policy/
-- type: Features
-  data:
-  - 'Workforce Identity Starter at $6/user/mo: SSO + MFA + Universal Directory + 5 Workflows ($1,500/yr minimum)'
-  - 'Core Essentials at $14/user/mo: Adaptive MFA, Privileged Access, Lifecycle Mgmt, Access Governance'
-  - 'Essentials at $17/user/mo: All Core Essentials + 50 Workflows'
-  - 'Professional: Device Access, ISPM, Identity Threat Protection, Sandbox, Unlimited Workflows (custom pricing)'
-  - 'Enterprise: API Access Management, Access Gateway, M2M Tokens (custom pricing)'
-  - 'Customer Identity (Auth0) Enterprise Base: $3K/mo base + B2C / B2B suites'
-  - Default rate limits 600 req/min on most endpoints
-  - OAuth /token at 1,000 req/min
-  - System Log endpoint capped at 120 req/min
-  - 'Protocols: OIDC, SAML, WS-Fed, SCIM'
-  - Universal Directory with custom attributes
-  - Workflows for no-code automation (5 / 50 / unlimited by SKU)
-  - Adaptive MFA with risk-based policies
-  - Identity Threat Protection (Professional+)
-  - Identity Security Posture Management (Professional+)
-  - API Access Management (Enterprise) — OAuth as a Service
-  - 'Okta for AI Agents: agent discovery, registration, ownership, least-privilege, revocation'
-  - 'Cross-App Access (XAA): OAuth ID-JAG draft for agent-to-app authorization'
-  - 'Okta MCP Server: Python, LLM-facing admin CRUD with confirmation gates'
-  sources:
-  - https://www.okta.com/pricing/
-  - https://www.okta.com/
-  - https://xaa.dev/
-  - https://github.com/okta/okta-mcp-server
-  updated: '2026-05-22'
-- type: Integrations
-  url: https://www.okta.com/integrations/
-- type: OpenIntegrationNetwork
-  url: https://www.okta.com/integrations/
-- name: Okta MCP Server
-  url: https://github.com/okta/okta-mcp-server
-  type: MCPServer
-- name: Okta CLI
-  url: https://github.com/okta/okta-cli
-  type: CLI
-- name: Okta CLI Client (Go)
-  url: https://github.com/okta/okta-cli-client
-  type: CLI
-- name: Terraform Provider for Okta
-  url: https://github.com/okta/terraform-provider-okta
-  type: Terraform
-- name: Terraform Provider for Okta PAM
-  url: https://github.com/okta/terraform-provider-oktapam
-  type: Terraform
-- name: Okta Management OpenAPI Spec
-  url: https://github.com/okta/okta-management-openapi-spec
-  type: OpenAPISource
-- name: Java SDK
-  url: https://github.com/okta/okta-sdk-java
-  type: SDK
-- name: .NET SDK
-  url: https://github.com/okta/okta-sdk-dotnet
-  type: SDK
-- name: Go SDK
-  url: https://github.com/okta/okta-sdk-golang
-  type: SDK
-- name: Python SDK
-  url: https://github.com/okta/okta-sdk-python
-  type: SDK
-- name: Node.js SDK
-  url: https://github.com/okta/okta-sdk-nodejs
-  type: SDK
-- name: JavaScript Auth SDK
-  url: https://github.com/okta/okta-auth-js
-  type: SDK
-- name: React SDK
-  url: https://github.com/okta/okta-react
-  type: SDK
-- name: Angular SDK
-  url: https://github.com/okta/okta-angular
-  type: SDK
-- name: Vue SDK
-  url: https://github.com/okta/okta-vue
-  type: SDK
-- name: React Native SDK
-  url: https://github.com/okta/okta-react-native
-  type: SDK
-- name: Swift Mobile SDK
-  url: https://github.com/okta/okta-mobile-swift
-  type: SDK
-- name: Kotlin Mobile SDK
-  url: https://github.com/okta/okta-mobile-kotlin
-  type: SDK
-- name: Spring Boot Starter
-  url: https://github.com/okta/okta-spring-boot
-  type: SDK
-- name: Okta Sign-In Widget
-  url: https://github.com/okta/okta-signin-widget
-  type: SDK
-- name: OIDC Middleware (Node)
-  url: https://github.com/okta/okta-oidc-middleware
-  type: SDK
-- name: JWT Verifier (Java)
-  url: https://github.com/okta/okta-jwt-verifier-java
-  type: SDK
-- name: JWT Verifier (Python)
-  url: https://github.com/okta/okta-jwt-verifier-python
-  type: SDK
-- name: Odyssey Design System
-  url: https://github.com/okta/odyssey
-  type: DesignSystem
-- name: Workflows Templates
-  url: https://github.com/okta/workflows-templates
-  type: Samples
-- name: Customer Detections
-  url: https://github.com/okta/customer-detections
-  type: Samples
-- name: Cross-App Access Sandbox
-  url: https://xaa.dev/
-  type: Sandbox
+  - type: LinkedIn
+    url: https://www.linkedin.com/company/okta-inc-
+  - type: Website
+    url: https://www.okta.com/
+  - type: Portal
+    url: https://developer.okta.com/
+  - type: Documentation
+    url: https://developer.okta.com/docs/reference/
+  - type: Authentication
+    url: https://developer.okta.com/docs/reference/api/authn/
+  - type: GitHubOrganization
+    url: https://github.com/okta
+  - type: StatusPage
+    url: https://status.okta.com/
+  - type: Support
+    url: https://support.okta.com/
+  - type: Concepts
+    url: https://developer.okta.com/docs/concepts/
+  - type: Guides
+    url: https://developer.okta.com/docs/guides/
+  - type: SDKs
+    url: https://developer.okta.com/code/
+  - type: ChangeLog
+    url: https://developer.okta.com/docs/release-notes/
+  - type: Login
+    url: https://developer.okta.com/login/
+  - type: Signup
+    url: https://developer.okta.com/signup/
+  - type: Blog
+    url: https://developer.okta.com/blog/
+  - type: Plans
+    url: https://www.okta.com/pricing/
+  - type: Forums
+    url: https://devforum.okta.com/
+  - type: TermsOfService
+    url: https://developer.okta.com/terms/
+  - type: PrivacyPolicy
+    url: https://www.okta.com/privacy-policy/
+  - type: Features
+    data:
+    - 'Workforce Identity Starter at $6/user/mo: SSO + MFA + Universal Directory + 5 Workflows ($1,500/yr minimum)'
+    - 'Core Essentials at $14/user/mo: Adaptive MFA, Privileged Access, Lifecycle Mgmt, Access Governance'
+    - 'Essentials at $17/user/mo: All Core Essentials + 50 Workflows'
+    - 'Professional: Device Access, ISPM, Identity Threat Protection, Sandbox, Unlimited Workflows (custom pricing)'
+    - 'Enterprise: API Access Management, Access Gateway, M2M Tokens (custom pricing)'
+    - 'Customer Identity (Auth0) Enterprise Base: $3K/mo base + B2C / B2B suites'
+    - Default rate limits 600 req/min on most endpoints
+    - OAuth /token at 1,000 req/min
+    - System Log endpoint capped at 120 req/min
+    - 'Protocols: OIDC, SAML, WS-Fed, SCIM'
+    - Universal Directory with custom attributes
+    - Workflows for no-code automation (5 / 50 / unlimited by SKU)
+    - Adaptive MFA with risk-based policies
+    - Identity Threat Protection (Professional+)
+    - Identity Security Posture Management (Professional+)
+    - API Access Management (Enterprise) — OAuth as a Service
+    - 'Okta for AI Agents: agent discovery, registration, ownership, least-privilege, revocation'
+    - 'Cross-App Access (XAA): OAuth ID-JAG draft for agent-to-app authorization'
+    - 'Okta MCP Server: Python, LLM-facing admin CRUD with confirmation gates'
+    sources:
+    - https://www.okta.com/pricing/
+    - https://www.okta.com/
+    - https://xaa.dev/
+    - https://github.com/okta/okta-mcp-server
+    updated: '2026-05-22'
+  - type: Integrations
+    url: https://www.okta.com/integrations/
+  - type: OpenIntegrationNetwork
+    url: https://www.okta.com/integrations/
+  - name: Okta MCP Server
+    url: https://github.com/okta/okta-mcp-server
+    type: MCPServer
+  - name: Okta CLI
+    url: https://github.com/okta/okta-cli
+    type: CLI
+  - name: Okta CLI Client (Go)
+    url: https://github.com/okta/okta-cli-client
+    type: CLI
+  - name: Terraform Provider for Okta
+    url: https://github.com/okta/terraform-provider-okta
+    type: Terraform
+  - name: Terraform Provider for Okta PAM
+    url: https://github.com/okta/terraform-provider-oktapam
+    type: Terraform
+  - name: Okta Management OpenAPI Spec
+    url: https://github.com/okta/okta-management-openapi-spec
+    type: OpenAPISource
+  - name: Java SDK
+    url: https://github.com/okta/okta-sdk-java
+    type: SDKs
+  - name: .NET SDK
+    url: https://github.com/okta/okta-sdk-dotnet
+    type: SDKs
+  - name: Go SDK
+    url: https://github.com/okta/okta-sdk-golang
+    type: SDKs
+  - name: Python SDK
+    url: https://github.com/okta/okta-sdk-python
+    type: SDKs
+  - name: Node.js SDK
+    url: https://github.com/okta/okta-sdk-nodejs
+    type: SDKs
+  - name: JavaScript Auth SDK
+    url: https://github.com/okta/okta-auth-js
+    type: SDKs
+  - name: React SDK
+    url: https://github.com/okta/okta-react
+    type: SDKs
+  - name: Angular SDK
+    url: https://github.com/okta/okta-angular
+    type: SDKs
+  - name: Vue SDK
+    url: https://github.com/okta/okta-vue
+    type: SDKs
+  - name: React Native SDK
+    url: https://github.com/okta/okta-react-native
+    type: SDKs
+  - name: Swift Mobile SDK
+    url: https://github.com/okta/okta-mobile-swift
+    type: SDKs
+  - name: Kotlin Mobile SDK
+    url: https://github.com/okta/okta-mobile-kotlin
+    type: SDKs
+  - name: Spring Boot Starter
+    url: https://github.com/okta/okta-spring-boot
+    type: SDKs
+  - name: Okta Sign-In Widget
+    url: https://github.com/okta/okta-signin-widget
+    type: SDKs
+  - name: OIDC Middleware (Node)
+    url: https://github.com/okta/okta-oidc-middleware
+    type: SDKs
+  - name: JWT Verifier (Java)
+    url: https://github.com/okta/okta-jwt-verifier-java
+    type: SDKs
+  - name: JWT Verifier (Python)
+    url: https://github.com/okta/okta-jwt-verifier-python
+    type: SDKs
+  - name: Odyssey Design System
+    url: https://github.com/okta/odyssey
+    type: DesignSystem
+  - name: Workflows Templates
+    url: https://github.com/okta/workflows-templates
+    type: Samples
+  - name: Customer Detections
+    url: https://github.com/okta/customer-detections
+    type: Samples
+  - name: Cross-App Access Sandbox
+    url: https://xaa.dev/
+    type: Sandbox
 integrations:
 - name: Auth0 (Customer Identity sibling)
   url: https://auth0.com/
