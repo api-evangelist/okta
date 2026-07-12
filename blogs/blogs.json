@@ -5,7 +5,7 @@
       "source": "https://developer.okta.com/feed.xml",
       "feed_url": "https://developer.okta.com/feed.xml",
       "title": "",
-      "saved": 1,
+      "saved": 0,
       "method": "feed"
     },
     {
@@ -16,17 +16,17 @@
       "method": "none"
     },
     {
-      "source": "https://developer.okta.com/blog/2026/01/20/introducing-xaadev-a-playground-for-cross-app-access",
-      "error": "HTTPError"
-    },
-    {
       "source": "https://developer.okta.com/signup/",
       "feed_url": "https://developer.okta.com/signup/",
       "title": "",
       "saved": 0,
       "method": "none"
+    },
+    {
+      "source": "https://developer.okta.com/blog/2026/01/20/introducing-xaadev-a-playground-for-cross-app-access",
+      "error": "HTTPError"
     }
   ],
-  "post_count": 15,
-  "fetched": "2026-06-27T12:03:07Z"
+  "post_count": 23,
+  "fetched": "2026-07-11T11:50:51Z"
 }
