@@ -1,0 +1,16 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/okta-openapi-original.yml
+summary:
+  types:
+  - apiKey
+  api_key_in:
+  - header
+schemes:
+- name: api_token
+  type: apiKey
+  in: header
+  parameter: Authorization
+  description: SSWS {API Token}
+  sources:
+  - openapi/okta-openapi-original.yml

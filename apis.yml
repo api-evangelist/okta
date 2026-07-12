@@ -179,6 +179,14 @@ apis:
   - type: Pricing
     url: https://www.okta.com/pricing/
 common:
+  - type: TrustCenter
+    url: security/okta-trust-center.yml
+  - type: VulnerabilityDisclosure
+    url: security/okta-vulnerability-disclosure.yml
+  - type: DomainSecurity
+    url: security/okta-domain-security.yml
+  - type: Authentication
+    url: authentication/okta-authentication.yml
   - type: PostmanWorkspace
     url: https://www.postman.com/kinlaneapi/okta/overview
   - type: Arazzo
