@@ -179,6 +179,8 @@ apis:
   - type: Pricing
     url: https://www.okta.com/pricing/
 common:
+  - type: AgenticAccess
+    url: agentic-access/okta-agentic-access.yml
   - type: TrustCenter
     url: security/okta-trust-center.yml
   - type: VulnerabilityDisclosure
