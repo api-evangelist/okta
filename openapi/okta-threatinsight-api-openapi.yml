@@ -1,0 +1,99 @@
+openapi: 3.0.1
+info:
+  title: Okta Application ThreatInsight API
+  description: Allows customers to easily access the Okta API
+  termsOfService: https://developer.okta.com/terms/
+  contact:
+    name: Okta Developer Team
+    url: https://developer.okta.com/
+    email: devex-public@okta.com
+  license:
+    name: Apache-2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0.html
+  version: 2.16.0
+servers:
+- url: https://your-subdomain.okta.com/
+tags:
+- name: ThreatInsight
+paths:
+  /api/v1/threats/configuration:
+    get:
+      tags:
+      - ThreatInsight
+      description: Gets current ThreatInsight configuration
+      operationId: getCurrentConfiguration
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ThreatInsightConfiguration'
+      security:
+      - api_token: []
+    post:
+      tags:
+      - ThreatInsight
+      description: Updates ThreatInsight configuration
+      operationId: updateConfiguration
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ThreatInsightConfiguration'
+        required: true
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ThreatInsightConfiguration'
+      security:
+      - api_token: []
+      x-codegen-request-body-name: ThreatInsightConfiguration
+components:
+  schemas:
+    ThreatInsightConfiguration:
+      type: object
+      properties:
+        _links:
+          type: object
+          additionalProperties:
+            type: object
+            properties: {}
+          readOnly: true
+        action:
+          type: string
+        created:
+          type: string
+          format: date-time
+          readOnly: true
+        excludeZones:
+          type: array
+          items:
+            type: string
+        lastUpdated:
+          type: string
+          format: date-time
+          readOnly: true
+      x-okta-crud:
+      - alias: read
+        arguments: []
+        operationId: getCurrentConfiguration
+      - alias: update
+        arguments:
+        - dest: threatInsightConfiguration
+          self: true
+        operationId: updateConfiguration
+      x-okta-tags:
+      - ThreatInsight
+  securitySchemes:
+    api_token:
+      type: apiKey
+      description: SSWS {API Token}
+      name: Authorization
+      in: header
+externalDocs:
+  description: Find more info here
+  url: https://developer.okta.com/docs/api/getting_started/design_principles.html

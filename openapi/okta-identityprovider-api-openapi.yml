@@ -1,0 +1,1349 @@
+openapi: 3.0.1
+info:
+  title: Okta Application IdentityProvider API
+  description: Allows customers to easily access the Okta API
+  termsOfService: https://developer.okta.com/terms/
+  contact:
+    name: Okta Developer Team
+    url: https://developer.okta.com/
+    email: devex-public@okta.com
+  license:
+    name: Apache-2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0.html
+  version: 2.16.0
+servers:
+- url: https://your-subdomain.okta.com/
+tags:
+- name: IdentityProvider
+paths:
+  /api/v1/idps:
+    get:
+      tags:
+      - IdentityProvider
+      summary: Okta List Identity Providers
+      description: Enumerates IdPs in your organization with pagination. A subset of IdPs can be returned that match a supported filter expression or query.
+      operationId: listIdentityProviders
+      parameters:
+      - name: q
+        in: query
+        description: Searches the name property of IdPs for matching value
+        schema:
+          type: string
+      - name: after
+        in: query
+        description: Specifies the pagination cursor for the next page of IdPs
+        schema:
+          type: string
+      - name: limit
+        in: query
+        description: Specifies the number of IdP results in a page
+        schema:
+          type: integer
+          format: int32
+          default: 20
+      - name: type
+        in: query
+        description: Filters IdPs by type
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/IdentityProvider'
+      security:
+      - api_token: []
+    post:
+      tags:
+      - IdentityProvider
+      summary: Okta Add Identity Provider
+      description: Adds a new IdP to your organization.
+      operationId: createIdentityProvider
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/IdentityProvider'
+        required: true
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/IdentityProvider'
+      security:
+      - api_token: []
+      x-codegen-request-body-name: identityProvider
+  /api/v1/idps/credentials/keys:
+    get:
+      tags:
+      - IdentityProvider
+      summary: Okta List Keys
+      description: Enumerates IdP key credentials.
+      operationId: listIdentityProviderKeys
+      parameters:
+      - name: after
+        in: query
+        description: Specifies the pagination cursor for the next page of keys
+        schema:
+          type: string
+      - name: limit
+        in: query
+        description: Specifies the number of key results in a page
+        schema:
+          type: integer
+          format: int32
+          default: 20
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/JsonWebKey'
+      security:
+      - api_token: []
+    post:
+      tags:
+      - IdentityProvider
+      summary: Okta Add X.509 Certificate Public Key
+      description: Adds a new X.509 certificate credential to the IdP key store.
+      operationId: createIdentityProviderKey
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/JsonWebKey'
+        required: true
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JsonWebKey'
+      security:
+      - api_token: []
+      x-codegen-request-body-name: jsonWebKey
+  /api/v1/idps/credentials/keys/{keyId}:
+    get:
+      tags:
+      - IdentityProvider
+      summary: Okta Get Key
+      description: Gets a specific IdP Key Credential by `kid`
+      operationId: getIdentityProviderKey
+      parameters:
+      - name: keyId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JsonWebKey'
+      security:
+      - api_token: []
+    delete:
+      tags:
+      - IdentityProvider
+      summary: Okta Delete Key
+      description: Deletes a specific IdP Key Credential by `kid` if it is not currently being used by an Active or Inactive IdP.
+      operationId: deleteIdentityProviderKey
+      parameters:
+      - name: keyId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          description: No Content
+          content: {}
+      security:
+      - api_token: []
+  /api/v1/idps/{idpId}:
+    get:
+      tags:
+      - IdentityProvider
+      summary: Okta Get Identity Provider
+      description: Fetches an IdP by `id`.
+      operationId: getIdentityProvider
+      parameters:
+      - name: idpId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/IdentityProvider'
+      security:
+      - api_token: []
+    put:
+      tags:
+      - IdentityProvider
+      summary: Okta Update Identity Provider
+      description: Updates the configuration for an IdP.
+      operationId: updateIdentityProvider
+      parameters:
+      - name: idpId
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/IdentityProvider'
+        required: true
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/IdentityProvider'
+      security:
+      - api_token: []
+      x-codegen-request-body-name: identityProvider
+    delete:
+      tags:
+      - IdentityProvider
+      summary: Okta Delete Identity Provider
+      description: Removes an IdP from your organization.
+      operationId: deleteIdentityProvider
+      parameters:
+      - name: idpId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          description: No Content
+          content: {}
+      security:
+      - api_token: []
+  /api/v1/idps/{idpId}/credentials/csrs:
+    get:
+      tags:
+      - IdentityProvider
+      summary: Okta List Certificate Signing Requests for IdP
+      description: Enumerates Certificate Signing Requests for an IdP
+      operationId: listCsrsForIdentityProvider
+      parameters:
+      - name: idpId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Csr'
+      security:
+      - api_token: []
+    post:
+      tags:
+      - IdentityProvider
+      summary: Okta Generate Certificate Signing Request for IdP
+      description: Generates a new key pair and returns a Certificate Signing Request for it.
+      operationId: generateCsrForIdentityProvider
+      parameters:
+      - name: idpId
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CsrMetadata'
+        required: true
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Csr'
+      security:
+      - api_token: []
+      x-codegen-request-body-name: metadata
+  /api/v1/idps/{idpId}/credentials/csrs/{csrId}:
+    get:
+      tags:
+      - IdentityProvider
+      description: Gets a specific Certificate Signing Request model by id
+      operationId: getCsrForIdentityProvider
+      parameters:
+      - name: idpId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: csrId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Csr'
+      security:
+      - api_token: []
+    delete:
+      tags:
+      - IdentityProvider
+      description: Revoke a Certificate Signing Request and delete the key pair from the IdP
+      operationId: revokeCsrForIdentityProvider
+      parameters:
+      - name: idpId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: csrId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          description: No Content
+          content: {}
+      security:
+      - api_token: []
+  /api/v1/idps/{idpId}/credentials/csrs/{csrId}/lifecycle/publish:
+    post:
+      tags:
+      - IdentityProvider
+      description: Update the Certificate Signing Request with a signed X.509 certificate and add it into the signing key credentials for the IdP.
+      parameters:
+      - name: idpId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: csrId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JsonWebKey'
+      security:
+      - api_token: []
+      x-okta-multi-operation:
+      - consumes:
+        - application/x-x509-ca-cert
+        encoding: base64
+        operationId: publishCerCertForIdentityProvider
+        parameters:
+        - in: body
+          name: certificate
+          required: true
+          type: string
+      - consumes:
+        - application/x-x509-ca-cert
+        operationId: publishBinaryCerCertForIdentityProvider
+        parameters:
+        - format: binary
+          in: body
+          name: certificate
+          required: true
+          type: string
+      - consumes:
+        - application/pkix-cert
+        encoding: base64
+        operationId: publishDerCertForIdentityProvider
+        parameters:
+        - in: body
+          name: certificate
+          required: true
+          type: string
+      - consumes:
+        - application/pkix-cert
+        operationId: publishBinaryDerCertForIdentityProvider
+        parameters:
+        - format: binary
+          in: body
+          name: certificate
+          required: true
+          type: string
+      - consumes:
+        - application/x-pem-file
+        operationId: publishBinaryPemCertForIdentityProvider
+        parameters:
+        - format: binary
+          in: body
+          name: certificate
+          required: true
+          type: string
+  /api/v1/idps/{idpId}/credentials/keys:
+    get:
+      tags:
+      - IdentityProvider
+      summary: Okta List Signing Key Credentials for IdP
+      description: Enumerates signing key credentials for an IdP
+      operationId: listIdentityProviderSigningKeys
+      parameters:
+      - name: idpId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/JsonWebKey'
+      security:
+      - api_token: []
+  /api/v1/idps/{idpId}/credentials/keys/generate:
+    post:
+      tags:
+      - IdentityProvider
+      summary: Okta Generate New IdP Signing Key Credential
+      description: Generates a new X.509 certificate for an IdP signing key credential to be used for signing assertions sent to the IdP
+      operationId: generateIdentityProviderSigningKey
+      parameters:
+      - name: idpId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: validityYears
+        in: query
+        description: expiry of the IdP Key Credential
+        required: true
+        schema:
+          type: integer
+          format: int32
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JsonWebKey'
+      security:
+      - api_token: []
+  /api/v1/idps/{idpId}/credentials/keys/{keyId}:
+    get:
+      tags:
+      - IdentityProvider
+      summary: Okta Get Signing Key Credential for IdP
+      description: Gets a specific IdP Key Credential by `kid`
+      operationId: getIdentityProviderSigningKey
+      parameters:
+      - name: idpId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: keyId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JsonWebKey'
+      security:
+      - api_token: []
+  /api/v1/idps/{idpId}/credentials/keys/{keyId}/clone:
+    post:
+      tags:
+      - IdentityProvider
+      summary: Okta Clone Signing Key Credential for IdP
+      description: Clones a X.509 certificate for an IdP signing key credential from a source IdP to target IdP
+      operationId: cloneIdentityProviderKey
+      parameters:
+      - name: idpId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: keyId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: targetIdpId
+        in: query
+        required: true
+        schema:
+          type: string
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JsonWebKey'
+      security:
+      - api_token: []
+  /api/v1/idps/{idpId}/lifecycle/activate:
+    post:
+      tags:
+      - IdentityProvider
+      summary: Okta Activate Identity Provider
+      description: Activates an inactive IdP.
+      operationId: activateIdentityProvider
+      parameters:
+      - name: idpId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/IdentityProvider'
+      security:
+      - api_token: []
+  /api/v1/idps/{idpId}/lifecycle/deactivate:
+    post:
+      tags:
+      - IdentityProvider
+      summary: Okta Deactivate Identity Provider
+      description: Deactivates an active IdP.
+      operationId: deactivateIdentityProvider
+      parameters:
+      - name: idpId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/IdentityProvider'
+      security:
+      - api_token: []
+  /api/v1/idps/{idpId}/users:
+    get:
+      tags:
+      - IdentityProvider
+      summary: Okta Find Users
+      description: Find all the users linked to an identity provider
+      operationId: listIdentityProviderApplicationUsers
+      parameters:
+      - name: idpId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/IdentityProviderApplicationUser'
+      security:
+      - api_token: []
+  /api/v1/idps/{idpId}/users/{userId}:
+    get:
+      tags:
+      - IdentityProvider
+      description: Fetches a linked IdP user by ID
+      operationId: getIdentityProviderApplicationUser
+      parameters:
+      - name: idpId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: userId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/IdentityProviderApplicationUser'
+      security:
+      - api_token: []
+    post:
+      tags:
+      - IdentityProvider
+      summary: Okta Link a user to a Social IdP without a transaction
+      description: Links an Okta user to an existing Social Identity Provider. This does not support the SAML2 Identity Provider Type
+      operationId: linkUserToIdentityProvider
+      parameters:
+      - name: idpId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: userId
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserIdentityProviderLinkRequest'
+        required: true
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/IdentityProviderApplicationUser'
+      security:
+      - api_token: []
+      x-codegen-request-body-name: userIdentityProviderLinkRequest
+    delete:
+      tags:
+      - IdentityProvider
+      summary: Okta Unlink User from IdP
+      description: Removes the link between the Okta user and the IdP user.
+      operationId: unlinkUserFromIdentityProvider
+      parameters:
+      - name: idpId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: userId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          description: No Content
+          content: {}
+      security:
+      - api_token: []
+  /api/v1/idps/{idpId}/users/{userId}/credentials/tokens:
+    get:
+      tags:
+      - IdentityProvider
+      summary: Okta Social Authentication Token Operation
+      description: Fetches the tokens minted by the Social Authentication Provider when the user authenticates with Okta via Social Auth.
+      operationId: listSocialAuthTokens
+      parameters:
+      - name: idpId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: userId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/SocialAuthToken'
+      security:
+      - api_token: []
+components:
+  schemas:
+    ProtocolEndpoint:
+      type: object
+      properties:
+        binding:
+          type: string
+          enum:
+          - HTTP-POST
+          - HTTP-REDIRECT
+        destination:
+          type: string
+        type:
+          type: string
+          enum:
+          - INSTANCE
+          - ORG
+        url:
+          type: string
+      x-okta-tags:
+      - IdentityProvider
+    SocialAuthToken:
+      type: object
+      properties:
+        expiresAt:
+          type: string
+          format: date-time
+          readOnly: true
+        id:
+          type: string
+          readOnly: true
+        scopes:
+          type: array
+          items:
+            type: string
+        token:
+          type: string
+        tokenAuthScheme:
+          type: string
+        tokenType:
+          type: string
+      x-okta-tags:
+      - IdentityProvider
+    CsrMetadataSubject:
+      type: object
+      properties:
+        commonName:
+          type: string
+        countryName:
+          type: string
+        localityName:
+          type: string
+        organizationName:
+          type: string
+        organizationalUnitName:
+          type: string
+        stateOrProvinceName:
+          type: string
+      x-okta-tags:
+      - Application
+    ProvisioningDeprovisionedCondition:
+      type: object
+      properties:
+        action:
+          type: string
+          enum:
+          - NONE
+          - REACTIVATE
+      x-okta-tags:
+      - IdentityProvider
+    Csr:
+      type: object
+      properties:
+        created:
+          type: string
+          format: date-time
+          readOnly: true
+        csr:
+          type: string
+          readOnly: true
+        id:
+          type: string
+          readOnly: true
+        kty:
+          type: string
+          readOnly: true
+      x-okta-tags:
+      - Application
+    ProtocolAlgorithmTypeSignature:
+      type: object
+      properties:
+        algorithm:
+          type: string
+        scope:
+          type: string
+          enum:
+          - RESPONSE
+          - TOKEN
+          - ANY
+          - REQUEST
+          - NONE
+      x-okta-tags:
+      - IdentityProvider
+    ProtocolEndpoints:
+      type: object
+      properties:
+        acs:
+          $ref: '#/components/schemas/ProtocolEndpoint'
+        authorization:
+          $ref: '#/components/schemas/ProtocolEndpoint'
+        jwks:
+          $ref: '#/components/schemas/ProtocolEndpoint'
+        metadata:
+          $ref: '#/components/schemas/ProtocolEndpoint'
+        slo:
+          $ref: '#/components/schemas/ProtocolEndpoint'
+        sso:
+          $ref: '#/components/schemas/ProtocolEndpoint'
+        token:
+          $ref: '#/components/schemas/ProtocolEndpoint'
+        userInfo:
+          $ref: '#/components/schemas/ProtocolEndpoint'
+      x-okta-tags:
+      - IdentityProvider
+    ProvisioningConditions:
+      type: object
+      properties:
+        deprovisioned:
+          $ref: '#/components/schemas/ProvisioningDeprovisionedCondition'
+        suspended:
+          $ref: '#/components/schemas/ProvisioningSuspendedCondition'
+      x-okta-tags:
+      - IdentityProvider
+    Provisioning:
+      type: object
+      properties:
+        action:
+          type: string
+          enum:
+          - AUTO
+          - CALLOUT
+          - DISABLED
+        conditions:
+          $ref: '#/components/schemas/ProvisioningConditions'
+        groups:
+          $ref: '#/components/schemas/ProvisioningGroups'
+        profileMaster:
+          type: boolean
+      x-okta-tags:
+      - IdentityProvider
+    ProtocolAlgorithmType:
+      type: object
+      properties:
+        signature:
+          $ref: '#/components/schemas/ProtocolAlgorithmTypeSignature'
+      x-okta-tags:
+      - IdentityProvider
+    IdentityProviderCredentialsSigning:
+      type: object
+      properties:
+        kid:
+          type: string
+        privateKey:
+          type: string
+        teamId:
+          type: string
+      x-okta-tags:
+      - IdentityProvider
+    PolicySubject:
+      type: object
+      properties:
+        filter:
+          type: string
+        format:
+          type: array
+          items:
+            type: string
+        matchAttribute:
+          type: string
+        matchType:
+          $ref: '#/components/schemas/PolicySubjectMatchType'
+        userNameTemplate:
+          $ref: '#/components/schemas/PolicyUserNameTemplate'
+      x-okta-tags:
+      - Policy
+    PolicyAccountLink:
+      type: object
+      properties:
+        action:
+          type: string
+          enum:
+          - AUTO
+          - DISABLED
+        filter:
+          $ref: '#/components/schemas/PolicyAccountLinkFilter'
+      x-okta-tags:
+      - Policy
+    UserIdentityProviderLinkRequest:
+      type: object
+      properties:
+        externalId:
+          type: string
+      x-okta-tags:
+      - Policy
+    ProtocolRelayStateFormat:
+      type: string
+      enum:
+      - OPAQUE
+      - FROM_URL
+      x-okta-tags:
+      - IdentityProvider
+    CsrMetadataSubjectAltNames:
+      type: object
+      properties:
+        dnsNames:
+          type: array
+          items:
+            type: string
+      x-okta-tags:
+      - Application
+    IdentityProviderCredentialsClient:
+      type: object
+      properties:
+        client_id:
+          type: string
+        client_secret:
+          type: string
+      x-okta-tags:
+      - IdentityProvider
+    ProtocolSettings:
+      type: object
+      properties:
+        nameFormat:
+          type: string
+      x-okta-tags:
+      - IdentityProvider
+    ProvisioningSuspendedCondition:
+      type: object
+      properties:
+        action:
+          type: string
+          enum:
+          - NONE
+          - UNSUSPEND
+      x-okta-tags:
+      - IdentityProvider
+    CsrMetadata:
+      type: object
+      properties:
+        subject:
+          $ref: '#/components/schemas/CsrMetadataSubject'
+        subjectAltNames:
+          $ref: '#/components/schemas/CsrMetadataSubjectAltNames'
+      x-okta-tags:
+      - Application
+    IdentityProviderCredentials:
+      type: object
+      properties:
+        client:
+          $ref: '#/components/schemas/IdentityProviderCredentialsClient'
+        signing:
+          $ref: '#/components/schemas/IdentityProviderCredentialsSigning'
+        trust:
+          $ref: '#/components/schemas/IdentityProviderCredentialsTrust'
+      x-okta-tags:
+      - IdentityProvider
+    IdentityProvider:
+      type: object
+      properties:
+        _links:
+          type: object
+          additionalProperties:
+            type: object
+            properties: {}
+          readOnly: true
+        created:
+          type: string
+          format: date-time
+          readOnly: true
+        id:
+          type: string
+          readOnly: true
+        issuerMode:
+          type: string
+          enum:
+          - ORG_URL
+          - CUSTOM_URL
+          - DYNAMIC
+        lastUpdated:
+          type: string
+          format: date-time
+          readOnly: true
+        name:
+          type: string
+        policy:
+          $ref: '#/components/schemas/IdentityProviderPolicy'
+        protocol:
+          $ref: '#/components/schemas/Protocol'
+        status:
+          type: string
+          enum:
+          - ACTIVE
+          - INACTIVE
+        type:
+          type: string
+          enum:
+          - SAML2
+          - GOOGLE
+          - FACEBOOK
+          - LINKEDIN
+          - MICROSOFT
+          - OIDC
+          - OKTA
+          - IWA
+          - AgentlessDSSO
+          - X509
+          x-okta-known-values:
+          - SAML2
+          - GOOGLE
+          - FACEBOOK
+          - LINKEDIN
+          - MICROSOFT
+          - OIDC
+          - OKTA
+          - IWA
+          - AgentlessDSSO
+          - X509
+      x-okta-crud:
+      - alias: create
+        arguments:
+        - dest: idpTrust
+          self: true
+        operationId: createIdentityProvider
+      - alias: read
+        arguments: []
+        operationId: getIdentityProvider
+      - alias: update
+        arguments:
+        - dest: idpId
+          src: id
+        - dest: idpTrust
+          self: true
+        operationId: updateIdentityProvider
+      - alias: delete
+        arguments:
+        - dest: idpId
+          src: id
+        operationId: deleteIdentityProvider
+      x-okta-operations:
+      - alias: listSigningCsrs
+        arguments:
+        - dest: idpId
+          src: id
+        operationId: listCsrsForIdentityProvider
+      - alias: generateCsr
+        arguments:
+        - dest: idpId
+          src: id
+        operationId: generateCsrForIdentityProvider
+      - alias: deleteSigningCsr
+        arguments:
+        - dest: idpId
+          src: id
+        operationId: revokeCsrForIdentityProvider
+      - alias: getSigningCsr
+        arguments:
+        - dest: idpId
+          src: id
+        operationId: getCsrForIdentityProvider
+      - alias: listSigningKeys
+        arguments:
+        - dest: idpId
+          src: id
+        operationId: listIdentityProviderSigningKeys
+      - alias: generateSigningKey
+        arguments:
+        - dest: idpId
+          src: id
+        operationId: generateIdentityProviderSigningKey
+      - alias: getSigningKey
+        arguments:
+        - dest: idpId
+          src: id
+        operationId: getIdentityProviderSigningKey
+      - alias: cloneKey
+        arguments:
+        - dest: idpId
+          src: id
+        operationId: cloneIdentityProviderKey
+      - alias: activate
+        arguments:
+        - dest: idpId
+          src: id
+        operationId: activateIdentityProvider
+      - alias: deactivate
+        arguments:
+        - dest: idpId
+          src: id
+        operationId: deactivateIdentityProvider
+      - alias: listUsers
+        arguments:
+        - dest: idpId
+          src: id
+        operationId: listIdentityProviderApplicationUsers
+      - alias: unlinkUser
+        arguments:
+        - dest: idpId
+          src: id
+        operationId: unlinkUserFromIdentityProvider
+      - alias: getUser
+        arguments:
+        - dest: idpId
+          src: id
+        operationId: getIdentityProviderApplicationUser
+      - alias: linkUser
+        arguments:
+        - dest: idpId
+          src: id
+        operationId: linkUserToIdentityProvider
+      - alias: listSocialAuthTokens
+        arguments:
+        - dest: idpId
+          src: id
+        operationId: listSocialAuthTokens
+      x-okta-tags:
+      - IdentityProvider
+    PolicyUserNameTemplate:
+      type: object
+      properties:
+        template:
+          type: string
+      x-okta-tags:
+      - Policy
+    ProtocolAlgorithms:
+      type: object
+      properties:
+        request:
+          $ref: '#/components/schemas/ProtocolAlgorithmType'
+        response:
+          $ref: '#/components/schemas/ProtocolAlgorithmType'
+      x-okta-tags:
+      - IdentityProvider
+    PolicyAccountLinkFilter:
+      type: object
+      properties:
+        groups:
+          $ref: '#/components/schemas/PolicyAccountLinkFilterGroups'
+      x-okta-tags:
+      - Policy
+    ProvisioningGroups:
+      type: object
+      properties:
+        action:
+          type: string
+          enum:
+          - NONE
+          - APPEND
+          - SYNC
+          - ASSIGN
+        assignments:
+          type: array
+          items:
+            type: string
+        filter:
+          type: array
+          items:
+            type: string
+        sourceAttributeName:
+          type: string
+      x-okta-tags:
+      - IdentityProvider
+    JsonWebKey:
+      type: object
+      properties:
+        _links:
+          type: object
+          additionalProperties:
+            type: object
+            properties: {}
+          readOnly: true
+        alg:
+          type: string
+        created:
+          type: string
+          format: date-time
+        e:
+          type: string
+        expiresAt:
+          type: string
+          format: date-time
+        key_ops:
+          type: array
+          items:
+            type: string
+        kid:
+          type: string
+        kty:
+          type: string
+        lastUpdated:
+          type: string
+          format: date-time
+        n:
+          type: string
+        status:
+          type: string
+        use:
+          type: string
+        x5c:
+          type: array
+          items:
+            type: string
+        x5t:
+          type: string
+        x5t#S256:
+          type: string
+        x5u:
+          type: string
+      x-okta-tags:
+      - Application
+    IdentityProviderCredentialsTrust:
+      type: object
+      properties:
+        audience:
+          type: string
+        issuer:
+          type: string
+        kid:
+          type: string
+        revocation:
+          type: string
+          enum:
+          - CRL
+          - DELTA_CRL
+          - OCSP
+        revocationCacheLifetime:
+          type: integer
+      x-okta-tags:
+      - IdentityProvider
+    ProtocolRelayState:
+      type: object
+      properties:
+        format:
+          $ref: '#/components/schemas/ProtocolRelayStateFormat'
+      x-okta-tags:
+      - IdentityProvider
+    IdentityProviderPolicy:
+      type: object
+      properties:
+        accountLink:
+          $ref: '#/components/schemas/PolicyAccountLink'
+        maxClockSkew:
+          type: integer
+        provisioning:
+          $ref: '#/components/schemas/Provisioning'
+        subject:
+          $ref: '#/components/schemas/PolicySubject'
+      x-okta-parent: '#/definitions/Policy'
+      x-okta-tags:
+      - Policy
+    IdentityProviderApplicationUser:
+      type: object
+      properties:
+        _embedded:
+          type: object
+          additionalProperties:
+            type: object
+            properties: {}
+          readOnly: true
+        _links:
+          type: object
+          additionalProperties:
+            type: object
+            properties: {}
+          readOnly: true
+        created:
+          type: string
+        externalId:
+          type: string
+        id:
+          type: string
+          readOnly: true
+        lastUpdated:
+          type: string
+        profile:
+          type: object
+          additionalProperties:
+            type: object
+            properties: {}
+      x-okta-tags:
+      - IdentityProvider
+    PolicyAccountLinkFilterGroups:
+      type: object
+      properties:
+        include:
+          type: array
+          items:
+            type: string
+      x-okta-tags:
+      - Policy
+    Protocol:
+      type: object
+      properties:
+        algorithms:
+          $ref: '#/components/schemas/ProtocolAlgorithms'
+        credentials:
+          $ref: '#/components/schemas/IdentityProviderCredentials'
+        endpoints:
+          $ref: '#/components/schemas/ProtocolEndpoints'
+        issuer:
+          $ref: '#/components/schemas/ProtocolEndpoint'
+        relayState:
+          $ref: '#/components/schemas/ProtocolRelayState'
+        scopes:
+          type: array
+          items:
+            type: string
+        settings:
+          $ref: '#/components/schemas/ProtocolSettings'
+        type:
+          type: string
+          enum:
+          - SAML2
+          - OIDC
+          - OAUTH2
+          - MTLS
+      x-okta-tags:
+      - IdentityProvider
+    PolicySubjectMatchType:
+      type: string
+      enum:
+      - USERNAME
+      - EMAIL
+      - USERNAME_OR_EMAIL
+      - CUSTOM_ATTRIBUTE
+      x-okta-tags:
+      - Policy
+  securitySchemes:
+    api_token:
+      type: apiKey
+      description: SSWS {API Token}
+      name: Authorization
+      in: header
+externalDocs:
+  description: Find more info here
+  url: https://developer.okta.com/docs/api/getting_started/design_principles.html

@@ -1,0 +1,2181 @@
+openapi: 3.0.1
+info:
+  title: Okta Application Group API
+  description: Allows customers to easily access the Okta API
+  termsOfService: https://developer.okta.com/terms/
+  contact:
+    name: Okta Developer Team
+    url: https://developer.okta.com/
+    email: devex-public@okta.com
+  license:
+    name: Apache-2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0.html
+  version: 2.16.0
+servers:
+- url: https://your-subdomain.okta.com/
+tags:
+- name: Group
+paths:
+  /api/v1/groups:
+    get:
+      tags:
+      - Group
+      summary: Okta List Groups
+      description: Enumerates groups in your organization with pagination. A subset of groups can be returned that match a supported filter expression or query.
+      operationId: listGroups
+      parameters:
+      - name: q
+        in: query
+        description: Searches the name property of groups for matching value
+        schema:
+          type: string
+      - name: filter
+        in: query
+        description: Filter expression for groups
+        schema:
+          type: string
+      - name: after
+        in: query
+        description: Specifies the pagination cursor for the next page of groups
+        schema:
+          type: string
+      - name: limit
+        in: query
+        description: Specifies the number of group results in a page
+        schema:
+          type: integer
+          format: int32
+          default: 10000
+      - name: expand
+        in: query
+        description: If specified, it causes additional metadata to be included in the response.
+        schema:
+          type: string
+      - name: search
+        in: query
+        description: Searches for groups with a supported filtering expression for all attributes except for _embedded, _links, and objectClass
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Group'
+      security:
+      - api_token: []
+    post:
+      tags:
+      - Group
+      summary: Okta Add Group
+      description: Adds a new group with `OKTA_GROUP` type to your organization.
+      operationId: createGroup
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Group'
+        required: true
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Group'
+      security:
+      - api_token: []
+      x-codegen-request-body-name: group
+  /api/v1/groups/rules:
+    get:
+      tags:
+      - Group
+      summary: Okta List Group Rules
+      description: Lists all group rules for your organization.
+      operationId: listGroupRules
+      parameters:
+      - name: limit
+        in: query
+        description: Specifies the number of rule results in a page
+        schema:
+          type: integer
+          format: int32
+          default: 50
+      - name: after
+        in: query
+        description: Specifies the pagination cursor for the next page of rules
+        schema:
+          type: string
+      - name: search
+        in: query
+        description: Specifies the keyword to search fules for
+        schema:
+          type: string
+      - name: expand
+        in: query
+        description: If specified as `groupIdToGroupNameMap`, then show group names
+        schema:
+          type: string
+          x-okta-added-version: 1.3.0
+        x-okta-added-version: 1.3.0
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/GroupRule'
+      security:
+      - api_token: []
+    post:
+      tags:
+      - Group
+      summary: Okta Create Group Rule
+      description: Creates a group rule to dynamically add users to the specified group if they match the condition
+      operationId: createGroupRule
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GroupRule'
+        required: true
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GroupRule'
+      security:
+      - api_token: []
+      x-codegen-request-body-name: groupRule
+  /api/v1/groups/rules/{ruleId}:
+    get:
+      tags:
+      - Group
+      summary: Okta Get Group Rule
+      description: Fetches a specific group rule by id from your organization
+      operationId: getGroupRule
+      parameters:
+      - name: ruleId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: expand
+        in: query
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GroupRule'
+      security:
+      - api_token: []
+    put:
+      tags:
+      - Group
+      description: Updates a group rule. Only `INACTIVE` rules can be updated.
+      operationId: updateGroupRule
+      parameters:
+      - name: ruleId
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GroupRule'
+        required: true
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GroupRule'
+      security:
+      - api_token: []
+      x-codegen-request-body-name: groupRule
+    delete:
+      tags:
+      - Group
+      summary: Okta Delete a group Rule
+      description: Removes a specific group rule by id from your organization
+      operationId: deleteGroupRule
+      parameters:
+      - name: ruleId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: removeUsers
+        in: query
+        description: Indicates whether to keep or remove users from groups assigned by this rule.
+        schema:
+          type: boolean
+      responses:
+        '202':
+          description: Accepted
+          content: {}
+      security:
+      - api_token: []
+  /api/v1/groups/rules/{ruleId}/lifecycle/activate:
+    post:
+      tags:
+      - Group
+      summary: Okta Activate a group Rule
+      description: Activates a specific group rule by id from your organization
+      operationId: activateGroupRule
+      parameters:
+      - name: ruleId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          description: No Content
+          content: {}
+      security:
+      - api_token: []
+  /api/v1/groups/rules/{ruleId}/lifecycle/deactivate:
+    post:
+      tags:
+      - Group
+      summary: Okta Deactivate a group Rule
+      description: Deactivates a specific group rule by id from your organization
+      operationId: deactivateGroupRule
+      parameters:
+      - name: ruleId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          description: No Content
+          content: {}
+      security:
+      - api_token: []
+  /api/v1/groups/{groupId}:
+    get:
+      tags:
+      - Group
+      summary: Okta List Group Rules
+      description: Fetches a group from your organization.
+      operationId: getGroup
+      parameters:
+      - name: groupId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Group'
+      security:
+      - api_token: []
+    put:
+      tags:
+      - Group
+      summary: Okta Update Group
+      description: Updates the profile for a group with `OKTA_GROUP` type from your organization.
+      operationId: updateGroup
+      parameters:
+      - name: groupId
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Group'
+        required: true
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Group'
+      security:
+      - api_token: []
+      x-codegen-request-body-name: group
+    delete:
+      tags:
+      - Group
+      summary: Okta Remove Group
+      description: Removes a group with `OKTA_GROUP` type from your organization.
+      operationId: deleteGroup
+      parameters:
+      - name: groupId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          description: No Content
+          content: {}
+      security:
+      - api_token: []
+  /api/v1/groups/{groupId}/apps:
+    get:
+      tags:
+      - Group
+      summary: Okta List Assigned Applications
+      description: Enumerates all applications that are assigned to a group.
+      operationId: listAssignedApplicationsForGroup
+      parameters:
+      - name: groupId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: after
+        in: query
+        description: Specifies the pagination cursor for the next page of apps
+        schema:
+          type: string
+      - name: limit
+        in: query
+        description: Specifies the number of app results for a page
+        schema:
+          type: integer
+          format: int32
+          default: 20
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Application'
+      security:
+      - api_token: []
+  /api/v1/groups/{groupId}/roles:
+    get:
+      tags:
+      - Group
+      description: Success
+      operationId: listGroupAssignedRoles
+      parameters:
+      - name: groupId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: expand
+        in: query
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Role'
+      security:
+      - api_token: []
+    post:
+      tags:
+      - Group
+      description: Assigns a Role to a Group
+      operationId: assignRoleToGroup
+      parameters:
+      - name: groupId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: disableNotifications
+        in: query
+        schema:
+          type: boolean
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AssignRoleRequest'
+        required: true
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Role'
+        '201':
+          description: Success
+          content: {}
+      security:
+      - api_token: []
+      x-codegen-request-body-name: assignRoleRequest
+  /api/v1/groups/{groupId}/roles/{roleId}:
+    get:
+      tags:
+      - Group
+      description: Success
+      operationId: getRole
+      parameters:
+      - name: groupId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: roleId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Role'
+      security:
+      - api_token: []
+    delete:
+      tags:
+      - Group
+      description: Unassigns a Role from a Group
+      operationId: removeRoleFromGroup
+      parameters:
+      - name: groupId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: roleId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          description: No Content
+          content: {}
+      security:
+      - api_token: []
+  /api/v1/groups/{groupId}/roles/{roleId}/targets/catalog/apps:
+    get:
+      tags:
+      - Group
+      description: Lists all App targets for an `APP_ADMIN` Role assigned to a Group. This methods return list may include full Applications or Instances. The response for an instance will have an `ID` value, while Application will not have an ID.
+      operationId: listApplicationTargetsForApplicationAdministratorRoleForGroup
+      parameters:
+      - name: groupId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: roleId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: after
+        in: query
+        schema:
+          type: string
+      - name: limit
+        in: query
+        schema:
+          type: integer
+          format: int32
+          default: 20
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/CatalogApplication'
+      security:
+      - api_token: []
+  /api/v1/groups/{groupId}/roles/{roleId}/targets/catalog/apps/{appName}:
+    put:
+      tags:
+      - Group
+      description: Success
+      operationId: addApplicationTargetToAdminRoleGivenToGroup
+      parameters:
+      - name: groupId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: roleId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: appName
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Success
+          content: {}
+      security:
+      - api_token: []
+    delete:
+      tags:
+      - Group
+      description: Success
+      operationId: removeApplicationTargetFromApplicationAdministratorRoleGivenToGroup
+      parameters:
+      - name: groupId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: roleId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: appName
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          description: No Content
+          content: {}
+      security:
+      - api_token: []
+  /api/v1/groups/{groupId}/roles/{roleId}/targets/catalog/apps/{appName}/{applicationId}:
+    put:
+      tags:
+      - Group
+      summary: Okta Add App Instance Target to App Administrator Role given to a Group
+      description: Add App Instance Target to App Administrator Role given to a Group
+      operationId: addApplicationInstanceTargetToAppAdminRoleGivenToGroup
+      parameters:
+      - name: groupId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: roleId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: appName
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: applicationId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          description: No Content
+          content: {}
+      security:
+      - api_token: []
+    delete:
+      tags:
+      - Group
+      summary: Okta Remove App Instance Target to App Administrator Role given to a Group
+      description: Remove App Instance Target to App Administrator Role given to a Group
+      operationId: removeApplicationTargetFromAdministratorRoleGivenToGroup
+      parameters:
+      - name: groupId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: roleId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: appName
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: applicationId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          description: No Content
+          content: {}
+      security:
+      - api_token: []
+  /api/v1/groups/{groupId}/roles/{roleId}/targets/groups:
+    get:
+      tags:
+      - Group
+      description: Success
+      operationId: listGroupTargetsForGroupRole
+      parameters:
+      - name: groupId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: roleId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: after
+        in: query
+        schema:
+          type: string
+      - name: limit
+        in: query
+        schema:
+          type: integer
+          format: int32
+          default: 20
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Group'
+      security:
+      - api_token: []
+  /api/v1/groups/{groupId}/roles/{roleId}/targets/groups/{targetGroupId}:
+    put:
+      tags:
+      - Group
+      operationId: addGroupTargetToGroupAdministratorRoleForGroup
+      parameters:
+      - name: groupId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: roleId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: targetGroupId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          description: No Content
+          content: {}
+      security:
+      - api_token: []
+    delete:
+      tags:
+      - Group
+      operationId: removeGroupTargetFromGroupAdministratorRoleGivenToGroup
+      parameters:
+      - name: groupId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: roleId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: targetGroupId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          description: No Content
+          content: {}
+      security:
+      - api_token: []
+  /api/v1/groups/{groupId}/users:
+    get:
+      tags:
+      - Group
+      summary: Okta List Group Members
+      description: Enumerates all users that are a member of a group.
+      operationId: listGroupUsers
+      parameters:
+      - name: groupId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: after
+        in: query
+        description: Specifies the pagination cursor for the next page of users
+        schema:
+          type: string
+      - name: limit
+        in: query
+        description: Specifies the number of user results in a page
+        schema:
+          type: integer
+          format: int32
+          default: 1000
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/User'
+      security:
+      - api_token: []
+  /api/v1/groups/{groupId}/users/{userId}:
+    put:
+      tags:
+      - Group
+      summary: Okta Add User to Group
+      description: Adds a user to a group with 'OKTA_GROUP' type.
+      operationId: addUserToGroup
+      parameters:
+      - name: groupId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: userId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          description: No Content
+          content: {}
+      security:
+      - api_token: []
+    delete:
+      tags:
+      - Group
+      summary: Okta Remove User from Group
+      description: Removes a user from a group with 'OKTA_GROUP' type.
+      operationId: removeUserFromGroup
+      parameters:
+      - name: groupId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: userId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          description: No Content
+          content: {}
+      security:
+      - api_token: []
+components:
+  schemas:
+    GroupRuleGroupAssignment:
+      type: object
+      properties:
+        groupIds:
+          type: array
+          items:
+            type: string
+      x-okta-tags:
+      - GroupRule
+    ApplicationCredentialsSigning:
+      type: object
+      properties:
+        kid:
+          type: string
+        lastRotated:
+          type: string
+          format: date-time
+          readOnly: true
+        nextRotation:
+          type: string
+          format: date-time
+          readOnly: true
+        rotationMode:
+          type: string
+        use:
+          $ref: '#/components/schemas/ApplicationCredentialsSigningUse'
+      x-okta-tags:
+      - Application
+    CatalogApplicationStatus:
+      type: string
+      enum:
+      - ACTIVE
+      - INACTIVE
+      x-okta-tags:
+      - Role
+    AuthenticationProvider:
+      type: object
+      properties:
+        name:
+          type: string
+        type:
+          $ref: '#/components/schemas/AuthenticationProviderType'
+      x-okta-tags:
+      - User
+    UserType:
+      type: object
+      properties:
+        _links:
+          type: object
+          additionalProperties:
+            type: object
+            properties: {}
+          readOnly: true
+        created:
+          type: string
+          format: date-time
+          readOnly: true
+        createdBy:
+          type: string
+          readOnly: true
+        default:
+          type: boolean
+          readOnly: true
+        description:
+          type: string
+        displayName:
+          type: string
+        id:
+          type: string
+        lastUpdated:
+          type: string
+          format: date-time
+          readOnly: true
+        lastUpdatedBy:
+          type: string
+          readOnly: true
+        name:
+          type: string
+      x-okta-crud:
+      - alias: create
+        arguments:
+        - dest: userType
+          self: true
+        operationId: createUserType
+      - alias: update
+        arguments:
+        - dest: typeId
+          src: id
+        - dest: userType
+          self: true
+        operationId: updateUserType
+      - alias: read
+        arguments:
+        - dest: typeId
+          src: id
+        operationId: getUserType
+      - alias: delete
+        arguments:
+        - dest: typeId
+          src: id
+        operationId: deleteUserType
+      x-okta-operations:
+      - alias: replaceUserType
+        arguments:
+        - dest: roleId
+          src: id
+        operationId: replaceUserType
+      x-okta-tags:
+      - UserType
+    GroupRuleExpression:
+      type: object
+      properties:
+        type:
+          type: string
+        value:
+          type: string
+      x-okta-tags:
+      - GroupRule
+    GroupRule:
+      type: object
+      properties:
+        actions:
+          $ref: '#/components/schemas/GroupRuleAction'
+        conditions:
+          $ref: '#/components/schemas/GroupRuleConditions'
+        created:
+          type: string
+          format: date-time
+          readOnly: true
+        id:
+          type: string
+          readOnly: true
+        lastUpdated:
+          type: string
+          format: date-time
+          readOnly: true
+        name:
+          type: string
+        status:
+          $ref: '#/components/schemas/GroupRuleStatus'
+        type:
+          type: string
+      x-okta-crud:
+      - alias: update
+        arguments:
+        - dest: ruleId
+          src: id
+        - dest: groupRule
+          self: true
+        operationId: updateGroupRule
+      - alias: delete
+        arguments:
+        - dest: ruleId
+          src: id
+        operationId: deleteGroupRule
+      x-okta-operations:
+      - alias: activate
+        arguments:
+        - dest: ruleId
+          src: id
+        operationId: activateGroupRule
+      - alias: deactivate
+        arguments:
+        - dest: ruleId
+          src: id
+        operationId: deactivateGroupRule
+      x-okta-tags:
+      - GroupRule
+    ApplicationSignOnMode:
+      type: string
+      enum:
+      - BOOKMARK
+      - BASIC_AUTH
+      - BROWSER_PLUGIN
+      - SECURE_PASSWORD_STORE
+      - AUTO_LOGIN
+      - WS_FEDERATION
+      - SAML_2_0
+      - OPENID_CONNECT
+      - SAML_1_1
+      x-okta-tags:
+      - Application
+    GroupRuleStatus:
+      type: string
+      enum:
+      - ACTIVE
+      - INACTIVE
+      - INVALID
+      x-okta-tags:
+      - GroupRule
+    GroupRuleGroupCondition:
+      type: object
+      properties:
+        exclude:
+          type: array
+          items:
+            type: string
+        include:
+          type: array
+          items:
+            type: string
+      x-okta-tags:
+      - GroupRule
+    Role:
+      type: object
+      properties:
+        _embedded:
+          type: object
+          additionalProperties:
+            type: object
+            properties: {}
+          readOnly: true
+        _links:
+          type: object
+          additionalProperties:
+            type: object
+            properties: {}
+          readOnly: true
+        assignmentType:
+          $ref: '#/components/schemas/RoleAssignmentType'
+        created:
+          type: string
+          format: date-time
+          readOnly: true
+        description:
+          type: string
+        id:
+          type: string
+          readOnly: true
+        label:
+          type: string
+          readOnly: true
+        lastUpdated:
+          type: string
+          format: date-time
+          readOnly: true
+        status:
+          $ref: '#/components/schemas/RoleStatus'
+        type:
+          $ref: '#/components/schemas/RoleType'
+      x-okta-operations:
+      - alias: addAdminGroupTarget
+        arguments:
+        - dest: roleId
+          src: id
+        - dest: groupId
+          parentSrc: id
+        operationId: addGroupTargetToGroupAdministratorRoleForGroup
+      - alias: addAppInstanceTargetToAdminRole
+        arguments:
+        - dest: roleId
+          src: id
+        - dest: groupId
+          parentSrc: id
+        operationId: addApplicationInstanceTargetToAppAdminRoleGivenToGroup
+      - alias: addAppTargetToAdminRole
+        arguments:
+        - dest: roleId
+          src: id
+        - dest: groupId
+          parentSrc: id
+        operationId: addApplicationTargetToAdminRoleGivenToGroup
+      - alias: addAllAppsAsTargetToRole
+        arguments:
+        - dest: roleId
+          src: id
+        - dest: userId
+          parentSrc: id
+        operationId: addAllAppsAsTargetToRole
+      - alias: addAppTargetToAppAdminRoleForUser
+        arguments:
+        - dest: roleId
+          src: id
+        - dest: userId
+          parentSrc: id
+        operationId: addApplicationTargetToAppAdminRoleForUser
+      - alias: addAppTargetToAdminRoleForUser
+        arguments:
+        - dest: roleId
+          src: id
+        - dest: userId
+          parentSrc: id
+        operationId: addApplicationTargetToAdminRoleForUser
+      x-okta-tags:
+      - User
+    ApplicationSettingsNotes:
+      type: object
+      properties:
+        admin:
+          type: string
+        enduser:
+          type: string
+      x-okta-tags:
+      - Application
+    ApplicationSettingsNotificationsVpn:
+      type: object
+      properties:
+        helpUrl:
+          type: string
+        message:
+          type: string
+        network:
+          $ref: '#/components/schemas/ApplicationSettingsNotificationsVpnNetwork'
+      x-okta-tags:
+      - Application
+    ApplicationVisibilityHide:
+      type: object
+      properties:
+        iOS:
+          type: boolean
+        web:
+          type: boolean
+      x-okta-tags:
+      - Application
+    Application:
+      type: object
+      properties:
+        _embedded:
+          type: object
+          additionalProperties:
+            type: object
+            properties: {}
+          readOnly: true
+        _links:
+          type: object
+          additionalProperties:
+            type: object
+            properties: {}
+          readOnly: true
+        accessibility:
+          $ref: '#/components/schemas/ApplicationAccessibility'
+        created:
+          type: string
+          format: date-time
+          readOnly: true
+        credentials:
+          $ref: '#/components/schemas/ApplicationCredentials'
+        features:
+          type: array
+          items:
+            type: string
+        id:
+          type: string
+          readOnly: true
+        label:
+          type: string
+        lastUpdated:
+          type: string
+          format: date-time
+          readOnly: true
+        licensing:
+          $ref: '#/components/schemas/ApplicationLicensing'
+        name:
+          type: string
+          readOnly: true
+        profile:
+          type: object
+          additionalProperties:
+            type: object
+            properties: {}
+        settings:
+          $ref: '#/components/schemas/ApplicationSettings'
+        signOnMode:
+          $ref: '#/components/schemas/ApplicationSignOnMode'
+        status:
+          type: string
+          readOnly: true
+          enum:
+          - ACTIVE
+          - INACTIVE
+          - DELETED
+        visibility:
+          $ref: '#/components/schemas/ApplicationVisibility'
+      x-okta-crud:
+      - alias: read
+        arguments:
+        - dest: appId
+          src: id
+        operationId: getApplication
+      - alias: update
+        arguments:
+        - dest: appId
+          src: id
+        - dest: application
+          self: true
+        operationId: updateApplication
+      - alias: delete
+        arguments:
+        - dest: appId
+          src: id
+        operationId: deleteApplication
+      x-okta-operations:
+      - alias: activate
+        arguments:
+        - dest: appId
+          src: id
+        operationId: activateApplication
+      - alias: deactivate
+        arguments:
+        - dest: appId
+          src: id
+        operationId: deactivateApplication
+      - alias: listApplicationUsers
+        arguments:
+        - dest: appId
+          src: id
+        operationId: listApplicationUsers
+      - alias: assignUserToApplication
+        arguments:
+        - dest: appId
+          src: id
+        operationId: assignUserToApplication
+      - alias: getApplicationUser
+        arguments:
+        - dest: appId
+          src: id
+        operationId: getApplicationUser
+      - alias: createApplicationGroupAssignment
+        arguments:
+        - dest: appId
+          src: id
+        operationId: createApplicationGroupAssignment
+      - alias: getApplicationGroupAssignment
+        arguments:
+        - dest: appId
+          src: id
+        operationId: getApplicationGroupAssignment
+      - alias: cloneApplicationKey
+        arguments:
+        - dest: appId
+          src: id
+        operationId: cloneApplicationKey
+      - alias: getApplicationKey
+        arguments:
+        - dest: appId
+          src: id
+        operationId: getApplicationKey
+      - alias: listGroupAssignments
+        arguments:
+        - dest: appId
+          src: id
+        operationId: listApplicationGroupAssignments
+      - alias: listKeys
+        arguments:
+        - dest: appId
+          src: id
+        operationId: listApplicationKeys
+      - alias: generateKey
+        arguments:
+        - dest: appId
+          src: id
+        operationId: generateApplicationKey
+      - alias: generateCsr
+        arguments:
+        - dest: appId
+          src: id
+        operationId: generateCsrForApplication
+      - alias: getCsr
+        arguments:
+        - dest: appId
+          src: id
+        operationId: getCsrForApplication
+      - alias: revokeCsr
+        arguments:
+        - dest: appId
+          src: id
+        operationId: revokeCsrFromApplication
+      - alias: listCsrs
+        arguments:
+        - dest: appId
+          src: id
+        operationId: listCsrsForApplication
+      - alias: publishCerCert
+        arguments:
+        - dest: appId
+          src: id
+        operationId: publishCerCert
+      - alias: publishBinaryCerCert
+        arguments:
+        - dest: appId
+          src: id
+        operationId: publishBinaryCerCert
+      - alias: publishDerCert
+        arguments:
+        - dest: appId
+          src: id
+        operationId: publishDerCert
+      - alias: publishBinaryDerCert
+        arguments:
+        - dest: appId
+          src: id
+        operationId: publishBinaryDerCert
+      - alias: publishBinaryPemCert
+        arguments:
+        - dest: appId
+          src: id
+        operationId: publishBinaryPemCert
+      - alias: listOAuth2Tokens
+        arguments:
+        - dest: appId
+          src: id
+        operationId: listOAuth2TokensForApplication
+      - alias: revokeOAuth2TokenForApplication
+        arguments:
+        - dest: appId
+          src: id
+        operationId: revokeOAuth2TokenForApplication
+      - alias: getOAuth2Token
+        arguments:
+        - dest: appId
+          src: id
+        operationId: getOAuth2TokenForApplication
+      - alias: revokeOAuth2Tokens
+        arguments:
+        - dest: appId
+          src: id
+        operationId: revokeOAuth2TokensForApplication
+      - alias: listScopeConsentGrants
+        arguments:
+        - dest: appId
+          src: id
+        operationId: listScopeConsentGrants
+      - alias: grantConsentToScope
+        arguments:
+        - dest: appId
+          src: id
+        operationId: grantConsentToScope
+      - alias: revokeScopeConsentGrant
+        arguments:
+        - dest: appId
+          src: id
+        operationId: revokeScopeConsentGrant
+      - alias: getScopeConsentGrant
+        arguments:
+        - dest: appId
+          src: id
+        operationId: getScopeConsentGrant
+      - alias: uploadApplicationLogo
+        operationId: uploadApplicationLogo
+      - alias: getFeatureForApplication
+        arguments:
+        - dest: appId
+          src: id
+        operationId: getFeatureForApplication
+      - alias: updateFeatureForApplication
+        arguments:
+        - dest: appId
+          src: id
+        operationId: updateFeatureForApplication
+      - alias: updateApplicationPolicy
+        arguments:
+        - dest: appId
+          src: id
+        operationId: updateApplicationPolicy
+      x-okta-tags:
+      - Application
+      x-openapi-v3-discriminator:
+        mapping:
+          AUTO_LOGIN: '#/definitions/AutoLoginApplication'
+          BASIC_AUTH: '#/definitions/BasicAuthApplication'
+          BOOKMARK: '#/definitions/BookmarkApplication'
+          BROWSER_PLUGIN: '#/definitions/BrowserPluginApplication'
+          OPENID_CONNECT: '#/definitions/OpenIdConnectApplication'
+          SAML_1_1: '#/definitions/SamlApplication'
+          SAML_2_0: '#/definitions/SamlApplication'
+          SECURE_PASSWORD_STORE: '#/definitions/SecurePasswordStoreApplication'
+          WS_FEDERATION: '#/definitions/WsFederationApplication'
+        propertyName: signOnMode
+    User:
+      type: object
+      properties:
+        _embedded:
+          type: object
+          additionalProperties:
+            type: object
+            properties: {}
+          readOnly: true
+        _links:
+          type: object
+          additionalProperties:
+            type: object
+            properties: {}
+          readOnly: true
+        activated:
+          type: string
+          format: date-time
+          readOnly: true
+        created:
+          type: string
+          format: date-time
+          readOnly: true
+        credentials:
+          $ref: '#/components/schemas/UserCredentials'
+        id:
+          type: string
+          readOnly: true
+        lastLogin:
+          type: string
+          format: date-time
+          readOnly: true
+        lastUpdated:
+          type: string
+          format: date-time
+          readOnly: true
+        passwordChanged:
+          type: string
+          format: date-time
+          readOnly: true
+        profile:
+          $ref: '#/components/schemas/UserProfile'
+        status:
+          $ref: '#/components/schemas/UserStatus'
+        statusChanged:
+          type: string
+          format: date-time
+          readOnly: true
+        transitioningToStatus:
+          $ref: '#/components/schemas/UserStatus'
+        type:
+          $ref: '#/components/schemas/UserType'
+      x-okta-crud:
+      - alias: create
+        arguments:
+        - dest: user
+          self: true
+        operationId: createUser
+      - alias: read
+        arguments: []
+        operationId: getUser
+      - alias: update
+        arguments:
+        - dest: userId
+          src: id
+        - dest: user
+          self: true
+        operationId: updateUser
+      - alias: delete
+        arguments:
+        - dest: userId
+          src: id
+        - dest: user
+          self: true
+        operationId: deactivateOrDeleteUser
+      x-okta-operations:
+      - alias: listAppLinks
+        arguments:
+        - dest: userId
+          src: id
+        operationId: listAppLinks
+      - alias: changePassword
+        arguments:
+        - dest: userId
+          src: id
+        operationId: changePassword
+      - alias: changeRecoveryQuestion
+        arguments:
+        - dest: userId
+          src: id
+        operationId: changeRecoveryQuestion
+      - alias: forgotPasswordSetNewPassword
+        arguments:
+        - dest: userId
+          src: id
+        operationId: forgotPasswordSetNewPassword
+      - alias: forgotPasswordGenerateOneTimeToken
+        arguments:
+        - dest: userId
+          src: id
+        operationId: forgotPasswordGenerateOneTimeToken
+      - alias: assignRole
+        arguments:
+        - dest: userId
+          src: id
+        operationId: assignRoleToUser
+      - alias: getRole
+        arguments:
+        - dest: userId
+          src: id
+        operationId: getUserRole
+      - alias: removeRole
+        arguments:
+        - dest: userId
+          src: id
+        operationId: removeRoleFromUser
+      - alias: listGroupTargets
+        arguments:
+        - dest: userId
+          src: id
+        operationId: listGroupTargetsForRole
+      - alias: removeGroupTarget
+        arguments:
+        - dest: userId
+          src: id
+        operationId: removeGroupTargetFromRole
+      - alias: addGroupTarget
+        arguments:
+        - dest: userId
+          src: id
+        operationId: addGroupTargetToRole
+      - alias: listAssignedRoles
+        arguments:
+        - dest: userId
+          src: id
+        operationId: listAssignedRolesForUser
+      - alias: addAllAppsAsTarget
+        arguments:
+        - dest: userId
+          src: id
+        operationId: addAllAppsAsTargetToRole
+      - alias: listGroups
+        arguments:
+        - dest: userId
+          src: id
+        operationId: listUserGroups
+      - alias: listGrants
+        arguments:
+        - dest: userId
+          src: id
+        operationId: listUserGrants
+      - alias: revokeGrants
+        arguments:
+        - dest: userId
+          src: id
+        operationId: revokeUserGrants
+      - alias: revokeGrant
+        arguments:
+        - dest: userId
+          src: id
+        operationId: revokeUserGrant
+      - alias: revokeGrantsForUserAndClient
+        arguments:
+        - dest: userId
+          src: id
+        operationId: revokeGrantsForUserAndClient
+      - alias: listRefreshTokensForUserAndClient
+        arguments:
+        - dest: userId
+          src: id
+        operationId: listRefreshTokensForUserAndClient
+      - alias: revokeTokenForUserAndClient
+        arguments:
+        - dest: userId
+          src: id
+        operationId: revokeTokenForUserAndClient
+      - alias: getRefreshTokenForUserAndClient
+        arguments:
+        - dest: userId
+          src: id
+        operationId: getRefreshTokenForUserAndClient
+      - alias: revokeTokensForUserAndClient
+        arguments:
+        - dest: userId
+          src: id
+        operationId: revokeTokensForUserAndClient
+      - alias: listClients
+        arguments:
+        - dest: userId
+          src: id
+        operationId: listUserClients
+      - alias: activate
+        arguments:
+        - dest: userId
+          src: id
+        operationId: activateUser
+      - alias: reactivate
+        arguments:
+        - dest: userId
+          src: id
+        operationId: reactivateUser
+      - alias: deactivate
+        arguments:
+        - dest: userId
+          src: id
+        operationId: deactivateUser
+      - alias: suspend
+        arguments:
+        - dest: userId
+          src: id
+        operationId: suspendUser
+      - alias: unsuspend
+        arguments:
+        - dest: userId
+          src: id
+        operationId: unsuspendUser
+      - alias: resetPassword
+        arguments:
+        - dest: userId
+          src: id
+        operationId: resetPassword
+      - alias: expirePassword
+        arguments:
+        - dest: userId
+          src: id
+        operationId: expirePassword
+      - alias: expirePasswordAndGetTemporaryPassword
+        arguments:
+        - dest: userId
+          src: id
+        operationId: expirePasswordAndGetTemporaryPassword
+      - alias: unlock
+        arguments:
+        - dest: userId
+          src: id
+        operationId: unlockUser
+      - alias: resetFactors
+        arguments:
+        - dest: userId
+          src: id
+        operationId: resetFactors
+      - alias: deleteFactor
+        arguments:
+        - dest: userId
+          src: id
+        operationId: deleteFactor
+      - alias: addToGroup
+        arguments:
+        - dest: userId
+          src: id
+        description: Adds a user to a group with 'OKTA_GROUP' type
+        operationId: addUserToGroup
+      - alias: enrollFactor
+        arguments:
+        - dest: userId
+          src: id
+        operationId: enrollFactor
+      - alias: listSupportedFactors
+        arguments:
+        - dest: userId
+          src: id
+        operationId: listSupportedFactors
+      - alias: listFactors
+        arguments:
+        - dest: userId
+          src: id
+        operationId: listFactors
+      - alias: listSupportedSecurityQuestions
+        arguments:
+        - dest: userId
+          src: id
+        operationId: listSupportedSecurityQuestions
+      - alias: getFactor
+        arguments:
+        - dest: userId
+          src: id
+        operationId: getFactor
+      - alias: setLinkedObject
+        arguments:
+        - dest: associatedUserId
+          src: id
+        operationId: setLinkedObjectForUser
+      - alias: listIdentityProviders
+        arguments:
+        - dest: userId
+          src: id
+        operationId: listUserIdentityProviders
+      - alias: getLinkedObjects
+        arguments:
+        - dest: userId
+          src: id
+        operationId: getLinkedObjectsForUser
+      - alias: clearSessions
+        arguments:
+        - dest: userId
+          src: id
+        operationId: clearUserSessions
+      - alias: removeLinkedObject
+        arguments:
+        - dest: userId
+          src: id
+        operationId: removeLinkedObjectForUser
+      x-okta-tags:
+      - User
+    PasswordCredentialHash:
+      type: object
+      properties:
+        algorithm:
+          $ref: '#/components/schemas/PasswordCredentialHashAlgorithm'
+        salt:
+          type: string
+        saltOrder:
+          type: string
+        value:
+          type: string
+        workFactor:
+          type: integer
+      x-okta-tags:
+      - User
+    UserCredentials:
+      type: object
+      properties:
+        password:
+          $ref: '#/components/schemas/PasswordCredential'
+        provider:
+          $ref: '#/components/schemas/AuthenticationProvider'
+        recovery_question:
+          $ref: '#/components/schemas/RecoveryQuestionCredential'
+      x-okta-tags:
+      - User
+    RoleAssignmentType:
+      type: string
+      enum:
+      - GROUP
+      - USER
+      x-okta-tags:
+      - Role
+    PasswordCredential:
+      type: object
+      properties:
+        hash:
+          $ref: '#/components/schemas/PasswordCredentialHash'
+        hook:
+          $ref: '#/components/schemas/PasswordCredentialHook'
+        value:
+          type: string
+          format: password
+      x-okta-tags:
+      - User
+    GroupRulePeopleCondition:
+      type: object
+      properties:
+        groups:
+          $ref: '#/components/schemas/GroupRuleGroupCondition'
+        users:
+          $ref: '#/components/schemas/GroupRuleUserCondition'
+      x-okta-tags:
+      - GroupRule
+    GroupRuleUserCondition:
+      type: object
+      properties:
+        exclude:
+          type: array
+          items:
+            type: string
+        include:
+          type: array
+          items:
+            type: string
+      x-okta-tags:
+      - GroupRule
+    UserStatus:
+      type: string
+      enum:
+      - ACTIVE
+      - DEPROVISIONED
+      - LOCKED_OUT
+      - PASSWORD_EXPIRED
+      - PROVISIONED
+      - RECOVERY
+      - STAGED
+      - SUSPENDED
+      x-okta-tags:
+      - User
+    AssignRoleRequest:
+      type: object
+      properties:
+        type:
+          $ref: '#/components/schemas/RoleType'
+      x-okta-tags:
+      - Role
+    GroupRuleAction:
+      type: object
+      properties:
+        assignUserToGroups:
+          $ref: '#/components/schemas/GroupRuleGroupAssignment'
+      x-okta-tags:
+      - GroupRule
+    ApplicationCredentialsUsernameTemplate:
+      type: object
+      properties:
+        pushStatus:
+          type: string
+        suffix:
+          type: string
+        template:
+          type: string
+        type:
+          type: string
+      x-okta-tags:
+      - Application
+    ApplicationCredentials:
+      type: object
+      properties:
+        signing:
+          $ref: '#/components/schemas/ApplicationCredentialsSigning'
+        userNameTemplate:
+          $ref: '#/components/schemas/ApplicationCredentialsUsernameTemplate'
+      x-okta-tags:
+      - Application
+    ApplicationSettingsNotificationsVpnNetwork:
+      type: object
+      properties:
+        connection:
+          type: string
+        exclude:
+          type: array
+          items:
+            type: string
+        include:
+          type: array
+          items:
+            type: string
+      x-okta-tags:
+      - Application
+    AuthenticationProviderType:
+      type: string
+      enum:
+      - ACTIVE_DIRECTORY
+      - FEDERATION
+      - LDAP
+      - OKTA
+      - SOCIAL
+      - IMPORT
+      x-okta-tags:
+      - User
+    CatalogApplication:
+      type: object
+      properties:
+        _links:
+          type: object
+          additionalProperties:
+            type: object
+            properties: {}
+          readOnly: true
+        category:
+          type: string
+        description:
+          type: string
+        displayName:
+          type: string
+        features:
+          type: array
+          items:
+            type: string
+        id:
+          type: string
+          readOnly: true
+        lastUpdated:
+          type: string
+          format: date-time
+          readOnly: true
+        name:
+          type: string
+        signOnModes:
+          type: array
+          items:
+            type: string
+        status:
+          $ref: '#/components/schemas/CatalogApplicationStatus'
+        verificationStatus:
+          type: string
+        website:
+          type: string
+      x-okta-tags:
+      - Role
+    RoleType:
+      type: string
+      enum:
+      - SUPER_ADMIN
+      - ORG_ADMIN
+      - APP_ADMIN
+      - USER_ADMIN
+      - HELP_DESK_ADMIN
+      - READ_ONLY_ADMIN
+      - MOBILE_ADMIN
+      - API_ACCESS_MANAGEMENT_ADMIN
+      - REPORT_ADMIN
+      - GROUP_MEMBERSHIP_ADMIN
+      - CUSTOM
+      x-okta-tags:
+      - Role
+    Group:
+      type: object
+      properties:
+        _embedded:
+          type: object
+          additionalProperties:
+            type: object
+            properties: {}
+          readOnly: true
+        _links:
+          type: object
+          additionalProperties:
+            type: object
+            properties: {}
+          readOnly: true
+        created:
+          type: string
+          format: date-time
+          readOnly: true
+        id:
+          type: string
+          readOnly: true
+        lastMembershipUpdated:
+          type: string
+          format: date-time
+          readOnly: true
+        lastUpdated:
+          type: string
+          format: date-time
+          readOnly: true
+        objectClass:
+          type: array
+          readOnly: true
+          items:
+            type: string
+        profile:
+          $ref: '#/components/schemas/GroupProfile'
+        type:
+          $ref: '#/components/schemas/GroupType'
+      x-okta-crud:
+      - alias: update
+        arguments:
+        - dest: groupId
+          src: id
+        - dest: group
+          self: true
+        operationId: updateGroup
+      - alias: delete
+        arguments:
+        - dest: groupId
+          src: id
+        operationId: deleteGroup
+      x-okta-operations:
+      - alias: removeUser
+        arguments:
+        - dest: groupId
+          src: id
+        operationId: removeUserFromGroup
+      - alias: listUsers
+        arguments:
+        - dest: groupId
+          src: id
+        operationId: listGroupUsers
+      - alias: listApplications
+        arguments:
+        - dest: groupId
+          src: id
+        operationId: listAssignedApplicationsForGroup
+      - alias: assignRole
+        arguments:
+        - dest: groupId
+          src: id
+        operationId: assignRoleToGroup
+      x-okta-tags:
+      - Group
+    ApplicationSettings:
+      type: object
+      properties:
+        app:
+          $ref: '#/components/schemas/ApplicationSettingsApplication'
+        implicitAssignment:
+          type: boolean
+        inlineHookId:
+          type: string
+        notes:
+          $ref: '#/components/schemas/ApplicationSettingsNotes'
+        notifications:
+          $ref: '#/components/schemas/ApplicationSettingsNotifications'
+      x-okta-tags:
+      - Application
+    RoleStatus:
+      type: string
+      enum:
+      - ACTIVE
+      - INACTIVE
+      x-okta-tags:
+      - User
+    UserProfile:
+      type: object
+      properties:
+        city:
+          type: string
+        costCenter:
+          type: string
+        countryCode:
+          type: string
+        department:
+          type: string
+        displayName:
+          type: string
+        division:
+          type: string
+        email:
+          type: string
+        employeeNumber:
+          type: string
+        firstName:
+          type: string
+        honorificPrefix:
+          type: string
+        honorificSuffix:
+          type: string
+        lastName:
+          type: string
+        locale:
+          type: string
+        login:
+          type: string
+        manager:
+          type: string
+        managerId:
+          type: string
+        middleName:
+          type: string
+        mobilePhone:
+          type: string
+        nickName:
+          type: string
+        organization:
+          type: string
+        postalAddress:
+          type: string
+        preferredLanguage:
+          type: string
+        primaryPhone:
+          type: string
+        profileUrl:
+          type: string
+        secondEmail:
+          type: string
+        state:
+          type: string
+        streetAddress:
+          type: string
+        timezone:
+          type: string
+        title:
+          type: string
+        userType:
+          type: string
+        zipCode:
+          type: string
+      x-okta-extensible: true
+      x-okta-tags:
+      - User
+    ApplicationVisibility:
+      type: object
+      properties:
+        appLinks:
+          type: object
+          additionalProperties:
+            type: boolean
+        autoLaunch:
+          type: boolean
+        autoSubmitToolbar:
+          type: boolean
+        hide:
+          $ref: '#/components/schemas/ApplicationVisibilityHide'
+      x-okta-tags:
+      - Application
+    PasswordCredentialHook:
+      type: object
+      properties:
+        type:
+          type: string
+      x-okta-tags:
+      - User
+    ApplicationLicensing:
+      type: object
+      properties:
+        seatCount:
+          type: integer
+      x-okta-tags:
+      - Application
+    PasswordCredentialHashAlgorithm:
+      type: string
+      enum:
+      - BCRYPT
+      - SHA-512
+      - SHA-256
+      - SHA-1
+      - MD5
+      x-okta-tags:
+      - User
+    RecoveryQuestionCredential:
+      type: object
+      properties:
+        answer:
+          type: string
+        question:
+          type: string
+      x-okta-tags:
+      - User
+    GroupProfile:
+      type: object
+      properties:
+        description:
+          type: string
+        name:
+          type: string
+      x-okta-extensible: true
+      x-okta-tags:
+      - Group
+    ApplicationAccessibility:
+      type: object
+      properties:
+        errorRedirectUrl:
+          type: string
+        loginRedirectUrl:
+          type: string
+        selfService:
+          type: boolean
+      x-okta-tags:
+      - Application
+    ApplicationSettingsNotifications:
+      type: object
+      properties:
+        vpn:
+          $ref: '#/components/schemas/ApplicationSettingsNotificationsVpn'
+      x-okta-tags:
+      - Application
+    ApplicationCredentialsSigningUse:
+      type: string
+      enum:
+      - sig
+      x-okta-tags:
+      - AuthorizationServer
+    GroupType:
+      type: string
+      enum:
+      - OKTA_GROUP
+      - APP_GROUP
+      - BUILT_IN
+      x-okta-tags:
+      - Group
+    GroupRuleConditions:
+      type: object
+      properties:
+        expression:
+          $ref: '#/components/schemas/GroupRuleExpression'
+        people:
+          $ref: '#/components/schemas/GroupRulePeopleCondition'
+      x-okta-tags:
+      - GroupRule
+    ApplicationSettingsApplication:
+      type: object
+      properties:
+        acsUrl:
+          type: string
+        buttonField:
+          type: string
+        loginUrlRegex:
+          type: string
+        orgName:
+          type: string
+        passwordField:
+          type: string
+        url:
+          type: string
+        usernameField:
+          type: string
+      x-okta-tags:
+      - Application
+  securitySchemes:
+    api_token:
+      type: apiKey
+      description: SSWS {API Token}
+      name: Authorization
+      in: header
+externalDocs:
+  description: Find more info here
+  url: https://developer.okta.com/docs/api/getting_started/design_principles.html

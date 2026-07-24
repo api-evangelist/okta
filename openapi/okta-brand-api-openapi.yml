@@ -1,0 +1,1049 @@
+openapi: 3.0.1
+info:
+  title: Okta Application Brand API
+  description: Allows customers to easily access the Okta API
+  termsOfService: https://developer.okta.com/terms/
+  contact:
+    name: Okta Developer Team
+    url: https://developer.okta.com/
+    email: devex-public@okta.com
+  license:
+    name: Apache-2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0.html
+  version: 2.16.0
+servers:
+- url: https://your-subdomain.okta.com/
+tags:
+- name: Brand
+paths:
+  /api/v1/brands:
+    get:
+      tags:
+      - Brand
+      summary: Okta List Brands
+      description: List all the brands in your org.
+      operationId: listBrands
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Brand'
+      security:
+      - api_token: []
+  /api/v1/brands/{brandId}:
+    get:
+      tags:
+      - Brand
+      summary: Okta Get Brand
+      description: Fetches a brand by `brandId`
+      operationId: getBrand
+      parameters:
+      - name: brandId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Brand'
+        '404':
+          description: Not Found
+          content: {}
+      security:
+      - api_token: []
+    put:
+      tags:
+      - Brand
+      summary: Okta Update Brand
+      description: Updates a brand by `brandId`
+      operationId: updateBrand
+      parameters:
+      - name: brandId
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Brand'
+        required: true
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Brand'
+        '400':
+          description: Bad Request
+          content: {}
+      security:
+      - api_token: []
+      x-codegen-request-body-name: brand
+  /api/v1/brands/{brandId}/templates/email:
+    get:
+      tags:
+      - Brand
+      summary: Okta List Email Templates
+      description: List email templates in your organization with pagination.
+      operationId: listEmailTemplates
+      parameters:
+      - name: brandId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: after
+        in: query
+        description: Specifies the pagination cursor for the next page of email templates.
+        schema:
+          type: string
+      - name: limit
+        in: query
+        description: Specifies the number of results returned (maximum 200)
+        schema:
+          type: integer
+          format: int32
+          default: 20
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/EmailTemplate'
+      security:
+      - api_token: []
+  /api/v1/brands/{brandId}/templates/email/{templateName}:
+    get:
+      tags:
+      - Brand
+      summary: Okta Get Email Template
+      description: Fetch an email template by templateName
+      operationId: getEmailTemplate
+      parameters:
+      - name: brandId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: templateName
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EmailTemplate'
+      security:
+      - api_token: []
+  /api/v1/brands/{brandId}/templates/email/{templateName}/customizations:
+    get:
+      tags:
+      - Brand
+      summary: Okta List Email Template Customization
+      description: List all email customizations for an email template
+      operationId: listEmailTemplateCustomizations
+      parameters:
+      - name: brandId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: templateName
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/EmailTemplateCustomization'
+      security:
+      - api_token: []
+    post:
+      tags:
+      - Brand
+      summary: Okta Create Email Template Customization
+      description: Create an email customization
+      operationId: createEmailTemplateCustomization
+      parameters:
+      - name: brandId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: templateName
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EmailTemplateCustomizationRequest'
+        required: true
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EmailTemplateCustomization'
+        '409':
+          description: Conflict
+          content: {}
+      security:
+      - api_token: []
+      x-codegen-request-body-name: customization
+    delete:
+      tags:
+      - Brand
+      summary: Okta Delete Email Template Customization
+      description: Delete all customizations for an email template. Also known as “Reset to Default”.
+      operationId: deleteEmailTemplateCustomizations
+      parameters:
+      - name: brandId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: templateName
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          description: Success
+          content: {}
+      security:
+      - api_token: []
+  /api/v1/brands/{brandId}/templates/email/{templateName}/customizations/{customizationId}:
+    get:
+      tags:
+      - Brand
+      summary: Okta Get Email Template Customization
+      description: Fetch an email customization by id.
+      operationId: getEmailTemplateCustomization
+      parameters:
+      - name: brandId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: templateName
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: customizationId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EmailTemplateCustomization'
+      security:
+      - api_token: []
+    put:
+      tags:
+      - Brand
+      summary: Okta Update Email Customization
+      description: Update an email customization
+      operationId: updateEmailTemplateCustomization
+      parameters:
+      - name: brandId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: templateName
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: customizationId
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EmailTemplateCustomizationRequest'
+        required: true
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EmailTemplateCustomization'
+        '409':
+          description: Conflict
+          content: {}
+      security:
+      - api_token: []
+      x-codegen-request-body-name: customization
+    delete:
+      tags:
+      - Brand
+      summary: Okta Delete Email Customization
+      description: Delete an email customization
+      operationId: deleteEmailTemplateCustomization
+      parameters:
+      - name: brandId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: templateName
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: customizationId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          description: No Content
+          content: {}
+        '409':
+          description: Conflict
+          content: {}
+      security:
+      - api_token: []
+  /api/v1/brands/{brandId}/templates/email/{templateName}/customizations/{customizationId}/preview:
+    get:
+      tags:
+      - Brand
+      summary: Okta Get Preview Content of Email Customization
+      description: Get a preview of an email template customization.
+      operationId: getEmailTemplateCustomizationPreview
+      parameters:
+      - name: brandId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: templateName
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: customizationId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EmailTemplateContent'
+      security:
+      - api_token: []
+  /api/v1/brands/{brandId}/templates/email/{templateName}/default-content:
+    get:
+      tags:
+      - Brand
+      summary: Okta Get Default Content of Email Template
+      description: Fetch the default content for an email template.
+      operationId: getEmailTemplateDefaultContent
+      parameters:
+      - name: brandId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: templateName
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EmailTemplateContent'
+      security:
+      - api_token: []
+  /api/v1/brands/{brandId}/templates/email/{templateName}/default-content/preview:
+    get:
+      tags:
+      - Brand
+      summary: Okta Get Preview of Email Template Default Content
+      description: Fetch a preview of an email template's default content by populating velocity references with the current user's environment.
+      operationId: getEmailTemplateDefaultContentPreview
+      parameters:
+      - name: brandId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: templateName
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EmailTemplateContent'
+      security:
+      - api_token: []
+  /api/v1/brands/{brandId}/templates/email/{templateName}/test:
+    post:
+      tags:
+      - Brand
+      summary: Okta Get Preview of Email Template Default Content
+      description: 'Send a test email to the current users primary and secondary email addresses. The email content is selected based on the following priority: An email customization specifically for the users locale. The default language of email customizations. The email templates default content.'
+      operationId: sendTestEmail
+      parameters:
+      - name: brandId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: templateName
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EmailTemplateTestRequest'
+        required: true
+      responses:
+        '204':
+          description: No Content
+          content: {}
+      security:
+      - api_token: []
+      x-codegen-request-body-name: customization
+  /api/v1/brands/{brandId}/themes:
+    get:
+      tags:
+      - Brand
+      summary: Okta Get Brand Themes
+      description: List all the themes in your brand
+      operationId: listBrandThemes
+      parameters:
+      - name: brandId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ThemeResponse'
+      security:
+      - api_token: []
+  /api/v1/brands/{brandId}/themes/{themeId}:
+    get:
+      tags:
+      - Brand
+      summary: Okta Get a theme for a brand
+      description: Fetches a theme for a brand
+      operationId: getBrandTheme
+      parameters:
+      - name: brandId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: themeId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ThemeResponse'
+      security:
+      - api_token: []
+    put:
+      tags:
+      - Brand
+      summary: Okta Update a theme for a brand
+      description: Updates a theme for a brand
+      operationId: updateBrandTheme
+      parameters:
+      - name: brandId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: themeId
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Theme'
+        required: true
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ThemeResponse'
+        '400':
+          description: Bad Request
+          content: {}
+        '404':
+          description: Not Found
+          content: {}
+      security:
+      - api_token: []
+      x-codegen-request-body-name: theme
+  /api/v1/brands/{brandId}/themes/{themeId}/background-image:
+    post:
+      tags:
+      - Brand
+      summary: Okta Updates the background image for your Theme
+      description: Updates the background image for your Theme
+      operationId: uploadBrandThemeBackgroundImage
+      parameters:
+      - name: brandId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: themeId
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              required:
+              - file
+              type: object
+              properties:
+                file:
+                  type: string
+                  format: binary
+        required: true
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ImageUploadResponse'
+        '400':
+          description: Bad Request
+          content: {}
+        '404':
+          description: Not Found
+          content: {}
+      security:
+      - api_token: []
+    delete:
+      tags:
+      - Brand
+      summary: Okta Deletes a Theme background image
+      description: Deletes a Theme background image
+      operationId: deleteBrandThemeBackgroundImage
+      parameters:
+      - name: brandId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: themeId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          description: No Content
+          content: {}
+        '404':
+          description: Not Found
+          content: {}
+      security:
+      - api_token: []
+  /api/v1/brands/{brandId}/themes/{themeId}/favicon:
+    post:
+      tags:
+      - Brand
+      summary: Okta Updates the favicon for your theme
+      description: Updates the favicon for your theme
+      operationId: uploadBrandThemeFavicon
+      parameters:
+      - name: brandId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: themeId
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              required:
+              - file
+              type: object
+              properties:
+                file:
+                  type: string
+                  format: binary
+        required: true
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ImageUploadResponse'
+        '400':
+          description: Bad Request
+          content: {}
+        '404':
+          description: Not Found
+          content: {}
+      security:
+      - api_token: []
+    delete:
+      tags:
+      - Brand
+      summary: Deletes a Theme favicon. The org then uses the Okta default favicon.
+      description: Deletes a Theme favicon. The org then uses the Okta default favicon.
+      operationId: deleteBrandThemeFavicon
+      parameters:
+      - name: brandId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: themeId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          description: No Content
+          content: {}
+        '404':
+          description: Not Found
+          content: {}
+      security:
+      - api_token: []
+  /api/v1/brands/{brandId}/themes/{themeId}/logo:
+    post:
+      tags:
+      - Brand
+      summary: Okta Update a themes logo
+      description: Updates the logo for your Theme
+      operationId: uploadBrandThemeLogo
+      parameters:
+      - name: brandId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: themeId
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              required:
+              - file
+              type: object
+              properties:
+                file:
+                  type: string
+                  format: binary
+        required: true
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ImageUploadResponse'
+        '400':
+          description: Bad Request
+          content: {}
+        '404':
+          description: Not Found
+          content: {}
+      security:
+      - api_token: []
+    delete:
+      tags:
+      - Brand
+      summary: Deletes a Theme logo. The org then uses the Okta default logo.
+      description: Deletes a Theme logo. The org then uses the Okta default logo.
+      operationId: deleteBrandThemeLogo
+      parameters:
+      - name: brandId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: themeId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          description: No Content
+          content: {}
+        '404':
+          description: Not Found
+          content: {}
+      security:
+      - api_token: []
+components:
+  schemas:
+    EmailTemplateCustomization:
+      type: object
+      properties:
+        _links:
+          type: object
+          additionalProperties:
+            type: object
+            properties: {}
+          readOnly: true
+        body:
+          type: string
+        created:
+          type: string
+          format: date-time
+          readOnly: true
+        id:
+          type: string
+          readOnly: true
+        isDefault:
+          type: boolean
+        language:
+          type: string
+          description: unique under each email template
+        lastUpdated:
+          type: string
+          format: date-time
+          readOnly: true
+        subject:
+          type: string
+      x-okta-tags:
+      - Brands
+    EmailTemplateTouchPointVariant:
+      type: string
+      enum:
+      - OKTA_DEFAULT
+      - FULL_THEME
+      x-okta-tags:
+      - Brand
+    EmailTemplateContent:
+      type: object
+      properties:
+        _links:
+          type: object
+          additionalProperties:
+            type: object
+            properties: {}
+          readOnly: true
+        body:
+          type: string
+        fromAddress:
+          type: string
+        fromName:
+          type: string
+        subject:
+          type: string
+      x-okta-tags:
+      - Brands
+    SignInPageTouchPointVariant:
+      type: string
+      enum:
+      - OKTA_DEFAULT
+      - BACKGROUND_SECONDARY_COLOR
+      - BACKGROUND_IMAGE
+      x-okta-tags:
+      - Brand
+    EndUserDashboardTouchPointVariant:
+      type: string
+      enum:
+      - OKTA_DEFAULT
+      - WHITE_LOGO_BACKGROUND
+      - FULL_THEME
+      - LOGO_ON_FULL_WHITE_BACKGROUND
+      x-okta-tags:
+      - Brand
+    Brand:
+      type: object
+      properties:
+        _links:
+          type: object
+          additionalProperties:
+            type: object
+            properties: {}
+          readOnly: true
+        agreeToCustomPrivacyPolicy:
+          type: boolean
+        customPrivacyPolicyUrl:
+          type: string
+        id:
+          type: string
+          readOnly: true
+        removePoweredByOkta:
+          type: boolean
+      x-okta-crud:
+      - alias: read
+        arguments:
+        - dest: brandId
+          src: id
+        operationId: getBrand
+      - alias: update
+        arguments:
+        - dest: brandId
+          src: id
+        - dest: brand
+          self: true
+        operationId: updateBrand
+      x-okta-tags:
+      - Brand
+    EmailTemplate:
+      type: object
+      properties:
+        _links:
+          type: object
+          additionalProperties:
+            type: object
+            properties: {}
+          readOnly: true
+        name:
+          type: string
+          readOnly: true
+      x-okta-crud:
+      - alias: read
+        operationId: getEmailTemplate
+      x-okta-operations:
+      - alias: getEmailTemplate
+        operationId: getEmailTemplate
+      - alias: deleteEmailTemplateCustomizations
+        operationId: deleteEmailTemplateCustomizations
+      - alias: listEmailTemplateCustomizations
+        operationId: listEmailTemplateCustomizations
+      - alias: createEmailTemplateCustomization
+        operationId: createEmailTemplateCustomization
+      - alias: deleteEmailTemplateCustomization
+        operationId: deleteEmailTemplateCustomization
+      - alias: getEmailTemplateCustomization
+        operationId: getEmailTemplateCustomization
+      - alias: updateEmailTemplateCustomization
+        operationId: updateEmailTemplateCustomization
+      - alias: getEmailTemplateCustomizationPreview
+        operationId: getEmailTemplateCustomizationPreview
+      - alias: getEmailTemplateDefaultContent
+        operationId: getEmailTemplateDefaultContent
+      - alias: getEmailTemplateDefaultContentPreview
+        operationId: getEmailTemplateDefaultContentPreview
+      - alias: sendTestEmail
+        operationId: sendTestEmail
+      x-okta-tags:
+      - Brands
+    EmailTemplateCustomizationRequest:
+      type: object
+      properties:
+        body:
+          type: string
+        isDefault:
+          type: boolean
+        language:
+          type: string
+          description: unique under each email template
+        subject:
+          type: string
+      x-okta-tags:
+      - Brands
+    EmailTemplateTestRequest:
+      type: object
+      properties:
+        customizationId:
+          type: string
+      x-okta-tags:
+      - Brands
+    ImageUploadResponse:
+      type: object
+      properties:
+        url:
+          type: string
+          readOnly: true
+      x-okta-tags:
+      - Brand
+    Theme:
+      type: object
+      properties:
+        _links:
+          type: object
+          additionalProperties:
+            type: object
+            properties: {}
+          readOnly: true
+        backgroundImage:
+          type: string
+          readOnly: true
+        emailTemplateTouchPointVariant:
+          $ref: '#/components/schemas/EmailTemplateTouchPointVariant'
+        endUserDashboardTouchPointVariant:
+          $ref: '#/components/schemas/EndUserDashboardTouchPointVariant'
+        errorPageTouchPointVariant:
+          $ref: '#/components/schemas/ErrorPageTouchPointVariant'
+        primaryColorContrastHex:
+          type: string
+        primaryColorHex:
+          type: string
+        secondaryColorContrastHex:
+          type: string
+        secondaryColorHex:
+          type: string
+        signInPageTouchPointVariant:
+          $ref: '#/components/schemas/SignInPageTouchPointVariant'
+      x-okta-crud:
+      - alias: read
+        operationId: getBrandTheme
+      - alias: update
+        operationId: updateBrandTheme
+      x-okta-operations:
+      - alias: uploadBrandThemeLogo
+        operationId: uploadBrandThemeLogo
+      - alias: deleteBrandThemeLogo
+        operationId: deleteBrandThemeLogo
+      - alias: updateBrandThemeFavicon
+        operationId: uploadBrandThemeFavicon
+      - alias: deleteBrandThemeFavicon
+        operationId: deleteBrandThemeFavicon
+      - alias: updateBrandThemeBackgroundImage
+        operationId: uploadBrandThemeBackgroundImage
+      - alias: deleteBrandThemeBackgroundImage
+        operationId: deleteBrandThemeBackgroundImage
+      x-okta-tags:
+      - Brand
+    ErrorPageTouchPointVariant:
+      type: string
+      enum:
+      - OKTA_DEFAULT
+      - BACKGROUND_SECONDARY_COLOR
+      - BACKGROUND_IMAGE
+      x-okta-tags:
+      - Brand
+    ThemeResponse:
+      type: object
+      properties:
+        _links:
+          type: object
+          additionalProperties:
+            type: object
+            properties: {}
+          readOnly: true
+        backgroundImage:
+          type: string
+          readOnly: true
+        emailTemplateTouchPointVariant:
+          $ref: '#/components/schemas/EmailTemplateTouchPointVariant'
+        endUserDashboardTouchPointVariant:
+          $ref: '#/components/schemas/EndUserDashboardTouchPointVariant'
+        errorPageTouchPointVariant:
+          $ref: '#/components/schemas/ErrorPageTouchPointVariant'
+        favicon:
+          type: string
+          readOnly: true
+        id:
+          type: string
+          readOnly: true
+        logo:
+          type: string
+          readOnly: true
+        primaryColorContrastHex:
+          type: string
+        primaryColorHex:
+          type: string
+        secondaryColorContrastHex:
+          type: string
+        secondaryColorHex:
+          type: string
+        signInPageTouchPointVariant:
+          $ref: '#/components/schemas/SignInPageTouchPointVariant'
+      x-okta-tags:
+      - Brand
+  securitySchemes:
+    api_token:
+      type: apiKey
+      description: SSWS {API Token}
+      name: Authorization
+      in: header
+externalDocs:
+  description: Find more info here
+  url: https://developer.okta.com/docs/api/getting_started/design_principles.html

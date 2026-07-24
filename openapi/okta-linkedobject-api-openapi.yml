@@ -1,0 +1,153 @@
+openapi: 3.0.1
+info:
+  title: Okta Application LinkedObject API
+  description: Allows customers to easily access the Okta API
+  termsOfService: https://developer.okta.com/terms/
+  contact:
+    name: Okta Developer Team
+    url: https://developer.okta.com/
+    email: devex-public@okta.com
+  license:
+    name: Apache-2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0.html
+  version: 2.16.0
+servers:
+- url: https://your-subdomain.okta.com/
+tags:
+- name: LinkedObject
+paths:
+  /api/v1/meta/schemas/user/linkedObjects:
+    get:
+      tags:
+      - LinkedObject
+      description: Success
+      operationId: listLinkedObjectDefinitions
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/LinkedObject'
+      security:
+      - api_token: []
+    post:
+      tags:
+      - LinkedObject
+      description: Success
+      operationId: addLinkedObjectDefinition
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LinkedObject'
+        required: true
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LinkedObject'
+      security:
+      - api_token: []
+      x-codegen-request-body-name: linkedObject
+  /api/v1/meta/schemas/user/linkedObjects/{linkedObjectName}:
+    get:
+      tags:
+      - LinkedObject
+      description: Success
+      operationId: getLinkedObjectDefinition
+      parameters:
+      - name: linkedObjectName
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LinkedObject'
+      security:
+      - api_token: []
+    delete:
+      tags:
+      - LinkedObject
+      description: Success
+      operationId: deleteLinkedObjectDefinition
+      parameters:
+      - name: linkedObjectName
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          description: No Content
+          content: {}
+      security:
+      - api_token: []
+components:
+  schemas:
+    LinkedObjectDetailsType:
+      type: string
+      enum:
+      - USER
+      x-okta-tags:
+      - LinkedObject
+    LinkedObjectDetails:
+      type: object
+      properties:
+        description:
+          type: string
+        name:
+          type: string
+        title:
+          type: string
+        type:
+          $ref: '#/components/schemas/LinkedObjectDetailsType'
+      x-okta-tags:
+      - LinkedObject
+    LinkedObject:
+      type: object
+      properties:
+        _links:
+          type: object
+          additionalProperties:
+            type: object
+            properties: {}
+          readOnly: true
+        associated:
+          $ref: '#/components/schemas/LinkedObjectDetails'
+        primary:
+          $ref: '#/components/schemas/LinkedObjectDetails'
+      x-okta-crud:
+      - alias: create
+        arguments:
+        - dest: linkedObjectDefinition
+          self: true
+        operationId: addLinkedObjectDefinition
+      - alias: read
+        arguments: []
+        operationId: getLinkedObjectDefinition
+      - alias: delete
+        arguments:
+        - dest: linkedObjectName
+          self: true
+        operationId: deleteLinkedObjectDefinition
+      x-okta-tags:
+      - LinkedObject
+  securitySchemes:
+    api_token:
+      type: apiKey
+      description: SSWS {API Token}
+      name: Authorization
+      in: header
+externalDocs:
+  description: Find more info here
+  url: https://developer.okta.com/docs/api/getting_started/design_principles.html

@@ -1,0 +1,277 @@
+openapi: 3.0.1
+info:
+  title: Okta Application TrustedOrigin API
+  description: Allows customers to easily access the Okta API
+  termsOfService: https://developer.okta.com/terms/
+  contact:
+    name: Okta Developer Team
+    url: https://developer.okta.com/
+    email: devex-public@okta.com
+  license:
+    name: Apache-2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0.html
+  version: 2.16.0
+servers:
+- url: https://your-subdomain.okta.com/
+tags:
+- name: TrustedOrigin
+paths:
+  /api/v1/trustedOrigins:
+    get:
+      tags:
+      - TrustedOrigin
+      description: Success
+      operationId: listOrigins
+      parameters:
+      - name: q
+        in: query
+        schema:
+          type: string
+      - name: filter
+        in: query
+        schema:
+          type: string
+      - name: after
+        in: query
+        schema:
+          type: string
+      - name: limit
+        in: query
+        schema:
+          type: integer
+          format: int32
+          default: -1
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/TrustedOrigin'
+      security:
+      - api_token: []
+    post:
+      tags:
+      - TrustedOrigin
+      description: Success
+      operationId: createOrigin
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TrustedOrigin'
+        required: true
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TrustedOrigin'
+      security:
+      - api_token: []
+      x-codegen-request-body-name: trustedOrigin
+  /api/v1/trustedOrigins/{trustedOriginId}:
+    get:
+      tags:
+      - TrustedOrigin
+      description: Success
+      operationId: getOrigin
+      parameters:
+      - name: trustedOriginId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TrustedOrigin'
+      security:
+      - api_token: []
+    put:
+      tags:
+      - TrustedOrigin
+      description: Success
+      operationId: updateOrigin
+      parameters:
+      - name: trustedOriginId
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TrustedOrigin'
+        required: true
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TrustedOrigin'
+      security:
+      - api_token: []
+      x-codegen-request-body-name: trustedOrigin
+    delete:
+      tags:
+      - TrustedOrigin
+      description: Success
+      operationId: deleteOrigin
+      parameters:
+      - name: trustedOriginId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Success
+          content: {}
+      security:
+      - api_token: []
+  /api/v1/trustedOrigins/{trustedOriginId}/lifecycle/activate:
+    post:
+      tags:
+      - TrustedOrigin
+      description: Success
+      operationId: activateOrigin
+      parameters:
+      - name: trustedOriginId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TrustedOrigin'
+      security:
+      - api_token: []
+  /api/v1/trustedOrigins/{trustedOriginId}/lifecycle/deactivate:
+    post:
+      tags:
+      - TrustedOrigin
+      description: Success
+      operationId: deactivateOrigin
+      parameters:
+      - name: trustedOriginId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TrustedOrigin'
+      security:
+      - api_token: []
+components:
+  schemas:
+    TrustedOrigin:
+      type: object
+      properties:
+        _links:
+          type: object
+          additionalProperties:
+            type: object
+            properties: {}
+          readOnly: true
+        created:
+          type: string
+          format: date-time
+          readOnly: true
+        createdBy:
+          type: string
+        id:
+          type: string
+          readOnly: true
+        lastUpdated:
+          type: string
+          format: date-time
+          readOnly: true
+        lastUpdatedBy:
+          type: string
+        name:
+          type: string
+        origin:
+          type: string
+        scopes:
+          type: array
+          items:
+            $ref: '#/components/schemas/Scope'
+        status:
+          type: string
+      x-okta-crud:
+      - alias: create
+        arguments:
+        - dest: trustedOrigin
+          self: true
+        operationId: createOrigin
+      - alias: read
+        arguments: []
+        operationId: getOrigin
+      - alias: update
+        arguments:
+        - dest: trustedOriginId
+          src: id
+        - dest: trustedOrigin
+          self: true
+        operationId: updateOrigin
+      - alias: delete
+        arguments:
+        - dest: trustedOriginId
+          src: id
+        operationId: deleteOrigin
+      x-okta-tags:
+      - TrustedOrigin
+    Scope:
+      type: object
+      properties:
+        allowedOktaApps:
+          type: array
+          items:
+            $ref: '#/components/schemas/IframeEmbedScopeAllowedApps'
+        stringValue:
+          type: string
+        type:
+          $ref: '#/components/schemas/ScopeType'
+      x-okta-tags:
+      - Role
+    ScopeType:
+      type: string
+      enum:
+      - CORS
+      - REDIRECT
+      - IFRAME_EMBED
+      x-okta-tags:
+      - Role
+    IframeEmbedScopeAllowedApps:
+      type: string
+      enum:
+      - OKTA_ENDUSER
+      x-okta-tags:
+      - Role
+  securitySchemes:
+    api_token:
+      type: apiKey
+      description: SSWS {API Token}
+      name: Authorization
+      in: header
+externalDocs:
+  description: Find more info here
+  url: https://developer.okta.com/docs/api/getting_started/design_principles.html

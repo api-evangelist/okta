@@ -1,0 +1,324 @@
+openapi: 3.0.1
+info:
+  title: Okta Application NetworkZone API
+  description: Allows customers to easily access the Okta API
+  termsOfService: https://developer.okta.com/terms/
+  contact:
+    name: Okta Developer Team
+    url: https://developer.okta.com/
+    email: devex-public@okta.com
+  license:
+    name: Apache-2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0.html
+  version: 2.16.0
+servers:
+- url: https://your-subdomain.okta.com/
+tags:
+- name: NetworkZone
+paths:
+  /api/v1/zones:
+    get:
+      tags:
+      - NetworkZone
+      summary: Okta List Network Zones
+      description: Enumerates network zones added to your organization with pagination. A subset of zones can be returned that match a supported filter expression or query.
+      operationId: listNetworkZones
+      parameters:
+      - name: after
+        in: query
+        description: Specifies the pagination cursor for the next page of network zones
+        schema:
+          type: string
+      - name: limit
+        in: query
+        description: Specifies the number of results for a page
+        schema:
+          type: integer
+          format: int32
+          default: -1
+      - name: filter
+        in: query
+        description: Filters zones by usage or id expression
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/NetworkZone'
+      security:
+      - api_token: []
+    post:
+      tags:
+      - NetworkZone
+      summary: Okta Add Network Zone
+      description: Adds a new network zone to your Okta organization.
+      operationId: createNetworkZone
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/NetworkZone'
+        required: true
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NetworkZone'
+      security:
+      - api_token: []
+      x-codegen-request-body-name: zone
+  /api/v1/zones/{zoneId}:
+    get:
+      tags:
+      - NetworkZone
+      summary: Okta Get Network Zone
+      description: Fetches a network zone from your Okta organization by `id`.
+      operationId: getNetworkZone
+      parameters:
+      - name: zoneId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NetworkZone'
+      security:
+      - api_token: []
+    put:
+      tags:
+      - NetworkZone
+      summary: Okta Update Network Zone
+      description: Updates a network zone in your organization.
+      operationId: updateNetworkZone
+      parameters:
+      - name: zoneId
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/NetworkZone'
+        required: true
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NetworkZone'
+      security:
+      - api_token: []
+      x-codegen-request-body-name: zone
+    delete:
+      tags:
+      - NetworkZone
+      summary: Okta Delete Network Zone
+      description: Removes network zone.
+      operationId: deleteNetworkZone
+      parameters:
+      - name: zoneId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Success
+          content: {}
+      security:
+      - api_token: []
+  /api/v1/zones/{zoneId}/lifecycle/activate:
+    post:
+      tags:
+      - NetworkZone
+      summary: Okta Activate Network Zone
+      description: Activate Network Zone
+      operationId: activateNetworkZone
+      parameters:
+      - name: zoneId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NetworkZone'
+      security:
+      - api_token: []
+  /api/v1/zones/{zoneId}/lifecycle/deactivate:
+    post:
+      tags:
+      - NetworkZone
+      summary: Okta Deactivate Network Zone
+      description: Deactivates a network zone.
+      operationId: deactivateNetworkZone
+      parameters:
+      - name: zoneId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NetworkZone'
+      security:
+      - api_token: []
+components:
+  schemas:
+    NetworkZone:
+      type: object
+      properties:
+        _links:
+          type: object
+          additionalProperties:
+            type: object
+            properties: {}
+          readOnly: true
+        asns:
+          type: array
+          items:
+            type: string
+        created:
+          type: string
+          format: date-time
+          readOnly: true
+        gateways:
+          type: array
+          items:
+            $ref: '#/components/schemas/NetworkZoneAddress'
+        id:
+          type: string
+          readOnly: true
+        lastUpdated:
+          type: string
+          format: date-time
+          readOnly: true
+        locations:
+          type: array
+          items:
+            $ref: '#/components/schemas/NetworkZoneLocation'
+        name:
+          type: string
+        proxies:
+          type: array
+          items:
+            $ref: '#/components/schemas/NetworkZoneAddress'
+        proxyType:
+          type: string
+        status:
+          $ref: '#/components/schemas/NetworkZoneStatus'
+        system:
+          type: boolean
+        type:
+          $ref: '#/components/schemas/NetworkZoneType'
+        usage:
+          $ref: '#/components/schemas/NetworkZoneUsage'
+      x-okta-crud:
+      - alias: read
+        arguments:
+        - dest: zoneId
+          src: id
+        operationId: getNetworkZone
+      - alias: update
+        arguments:
+        - dest: zoneId
+          src: id
+        - dest: zone
+          self: true
+        operationId: updateNetworkZone
+      - alias: delete
+        arguments:
+        - dest: zoneId
+          src: id
+        operationId: deleteNetworkZone
+      x-okta-operations:
+      - alias: activate
+        arguments:
+        - dest: zoneId
+          src: id
+        operationId: activateNetworkZone
+      - alias: deactivate
+        arguments:
+        - dest: zoneId
+          src: id
+        operationId: deactivateNetworkZone
+      x-okta-tags:
+      - NetworkZone
+    NetworkZoneType:
+      type: string
+      enum:
+      - IP
+      - DYNAMIC
+      x-okta-tags:
+      - NetworkZone
+    NetworkZoneAddress:
+      type: object
+      properties:
+        type:
+          $ref: '#/components/schemas/NetworkZoneAddressType'
+        value:
+          type: string
+      x-okta-tags:
+      - NetworkZone
+    NetworkZoneStatus:
+      type: string
+      enum:
+      - ACTIVE
+      - INACTIVE
+      x-okta-tags:
+      - NetworkZone
+    NetworkZoneLocation:
+      type: object
+      properties:
+        country:
+          type: string
+        region:
+          type: string
+      x-okta-tags:
+      - NetworkZone
+    NetworkZoneUsage:
+      type: string
+      enum:
+      - POLICY
+      - BLOCKLIST
+      x-okta-tags:
+      - NetworkZone
+    NetworkZoneAddressType:
+      type: string
+      enum:
+      - CIDR
+      - RANGE
+      x-okta-tags:
+      - NetworkZone
+  securitySchemes:
+    api_token:
+      type: apiKey
+      description: SSWS {API Token}
+      name: Authorization
+      in: header
+externalDocs:
+  description: Find more info here
+  url: https://developer.okta.com/docs/api/getting_started/design_principles.html

@@ -1,0 +1,341 @@
+openapi: 3.0.1
+info:
+  title: Okta Application Authenticator API
+  description: Allows customers to easily access the Okta API
+  termsOfService: https://developer.okta.com/terms/
+  contact:
+    name: Okta Developer Team
+    url: https://developer.okta.com/
+    email: devex-public@okta.com
+  license:
+    name: Apache-2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0.html
+  version: 2.16.0
+servers:
+- url: https://your-subdomain.okta.com/
+tags:
+- name: Authenticator
+paths:
+  /api/v1/authenticators:
+    get:
+      tags:
+      - Authenticator
+      summary: Okta Lists all available Authenticators
+      description: List Authenticators
+      operationId: listAuthenticators
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Authenticator'
+      security:
+      - api_token: []
+    post:
+      tags:
+      - Authenticator
+      summary: Okta Create an Authenticator
+      description: Create Authenticator
+      operationId: createAuthenticator
+      parameters:
+      - name: activate
+        in: query
+        schema:
+          type: boolean
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Authenticator'
+        required: true
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Authenticator'
+      security:
+      - api_token: []
+      x-codegen-request-body-name: authenticator
+  /api/v1/authenticators/{authenticatorId}:
+    get:
+      tags:
+      - Authenticator
+      description: Success
+      operationId: getAuthenticator
+      parameters:
+      - name: authenticatorId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Authenticator'
+      security:
+      - api_token: []
+    put:
+      tags:
+      - Authenticator
+      summary: Okta Update Authenticator
+      description: Updates an authenticator
+      operationId: updateAuthenticator
+      parameters:
+      - name: authenticatorId
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Authenticator'
+        required: true
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Authenticator'
+      security:
+      - api_token: []
+      x-codegen-request-body-name: authenticator
+  /api/v1/authenticators/{authenticatorId}/lifecycle/activate:
+    post:
+      tags:
+      - Authenticator
+      description: Success
+      operationId: activateAuthenticator
+      parameters:
+      - name: authenticatorId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Authenticator'
+      security:
+      - api_token: []
+  /api/v1/authenticators/{authenticatorId}/lifecycle/deactivate:
+    post:
+      tags:
+      - Authenticator
+      description: Success
+      operationId: deactivateAuthenticator
+      parameters:
+      - name: authenticatorId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Authenticator'
+      security:
+      - api_token: []
+components:
+  schemas:
+    AuthenticatorProvider:
+      type: object
+      properties:
+        configuration:
+          $ref: '#/components/schemas/AuthenticatorProviderConfiguration'
+        type:
+          type: string
+      x-okta-tags:
+      - Authenticator
+    ChannelBinding:
+      type: object
+      properties:
+        required:
+          $ref: '#/components/schemas/RequiredEnum'
+        style:
+          type: string
+      x-okta-tags:
+      - Authenticator
+    AuthenticatorStatus:
+      type: string
+      enum:
+      - ACTIVE
+      - INACTIVE
+      x-okta-tags:
+      - Authenticator
+    AuthenticatorType:
+      type: string
+      enum:
+      - app
+      - password
+      - security_question
+      - phone
+      - email
+      - security_key
+      - federated
+      x-okta-tags:
+      - Authenticator
+    AuthenticatorProviderConfigurationUserNamePlate:
+      type: object
+      properties:
+        template:
+          type: string
+      x-okta-tags:
+      - Authenticator
+    UserVerificationEnum:
+      type: string
+      enum:
+      - REQUIRED
+      - PREFERRED
+      x-okta-tags:
+      - Authenticator
+    AuthenticatorSettings:
+      type: object
+      properties:
+        allowedFor:
+          $ref: '#/components/schemas/AllowedForEnum'
+        appInstanceId:
+          type: string
+        channelBinding:
+          $ref: '#/components/schemas/ChannelBinding'
+        compliance:
+          $ref: '#/components/schemas/Compliance'
+        tokenLifetimeInMinutes:
+          type: integer
+        userVerification:
+          $ref: '#/components/schemas/UserVerificationEnum'
+      x-okta-tags:
+      - Authenticator
+    AllowedForEnum:
+      type: string
+      enum:
+      - recovery
+      - sso
+      - any
+      - none
+      x-okta-tags:
+      - Authenticator
+    FipsEnum:
+      type: string
+      enum:
+      - REQUIRED
+      - OPTIONAL
+      x-okta-tags:
+      - Authenticator
+    RequiredEnum:
+      type: string
+      enum:
+      - ALWAYS
+      - HIGH_RISK_ONLY
+      - NEVER
+      x-okta-tags:
+      - Authenticator
+    AuthenticatorProviderConfiguration:
+      type: object
+      properties:
+        authPort:
+          type: integer
+        host:
+          type: string
+        hostName:
+          type: string
+        instanceId:
+          type: string
+        integrationKey:
+          type: string
+        secretKey:
+          type: string
+        sharedSecret:
+          type: string
+        userNameTemplate:
+          $ref: '#/components/schemas/AuthenticatorProviderConfigurationUserNamePlate'
+      x-okta-tags:
+      - Authenticator
+    Authenticator:
+      type: object
+      properties:
+        _links:
+          type: object
+          additionalProperties:
+            type: object
+            properties: {}
+          readOnly: true
+        created:
+          type: string
+          format: date-time
+          readOnly: true
+        id:
+          type: string
+          readOnly: true
+        key:
+          type: string
+        lastUpdated:
+          type: string
+          format: date-time
+          readOnly: true
+        name:
+          type: string
+        provider:
+          $ref: '#/components/schemas/AuthenticatorProvider'
+        settings:
+          $ref: '#/components/schemas/AuthenticatorSettings'
+        status:
+          $ref: '#/components/schemas/AuthenticatorStatus'
+        type:
+          $ref: '#/components/schemas/AuthenticatorType'
+      x-okta-crud:
+      - alias: read
+        arguments: []
+        operationId: getAuthenticator
+      - alias: update
+        arguments:
+        - dest: authenticatorId
+          src: id
+        - dest: authenticator
+          self: true
+        operationId: updateAuthenticator
+      x-okta-operations:
+      - alias: activate
+        arguments:
+        - dest: authenticatorId
+          src: id
+        operationId: activateAuthenticator
+      - alias: deactivate
+        arguments:
+        - dest: authenticatorId
+          src: id
+        operationId: deactivateAuthenticator
+      x-okta-tags:
+      - Authenticator
+    Compliance:
+      type: object
+      properties:
+        fips:
+          $ref: '#/components/schemas/FipsEnum'
+      x-okta-tags:
+      - Authenticator
+  securitySchemes:
+    api_token:
+      type: apiKey
+      description: SSWS {API Token}
+      name: Authorization
+      in: header
+externalDocs:
+  description: Find more info here
+  url: https://developer.okta.com/docs/api/getting_started/design_principles.html

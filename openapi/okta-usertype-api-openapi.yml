@@ -1,0 +1,224 @@
+openapi: 3.0.1
+info:
+  title: Okta Application UserType API
+  description: Allows customers to easily access the Okta API
+  termsOfService: https://developer.okta.com/terms/
+  contact:
+    name: Okta Developer Team
+    url: https://developer.okta.com/
+    email: devex-public@okta.com
+  license:
+    name: Apache-2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0.html
+  version: 2.16.0
+servers:
+- url: https://your-subdomain.okta.com/
+tags:
+- name: UserType
+paths:
+  /api/v1/meta/types/user:
+    get:
+      tags:
+      - UserType
+      description: Fetches all User Types in your org
+      operationId: listUserTypes
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/UserType'
+      security:
+      - api_token: []
+    post:
+      tags:
+      - UserType
+      description: Creates a new User Type. A default User Type is automatically created along with your org, and you may add another 9 User Types for a maximum of 10.
+      operationId: createUserType
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserType'
+        required: true
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserType'
+      security:
+      - api_token: []
+      x-codegen-request-body-name: userType
+  /api/v1/meta/types/user/{typeId}:
+    get:
+      tags:
+      - UserType
+      description: Fetches a User Type by ID. The special identifier `default` may be used to fetch the default User Type.
+      operationId: getUserType
+      parameters:
+      - name: typeId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserType'
+      security:
+      - api_token: []
+    put:
+      tags:
+      - UserType
+      description: Replace an existing User Type
+      operationId: replaceUserType
+      parameters:
+      - name: typeId
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserType'
+        required: true
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserType'
+      security:
+      - api_token: []
+      x-codegen-request-body-name: userType
+    post:
+      tags:
+      - UserType
+      description: Updates an existing User Type
+      operationId: updateUserType
+      parameters:
+      - name: typeId
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserType'
+        required: true
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserType'
+      security:
+      - api_token: []
+      x-codegen-request-body-name: userType
+    delete:
+      tags:
+      - UserType
+      description: Deletes a User Type permanently. This operation is not permitted for the default type, nor for any User Type that has existing users
+      operationId: deleteUserType
+      parameters:
+      - name: typeId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          description: No Content
+          content: {}
+      security:
+      - api_token: []
+components:
+  schemas:
+    UserType:
+      type: object
+      properties:
+        _links:
+          type: object
+          additionalProperties:
+            type: object
+            properties: {}
+          readOnly: true
+        created:
+          type: string
+          format: date-time
+          readOnly: true
+        createdBy:
+          type: string
+          readOnly: true
+        default:
+          type: boolean
+          readOnly: true
+        description:
+          type: string
+        displayName:
+          type: string
+        id:
+          type: string
+        lastUpdated:
+          type: string
+          format: date-time
+          readOnly: true
+        lastUpdatedBy:
+          type: string
+          readOnly: true
+        name:
+          type: string
+      x-okta-crud:
+      - alias: create
+        arguments:
+        - dest: userType
+          self: true
+        operationId: createUserType
+      - alias: update
+        arguments:
+        - dest: typeId
+          src: id
+        - dest: userType
+          self: true
+        operationId: updateUserType
+      - alias: read
+        arguments:
+        - dest: typeId
+          src: id
+        operationId: getUserType
+      - alias: delete
+        arguments:
+        - dest: typeId
+          src: id
+        operationId: deleteUserType
+      x-okta-operations:
+      - alias: replaceUserType
+        arguments:
+        - dest: roleId
+          src: id
+        operationId: replaceUserType
+      x-okta-tags:
+      - UserType
+  securitySchemes:
+    api_token:
+      type: apiKey
+      description: SSWS {API Token}
+      name: Authorization
+      in: header
+externalDocs:
+  description: Find more info here
+  url: https://developer.okta.com/docs/api/getting_started/design_principles.html

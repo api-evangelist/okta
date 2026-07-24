@@ -1,0 +1,404 @@
+openapi: 3.0.1
+info:
+  title: Okta Application Log API
+  description: Allows customers to easily access the Okta API
+  termsOfService: https://developer.okta.com/terms/
+  contact:
+    name: Okta Developer Team
+    url: https://developer.okta.com/
+    email: devex-public@okta.com
+  license:
+    name: Apache-2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0.html
+  version: 2.16.0
+servers:
+- url: https://your-subdomain.okta.com/
+tags:
+- name: Log
+paths:
+  /api/v1/logs:
+    get:
+      tags:
+      - Log
+      summary: Fetch a list of events from your Okta organization system log.
+      description: The Okta System Log API provides read access to your organization’s system log. This API provides more functionality than the Events API
+      operationId: getLogs
+      parameters:
+      - name: since
+        in: query
+        schema:
+          type: string
+          format: date-time
+      - name: until
+        in: query
+        schema:
+          type: string
+          format: date-time
+      - name: filter
+        in: query
+        schema:
+          type: string
+      - name: q
+        in: query
+        schema:
+          type: string
+      - name: limit
+        in: query
+        schema:
+          type: integer
+          default: 100
+      - name: sortOrder
+        in: query
+        schema:
+          type: string
+          default: ASCENDING
+      - name: after
+        in: query
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/LogEvent'
+      security:
+      - api_token: []
+components:
+  schemas:
+    LogRequest:
+      type: object
+      properties:
+        ipChain:
+          type: array
+          readOnly: true
+          items:
+            $ref: '#/components/schemas/LogIpAddress'
+      x-okta-tags:
+      - Log
+    LogSecurityContext:
+      type: object
+      properties:
+        asNumber:
+          type: integer
+          readOnly: true
+        asOrg:
+          type: string
+          readOnly: true
+        domain:
+          type: string
+          readOnly: true
+        isProxy:
+          type: boolean
+          readOnly: true
+        isp:
+          type: string
+          readOnly: true
+      x-okta-tags:
+      - Log
+    LogCredentialProvider:
+      type: string
+      enum:
+      - OKTA_AUTHENTICATION_PROVIDER
+      - OKTA_CREDENTIAL_PROVIDER
+      - RSA
+      - SYMANTEC
+      - GOOGLE
+      - DUO
+      - YUBIKEY
+      - APPLE
+      x-okta-tags:
+      - Log
+    LogSeverity:
+      type: string
+      enum:
+      - DEBUG
+      - INFO
+      - WARN
+      - ERROR
+      x-okta-tags:
+      - Log
+    LogTarget:
+      type: object
+      properties:
+        alternateId:
+          type: string
+          readOnly: true
+        detailEntry:
+          type: object
+          additionalProperties:
+            type: object
+            properties: {}
+          readOnly: true
+        displayName:
+          type: string
+          readOnly: true
+        id:
+          type: string
+          readOnly: true
+        type:
+          type: string
+          readOnly: true
+      x-okta-tags:
+      - Log
+    LogTransaction:
+      type: object
+      properties:
+        detail:
+          type: object
+          additionalProperties:
+            type: object
+            properties: {}
+          readOnly: true
+        id:
+          type: string
+          readOnly: true
+        type:
+          type: string
+          readOnly: true
+      x-okta-tags:
+      - Log
+    LogAuthenticationContext:
+      type: object
+      properties:
+        authenticationProvider:
+          $ref: '#/components/schemas/LogAuthenticationProvider'
+        authenticationStep:
+          type: integer
+          readOnly: true
+        credentialProvider:
+          $ref: '#/components/schemas/LogCredentialProvider'
+        credentialType:
+          $ref: '#/components/schemas/LogCredentialType'
+        externalSessionId:
+          type: string
+          readOnly: true
+        interface:
+          type: string
+          readOnly: true
+        issuer:
+          $ref: '#/components/schemas/LogIssuer'
+      x-okta-tags:
+      - Log
+    LogGeographicalContext:
+      type: object
+      properties:
+        city:
+          type: string
+          readOnly: true
+        country:
+          type: string
+          readOnly: true
+        geolocation:
+          $ref: '#/components/schemas/LogGeolocation'
+        postalCode:
+          type: string
+          readOnly: true
+        state:
+          type: string
+          readOnly: true
+      x-okta-tags:
+      - Log
+    LogGeolocation:
+      type: object
+      properties:
+        lat:
+          type: number
+          format: double
+          readOnly: true
+        lon:
+          type: number
+          format: double
+          readOnly: true
+      x-okta-tags:
+      - Log
+    LogUserAgent:
+      type: object
+      properties:
+        browser:
+          type: string
+          readOnly: true
+        os:
+          type: string
+          readOnly: true
+        rawUserAgent:
+          type: string
+          readOnly: true
+      x-okta-tags:
+      - Log
+    LogActor:
+      type: object
+      properties:
+        alternateId:
+          type: string
+          readOnly: true
+        detail:
+          type: object
+          additionalProperties:
+            type: object
+            properties: {}
+          readOnly: true
+        displayName:
+          type: string
+          readOnly: true
+        id:
+          type: string
+          readOnly: true
+        type:
+          type: string
+          readOnly: true
+      x-okta-tags:
+      - Log
+    LogAuthenticationProvider:
+      type: string
+      enum:
+      - OKTA_AUTHENTICATION_PROVIDER
+      - ACTIVE_DIRECTORY
+      - LDAP
+      - FEDERATION
+      - SOCIAL
+      - FACTOR_PROVIDER
+      x-okta-tags:
+      - Log
+    LogOutcome:
+      type: object
+      properties:
+        reason:
+          type: string
+          readOnly: true
+        result:
+          type: string
+          readOnly: true
+      x-okta-tags:
+      - Log
+    LogEvent:
+      type: object
+      properties:
+        actor:
+          $ref: '#/components/schemas/LogActor'
+        authenticationContext:
+          $ref: '#/components/schemas/LogAuthenticationContext'
+        client:
+          $ref: '#/components/schemas/LogClient'
+        debugContext:
+          $ref: '#/components/schemas/LogDebugContext'
+        displayMessage:
+          type: string
+          readOnly: true
+        eventType:
+          type: string
+          readOnly: true
+        legacyEventType:
+          type: string
+          readOnly: true
+        outcome:
+          $ref: '#/components/schemas/LogOutcome'
+        published:
+          type: string
+          format: date-time
+          readOnly: true
+        request:
+          $ref: '#/components/schemas/LogRequest'
+        securityContext:
+          $ref: '#/components/schemas/LogSecurityContext'
+        severity:
+          $ref: '#/components/schemas/LogSeverity'
+        target:
+          type: array
+          readOnly: true
+          items:
+            $ref: '#/components/schemas/LogTarget'
+        transaction:
+          $ref: '#/components/schemas/LogTransaction'
+        uuid:
+          type: string
+          readOnly: true
+        version:
+          type: string
+          readOnly: true
+      x-okta-tags:
+      - Log
+    LogIpAddress:
+      type: object
+      properties:
+        geographicalContext:
+          $ref: '#/components/schemas/LogGeographicalContext'
+        ip:
+          type: string
+          readOnly: true
+        source:
+          type: string
+          readOnly: true
+        version:
+          type: string
+          readOnly: true
+      x-okta-tags:
+      - Log
+    LogClient:
+      type: object
+      properties:
+        device:
+          type: string
+          readOnly: true
+        geographicalContext:
+          $ref: '#/components/schemas/LogGeographicalContext'
+        id:
+          type: string
+          readOnly: true
+        ipAddress:
+          type: string
+          readOnly: true
+        userAgent:
+          $ref: '#/components/schemas/LogUserAgent'
+        zone:
+          type: string
+          readOnly: true
+      x-okta-tags:
+      - Log
+    LogDebugContext:
+      type: object
+      properties:
+        debugData:
+          type: object
+          additionalProperties:
+            type: object
+            properties: {}
+          readOnly: true
+      x-okta-tags:
+      - Log
+    LogIssuer:
+      type: object
+      properties:
+        id:
+          type: string
+          readOnly: true
+        type:
+          type: string
+          readOnly: true
+      x-okta-tags:
+      - Log
+    LogCredentialType:
+      type: string
+      enum:
+      - OTP
+      - SMS
+      - PASSWORD
+      - ASSERTION
+      - IWA
+      - EMAIL
+      - OAUTH2
+      - JWT
+      x-okta-tags:
+      - Log
+  securitySchemes:
+    api_token:
+      type: apiKey
+      description: SSWS {API Token}
+      name: Authorization
+      in: header
+externalDocs:
+  description: Find more info here
+  url: https://developer.okta.com/docs/api/getting_started/design_principles.html

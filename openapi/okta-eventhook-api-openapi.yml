@@ -1,0 +1,340 @@
+openapi: 3.0.1
+info:
+  title: Okta Application EventHook API
+  description: Allows customers to easily access the Okta API
+  termsOfService: https://developer.okta.com/terms/
+  contact:
+    name: Okta Developer Team
+    url: https://developer.okta.com/
+    email: devex-public@okta.com
+  license:
+    name: Apache-2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0.html
+  version: 2.16.0
+servers:
+- url: https://your-subdomain.okta.com/
+tags:
+- name: EventHook
+paths:
+  /api/v1/eventHooks:
+    get:
+      tags:
+      - EventHook
+      description: Success
+      operationId: listEventHooks
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/EventHook'
+      security:
+      - api_token: []
+    post:
+      tags:
+      - EventHook
+      description: Success
+      operationId: createEventHook
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EventHook'
+        required: true
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EventHook'
+      security:
+      - api_token: []
+      x-codegen-request-body-name: eventHook
+  /api/v1/eventHooks/{eventHookId}:
+    get:
+      tags:
+      - EventHook
+      description: Success
+      operationId: getEventHook
+      parameters:
+      - name: eventHookId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EventHook'
+      security:
+      - api_token: []
+    put:
+      tags:
+      - EventHook
+      description: Success
+      operationId: updateEventHook
+      parameters:
+      - name: eventHookId
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EventHook'
+        required: true
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EventHook'
+      security:
+      - api_token: []
+      x-codegen-request-body-name: eventHook
+    delete:
+      tags:
+      - EventHook
+      description: Success
+      operationId: deleteEventHook
+      parameters:
+      - name: eventHookId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          description: No Content
+          content: {}
+      security:
+      - api_token: []
+  /api/v1/eventHooks/{eventHookId}/lifecycle/activate:
+    post:
+      tags:
+      - EventHook
+      description: Success
+      operationId: activateEventHook
+      parameters:
+      - name: eventHookId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EventHook'
+      security:
+      - api_token: []
+  /api/v1/eventHooks/{eventHookId}/lifecycle/deactivate:
+    post:
+      tags:
+      - EventHook
+      description: Success
+      operationId: deactivateEventHook
+      parameters:
+      - name: eventHookId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EventHook'
+      security:
+      - api_token: []
+  /api/v1/eventHooks/{eventHookId}/lifecycle/verify:
+    post:
+      tags:
+      - EventHook
+      description: Success
+      operationId: verifyEventHook
+      parameters:
+      - name: eventHookId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EventHook'
+      security:
+      - api_token: []
+components:
+  schemas:
+    EventHookChannelConfigAuthScheme:
+      type: object
+      properties:
+        key:
+          type: string
+        type:
+          $ref: '#/components/schemas/EventHookChannelConfigAuthSchemeType'
+        value:
+          type: string
+      x-okta-tags:
+      - EventHook
+    EventHookChannel:
+      type: object
+      properties:
+        config:
+          $ref: '#/components/schemas/EventHookChannelConfig'
+        type:
+          type: string
+          enum:
+          - HTTP
+        version:
+          type: string
+      x-okta-tags:
+      - EventHook
+    EventHook:
+      type: object
+      properties:
+        _links:
+          type: object
+          additionalProperties:
+            type: object
+            properties: {}
+          readOnly: true
+        channel:
+          $ref: '#/components/schemas/EventHookChannel'
+        created:
+          type: string
+          format: date-time
+          readOnly: true
+        createdBy:
+          type: string
+        events:
+          $ref: '#/components/schemas/EventSubscriptions'
+        id:
+          type: string
+          readOnly: true
+        lastUpdated:
+          type: string
+          format: date-time
+          readOnly: true
+        name:
+          type: string
+        status:
+          type: string
+          enum:
+          - ACTIVE
+          - INACTIVE
+        verificationStatus:
+          type: string
+          enum:
+          - UNVERIFIED
+          - VERIFIED
+      x-okta-crud:
+      - alias: create
+        arguments:
+        - dest: eventHook
+          self: true
+        operationId: createEventHook
+      - alias: read
+        arguments: []
+        operationId: getEventHook
+      - alias: update
+        arguments:
+        - dest: eventHookId
+          src: id
+        - dest: eventHook
+          self: true
+        operationId: updateEventHook
+      - alias: delete
+        arguments:
+        - dest: eventHookId
+          src: id
+        operationId: deleteEventHook
+      x-okta-operations:
+      - alias: activate
+        arguments:
+        - dest: eventHookId
+          src: id
+        operationId: activateEventHook
+      - alias: deactivate
+        arguments:
+        - dest: eventHookId
+          src: id
+        operationId: deactivateEventHook
+      - alias: verify
+        arguments:
+        - dest: eventHookId
+          src: id
+        operationId: verifyEventHook
+      x-okta-tags:
+      - EventHook
+    EventHookChannelConfig:
+      type: object
+      properties:
+        authScheme:
+          $ref: '#/components/schemas/EventHookChannelConfigAuthScheme'
+        headers:
+          type: array
+          items:
+            $ref: '#/components/schemas/EventHookChannelConfigHeader'
+        uri:
+          type: string
+      x-okta-tags:
+      - EventHook
+    EventSubscriptions:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            type: string
+        type:
+          type: string
+          enum:
+          - EVENT_TYPE
+          - FLOW_EVENT
+      discriminator:
+        propertyName: type
+      x-okta-tags:
+      - EventHook
+    EventHookChannelConfigAuthSchemeType:
+      type: string
+      enum:
+      - HEADER
+      x-okta-tags:
+      - EventHook
+    EventHookChannelConfigHeader:
+      type: object
+      properties:
+        key:
+          type: string
+        value:
+          type: string
+      x-okta-tags:
+      - EventHook
+  securitySchemes:
+    api_token:
+      type: apiKey
+      description: SSWS {API Token}
+      name: Authorization
+      in: header
+externalDocs:
+  description: Find more info here
+  url: https://developer.okta.com/docs/api/getting_started/design_principles.html

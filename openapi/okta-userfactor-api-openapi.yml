@@ -1,0 +1,530 @@
+openapi: 3.0.1
+info:
+  title: Okta Application UserFactor API
+  description: Allows customers to easily access the Okta API
+  termsOfService: https://developer.okta.com/terms/
+  contact:
+    name: Okta Developer Team
+    url: https://developer.okta.com/
+    email: devex-public@okta.com
+  license:
+    name: Apache-2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0.html
+  version: 2.16.0
+servers:
+- url: https://your-subdomain.okta.com/
+tags:
+- name: UserFactor
+paths:
+  /api/v1/users/{userId}/factors:
+    get:
+      tags:
+      - UserFactor
+      description: Enumerates all the enrolled factors for the specified user
+      operationId: listFactors
+      parameters:
+      - name: userId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/UserFactor'
+      security:
+      - api_token: []
+    post:
+      tags:
+      - UserFactor
+      summary: Okta Enroll Factor
+      description: Enrolls a user with a supported factor.
+      operationId: enrollFactor
+      parameters:
+      - name: userId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: updatePhone
+        in: query
+        schema:
+          type: boolean
+          default: false
+      - name: templateId
+        in: query
+        description: id of SMS template (only for SMS factor)
+        schema:
+          type: string
+      - name: tokenLifetimeSeconds
+        in: query
+        schema:
+          type: integer
+          format: int32
+          default: 300
+          x-okta-added-version: 1.3.0
+        x-okta-added-version: 1.3.0
+      - name: activate
+        in: query
+        schema:
+          type: boolean
+          default: false
+          x-okta-added-version: 1.3.0
+        x-okta-added-version: 1.3.0
+      requestBody:
+        description: Factor
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserFactor'
+        required: true
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserFactor'
+      security:
+      - api_token: []
+      x-codegen-request-body-name: body
+  /api/v1/users/{userId}/factors/catalog:
+    get:
+      tags:
+      - UserFactor
+      description: Enumerates all the supported factors that can be enrolled for the specified user
+      operationId: listSupportedFactors
+      parameters:
+      - name: userId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/UserFactor'
+      security:
+      - api_token: []
+  /api/v1/users/{userId}/factors/questions:
+    get:
+      tags:
+      - UserFactor
+      description: Enumerates all available security questions for a user's `question` factor
+      operationId: listSupportedSecurityQuestions
+      parameters:
+      - name: userId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/SecurityQuestion'
+      security:
+      - api_token: []
+  /api/v1/users/{userId}/factors/{factorId}:
+    get:
+      tags:
+      - UserFactor
+      description: Fetches a factor for the specified user
+      operationId: getFactor
+      parameters:
+      - name: userId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: factorId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserFactor'
+      security:
+      - api_token: []
+    delete:
+      tags:
+      - UserFactor
+      description: Unenrolls an existing factor for the specified user, allowing the user to enroll a new factor.
+      operationId: deleteFactor
+      parameters:
+      - name: userId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: factorId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          description: No Content
+          content: {}
+      security:
+      - api_token: []
+  /api/v1/users/{userId}/factors/{factorId}/lifecycle/activate:
+    post:
+      tags:
+      - UserFactor
+      summary: Okta Activate Factor
+      description: The `sms` and `token:software:totp` factor types require activation to complete the enrollment process.
+      operationId: activateFactor
+      parameters:
+      - name: userId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: factorId
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ActivateFactorRequest'
+        required: false
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserFactor'
+      security:
+      - api_token: []
+      x-codegen-request-body-name: body
+  /api/v1/users/{userId}/factors/{factorId}/transactions/{transactionId}:
+    get:
+      tags:
+      - UserFactor
+      description: Polls factors verification transaction for status.
+      operationId: getFactorTransactionStatus
+      parameters:
+      - name: userId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: factorId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: transactionId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VerifyUserFactorResponse'
+      security:
+      - api_token: []
+  /api/v1/users/{userId}/factors/{factorId}/verify:
+    post:
+      tags:
+      - UserFactor
+      summary: Okta Verify MFA Factor
+      description: Verifies an OTP for a `token` or `token:hardware` factor
+      operationId: verifyFactor
+      parameters:
+      - name: userId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: factorId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: templateId
+        in: query
+        schema:
+          type: string
+      - name: tokenLifetimeSeconds
+        in: query
+        schema:
+          type: integer
+          format: int32
+          default: 300
+          x-okta-added-version: 1.3.0
+        x-okta-added-version: 1.3.0
+      - name: X-Forwarded-For
+        in: header
+        schema:
+          type: string
+          x-okta-added-version: 1.11.0
+        x-okta-added-version: 1.11.0
+      - name: User-Agent
+        in: header
+        schema:
+          type: string
+          x-okta-added-version: 1.11.0
+        x-okta-added-version: 1.11.0
+      - name: Accept-Language
+        in: header
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/VerifyFactorRequest'
+        required: false
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VerifyUserFactorResponse'
+      security:
+      - api_token: []
+      x-codegen-request-body-name: body
+components:
+  schemas:
+    FactorStatus:
+      type: string
+      enum:
+      - PENDING_ACTIVATION
+      - ACTIVE
+      - INACTIVE
+      - NOT_SETUP
+      - ENROLLED
+      - DISABLED
+      - EXPIRED
+      x-okta-tags:
+      - UserFactor
+    VerifyUserFactorResponse:
+      type: object
+      properties:
+        _embedded:
+          type: object
+          additionalProperties:
+            type: object
+            properties: {}
+          readOnly: true
+        _links:
+          type: object
+          additionalProperties:
+            type: object
+            properties: {}
+          readOnly: true
+        expiresAt:
+          type: string
+          format: date-time
+          readOnly: true
+        factorResult:
+          type: string
+          enum:
+          - SUCCESS
+          - EXPIRED
+          - CHALLENGE
+          - WAITING
+          - FAILED
+          - REJECTED
+          - TIMEOUT
+          - TIME_WINDOW_EXCEEDED
+          - PASSCODE_REPLAYED
+          - ERROR
+        factorResultMessage:
+          type: string
+      x-okta-tags:
+      - UserFactor
+    FactorType:
+      type: string
+      enum:
+      - call
+      - email
+      - hotp
+      - push
+      - question
+      - signed_nonce
+      - sms
+      - token:hardware
+      - token:hotp
+      - token:software:totp
+      - token
+      - u2f
+      - web
+      - webauthn
+      x-okta-tags:
+      - UserFactor
+    UserFactor:
+      type: object
+      properties:
+        _embedded:
+          type: object
+          additionalProperties:
+            type: object
+            properties: {}
+          readOnly: true
+        _links:
+          type: object
+          additionalProperties:
+            type: object
+            properties: {}
+          readOnly: true
+        created:
+          type: string
+          format: date-time
+          readOnly: true
+        factorType:
+          $ref: '#/components/schemas/FactorType'
+        id:
+          type: string
+          readOnly: true
+        lastUpdated:
+          type: string
+          format: date-time
+          readOnly: true
+        provider:
+          $ref: '#/components/schemas/FactorProvider'
+        status:
+          $ref: '#/components/schemas/FactorStatus'
+        verify:
+          $ref: '#/components/schemas/VerifyFactorRequest'
+      x-okta-crud:
+      - alias: delete
+        arguments:
+        - dest: factorId
+          src: id
+        - dest: userId
+          parentSrc: id
+        operationId: deleteFactor
+      x-okta-operations:
+      - alias: activate
+        arguments:
+        - dest: factorId
+          src: id
+        - dest: userId
+          parentSrc: id
+        operationId: activateFactor
+      - alias: verify
+        arguments:
+        - dest: factorId
+          src: id
+        - dest: userId
+          parentSrc: id
+        operationId: verifyFactor
+      x-okta-tags:
+      - UserFactor
+      x-openapi-v3-discriminator:
+        mapping:
+          call: '#/definitions/CallUserFactor'
+          email: '#/definitions/EmailUserFactor'
+          hotp: '#/definitions/CustomHotpUserFactor'
+          push: '#/definitions/PushUserFactor'
+          question: '#/definitions/SecurityQuestionUserFactor'
+          sms: '#/definitions/SmsUserFactor'
+          token: '#/definitions/TokenUserFactor'
+          token:hardware: '#/definitions/HardwareUserFactor'
+          token:hotp: '#/definitions/CustomHotpUserFactor'
+          token:software:totp: '#/definitions/TotpUserFactor'
+          u2f: '#/definitions/U2fUserFactor'
+          web: '#/definitions/WebUserFactor'
+          webauthn: '#/definitions/WebAuthnUserFactor'
+        propertyName: factorType
+    VerifyFactorRequest:
+      type: object
+      properties:
+        activationToken:
+          type: string
+        answer:
+          type: string
+        attestation:
+          type: string
+        clientData:
+          type: string
+        nextPassCode:
+          type: string
+        passCode:
+          type: string
+        registrationData:
+          type: string
+        stateToken:
+          type: string
+      x-okta-tags:
+      - UserFactor
+    FactorProvider:
+      type: string
+      enum:
+      - OKTA
+      - RSA
+      - FIDO
+      - GOOGLE
+      - SYMANTEC
+      - DUO
+      - YUBICO
+      - CUSTOM
+      - APPLE
+      x-okta-tags:
+      - UserFactor
+    ActivateFactorRequest:
+      type: object
+      properties:
+        attestation:
+          type: string
+        clientData:
+          type: string
+        passCode:
+          type: string
+        registrationData:
+          type: string
+        stateToken:
+          type: string
+      x-okta-tags:
+      - UserFactor
+    SecurityQuestion:
+      type: object
+      properties:
+        answer:
+          type: string
+        question:
+          type: string
+        questionText:
+          type: string
+      x-okta-tags:
+      - UserFactor
+  securitySchemes:
+    api_token:
+      type: apiKey
+      description: SSWS {API Token}
+      name: Authorization
+      in: header
+externalDocs:
+  description: Find more info here
+  url: https://developer.okta.com/docs/api/getting_started/design_principles.html

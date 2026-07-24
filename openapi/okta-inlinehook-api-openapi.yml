@@ -1,0 +1,377 @@
+openapi: 3.0.1
+info:
+  title: Okta Application InlineHook API
+  description: Allows customers to easily access the Okta API
+  termsOfService: https://developer.okta.com/terms/
+  contact:
+    name: Okta Developer Team
+    url: https://developer.okta.com/
+    email: devex-public@okta.com
+  license:
+    name: Apache-2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0.html
+  version: 2.16.0
+servers:
+- url: https://your-subdomain.okta.com/
+tags:
+- name: InlineHook
+paths:
+  /api/v1/inlineHooks:
+    get:
+      tags:
+      - InlineHook
+      description: Success
+      operationId: listInlineHooks
+      parameters:
+      - name: type
+        in: query
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/InlineHook'
+      security:
+      - api_token: []
+    post:
+      tags:
+      - InlineHook
+      description: Success
+      operationId: createInlineHook
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/InlineHook'
+        required: true
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InlineHook'
+      security:
+      - api_token: []
+      x-codegen-request-body-name: inlineHook
+  /api/v1/inlineHooks/{inlineHookId}:
+    get:
+      tags:
+      - InlineHook
+      description: Gets an inline hook by ID
+      operationId: getInlineHook
+      parameters:
+      - name: inlineHookId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InlineHook'
+      security:
+      - api_token: []
+    put:
+      tags:
+      - InlineHook
+      description: Updates an inline hook by ID
+      operationId: updateInlineHook
+      parameters:
+      - name: inlineHookId
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/InlineHook'
+        required: true
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InlineHook'
+      security:
+      - api_token: []
+      x-codegen-request-body-name: inlineHook
+    delete:
+      tags:
+      - InlineHook
+      description: Deletes the Inline Hook matching the provided id. Once deleted, the Inline Hook is unrecoverable. As a safety precaution, only Inline Hooks with a status of INACTIVE are eligible for deletion.
+      operationId: deleteInlineHook
+      parameters:
+      - name: inlineHookId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          description: No Content
+          content: {}
+      security:
+      - api_token: []
+  /api/v1/inlineHooks/{inlineHookId}/execute:
+    post:
+      tags:
+      - InlineHook
+      description: Executes the Inline Hook matching the provided inlineHookId using the request body as the input. This will send the provided data through the Channel and return a response if it matches the correct data contract. This execution endpoint should only be used for testing purposes.
+      operationId: executeInlineHook
+      parameters:
+      - name: inlineHookId
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/InlineHookPayload'
+        required: true
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InlineHookResponse'
+      security:
+      - api_token: []
+      x-codegen-request-body-name: payloadData
+  /api/v1/inlineHooks/{inlineHookId}/lifecycle/activate:
+    post:
+      tags:
+      - InlineHook
+      description: Activates the Inline Hook matching the provided id
+      operationId: activateInlineHook
+      parameters:
+      - name: inlineHookId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InlineHook'
+      security:
+      - api_token: []
+  /api/v1/inlineHooks/{inlineHookId}/lifecycle/deactivate:
+    post:
+      tags:
+      - InlineHook
+      description: Deactivates the Inline Hook matching the provided id
+      operationId: deactivateInlineHook
+      parameters:
+      - name: inlineHookId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InlineHook'
+      security:
+      - api_token: []
+components:
+  schemas:
+    InlineHookPayload:
+      type: object
+      x-okta-extensible: true
+      x-okta-tags:
+      - InlineHook
+    InlineHook:
+      type: object
+      properties:
+        _links:
+          type: object
+          additionalProperties:
+            type: object
+            properties: {}
+          readOnly: true
+        channel:
+          $ref: '#/components/schemas/InlineHookChannel'
+        created:
+          type: string
+          format: date-time
+          readOnly: true
+        id:
+          type: string
+          readOnly: true
+        lastUpdated:
+          type: string
+          format: date-time
+          readOnly: true
+        name:
+          type: string
+        status:
+          $ref: '#/components/schemas/InlineHookStatus'
+        type:
+          $ref: '#/components/schemas/InlineHookType'
+        version:
+          type: string
+      x-okta-crud:
+      - alias: create
+        arguments:
+        - dest: inlineHook
+          self: true
+        operationId: createInlineHook
+      - alias: read
+        arguments: []
+        operationId: getInlineHook
+      - alias: update
+        arguments:
+        - dest: inlineHookId
+          src: id
+        - dest: inlineHook
+          self: true
+        operationId: updateInlineHook
+      - alias: delete
+        arguments:
+        - dest: inlineHookId
+          src: id
+        operationId: deleteInlineHook
+      x-okta-operations:
+      - alias: activate
+        arguments:
+        - dest: inlineHookId
+          src: id
+        operationId: activateInlineHook
+      - alias: deactivate
+        arguments:
+        - dest: inlineHookId
+          src: id
+        operationId: deactivateInlineHook
+      - alias: execute
+        arguments:
+        - dest: inlineHookId
+          src: id
+        operationId: executeInlineHook
+      x-okta-tags:
+      - InlineHook
+    InlineHookChannelConfigAuthScheme:
+      type: object
+      properties:
+        key:
+          type: string
+        type:
+          type: string
+        value:
+          type: string
+      x-okta-tags:
+      - InlineHook
+    InlineHookChannel:
+      type: object
+      properties:
+        config:
+          $ref: '#/components/schemas/InlineHookChannelConfig'
+        type:
+          type: string
+          enum:
+          - HTTP
+        version:
+          type: string
+      x-okta-tags:
+      - InlineHook
+    InlineHookResponseCommandValue:
+      type: object
+      properties:
+        op:
+          type: string
+        path:
+          type: string
+        value:
+          type: string
+      x-okta-tags:
+      - InlineHook
+    InlineHookResponseCommands:
+      type: object
+      properties:
+        type:
+          type: string
+        value:
+          type: array
+          items:
+            $ref: '#/components/schemas/InlineHookResponseCommandValue'
+      x-okta-tags:
+      - InlineHook
+    InlineHookType:
+      type: string
+      enum:
+      - com.okta.oauth2.tokens.transform
+      - com.okta.import.transform
+      - com.okta.saml.tokens.transform
+      - com.okta.user.pre-registration
+      - com.okta.user.credential.password.import
+      x-okta-tags:
+      - InlineHook
+    InlineHookResponse:
+      type: object
+      properties:
+        commands:
+          type: array
+          items:
+            $ref: '#/components/schemas/InlineHookResponseCommands'
+      x-okta-tags:
+      - InlineHook
+    InlineHookChannelConfigHeaders:
+      type: object
+      properties:
+        key:
+          type: string
+        value:
+          type: string
+      x-okta-tags:
+      - InlineHook
+    InlineHookChannelConfig:
+      type: object
+      properties:
+        authScheme:
+          $ref: '#/components/schemas/InlineHookChannelConfigAuthScheme'
+        headers:
+          type: array
+          items:
+            $ref: '#/components/schemas/InlineHookChannelConfigHeaders'
+        method:
+          type: string
+        uri:
+          type: string
+      x-okta-tags:
+      - InlineHook
+    InlineHookStatus:
+      type: string
+      enum:
+      - ACTIVE
+      - INACTIVE
+      x-okta-tags:
+      - InlineHook
+  securitySchemes:
+    api_token:
+      type: apiKey
+      description: SSWS {API Token}
+      name: Authorization
+      in: header
+externalDocs:
+  description: Find more info here
+  url: https://developer.okta.com/docs/api/getting_started/design_principles.html

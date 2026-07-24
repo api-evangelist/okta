@@ -1,0 +1,223 @@
+openapi: 3.0.1
+info:
+  title: Okta Application Feature API
+  description: Allows customers to easily access the Okta API
+  termsOfService: https://developer.okta.com/terms/
+  contact:
+    name: Okta Developer Team
+    url: https://developer.okta.com/
+    email: devex-public@okta.com
+  license:
+    name: Apache-2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0.html
+  version: 2.16.0
+servers:
+- url: https://your-subdomain.okta.com/
+tags:
+- name: Feature
+paths:
+  /api/v1/features:
+    get:
+      tags:
+      - Feature
+      description: Success
+      operationId: listFeatures
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Feature'
+      security:
+      - api_token: []
+  /api/v1/features/{featureId}:
+    get:
+      tags:
+      - Feature
+      description: Success
+      operationId: getFeature
+      parameters:
+      - name: featureId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Feature'
+      security:
+      - api_token: []
+  /api/v1/features/{featureId}/dependencies:
+    get:
+      tags:
+      - Feature
+      description: Success
+      operationId: listFeatureDependencies
+      parameters:
+      - name: featureId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Feature'
+      security:
+      - api_token: []
+  /api/v1/features/{featureId}/dependents:
+    get:
+      tags:
+      - Feature
+      description: Success
+      operationId: listFeatureDependents
+      parameters:
+      - name: featureId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Feature'
+      security:
+      - api_token: []
+  /api/v1/features/{featureId}/{lifecycle}:
+    post:
+      tags:
+      - Feature
+      description: Success
+      operationId: updateFeatureLifecycle
+      parameters:
+      - name: featureId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: lifecycle
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: mode
+        in: query
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Feature'
+      security:
+      - api_token: []
+components:
+  schemas:
+    FeatureStage:
+      type: object
+      properties:
+        state:
+          $ref: '#/components/schemas/FeatureStageState'
+        value:
+          $ref: '#/components/schemas/FeatureStageValue'
+      x-okta-tags:
+      - Feature
+    EnabledStatus:
+      type: string
+      enum:
+      - ENABLED
+      - DISABLED
+      x-okta-tags:
+      - Common
+    FeatureType:
+      type: string
+      enum:
+      - self-service
+      x-okta-tags:
+      - Feature
+    FeatureStageState:
+      type: string
+      enum:
+      - OPEN
+      - CLOSED
+      x-okta-tags:
+      - Feature
+    Feature:
+      type: object
+      properties:
+        _links:
+          type: object
+          additionalProperties:
+            type: object
+            properties: {}
+          readOnly: true
+        description:
+          type: string
+        id:
+          type: string
+          readOnly: true
+        name:
+          type: string
+        stage:
+          $ref: '#/components/schemas/FeatureStage'
+        status:
+          $ref: '#/components/schemas/EnabledStatus'
+        type:
+          $ref: '#/components/schemas/FeatureType'
+      x-okta-crud:
+      - alias: read
+        arguments: []
+        operationId: getFeature
+      x-okta-operations:
+      - alias: updateLifecycle
+        arguments:
+        - dest: featureId
+          src: id
+        operationId: updateFeatureLifecycle
+      - alias: getDependents
+        arguments:
+        - dest: featureId
+          src: id
+        operationId: listFeatureDependents
+      - alias: getDependencies
+        arguments:
+        - dest: featureId
+          src: id
+        operationId: listFeatureDependencies
+      x-okta-tags:
+      - Feature
+    FeatureStageValue:
+      type: string
+      enum:
+      - EA
+      - BETA
+      x-okta-tags:
+      - Feature
+  securitySchemes:
+    api_token:
+      type: apiKey
+      description: SSWS {API Token}
+      name: Authorization
+      in: header
+externalDocs:
+  description: Find more info here
+  url: https://developer.okta.com/docs/api/getting_started/design_principles.html

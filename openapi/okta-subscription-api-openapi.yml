@@ -1,0 +1,254 @@
+openapi: 3.0.1
+info:
+  title: Okta Application Subscription API
+  description: Allows customers to easily access the Okta API
+  termsOfService: https://developer.okta.com/terms/
+  contact:
+    name: Okta Developer Team
+    url: https://developer.okta.com/
+    email: devex-public@okta.com
+  license:
+    name: Apache-2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0.html
+  version: 2.16.0
+servers:
+- url: https://your-subdomain.okta.com/
+tags:
+- name: Subscription
+paths:
+  /api/v1/roles/{roleTypeOrRoleId}/subscriptions:
+    get:
+      tags:
+      - Subscription
+      summary: Okta List all subscriptions of a Custom Role
+      description: When roleType List all subscriptions of a Role. Else when roleId List subscriptions of a Custom Role
+      operationId: listRoleSubscriptions
+      parameters:
+      - name: roleTypeOrRoleId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Subscription'
+        '404':
+          description: Not Found
+          content: {}
+      security:
+      - api_token: []
+  /api/v1/roles/{roleTypeOrRoleId}/subscriptions/{notificationType}:
+    get:
+      tags:
+      - Subscription
+      summary: Okta Get subscriptions of a Custom Role with a specific notification type
+      description: When roleType Get subscriptions of a Role with a specific notification type. Else when roleId Get subscription of a Custom Role with a specific notification type.
+      operationId: getRoleSubscriptionByNotificationType
+      parameters:
+      - name: roleTypeOrRoleId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: notificationType
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Subscription'
+        '404':
+          description: Not Found
+          content: {}
+      security:
+      - api_token: []
+  /api/v1/roles/{roleTypeOrRoleId}/subscriptions/{notificationType}/subscribe:
+    post:
+      tags:
+      - Subscription
+      summary: Okta Subscribe a Custom Role to a specific notification type
+      description: When roleType Subscribes a Role to a specific notification type. When you change the subscription status of a Role, it overrides the subscription of any individual user of that Role. Else when roleId Subscribes a Custom Role to a specific notification type. When you change the subscription status of a Custom Role, it overrides the subscription of any individual user of that Custom Role.
+      operationId: subscribeRoleSubscriptionByNotificationType
+      parameters:
+      - name: roleTypeOrRoleId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: notificationType
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Success
+          content: {}
+        '404':
+          description: Not Found
+          content: {}
+      security:
+      - api_token: []
+  /api/v1/roles/{roleTypeOrRoleId}/subscriptions/{notificationType}/unsubscribe:
+    post:
+      tags:
+      - Subscription
+      summary: Okta Unsubscribe a Custom Role from a specific notification type
+      description: When roleType Unsubscribes a Role from a specific notification type. When you change the subscription status of a Role, it overrides the subscription of any individual user of that Role. Else when roleId Unsubscribes a Custom Role from a specific notification type. When you change the subscription status of a Custom Role, it overrides the subscription of any individual user of that Custom Role.
+      operationId: unsubscribeRoleSubscriptionByNotificationType
+      parameters:
+      - name: roleTypeOrRoleId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: notificationType
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Success
+          content: {}
+        '404':
+          description: Not Found
+          content: {}
+      security:
+      - api_token: []
+  /api/v1/users/{userId}/subscriptions/{notificationType}/subscribe:
+    post:
+      tags:
+      - Subscription
+      summary: Okta Subscribe to a specific notification type
+      description: Subscribes a User to a specific notification type. Only the current User can subscribe to a specific notification type. An AccessDeniedException message is sent if requests are made from other users.
+      operationId: subscribeUserSubscriptionByNotificationType
+      parameters:
+      - name: userId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: notificationType
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Success
+          content: {}
+        '404':
+          description: Not Found
+          content: {}
+      security:
+      - api_token: []
+  /api/v1/users/{userId}/subscriptions/{notificationType}/unsubscribe:
+    post:
+      tags:
+      - Subscription
+      summary: Okta Unsubscribe from a specific notification type
+      description: Unsubscribes a User from a specific notification type. Only the current User can unsubscribe from a specific notification type. An AccessDeniedException message is sent if requests are made from other users.
+      operationId: unsubscribeUserSubscriptionByNotificationType
+      parameters:
+      - name: userId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: notificationType
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Success
+          content: {}
+        '404':
+          description: Not Found
+          content: {}
+      security:
+      - api_token: []
+components:
+  schemas:
+    NotificationType:
+      type: string
+      enum:
+      - CONNECTOR_AGENT
+      - USER_LOCKED_OUT
+      - APP_IMPORT
+      - LDAP_AGENT
+      - AD_AGENT
+      - OKTA_ANNOUNCEMENT
+      - OKTA_ISSUE
+      - OKTA_UPDATE
+      - IWA_AGENT
+      - USER_DEPROVISION
+      - REPORT_SUSPICIOUS_ACTIVITY
+      - RATELIMIT_NOTIFICATION
+      x-okta-tags:
+      - Subscription
+    SubscriptionStatus:
+      type: string
+      enum:
+      - subscribed
+      - unsubscribed
+      x-okta-tags:
+      - Role
+    Subscription:
+      type: object
+      properties:
+        _links:
+          type: object
+          additionalProperties:
+            type: object
+            properties: {}
+          readOnly: true
+        channels:
+          type: array
+          items:
+            type: string
+        notificationType:
+          $ref: '#/components/schemas/NotificationType'
+        status:
+          $ref: '#/components/schemas/SubscriptionStatus'
+      x-okta-operations:
+      - alias: listRoleSubscriptions
+        operationId: listRoleSubscriptions
+      - alias: getRoleSubscriptionByNotificationType
+        operationId: getRoleSubscriptionByNotificationType
+      - alias: getUserSubscriptionByNotificationType
+        operationId: getUserSubscriptionByNotificationType
+      - alias: listUserSubscriptions
+        operationId: listUserSubscriptions
+      - alias: subscribeUserSubscriptionByNotificationType
+        operationId: subscribeUserSubscriptionByNotificationType
+      - alias: unsubscribeRoleSubscriptionByNotificationType
+        operationId: unsubscribeRoleSubscriptionByNotificationType
+      - alias: subscribeRoleSubscriptionByNotificationType
+        operationId: subscribeRoleSubscriptionByNotificationType
+      - alias: unsubscribeUserSubscriptionByNotificationType
+        operationId: unsubscribeUserSubscriptionByNotificationType
+      x-okta-tags:
+      - Role
+  securitySchemes:
+    api_token:
+      type: apiKey
+      description: SSWS {API Token}
+      name: Authorization
+      in: header
+externalDocs:
+  description: Find more info here
+  url: https://developer.okta.com/docs/api/getting_started/design_principles.html

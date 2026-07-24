@@ -1,0 +1,260 @@
+openapi: 3.0.1
+info:
+  title: Okta Application Domain API
+  description: Allows customers to easily access the Okta API
+  termsOfService: https://developer.okta.com/terms/
+  contact:
+    name: Okta Developer Team
+    url: https://developer.okta.com/
+    email: devex-public@okta.com
+  license:
+    name: Apache-2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0.html
+  version: 2.16.0
+servers:
+- url: https://your-subdomain.okta.com/
+tags:
+- name: Domain
+paths:
+  /api/v1/domains:
+    get:
+      tags:
+      - Domain
+      summary: Okta List Domains
+      description: List all verified custom Domains for the org.
+      operationId: listDomains
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DomainListResponse'
+      security:
+      - api_token: []
+    post:
+      tags:
+      - Domain
+      summary: Okta Create Domain
+      description: Creates your domain.
+      operationId: createDomain
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Domain'
+        required: true
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Domain'
+      security:
+      - api_token: []
+      x-codegen-request-body-name: domain
+  /api/v1/domains/{domainId}:
+    get:
+      tags:
+      - Domain
+      summary: Okta Get Domain
+      description: Fetches a Domain by `id`.
+      operationId: getDomain
+      parameters:
+      - name: domainId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Domain'
+      security:
+      - api_token: []
+    delete:
+      tags:
+      - Domain
+      summary: Okta Delete Domain
+      description: Deletes a Domain by `id`.
+      operationId: deleteDomain
+      parameters:
+      - name: domainId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          description: No Content
+          content: {}
+      security:
+      - api_token: []
+  /api/v1/domains/{domainId}/certificate:
+    put:
+      tags:
+      - Domain
+      summary: Okta Create Certificate
+      description: Creates the Certificate for the Domain.
+      operationId: createCertificate
+      parameters:
+      - name: domainId
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DomainCertificate'
+        required: true
+      responses:
+        '204':
+          description: No Content
+          content: {}
+      security:
+      - api_token: []
+      x-codegen-request-body-name: certificate
+  /api/v1/domains/{domainId}/verify:
+    post:
+      tags:
+      - Domain
+      summary: Okta Verify Domain
+      description: Verifies the Domain by `id`.
+      operationId: verifyDomain
+      parameters:
+      - name: domainId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Domain'
+      security:
+      - api_token: []
+components:
+  schemas:
+    Domain:
+      type: object
+      properties:
+        certificateSourceType:
+          $ref: '#/components/schemas/DomainCertificateSourceType'
+        dnsRecords:
+          type: array
+          items:
+            $ref: '#/components/schemas/DNSRecord'
+        domain:
+          type: string
+        id:
+          type: string
+          readOnly: true
+        publicCertificate:
+          $ref: '#/components/schemas/DomainCertificateMetadata'
+        validationStatus:
+          $ref: '#/components/schemas/DomainValidationStatus'
+      x-okta-tags:
+      - Domain
+    DomainCertificateSourceType:
+      type: string
+      enum:
+      - MANUAL
+      - OKTA_MANAGED
+      x-okta-tags:
+      - Domain
+    DomainCertificateType:
+      type: string
+      enum:
+      - PEM
+      x-okta-tags:
+      - Domain
+    DNSRecordType:
+      type: string
+      enum:
+      - TXT
+      - CNAME
+      x-okta-tags:
+      - Domain
+    DomainCertificate:
+      type: object
+      properties:
+        certificate:
+          type: string
+        certificateChain:
+          type: string
+        privateKey:
+          type: string
+        type:
+          $ref: '#/components/schemas/DomainCertificateType'
+      x-okta-operations:
+      - alias: createCertificate
+        arguments:
+        - dest: certificate
+          self: true
+        operationId: createCertificate
+      x-okta-tags:
+      - Domain
+    DomainCertificateMetadata:
+      type: object
+      properties:
+        expiration:
+          type: string
+        fingerprint:
+          type: string
+        subject:
+          type: string
+      x-okta-tags:
+      - Domain
+    DomainListResponse:
+      type: object
+      properties:
+        domains:
+          type: array
+          items:
+            $ref: '#/components/schemas/Domain'
+      x-okta-tags:
+      - Domain
+    DNSRecord:
+      type: object
+      properties:
+        expiration:
+          type: string
+        fqdn:
+          type: string
+        recordType:
+          $ref: '#/components/schemas/DNSRecordType'
+        values:
+          type: array
+          items:
+            type: string
+      x-okta-tags:
+      - Domain
+    DomainValidationStatus:
+      type: string
+      enum:
+      - NOT_STARTED
+      - IN_PROGRESS
+      - VERIFIED
+      - FAILED_TO_VERIFY
+      - DOMAIN_TAKEN
+      - COMPLETED
+      x-okta-tags:
+      - Domain
+  securitySchemes:
+    api_token:
+      type: apiKey
+      description: SSWS {API Token}
+      name: Authorization
+      in: header
+externalDocs:
+  description: Find more info here
+  url: https://developer.okta.com/docs/api/getting_started/design_principles.html

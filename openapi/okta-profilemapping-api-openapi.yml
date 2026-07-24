@@ -1,0 +1,185 @@
+openapi: 3.0.1
+info:
+  title: Okta Application ProfileMapping API
+  description: Allows customers to easily access the Okta API
+  termsOfService: https://developer.okta.com/terms/
+  contact:
+    name: Okta Developer Team
+    url: https://developer.okta.com/
+    email: devex-public@okta.com
+  license:
+    name: Apache-2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0.html
+  version: 2.16.0
+servers:
+- url: https://your-subdomain.okta.com/
+tags:
+- name: ProfileMapping
+paths:
+  /api/v1/mappings:
+    get:
+      tags:
+      - ProfileMapping
+      description: Enumerates Profile Mappings in your organization with pagination.
+      operationId: listProfileMappings
+      parameters:
+      - name: after
+        in: query
+        schema:
+          type: string
+      - name: limit
+        in: query
+        schema:
+          type: integer
+          format: int32
+          default: -1
+      - name: sourceId
+        in: query
+        schema:
+          type: string
+      - name: targetId
+        in: query
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ProfileMapping'
+      security:
+      - api_token: []
+  /api/v1/mappings/{mappingId}:
+    get:
+      tags:
+      - ProfileMapping
+      summary: Okta Get Profile Mapping
+      description: Fetches a single Profile Mapping referenced by its ID.
+      operationId: getProfileMapping
+      parameters:
+      - name: mappingId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProfileMapping'
+      security:
+      - api_token: []
+    post:
+      tags:
+      - ProfileMapping
+      summary: Okta Update Profile Mapping
+      description: Updates an existing Profile Mapping by adding, updating, or removing one or many Property Mappings.
+      operationId: updateProfileMapping
+      parameters:
+      - name: mappingId
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ProfileMapping'
+        required: true
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProfileMapping'
+      security:
+      - api_token: []
+      x-codegen-request-body-name: profileMapping
+components:
+  schemas:
+    ProfileMappingPropertyPushStatus:
+      type: object
+      enum:
+      - PUSH
+      - DONT_PUSH
+      x-okta-tags:
+      - ProfileMapping
+    ProfileMapping:
+      type: object
+      properties:
+        _links:
+          type: object
+          additionalProperties:
+            type: object
+            properties: {}
+          readOnly: true
+        id:
+          type: string
+          readOnly: true
+        properties:
+          type: object
+          additionalProperties:
+            $ref: '#/components/schemas/ProfileMappingProperty'
+          readOnly: true
+        source:
+          $ref: '#/components/schemas/ProfileMappingSource'
+        target:
+          $ref: '#/components/schemas/ProfileMappingSource'
+      x-okta-crud:
+      - alias: read
+        arguments:
+        - dest: mappingId
+          src: id
+        operationId: getProfileMapping
+      - alias: update
+        arguments:
+        - dest: mappingId
+          src: id
+        operationId: updateProfileMapping
+      x-okta-tags:
+      - ProfileMapping
+    ProfileMappingSource:
+      type: object
+      properties:
+        _links:
+          type: object
+          additionalProperties:
+            type: object
+            properties: {}
+          readOnly: true
+        id:
+          type: string
+          readOnly: true
+        name:
+          type: string
+          readOnly: true
+        type:
+          type: string
+          readOnly: true
+      x-okta-tags:
+      - ProfileMapping
+    ProfileMappingProperty:
+      type: object
+      properties:
+        expression:
+          type: string
+        pushStatus:
+          $ref: '#/components/schemas/ProfileMappingPropertyPushStatus'
+      x-okta-tags:
+      - ProfileMapping
+  securitySchemes:
+    api_token:
+      type: apiKey
+      description: SSWS {API Token}
+      name: Authorization
+      in: header
+externalDocs:
+  description: Find more info here
+  url: https://developer.okta.com/docs/api/getting_started/design_principles.html
