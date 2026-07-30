@@ -9,7 +9,20 @@ description: Okta is the workforce identity incumbent — its Identity Cloud pla
   authorization. The Okta Management API is the primary developer surface, with an official MCP server (okta-mcp-server)
   exposing administrative operations to LLM agents under human-in-the-loop confirmation.
 kind: contract
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+accessModel:
+  pricing: paid
+  onboarding: self-serve
+  trial: false
+  try_now: false
+  public: false
+  label: Paid · Self-serve signup
+  confidence: high
+  source:
+  - plans
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/okta.png
 tags:
 - Identity
 - Workforce Identity
@@ -29,30 +42,68 @@ created: '2023-11-20'
 modified: '2026-05-30'
 specificationVersion: '0.19'
 apis:
-- aid: okta:okta-api
-  name: Okta API
-  description: The Okta Management API is the unified identity and access management interface for the Okta Workforce
-    Identity Platform. It allows developers to integrate authentication, authorization, user/group/application management,
-    policies, sessions, hooks, system logs, identity providers, authorization servers, brands, network zones, and
-    governance into their applications. Access uses scoped OAuth 2.0 tokens or legacy API tokens, with rate limiting
-    per org and SKU. The canonical OpenAPI spec is published at github.com/okta/okta-management-openapi-spec under
-    dist/current/.
-  humanURL: https://developer.okta.com/docs/reference/
-  baseURL: https://your-subdomain.okta.com
+- aid: okta:okta-cross-app-access
+  name: Cross-App Access (XAA)
+  description: >-
+    Cross-App Access is Okta's emerging OAuth profile for secure agent-to-app and app-to-app authorization,
+    based on the IETF draft "OAuth Identity Assertion Authorization Grant" (ID-JAG, draft-ietf-oauth-identity-assertion-authz-grant).
+    It lets an Identity Provider mint an identity assertion that downstream resource applications can
+    exchange for a scoped access token, eliminating long-lived unmanaged credentials between AI agents
+    and SaaS apps. Okta operates xaa.dev as a public sandbox for testing requesting and resource application
+    implementations.
+  humanURL: https://xaa.dev/
+  baseURL: https://xaa.dev
   image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
   tags:
-  - Identity
-  - Authentication
+  - Cross-App Access
+  - AI Agents
+  - OAuth
+  - ID-JAG
   - Authorization
-  - Single Sign-On
-  - Multi-Factor Authentication
-  - Universal Directory
-  - Lifecycle Management
   properties:
   - type: Documentation
-    url: https://developer.okta.com/docs/reference/
+    url: https://xaa.dev/
+  - type: Specification
+    url: https://datatracker.ietf.org/doc/html/draft-ietf-oauth-identity-assertion-authz-grant
+  - type: Sandbox
+    url: https://xaa.dev/
+  - type: Blog
+    url: >-
+      https://developer.okta.com/blog/2026/01/20/introducing-xaadev-a-playground-for-cross-app-access
+  - type: Blog
+    url: >-
+      https://developer.okta.com/blog/2026/02/10/make-secure-app-to-app-connections-using-cross-app-access
+- aid: okta:okta-for-ai-agents
+  name: Okta for AI Agents
+  description: >-
+    Okta for AI Agents secures the full lifecycle of AI agents — discovery, registration with mandatory
+    human ownership, least-privilege scope enforcement, runtime monitoring, and instant revocation — within
+    the Okta identity control plane. It complements Cross-App Access (XAA) which secures the agent-to-app
+    connection itself. Distributed as an add-on across Workforce Identity SKUs.
+  humanURL: https://www.okta.com/
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  tags:
+  - AI Agents
+  - Identity
+  - Governance
+  - Least Privilege
+  properties:
+  - type: Documentation
+    url: https://www.okta.com/
+  - type: Pricing
+    url: https://www.okta.com/pricing/
+- aid: okta:okta-application-api
+  name: Okta Application API
+  description: The Application API from Okta — 31 operation(s) for application.
+  humanURL: https://developer.okta.com/docs/reference/
+  baseURL: https://your-subdomain.okta.com
+  tags:
+  - Application
+  properties:
   - type: OpenAPI
-    url: openapi/okta-openapi-original.yml
+    url: openapi/okta-application-api-openapi.yml
+  - type: Documentation
+    url: https://developer.okta.com/docs/reference/
   - type: OpenAPISource
     url: https://github.com/okta/okta-management-openapi-spec
   - type: AsyncAPI
@@ -133,51 +184,2306 @@ apis:
     url: plans/okta-plans-pricing.yml
   - type: FinOps
     url: finops/okta-finops.yml
-- aid: okta:okta-cross-app-access
-  name: Cross-App Access (XAA)
-  description: Cross-App Access is Okta's emerging OAuth profile for secure agent-to-app and app-to-app authorization,
-    based on the IETF draft "OAuth Identity Assertion Authorization Grant" (ID-JAG, draft-ietf-oauth-identity-assertion-authz-grant).
-    It lets an Identity Provider mint an identity assertion that downstream resource applications can exchange for
-    a scoped access token, eliminating long-lived unmanaged credentials between AI agents and SaaS apps. Okta operates
-    xaa.dev as a public sandbox for testing requesting and resource application implementations.
-  humanURL: https://xaa.dev/
-  baseURL: https://xaa.dev
-  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+- aid: okta:okta-authenticator-api
+  name: Okta Authenticator API
+  description: The Authenticator API from Okta — 4 operation(s) for authenticator.
+  humanURL: https://developer.okta.com/docs/reference/
+  baseURL: https://your-subdomain.okta.com
   tags:
-  - Cross-App Access
-  - AI Agents
-  - OAuth
-  - ID-JAG
-  - Authorization
+  - Authenticator
   properties:
+  - type: OpenAPI
+    url: openapi/okta-authenticator-api-openapi.yml
   - type: Documentation
-    url: https://xaa.dev/
-  - type: Specification
-    url: https://datatracker.ietf.org/doc/html/draft-ietf-oauth-identity-assertion-authz-grant
-  - type: Sandbox
-    url: https://xaa.dev/
-  - type: Blog
-    url: https://developer.okta.com/blog/2026/01/20/introducing-xaadev-a-playground-for-cross-app-access
-  - type: Blog
-    url: https://developer.okta.com/blog/2026/02/10/make-secure-app-to-app-connections-using-cross-app-access
-- aid: okta:okta-for-ai-agents
-  name: Okta for AI Agents
-  description: Okta for AI Agents secures the full lifecycle of AI agents — discovery, registration with mandatory
-    human ownership, least-privilege scope enforcement, runtime monitoring, and instant revocation — within the Okta
-    identity control plane. It complements Cross-App Access (XAA) which secures the agent-to-app connection itself.
-    Distributed as an add-on across Workforce Identity SKUs.
-  humanURL: https://www.okta.com/
-  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+    url: https://developer.okta.com/docs/reference/
+  - type: OpenAPISource
+    url: https://github.com/okta/okta-management-openapi-spec
+  - type: AsyncAPI
+    url: asyncapi/okta-events-asyncapi.yml
+  - type: Authentication
+    url: https://developer.okta.com/docs/guides/implement-grant-type/authcodepkce/main/
+  - type: RateLimits
+    url: rate-limits/okta-rate-limits.yml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-application.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-authenticator.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-authorizationserver.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-brand.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-domain.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-eventhook.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-feature.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-group.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-groupschema.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-identityprovider.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-inlinehook.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-linkedobject.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-log.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-networkzone.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-org.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-policy.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-profilemapping.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-session.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-subscription.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-template.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-threatinsight.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-trustedorigin.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-user.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-userfactor.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-userschema.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-usertype.yaml
+  - type: GraphQL
+    url: graphql/okta-graphql.md
+  - type: JSONSchema
+    url: json-schema/okta-user-schema.json
+  - type: JSONSchema
+    url: json-schema/okta-group-schema.json
+  - type: JSONSchema
+    url: json-schema/okta-application-schema.json
+  - type: JSONStructure
+    url: json-structure/okta-user-structure.json
+  - type: JSONLD
+    url: json-ld/okta-context.jsonld
+  - type: SpectralRules
+    url: rules/okta-rules.yml
+  - type: Vocabulary
+    url: vocabulary/okta-vocabulary.yml
+  - type: Plans
+    url: plans/okta-plans-pricing.yml
+  - type: FinOps
+    url: finops/okta-finops.yml
+- aid: okta:okta-authorizationserver-api
+  name: Okta AuthorizationServer API
+  description: The AuthorizationServer API from Okta — 21 operation(s) for authorizationserver.
+  humanURL: https://developer.okta.com/docs/reference/
+  baseURL: https://your-subdomain.okta.com
   tags:
-  - AI Agents
-  - Identity
-  - Governance
-  - Least Privilege
+  - AuthorizationServer
   properties:
+  - type: OpenAPI
+    url: openapi/okta-authorizationserver-api-openapi.yml
   - type: Documentation
-    url: https://www.okta.com/
-  - type: Pricing
-    url: https://www.okta.com/pricing/
+    url: https://developer.okta.com/docs/reference/
+  - type: OpenAPISource
+    url: https://github.com/okta/okta-management-openapi-spec
+  - type: AsyncAPI
+    url: asyncapi/okta-events-asyncapi.yml
+  - type: Authentication
+    url: https://developer.okta.com/docs/guides/implement-grant-type/authcodepkce/main/
+  - type: RateLimits
+    url: rate-limits/okta-rate-limits.yml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-application.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-authenticator.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-authorizationserver.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-brand.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-domain.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-eventhook.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-feature.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-group.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-groupschema.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-identityprovider.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-inlinehook.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-linkedobject.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-log.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-networkzone.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-org.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-policy.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-profilemapping.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-session.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-subscription.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-template.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-threatinsight.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-trustedorigin.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-user.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-userfactor.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-userschema.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-usertype.yaml
+  - type: GraphQL
+    url: graphql/okta-graphql.md
+  - type: JSONSchema
+    url: json-schema/okta-user-schema.json
+  - type: JSONSchema
+    url: json-schema/okta-group-schema.json
+  - type: JSONSchema
+    url: json-schema/okta-application-schema.json
+  - type: JSONStructure
+    url: json-structure/okta-user-structure.json
+  - type: JSONLD
+    url: json-ld/okta-context.jsonld
+  - type: SpectralRules
+    url: rules/okta-rules.yml
+  - type: Vocabulary
+    url: vocabulary/okta-vocabulary.yml
+  - type: Plans
+    url: plans/okta-plans-pricing.yml
+  - type: FinOps
+    url: finops/okta-finops.yml
+- aid: okta:okta-brand-api
+  name: Okta Brand API
+  description: The Brand API from Okta — 15 operation(s) for brand.
+  humanURL: https://developer.okta.com/docs/reference/
+  baseURL: https://your-subdomain.okta.com
+  tags:
+  - Brand
+  properties:
+  - type: OpenAPI
+    url: openapi/okta-brand-api-openapi.yml
+  - type: Documentation
+    url: https://developer.okta.com/docs/reference/
+  - type: OpenAPISource
+    url: https://github.com/okta/okta-management-openapi-spec
+  - type: AsyncAPI
+    url: asyncapi/okta-events-asyncapi.yml
+  - type: Authentication
+    url: https://developer.okta.com/docs/guides/implement-grant-type/authcodepkce/main/
+  - type: RateLimits
+    url: rate-limits/okta-rate-limits.yml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-application.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-authenticator.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-authorizationserver.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-brand.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-domain.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-eventhook.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-feature.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-group.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-groupschema.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-identityprovider.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-inlinehook.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-linkedobject.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-log.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-networkzone.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-org.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-policy.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-profilemapping.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-session.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-subscription.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-template.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-threatinsight.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-trustedorigin.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-user.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-userfactor.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-userschema.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-usertype.yaml
+  - type: GraphQL
+    url: graphql/okta-graphql.md
+  - type: JSONSchema
+    url: json-schema/okta-user-schema.json
+  - type: JSONSchema
+    url: json-schema/okta-group-schema.json
+  - type: JSONSchema
+    url: json-schema/okta-application-schema.json
+  - type: JSONStructure
+    url: json-structure/okta-user-structure.json
+  - type: JSONLD
+    url: json-ld/okta-context.jsonld
+  - type: SpectralRules
+    url: rules/okta-rules.yml
+  - type: Vocabulary
+    url: vocabulary/okta-vocabulary.yml
+  - type: Plans
+    url: plans/okta-plans-pricing.yml
+  - type: FinOps
+    url: finops/okta-finops.yml
+- aid: okta:okta-domain-api
+  name: Okta Domain API
+  description: The Domain API from Okta — 4 operation(s) for domain.
+  humanURL: https://developer.okta.com/docs/reference/
+  baseURL: https://your-subdomain.okta.com
+  tags:
+  - Domain
+  properties:
+  - type: OpenAPI
+    url: openapi/okta-domain-api-openapi.yml
+  - type: Documentation
+    url: https://developer.okta.com/docs/reference/
+  - type: OpenAPISource
+    url: https://github.com/okta/okta-management-openapi-spec
+  - type: AsyncAPI
+    url: asyncapi/okta-events-asyncapi.yml
+  - type: Authentication
+    url: https://developer.okta.com/docs/guides/implement-grant-type/authcodepkce/main/
+  - type: RateLimits
+    url: rate-limits/okta-rate-limits.yml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-application.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-authenticator.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-authorizationserver.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-brand.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-domain.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-eventhook.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-feature.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-group.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-groupschema.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-identityprovider.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-inlinehook.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-linkedobject.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-log.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-networkzone.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-org.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-policy.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-profilemapping.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-session.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-subscription.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-template.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-threatinsight.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-trustedorigin.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-user.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-userfactor.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-userschema.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-usertype.yaml
+  - type: GraphQL
+    url: graphql/okta-graphql.md
+  - type: JSONSchema
+    url: json-schema/okta-user-schema.json
+  - type: JSONSchema
+    url: json-schema/okta-group-schema.json
+  - type: JSONSchema
+    url: json-schema/okta-application-schema.json
+  - type: JSONStructure
+    url: json-structure/okta-user-structure.json
+  - type: JSONLD
+    url: json-ld/okta-context.jsonld
+  - type: SpectralRules
+    url: rules/okta-rules.yml
+  - type: Vocabulary
+    url: vocabulary/okta-vocabulary.yml
+  - type: Plans
+    url: plans/okta-plans-pricing.yml
+  - type: FinOps
+    url: finops/okta-finops.yml
+- aid: okta:okta-eventhook-api
+  name: Okta EventHook API
+  description: The EventHook API from Okta — 5 operation(s) for eventhook.
+  humanURL: https://developer.okta.com/docs/reference/
+  baseURL: https://your-subdomain.okta.com
+  tags:
+  - EventHook
+  properties:
+  - type: OpenAPI
+    url: openapi/okta-eventhook-api-openapi.yml
+  - type: Documentation
+    url: https://developer.okta.com/docs/reference/
+  - type: OpenAPISource
+    url: https://github.com/okta/okta-management-openapi-spec
+  - type: AsyncAPI
+    url: asyncapi/okta-events-asyncapi.yml
+  - type: Authentication
+    url: https://developer.okta.com/docs/guides/implement-grant-type/authcodepkce/main/
+  - type: RateLimits
+    url: rate-limits/okta-rate-limits.yml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-application.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-authenticator.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-authorizationserver.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-brand.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-domain.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-eventhook.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-feature.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-group.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-groupschema.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-identityprovider.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-inlinehook.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-linkedobject.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-log.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-networkzone.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-org.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-policy.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-profilemapping.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-session.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-subscription.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-template.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-threatinsight.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-trustedorigin.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-user.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-userfactor.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-userschema.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-usertype.yaml
+  - type: GraphQL
+    url: graphql/okta-graphql.md
+  - type: JSONSchema
+    url: json-schema/okta-user-schema.json
+  - type: JSONSchema
+    url: json-schema/okta-group-schema.json
+  - type: JSONSchema
+    url: json-schema/okta-application-schema.json
+  - type: JSONStructure
+    url: json-structure/okta-user-structure.json
+  - type: JSONLD
+    url: json-ld/okta-context.jsonld
+  - type: SpectralRules
+    url: rules/okta-rules.yml
+  - type: Vocabulary
+    url: vocabulary/okta-vocabulary.yml
+  - type: Plans
+    url: plans/okta-plans-pricing.yml
+  - type: FinOps
+    url: finops/okta-finops.yml
+- aid: okta:okta-feature-api
+  name: Okta Feature API
+  description: The Feature API from Okta — 5 operation(s) for feature.
+  humanURL: https://developer.okta.com/docs/reference/
+  baseURL: https://your-subdomain.okta.com
+  tags:
+  - Feature
+  properties:
+  - type: OpenAPI
+    url: openapi/okta-feature-api-openapi.yml
+  - type: Documentation
+    url: https://developer.okta.com/docs/reference/
+  - type: OpenAPISource
+    url: https://github.com/okta/okta-management-openapi-spec
+  - type: AsyncAPI
+    url: asyncapi/okta-events-asyncapi.yml
+  - type: Authentication
+    url: https://developer.okta.com/docs/guides/implement-grant-type/authcodepkce/main/
+  - type: RateLimits
+    url: rate-limits/okta-rate-limits.yml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-application.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-authenticator.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-authorizationserver.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-brand.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-domain.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-eventhook.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-feature.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-group.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-groupschema.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-identityprovider.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-inlinehook.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-linkedobject.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-log.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-networkzone.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-org.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-policy.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-profilemapping.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-session.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-subscription.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-template.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-threatinsight.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-trustedorigin.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-user.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-userfactor.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-userschema.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-usertype.yaml
+  - type: GraphQL
+    url: graphql/okta-graphql.md
+  - type: JSONSchema
+    url: json-schema/okta-user-schema.json
+  - type: JSONSchema
+    url: json-schema/okta-group-schema.json
+  - type: JSONSchema
+    url: json-schema/okta-application-schema.json
+  - type: JSONStructure
+    url: json-structure/okta-user-structure.json
+  - type: JSONLD
+    url: json-ld/okta-context.jsonld
+  - type: SpectralRules
+    url: rules/okta-rules.yml
+  - type: Vocabulary
+    url: vocabulary/okta-vocabulary.yml
+  - type: Plans
+    url: plans/okta-plans-pricing.yml
+  - type: FinOps
+    url: finops/okta-finops.yml
+- aid: okta:okta-group-api
+  name: Okta Group API
+  description: The Group API from Okta — 16 operation(s) for group.
+  humanURL: https://developer.okta.com/docs/reference/
+  baseURL: https://your-subdomain.okta.com
+  tags:
+  - Group
+  properties:
+  - type: OpenAPI
+    url: openapi/okta-group-api-openapi.yml
+  - type: Documentation
+    url: https://developer.okta.com/docs/reference/
+  - type: OpenAPISource
+    url: https://github.com/okta/okta-management-openapi-spec
+  - type: AsyncAPI
+    url: asyncapi/okta-events-asyncapi.yml
+  - type: Authentication
+    url: https://developer.okta.com/docs/guides/implement-grant-type/authcodepkce/main/
+  - type: RateLimits
+    url: rate-limits/okta-rate-limits.yml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-application.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-authenticator.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-authorizationserver.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-brand.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-domain.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-eventhook.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-feature.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-group.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-groupschema.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-identityprovider.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-inlinehook.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-linkedobject.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-log.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-networkzone.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-org.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-policy.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-profilemapping.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-session.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-subscription.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-template.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-threatinsight.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-trustedorigin.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-user.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-userfactor.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-userschema.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-usertype.yaml
+  - type: GraphQL
+    url: graphql/okta-graphql.md
+  - type: JSONSchema
+    url: json-schema/okta-user-schema.json
+  - type: JSONSchema
+    url: json-schema/okta-group-schema.json
+  - type: JSONSchema
+    url: json-schema/okta-application-schema.json
+  - type: JSONStructure
+    url: json-structure/okta-user-structure.json
+  - type: JSONLD
+    url: json-ld/okta-context.jsonld
+  - type: SpectralRules
+    url: rules/okta-rules.yml
+  - type: Vocabulary
+    url: vocabulary/okta-vocabulary.yml
+  - type: Plans
+    url: plans/okta-plans-pricing.yml
+  - type: FinOps
+    url: finops/okta-finops.yml
+- aid: okta:okta-groupschema-api
+  name: Okta GroupSchema API
+  description: The GroupSchema API from Okta — 1 operation(s) for groupschema.
+  humanURL: https://developer.okta.com/docs/reference/
+  baseURL: https://your-subdomain.okta.com
+  tags:
+  - GroupSchema
+  properties:
+  - type: OpenAPI
+    url: openapi/okta-groupschema-api-openapi.yml
+  - type: Documentation
+    url: https://developer.okta.com/docs/reference/
+  - type: OpenAPISource
+    url: https://github.com/okta/okta-management-openapi-spec
+  - type: AsyncAPI
+    url: asyncapi/okta-events-asyncapi.yml
+  - type: Authentication
+    url: https://developer.okta.com/docs/guides/implement-grant-type/authcodepkce/main/
+  - type: RateLimits
+    url: rate-limits/okta-rate-limits.yml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-application.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-authenticator.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-authorizationserver.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-brand.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-domain.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-eventhook.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-feature.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-group.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-groupschema.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-identityprovider.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-inlinehook.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-linkedobject.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-log.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-networkzone.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-org.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-policy.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-profilemapping.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-session.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-subscription.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-template.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-threatinsight.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-trustedorigin.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-user.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-userfactor.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-userschema.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-usertype.yaml
+  - type: GraphQL
+    url: graphql/okta-graphql.md
+  - type: JSONSchema
+    url: json-schema/okta-user-schema.json
+  - type: JSONSchema
+    url: json-schema/okta-group-schema.json
+  - type: JSONSchema
+    url: json-schema/okta-application-schema.json
+  - type: JSONStructure
+    url: json-structure/okta-user-structure.json
+  - type: JSONLD
+    url: json-ld/okta-context.jsonld
+  - type: SpectralRules
+    url: rules/okta-rules.yml
+  - type: Vocabulary
+    url: vocabulary/okta-vocabulary.yml
+  - type: Plans
+    url: plans/okta-plans-pricing.yml
+  - type: FinOps
+    url: finops/okta-finops.yml
+- aid: okta:okta-identityprovider-api
+  name: Okta IdentityProvider API
+  description: The IdentityProvider API from Okta — 16 operation(s) for identityprovider.
+  humanURL: https://developer.okta.com/docs/reference/
+  baseURL: https://your-subdomain.okta.com
+  tags:
+  - IdentityProvider
+  properties:
+  - type: OpenAPI
+    url: openapi/okta-identityprovider-api-openapi.yml
+  - type: Documentation
+    url: https://developer.okta.com/docs/reference/
+  - type: OpenAPISource
+    url: https://github.com/okta/okta-management-openapi-spec
+  - type: AsyncAPI
+    url: asyncapi/okta-events-asyncapi.yml
+  - type: Authentication
+    url: https://developer.okta.com/docs/guides/implement-grant-type/authcodepkce/main/
+  - type: RateLimits
+    url: rate-limits/okta-rate-limits.yml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-application.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-authenticator.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-authorizationserver.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-brand.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-domain.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-eventhook.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-feature.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-group.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-groupschema.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-identityprovider.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-inlinehook.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-linkedobject.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-log.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-networkzone.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-org.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-policy.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-profilemapping.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-session.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-subscription.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-template.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-threatinsight.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-trustedorigin.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-user.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-userfactor.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-userschema.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-usertype.yaml
+  - type: GraphQL
+    url: graphql/okta-graphql.md
+  - type: JSONSchema
+    url: json-schema/okta-user-schema.json
+  - type: JSONSchema
+    url: json-schema/okta-group-schema.json
+  - type: JSONSchema
+    url: json-schema/okta-application-schema.json
+  - type: JSONStructure
+    url: json-structure/okta-user-structure.json
+  - type: JSONLD
+    url: json-ld/okta-context.jsonld
+  - type: SpectralRules
+    url: rules/okta-rules.yml
+  - type: Vocabulary
+    url: vocabulary/okta-vocabulary.yml
+  - type: Plans
+    url: plans/okta-plans-pricing.yml
+  - type: FinOps
+    url: finops/okta-finops.yml
+- aid: okta:okta-inlinehook-api
+  name: Okta InlineHook API
+  description: The InlineHook API from Okta — 5 operation(s) for inlinehook.
+  humanURL: https://developer.okta.com/docs/reference/
+  baseURL: https://your-subdomain.okta.com
+  tags:
+  - InlineHook
+  properties:
+  - type: OpenAPI
+    url: openapi/okta-inlinehook-api-openapi.yml
+  - type: Documentation
+    url: https://developer.okta.com/docs/reference/
+  - type: OpenAPISource
+    url: https://github.com/okta/okta-management-openapi-spec
+  - type: AsyncAPI
+    url: asyncapi/okta-events-asyncapi.yml
+  - type: Authentication
+    url: https://developer.okta.com/docs/guides/implement-grant-type/authcodepkce/main/
+  - type: RateLimits
+    url: rate-limits/okta-rate-limits.yml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-application.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-authenticator.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-authorizationserver.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-brand.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-domain.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-eventhook.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-feature.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-group.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-groupschema.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-identityprovider.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-inlinehook.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-linkedobject.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-log.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-networkzone.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-org.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-policy.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-profilemapping.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-session.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-subscription.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-template.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-threatinsight.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-trustedorigin.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-user.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-userfactor.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-userschema.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-usertype.yaml
+  - type: GraphQL
+    url: graphql/okta-graphql.md
+  - type: JSONSchema
+    url: json-schema/okta-user-schema.json
+  - type: JSONSchema
+    url: json-schema/okta-group-schema.json
+  - type: JSONSchema
+    url: json-schema/okta-application-schema.json
+  - type: JSONStructure
+    url: json-structure/okta-user-structure.json
+  - type: JSONLD
+    url: json-ld/okta-context.jsonld
+  - type: SpectralRules
+    url: rules/okta-rules.yml
+  - type: Vocabulary
+    url: vocabulary/okta-vocabulary.yml
+  - type: Plans
+    url: plans/okta-plans-pricing.yml
+  - type: FinOps
+    url: finops/okta-finops.yml
+- aid: okta:okta-linkedobject-api
+  name: Okta LinkedObject API
+  description: The LinkedObject API from Okta — 2 operation(s) for linkedobject.
+  humanURL: https://developer.okta.com/docs/reference/
+  baseURL: https://your-subdomain.okta.com
+  tags:
+  - LinkedObject
+  properties:
+  - type: OpenAPI
+    url: openapi/okta-linkedobject-api-openapi.yml
+  - type: Documentation
+    url: https://developer.okta.com/docs/reference/
+  - type: OpenAPISource
+    url: https://github.com/okta/okta-management-openapi-spec
+  - type: AsyncAPI
+    url: asyncapi/okta-events-asyncapi.yml
+  - type: Authentication
+    url: https://developer.okta.com/docs/guides/implement-grant-type/authcodepkce/main/
+  - type: RateLimits
+    url: rate-limits/okta-rate-limits.yml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-application.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-authenticator.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-authorizationserver.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-brand.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-domain.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-eventhook.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-feature.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-group.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-groupschema.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-identityprovider.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-inlinehook.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-linkedobject.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-log.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-networkzone.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-org.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-policy.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-profilemapping.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-session.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-subscription.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-template.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-threatinsight.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-trustedorigin.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-user.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-userfactor.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-userschema.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-usertype.yaml
+  - type: GraphQL
+    url: graphql/okta-graphql.md
+  - type: JSONSchema
+    url: json-schema/okta-user-schema.json
+  - type: JSONSchema
+    url: json-schema/okta-group-schema.json
+  - type: JSONSchema
+    url: json-schema/okta-application-schema.json
+  - type: JSONStructure
+    url: json-structure/okta-user-structure.json
+  - type: JSONLD
+    url: json-ld/okta-context.jsonld
+  - type: SpectralRules
+    url: rules/okta-rules.yml
+  - type: Vocabulary
+    url: vocabulary/okta-vocabulary.yml
+  - type: Plans
+    url: plans/okta-plans-pricing.yml
+  - type: FinOps
+    url: finops/okta-finops.yml
+- aid: okta:okta-log-api
+  name: Okta Log API
+  description: The Log API from Okta — 1 operation(s) for log.
+  humanURL: https://developer.okta.com/docs/reference/
+  baseURL: https://your-subdomain.okta.com
+  tags:
+  - Log
+  properties:
+  - type: OpenAPI
+    url: openapi/okta-log-api-openapi.yml
+  - type: Documentation
+    url: https://developer.okta.com/docs/reference/
+  - type: OpenAPISource
+    url: https://github.com/okta/okta-management-openapi-spec
+  - type: AsyncAPI
+    url: asyncapi/okta-events-asyncapi.yml
+  - type: Authentication
+    url: https://developer.okta.com/docs/guides/implement-grant-type/authcodepkce/main/
+  - type: RateLimits
+    url: rate-limits/okta-rate-limits.yml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-application.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-authenticator.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-authorizationserver.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-brand.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-domain.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-eventhook.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-feature.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-group.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-groupschema.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-identityprovider.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-inlinehook.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-linkedobject.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-log.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-networkzone.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-org.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-policy.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-profilemapping.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-session.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-subscription.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-template.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-threatinsight.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-trustedorigin.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-user.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-userfactor.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-userschema.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-usertype.yaml
+  - type: GraphQL
+    url: graphql/okta-graphql.md
+  - type: JSONSchema
+    url: json-schema/okta-user-schema.json
+  - type: JSONSchema
+    url: json-schema/okta-group-schema.json
+  - type: JSONSchema
+    url: json-schema/okta-application-schema.json
+  - type: JSONStructure
+    url: json-structure/okta-user-structure.json
+  - type: JSONLD
+    url: json-ld/okta-context.jsonld
+  - type: SpectralRules
+    url: rules/okta-rules.yml
+  - type: Vocabulary
+    url: vocabulary/okta-vocabulary.yml
+  - type: Plans
+    url: plans/okta-plans-pricing.yml
+  - type: FinOps
+    url: finops/okta-finops.yml
+- aid: okta:okta-networkzone-api
+  name: Okta NetworkZone API
+  description: The NetworkZone API from Okta — 4 operation(s) for networkzone.
+  humanURL: https://developer.okta.com/docs/reference/
+  baseURL: https://your-subdomain.okta.com
+  tags:
+  - NetworkZone
+  properties:
+  - type: OpenAPI
+    url: openapi/okta-networkzone-api-openapi.yml
+  - type: Documentation
+    url: https://developer.okta.com/docs/reference/
+  - type: OpenAPISource
+    url: https://github.com/okta/okta-management-openapi-spec
+  - type: AsyncAPI
+    url: asyncapi/okta-events-asyncapi.yml
+  - type: Authentication
+    url: https://developer.okta.com/docs/guides/implement-grant-type/authcodepkce/main/
+  - type: RateLimits
+    url: rate-limits/okta-rate-limits.yml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-application.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-authenticator.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-authorizationserver.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-brand.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-domain.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-eventhook.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-feature.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-group.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-groupschema.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-identityprovider.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-inlinehook.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-linkedobject.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-log.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-networkzone.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-org.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-policy.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-profilemapping.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-session.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-subscription.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-template.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-threatinsight.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-trustedorigin.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-user.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-userfactor.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-userschema.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-usertype.yaml
+  - type: GraphQL
+    url: graphql/okta-graphql.md
+  - type: JSONSchema
+    url: json-schema/okta-user-schema.json
+  - type: JSONSchema
+    url: json-schema/okta-group-schema.json
+  - type: JSONSchema
+    url: json-schema/okta-application-schema.json
+  - type: JSONStructure
+    url: json-structure/okta-user-structure.json
+  - type: JSONLD
+    url: json-ld/okta-context.jsonld
+  - type: SpectralRules
+    url: rules/okta-rules.yml
+  - type: Vocabulary
+    url: vocabulary/okta-vocabulary.yml
+  - type: Plans
+    url: plans/okta-plans-pricing.yml
+  - type: FinOps
+    url: finops/okta-finops.yml
+- aid: okta:okta-org-api
+  name: Okta Org API
+  description: The Org API from Okta — 14 operation(s) for org.
+  humanURL: https://developer.okta.com/docs/reference/
+  baseURL: https://your-subdomain.okta.com
+  tags:
+  - Org
+  properties:
+  - type: OpenAPI
+    url: openapi/okta-org-api-openapi.yml
+  - type: Documentation
+    url: https://developer.okta.com/docs/reference/
+  - type: OpenAPISource
+    url: https://github.com/okta/okta-management-openapi-spec
+  - type: AsyncAPI
+    url: asyncapi/okta-events-asyncapi.yml
+  - type: Authentication
+    url: https://developer.okta.com/docs/guides/implement-grant-type/authcodepkce/main/
+  - type: RateLimits
+    url: rate-limits/okta-rate-limits.yml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-application.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-authenticator.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-authorizationserver.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-brand.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-domain.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-eventhook.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-feature.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-group.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-groupschema.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-identityprovider.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-inlinehook.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-linkedobject.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-log.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-networkzone.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-org.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-policy.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-profilemapping.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-session.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-subscription.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-template.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-threatinsight.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-trustedorigin.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-user.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-userfactor.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-userschema.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-usertype.yaml
+  - type: GraphQL
+    url: graphql/okta-graphql.md
+  - type: JSONSchema
+    url: json-schema/okta-user-schema.json
+  - type: JSONSchema
+    url: json-schema/okta-group-schema.json
+  - type: JSONSchema
+    url: json-schema/okta-application-schema.json
+  - type: JSONStructure
+    url: json-structure/okta-user-structure.json
+  - type: JSONLD
+    url: json-ld/okta-context.jsonld
+  - type: SpectralRules
+    url: rules/okta-rules.yml
+  - type: Vocabulary
+    url: vocabulary/okta-vocabulary.yml
+  - type: Plans
+    url: plans/okta-plans-pricing.yml
+  - type: FinOps
+    url: finops/okta-finops.yml
+- aid: okta:okta-policy-api
+  name: Okta Policy API
+  description: The Policy API from Okta — 8 operation(s) for policy.
+  humanURL: https://developer.okta.com/docs/reference/
+  baseURL: https://your-subdomain.okta.com
+  tags:
+  - Policy
+  properties:
+  - type: OpenAPI
+    url: openapi/okta-policy-api-openapi.yml
+  - type: Documentation
+    url: https://developer.okta.com/docs/reference/
+  - type: OpenAPISource
+    url: https://github.com/okta/okta-management-openapi-spec
+  - type: AsyncAPI
+    url: asyncapi/okta-events-asyncapi.yml
+  - type: Authentication
+    url: https://developer.okta.com/docs/guides/implement-grant-type/authcodepkce/main/
+  - type: RateLimits
+    url: rate-limits/okta-rate-limits.yml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-application.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-authenticator.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-authorizationserver.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-brand.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-domain.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-eventhook.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-feature.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-group.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-groupschema.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-identityprovider.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-inlinehook.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-linkedobject.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-log.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-networkzone.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-org.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-policy.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-profilemapping.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-session.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-subscription.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-template.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-threatinsight.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-trustedorigin.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-user.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-userfactor.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-userschema.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-usertype.yaml
+  - type: GraphQL
+    url: graphql/okta-graphql.md
+  - type: JSONSchema
+    url: json-schema/okta-user-schema.json
+  - type: JSONSchema
+    url: json-schema/okta-group-schema.json
+  - type: JSONSchema
+    url: json-schema/okta-application-schema.json
+  - type: JSONStructure
+    url: json-structure/okta-user-structure.json
+  - type: JSONLD
+    url: json-ld/okta-context.jsonld
+  - type: SpectralRules
+    url: rules/okta-rules.yml
+  - type: Vocabulary
+    url: vocabulary/okta-vocabulary.yml
+  - type: Plans
+    url: plans/okta-plans-pricing.yml
+  - type: FinOps
+    url: finops/okta-finops.yml
+- aid: okta:okta-profilemapping-api
+  name: Okta ProfileMapping API
+  description: The ProfileMapping API from Okta — 2 operation(s) for profilemapping.
+  humanURL: https://developer.okta.com/docs/reference/
+  baseURL: https://your-subdomain.okta.com
+  tags:
+  - ProfileMapping
+  properties:
+  - type: OpenAPI
+    url: openapi/okta-profilemapping-api-openapi.yml
+  - type: Documentation
+    url: https://developer.okta.com/docs/reference/
+  - type: OpenAPISource
+    url: https://github.com/okta/okta-management-openapi-spec
+  - type: AsyncAPI
+    url: asyncapi/okta-events-asyncapi.yml
+  - type: Authentication
+    url: https://developer.okta.com/docs/guides/implement-grant-type/authcodepkce/main/
+  - type: RateLimits
+    url: rate-limits/okta-rate-limits.yml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-application.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-authenticator.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-authorizationserver.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-brand.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-domain.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-eventhook.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-feature.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-group.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-groupschema.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-identityprovider.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-inlinehook.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-linkedobject.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-log.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-networkzone.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-org.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-policy.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-profilemapping.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-session.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-subscription.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-template.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-threatinsight.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-trustedorigin.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-user.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-userfactor.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-userschema.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-usertype.yaml
+  - type: GraphQL
+    url: graphql/okta-graphql.md
+  - type: JSONSchema
+    url: json-schema/okta-user-schema.json
+  - type: JSONSchema
+    url: json-schema/okta-group-schema.json
+  - type: JSONSchema
+    url: json-schema/okta-application-schema.json
+  - type: JSONStructure
+    url: json-structure/okta-user-structure.json
+  - type: JSONLD
+    url: json-ld/okta-context.jsonld
+  - type: SpectralRules
+    url: rules/okta-rules.yml
+  - type: Vocabulary
+    url: vocabulary/okta-vocabulary.yml
+  - type: Plans
+    url: plans/okta-plans-pricing.yml
+  - type: FinOps
+    url: finops/okta-finops.yml
+- aid: okta:okta-session-api
+  name: Okta Session API
+  description: The Session API from Okta — 3 operation(s) for session.
+  humanURL: https://developer.okta.com/docs/reference/
+  baseURL: https://your-subdomain.okta.com
+  tags:
+  - Session
+  properties:
+  - type: OpenAPI
+    url: openapi/okta-session-api-openapi.yml
+  - type: Documentation
+    url: https://developer.okta.com/docs/reference/
+  - type: OpenAPISource
+    url: https://github.com/okta/okta-management-openapi-spec
+  - type: AsyncAPI
+    url: asyncapi/okta-events-asyncapi.yml
+  - type: Authentication
+    url: https://developer.okta.com/docs/guides/implement-grant-type/authcodepkce/main/
+  - type: RateLimits
+    url: rate-limits/okta-rate-limits.yml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-application.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-authenticator.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-authorizationserver.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-brand.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-domain.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-eventhook.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-feature.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-group.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-groupschema.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-identityprovider.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-inlinehook.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-linkedobject.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-log.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-networkzone.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-org.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-policy.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-profilemapping.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-session.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-subscription.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-template.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-threatinsight.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-trustedorigin.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-user.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-userfactor.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-userschema.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-usertype.yaml
+  - type: GraphQL
+    url: graphql/okta-graphql.md
+  - type: JSONSchema
+    url: json-schema/okta-user-schema.json
+  - type: JSONSchema
+    url: json-schema/okta-group-schema.json
+  - type: JSONSchema
+    url: json-schema/okta-application-schema.json
+  - type: JSONStructure
+    url: json-structure/okta-user-structure.json
+  - type: JSONLD
+    url: json-ld/okta-context.jsonld
+  - type: SpectralRules
+    url: rules/okta-rules.yml
+  - type: Vocabulary
+    url: vocabulary/okta-vocabulary.yml
+  - type: Plans
+    url: plans/okta-plans-pricing.yml
+  - type: FinOps
+    url: finops/okta-finops.yml
+- aid: okta:okta-subscription-api
+  name: Okta Subscription API
+  description: The Subscription API from Okta — 6 operation(s) for subscription.
+  humanURL: https://developer.okta.com/docs/reference/
+  baseURL: https://your-subdomain.okta.com
+  tags:
+  - Subscription
+  properties:
+  - type: OpenAPI
+    url: openapi/okta-subscription-api-openapi.yml
+  - type: Documentation
+    url: https://developer.okta.com/docs/reference/
+  - type: OpenAPISource
+    url: https://github.com/okta/okta-management-openapi-spec
+  - type: AsyncAPI
+    url: asyncapi/okta-events-asyncapi.yml
+  - type: Authentication
+    url: https://developer.okta.com/docs/guides/implement-grant-type/authcodepkce/main/
+  - type: RateLimits
+    url: rate-limits/okta-rate-limits.yml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-application.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-authenticator.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-authorizationserver.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-brand.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-domain.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-eventhook.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-feature.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-group.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-groupschema.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-identityprovider.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-inlinehook.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-linkedobject.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-log.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-networkzone.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-org.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-policy.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-profilemapping.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-session.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-subscription.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-template.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-threatinsight.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-trustedorigin.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-user.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-userfactor.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-userschema.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-usertype.yaml
+  - type: GraphQL
+    url: graphql/okta-graphql.md
+  - type: JSONSchema
+    url: json-schema/okta-user-schema.json
+  - type: JSONSchema
+    url: json-schema/okta-group-schema.json
+  - type: JSONSchema
+    url: json-schema/okta-application-schema.json
+  - type: JSONStructure
+    url: json-structure/okta-user-structure.json
+  - type: JSONLD
+    url: json-ld/okta-context.jsonld
+  - type: SpectralRules
+    url: rules/okta-rules.yml
+  - type: Vocabulary
+    url: vocabulary/okta-vocabulary.yml
+  - type: Plans
+    url: plans/okta-plans-pricing.yml
+  - type: FinOps
+    url: finops/okta-finops.yml
+- aid: okta:okta-template-api
+  name: Okta Template API
+  description: The Template API from Okta — 2 operation(s) for template.
+  humanURL: https://developer.okta.com/docs/reference/
+  baseURL: https://your-subdomain.okta.com
+  tags:
+  - Template
+  properties:
+  - type: OpenAPI
+    url: openapi/okta-template-api-openapi.yml
+  - type: Documentation
+    url: https://developer.okta.com/docs/reference/
+  - type: OpenAPISource
+    url: https://github.com/okta/okta-management-openapi-spec
+  - type: AsyncAPI
+    url: asyncapi/okta-events-asyncapi.yml
+  - type: Authentication
+    url: https://developer.okta.com/docs/guides/implement-grant-type/authcodepkce/main/
+  - type: RateLimits
+    url: rate-limits/okta-rate-limits.yml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-application.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-authenticator.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-authorizationserver.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-brand.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-domain.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-eventhook.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-feature.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-group.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-groupschema.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-identityprovider.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-inlinehook.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-linkedobject.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-log.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-networkzone.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-org.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-policy.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-profilemapping.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-session.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-subscription.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-template.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-threatinsight.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-trustedorigin.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-user.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-userfactor.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-userschema.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-usertype.yaml
+  - type: GraphQL
+    url: graphql/okta-graphql.md
+  - type: JSONSchema
+    url: json-schema/okta-user-schema.json
+  - type: JSONSchema
+    url: json-schema/okta-group-schema.json
+  - type: JSONSchema
+    url: json-schema/okta-application-schema.json
+  - type: JSONStructure
+    url: json-structure/okta-user-structure.json
+  - type: JSONLD
+    url: json-ld/okta-context.jsonld
+  - type: SpectralRules
+    url: rules/okta-rules.yml
+  - type: Vocabulary
+    url: vocabulary/okta-vocabulary.yml
+  - type: Plans
+    url: plans/okta-plans-pricing.yml
+  - type: FinOps
+    url: finops/okta-finops.yml
+- aid: okta:okta-threatinsight-api
+  name: Okta ThreatInsight API
+  description: The ThreatInsight API from Okta — 1 operation(s) for threatinsight.
+  humanURL: https://developer.okta.com/docs/reference/
+  baseURL: https://your-subdomain.okta.com
+  tags:
+  - ThreatInsight
+  properties:
+  - type: OpenAPI
+    url: openapi/okta-threatinsight-api-openapi.yml
+  - type: Documentation
+    url: https://developer.okta.com/docs/reference/
+  - type: OpenAPISource
+    url: https://github.com/okta/okta-management-openapi-spec
+  - type: AsyncAPI
+    url: asyncapi/okta-events-asyncapi.yml
+  - type: Authentication
+    url: https://developer.okta.com/docs/guides/implement-grant-type/authcodepkce/main/
+  - type: RateLimits
+    url: rate-limits/okta-rate-limits.yml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-application.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-authenticator.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-authorizationserver.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-brand.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-domain.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-eventhook.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-feature.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-group.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-groupschema.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-identityprovider.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-inlinehook.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-linkedobject.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-log.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-networkzone.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-org.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-policy.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-profilemapping.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-session.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-subscription.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-template.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-threatinsight.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-trustedorigin.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-user.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-userfactor.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-userschema.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-usertype.yaml
+  - type: GraphQL
+    url: graphql/okta-graphql.md
+  - type: JSONSchema
+    url: json-schema/okta-user-schema.json
+  - type: JSONSchema
+    url: json-schema/okta-group-schema.json
+  - type: JSONSchema
+    url: json-schema/okta-application-schema.json
+  - type: JSONStructure
+    url: json-structure/okta-user-structure.json
+  - type: JSONLD
+    url: json-ld/okta-context.jsonld
+  - type: SpectralRules
+    url: rules/okta-rules.yml
+  - type: Vocabulary
+    url: vocabulary/okta-vocabulary.yml
+  - type: Plans
+    url: plans/okta-plans-pricing.yml
+  - type: FinOps
+    url: finops/okta-finops.yml
+- aid: okta:okta-trustedorigin-api
+  name: Okta TrustedOrigin API
+  description: The TrustedOrigin API from Okta — 4 operation(s) for trustedorigin.
+  humanURL: https://developer.okta.com/docs/reference/
+  baseURL: https://your-subdomain.okta.com
+  tags:
+  - TrustedOrigin
+  properties:
+  - type: OpenAPI
+    url: openapi/okta-trustedorigin-api-openapi.yml
+  - type: Documentation
+    url: https://developer.okta.com/docs/reference/
+  - type: OpenAPISource
+    url: https://github.com/okta/okta-management-openapi-spec
+  - type: AsyncAPI
+    url: asyncapi/okta-events-asyncapi.yml
+  - type: Authentication
+    url: https://developer.okta.com/docs/guides/implement-grant-type/authcodepkce/main/
+  - type: RateLimits
+    url: rate-limits/okta-rate-limits.yml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-application.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-authenticator.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-authorizationserver.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-brand.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-domain.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-eventhook.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-feature.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-group.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-groupschema.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-identityprovider.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-inlinehook.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-linkedobject.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-log.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-networkzone.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-org.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-policy.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-profilemapping.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-session.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-subscription.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-template.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-threatinsight.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-trustedorigin.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-user.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-userfactor.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-userschema.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-usertype.yaml
+  - type: GraphQL
+    url: graphql/okta-graphql.md
+  - type: JSONSchema
+    url: json-schema/okta-user-schema.json
+  - type: JSONSchema
+    url: json-schema/okta-group-schema.json
+  - type: JSONSchema
+    url: json-schema/okta-application-schema.json
+  - type: JSONStructure
+    url: json-structure/okta-user-structure.json
+  - type: JSONLD
+    url: json-ld/okta-context.jsonld
+  - type: SpectralRules
+    url: rules/okta-rules.yml
+  - type: Vocabulary
+    url: vocabulary/okta-vocabulary.yml
+  - type: Plans
+    url: plans/okta-plans-pricing.yml
+  - type: FinOps
+    url: finops/okta-finops.yml
+- aid: okta:okta-user-api
+  name: Okta User API
+  description: The User API from Okta — 36 operation(s) for user.
+  humanURL: https://developer.okta.com/docs/reference/
+  baseURL: https://your-subdomain.okta.com
+  tags:
+  - User
+  properties:
+  - type: OpenAPI
+    url: openapi/okta-user-api-openapi.yml
+  - type: Documentation
+    url: https://developer.okta.com/docs/reference/
+  - type: OpenAPISource
+    url: https://github.com/okta/okta-management-openapi-spec
+  - type: AsyncAPI
+    url: asyncapi/okta-events-asyncapi.yml
+  - type: Authentication
+    url: https://developer.okta.com/docs/guides/implement-grant-type/authcodepkce/main/
+  - type: RateLimits
+    url: rate-limits/okta-rate-limits.yml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-application.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-authenticator.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-authorizationserver.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-brand.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-domain.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-eventhook.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-feature.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-group.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-groupschema.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-identityprovider.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-inlinehook.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-linkedobject.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-log.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-networkzone.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-org.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-policy.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-profilemapping.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-session.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-subscription.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-template.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-threatinsight.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-trustedorigin.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-user.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-userfactor.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-userschema.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-usertype.yaml
+  - type: GraphQL
+    url: graphql/okta-graphql.md
+  - type: JSONSchema
+    url: json-schema/okta-user-schema.json
+  - type: JSONSchema
+    url: json-schema/okta-group-schema.json
+  - type: JSONSchema
+    url: json-schema/okta-application-schema.json
+  - type: JSONStructure
+    url: json-structure/okta-user-structure.json
+  - type: JSONLD
+    url: json-ld/okta-context.jsonld
+  - type: SpectralRules
+    url: rules/okta-rules.yml
+  - type: Vocabulary
+    url: vocabulary/okta-vocabulary.yml
+  - type: Plans
+    url: plans/okta-plans-pricing.yml
+  - type: FinOps
+    url: finops/okta-finops.yml
+- aid: okta:okta-userfactor-api
+  name: Okta UserFactor API
+  description: The UserFactor API from Okta — 7 operation(s) for userfactor.
+  humanURL: https://developer.okta.com/docs/reference/
+  baseURL: https://your-subdomain.okta.com
+  tags:
+  - UserFactor
+  properties:
+  - type: OpenAPI
+    url: openapi/okta-userfactor-api-openapi.yml
+  - type: Documentation
+    url: https://developer.okta.com/docs/reference/
+  - type: OpenAPISource
+    url: https://github.com/okta/okta-management-openapi-spec
+  - type: AsyncAPI
+    url: asyncapi/okta-events-asyncapi.yml
+  - type: Authentication
+    url: https://developer.okta.com/docs/guides/implement-grant-type/authcodepkce/main/
+  - type: RateLimits
+    url: rate-limits/okta-rate-limits.yml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-application.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-authenticator.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-authorizationserver.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-brand.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-domain.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-eventhook.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-feature.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-group.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-groupschema.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-identityprovider.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-inlinehook.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-linkedobject.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-log.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-networkzone.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-org.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-policy.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-profilemapping.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-session.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-subscription.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-template.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-threatinsight.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-trustedorigin.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-user.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-userfactor.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-userschema.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-usertype.yaml
+  - type: GraphQL
+    url: graphql/okta-graphql.md
+  - type: JSONSchema
+    url: json-schema/okta-user-schema.json
+  - type: JSONSchema
+    url: json-schema/okta-group-schema.json
+  - type: JSONSchema
+    url: json-schema/okta-application-schema.json
+  - type: JSONStructure
+    url: json-structure/okta-user-structure.json
+  - type: JSONLD
+    url: json-ld/okta-context.jsonld
+  - type: SpectralRules
+    url: rules/okta-rules.yml
+  - type: Vocabulary
+    url: vocabulary/okta-vocabulary.yml
+  - type: Plans
+    url: plans/okta-plans-pricing.yml
+  - type: FinOps
+    url: finops/okta-finops.yml
+- aid: okta:okta-userschema-api
+  name: Okta UserSchema API
+  description: The UserSchema API from Okta — 2 operation(s) for userschema.
+  humanURL: https://developer.okta.com/docs/reference/
+  baseURL: https://your-subdomain.okta.com
+  tags:
+  - UserSchema
+  properties:
+  - type: OpenAPI
+    url: openapi/okta-userschema-api-openapi.yml
+  - type: Documentation
+    url: https://developer.okta.com/docs/reference/
+  - type: OpenAPISource
+    url: https://github.com/okta/okta-management-openapi-spec
+  - type: AsyncAPI
+    url: asyncapi/okta-events-asyncapi.yml
+  - type: Authentication
+    url: https://developer.okta.com/docs/guides/implement-grant-type/authcodepkce/main/
+  - type: RateLimits
+    url: rate-limits/okta-rate-limits.yml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-application.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-authenticator.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-authorizationserver.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-brand.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-domain.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-eventhook.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-feature.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-group.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-groupschema.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-identityprovider.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-inlinehook.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-linkedobject.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-log.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-networkzone.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-org.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-policy.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-profilemapping.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-session.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-subscription.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-template.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-threatinsight.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-trustedorigin.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-user.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-userfactor.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-userschema.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-usertype.yaml
+  - type: GraphQL
+    url: graphql/okta-graphql.md
+  - type: JSONSchema
+    url: json-schema/okta-user-schema.json
+  - type: JSONSchema
+    url: json-schema/okta-group-schema.json
+  - type: JSONSchema
+    url: json-schema/okta-application-schema.json
+  - type: JSONStructure
+    url: json-structure/okta-user-structure.json
+  - type: JSONLD
+    url: json-ld/okta-context.jsonld
+  - type: SpectralRules
+    url: rules/okta-rules.yml
+  - type: Vocabulary
+    url: vocabulary/okta-vocabulary.yml
+  - type: Plans
+    url: plans/okta-plans-pricing.yml
+  - type: FinOps
+    url: finops/okta-finops.yml
+- aid: okta:okta-usertype-api
+  name: Okta UserType API
+  description: The UserType API from Okta — 2 operation(s) for usertype.
+  humanURL: https://developer.okta.com/docs/reference/
+  baseURL: https://your-subdomain.okta.com
+  tags:
+  - UserType
+  properties:
+  - type: OpenAPI
+    url: openapi/okta-usertype-api-openapi.yml
+  - type: Documentation
+    url: https://developer.okta.com/docs/reference/
+  - type: OpenAPISource
+    url: https://github.com/okta/okta-management-openapi-spec
+  - type: AsyncAPI
+    url: asyncapi/okta-events-asyncapi.yml
+  - type: Authentication
+    url: https://developer.okta.com/docs/guides/implement-grant-type/authcodepkce/main/
+  - type: RateLimits
+    url: rate-limits/okta-rate-limits.yml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-application.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-authenticator.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-authorizationserver.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-brand.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-domain.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-eventhook.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-feature.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-group.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-groupschema.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-identityprovider.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-inlinehook.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-linkedobject.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-log.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-networkzone.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-org.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-policy.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-profilemapping.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-session.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-subscription.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-template.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-threatinsight.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-trustedorigin.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-user.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-userfactor.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-userschema.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/okta-usertype.yaml
+  - type: GraphQL
+    url: graphql/okta-graphql.md
+  - type: JSONSchema
+    url: json-schema/okta-user-schema.json
+  - type: JSONSchema
+    url: json-schema/okta-group-schema.json
+  - type: JSONSchema
+    url: json-schema/okta-application-schema.json
+  - type: JSONStructure
+    url: json-structure/okta-user-structure.json
+  - type: JSONLD
+    url: json-ld/okta-context.jsonld
+  - type: SpectralRules
+    url: rules/okta-rules.yml
+  - type: Vocabulary
+    url: vocabulary/okta-vocabulary.yml
+  - type: Plans
+    url: plans/okta-plans-pricing.yml
+  - type: FinOps
+    url: finops/okta-finops.yml
 common:
   - type: AgenticAccess
     url: agentic-access/okta-agentic-access.yml
