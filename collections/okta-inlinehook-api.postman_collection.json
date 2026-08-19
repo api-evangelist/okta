@@ -1,0 +1,998 @@
+{
+  "item": [
+    {
+      "id": "8f53cd5c-0f69-4435-a13f-87b2f97935c8",
+      "name": "InlineHook",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "c1c494f2-b114-444e-a703-a050f95d125d",
+          "name": "list Inline Hooks",
+          "request": {
+            "name": "list Inline Hooks",
+            "description": {
+              "content": "Success",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "inlineHooks"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "type",
+                  "value": "<string>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "7004fd46-09bf-4a86-a49e-55b02de15fb2",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "inlineHooks"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "type",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"_links\": {\n      \"key_0\": {}\n    },\n    \"channel\": {\n      \"config\": {\n        \"authScheme\": {\n          \"key\": \"string\",\n          \"type\": \"string\",\n          \"value\": \"string\"\n        },\n        \"headers\": [\n          {\n            \"key\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"value\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"key\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"value\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ],\n        \"method\": \"string\",\n        \"uri\": \"string\"\n      },\n      \"type\": \"HTTP\",\n      \"version\": \"string\"\n    },\n    \"created\": \"1963-07-07T20:18:25.188Z\",\n    \"id\": \"string\",\n    \"lastUpdated\": \"1970-10-17T05:32:56.540Z\",\n    \"name\": \"string\",\n    \"status\": \"INACTIVE\",\n    \"type\": \"com.okta.user.pre-registration\",\n    \"version\": \"string\"\n  },\n  {\n    \"_links\": {\n      \"key_0\": {},\n      \"key_1\": {},\n      \"key_2\": {}\n    },\n    \"channel\": {\n      \"config\": {\n        \"authScheme\": {\n          \"key\": \"string\",\n          \"type\": \"string\",\n          \"value\": \"string\"\n        },\n        \"headers\": [\n          {\n            \"key\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"value\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"key\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"value\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ],\n        \"method\": \"string\",\n        \"uri\": \"string\"\n      },\n      \"type\": \"HTTP\",\n      \"version\": \"string\"\n    },\n    \"created\": \"1986-09-23T06:31:20.908Z\",\n    \"id\": \"string\",\n    \"lastUpdated\": \"1956-08-30T14:57:40.074Z\",\n    \"name\": \"string\",\n    \"status\": \"INACTIVE\",\n    \"type\": \"com.okta.saml.tokens.transform\",\n    \"version\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a9e5efae-f368-4ec9-b054-f3b643fb4782",
+          "name": "create Inline Hook",
+          "request": {
+            "name": "create Inline Hook",
+            "description": {
+              "content": "Success",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "inlineHooks"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"channel\": {\n    \"config\": {\n      \"authScheme\": {\n        \"key\": \"<string>\",\n        \"type\": \"<string>\",\n        \"value\": \"<string>\"\n      },\n      \"headers\": [\n        {\n          \"key\": \"<string>\",\n          \"value\": \"<string>\"\n        },\n        {\n          \"key\": \"<string>\",\n          \"value\": \"<string>\"\n        }\n      ],\n      \"method\": \"<string>\",\n      \"uri\": \"<string>\"\n    },\n    \"type\": \"<string>\",\n    \"version\": \"<string>\"\n  },\n  \"name\": \"<string>\",\n  \"status\": \"<string>\",\n  \"type\": \"<string>\",\n  \"version\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "e5e20d99-db4e-4521-bdc7-643652d6453a",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "inlineHooks"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"channel\": {\n    \"config\": {\n      \"authScheme\": {\n        \"key\": \"<string>\",\n        \"type\": \"<string>\",\n        \"value\": \"<string>\"\n      },\n      \"headers\": [\n        {\n          \"key\": \"<string>\",\n          \"value\": \"<string>\"\n        },\n        {\n          \"key\": \"<string>\",\n          \"value\": \"<string>\"\n        }\n      ],\n      \"method\": \"<string>\",\n      \"uri\": \"<string>\"\n    },\n    \"type\": \"<string>\",\n    \"version\": \"<string>\"\n  },\n  \"name\": \"<string>\",\n  \"status\": \"<string>\",\n  \"type\": \"<string>\",\n  \"version\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"_links\": {\n    \"key_0\": {},\n    \"key_1\": {},\n    \"key_2\": {}\n  },\n  \"channel\": {\n    \"config\": {\n      \"authScheme\": {\n        \"key\": \"<string>\",\n        \"type\": \"<string>\",\n        \"value\": \"<string>\"\n      },\n      \"headers\": [\n        {\n          \"key\": \"<string>\",\n          \"value\": \"<string>\"\n        },\n        {\n          \"key\": \"<string>\",\n          \"value\": \"<string>\"\n        }\n      ],\n      \"method\": \"<string>\",\n      \"uri\": \"<string>\"\n    },\n    \"type\": \"<string>\",\n    \"version\": \"<string>\"\n  },\n  \"created\": \"2005-05-24T17:27:55.974Z\",\n  \"id\": \"string\",\n  \"lastUpdated\": \"1966-01-27T09:14:04.406Z\",\n  \"name\": \"<string>\",\n  \"status\": \"<string>\",\n  \"type\": \"<string>\",\n  \"version\": \"<string>\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "5eb4c93c-a120-4009-804e-85a7af400ae0",
+          "name": "get Inline Hook",
+          "request": {
+            "name": "get Inline Hook",
+            "description": {
+              "content": "Gets an inline hook by ID",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "inlineHooks",
+                ":inlineHookId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "inlineHookId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "cd584c2e-56f9-4341-b3b2-ceb0c8bed7cd",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "inlineHooks",
+                    ":inlineHookId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "inlineHookId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"_links\": {\n    \"key_0\": {},\n    \"key_1\": {},\n    \"key_2\": {}\n  },\n  \"channel\": {\n    \"config\": {\n      \"authScheme\": {\n        \"key\": \"<string>\",\n        \"type\": \"<string>\",\n        \"value\": \"<string>\"\n      },\n      \"headers\": [\n        {\n          \"key\": \"<string>\",\n          \"value\": \"<string>\"\n        },\n        {\n          \"key\": \"<string>\",\n          \"value\": \"<string>\"\n        }\n      ],\n      \"method\": \"<string>\",\n      \"uri\": \"<string>\"\n    },\n    \"type\": \"<string>\",\n    \"version\": \"<string>\"\n  },\n  \"created\": \"2005-05-24T17:27:55.974Z\",\n  \"id\": \"string\",\n  \"lastUpdated\": \"1966-01-27T09:14:04.406Z\",\n  \"name\": \"<string>\",\n  \"status\": \"<string>\",\n  \"type\": \"<string>\",\n  \"version\": \"<string>\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "19c4e275-80a2-4ccc-8dc2-bf91d40da1d4",
+          "name": "update Inline Hook",
+          "request": {
+            "name": "update Inline Hook",
+            "description": {
+              "content": "Updates an inline hook by ID",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "inlineHooks",
+                ":inlineHookId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "inlineHookId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"channel\": {\n    \"config\": {\n      \"authScheme\": {\n        \"key\": \"<string>\",\n        \"type\": \"<string>\",\n        \"value\": \"<string>\"\n      },\n      \"headers\": [\n        {\n          \"key\": \"<string>\",\n          \"value\": \"<string>\"\n        },\n        {\n          \"key\": \"<string>\",\n          \"value\": \"<string>\"\n        }\n      ],\n      \"method\": \"<string>\",\n      \"uri\": \"<string>\"\n    },\n    \"type\": \"<string>\",\n    \"version\": \"<string>\"\n  },\n  \"name\": \"<string>\",\n  \"status\": \"<string>\",\n  \"type\": \"<string>\",\n  \"version\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "3581f580-bbf7-4d4c-929b-56207b9b1d64",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "inlineHooks",
+                    ":inlineHookId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "inlineHookId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"channel\": {\n    \"config\": {\n      \"authScheme\": {\n        \"key\": \"<string>\",\n        \"type\": \"<string>\",\n        \"value\": \"<string>\"\n      },\n      \"headers\": [\n        {\n          \"key\": \"<string>\",\n          \"value\": \"<string>\"\n        },\n        {\n          \"key\": \"<string>\",\n          \"value\": \"<string>\"\n        }\n      ],\n      \"method\": \"<string>\",\n      \"uri\": \"<string>\"\n    },\n    \"type\": \"<string>\",\n    \"version\": \"<string>\"\n  },\n  \"name\": \"<string>\",\n  \"status\": \"<string>\",\n  \"type\": \"<string>\",\n  \"version\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"_links\": {\n    \"key_0\": {},\n    \"key_1\": {},\n    \"key_2\": {}\n  },\n  \"channel\": {\n    \"config\": {\n      \"authScheme\": {\n        \"key\": \"<string>\",\n        \"type\": \"<string>\",\n        \"value\": \"<string>\"\n      },\n      \"headers\": [\n        {\n          \"key\": \"<string>\",\n          \"value\": \"<string>\"\n        },\n        {\n          \"key\": \"<string>\",\n          \"value\": \"<string>\"\n        }\n      ],\n      \"method\": \"<string>\",\n      \"uri\": \"<string>\"\n    },\n    \"type\": \"<string>\",\n    \"version\": \"<string>\"\n  },\n  \"created\": \"2005-05-24T17:27:55.974Z\",\n  \"id\": \"string\",\n  \"lastUpdated\": \"1966-01-27T09:14:04.406Z\",\n  \"name\": \"<string>\",\n  \"status\": \"<string>\",\n  \"type\": \"<string>\",\n  \"version\": \"<string>\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d5fd280a-d5e0-40e4-9a74-841d889b4e46",
+          "name": "delete Inline Hook",
+          "request": {
+            "name": "delete Inline Hook",
+            "description": {
+              "content": "Deletes the Inline Hook matching the provided id. Once deleted, the Inline Hook is unrecoverable. As a safety precaution, only Inline Hooks with a status of INACTIVE are eligible for deletion.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "inlineHooks",
+                ":inlineHookId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "inlineHookId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "ae2da5a4-8e0b-4fe6-afd5-f78c52a6a652",
+              "name": "No Content",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "inlineHooks",
+                    ":inlineHookId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "inlineHookId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "cfa6a954-712f-474e-945f-8f12f0a43b19",
+          "name": "execute Inline Hook",
+          "request": {
+            "name": "execute Inline Hook",
+            "description": {
+              "content": "Executes the Inline Hook matching the provided inlineHookId using the request body as the input. This will send the provided data through the Channel and return a response if it matches the correct data contract. This execution endpoint should only be used for testing purposes.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "inlineHooks",
+                ":inlineHookId",
+                "execute"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "inlineHookId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "<object>",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "577fd451-b5cb-4d79-a820-5430d28f2f8e",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "inlineHooks",
+                    ":inlineHookId",
+                    "execute"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "inlineHookId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "<object>",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"commands\": [\n    {\n      \"type\": \"string\",\n      \"value\": [\n        {\n          \"op\": \"string\",\n          \"path\": \"string\",\n          \"value\": \"string\"\n        },\n        {\n          \"op\": \"string\",\n          \"path\": \"string\",\n          \"value\": \"string\"\n        }\n      ]\n    },\n    {\n      \"type\": \"string\",\n      \"value\": [\n        {\n          \"op\": \"string\",\n          \"path\": \"string\",\n          \"value\": \"string\"\n        },\n        {\n          \"op\": \"string\",\n          \"path\": \"string\",\n          \"value\": \"string\"\n        }\n      ]\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "37d4361b-b8ab-4074-854b-3bc69cfdf34a",
+          "name": "activate Inline Hook",
+          "request": {
+            "name": "activate Inline Hook",
+            "description": {
+              "content": "Activates the Inline Hook matching the provided id",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "inlineHooks",
+                ":inlineHookId",
+                "lifecycle",
+                "activate"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "inlineHookId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "e35d1c4c-e1d0-47e7-872a-e13b013ad685",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "inlineHooks",
+                    ":inlineHookId",
+                    "lifecycle",
+                    "activate"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "inlineHookId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"_links\": {\n    \"key_0\": {},\n    \"key_1\": {},\n    \"key_2\": {}\n  },\n  \"channel\": {\n    \"config\": {\n      \"authScheme\": {\n        \"key\": \"<string>\",\n        \"type\": \"<string>\",\n        \"value\": \"<string>\"\n      },\n      \"headers\": [\n        {\n          \"key\": \"<string>\",\n          \"value\": \"<string>\"\n        },\n        {\n          \"key\": \"<string>\",\n          \"value\": \"<string>\"\n        }\n      ],\n      \"method\": \"<string>\",\n      \"uri\": \"<string>\"\n    },\n    \"type\": \"<string>\",\n    \"version\": \"<string>\"\n  },\n  \"created\": \"2005-05-24T17:27:55.974Z\",\n  \"id\": \"string\",\n  \"lastUpdated\": \"1966-01-27T09:14:04.406Z\",\n  \"name\": \"<string>\",\n  \"status\": \"<string>\",\n  \"type\": \"<string>\",\n  \"version\": \"<string>\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "10aa2e99-3b0e-429c-a573-b805a600e841",
+          "name": "deactivate Inline Hook",
+          "request": {
+            "name": "deactivate Inline Hook",
+            "description": {
+              "content": "Deactivates the Inline Hook matching the provided id",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "inlineHooks",
+                ":inlineHookId",
+                "lifecycle",
+                "deactivate"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "inlineHookId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "70f6ec93-8032-420e-87e1-47f6dfc2a4bc",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "inlineHooks",
+                    ":inlineHookId",
+                    "lifecycle",
+                    "deactivate"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "inlineHookId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"_links\": {\n    \"key_0\": {},\n    \"key_1\": {},\n    \"key_2\": {}\n  },\n  \"channel\": {\n    \"config\": {\n      \"authScheme\": {\n        \"key\": \"<string>\",\n        \"type\": \"<string>\",\n        \"value\": \"<string>\"\n      },\n      \"headers\": [\n        {\n          \"key\": \"<string>\",\n          \"value\": \"<string>\"\n        },\n        {\n          \"key\": \"<string>\",\n          \"value\": \"<string>\"\n        }\n      ],\n      \"method\": \"<string>\",\n      \"uri\": \"<string>\"\n    },\n    \"type\": \"<string>\",\n    \"version\": \"<string>\"\n  },\n  \"created\": \"2005-05-24T17:27:55.974Z\",\n  \"id\": \"string\",\n  \"lastUpdated\": \"1966-01-27T09:14:04.406Z\",\n  \"name\": \"<string>\",\n  \"status\": \"<string>\",\n  \"type\": \"<string>\",\n  \"version\": \"<string>\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://your-subdomain.okta.com/",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "d3ca839f-a788-48cf-8639-bc48946d8336",
+    "name": "Okta Application InlineHook API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Allows customers to easily access the Okta API\n\nContact Support:\n Name: Okta Developer Team\n Email: devex-public@okta.com",
+      "type": "text/plain"
+    }
+  }
+}

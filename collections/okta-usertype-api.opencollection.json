@@ -1,0 +1,160 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Okta Application UserType API",
+    "version": "2.16.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "UserType",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "listUserTypes",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://your-subdomain.okta.com/api/v1/meta/types/user",
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Fetches all User Types in your org"
+        },
+        {
+          "info": {
+            "name": "createUserType",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://your-subdomain.okta.com/api/v1/meta/types/user",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Creates a new User Type. A default User Type is automatically created along with your org, and you may add another 9 User Types for a maximum of 10."
+        },
+        {
+          "info": {
+            "name": "getUserType",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://your-subdomain.okta.com/api/v1/meta/types/user/:typeId",
+            "params": [
+              {
+                "name": "typeId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Fetches a User Type by ID. The special identifier `default` may be used to fetch the default User Type."
+        },
+        {
+          "info": {
+            "name": "updateUserType",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://your-subdomain.okta.com/api/v1/meta/types/user/:typeId",
+            "params": [
+              {
+                "name": "typeId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Updates an existing User Type"
+        },
+        {
+          "info": {
+            "name": "replaceUserType",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://your-subdomain.okta.com/api/v1/meta/types/user/:typeId",
+            "params": [
+              {
+                "name": "typeId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Replace an existing User Type"
+        },
+        {
+          "info": {
+            "name": "deleteUserType",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://your-subdomain.okta.com/api/v1/meta/types/user/:typeId",
+            "params": [
+              {
+                "name": "typeId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Deletes a User Type permanently. This operation is not permitted for the default type, nor for any User Type that has existing users"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,156 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Okta Application Domain API",
+    "version": "2.16.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Domain",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Okta List Domains",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://your-subdomain.okta.com/api/v1/domains",
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "List all verified custom Domains for the org."
+        },
+        {
+          "info": {
+            "name": "Okta Create Domain",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://your-subdomain.okta.com/api/v1/domains",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Creates your domain."
+        },
+        {
+          "info": {
+            "name": "Okta Get Domain",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://your-subdomain.okta.com/api/v1/domains/:domainId",
+            "params": [
+              {
+                "name": "domainId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Fetches a Domain by `id`."
+        },
+        {
+          "info": {
+            "name": "Okta Delete Domain",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://your-subdomain.okta.com/api/v1/domains/:domainId",
+            "params": [
+              {
+                "name": "domainId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Deletes a Domain by `id`."
+        },
+        {
+          "info": {
+            "name": "Okta Create Certificate",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://your-subdomain.okta.com/api/v1/domains/:domainId/certificate",
+            "params": [
+              {
+                "name": "domainId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Creates the Certificate for the Domain."
+        },
+        {
+          "info": {
+            "name": "Okta Verify Domain",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://your-subdomain.okta.com/api/v1/domains/:domainId/verify",
+            "params": [
+              {
+                "name": "domainId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Verifies the Domain by `id`."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

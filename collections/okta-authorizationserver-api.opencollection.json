@@ -1,0 +1,1162 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Okta Application AuthorizationServer API",
+    "version": "2.16.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "AuthorizationServer",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "listAuthorizationServers",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://your-subdomain.okta.com/api/v1/authorizationServers",
+            "params": [
+              {
+                "name": "q",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "after",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Success"
+        },
+        {
+          "info": {
+            "name": "createAuthorizationServer",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://your-subdomain.okta.com/api/v1/authorizationServers",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Success"
+        },
+        {
+          "info": {
+            "name": "getAuthorizationServer",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://your-subdomain.okta.com/api/v1/authorizationServers/:authServerId",
+            "params": [
+              {
+                "name": "authServerId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Success"
+        },
+        {
+          "info": {
+            "name": "updateAuthorizationServer",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://your-subdomain.okta.com/api/v1/authorizationServers/:authServerId",
+            "params": [
+              {
+                "name": "authServerId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Success"
+        },
+        {
+          "info": {
+            "name": "deleteAuthorizationServer",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://your-subdomain.okta.com/api/v1/authorizationServers/:authServerId",
+            "params": [
+              {
+                "name": "authServerId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Success"
+        },
+        {
+          "info": {
+            "name": "listOAuth2Claims",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://your-subdomain.okta.com/api/v1/authorizationServers/:authServerId/claims",
+            "params": [
+              {
+                "name": "authServerId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Success"
+        },
+        {
+          "info": {
+            "name": "createOAuth2Claim",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://your-subdomain.okta.com/api/v1/authorizationServers/:authServerId/claims",
+            "params": [
+              {
+                "name": "authServerId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Success"
+        },
+        {
+          "info": {
+            "name": "getOAuth2Claim",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://your-subdomain.okta.com/api/v1/authorizationServers/:authServerId/claims/:claimId",
+            "params": [
+              {
+                "name": "authServerId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "claimId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Success"
+        },
+        {
+          "info": {
+            "name": "updateOAuth2Claim",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://your-subdomain.okta.com/api/v1/authorizationServers/:authServerId/claims/:claimId",
+            "params": [
+              {
+                "name": "authServerId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "claimId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Success"
+        },
+        {
+          "info": {
+            "name": "deleteOAuth2Claim",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://your-subdomain.okta.com/api/v1/authorizationServers/:authServerId/claims/:claimId",
+            "params": [
+              {
+                "name": "authServerId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "claimId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Success"
+        },
+        {
+          "info": {
+            "name": "listOAuth2ClientsForAuthorizationServer",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://your-subdomain.okta.com/api/v1/authorizationServers/:authServerId/clients",
+            "params": [
+              {
+                "name": "authServerId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Success"
+        },
+        {
+          "info": {
+            "name": "listRefreshTokensForAuthorizationServerAndClient",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://your-subdomain.okta.com/api/v1/authorizationServers/:authServerId/clients/:clientId/tokens",
+            "params": [
+              {
+                "name": "authServerId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "clientId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "expand",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "after",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Success"
+        },
+        {
+          "info": {
+            "name": "revokeRefreshTokensForAuthorizationServerAndClient",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://your-subdomain.okta.com/api/v1/authorizationServers/:authServerId/clients/:clientId/tokens",
+            "params": [
+              {
+                "name": "authServerId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "clientId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Success"
+        },
+        {
+          "info": {
+            "name": "getRefreshTokenForAuthorizationServerAndClient",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://your-subdomain.okta.com/api/v1/authorizationServers/:authServerId/clients/:clientId/tokens/:tokenId",
+            "params": [
+              {
+                "name": "authServerId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "clientId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "tokenId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "expand",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Success"
+        },
+        {
+          "info": {
+            "name": "revokeRefreshTokenForAuthorizationServerAndClient",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://your-subdomain.okta.com/api/v1/authorizationServers/:authServerId/clients/:clientId/tokens/:tokenId",
+            "params": [
+              {
+                "name": "authServerId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "clientId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "tokenId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Success"
+        },
+        {
+          "info": {
+            "name": "listAuthorizationServerKeys",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://your-subdomain.okta.com/api/v1/authorizationServers/:authServerId/credentials/keys",
+            "params": [
+              {
+                "name": "authServerId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Success"
+        },
+        {
+          "info": {
+            "name": "rotateAuthorizationServerKeys",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://your-subdomain.okta.com/api/v1/authorizationServers/:authServerId/credentials/lifecycle/keyRotate",
+            "params": [
+              {
+                "name": "authServerId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Success"
+        },
+        {
+          "info": {
+            "name": "activateAuthorizationServer",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://your-subdomain.okta.com/api/v1/authorizationServers/:authServerId/lifecycle/activate",
+            "params": [
+              {
+                "name": "authServerId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Success"
+        },
+        {
+          "info": {
+            "name": "deactivateAuthorizationServer",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://your-subdomain.okta.com/api/v1/authorizationServers/:authServerId/lifecycle/deactivate",
+            "params": [
+              {
+                "name": "authServerId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Success"
+        },
+        {
+          "info": {
+            "name": "listAuthorizationServerPolicies",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://your-subdomain.okta.com/api/v1/authorizationServers/:authServerId/policies",
+            "params": [
+              {
+                "name": "authServerId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Success"
+        },
+        {
+          "info": {
+            "name": "createAuthorizationServerPolicy",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://your-subdomain.okta.com/api/v1/authorizationServers/:authServerId/policies",
+            "params": [
+              {
+                "name": "authServerId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Success"
+        },
+        {
+          "info": {
+            "name": "getAuthorizationServerPolicy",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://your-subdomain.okta.com/api/v1/authorizationServers/:authServerId/policies/:policyId",
+            "params": [
+              {
+                "name": "authServerId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "policyId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Success"
+        },
+        {
+          "info": {
+            "name": "updateAuthorizationServerPolicy",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://your-subdomain.okta.com/api/v1/authorizationServers/:authServerId/policies/:policyId",
+            "params": [
+              {
+                "name": "authServerId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "policyId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Success"
+        },
+        {
+          "info": {
+            "name": "deleteAuthorizationServerPolicy",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://your-subdomain.okta.com/api/v1/authorizationServers/:authServerId/policies/:policyId",
+            "params": [
+              {
+                "name": "authServerId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "policyId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Success"
+        },
+        {
+          "info": {
+            "name": "activateAuthorizationServerPolicy",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://your-subdomain.okta.com/api/v1/authorizationServers/:authServerId/policies/:policyId/lifecycle/activate",
+            "params": [
+              {
+                "name": "authServerId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "policyId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Activate Authorization Server Policy"
+        },
+        {
+          "info": {
+            "name": "deactivateAuthorizationServerPolicy",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://your-subdomain.okta.com/api/v1/authorizationServers/:authServerId/policies/:policyId/lifecycle/deactivate",
+            "params": [
+              {
+                "name": "authServerId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "policyId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Deactivate Authorization Server Policy"
+        },
+        {
+          "info": {
+            "name": "listAuthorizationServerPolicyRules",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://your-subdomain.okta.com/api/v1/authorizationServers/:authServerId/policies/:policyId/rules",
+            "params": [
+              {
+                "name": "authServerId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "policyId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Enumerates all policy rules for the specified Custom Authorization Server and Policy."
+        },
+        {
+          "info": {
+            "name": "createAuthorizationServerPolicyRule",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://your-subdomain.okta.com/api/v1/authorizationServers/:authServerId/policies/:policyId/rules",
+            "params": [
+              {
+                "name": "authServerId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "policyId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Creates a policy rule for the specified Custom Authorization Server and Policy."
+        },
+        {
+          "info": {
+            "name": "getAuthorizationServerPolicyRule",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://your-subdomain.okta.com/api/v1/authorizationServers/:authServerId/policies/:policyId/rules/:ruleId",
+            "params": [
+              {
+                "name": "authServerId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "policyId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "ruleId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Returns a Policy Rule by ID that is defined in the specified Custom Authorization Server and Policy."
+        },
+        {
+          "info": {
+            "name": "updateAuthorizationServerPolicyRule",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://your-subdomain.okta.com/api/v1/authorizationServers/:authServerId/policies/:policyId/rules/:ruleId",
+            "params": [
+              {
+                "name": "authServerId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "policyId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "ruleId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Updates the configuration of the Policy Rule defined in the specified Custom Authorization Server and Policy."
+        },
+        {
+          "info": {
+            "name": "deleteAuthorizationServerPolicyRule",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://your-subdomain.okta.com/api/v1/authorizationServers/:authServerId/policies/:policyId/rules/:ruleId",
+            "params": [
+              {
+                "name": "authServerId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "policyId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "ruleId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Deletes a Policy Rule defined in the specified Custom Authorization Server and Policy."
+        },
+        {
+          "info": {
+            "name": "activateAuthorizationServerPolicyRule",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://your-subdomain.okta.com/api/v1/authorizationServers/:authServerId/policies/:policyId/rules/:ruleId/lifecycle/activate",
+            "params": [
+              {
+                "name": "authServerId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "policyId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "ruleId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Activate Authorization Server Policy Rule"
+        },
+        {
+          "info": {
+            "name": "deactivateAuthorizationServerPolicyRule",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://your-subdomain.okta.com/api/v1/authorizationServers/:authServerId/policies/:policyId/rules/:ruleId/lifecycle/deactivate",
+            "params": [
+              {
+                "name": "authServerId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "policyId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "ruleId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Deactivate Authorization Server Policy Rule"
+        },
+        {
+          "info": {
+            "name": "listOAuth2Scopes",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://your-subdomain.okta.com/api/v1/authorizationServers/:authServerId/scopes",
+            "params": [
+              {
+                "name": "authServerId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "q",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "filter",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "cursor",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Success"
+        },
+        {
+          "info": {
+            "name": "createOAuth2Scope",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://your-subdomain.okta.com/api/v1/authorizationServers/:authServerId/scopes",
+            "params": [
+              {
+                "name": "authServerId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Success"
+        },
+        {
+          "info": {
+            "name": "getOAuth2Scope",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://your-subdomain.okta.com/api/v1/authorizationServers/:authServerId/scopes/:scopeId",
+            "params": [
+              {
+                "name": "authServerId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "scopeId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Success"
+        },
+        {
+          "info": {
+            "name": "updateOAuth2Scope",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://your-subdomain.okta.com/api/v1/authorizationServers/:authServerId/scopes/:scopeId",
+            "params": [
+              {
+                "name": "authServerId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "scopeId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Success"
+        },
+        {
+          "info": {
+            "name": "deleteOAuth2Scope",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://your-subdomain.okta.com/api/v1/authorizationServers/:authServerId/scopes/:scopeId",
+            "params": [
+              {
+                "name": "authServerId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "scopeId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Success"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

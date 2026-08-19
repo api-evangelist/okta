@@ -1,0 +1,109 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Okta Application ProfileMapping API",
+    "version": "2.16.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "ProfileMapping",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "listProfileMappings",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://your-subdomain.okta.com/api/v1/mappings",
+            "params": [
+              {
+                "name": "after",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "sourceId",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "targetId",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Enumerates Profile Mappings in your organization with pagination."
+        },
+        {
+          "info": {
+            "name": "Okta Get Profile Mapping",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://your-subdomain.okta.com/api/v1/mappings/:mappingId",
+            "params": [
+              {
+                "name": "mappingId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Fetches a single Profile Mapping referenced by its ID."
+        },
+        {
+          "info": {
+            "name": "Okta Update Profile Mapping",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://your-subdomain.okta.com/api/v1/mappings/:mappingId",
+            "params": [
+              {
+                "name": "mappingId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Updates an existing Profile Mapping by adding, updating, or removing one or many Property Mappings."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

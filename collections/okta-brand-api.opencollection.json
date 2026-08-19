@@ -1,0 +1,764 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Okta Application Brand API",
+    "version": "2.16.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Brand",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Okta List Brands",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://your-subdomain.okta.com/api/v1/brands",
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "List all the brands in your org."
+        },
+        {
+          "info": {
+            "name": "Okta Get Brand",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://your-subdomain.okta.com/api/v1/brands/:brandId",
+            "params": [
+              {
+                "name": "brandId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Fetches a brand by `brandId`"
+        },
+        {
+          "info": {
+            "name": "Okta Update Brand",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://your-subdomain.okta.com/api/v1/brands/:brandId",
+            "params": [
+              {
+                "name": "brandId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Updates a brand by `brandId`"
+        },
+        {
+          "info": {
+            "name": "Okta List Email Templates",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://your-subdomain.okta.com/api/v1/brands/:brandId/templates/email",
+            "params": [
+              {
+                "name": "brandId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "after",
+                "value": "",
+                "type": "query",
+                "description": "Specifies the pagination cursor for the next page of email templates."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Specifies the number of results returned (maximum 200)"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "List email templates in your organization with pagination."
+        },
+        {
+          "info": {
+            "name": "Okta Get Email Template",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://your-subdomain.okta.com/api/v1/brands/:brandId/templates/email/:templateName",
+            "params": [
+              {
+                "name": "brandId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "templateName",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Fetch an email template by templateName"
+        },
+        {
+          "info": {
+            "name": "Okta List Email Template Customization",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://your-subdomain.okta.com/api/v1/brands/:brandId/templates/email/:templateName/customizations",
+            "params": [
+              {
+                "name": "brandId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "templateName",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "List all email customizations for an email template"
+        },
+        {
+          "info": {
+            "name": "Okta Create Email Template Customization",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://your-subdomain.okta.com/api/v1/brands/:brandId/templates/email/:templateName/customizations",
+            "params": [
+              {
+                "name": "brandId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "templateName",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Create an email customization"
+        },
+        {
+          "info": {
+            "name": "Okta Delete Email Template Customization",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://your-subdomain.okta.com/api/v1/brands/:brandId/templates/email/:templateName/customizations",
+            "params": [
+              {
+                "name": "brandId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "templateName",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Delete all customizations for an email template. Also known as “Reset to Default”."
+        },
+        {
+          "info": {
+            "name": "Okta Get Email Template Customization",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://your-subdomain.okta.com/api/v1/brands/:brandId/templates/email/:templateName/customizations/:customizationId",
+            "params": [
+              {
+                "name": "brandId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "templateName",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "customizationId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Fetch an email customization by id."
+        },
+        {
+          "info": {
+            "name": "Okta Update Email Customization",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://your-subdomain.okta.com/api/v1/brands/:brandId/templates/email/:templateName/customizations/:customizationId",
+            "params": [
+              {
+                "name": "brandId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "templateName",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "customizationId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Update an email customization"
+        },
+        {
+          "info": {
+            "name": "Okta Delete Email Customization",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://your-subdomain.okta.com/api/v1/brands/:brandId/templates/email/:templateName/customizations/:customizationId",
+            "params": [
+              {
+                "name": "brandId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "templateName",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "customizationId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Delete an email customization"
+        },
+        {
+          "info": {
+            "name": "Okta Get Preview Content of Email Customization",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://your-subdomain.okta.com/api/v1/brands/:brandId/templates/email/:templateName/customizations/:customizationId/preview",
+            "params": [
+              {
+                "name": "brandId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "templateName",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "customizationId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Get a preview of an email template customization."
+        },
+        {
+          "info": {
+            "name": "Okta Get Default Content of Email Template",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://your-subdomain.okta.com/api/v1/brands/:brandId/templates/email/:templateName/default-content",
+            "params": [
+              {
+                "name": "brandId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "templateName",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Fetch the default content for an email template."
+        },
+        {
+          "info": {
+            "name": "Okta Get Preview of Email Template Default Content",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://your-subdomain.okta.com/api/v1/brands/:brandId/templates/email/:templateName/default-content/preview",
+            "params": [
+              {
+                "name": "brandId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "templateName",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Fetch a preview of an email template's default content by populating velocity references with the current user's environment."
+        },
+        {
+          "info": {
+            "name": "Okta Get Preview of Email Template Default Content",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://your-subdomain.okta.com/api/v1/brands/:brandId/templates/email/:templateName/test",
+            "params": [
+              {
+                "name": "brandId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "templateName",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Send a test email to the current users primary and secondary email addresses. The email content is selected based on the following priority: An email customization specifically for the users locale. The default language of email customizations. The email templates default content."
+        },
+        {
+          "info": {
+            "name": "Okta Get Brand Themes",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://your-subdomain.okta.com/api/v1/brands/:brandId/themes",
+            "params": [
+              {
+                "name": "brandId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "List all the themes in your brand"
+        },
+        {
+          "info": {
+            "name": "Okta Get a theme for a brand",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://your-subdomain.okta.com/api/v1/brands/:brandId/themes/:themeId",
+            "params": [
+              {
+                "name": "brandId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "themeId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Fetches a theme for a brand"
+        },
+        {
+          "info": {
+            "name": "Okta Update a theme for a brand",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://your-subdomain.okta.com/api/v1/brands/:brandId/themes/:themeId",
+            "params": [
+              {
+                "name": "brandId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "themeId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Updates a theme for a brand"
+        },
+        {
+          "info": {
+            "name": "Okta Updates the background image for your Theme",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://your-subdomain.okta.com/api/v1/brands/:brandId/themes/:themeId/background-image",
+            "params": [
+              {
+                "name": "brandId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "themeId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "multipart-form",
+              "data": [
+                {
+                  "name": "file",
+                  "type": "text",
+                  "value": ""
+                }
+              ]
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Updates the background image for your Theme"
+        },
+        {
+          "info": {
+            "name": "Okta Deletes a Theme background image",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://your-subdomain.okta.com/api/v1/brands/:brandId/themes/:themeId/background-image",
+            "params": [
+              {
+                "name": "brandId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "themeId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Deletes a Theme background image"
+        },
+        {
+          "info": {
+            "name": "Okta Updates the favicon for your theme",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://your-subdomain.okta.com/api/v1/brands/:brandId/themes/:themeId/favicon",
+            "params": [
+              {
+                "name": "brandId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "themeId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "multipart-form",
+              "data": [
+                {
+                  "name": "file",
+                  "type": "text",
+                  "value": ""
+                }
+              ]
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Updates the favicon for your theme"
+        },
+        {
+          "info": {
+            "name": "Deletes a Theme favicon. The org then uses the Okta default favicon.",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://your-subdomain.okta.com/api/v1/brands/:brandId/themes/:themeId/favicon",
+            "params": [
+              {
+                "name": "brandId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "themeId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Deletes a Theme favicon. The org then uses the Okta default favicon."
+        },
+        {
+          "info": {
+            "name": "Okta Update a themes logo",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://your-subdomain.okta.com/api/v1/brands/:brandId/themes/:themeId/logo",
+            "params": [
+              {
+                "name": "brandId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "themeId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "multipart-form",
+              "data": [
+                {
+                  "name": "file",
+                  "type": "text",
+                  "value": ""
+                }
+              ]
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Updates the logo for your Theme"
+        },
+        {
+          "info": {
+            "name": "Deletes a Theme logo. The org then uses the Okta default logo.",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://your-subdomain.okta.com/api/v1/brands/:brandId/themes/:themeId/logo",
+            "params": [
+              {
+                "name": "brandId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "themeId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Deletes a Theme logo. The org then uses the Okta default logo."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

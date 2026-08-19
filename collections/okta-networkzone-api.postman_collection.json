@@ -1,0 +1,880 @@
+{
+  "item": [
+    {
+      "id": "7242f3aa-7f0b-489d-ad60-71c399dcaec2",
+      "name": "NetworkZone",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "1cf3fdd5-6234-48da-800c-4a8ea3024361",
+          "name": "Okta List Network Zones",
+          "request": {
+            "name": "Okta List Network Zones",
+            "description": {
+              "content": "Enumerates network zones added to your organization with pagination. A subset of zones can be returned that match a supported filter expression or query.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "zones"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "after",
+                  "value": "<string>",
+                  "description": "Specifies the pagination cursor for the next page of network zones"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "-1",
+                  "description": "Specifies the number of results for a page"
+                },
+                {
+                  "disabled": false,
+                  "key": "filter",
+                  "value": "<string>",
+                  "description": "Filters zones by usage or id expression"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "a0e2be8d-2165-4f10-8f21-b98f5dc201fb",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "zones"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "after",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "-1"
+                    },
+                    {
+                      "key": "filter",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"_links\": {\n      \"key_0\": {}\n    },\n    \"asns\": [\n      \"string\",\n      \"string\"\n    ],\n    \"created\": \"1976-12-22T07:53:52.890Z\",\n    \"gateways\": [\n      {\n        \"type\": \"RANGE\",\n        \"value\": \"string\"\n      },\n      {\n        \"type\": \"CIDR\",\n        \"value\": \"string\"\n      }\n    ],\n    \"id\": \"string\",\n    \"lastUpdated\": \"2021-01-18T09:22:23.137Z\",\n    \"locations\": [\n      {\n        \"country\": \"string\",\n        \"region\": \"string\"\n      },\n      {\n        \"country\": \"string\",\n        \"region\": \"string\"\n      }\n    ],\n    \"name\": \"string\",\n    \"proxies\": [\n      {\n        \"type\": \"RANGE\",\n        \"value\": \"string\"\n      },\n      {\n        \"type\": \"CIDR\",\n        \"value\": \"string\"\n      }\n    ],\n    \"proxyType\": \"string\",\n    \"status\": \"INACTIVE\",\n    \"system\": false,\n    \"type\": \"DYNAMIC\",\n    \"usage\": \"POLICY\"\n  },\n  {\n    \"_links\": {\n      \"key_0\": {}\n    },\n    \"asns\": [\n      \"string\",\n      \"string\"\n    ],\n    \"created\": \"1988-08-31T15:42:08.460Z\",\n    \"gateways\": [\n      {\n        \"type\": \"CIDR\",\n        \"value\": \"string\"\n      },\n      {\n        \"type\": \"CIDR\",\n        \"value\": \"string\"\n      }\n    ],\n    \"id\": \"string\",\n    \"lastUpdated\": \"2001-08-15T02:20:34.342Z\",\n    \"locations\": [\n      {\n        \"country\": \"string\",\n        \"region\": \"string\"\n      },\n      {\n        \"country\": \"string\",\n        \"region\": \"string\"\n      }\n    ],\n    \"name\": \"string\",\n    \"proxies\": [\n      {\n        \"type\": \"CIDR\",\n        \"value\": \"string\"\n      },\n      {\n        \"type\": \"RANGE\",\n        \"value\": \"string\"\n      }\n    ],\n    \"proxyType\": \"string\",\n    \"status\": \"INACTIVE\",\n    \"system\": true,\n    \"type\": \"DYNAMIC\",\n    \"usage\": \"BLOCKLIST\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "0459d7cd-0bbf-4ed7-8dc8-989c20edbccc",
+          "name": "Okta Add Network Zone",
+          "request": {
+            "name": "Okta Add Network Zone",
+            "description": {
+              "content": "Adds a new network zone to your Okta organization.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "zones"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"asns\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"gateways\": [\n    {\n      \"type\": \"<string>\",\n      \"value\": \"<string>\"\n    },\n    {\n      \"type\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  ],\n  \"locations\": [\n    {\n      \"country\": \"<string>\",\n      \"region\": \"<string>\"\n    },\n    {\n      \"country\": \"<string>\",\n      \"region\": \"<string>\"\n    }\n  ],\n  \"name\": \"<string>\",\n  \"proxies\": [\n    {\n      \"type\": \"<string>\",\n      \"value\": \"<string>\"\n    },\n    {\n      \"type\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  ],\n  \"proxyType\": \"<string>\",\n  \"status\": \"<string>\",\n  \"system\": \"<boolean>\",\n  \"type\": \"<string>\",\n  \"usage\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "960508cb-1262-43d7-a252-3388cb63e1a3",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "zones"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"asns\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"gateways\": [\n    {\n      \"type\": \"<string>\",\n      \"value\": \"<string>\"\n    },\n    {\n      \"type\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  ],\n  \"locations\": [\n    {\n      \"country\": \"<string>\",\n      \"region\": \"<string>\"\n    },\n    {\n      \"country\": \"<string>\",\n      \"region\": \"<string>\"\n    }\n  ],\n  \"name\": \"<string>\",\n  \"proxies\": [\n    {\n      \"type\": \"<string>\",\n      \"value\": \"<string>\"\n    },\n    {\n      \"type\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  ],\n  \"proxyType\": \"<string>\",\n  \"status\": \"<string>\",\n  \"system\": \"<boolean>\",\n  \"type\": \"<string>\",\n  \"usage\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"_links\": {\n    \"key_0\": {}\n  },\n  \"asns\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"created\": \"2009-12-27T08:28:23.379Z\",\n  \"gateways\": [\n    {\n      \"type\": \"<string>\",\n      \"value\": \"<string>\"\n    },\n    {\n      \"type\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  ],\n  \"id\": \"string\",\n  \"lastUpdated\": \"1990-08-02T19:41:54.959Z\",\n  \"locations\": [\n    {\n      \"country\": \"<string>\",\n      \"region\": \"<string>\"\n    },\n    {\n      \"country\": \"<string>\",\n      \"region\": \"<string>\"\n    }\n  ],\n  \"name\": \"<string>\",\n  \"proxies\": [\n    {\n      \"type\": \"<string>\",\n      \"value\": \"<string>\"\n    },\n    {\n      \"type\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  ],\n  \"proxyType\": \"<string>\",\n  \"status\": \"<string>\",\n  \"system\": \"<boolean>\",\n  \"type\": \"<string>\",\n  \"usage\": \"<string>\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "8c6e34f6-c9d2-4a57-825b-ec182cfeec2d",
+          "name": "Okta Get Network Zone",
+          "request": {
+            "name": "Okta Get Network Zone",
+            "description": {
+              "content": "Fetches a network zone from your Okta organization by `id`.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "zones",
+                ":zoneId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "zoneId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "d0e906cb-1516-4d01-8490-ab0df8843f4a",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "zones",
+                    ":zoneId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "zoneId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"_links\": {\n    \"key_0\": {}\n  },\n  \"asns\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"created\": \"2009-12-27T08:28:23.379Z\",\n  \"gateways\": [\n    {\n      \"type\": \"<string>\",\n      \"value\": \"<string>\"\n    },\n    {\n      \"type\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  ],\n  \"id\": \"string\",\n  \"lastUpdated\": \"1990-08-02T19:41:54.959Z\",\n  \"locations\": [\n    {\n      \"country\": \"<string>\",\n      \"region\": \"<string>\"\n    },\n    {\n      \"country\": \"<string>\",\n      \"region\": \"<string>\"\n    }\n  ],\n  \"name\": \"<string>\",\n  \"proxies\": [\n    {\n      \"type\": \"<string>\",\n      \"value\": \"<string>\"\n    },\n    {\n      \"type\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  ],\n  \"proxyType\": \"<string>\",\n  \"status\": \"<string>\",\n  \"system\": \"<boolean>\",\n  \"type\": \"<string>\",\n  \"usage\": \"<string>\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b4cda25a-f31a-48d6-9c83-fbea440d81f1",
+          "name": "Okta Update Network Zone",
+          "request": {
+            "name": "Okta Update Network Zone",
+            "description": {
+              "content": "Updates a network zone in your organization.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "zones",
+                ":zoneId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "zoneId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"asns\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"gateways\": [\n    {\n      \"type\": \"<string>\",\n      \"value\": \"<string>\"\n    },\n    {\n      \"type\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  ],\n  \"locations\": [\n    {\n      \"country\": \"<string>\",\n      \"region\": \"<string>\"\n    },\n    {\n      \"country\": \"<string>\",\n      \"region\": \"<string>\"\n    }\n  ],\n  \"name\": \"<string>\",\n  \"proxies\": [\n    {\n      \"type\": \"<string>\",\n      \"value\": \"<string>\"\n    },\n    {\n      \"type\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  ],\n  \"proxyType\": \"<string>\",\n  \"status\": \"<string>\",\n  \"system\": \"<boolean>\",\n  \"type\": \"<string>\",\n  \"usage\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "db032ff4-b1f6-424e-a6dd-1ae38810d22d",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "zones",
+                    ":zoneId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "zoneId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"asns\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"gateways\": [\n    {\n      \"type\": \"<string>\",\n      \"value\": \"<string>\"\n    },\n    {\n      \"type\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  ],\n  \"locations\": [\n    {\n      \"country\": \"<string>\",\n      \"region\": \"<string>\"\n    },\n    {\n      \"country\": \"<string>\",\n      \"region\": \"<string>\"\n    }\n  ],\n  \"name\": \"<string>\",\n  \"proxies\": [\n    {\n      \"type\": \"<string>\",\n      \"value\": \"<string>\"\n    },\n    {\n      \"type\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  ],\n  \"proxyType\": \"<string>\",\n  \"status\": \"<string>\",\n  \"system\": \"<boolean>\",\n  \"type\": \"<string>\",\n  \"usage\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"_links\": {\n    \"key_0\": {}\n  },\n  \"asns\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"created\": \"2009-12-27T08:28:23.379Z\",\n  \"gateways\": [\n    {\n      \"type\": \"<string>\",\n      \"value\": \"<string>\"\n    },\n    {\n      \"type\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  ],\n  \"id\": \"string\",\n  \"lastUpdated\": \"1990-08-02T19:41:54.959Z\",\n  \"locations\": [\n    {\n      \"country\": \"<string>\",\n      \"region\": \"<string>\"\n    },\n    {\n      \"country\": \"<string>\",\n      \"region\": \"<string>\"\n    }\n  ],\n  \"name\": \"<string>\",\n  \"proxies\": [\n    {\n      \"type\": \"<string>\",\n      \"value\": \"<string>\"\n    },\n    {\n      \"type\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  ],\n  \"proxyType\": \"<string>\",\n  \"status\": \"<string>\",\n  \"system\": \"<boolean>\",\n  \"type\": \"<string>\",\n  \"usage\": \"<string>\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "63f75fcc-5038-4494-9e16-8cf6ae9a3085",
+          "name": "Okta Delete Network Zone",
+          "request": {
+            "name": "Okta Delete Network Zone",
+            "description": {
+              "content": "Removes network zone.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "zones",
+                ":zoneId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "zoneId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "3170edac-095e-4505-9651-225a1aab5789",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "zones",
+                    ":zoneId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "zoneId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "82de16b1-192a-4fac-80bd-edbec38d3b32",
+          "name": "Okta Activate Network Zone",
+          "request": {
+            "name": "Okta Activate Network Zone",
+            "description": {
+              "content": "Activate Network Zone",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "zones",
+                ":zoneId",
+                "lifecycle",
+                "activate"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "zoneId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "86fbf196-3ab6-4f20-9bc7-a3dc90603d2e",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "zones",
+                    ":zoneId",
+                    "lifecycle",
+                    "activate"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "zoneId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"_links\": {\n    \"key_0\": {}\n  },\n  \"asns\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"created\": \"2009-12-27T08:28:23.379Z\",\n  \"gateways\": [\n    {\n      \"type\": \"<string>\",\n      \"value\": \"<string>\"\n    },\n    {\n      \"type\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  ],\n  \"id\": \"string\",\n  \"lastUpdated\": \"1990-08-02T19:41:54.959Z\",\n  \"locations\": [\n    {\n      \"country\": \"<string>\",\n      \"region\": \"<string>\"\n    },\n    {\n      \"country\": \"<string>\",\n      \"region\": \"<string>\"\n    }\n  ],\n  \"name\": \"<string>\",\n  \"proxies\": [\n    {\n      \"type\": \"<string>\",\n      \"value\": \"<string>\"\n    },\n    {\n      \"type\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  ],\n  \"proxyType\": \"<string>\",\n  \"status\": \"<string>\",\n  \"system\": \"<boolean>\",\n  \"type\": \"<string>\",\n  \"usage\": \"<string>\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "7a5d8542-8955-4557-94c3-265279b2019e",
+          "name": "Okta Deactivate Network Zone",
+          "request": {
+            "name": "Okta Deactivate Network Zone",
+            "description": {
+              "content": "Deactivates a network zone.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "zones",
+                ":zoneId",
+                "lifecycle",
+                "deactivate"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "zoneId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "ea89b7a4-526c-4594-863b-89c3a29837dc",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "zones",
+                    ":zoneId",
+                    "lifecycle",
+                    "deactivate"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "zoneId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"_links\": {\n    \"key_0\": {}\n  },\n  \"asns\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"created\": \"2009-12-27T08:28:23.379Z\",\n  \"gateways\": [\n    {\n      \"type\": \"<string>\",\n      \"value\": \"<string>\"\n    },\n    {\n      \"type\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  ],\n  \"id\": \"string\",\n  \"lastUpdated\": \"1990-08-02T19:41:54.959Z\",\n  \"locations\": [\n    {\n      \"country\": \"<string>\",\n      \"region\": \"<string>\"\n    },\n    {\n      \"country\": \"<string>\",\n      \"region\": \"<string>\"\n    }\n  ],\n  \"name\": \"<string>\",\n  \"proxies\": [\n    {\n      \"type\": \"<string>\",\n      \"value\": \"<string>\"\n    },\n    {\n      \"type\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  ],\n  \"proxyType\": \"<string>\",\n  \"status\": \"<string>\",\n  \"system\": \"<boolean>\",\n  \"type\": \"<string>\",\n  \"usage\": \"<string>\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://your-subdomain.okta.com/",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "95047821-3d1f-4e46-b81f-081b3a6835d8",
+    "name": "Okta Application NetworkZone API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Allows customers to easily access the Okta API\n\nContact Support:\n Name: Okta Developer Team\n Email: devex-public@okta.com",
+      "type": "text/plain"
+    }
+  }
+}

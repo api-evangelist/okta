@@ -1,0 +1,3890 @@
+{
+  "item": [
+    {
+      "id": "430276ec-df48-4c9c-a780-f3e4edfa2897",
+      "name": "Group",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "6b6a0b64-0048-4afd-9404-b0b5b14b1b1a",
+          "name": "Okta List Groups",
+          "request": {
+            "name": "Okta List Groups",
+            "description": {
+              "content": "Enumerates groups in your organization with pagination. A subset of groups can be returned that match a supported filter expression or query.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "groups"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "q",
+                  "value": "<string>",
+                  "description": "Searches the name property of groups for matching value"
+                },
+                {
+                  "disabled": false,
+                  "key": "filter",
+                  "value": "<string>",
+                  "description": "Filter expression for groups"
+                },
+                {
+                  "disabled": false,
+                  "key": "after",
+                  "value": "<string>",
+                  "description": "Specifies the pagination cursor for the next page of groups"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "10000",
+                  "description": "Specifies the number of group results in a page"
+                },
+                {
+                  "disabled": false,
+                  "key": "expand",
+                  "value": "<string>",
+                  "description": "If specified, it causes additional metadata to be included in the response."
+                },
+                {
+                  "disabled": false,
+                  "key": "search",
+                  "value": "<string>",
+                  "description": "Searches for groups with a supported filtering expression for all attributes except for _embedded, _links, and objectClass"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "daeee1ca-f272-4a2b-b22a-2d70c1543b6c",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "groups"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "q",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "after",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "10000"
+                    },
+                    {
+                      "key": "expand",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "search",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"_embedded\": {\n      \"key_0\": {},\n      \"key_1\": {}\n    },\n    \"_links\": {\n      \"key_0\": {}\n    },\n    \"created\": \"2005-10-19T00:17:24.344Z\",\n    \"id\": \"string\",\n    \"lastMembershipUpdated\": \"1976-01-12T17:29:00.968Z\",\n    \"lastUpdated\": \"2020-04-11T12:46:48.827Z\",\n    \"objectClass\": [\n      \"string\",\n      \"string\"\n    ],\n    \"profile\": {\n      \"description\": \"string\",\n      \"name\": \"string\"\n    },\n    \"type\": \"BUILT_IN\"\n  },\n  {\n    \"_embedded\": {\n      \"key_0\": {}\n    },\n    \"_links\": {\n      \"key_0\": {}\n    },\n    \"created\": \"2014-08-22T06:18:21.312Z\",\n    \"id\": \"string\",\n    \"lastMembershipUpdated\": \"1966-03-15T02:58:52.296Z\",\n    \"lastUpdated\": \"1970-07-31T18:04:04.577Z\",\n    \"objectClass\": [\n      \"string\",\n      \"string\"\n    ],\n    \"profile\": {\n      \"description\": \"string\",\n      \"name\": \"string\"\n    },\n    \"type\": \"OKTA_GROUP\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e054c542-78be-4222-a066-475a175e694e",
+          "name": "Okta Add Group",
+          "request": {
+            "name": "Okta Add Group",
+            "description": {
+              "content": "Adds a new group with `OKTA_GROUP` type to your organization.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "groups"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"profile\": {\n    \"description\": \"<string>\",\n    \"name\": \"<string>\"\n  },\n  \"type\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "3375c867-d6f1-4139-a972-7d54f2c49017",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "groups"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"profile\": {\n    \"description\": \"<string>\",\n    \"name\": \"<string>\"\n  },\n  \"type\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"_embedded\": {\n    \"key_0\": {},\n    \"key_1\": {},\n    \"key_2\": {}\n  },\n  \"_links\": {\n    \"key_0\": {},\n    \"key_1\": {}\n  },\n  \"created\": \"2026-05-12T05:04:41.868Z\",\n  \"id\": \"string\",\n  \"lastMembershipUpdated\": \"2016-01-30T16:43:48.949Z\",\n  \"lastUpdated\": \"1977-01-09T23:45:51.824Z\",\n  \"objectClass\": [\n    \"string\",\n    \"string\"\n  ],\n  \"profile\": {\n    \"description\": \"<string>\",\n    \"name\": \"<string>\"\n  },\n  \"type\": \"<string>\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "2d822297-4afa-4597-946c-cd13ef634088",
+          "name": "Okta List Group Rules",
+          "request": {
+            "name": "Okta List Group Rules",
+            "description": {
+              "content": "Lists all group rules for your organization.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "groups",
+                "rules"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "50",
+                  "description": "Specifies the number of rule results in a page"
+                },
+                {
+                  "disabled": false,
+                  "key": "after",
+                  "value": "<string>",
+                  "description": "Specifies the pagination cursor for the next page of rules"
+                },
+                {
+                  "disabled": false,
+                  "key": "search",
+                  "value": "<string>",
+                  "description": "Specifies the keyword to search fules for"
+                },
+                {
+                  "disabled": false,
+                  "key": "expand",
+                  "value": "<string>",
+                  "description": "If specified as `groupIdToGroupNameMap`, then show group names"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "e6faa5c9-cb81-45d4-9d0b-fe029887ef64",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "groups",
+                    "rules"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "50"
+                    },
+                    {
+                      "key": "after",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "search",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "expand",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"actions\": {\n      \"assignUserToGroups\": {\n        \"groupIds\": [\n          \"string\",\n          \"string\"\n        ]\n      }\n    },\n    \"conditions\": {\n      \"expression\": {\n        \"type\": \"string\",\n        \"value\": \"string\"\n      },\n      \"people\": {\n        \"groups\": {\n          \"exclude\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"include\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        },\n        \"users\": {\n          \"exclude\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"include\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        }\n      }\n    },\n    \"created\": \"1968-03-21T20:12:32.074Z\",\n    \"id\": \"string\",\n    \"lastUpdated\": \"2021-05-11T14:38:30.207Z\",\n    \"name\": \"string\",\n    \"status\": \"INACTIVE\",\n    \"type\": \"string\"\n  },\n  {\n    \"actions\": {\n      \"assignUserToGroups\": {\n        \"groupIds\": [\n          \"string\",\n          \"string\"\n        ]\n      }\n    },\n    \"conditions\": {\n      \"expression\": {\n        \"type\": \"string\",\n        \"value\": \"string\"\n      },\n      \"people\": {\n        \"groups\": {\n          \"exclude\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"include\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        },\n        \"users\": {\n          \"exclude\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"include\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        }\n      }\n    },\n    \"created\": \"1985-05-03T06:30:51.829Z\",\n    \"id\": \"string\",\n    \"lastUpdated\": \"1983-03-23T16:14:45.289Z\",\n    \"name\": \"string\",\n    \"status\": \"ACTIVE\",\n    \"type\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "9e552dfa-25cb-498f-b313-7fa3b2ca6297",
+          "name": "Okta Create Group Rule",
+          "request": {
+            "name": "Okta Create Group Rule",
+            "description": {
+              "content": "Creates a group rule to dynamically add users to the specified group if they match the condition",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "groups",
+                "rules"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"actions\": {\n    \"assignUserToGroups\": {\n      \"groupIds\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    }\n  },\n  \"conditions\": {\n    \"expression\": {\n      \"type\": \"<string>\",\n      \"value\": \"<string>\"\n    },\n    \"people\": {\n      \"groups\": {\n        \"exclude\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"include\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      },\n      \"users\": {\n        \"exclude\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"include\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      }\n    }\n  },\n  \"name\": \"<string>\",\n  \"status\": \"<string>\",\n  \"type\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "163b5b4a-b5eb-49ee-9cfe-7e33f2f88620",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "groups",
+                    "rules"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"actions\": {\n    \"assignUserToGroups\": {\n      \"groupIds\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    }\n  },\n  \"conditions\": {\n    \"expression\": {\n      \"type\": \"<string>\",\n      \"value\": \"<string>\"\n    },\n    \"people\": {\n      \"groups\": {\n        \"exclude\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"include\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      },\n      \"users\": {\n        \"exclude\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"include\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      }\n    }\n  },\n  \"name\": \"<string>\",\n  \"status\": \"<string>\",\n  \"type\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"actions\": {\n    \"assignUserToGroups\": {\n      \"groupIds\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    }\n  },\n  \"conditions\": {\n    \"expression\": {\n      \"type\": \"<string>\",\n      \"value\": \"<string>\"\n    },\n    \"people\": {\n      \"groups\": {\n        \"exclude\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"include\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      },\n      \"users\": {\n        \"exclude\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"include\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      }\n    }\n  },\n  \"created\": \"2010-03-21T04:35:15.721Z\",\n  \"id\": \"string\",\n  \"lastUpdated\": \"1989-10-31T11:10:05.736Z\",\n  \"name\": \"<string>\",\n  \"status\": \"<string>\",\n  \"type\": \"<string>\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ddd2ceeb-62dd-4ad5-839d-5ff5e9aed019",
+          "name": "Okta Get Group Rule",
+          "request": {
+            "name": "Okta Get Group Rule",
+            "description": {
+              "content": "Fetches a specific group rule by id from your organization",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "groups",
+                "rules",
+                ":ruleId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "expand",
+                  "value": "<string>"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "ruleId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "0d3254f5-4c7f-45da-b02e-00f970922531",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "groups",
+                    "rules",
+                    ":ruleId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "expand",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "ruleId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"actions\": {\n    \"assignUserToGroups\": {\n      \"groupIds\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    }\n  },\n  \"conditions\": {\n    \"expression\": {\n      \"type\": \"<string>\",\n      \"value\": \"<string>\"\n    },\n    \"people\": {\n      \"groups\": {\n        \"exclude\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"include\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      },\n      \"users\": {\n        \"exclude\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"include\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      }\n    }\n  },\n  \"created\": \"2010-03-21T04:35:15.721Z\",\n  \"id\": \"string\",\n  \"lastUpdated\": \"1989-10-31T11:10:05.736Z\",\n  \"name\": \"<string>\",\n  \"status\": \"<string>\",\n  \"type\": \"<string>\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "17c68a96-99d9-45e1-aee0-13b658240257",
+          "name": "update Group Rule",
+          "request": {
+            "name": "update Group Rule",
+            "description": {
+              "content": "Updates a group rule. Only `INACTIVE` rules can be updated.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "groups",
+                "rules",
+                ":ruleId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "ruleId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"actions\": {\n    \"assignUserToGroups\": {\n      \"groupIds\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    }\n  },\n  \"conditions\": {\n    \"expression\": {\n      \"type\": \"<string>\",\n      \"value\": \"<string>\"\n    },\n    \"people\": {\n      \"groups\": {\n        \"exclude\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"include\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      },\n      \"users\": {\n        \"exclude\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"include\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      }\n    }\n  },\n  \"name\": \"<string>\",\n  \"status\": \"<string>\",\n  \"type\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "ff7ce931-40fe-437b-8fda-12e74566fb9f",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "groups",
+                    "rules",
+                    ":ruleId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "ruleId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"actions\": {\n    \"assignUserToGroups\": {\n      \"groupIds\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    }\n  },\n  \"conditions\": {\n    \"expression\": {\n      \"type\": \"<string>\",\n      \"value\": \"<string>\"\n    },\n    \"people\": {\n      \"groups\": {\n        \"exclude\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"include\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      },\n      \"users\": {\n        \"exclude\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"include\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      }\n    }\n  },\n  \"name\": \"<string>\",\n  \"status\": \"<string>\",\n  \"type\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"actions\": {\n    \"assignUserToGroups\": {\n      \"groupIds\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    }\n  },\n  \"conditions\": {\n    \"expression\": {\n      \"type\": \"<string>\",\n      \"value\": \"<string>\"\n    },\n    \"people\": {\n      \"groups\": {\n        \"exclude\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"include\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      },\n      \"users\": {\n        \"exclude\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"include\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      }\n    }\n  },\n  \"created\": \"2010-03-21T04:35:15.721Z\",\n  \"id\": \"string\",\n  \"lastUpdated\": \"1989-10-31T11:10:05.736Z\",\n  \"name\": \"<string>\",\n  \"status\": \"<string>\",\n  \"type\": \"<string>\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b238c03f-aa23-4299-8ce9-ee4a6e975f8e",
+          "name": "Okta Delete a group Rule",
+          "request": {
+            "name": "Okta Delete a group Rule",
+            "description": {
+              "content": "Removes a specific group rule by id from your organization",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "groups",
+                "rules",
+                ":ruleId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "removeUsers",
+                  "value": "<boolean>",
+                  "description": "Indicates whether to keep or remove users from groups assigned by this rule."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "ruleId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "a557a96b-c5d0-46f4-8dc9-09c85aa8016b",
+              "name": "Accepted",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "groups",
+                    "rules",
+                    ":ruleId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "removeUsers",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "ruleId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Accepted",
+              "code": 202,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "86bef9ef-3370-4911-93e5-193fd2d15a0d",
+          "name": "Okta Activate a group Rule",
+          "request": {
+            "name": "Okta Activate a group Rule",
+            "description": {
+              "content": "Activates a specific group rule by id from your organization",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "groups",
+                "rules",
+                ":ruleId",
+                "lifecycle",
+                "activate"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "ruleId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "method": "POST",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "5996071e-c644-4a0d-8ba6-c5d6f7e76409",
+              "name": "No Content",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "groups",
+                    "rules",
+                    ":ruleId",
+                    "lifecycle",
+                    "activate"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "ruleId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "aac4db26-42c3-4c9f-895a-ae47ad70979f",
+          "name": "Okta Deactivate a group Rule",
+          "request": {
+            "name": "Okta Deactivate a group Rule",
+            "description": {
+              "content": "Deactivates a specific group rule by id from your organization",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "groups",
+                "rules",
+                ":ruleId",
+                "lifecycle",
+                "deactivate"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "ruleId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "method": "POST",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "c57107ee-cd82-46cc-a5cb-6486a8d79362",
+              "name": "No Content",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "groups",
+                    "rules",
+                    ":ruleId",
+                    "lifecycle",
+                    "deactivate"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "ruleId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "6165f6f8-1f5a-46da-a7f1-b680bdeebf80",
+          "name": "Okta List Group Rules",
+          "request": {
+            "name": "Okta List Group Rules",
+            "description": {
+              "content": "Fetches a group from your organization.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "groups",
+                ":groupId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "groupId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "08dafa26-a622-4ce6-91a9-16ea9f2eb523",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "groups",
+                    ":groupId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "groupId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"_embedded\": {\n    \"key_0\": {},\n    \"key_1\": {},\n    \"key_2\": {}\n  },\n  \"_links\": {\n    \"key_0\": {},\n    \"key_1\": {}\n  },\n  \"created\": \"2026-05-12T05:04:41.868Z\",\n  \"id\": \"string\",\n  \"lastMembershipUpdated\": \"2016-01-30T16:43:48.949Z\",\n  \"lastUpdated\": \"1977-01-09T23:45:51.824Z\",\n  \"objectClass\": [\n    \"string\",\n    \"string\"\n  ],\n  \"profile\": {\n    \"description\": \"<string>\",\n    \"name\": \"<string>\"\n  },\n  \"type\": \"<string>\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c99b61af-2301-4e65-bc2f-b125e925597f",
+          "name": "Okta Update Group",
+          "request": {
+            "name": "Okta Update Group",
+            "description": {
+              "content": "Updates the profile for a group with `OKTA_GROUP` type from your organization.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "groups",
+                ":groupId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "groupId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"profile\": {\n    \"description\": \"<string>\",\n    \"name\": \"<string>\"\n  },\n  \"type\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "0a1c3b17-7a13-4802-85e4-cd796fe1c2a2",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "groups",
+                    ":groupId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "groupId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"profile\": {\n    \"description\": \"<string>\",\n    \"name\": \"<string>\"\n  },\n  \"type\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"_embedded\": {\n    \"key_0\": {},\n    \"key_1\": {},\n    \"key_2\": {}\n  },\n  \"_links\": {\n    \"key_0\": {},\n    \"key_1\": {}\n  },\n  \"created\": \"2026-05-12T05:04:41.868Z\",\n  \"id\": \"string\",\n  \"lastMembershipUpdated\": \"2016-01-30T16:43:48.949Z\",\n  \"lastUpdated\": \"1977-01-09T23:45:51.824Z\",\n  \"objectClass\": [\n    \"string\",\n    \"string\"\n  ],\n  \"profile\": {\n    \"description\": \"<string>\",\n    \"name\": \"<string>\"\n  },\n  \"type\": \"<string>\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "4a3a12fc-c170-4151-9300-5c0d58cead9e",
+          "name": "Okta Remove Group",
+          "request": {
+            "name": "Okta Remove Group",
+            "description": {
+              "content": "Removes a group with `OKTA_GROUP` type from your organization.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "groups",
+                ":groupId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "groupId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "c21f5e5f-7d2b-4f42-8890-d62223af193b",
+              "name": "No Content",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "groups",
+                    ":groupId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "groupId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "257e5d40-6f64-4363-aa31-53ccfb83afeb",
+          "name": "Okta List Assigned Applications",
+          "request": {
+            "name": "Okta List Assigned Applications",
+            "description": {
+              "content": "Enumerates all applications that are assigned to a group.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "groups",
+                ":groupId",
+                "apps"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "after",
+                  "value": "<string>",
+                  "description": "Specifies the pagination cursor for the next page of apps"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "20",
+                  "description": "Specifies the number of app results for a page"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "groupId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "4885130f-9911-4ddd-8bbb-445c1d7cfe96",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "groups",
+                    ":groupId",
+                    "apps"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "after",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "20"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "groupId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"_embedded\": {\n      \"key_0\": {}\n    },\n    \"_links\": {\n      \"key_0\": {}\n    },\n    \"accessibility\": {\n      \"errorRedirectUrl\": \"string\",\n      \"loginRedirectUrl\": \"string\",\n      \"selfService\": false\n    },\n    \"created\": \"1989-01-09T09:34:09.542Z\",\n    \"credentials\": {\n      \"signing\": {\n        \"kid\": \"string\",\n        \"lastRotated\": \"1946-12-21T10:14:03.270Z\",\n        \"nextRotation\": \"1956-01-11T05:35:42.875Z\",\n        \"rotationMode\": \"string\",\n        \"use\": \"sig\"\n      },\n      \"userNameTemplate\": {\n        \"pushStatus\": \"string\",\n        \"suffix\": \"string\",\n        \"template\": \"string\",\n        \"type\": \"string\"\n      }\n    },\n    \"features\": [\n      \"string\",\n      \"string\"\n    ],\n    \"id\": \"string\",\n    \"label\": \"string\",\n    \"lastUpdated\": \"1971-05-18T23:14:44.514Z\",\n    \"licensing\": {\n      \"seatCount\": 9602\n    },\n    \"name\": \"string\",\n    \"profile\": {\n      \"key_0\": {},\n      \"key_1\": {}\n    },\n    \"settings\": {\n      \"app\": {\n        \"acsUrl\": \"string\",\n        \"buttonField\": \"string\",\n        \"loginUrlRegex\": \"string\",\n        \"orgName\": \"string\",\n        \"passwordField\": \"string\",\n        \"url\": \"string\",\n        \"usernameField\": \"string\"\n      },\n      \"implicitAssignment\": true,\n      \"inlineHookId\": \"string\",\n      \"notes\": {\n        \"admin\": \"string\",\n        \"enduser\": \"string\"\n      },\n      \"notifications\": {\n        \"vpn\": {\n          \"helpUrl\": \"string\",\n          \"message\": \"string\",\n          \"network\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        }\n      }\n    },\n    \"signOnMode\": \"WS_FEDERATION\",\n    \"status\": \"DELETED\",\n    \"visibility\": {\n      \"appLinks\": {\n        \"key_0\": true,\n        \"key_1\": true\n      },\n      \"autoLaunch\": true,\n      \"autoSubmitToolbar\": true,\n      \"hide\": {\n        \"iOS\": true,\n        \"web\": true\n      }\n    }\n  },\n  {\n    \"_embedded\": {\n      \"key_0\": {},\n      \"key_1\": {}\n    },\n    \"_links\": {\n      \"key_0\": {},\n      \"key_1\": {},\n      \"key_2\": {}\n    },\n    \"accessibility\": {\n      \"errorRedirectUrl\": \"string\",\n      \"loginRedirectUrl\": \"string\",\n      \"selfService\": true\n    },\n    \"created\": \"1989-07-01T09:50:46.929Z\",\n    \"credentials\": {\n      \"signing\": {\n        \"kid\": \"string\",\n        \"lastRotated\": \"2006-08-18T07:51:44.185Z\",\n        \"nextRotation\": \"2001-03-21T12:24:21.610Z\",\n        \"rotationMode\": \"string\",\n        \"use\": \"sig\"\n      },\n      \"userNameTemplate\": {\n        \"pushStatus\": \"string\",\n        \"suffix\": \"string\",\n        \"template\": \"string\",\n        \"type\": \"string\"\n      }\n    },\n    \"features\": [\n      \"string\",\n      \"string\"\n    ],\n    \"id\": \"string\",\n    \"label\": \"string\",\n    \"lastUpdated\": \"2006-04-03T13:58:35.382Z\",\n    \"licensing\": {\n      \"seatCount\": 1910\n    },\n    \"name\": \"string\",\n    \"profile\": {\n      \"key_0\": {},\n      \"key_1\": {},\n      \"key_2\": {}\n    },\n    \"settings\": {\n      \"app\": {\n        \"acsUrl\": \"string\",\n        \"buttonField\": \"string\",\n        \"loginUrlRegex\": \"string\",\n        \"orgName\": \"string\",\n        \"passwordField\": \"string\",\n        \"url\": \"string\",\n        \"usernameField\": \"string\"\n      },\n      \"implicitAssignment\": true,\n      \"inlineHookId\": \"string\",\n      \"notes\": {\n        \"admin\": \"string\",\n        \"enduser\": \"string\"\n      },\n      \"notifications\": {\n        \"vpn\": {\n          \"helpUrl\": \"string\",\n          \"message\": \"string\",\n          \"network\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        }\n      }\n    },\n    \"signOnMode\": \"SECURE_PASSWORD_STORE\",\n    \"status\": \"DELETED\",\n    \"visibility\": {\n      \"appLinks\": {\n        \"key_0\": true\n      },\n      \"autoLaunch\": false,\n      \"autoSubmitToolbar\": true,\n      \"hide\": {\n        \"iOS\": true,\n        \"web\": false\n      }\n    }\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "0f20ef3e-332e-40c2-80f6-934b3162c500",
+          "name": "list Group Assigned Roles",
+          "request": {
+            "name": "list Group Assigned Roles",
+            "description": {
+              "content": "Success",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "groups",
+                ":groupId",
+                "roles"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "expand",
+                  "value": "<string>"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "groupId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "b0942873-5bf3-49dc-8025-73ce2c3eb535",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "groups",
+                    ":groupId",
+                    "roles"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "expand",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "groupId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"_embedded\": {\n      \"key_0\": {},\n      \"key_1\": {}\n    },\n    \"_links\": {\n      \"key_0\": {}\n    },\n    \"assignmentType\": \"USER\",\n    \"created\": \"1978-12-20T15:55:54.915Z\",\n    \"description\": \"string\",\n    \"id\": \"string\",\n    \"label\": \"string\",\n    \"lastUpdated\": \"2011-12-08T08:17:20.508Z\",\n    \"status\": \"INACTIVE\",\n    \"type\": \"API_ACCESS_MANAGEMENT_ADMIN\"\n  },\n  {\n    \"_embedded\": {\n      \"key_0\": {},\n      \"key_1\": {}\n    },\n    \"_links\": {\n      \"key_0\": {}\n    },\n    \"assignmentType\": \"USER\",\n    \"created\": \"1954-11-10T13:05:42.708Z\",\n    \"description\": \"string\",\n    \"id\": \"string\",\n    \"label\": \"string\",\n    \"lastUpdated\": \"1995-02-21T06:58:04.107Z\",\n    \"status\": \"INACTIVE\",\n    \"type\": \"SUPER_ADMIN\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "72f10326-77f9-4402-93f9-73033a46baa1",
+          "name": "assign Role To Group",
+          "request": {
+            "name": "assign Role To Group",
+            "description": {
+              "content": "Assigns a Role to a Group",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "groups",
+                ":groupId",
+                "roles"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "disableNotifications",
+                  "value": "<boolean>"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "groupId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"type\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "44cc9289-23dd-48f1-8b82-4a49b59ffb5e",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "groups",
+                    ":groupId",
+                    "roles"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "disableNotifications",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "groupId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"type\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"_embedded\": {\n    \"key_0\": {}\n  },\n  \"_links\": {\n    \"key_0\": {},\n    \"key_1\": {},\n    \"key_2\": {}\n  },\n  \"assignmentType\": \"GROUP\",\n  \"created\": \"1969-04-15T03:06:49.009Z\",\n  \"description\": \"string\",\n  \"id\": \"string\",\n  \"label\": \"string\",\n  \"lastUpdated\": \"2003-06-21T07:46:27.730Z\",\n  \"status\": \"INACTIVE\",\n  \"type\": \"<string>\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "924fa3a7-610d-41e3-b9da-3cb07cc324a8",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "groups",
+                    ":groupId",
+                    "roles"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "disableNotifications",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "groupId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"type\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "6062cb01-b366-49bd-a7a6-8eb3fcffefb3",
+          "name": "get Role",
+          "request": {
+            "name": "get Role",
+            "description": {
+              "content": "Success",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "groups",
+                ":groupId",
+                "roles",
+                ":roleId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "groupId",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "roleId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "ef0846a7-07cf-4f77-8e2b-986618c8c3d4",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "groups",
+                    ":groupId",
+                    "roles",
+                    ":roleId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "groupId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "roleId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"_embedded\": {\n    \"key_0\": {}\n  },\n  \"_links\": {\n    \"key_0\": {},\n    \"key_1\": {},\n    \"key_2\": {}\n  },\n  \"assignmentType\": \"GROUP\",\n  \"created\": \"1969-04-15T03:06:49.009Z\",\n  \"description\": \"string\",\n  \"id\": \"string\",\n  \"label\": \"string\",\n  \"lastUpdated\": \"2003-06-21T07:46:27.730Z\",\n  \"status\": \"INACTIVE\",\n  \"type\": \"<string>\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "6a7d15c0-8703-4e6f-aac9-72eb6bda26f4",
+          "name": "remove Role From Group",
+          "request": {
+            "name": "remove Role From Group",
+            "description": {
+              "content": "Unassigns a Role from a Group",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "groups",
+                ":groupId",
+                "roles",
+                ":roleId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "groupId",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "roleId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "193911cd-8423-4b3c-90d3-795bd4340721",
+              "name": "No Content",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "groups",
+                    ":groupId",
+                    "roles",
+                    ":roleId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "groupId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "roleId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a981019a-489d-42c0-89f6-79e43a043914",
+          "name": "list Application Targets For Application Administrator Role For Group",
+          "request": {
+            "name": "list Application Targets For Application Administrator Role For Group",
+            "description": {
+              "content": "Lists all App targets for an `APP_ADMIN` Role assigned to a Group. This methods return list may include full Applications or Instances. The response for an instance will have an `ID` value, while Application will not have an ID.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "groups",
+                ":groupId",
+                "roles",
+                ":roleId",
+                "targets",
+                "catalog",
+                "apps"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "after",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "20"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "groupId",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "roleId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "0663ff5f-b397-4d13-8d8d-3613d277b476",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "groups",
+                    ":groupId",
+                    "roles",
+                    ":roleId",
+                    "targets",
+                    "catalog",
+                    "apps"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "after",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "20"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "groupId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "roleId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"_links\": {\n      \"key_0\": {}\n    },\n    \"category\": \"string\",\n    \"description\": \"string\",\n    \"displayName\": \"string\",\n    \"features\": [\n      \"string\",\n      \"string\"\n    ],\n    \"id\": \"string\",\n    \"lastUpdated\": \"2007-08-28T16:35:37.437Z\",\n    \"name\": \"string\",\n    \"signOnModes\": [\n      \"string\",\n      \"string\"\n    ],\n    \"status\": \"INACTIVE\",\n    \"verificationStatus\": \"string\",\n    \"website\": \"string\"\n  },\n  {\n    \"_links\": {\n      \"key_0\": {},\n      \"key_1\": {}\n    },\n    \"category\": \"string\",\n    \"description\": \"string\",\n    \"displayName\": \"string\",\n    \"features\": [\n      \"string\",\n      \"string\"\n    ],\n    \"id\": \"string\",\n    \"lastUpdated\": \"1978-11-11T17:20:03.106Z\",\n    \"name\": \"string\",\n    \"signOnModes\": [\n      \"string\",\n      \"string\"\n    ],\n    \"status\": \"ACTIVE\",\n    \"verificationStatus\": \"string\",\n    \"website\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "7aa471ad-792b-4386-b7bd-bc9c51240651",
+          "name": "add Application Target To Admin Role Given To Group",
+          "request": {
+            "name": "add Application Target To Admin Role Given To Group",
+            "description": {
+              "content": "Success",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "groups",
+                ":groupId",
+                "roles",
+                ":roleId",
+                "targets",
+                "catalog",
+                "apps",
+                ":appName"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "groupId",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "roleId",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "appName",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "method": "PUT",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "880e8a7a-1df6-4ffd-9d95-4f6a86022860",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "groups",
+                    ":groupId",
+                    "roles",
+                    ":roleId",
+                    "targets",
+                    "catalog",
+                    "apps",
+                    ":appName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "groupId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "roleId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "appName",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a68382aa-644e-43a9-8063-951df785fa0d",
+          "name": "remove Application Target From Application Administrator Role Given To Group",
+          "request": {
+            "name": "remove Application Target From Application Administrator Role Given To Group",
+            "description": {
+              "content": "Success",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "groups",
+                ":groupId",
+                "roles",
+                ":roleId",
+                "targets",
+                "catalog",
+                "apps",
+                ":appName"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "groupId",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "roleId",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "appName",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "544a4747-6683-46f2-ae29-1932ea09aaa6",
+              "name": "No Content",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "groups",
+                    ":groupId",
+                    "roles",
+                    ":roleId",
+                    "targets",
+                    "catalog",
+                    "apps",
+                    ":appName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "groupId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "roleId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "appName",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b7bc2d1d-3bdc-4a02-a91e-27f2d395b1cb",
+          "name": "Okta Add App Instance Target to App Administrator Role given to a Group",
+          "request": {
+            "name": "Okta Add App Instance Target to App Administrator Role given to a Group",
+            "description": {
+              "content": "Add App Instance Target to App Administrator Role given to a Group",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "groups",
+                ":groupId",
+                "roles",
+                ":roleId",
+                "targets",
+                "catalog",
+                "apps",
+                ":appName",
+                ":applicationId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "groupId",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "roleId",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "appName",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "applicationId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "method": "PUT",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "5175a712-7159-47cd-a141-6edb22b4a679",
+              "name": "No Content",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "groups",
+                    ":groupId",
+                    "roles",
+                    ":roleId",
+                    "targets",
+                    "catalog",
+                    "apps",
+                    ":appName",
+                    ":applicationId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "groupId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "roleId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "appName",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "applicationId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "5767f4c0-73e5-4e29-971a-e004b58cf8fb",
+          "name": "Okta Remove App Instance Target to App Administrator Role given to a Group",
+          "request": {
+            "name": "Okta Remove App Instance Target to App Administrator Role given to a Group",
+            "description": {
+              "content": "Remove App Instance Target to App Administrator Role given to a Group",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "groups",
+                ":groupId",
+                "roles",
+                ":roleId",
+                "targets",
+                "catalog",
+                "apps",
+                ":appName",
+                ":applicationId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "groupId",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "roleId",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "appName",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "applicationId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "1aeb1145-81f3-4eb3-9cb9-dff9c0e5abf9",
+              "name": "No Content",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "groups",
+                    ":groupId",
+                    "roles",
+                    ":roleId",
+                    "targets",
+                    "catalog",
+                    "apps",
+                    ":appName",
+                    ":applicationId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "groupId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "roleId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "appName",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "applicationId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "3c94c36a-5a40-4292-adda-84ef450fc815",
+          "name": "list Group Targets For Group Role",
+          "request": {
+            "name": "list Group Targets For Group Role",
+            "description": {
+              "content": "Success",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "groups",
+                ":groupId",
+                "roles",
+                ":roleId",
+                "targets",
+                "groups"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "after",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "20"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "groupId",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "roleId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "2a031898-e843-4122-a449-6679b03f50ec",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "groups",
+                    ":groupId",
+                    "roles",
+                    ":roleId",
+                    "targets",
+                    "groups"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "after",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "20"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "groupId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "roleId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"_embedded\": {\n      \"key_0\": {}\n    },\n    \"_links\": {\n      \"key_0\": {},\n      \"key_1\": {},\n      \"key_2\": {}\n    },\n    \"created\": \"1988-07-13T01:44:15.708Z\",\n    \"id\": \"string\",\n    \"lastMembershipUpdated\": \"2006-12-21T06:57:07.625Z\",\n    \"lastUpdated\": \"1994-12-11T02:46:22.989Z\",\n    \"objectClass\": [\n      \"string\",\n      \"string\"\n    ],\n    \"profile\": {\n      \"description\": \"<string>\",\n      \"name\": \"<string>\"\n    },\n    \"type\": \"<string>\"\n  },\n  {\n    \"_embedded\": {\n      \"key_0\": {},\n      \"key_1\": {}\n    },\n    \"_links\": {\n      \"key_0\": {}\n    },\n    \"created\": \"2010-11-18T07:25:19.348Z\",\n    \"id\": \"string\",\n    \"lastMembershipUpdated\": \"1968-03-17T04:50:25.701Z\",\n    \"lastUpdated\": \"2003-03-04T20:42:05.200Z\",\n    \"objectClass\": [\n      \"string\",\n      \"string\"\n    ],\n    \"profile\": {\n      \"description\": \"<string>\",\n      \"name\": \"<string>\"\n    },\n    \"type\": \"<string>\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "1757c193-8960-4446-8ed0-577bf9d15842",
+          "name": "add Group Target To Group Administrator Role For Group",
+          "request": {
+            "name": "add Group Target To Group Administrator Role For Group",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "groups",
+                ":groupId",
+                "roles",
+                ":roleId",
+                "targets",
+                "groups",
+                ":targetGroupId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "groupId",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "roleId",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "targetGroupId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "method": "PUT",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "8872d8e2-521a-43ea-a1dc-05fda48a13cf",
+              "name": "No Content",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "groups",
+                    ":groupId",
+                    "roles",
+                    ":roleId",
+                    "targets",
+                    "groups",
+                    ":targetGroupId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "groupId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "roleId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "targetGroupId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f2bf6d8e-1944-4db8-83f0-1da0f9f1cd5a",
+          "name": "remove Group Target From Group Administrator Role Given To Group",
+          "request": {
+            "name": "remove Group Target From Group Administrator Role Given To Group",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "groups",
+                ":groupId",
+                "roles",
+                ":roleId",
+                "targets",
+                "groups",
+                ":targetGroupId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "groupId",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "roleId",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "targetGroupId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "3393f816-4cfb-443f-a739-1c140db61f76",
+              "name": "No Content",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "groups",
+                    ":groupId",
+                    "roles",
+                    ":roleId",
+                    "targets",
+                    "groups",
+                    ":targetGroupId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "groupId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "roleId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "targetGroupId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f9acc06e-6d41-467b-a21e-cd3394ddaa08",
+          "name": "Okta List Group Members",
+          "request": {
+            "name": "Okta List Group Members",
+            "description": {
+              "content": "Enumerates all users that are a member of a group.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "groups",
+                ":groupId",
+                "users"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "after",
+                  "value": "<string>",
+                  "description": "Specifies the pagination cursor for the next page of users"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "1000",
+                  "description": "Specifies the number of user results in a page"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "groupId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "fa470903-4094-45fe-8d0d-d00225b2f4ea",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "groups",
+                    ":groupId",
+                    "users"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "after",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "1000"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "groupId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"_embedded\": {\n      \"key_0\": {},\n      \"key_1\": {},\n      \"key_2\": {}\n    },\n    \"_links\": {\n      \"key_0\": {}\n    },\n    \"activated\": \"1990-09-17T22:29:53.442Z\",\n    \"created\": \"1967-01-17T18:04:36.928Z\",\n    \"credentials\": {\n      \"password\": {\n        \"hash\": {\n          \"algorithm\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"salt\": \"string\",\n          \"saltOrder\": \"string\",\n          \"value\": \"string\",\n          \"workFactor\": 8116\n        },\n        \"hook\": {\n          \"type\": \"string\"\n        },\n        \"value\": \"string\"\n      },\n      \"provider\": {\n        \"name\": \"string\",\n        \"type\": \"FEDERATION\"\n      },\n      \"recovery_question\": {\n        \"answer\": \"string\",\n        \"question\": \"string\"\n      }\n    },\n    \"id\": \"string\",\n    \"lastLogin\": \"2024-02-08T17:31:21.467Z\",\n    \"lastUpdated\": \"1970-10-06T04:58:22.134Z\",\n    \"passwordChanged\": \"1998-03-15T16:09:47.382Z\",\n    \"profile\": {\n      \"city\": \"string\",\n      \"costCenter\": \"string\",\n      \"countryCode\": \"string\",\n      \"department\": \"string\",\n      \"displayName\": \"string\",\n      \"division\": \"string\",\n      \"email\": \"string\",\n      \"employeeNumber\": \"string\",\n      \"firstName\": \"string\",\n      \"honorificPrefix\": \"string\",\n      \"honorificSuffix\": \"string\",\n      \"lastName\": \"string\",\n      \"locale\": \"string\",\n      \"login\": \"string\",\n      \"manager\": \"string\",\n      \"managerId\": \"string\",\n      \"middleName\": \"string\",\n      \"mobilePhone\": \"string\",\n      \"nickName\": \"string\",\n      \"organization\": \"string\",\n      \"postalAddress\": \"string\",\n      \"preferredLanguage\": \"string\",\n      \"primaryPhone\": \"string\",\n      \"profileUrl\": \"string\",\n      \"secondEmail\": \"string\",\n      \"state\": \"string\",\n      \"streetAddress\": \"string\",\n      \"timezone\": \"string\",\n      \"title\": \"string\",\n      \"userType\": \"string\",\n      \"zipCode\": \"string\"\n    },\n    \"status\": \"STAGED\",\n    \"statusChanged\": \"1976-06-19T01:22:38.879Z\",\n    \"transitioningToStatus\": \"STAGED\",\n    \"type\": {\n      \"_links\": {\n        \"key_0\": {},\n        \"key_1\": {}\n      },\n      \"created\": \"1957-12-18T15:42:57.266Z\",\n      \"createdBy\": \"string\",\n      \"default\": false,\n      \"description\": \"string\",\n      \"displayName\": \"string\",\n      \"id\": \"string\",\n      \"lastUpdated\": \"2006-11-19T16:24:07.472Z\",\n      \"lastUpdatedBy\": \"string\",\n      \"name\": \"string\"\n    }\n  },\n  {\n    \"_embedded\": {\n      \"key_0\": {},\n      \"key_1\": {}\n    },\n    \"_links\": {\n      \"key_0\": {}\n    },\n    \"activated\": \"1982-08-01T06:41:37.527Z\",\n    \"created\": \"1962-06-14T04:14:35.929Z\",\n    \"credentials\": {\n      \"password\": {\n        \"hash\": {\n          \"algorithm\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"salt\": \"string\",\n          \"saltOrder\": \"string\",\n          \"value\": \"string\",\n          \"workFactor\": 3740\n        },\n        \"hook\": {\n          \"type\": \"string\"\n        },\n        \"value\": \"string\"\n      },\n      \"provider\": {\n        \"name\": \"string\",\n        \"type\": \"SOCIAL\"\n      },\n      \"recovery_question\": {\n        \"answer\": \"string\",\n        \"question\": \"string\"\n      }\n    },\n    \"id\": \"string\",\n    \"lastLogin\": \"1991-11-10T20:38:00.984Z\",\n    \"lastUpdated\": \"2014-12-12T02:10:56.920Z\",\n    \"passwordChanged\": \"1973-04-11T08:52:53.955Z\",\n    \"profile\": {\n      \"city\": \"string\",\n      \"costCenter\": \"string\",\n      \"countryCode\": \"string\",\n      \"department\": \"string\",\n      \"displayName\": \"string\",\n      \"division\": \"string\",\n      \"email\": \"string\",\n      \"employeeNumber\": \"string\",\n      \"firstName\": \"string\",\n      \"honorificPrefix\": \"string\",\n      \"honorificSuffix\": \"string\",\n      \"lastName\": \"string\",\n      \"locale\": \"string\",\n      \"login\": \"string\",\n      \"manager\": \"string\",\n      \"managerId\": \"string\",\n      \"middleName\": \"string\",\n      \"mobilePhone\": \"string\",\n      \"nickName\": \"string\",\n      \"organization\": \"string\",\n      \"postalAddress\": \"string\",\n      \"preferredLanguage\": \"string\",\n      \"primaryPhone\": \"string\",\n      \"profileUrl\": \"string\",\n      \"secondEmail\": \"string\",\n      \"state\": \"string\",\n      \"streetAddress\": \"string\",\n      \"timezone\": \"string\",\n      \"title\": \"string\",\n      \"userType\": \"string\",\n      \"zipCode\": \"string\"\n    },\n    \"status\": \"DEPROVISIONED\",\n    \"statusChanged\": \"1981-07-15T12:20:58.240Z\",\n    \"transitioningToStatus\": \"STAGED\",\n    \"type\": {\n      \"_links\": {\n        \"key_0\": {},\n        \"key_1\": {}\n      },\n      \"created\": \"1948-09-23T19:49:22.155Z\",\n      \"createdBy\": \"string\",\n      \"default\": false,\n      \"description\": \"string\",\n      \"displayName\": \"string\",\n      \"id\": \"string\",\n      \"lastUpdated\": \"1948-10-25T12:12:08.660Z\",\n      \"lastUpdatedBy\": \"string\",\n      \"name\": \"string\"\n    }\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "53752552-aef1-459d-bdb5-a54b6e7b180c",
+          "name": "Okta Add User to Group",
+          "request": {
+            "name": "Okta Add User to Group",
+            "description": {
+              "content": "Adds a user to a group with 'OKTA_GROUP' type.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "groups",
+                ":groupId",
+                "users",
+                ":userId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "groupId",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "userId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "method": "PUT",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "225561d0-a2ec-4d7e-81d8-f8027e089361",
+              "name": "No Content",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "groups",
+                    ":groupId",
+                    "users",
+                    ":userId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "groupId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "userId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d15471e7-e2df-46d3-9543-6fcbaae6af3d",
+          "name": "Okta Remove User from Group",
+          "request": {
+            "name": "Okta Remove User from Group",
+            "description": {
+              "content": "Removes a user from a group with 'OKTA_GROUP' type.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "groups",
+                ":groupId",
+                "users",
+                ":userId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "groupId",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "userId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "4a7809dc-a875-492f-9203-623c96bba2f1",
+              "name": "No Content",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "groups",
+                    ":groupId",
+                    "users",
+                    ":userId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "groupId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "userId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://your-subdomain.okta.com/",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "144ff8e4-2c4d-45ed-8975-5b6c2bf069f9",
+    "name": "Okta Application Group API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Allows customers to easily access the Okta API\n\nContact Support:\n Name: Okta Developer Team\n Email: devex-public@okta.com",
+      "type": "text/plain"
+    }
+  }
+}

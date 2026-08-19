@@ -1,0 +1,56 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Okta Application ThreatInsight API",
+    "version": "2.16.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "ThreatInsight",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "getCurrentConfiguration",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://your-subdomain.okta.com/api/v1/threats/configuration",
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Gets current ThreatInsight configuration"
+        },
+        {
+          "info": {
+            "name": "updateConfiguration",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://your-subdomain.okta.com/api/v1/threats/configuration",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Updates ThreatInsight configuration"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

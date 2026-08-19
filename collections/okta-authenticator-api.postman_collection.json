@@ -1,0 +1,753 @@
+{
+  "item": [
+    {
+      "id": "20e36c2f-5fb0-44dc-b741-debca16e93d3",
+      "name": "Authenticator",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "f85d0bc3-b8df-4538-afe4-51159491014d",
+          "name": "Okta Lists all available Authenticators",
+          "request": {
+            "name": "Okta Lists all available Authenticators",
+            "description": {
+              "content": "List Authenticators",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "authenticators"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "024bf8e6-8e02-4841-978d-2cad7ffdb2c7",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "authenticators"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"_links\": {\n      \"key_0\": {},\n      \"key_1\": {},\n      \"key_2\": {}\n    },\n    \"created\": \"1970-01-23T07:41:58.961Z\",\n    \"id\": \"string\",\n    \"key\": \"string\",\n    \"lastUpdated\": \"1973-09-24T11:39:46.410Z\",\n    \"name\": \"string\",\n    \"provider\": {\n      \"configuration\": {\n        \"authPort\": 8624,\n        \"host\": \"string\",\n        \"hostName\": \"string\",\n        \"instanceId\": \"string\",\n        \"integrationKey\": \"string\",\n        \"secretKey\": \"string\",\n        \"sharedSecret\": \"string\",\n        \"userNameTemplate\": {\n          \"template\": \"string\"\n        }\n      },\n      \"type\": \"string\"\n    },\n    \"settings\": {\n      \"allowedFor\": \"recovery\",\n      \"appInstanceId\": \"string\",\n      \"channelBinding\": {\n        \"required\": \"ALWAYS\",\n        \"style\": \"string\"\n      },\n      \"compliance\": {\n        \"fips\": \"OPTIONAL\"\n      },\n      \"tokenLifetimeInMinutes\": 7892,\n      \"userVerification\": \"REQUIRED\"\n    },\n    \"status\": \"ACTIVE\",\n    \"type\": \"password\"\n  },\n  {\n    \"_links\": {\n      \"key_0\": {},\n      \"key_1\": {},\n      \"key_2\": {}\n    },\n    \"created\": \"1960-05-22T13:39:57.426Z\",\n    \"id\": \"string\",\n    \"key\": \"string\",\n    \"lastUpdated\": \"1976-11-16T12:54:27.552Z\",\n    \"name\": \"string\",\n    \"provider\": {\n      \"configuration\": {\n        \"authPort\": 3011,\n        \"host\": \"string\",\n        \"hostName\": \"string\",\n        \"instanceId\": \"string\",\n        \"integrationKey\": \"string\",\n        \"secretKey\": \"string\",\n        \"sharedSecret\": \"string\",\n        \"userNameTemplate\": {\n          \"template\": \"string\"\n        }\n      },\n      \"type\": \"string\"\n    },\n    \"settings\": {\n      \"allowedFor\": \"sso\",\n      \"appInstanceId\": \"string\",\n      \"channelBinding\": {\n        \"required\": \"HIGH_RISK_ONLY\",\n        \"style\": \"string\"\n      },\n      \"compliance\": {\n        \"fips\": \"OPTIONAL\"\n      },\n      \"tokenLifetimeInMinutes\": 1803,\n      \"userVerification\": \"REQUIRED\"\n    },\n    \"status\": \"INACTIVE\",\n    \"type\": \"app\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "47cee0b4-07a5-449a-af64-f48121a19225",
+          "name": "Okta Create an Authenticator",
+          "request": {
+            "name": "Okta Create an Authenticator",
+            "description": {
+              "content": "Create Authenticator",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "authenticators"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "activate",
+                  "value": "<boolean>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"key\": \"<string>\",\n  \"name\": \"<string>\",\n  \"provider\": {\n    \"configuration\": {\n      \"authPort\": \"<integer>\",\n      \"host\": \"<string>\",\n      \"hostName\": \"<string>\",\n      \"instanceId\": \"<string>\",\n      \"integrationKey\": \"<string>\",\n      \"secretKey\": \"<string>\",\n      \"sharedSecret\": \"<string>\",\n      \"userNameTemplate\": {\n        \"template\": \"<string>\"\n      }\n    },\n    \"type\": \"<string>\"\n  },\n  \"settings\": {\n    \"allowedFor\": \"<string>\",\n    \"appInstanceId\": \"<string>\",\n    \"channelBinding\": {\n      \"required\": \"<string>\",\n      \"style\": \"<string>\"\n    },\n    \"compliance\": {\n      \"fips\": \"<string>\"\n    },\n    \"tokenLifetimeInMinutes\": \"<integer>\",\n    \"userVerification\": \"<string>\"\n  },\n  \"status\": \"<string>\",\n  \"type\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "930c0c8d-d81c-471d-b48b-f36f76898c79",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "authenticators"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "activate",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"key\": \"<string>\",\n  \"name\": \"<string>\",\n  \"provider\": {\n    \"configuration\": {\n      \"authPort\": \"<integer>\",\n      \"host\": \"<string>\",\n      \"hostName\": \"<string>\",\n      \"instanceId\": \"<string>\",\n      \"integrationKey\": \"<string>\",\n      \"secretKey\": \"<string>\",\n      \"sharedSecret\": \"<string>\",\n      \"userNameTemplate\": {\n        \"template\": \"<string>\"\n      }\n    },\n    \"type\": \"<string>\"\n  },\n  \"settings\": {\n    \"allowedFor\": \"<string>\",\n    \"appInstanceId\": \"<string>\",\n    \"channelBinding\": {\n      \"required\": \"<string>\",\n      \"style\": \"<string>\"\n    },\n    \"compliance\": {\n      \"fips\": \"<string>\"\n    },\n    \"tokenLifetimeInMinutes\": \"<integer>\",\n    \"userVerification\": \"<string>\"\n  },\n  \"status\": \"<string>\",\n  \"type\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"_links\": {\n    \"key_0\": {},\n    \"key_1\": {}\n  },\n  \"created\": \"2026-07-04T17:28:40.746Z\",\n  \"id\": \"string\",\n  \"key\": \"<string>\",\n  \"lastUpdated\": \"2011-01-08T09:43:11.637Z\",\n  \"name\": \"<string>\",\n  \"provider\": {\n    \"configuration\": {\n      \"authPort\": \"<integer>\",\n      \"host\": \"<string>\",\n      \"hostName\": \"<string>\",\n      \"instanceId\": \"<string>\",\n      \"integrationKey\": \"<string>\",\n      \"secretKey\": \"<string>\",\n      \"sharedSecret\": \"<string>\",\n      \"userNameTemplate\": {\n        \"template\": \"<string>\"\n      }\n    },\n    \"type\": \"<string>\"\n  },\n  \"settings\": {\n    \"allowedFor\": \"<string>\",\n    \"appInstanceId\": \"<string>\",\n    \"channelBinding\": {\n      \"required\": \"<string>\",\n      \"style\": \"<string>\"\n    },\n    \"compliance\": {\n      \"fips\": \"<string>\"\n    },\n    \"tokenLifetimeInMinutes\": \"<integer>\",\n    \"userVerification\": \"<string>\"\n  },\n  \"status\": \"<string>\",\n  \"type\": \"<string>\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "fdc6a2f8-a734-4742-ac2c-41c6730be44b",
+          "name": "get Authenticator",
+          "request": {
+            "name": "get Authenticator",
+            "description": {
+              "content": "Success",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "authenticators",
+                ":authenticatorId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "authenticatorId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "89ee5f42-dc13-4586-81f3-2224841dbdc1",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "authenticators",
+                    ":authenticatorId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "authenticatorId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"_links\": {\n    \"key_0\": {},\n    \"key_1\": {}\n  },\n  \"created\": \"2026-07-04T17:28:40.746Z\",\n  \"id\": \"string\",\n  \"key\": \"<string>\",\n  \"lastUpdated\": \"2011-01-08T09:43:11.637Z\",\n  \"name\": \"<string>\",\n  \"provider\": {\n    \"configuration\": {\n      \"authPort\": \"<integer>\",\n      \"host\": \"<string>\",\n      \"hostName\": \"<string>\",\n      \"instanceId\": \"<string>\",\n      \"integrationKey\": \"<string>\",\n      \"secretKey\": \"<string>\",\n      \"sharedSecret\": \"<string>\",\n      \"userNameTemplate\": {\n        \"template\": \"<string>\"\n      }\n    },\n    \"type\": \"<string>\"\n  },\n  \"settings\": {\n    \"allowedFor\": \"<string>\",\n    \"appInstanceId\": \"<string>\",\n    \"channelBinding\": {\n      \"required\": \"<string>\",\n      \"style\": \"<string>\"\n    },\n    \"compliance\": {\n      \"fips\": \"<string>\"\n    },\n    \"tokenLifetimeInMinutes\": \"<integer>\",\n    \"userVerification\": \"<string>\"\n  },\n  \"status\": \"<string>\",\n  \"type\": \"<string>\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e46101df-9767-48b2-a0ed-9b238ca73a1b",
+          "name": "Okta Update Authenticator",
+          "request": {
+            "name": "Okta Update Authenticator",
+            "description": {
+              "content": "Updates an authenticator",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "authenticators",
+                ":authenticatorId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "authenticatorId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"key\": \"<string>\",\n  \"name\": \"<string>\",\n  \"provider\": {\n    \"configuration\": {\n      \"authPort\": \"<integer>\",\n      \"host\": \"<string>\",\n      \"hostName\": \"<string>\",\n      \"instanceId\": \"<string>\",\n      \"integrationKey\": \"<string>\",\n      \"secretKey\": \"<string>\",\n      \"sharedSecret\": \"<string>\",\n      \"userNameTemplate\": {\n        \"template\": \"<string>\"\n      }\n    },\n    \"type\": \"<string>\"\n  },\n  \"settings\": {\n    \"allowedFor\": \"<string>\",\n    \"appInstanceId\": \"<string>\",\n    \"channelBinding\": {\n      \"required\": \"<string>\",\n      \"style\": \"<string>\"\n    },\n    \"compliance\": {\n      \"fips\": \"<string>\"\n    },\n    \"tokenLifetimeInMinutes\": \"<integer>\",\n    \"userVerification\": \"<string>\"\n  },\n  \"status\": \"<string>\",\n  \"type\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "59cd9e88-2026-4d34-bbd3-7caf77f22905",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "authenticators",
+                    ":authenticatorId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "authenticatorId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"key\": \"<string>\",\n  \"name\": \"<string>\",\n  \"provider\": {\n    \"configuration\": {\n      \"authPort\": \"<integer>\",\n      \"host\": \"<string>\",\n      \"hostName\": \"<string>\",\n      \"instanceId\": \"<string>\",\n      \"integrationKey\": \"<string>\",\n      \"secretKey\": \"<string>\",\n      \"sharedSecret\": \"<string>\",\n      \"userNameTemplate\": {\n        \"template\": \"<string>\"\n      }\n    },\n    \"type\": \"<string>\"\n  },\n  \"settings\": {\n    \"allowedFor\": \"<string>\",\n    \"appInstanceId\": \"<string>\",\n    \"channelBinding\": {\n      \"required\": \"<string>\",\n      \"style\": \"<string>\"\n    },\n    \"compliance\": {\n      \"fips\": \"<string>\"\n    },\n    \"tokenLifetimeInMinutes\": \"<integer>\",\n    \"userVerification\": \"<string>\"\n  },\n  \"status\": \"<string>\",\n  \"type\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"_links\": {\n    \"key_0\": {},\n    \"key_1\": {}\n  },\n  \"created\": \"2026-07-04T17:28:40.746Z\",\n  \"id\": \"string\",\n  \"key\": \"<string>\",\n  \"lastUpdated\": \"2011-01-08T09:43:11.637Z\",\n  \"name\": \"<string>\",\n  \"provider\": {\n    \"configuration\": {\n      \"authPort\": \"<integer>\",\n      \"host\": \"<string>\",\n      \"hostName\": \"<string>\",\n      \"instanceId\": \"<string>\",\n      \"integrationKey\": \"<string>\",\n      \"secretKey\": \"<string>\",\n      \"sharedSecret\": \"<string>\",\n      \"userNameTemplate\": {\n        \"template\": \"<string>\"\n      }\n    },\n    \"type\": \"<string>\"\n  },\n  \"settings\": {\n    \"allowedFor\": \"<string>\",\n    \"appInstanceId\": \"<string>\",\n    \"channelBinding\": {\n      \"required\": \"<string>\",\n      \"style\": \"<string>\"\n    },\n    \"compliance\": {\n      \"fips\": \"<string>\"\n    },\n    \"tokenLifetimeInMinutes\": \"<integer>\",\n    \"userVerification\": \"<string>\"\n  },\n  \"status\": \"<string>\",\n  \"type\": \"<string>\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "22c05fae-b8ef-4fa4-bc65-08d92d191694",
+          "name": "activate Authenticator",
+          "request": {
+            "name": "activate Authenticator",
+            "description": {
+              "content": "Success",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "authenticators",
+                ":authenticatorId",
+                "lifecycle",
+                "activate"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "authenticatorId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "44139a1e-0fd6-42d8-8982-469f3c97653c",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "authenticators",
+                    ":authenticatorId",
+                    "lifecycle",
+                    "activate"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "authenticatorId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"_links\": {\n    \"key_0\": {},\n    \"key_1\": {}\n  },\n  \"created\": \"2026-07-04T17:28:40.746Z\",\n  \"id\": \"string\",\n  \"key\": \"<string>\",\n  \"lastUpdated\": \"2011-01-08T09:43:11.637Z\",\n  \"name\": \"<string>\",\n  \"provider\": {\n    \"configuration\": {\n      \"authPort\": \"<integer>\",\n      \"host\": \"<string>\",\n      \"hostName\": \"<string>\",\n      \"instanceId\": \"<string>\",\n      \"integrationKey\": \"<string>\",\n      \"secretKey\": \"<string>\",\n      \"sharedSecret\": \"<string>\",\n      \"userNameTemplate\": {\n        \"template\": \"<string>\"\n      }\n    },\n    \"type\": \"<string>\"\n  },\n  \"settings\": {\n    \"allowedFor\": \"<string>\",\n    \"appInstanceId\": \"<string>\",\n    \"channelBinding\": {\n      \"required\": \"<string>\",\n      \"style\": \"<string>\"\n    },\n    \"compliance\": {\n      \"fips\": \"<string>\"\n    },\n    \"tokenLifetimeInMinutes\": \"<integer>\",\n    \"userVerification\": \"<string>\"\n  },\n  \"status\": \"<string>\",\n  \"type\": \"<string>\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "43d29871-4d24-4d85-af95-8626992995ab",
+          "name": "deactivate Authenticator",
+          "request": {
+            "name": "deactivate Authenticator",
+            "description": {
+              "content": "Success",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "authenticators",
+                ":authenticatorId",
+                "lifecycle",
+                "deactivate"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "authenticatorId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "ed836612-f532-4b7e-9997-c645e06afc58",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "authenticators",
+                    ":authenticatorId",
+                    "lifecycle",
+                    "deactivate"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "authenticatorId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"_links\": {\n    \"key_0\": {},\n    \"key_1\": {}\n  },\n  \"created\": \"2026-07-04T17:28:40.746Z\",\n  \"id\": \"string\",\n  \"key\": \"<string>\",\n  \"lastUpdated\": \"2011-01-08T09:43:11.637Z\",\n  \"name\": \"<string>\",\n  \"provider\": {\n    \"configuration\": {\n      \"authPort\": \"<integer>\",\n      \"host\": \"<string>\",\n      \"hostName\": \"<string>\",\n      \"instanceId\": \"<string>\",\n      \"integrationKey\": \"<string>\",\n      \"secretKey\": \"<string>\",\n      \"sharedSecret\": \"<string>\",\n      \"userNameTemplate\": {\n        \"template\": \"<string>\"\n      }\n    },\n    \"type\": \"<string>\"\n  },\n  \"settings\": {\n    \"allowedFor\": \"<string>\",\n    \"appInstanceId\": \"<string>\",\n    \"channelBinding\": {\n      \"required\": \"<string>\",\n      \"style\": \"<string>\"\n    },\n    \"compliance\": {\n      \"fips\": \"<string>\"\n    },\n    \"tokenLifetimeInMinutes\": \"<integer>\",\n    \"userVerification\": \"<string>\"\n  },\n  \"status\": \"<string>\",\n  \"type\": \"<string>\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://your-subdomain.okta.com/",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "3eaada6e-5212-45de-a456-2e06be1f5b84",
+    "name": "Okta Application Authenticator API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Allows customers to easily access the Okta API\n\nContact Support:\n Name: Okta Developer Team\n Email: devex-public@okta.com",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,909 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Okta Application Group API",
+    "version": "2.16.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Group",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Okta List Groups",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://your-subdomain.okta.com/api/v1/groups",
+            "params": [
+              {
+                "name": "q",
+                "value": "",
+                "type": "query",
+                "description": "Searches the name property of groups for matching value"
+              },
+              {
+                "name": "filter",
+                "value": "",
+                "type": "query",
+                "description": "Filter expression for groups"
+              },
+              {
+                "name": "after",
+                "value": "",
+                "type": "query",
+                "description": "Specifies the pagination cursor for the next page of groups"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Specifies the number of group results in a page"
+              },
+              {
+                "name": "expand",
+                "value": "",
+                "type": "query",
+                "description": "If specified, it causes additional metadata to be included in the response."
+              },
+              {
+                "name": "search",
+                "value": "",
+                "type": "query",
+                "description": "Searches for groups with a supported filtering expression for all attributes except for _embedded, _links, and objectClass"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Enumerates groups in your organization with pagination. A subset of groups can be returned that match a supported filter expression or query."
+        },
+        {
+          "info": {
+            "name": "Okta Add Group",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://your-subdomain.okta.com/api/v1/groups",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Adds a new group with `OKTA_GROUP` type to your organization."
+        },
+        {
+          "info": {
+            "name": "Okta List Group Rules",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://your-subdomain.okta.com/api/v1/groups/rules",
+            "params": [
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Specifies the number of rule results in a page"
+              },
+              {
+                "name": "after",
+                "value": "",
+                "type": "query",
+                "description": "Specifies the pagination cursor for the next page of rules"
+              },
+              {
+                "name": "search",
+                "value": "",
+                "type": "query",
+                "description": "Specifies the keyword to search fules for"
+              },
+              {
+                "name": "expand",
+                "value": "",
+                "type": "query",
+                "description": "If specified as `groupIdToGroupNameMap`, then show group names"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Lists all group rules for your organization."
+        },
+        {
+          "info": {
+            "name": "Okta Create Group Rule",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://your-subdomain.okta.com/api/v1/groups/rules",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Creates a group rule to dynamically add users to the specified group if they match the condition"
+        },
+        {
+          "info": {
+            "name": "Okta Get Group Rule",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://your-subdomain.okta.com/api/v1/groups/rules/:ruleId",
+            "params": [
+              {
+                "name": "ruleId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "expand",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Fetches a specific group rule by id from your organization"
+        },
+        {
+          "info": {
+            "name": "updateGroupRule",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://your-subdomain.okta.com/api/v1/groups/rules/:ruleId",
+            "params": [
+              {
+                "name": "ruleId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Updates a group rule. Only `INACTIVE` rules can be updated."
+        },
+        {
+          "info": {
+            "name": "Okta Delete a group Rule",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://your-subdomain.okta.com/api/v1/groups/rules/:ruleId",
+            "params": [
+              {
+                "name": "ruleId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "removeUsers",
+                "value": "",
+                "type": "query",
+                "description": "Indicates whether to keep or remove users from groups assigned by this rule."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Removes a specific group rule by id from your organization"
+        },
+        {
+          "info": {
+            "name": "Okta Activate a group Rule",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://your-subdomain.okta.com/api/v1/groups/rules/:ruleId/lifecycle/activate",
+            "params": [
+              {
+                "name": "ruleId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Activates a specific group rule by id from your organization"
+        },
+        {
+          "info": {
+            "name": "Okta Deactivate a group Rule",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://your-subdomain.okta.com/api/v1/groups/rules/:ruleId/lifecycle/deactivate",
+            "params": [
+              {
+                "name": "ruleId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Deactivates a specific group rule by id from your organization"
+        },
+        {
+          "info": {
+            "name": "Okta List Group Rules",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://your-subdomain.okta.com/api/v1/groups/:groupId",
+            "params": [
+              {
+                "name": "groupId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Fetches a group from your organization."
+        },
+        {
+          "info": {
+            "name": "Okta Update Group",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://your-subdomain.okta.com/api/v1/groups/:groupId",
+            "params": [
+              {
+                "name": "groupId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Updates the profile for a group with `OKTA_GROUP` type from your organization."
+        },
+        {
+          "info": {
+            "name": "Okta Remove Group",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://your-subdomain.okta.com/api/v1/groups/:groupId",
+            "params": [
+              {
+                "name": "groupId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Removes a group with `OKTA_GROUP` type from your organization."
+        },
+        {
+          "info": {
+            "name": "Okta List Assigned Applications",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://your-subdomain.okta.com/api/v1/groups/:groupId/apps",
+            "params": [
+              {
+                "name": "groupId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "after",
+                "value": "",
+                "type": "query",
+                "description": "Specifies the pagination cursor for the next page of apps"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Specifies the number of app results for a page"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Enumerates all applications that are assigned to a group."
+        },
+        {
+          "info": {
+            "name": "listGroupAssignedRoles",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://your-subdomain.okta.com/api/v1/groups/:groupId/roles",
+            "params": [
+              {
+                "name": "groupId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "expand",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Success"
+        },
+        {
+          "info": {
+            "name": "assignRoleToGroup",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://your-subdomain.okta.com/api/v1/groups/:groupId/roles",
+            "params": [
+              {
+                "name": "groupId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "disableNotifications",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Assigns a Role to a Group"
+        },
+        {
+          "info": {
+            "name": "getRole",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://your-subdomain.okta.com/api/v1/groups/:groupId/roles/:roleId",
+            "params": [
+              {
+                "name": "groupId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "roleId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Success"
+        },
+        {
+          "info": {
+            "name": "removeRoleFromGroup",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://your-subdomain.okta.com/api/v1/groups/:groupId/roles/:roleId",
+            "params": [
+              {
+                "name": "groupId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "roleId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Unassigns a Role from a Group"
+        },
+        {
+          "info": {
+            "name": "listApplicationTargetsForApplicationAdministratorRoleForGroup",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://your-subdomain.okta.com/api/v1/groups/:groupId/roles/:roleId/targets/catalog/apps",
+            "params": [
+              {
+                "name": "groupId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "roleId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "after",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Lists all App targets for an `APP_ADMIN` Role assigned to a Group. This methods return list may include full Applications or Instances. The response for an instance will have an `ID` value, while Application will not have an ID."
+        },
+        {
+          "info": {
+            "name": "addApplicationTargetToAdminRoleGivenToGroup",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://your-subdomain.okta.com/api/v1/groups/:groupId/roles/:roleId/targets/catalog/apps/:appName",
+            "params": [
+              {
+                "name": "groupId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "roleId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "appName",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Success"
+        },
+        {
+          "info": {
+            "name": "removeApplicationTargetFromApplicationAdministratorRoleGivenToGroup",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://your-subdomain.okta.com/api/v1/groups/:groupId/roles/:roleId/targets/catalog/apps/:appName",
+            "params": [
+              {
+                "name": "groupId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "roleId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "appName",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Success"
+        },
+        {
+          "info": {
+            "name": "Okta Add App Instance Target to App Administrator Role given to a Group",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://your-subdomain.okta.com/api/v1/groups/:groupId/roles/:roleId/targets/catalog/apps/:appName/:applicationId",
+            "params": [
+              {
+                "name": "groupId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "roleId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "appName",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "applicationId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Add App Instance Target to App Administrator Role given to a Group"
+        },
+        {
+          "info": {
+            "name": "Okta Remove App Instance Target to App Administrator Role given to a Group",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://your-subdomain.okta.com/api/v1/groups/:groupId/roles/:roleId/targets/catalog/apps/:appName/:applicationId",
+            "params": [
+              {
+                "name": "groupId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "roleId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "appName",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "applicationId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Remove App Instance Target to App Administrator Role given to a Group"
+        },
+        {
+          "info": {
+            "name": "listGroupTargetsForGroupRole",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://your-subdomain.okta.com/api/v1/groups/:groupId/roles/:roleId/targets/groups",
+            "params": [
+              {
+                "name": "groupId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "roleId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "after",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Success"
+        },
+        {
+          "info": {
+            "name": "addGroupTargetToGroupAdministratorRoleForGroup",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://your-subdomain.okta.com/api/v1/groups/:groupId/roles/:roleId/targets/groups/:targetGroupId",
+            "params": [
+              {
+                "name": "groupId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "roleId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "targetGroupId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          }
+        },
+        {
+          "info": {
+            "name": "removeGroupTargetFromGroupAdministratorRoleGivenToGroup",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://your-subdomain.okta.com/api/v1/groups/:groupId/roles/:roleId/targets/groups/:targetGroupId",
+            "params": [
+              {
+                "name": "groupId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "roleId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "targetGroupId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          }
+        },
+        {
+          "info": {
+            "name": "Okta List Group Members",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://your-subdomain.okta.com/api/v1/groups/:groupId/users",
+            "params": [
+              {
+                "name": "groupId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "after",
+                "value": "",
+                "type": "query",
+                "description": "Specifies the pagination cursor for the next page of users"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Specifies the number of user results in a page"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Enumerates all users that are a member of a group."
+        },
+        {
+          "info": {
+            "name": "Okta Add User to Group",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://your-subdomain.okta.com/api/v1/groups/:groupId/users/:userId",
+            "params": [
+              {
+                "name": "groupId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "userId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Adds a user to a group with 'OKTA_GROUP' type."
+        },
+        {
+          "info": {
+            "name": "Okta Remove User from Group",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://your-subdomain.okta.com/api/v1/groups/:groupId/users/:userId",
+            "params": [
+              {
+                "name": "groupId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "userId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Removes a user from a group with 'OKTA_GROUP' type."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

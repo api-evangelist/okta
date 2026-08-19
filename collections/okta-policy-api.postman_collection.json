@@ -1,0 +1,1806 @@
+{
+  "item": [
+    {
+      "id": "ca75d649-097c-41e1-960c-510a0ed54c54",
+      "name": "Policy",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "09cf2a41-3e07-4e1f-b4b4-0114e04f10ab",
+          "name": "list Policies",
+          "request": {
+            "name": "list Policies",
+            "description": {
+              "content": "Gets all policies with the specified type.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "policies"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "type",
+                  "value": "<string>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "status",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "expand",
+                  "value": "<string>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "371be53a-8701-4a6e-8a22-fc73140eda41",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "policies"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "status",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "expand",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"_embedded\": {\n      \"key_0\": {},\n      \"key_1\": {}\n    },\n    \"_links\": {\n      \"key_0\": {},\n      \"key_1\": {},\n      \"key_2\": {}\n    },\n    \"conditions\": {\n      \"app\": {\n        \"exclude\": [\n          {\n            \"id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"name\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"name\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ],\n        \"include\": [\n          {\n            \"id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"name\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"name\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ]\n      },\n      \"apps\": {\n        \"exclude\": [\n          \"string\",\n          \"string\"\n        ],\n        \"include\": [\n          \"string\",\n          \"string\"\n        ]\n      },\n      \"authContext\": {\n        \"authType\": \"ANY\"\n      },\n      \"authProvider\": {\n        \"include\": [\n          \"string\",\n          \"string\"\n        ],\n        \"provider\": \"ANY\"\n      },\n      \"beforeScheduledAction\": {\n        \"duration\": {\n          \"number\": 1057,\n          \"unit\": \"string\"\n        },\n        \"lifecycleAction\": {\n          \"status\": \"SUSPENDED\"\n        }\n      },\n      \"clients\": {\n        \"include\": [\n          \"string\",\n          \"string\"\n        ]\n      },\n      \"context\": {\n        \"expression\": \"string\"\n      },\n      \"device\": {\n        \"migrated\": true,\n        \"platform\": {\n          \"supportedMDMFrameworks\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"types\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        },\n        \"rooted\": false,\n        \"trustLevel\": \"TRUSTED\"\n      },\n      \"grantTypes\": {\n        \"include\": [\n          \"string\",\n          \"string\"\n        ]\n      },\n      \"groups\": {\n        \"exclude\": [\n          \"string\",\n          \"string\"\n        ],\n        \"include\": [\n          \"string\",\n          \"string\"\n        ]\n      },\n      \"identityProvider\": {\n        \"idpIds\": [\n          \"string\",\n          \"string\"\n        ],\n        \"provider\": \"ANY\"\n      },\n      \"mdmEnrollment\": {\n        \"blockNonSafeAndroid\": true,\n        \"enrollment\": \"ANY_OR_NONE\"\n      },\n      \"network\": {\n        \"connection\": \"ANYWHERE\",\n        \"exclude\": [\n          \"string\",\n          \"string\"\n        ],\n        \"include\": [\n          \"string\",\n          \"string\"\n        ]\n      },\n      \"people\": {\n        \"groups\": {\n          \"exclude\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"include\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        },\n        \"users\": {\n          \"exclude\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"include\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        }\n      },\n      \"platform\": {\n        \"exclude\": [\n          {\n            \"os\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"os\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ],\n        \"include\": [\n          {\n            \"os\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"os\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ]\n      },\n      \"risk\": {\n        \"behaviors\": [\n          \"string\"\n        ]\n      },\n      \"riskScore\": {\n        \"level\": \"string\"\n      },\n      \"scopes\": {\n        \"include\": [\n          \"string\",\n          \"string\"\n        ]\n      },\n      \"userIdentifier\": {\n        \"attribute\": \"string\",\n        \"patterns\": [\n          {\n            \"matchType\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"value\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"matchType\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"value\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ],\n        \"type\": \"IDENTIFIER\"\n      },\n      \"userStatus\": {\n        \"value\": \"PENDING\"\n      },\n      \"users\": {\n        \"exclude\": [\n          \"string\",\n          \"string\"\n        ],\n        \"inactivity\": {\n          \"number\": 384,\n          \"unit\": \"string\"\n        },\n        \"include\": [\n          \"string\",\n          \"string\"\n        ],\n        \"lifecycleExpiration\": {\n          \"lifecycleStatus\": \"string\",\n          \"number\": 2190,\n          \"unit\": \"string\"\n        },\n        \"passwordExpiration\": {\n          \"number\": 7159,\n          \"unit\": \"string\"\n        },\n        \"userLifecycleAttribute\": {\n          \"attributeName\": \"string\",\n          \"matchingValue\": \"string\"\n        }\n      }\n    },\n    \"created\": \"1993-06-10T16:08:07.117Z\",\n    \"description\": \"string\",\n    \"id\": \"string\",\n    \"lastUpdated\": \"1954-10-26T00:51:44.673Z\",\n    \"name\": \"string\",\n    \"priority\": 6139,\n    \"status\": \"INACTIVE\",\n    \"system\": true,\n    \"type\": \"OAUTH_AUTHORIZATION_POLICY\"\n  },\n  {\n    \"_embedded\": {\n      \"key_0\": {},\n      \"key_1\": {},\n      \"key_2\": {},\n      \"key_3\": {}\n    },\n    \"_links\": {\n      \"key_0\": {}\n    },\n    \"conditions\": {\n      \"app\": {\n        \"exclude\": [\n          {\n            \"id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"name\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"name\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ],\n        \"include\": [\n          {\n            \"id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"name\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"name\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ]\n      },\n      \"apps\": {\n        \"exclude\": [\n          \"string\",\n          \"string\"\n        ],\n        \"include\": [\n          \"string\",\n          \"string\"\n        ]\n      },\n      \"authContext\": {\n        \"authType\": \"ANY\"\n      },\n      \"authProvider\": {\n        \"include\": [\n          \"string\",\n          \"string\"\n        ],\n        \"provider\": \"ACTIVE_DIRECTORY\"\n      },\n      \"beforeScheduledAction\": {\n        \"duration\": {\n          \"number\": 4053,\n          \"unit\": \"string\"\n        },\n        \"lifecycleAction\": {\n          \"status\": \"PENDING\"\n        }\n      },\n      \"clients\": {\n        \"include\": [\n          \"string\",\n          \"string\"\n        ]\n      },\n      \"context\": {\n        \"expression\": \"string\"\n      },\n      \"device\": {\n        \"migrated\": true,\n        \"platform\": {\n          \"supportedMDMFrameworks\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"types\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        },\n        \"rooted\": true,\n        \"trustLevel\": \"ANY\"\n      },\n      \"grantTypes\": {\n        \"include\": [\n          \"string\",\n          \"string\"\n        ]\n      },\n      \"groups\": {\n        \"exclude\": [\n          \"string\",\n          \"string\"\n        ],\n        \"include\": [\n          \"string\",\n          \"string\"\n        ]\n      },\n      \"identityProvider\": {\n        \"idpIds\": [\n          \"string\",\n          \"string\"\n        ],\n        \"provider\": \"OKTA\"\n      },\n      \"mdmEnrollment\": {\n        \"blockNonSafeAndroid\": false,\n        \"enrollment\": \"OMM\"\n      },\n      \"network\": {\n        \"connection\": \"ZONE\",\n        \"exclude\": [\n          \"string\",\n          \"string\"\n        ],\n        \"include\": [\n          \"string\",\n          \"string\"\n        ]\n      },\n      \"people\": {\n        \"groups\": {\n          \"exclude\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"include\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        },\n        \"users\": {\n          \"exclude\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"include\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        }\n      },\n      \"platform\": {\n        \"exclude\": [\n          {\n            \"os\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"os\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ],\n        \"include\": [\n          {\n            \"os\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"os\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ]\n      },\n      \"risk\": {\n        \"behaviors\": [\n          \"string\"\n        ]\n      },\n      \"riskScore\": {\n        \"level\": \"string\"\n      },\n      \"scopes\": {\n        \"include\": [\n          \"string\",\n          \"string\"\n        ]\n      },\n      \"userIdentifier\": {\n        \"attribute\": \"string\",\n        \"patterns\": [\n          {\n            \"matchType\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"value\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"matchType\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"value\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ],\n        \"type\": \"IDENTIFIER\"\n      },\n      \"userStatus\": {\n        \"value\": \"INACTIVE\"\n      },\n      \"users\": {\n        \"exclude\": [\n          \"string\",\n          \"string\"\n        ],\n        \"inactivity\": {\n          \"number\": 7681,\n          \"unit\": \"string\"\n        },\n        \"include\": [\n          \"string\",\n          \"string\"\n        ],\n        \"lifecycleExpiration\": {\n          \"lifecycleStatus\": \"string\",\n          \"number\": 7180,\n          \"unit\": \"string\"\n        },\n        \"passwordExpiration\": {\n          \"number\": 1567,\n          \"unit\": \"string\"\n        },\n        \"userLifecycleAttribute\": {\n          \"attributeName\": \"string\",\n          \"matchingValue\": \"string\"\n        }\n      }\n    },\n    \"created\": \"2006-10-19T06:08:43.499Z\",\n    \"description\": \"string\",\n    \"id\": \"string\",\n    \"lastUpdated\": \"1961-03-08T00:16:38.171Z\",\n    \"name\": \"string\",\n    \"priority\": 6196,\n    \"status\": \"INACTIVE\",\n    \"system\": false,\n    \"type\": \"ACCESS_POLICY\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ae0c1e28-7d79-4704-af1c-100b7471ee23",
+          "name": "create Policy",
+          "request": {
+            "name": "create Policy",
+            "description": {
+              "content": "Creates a policy.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "policies"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "activate",
+                  "value": "true"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"conditions\": {\n    \"app\": {\n      \"exclude\": [\n        {\n          \"name\": \"<string>\",\n          \"type\": \"<string>\"\n        },\n        {\n          \"name\": \"<string>\",\n          \"type\": \"<string>\"\n        }\n      ],\n      \"include\": [\n        {\n          \"name\": \"<string>\",\n          \"type\": \"<string>\"\n        },\n        {\n          \"name\": \"<string>\",\n          \"type\": \"<string>\"\n        }\n      ]\n    },\n    \"apps\": {\n      \"exclude\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"include\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    \"authContext\": {\n      \"authType\": \"<string>\"\n    },\n    \"authProvider\": {\n      \"include\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"provider\": \"<string>\"\n    },\n    \"beforeScheduledAction\": {\n      \"duration\": {\n        \"number\": \"<integer>\",\n        \"unit\": \"<string>\"\n      },\n      \"lifecycleAction\": {\n        \"status\": \"<string>\"\n      }\n    },\n    \"clients\": {\n      \"include\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    \"context\": {\n      \"expression\": \"<string>\"\n    },\n    \"device\": {\n      \"migrated\": \"<boolean>\",\n      \"platform\": {\n        \"supportedMDMFrameworks\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"types\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      },\n      \"rooted\": \"<boolean>\",\n      \"trustLevel\": \"<string>\"\n    },\n    \"grantTypes\": {\n      \"include\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    \"groups\": {\n      \"exclude\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"include\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    \"identityProvider\": {\n      \"idpIds\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"provider\": \"<string>\"\n    },\n    \"mdmEnrollment\": {\n      \"blockNonSafeAndroid\": \"<boolean>\",\n      \"enrollment\": \"<string>\"\n    },\n    \"network\": {\n      \"connection\": \"<string>\",\n      \"exclude\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"include\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    \"people\": {\n      \"groups\": {\n        \"exclude\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"include\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      },\n      \"users\": {\n        \"exclude\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"include\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      }\n    },\n    \"platform\": {\n      \"exclude\": [\n        {\n          \"os\": {\n            \"expression\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"version\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"type\": \"<string>\"\n        },\n        {\n          \"os\": {\n            \"expression\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"version\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"type\": \"<string>\"\n        }\n      ],\n      \"include\": [\n        {\n          \"os\": {\n            \"expression\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"version\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"type\": \"<string>\"\n        },\n        {\n          \"os\": {\n            \"expression\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"version\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"type\": \"<string>\"\n        }\n      ]\n    },\n    \"risk\": {\n      \"behaviors\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    \"riskScore\": {\n      \"level\": \"<string>\"\n    },\n    \"scopes\": {\n      \"include\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    \"userIdentifier\": {\n      \"attribute\": \"<string>\",\n      \"patterns\": [\n        {\n          \"matchType\": \"<string>\",\n          \"value\": \"<string>\"\n        },\n        {\n          \"matchType\": \"<string>\",\n          \"value\": \"<string>\"\n        }\n      ],\n      \"type\": \"<string>\"\n    },\n    \"userStatus\": {\n      \"value\": \"<string>\"\n    },\n    \"users\": {\n      \"exclude\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"inactivity\": {\n        \"number\": \"<integer>\",\n        \"unit\": \"<string>\"\n      },\n      \"include\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"lifecycleExpiration\": {\n        \"lifecycleStatus\": \"<string>\",\n        \"number\": \"<integer>\",\n        \"unit\": \"<string>\"\n      },\n      \"passwordExpiration\": {\n        \"number\": \"<integer>\",\n        \"unit\": \"<string>\"\n      },\n      \"userLifecycleAttribute\": {\n        \"attributeName\": \"<string>\",\n        \"matchingValue\": \"<string>\"\n      }\n    }\n  },\n  \"description\": \"<string>\",\n  \"name\": \"<string>\",\n  \"priority\": \"<integer>\",\n  \"status\": \"<string>\",\n  \"system\": \"<boolean>\",\n  \"type\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "250a225d-40f2-45f9-aa0f-c52543de776c",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "policies"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "activate",
+                      "value": "true"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"conditions\": {\n    \"app\": {\n      \"exclude\": [\n        {\n          \"name\": \"<string>\",\n          \"type\": \"<string>\"\n        },\n        {\n          \"name\": \"<string>\",\n          \"type\": \"<string>\"\n        }\n      ],\n      \"include\": [\n        {\n          \"name\": \"<string>\",\n          \"type\": \"<string>\"\n        },\n        {\n          \"name\": \"<string>\",\n          \"type\": \"<string>\"\n        }\n      ]\n    },\n    \"apps\": {\n      \"exclude\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"include\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    \"authContext\": {\n      \"authType\": \"<string>\"\n    },\n    \"authProvider\": {\n      \"include\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"provider\": \"<string>\"\n    },\n    \"beforeScheduledAction\": {\n      \"duration\": {\n        \"number\": \"<integer>\",\n        \"unit\": \"<string>\"\n      },\n      \"lifecycleAction\": {\n        \"status\": \"<string>\"\n      }\n    },\n    \"clients\": {\n      \"include\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    \"context\": {\n      \"expression\": \"<string>\"\n    },\n    \"device\": {\n      \"migrated\": \"<boolean>\",\n      \"platform\": {\n        \"supportedMDMFrameworks\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"types\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      },\n      \"rooted\": \"<boolean>\",\n      \"trustLevel\": \"<string>\"\n    },\n    \"grantTypes\": {\n      \"include\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    \"groups\": {\n      \"exclude\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"include\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    \"identityProvider\": {\n      \"idpIds\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"provider\": \"<string>\"\n    },\n    \"mdmEnrollment\": {\n      \"blockNonSafeAndroid\": \"<boolean>\",\n      \"enrollment\": \"<string>\"\n    },\n    \"network\": {\n      \"connection\": \"<string>\",\n      \"exclude\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"include\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    \"people\": {\n      \"groups\": {\n        \"exclude\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"include\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      },\n      \"users\": {\n        \"exclude\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"include\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      }\n    },\n    \"platform\": {\n      \"exclude\": [\n        {\n          \"os\": {\n            \"expression\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"version\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"type\": \"<string>\"\n        },\n        {\n          \"os\": {\n            \"expression\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"version\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"type\": \"<string>\"\n        }\n      ],\n      \"include\": [\n        {\n          \"os\": {\n            \"expression\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"version\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"type\": \"<string>\"\n        },\n        {\n          \"os\": {\n            \"expression\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"version\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"type\": \"<string>\"\n        }\n      ]\n    },\n    \"risk\": {\n      \"behaviors\": [\n        \"<string>\"\n      ]\n    },\n    \"riskScore\": {\n      \"level\": \"<string>\"\n    },\n    \"scopes\": {\n      \"include\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    \"userIdentifier\": {\n      \"attribute\": \"<string>\",\n      \"patterns\": [\n        {\n          \"matchType\": \"<string>\",\n          \"value\": \"<string>\"\n        },\n        {\n          \"matchType\": \"<string>\",\n          \"value\": \"<string>\"\n        }\n      ],\n      \"type\": \"<string>\"\n    },\n    \"userStatus\": {\n      \"value\": \"<string>\"\n    },\n    \"users\": {\n      \"exclude\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"inactivity\": {\n        \"number\": \"<integer>\",\n        \"unit\": \"<string>\"\n      },\n      \"include\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"lifecycleExpiration\": {\n        \"lifecycleStatus\": \"<string>\",\n        \"number\": \"<integer>\",\n        \"unit\": \"<string>\"\n      },\n      \"passwordExpiration\": {\n        \"number\": \"<integer>\",\n        \"unit\": \"<string>\"\n      },\n      \"userLifecycleAttribute\": {\n        \"attributeName\": \"<string>\",\n        \"matchingValue\": \"<string>\"\n      }\n    }\n  },\n  \"description\": \"<string>\",\n  \"name\": \"<string>\",\n  \"priority\": \"<integer>\",\n  \"status\": \"<string>\",\n  \"system\": \"<boolean>\",\n  \"type\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"_embedded\": {\n    \"key_0\": {}\n  },\n  \"_links\": {\n    \"key_0\": {},\n    \"key_1\": {}\n  },\n  \"conditions\": {\n    \"app\": {\n      \"exclude\": [\n        {\n          \"id\": \"string\",\n          \"name\": \"<string>\",\n          \"type\": \"<string>\"\n        },\n        {\n          \"id\": \"string\",\n          \"name\": \"<string>\",\n          \"type\": \"<string>\"\n        }\n      ],\n      \"include\": [\n        {\n          \"id\": \"string\",\n          \"name\": \"<string>\",\n          \"type\": \"<string>\"\n        },\n        {\n          \"id\": \"string\",\n          \"name\": \"<string>\",\n          \"type\": \"<string>\"\n        }\n      ]\n    },\n    \"apps\": {\n      \"exclude\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"include\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    \"authContext\": {\n      \"authType\": \"<string>\"\n    },\n    \"authProvider\": {\n      \"include\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"provider\": \"<string>\"\n    },\n    \"beforeScheduledAction\": {\n      \"duration\": {\n        \"number\": \"<integer>\",\n        \"unit\": \"<string>\"\n      },\n      \"lifecycleAction\": {\n        \"status\": \"<string>\"\n      }\n    },\n    \"clients\": {\n      \"include\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    \"context\": {\n      \"expression\": \"<string>\"\n    },\n    \"device\": {\n      \"migrated\": \"<boolean>\",\n      \"platform\": {\n        \"supportedMDMFrameworks\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"types\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      },\n      \"rooted\": \"<boolean>\",\n      \"trustLevel\": \"<string>\"\n    },\n    \"grantTypes\": {\n      \"include\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    \"groups\": {\n      \"exclude\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"include\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    \"identityProvider\": {\n      \"idpIds\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"provider\": \"<string>\"\n    },\n    \"mdmEnrollment\": {\n      \"blockNonSafeAndroid\": \"<boolean>\",\n      \"enrollment\": \"<string>\"\n    },\n    \"network\": {\n      \"connection\": \"<string>\",\n      \"exclude\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"include\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    \"people\": {\n      \"groups\": {\n        \"exclude\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"include\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      },\n      \"users\": {\n        \"exclude\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"include\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      }\n    },\n    \"platform\": {\n      \"exclude\": [\n        {\n          \"os\": {\n            \"expression\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"version\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"type\": \"<string>\"\n        },\n        {\n          \"os\": {\n            \"expression\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"version\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"type\": \"<string>\"\n        }\n      ],\n      \"include\": [\n        {\n          \"os\": {\n            \"expression\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"version\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"type\": \"<string>\"\n        },\n        {\n          \"os\": {\n            \"expression\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"version\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"type\": \"<string>\"\n        }\n      ]\n    },\n    \"risk\": {\n      \"behaviors\": [\n        \"<string>\"\n      ]\n    },\n    \"riskScore\": {\n      \"level\": \"<string>\"\n    },\n    \"scopes\": {\n      \"include\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    \"userIdentifier\": {\n      \"attribute\": \"<string>\",\n      \"patterns\": [\n        {\n          \"matchType\": \"<string>\",\n          \"value\": \"<string>\"\n        },\n        {\n          \"matchType\": \"<string>\",\n          \"value\": \"<string>\"\n        }\n      ],\n      \"type\": \"<string>\"\n    },\n    \"userStatus\": {\n      \"value\": \"<string>\"\n    },\n    \"users\": {\n      \"exclude\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"inactivity\": {\n        \"number\": \"<integer>\",\n        \"unit\": \"<string>\"\n      },\n      \"include\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"lifecycleExpiration\": {\n        \"lifecycleStatus\": \"<string>\",\n        \"number\": \"<integer>\",\n        \"unit\": \"<string>\"\n      },\n      \"passwordExpiration\": {\n        \"number\": \"<integer>\",\n        \"unit\": \"<string>\"\n      },\n      \"userLifecycleAttribute\": {\n        \"attributeName\": \"<string>\",\n        \"matchingValue\": \"<string>\"\n      }\n    }\n  },\n  \"created\": \"1971-04-23T05:22:53.552Z\",\n  \"description\": \"<string>\",\n  \"id\": \"string\",\n  \"lastUpdated\": \"1971-03-03T16:35:40.302Z\",\n  \"name\": \"<string>\",\n  \"priority\": \"<integer>\",\n  \"status\": \"<string>\",\n  \"system\": \"<boolean>\",\n  \"type\": \"<string>\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "21a7f23f-e6de-465c-ad8a-7071a23edd5b",
+          "name": "get Policy",
+          "request": {
+            "name": "get Policy",
+            "description": {
+              "content": "Gets a policy.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "policies",
+                ":policyId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "expand",
+                  "value": "<string>"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "policyId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "8c3d5f19-a15d-48f1-9714-a479ea8bb980",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "policies",
+                    ":policyId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "expand",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "policyId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"_embedded\": {\n    \"key_0\": {}\n  },\n  \"_links\": {\n    \"key_0\": {},\n    \"key_1\": {}\n  },\n  \"conditions\": {\n    \"app\": {\n      \"exclude\": [\n        {\n          \"id\": \"string\",\n          \"name\": \"<string>\",\n          \"type\": \"<string>\"\n        },\n        {\n          \"id\": \"string\",\n          \"name\": \"<string>\",\n          \"type\": \"<string>\"\n        }\n      ],\n      \"include\": [\n        {\n          \"id\": \"string\",\n          \"name\": \"<string>\",\n          \"type\": \"<string>\"\n        },\n        {\n          \"id\": \"string\",\n          \"name\": \"<string>\",\n          \"type\": \"<string>\"\n        }\n      ]\n    },\n    \"apps\": {\n      \"exclude\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"include\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    \"authContext\": {\n      \"authType\": \"<string>\"\n    },\n    \"authProvider\": {\n      \"include\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"provider\": \"<string>\"\n    },\n    \"beforeScheduledAction\": {\n      \"duration\": {\n        \"number\": \"<integer>\",\n        \"unit\": \"<string>\"\n      },\n      \"lifecycleAction\": {\n        \"status\": \"<string>\"\n      }\n    },\n    \"clients\": {\n      \"include\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    \"context\": {\n      \"expression\": \"<string>\"\n    },\n    \"device\": {\n      \"migrated\": \"<boolean>\",\n      \"platform\": {\n        \"supportedMDMFrameworks\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"types\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      },\n      \"rooted\": \"<boolean>\",\n      \"trustLevel\": \"<string>\"\n    },\n    \"grantTypes\": {\n      \"include\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    \"groups\": {\n      \"exclude\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"include\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    \"identityProvider\": {\n      \"idpIds\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"provider\": \"<string>\"\n    },\n    \"mdmEnrollment\": {\n      \"blockNonSafeAndroid\": \"<boolean>\",\n      \"enrollment\": \"<string>\"\n    },\n    \"network\": {\n      \"connection\": \"<string>\",\n      \"exclude\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"include\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    \"people\": {\n      \"groups\": {\n        \"exclude\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"include\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      },\n      \"users\": {\n        \"exclude\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"include\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      }\n    },\n    \"platform\": {\n      \"exclude\": [\n        {\n          \"os\": {\n            \"expression\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"version\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"type\": \"<string>\"\n        },\n        {\n          \"os\": {\n            \"expression\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"version\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"type\": \"<string>\"\n        }\n      ],\n      \"include\": [\n        {\n          \"os\": {\n            \"expression\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"version\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"type\": \"<string>\"\n        },\n        {\n          \"os\": {\n            \"expression\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"version\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"type\": \"<string>\"\n        }\n      ]\n    },\n    \"risk\": {\n      \"behaviors\": [\n        \"<string>\"\n      ]\n    },\n    \"riskScore\": {\n      \"level\": \"<string>\"\n    },\n    \"scopes\": {\n      \"include\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    \"userIdentifier\": {\n      \"attribute\": \"<string>\",\n      \"patterns\": [\n        {\n          \"matchType\": \"<string>\",\n          \"value\": \"<string>\"\n        },\n        {\n          \"matchType\": \"<string>\",\n          \"value\": \"<string>\"\n        }\n      ],\n      \"type\": \"<string>\"\n    },\n    \"userStatus\": {\n      \"value\": \"<string>\"\n    },\n    \"users\": {\n      \"exclude\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"inactivity\": {\n        \"number\": \"<integer>\",\n        \"unit\": \"<string>\"\n      },\n      \"include\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"lifecycleExpiration\": {\n        \"lifecycleStatus\": \"<string>\",\n        \"number\": \"<integer>\",\n        \"unit\": \"<string>\"\n      },\n      \"passwordExpiration\": {\n        \"number\": \"<integer>\",\n        \"unit\": \"<string>\"\n      },\n      \"userLifecycleAttribute\": {\n        \"attributeName\": \"<string>\",\n        \"matchingValue\": \"<string>\"\n      }\n    }\n  },\n  \"created\": \"1971-04-23T05:22:53.552Z\",\n  \"description\": \"<string>\",\n  \"id\": \"string\",\n  \"lastUpdated\": \"1971-03-03T16:35:40.302Z\",\n  \"name\": \"<string>\",\n  \"priority\": \"<integer>\",\n  \"status\": \"<string>\",\n  \"system\": \"<boolean>\",\n  \"type\": \"<string>\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "6b9a9fea-fdf7-4ba7-a2ca-c5403ab885de",
+          "name": "update Policy",
+          "request": {
+            "name": "update Policy",
+            "description": {
+              "content": "Updates a policy.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "policies",
+                ":policyId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "policyId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"conditions\": {\n    \"app\": {\n      \"exclude\": [\n        {\n          \"name\": \"<string>\",\n          \"type\": \"<string>\"\n        },\n        {\n          \"name\": \"<string>\",\n          \"type\": \"<string>\"\n        }\n      ],\n      \"include\": [\n        {\n          \"name\": \"<string>\",\n          \"type\": \"<string>\"\n        },\n        {\n          \"name\": \"<string>\",\n          \"type\": \"<string>\"\n        }\n      ]\n    },\n    \"apps\": {\n      \"exclude\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"include\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    \"authContext\": {\n      \"authType\": \"<string>\"\n    },\n    \"authProvider\": {\n      \"include\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"provider\": \"<string>\"\n    },\n    \"beforeScheduledAction\": {\n      \"duration\": {\n        \"number\": \"<integer>\",\n        \"unit\": \"<string>\"\n      },\n      \"lifecycleAction\": {\n        \"status\": \"<string>\"\n      }\n    },\n    \"clients\": {\n      \"include\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    \"context\": {\n      \"expression\": \"<string>\"\n    },\n    \"device\": {\n      \"migrated\": \"<boolean>\",\n      \"platform\": {\n        \"supportedMDMFrameworks\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"types\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      },\n      \"rooted\": \"<boolean>\",\n      \"trustLevel\": \"<string>\"\n    },\n    \"grantTypes\": {\n      \"include\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    \"groups\": {\n      \"exclude\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"include\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    \"identityProvider\": {\n      \"idpIds\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"provider\": \"<string>\"\n    },\n    \"mdmEnrollment\": {\n      \"blockNonSafeAndroid\": \"<boolean>\",\n      \"enrollment\": \"<string>\"\n    },\n    \"network\": {\n      \"connection\": \"<string>\",\n      \"exclude\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"include\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    \"people\": {\n      \"groups\": {\n        \"exclude\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"include\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      },\n      \"users\": {\n        \"exclude\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"include\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      }\n    },\n    \"platform\": {\n      \"exclude\": [\n        {\n          \"os\": {\n            \"expression\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"version\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"type\": \"<string>\"\n        },\n        {\n          \"os\": {\n            \"expression\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"version\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"type\": \"<string>\"\n        }\n      ],\n      \"include\": [\n        {\n          \"os\": {\n            \"expression\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"version\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"type\": \"<string>\"\n        },\n        {\n          \"os\": {\n            \"expression\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"version\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"type\": \"<string>\"\n        }\n      ]\n    },\n    \"risk\": {\n      \"behaviors\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    \"riskScore\": {\n      \"level\": \"<string>\"\n    },\n    \"scopes\": {\n      \"include\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    \"userIdentifier\": {\n      \"attribute\": \"<string>\",\n      \"patterns\": [\n        {\n          \"matchType\": \"<string>\",\n          \"value\": \"<string>\"\n        },\n        {\n          \"matchType\": \"<string>\",\n          \"value\": \"<string>\"\n        }\n      ],\n      \"type\": \"<string>\"\n    },\n    \"userStatus\": {\n      \"value\": \"<string>\"\n    },\n    \"users\": {\n      \"exclude\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"inactivity\": {\n        \"number\": \"<integer>\",\n        \"unit\": \"<string>\"\n      },\n      \"include\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"lifecycleExpiration\": {\n        \"lifecycleStatus\": \"<string>\",\n        \"number\": \"<integer>\",\n        \"unit\": \"<string>\"\n      },\n      \"passwordExpiration\": {\n        \"number\": \"<integer>\",\n        \"unit\": \"<string>\"\n      },\n      \"userLifecycleAttribute\": {\n        \"attributeName\": \"<string>\",\n        \"matchingValue\": \"<string>\"\n      }\n    }\n  },\n  \"description\": \"<string>\",\n  \"name\": \"<string>\",\n  \"priority\": \"<integer>\",\n  \"status\": \"<string>\",\n  \"system\": \"<boolean>\",\n  \"type\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "3309638a-e727-4c5c-a513-67118c20820b",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "policies",
+                    ":policyId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "policyId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"conditions\": {\n    \"app\": {\n      \"exclude\": [\n        {\n          \"name\": \"<string>\",\n          \"type\": \"<string>\"\n        },\n        {\n          \"name\": \"<string>\",\n          \"type\": \"<string>\"\n        }\n      ],\n      \"include\": [\n        {\n          \"name\": \"<string>\",\n          \"type\": \"<string>\"\n        },\n        {\n          \"name\": \"<string>\",\n          \"type\": \"<string>\"\n        }\n      ]\n    },\n    \"apps\": {\n      \"exclude\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"include\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    \"authContext\": {\n      \"authType\": \"<string>\"\n    },\n    \"authProvider\": {\n      \"include\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"provider\": \"<string>\"\n    },\n    \"beforeScheduledAction\": {\n      \"duration\": {\n        \"number\": \"<integer>\",\n        \"unit\": \"<string>\"\n      },\n      \"lifecycleAction\": {\n        \"status\": \"<string>\"\n      }\n    },\n    \"clients\": {\n      \"include\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    \"context\": {\n      \"expression\": \"<string>\"\n    },\n    \"device\": {\n      \"migrated\": \"<boolean>\",\n      \"platform\": {\n        \"supportedMDMFrameworks\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"types\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      },\n      \"rooted\": \"<boolean>\",\n      \"trustLevel\": \"<string>\"\n    },\n    \"grantTypes\": {\n      \"include\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    \"groups\": {\n      \"exclude\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"include\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    \"identityProvider\": {\n      \"idpIds\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"provider\": \"<string>\"\n    },\n    \"mdmEnrollment\": {\n      \"blockNonSafeAndroid\": \"<boolean>\",\n      \"enrollment\": \"<string>\"\n    },\n    \"network\": {\n      \"connection\": \"<string>\",\n      \"exclude\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"include\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    \"people\": {\n      \"groups\": {\n        \"exclude\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"include\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      },\n      \"users\": {\n        \"exclude\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"include\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      }\n    },\n    \"platform\": {\n      \"exclude\": [\n        {\n          \"os\": {\n            \"expression\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"version\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"type\": \"<string>\"\n        },\n        {\n          \"os\": {\n            \"expression\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"version\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"type\": \"<string>\"\n        }\n      ],\n      \"include\": [\n        {\n          \"os\": {\n            \"expression\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"version\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"type\": \"<string>\"\n        },\n        {\n          \"os\": {\n            \"expression\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"version\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"type\": \"<string>\"\n        }\n      ]\n    },\n    \"risk\": {\n      \"behaviors\": [\n        \"<string>\"\n      ]\n    },\n    \"riskScore\": {\n      \"level\": \"<string>\"\n    },\n    \"scopes\": {\n      \"include\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    \"userIdentifier\": {\n      \"attribute\": \"<string>\",\n      \"patterns\": [\n        {\n          \"matchType\": \"<string>\",\n          \"value\": \"<string>\"\n        },\n        {\n          \"matchType\": \"<string>\",\n          \"value\": \"<string>\"\n        }\n      ],\n      \"type\": \"<string>\"\n    },\n    \"userStatus\": {\n      \"value\": \"<string>\"\n    },\n    \"users\": {\n      \"exclude\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"inactivity\": {\n        \"number\": \"<integer>\",\n        \"unit\": \"<string>\"\n      },\n      \"include\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"lifecycleExpiration\": {\n        \"lifecycleStatus\": \"<string>\",\n        \"number\": \"<integer>\",\n        \"unit\": \"<string>\"\n      },\n      \"passwordExpiration\": {\n        \"number\": \"<integer>\",\n        \"unit\": \"<string>\"\n      },\n      \"userLifecycleAttribute\": {\n        \"attributeName\": \"<string>\",\n        \"matchingValue\": \"<string>\"\n      }\n    }\n  },\n  \"description\": \"<string>\",\n  \"name\": \"<string>\",\n  \"priority\": \"<integer>\",\n  \"status\": \"<string>\",\n  \"system\": \"<boolean>\",\n  \"type\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"_embedded\": {\n    \"key_0\": {}\n  },\n  \"_links\": {\n    \"key_0\": {},\n    \"key_1\": {}\n  },\n  \"conditions\": {\n    \"app\": {\n      \"exclude\": [\n        {\n          \"id\": \"string\",\n          \"name\": \"<string>\",\n          \"type\": \"<string>\"\n        },\n        {\n          \"id\": \"string\",\n          \"name\": \"<string>\",\n          \"type\": \"<string>\"\n        }\n      ],\n      \"include\": [\n        {\n          \"id\": \"string\",\n          \"name\": \"<string>\",\n          \"type\": \"<string>\"\n        },\n        {\n          \"id\": \"string\",\n          \"name\": \"<string>\",\n          \"type\": \"<string>\"\n        }\n      ]\n    },\n    \"apps\": {\n      \"exclude\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"include\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    \"authContext\": {\n      \"authType\": \"<string>\"\n    },\n    \"authProvider\": {\n      \"include\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"provider\": \"<string>\"\n    },\n    \"beforeScheduledAction\": {\n      \"duration\": {\n        \"number\": \"<integer>\",\n        \"unit\": \"<string>\"\n      },\n      \"lifecycleAction\": {\n        \"status\": \"<string>\"\n      }\n    },\n    \"clients\": {\n      \"include\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    \"context\": {\n      \"expression\": \"<string>\"\n    },\n    \"device\": {\n      \"migrated\": \"<boolean>\",\n      \"platform\": {\n        \"supportedMDMFrameworks\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"types\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      },\n      \"rooted\": \"<boolean>\",\n      \"trustLevel\": \"<string>\"\n    },\n    \"grantTypes\": {\n      \"include\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    \"groups\": {\n      \"exclude\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"include\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    \"identityProvider\": {\n      \"idpIds\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"provider\": \"<string>\"\n    },\n    \"mdmEnrollment\": {\n      \"blockNonSafeAndroid\": \"<boolean>\",\n      \"enrollment\": \"<string>\"\n    },\n    \"network\": {\n      \"connection\": \"<string>\",\n      \"exclude\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"include\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    \"people\": {\n      \"groups\": {\n        \"exclude\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"include\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      },\n      \"users\": {\n        \"exclude\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"include\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      }\n    },\n    \"platform\": {\n      \"exclude\": [\n        {\n          \"os\": {\n            \"expression\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"version\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"type\": \"<string>\"\n        },\n        {\n          \"os\": {\n            \"expression\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"version\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"type\": \"<string>\"\n        }\n      ],\n      \"include\": [\n        {\n          \"os\": {\n            \"expression\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"version\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"type\": \"<string>\"\n        },\n        {\n          \"os\": {\n            \"expression\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"version\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"type\": \"<string>\"\n        }\n      ]\n    },\n    \"risk\": {\n      \"behaviors\": [\n        \"<string>\"\n      ]\n    },\n    \"riskScore\": {\n      \"level\": \"<string>\"\n    },\n    \"scopes\": {\n      \"include\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    \"userIdentifier\": {\n      \"attribute\": \"<string>\",\n      \"patterns\": [\n        {\n          \"matchType\": \"<string>\",\n          \"value\": \"<string>\"\n        },\n        {\n          \"matchType\": \"<string>\",\n          \"value\": \"<string>\"\n        }\n      ],\n      \"type\": \"<string>\"\n    },\n    \"userStatus\": {\n      \"value\": \"<string>\"\n    },\n    \"users\": {\n      \"exclude\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"inactivity\": {\n        \"number\": \"<integer>\",\n        \"unit\": \"<string>\"\n      },\n      \"include\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"lifecycleExpiration\": {\n        \"lifecycleStatus\": \"<string>\",\n        \"number\": \"<integer>\",\n        \"unit\": \"<string>\"\n      },\n      \"passwordExpiration\": {\n        \"number\": \"<integer>\",\n        \"unit\": \"<string>\"\n      },\n      \"userLifecycleAttribute\": {\n        \"attributeName\": \"<string>\",\n        \"matchingValue\": \"<string>\"\n      }\n    }\n  },\n  \"created\": \"1971-04-23T05:22:53.552Z\",\n  \"description\": \"<string>\",\n  \"id\": \"string\",\n  \"lastUpdated\": \"1971-03-03T16:35:40.302Z\",\n  \"name\": \"<string>\",\n  \"priority\": \"<integer>\",\n  \"status\": \"<string>\",\n  \"system\": \"<boolean>\",\n  \"type\": \"<string>\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ab31f6db-7ac0-4a85-8ea2-26bb6eba97db",
+          "name": "delete Policy",
+          "request": {
+            "name": "delete Policy",
+            "description": {
+              "content": "Removes a policy.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "policies",
+                ":policyId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "policyId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "bbcbfa17-d388-48d5-82ed-420361365aee",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "policies",
+                    ":policyId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "policyId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ad136d8d-6051-496b-b86f-a19db1e91f9b",
+          "name": "activate Policy",
+          "request": {
+            "name": "activate Policy",
+            "description": {
+              "content": "Activates a policy.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "policies",
+                ":policyId",
+                "lifecycle",
+                "activate"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "policyId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "method": "POST",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "fb9b392e-90d7-4569-877e-0c4c031ee5ae",
+              "name": "No Content",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "policies",
+                    ":policyId",
+                    "lifecycle",
+                    "activate"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "policyId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "328387d4-4847-4c48-baec-957c80ec464c",
+          "name": "deactivate Policy",
+          "request": {
+            "name": "deactivate Policy",
+            "description": {
+              "content": "Deactivates a policy.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "policies",
+                ":policyId",
+                "lifecycle",
+                "deactivate"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "policyId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "method": "POST",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "d76e5ccc-daa1-4a97-bf63-cd8eb75b0724",
+              "name": "No Content",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "policies",
+                    ":policyId",
+                    "lifecycle",
+                    "deactivate"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "policyId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "4c681b34-8fae-4c2a-bf66-566b74b2fd8f",
+          "name": "list Policy Rules",
+          "request": {
+            "name": "list Policy Rules",
+            "description": {
+              "content": "Enumerates all policy rules.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "policies",
+                ":policyId",
+                "rules"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "policyId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "78797acc-b395-43c9-b825-ae9836a5496c",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "policies",
+                    ":policyId",
+                    "rules"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "policyId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"actions\": {\n      \"enroll\": {\n        \"self\": \"NEVER\"\n      },\n      \"idp\": {\n        \"providers\": [\n          {\n            \"id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ]\n      },\n      \"passwordChange\": {\n        \"access\": \"DENY\"\n      },\n      \"selfServicePasswordReset\": {\n        \"access\": \"ALLOW\"\n      },\n      \"selfServiceUnlock\": {\n        \"access\": \"ALLOW\"\n      },\n      \"signon\": {\n        \"access\": \"ALLOW\",\n        \"factorLifetime\": 4244,\n        \"factorPromptMode\": \"ALWAYS\",\n        \"rememberDeviceByDefault\": false,\n        \"requireFactor\": false,\n        \"session\": {\n          \"maxSessionIdleMinutes\": 8950,\n          \"maxSessionLifetimeMinutes\": 5182,\n          \"usePersistentCookie\": false\n        }\n      }\n    },\n    \"conditions\": {\n      \"app\": {\n        \"exclude\": [\n          {\n            \"id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"name\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"name\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ],\n        \"include\": [\n          {\n            \"id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"name\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"name\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ]\n      },\n      \"apps\": {\n        \"exclude\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"include\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      },\n      \"authContext\": {\n        \"authType\": \"<string>\"\n      },\n      \"authProvider\": {\n        \"include\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"provider\": \"<string>\"\n      },\n      \"beforeScheduledAction\": {\n        \"duration\": {\n          \"number\": \"<integer>\",\n          \"unit\": \"<string>\"\n        },\n        \"lifecycleAction\": {\n          \"status\": \"<string>\"\n        }\n      },\n      \"clients\": {\n        \"include\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      },\n      \"context\": {\n        \"expression\": \"<string>\"\n      },\n      \"device\": {\n        \"migrated\": \"<boolean>\",\n        \"platform\": {\n          \"supportedMDMFrameworks\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"types\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        },\n        \"rooted\": \"<boolean>\",\n        \"trustLevel\": \"<string>\"\n      },\n      \"grantTypes\": {\n        \"include\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      },\n      \"groups\": {\n        \"exclude\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"include\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      },\n      \"identityProvider\": {\n        \"idpIds\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"provider\": \"<string>\"\n      },\n      \"mdmEnrollment\": {\n        \"blockNonSafeAndroid\": \"<boolean>\",\n        \"enrollment\": \"<string>\"\n      },\n      \"network\": {\n        \"connection\": \"<string>\",\n        \"exclude\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"include\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      },\n      \"people\": {\n        \"groups\": {\n          \"exclude\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"include\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        },\n        \"users\": {\n          \"exclude\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"include\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        }\n      },\n      \"platform\": {\n        \"exclude\": [\n          {\n            \"os\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"os\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ],\n        \"include\": [\n          {\n            \"os\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"os\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ]\n      },\n      \"risk\": {\n        \"behaviors\": [\n          \"<string>\"\n        ]\n      },\n      \"riskScore\": {\n        \"level\": \"<string>\"\n      },\n      \"scopes\": {\n        \"include\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      },\n      \"userIdentifier\": {\n        \"attribute\": \"<string>\",\n        \"patterns\": [\n          {\n            \"matchType\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"value\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"matchType\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"value\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ],\n        \"type\": \"<string>\"\n      },\n      \"userStatus\": {\n        \"value\": \"<string>\"\n      },\n      \"users\": {\n        \"exclude\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"inactivity\": {\n          \"number\": \"<integer>\",\n          \"unit\": \"<string>\"\n        },\n        \"include\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"lifecycleExpiration\": {\n          \"lifecycleStatus\": \"<string>\",\n          \"number\": \"<integer>\",\n          \"unit\": \"<string>\"\n        },\n        \"passwordExpiration\": {\n          \"number\": \"<integer>\",\n          \"unit\": \"<string>\"\n        },\n        \"userLifecycleAttribute\": {\n          \"attributeName\": \"<string>\",\n          \"matchingValue\": \"<string>\"\n        }\n      }\n    },\n    \"created\": \"2013-04-27T02:09:05.202Z\",\n    \"id\": \"string\",\n    \"lastUpdated\": \"1996-08-26T23:26:42.073Z\",\n    \"name\": \"string\",\n    \"priority\": 2187,\n    \"status\": \"ACTIVE\",\n    \"system\": false,\n    \"type\": \"PASSWORD\"\n  },\n  {\n    \"actions\": {\n      \"enroll\": {\n        \"self\": \"NEVER\"\n      },\n      \"idp\": {\n        \"providers\": [\n          {\n            \"id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ]\n      },\n      \"passwordChange\": {\n        \"access\": \"ALLOW\"\n      },\n      \"selfServicePasswordReset\": {\n        \"access\": \"ALLOW\"\n      },\n      \"selfServiceUnlock\": {\n        \"access\": \"DENY\"\n      },\n      \"signon\": {\n        \"access\": \"ALLOW\",\n        \"factorLifetime\": 2170,\n        \"factorPromptMode\": \"SESSION\",\n        \"rememberDeviceByDefault\": false,\n        \"requireFactor\": false,\n        \"session\": {\n          \"maxSessionIdleMinutes\": 1645,\n          \"maxSessionLifetimeMinutes\": 6905,\n          \"usePersistentCookie\": false\n        }\n      }\n    },\n    \"conditions\": {\n      \"app\": {\n        \"exclude\": [\n          {\n            \"id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"name\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"name\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ],\n        \"include\": [\n          {\n            \"id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"name\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"name\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ]\n      },\n      \"apps\": {\n        \"exclude\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"include\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      },\n      \"authContext\": {\n        \"authType\": \"<string>\"\n      },\n      \"authProvider\": {\n        \"include\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"provider\": \"<string>\"\n      },\n      \"beforeScheduledAction\": {\n        \"duration\": {\n          \"number\": \"<integer>\",\n          \"unit\": \"<string>\"\n        },\n        \"lifecycleAction\": {\n          \"status\": \"<string>\"\n        }\n      },\n      \"clients\": {\n        \"include\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      },\n      \"context\": {\n        \"expression\": \"<string>\"\n      },\n      \"device\": {\n        \"migrated\": \"<boolean>\",\n        \"platform\": {\n          \"supportedMDMFrameworks\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"types\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        },\n        \"rooted\": \"<boolean>\",\n        \"trustLevel\": \"<string>\"\n      },\n      \"grantTypes\": {\n        \"include\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      },\n      \"groups\": {\n        \"exclude\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"include\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      },\n      \"identityProvider\": {\n        \"idpIds\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"provider\": \"<string>\"\n      },\n      \"mdmEnrollment\": {\n        \"blockNonSafeAndroid\": \"<boolean>\",\n        \"enrollment\": \"<string>\"\n      },\n      \"network\": {\n        \"connection\": \"<string>\",\n        \"exclude\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"include\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      },\n      \"people\": {\n        \"groups\": {\n          \"exclude\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"include\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        },\n        \"users\": {\n          \"exclude\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"include\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        }\n      },\n      \"platform\": {\n        \"exclude\": [\n          {\n            \"os\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"os\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ],\n        \"include\": [\n          {\n            \"os\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"os\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ]\n      },\n      \"risk\": {\n        \"behaviors\": [\n          \"<string>\"\n        ]\n      },\n      \"riskScore\": {\n        \"level\": \"<string>\"\n      },\n      \"scopes\": {\n        \"include\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      },\n      \"userIdentifier\": {\n        \"attribute\": \"<string>\",\n        \"patterns\": [\n          {\n            \"matchType\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"value\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"matchType\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"value\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ],\n        \"type\": \"<string>\"\n      },\n      \"userStatus\": {\n        \"value\": \"<string>\"\n      },\n      \"users\": {\n        \"exclude\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"inactivity\": {\n          \"number\": \"<integer>\",\n          \"unit\": \"<string>\"\n        },\n        \"include\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"lifecycleExpiration\": {\n          \"lifecycleStatus\": \"<string>\",\n          \"number\": \"<integer>\",\n          \"unit\": \"<string>\"\n        },\n        \"passwordExpiration\": {\n          \"number\": \"<integer>\",\n          \"unit\": \"<string>\"\n        },\n        \"userLifecycleAttribute\": {\n          \"attributeName\": \"<string>\",\n          \"matchingValue\": \"<string>\"\n        }\n      }\n    },\n    \"created\": \"1987-06-12T11:38:11.607Z\",\n    \"id\": \"string\",\n    \"lastUpdated\": \"1974-08-08T14:50:36.197Z\",\n    \"name\": \"string\",\n    \"priority\": 6778,\n    \"status\": \"ACTIVE\",\n    \"system\": false,\n    \"type\": \"SIGN_ON\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "5e4118e8-6560-4fbb-8184-8faa1107657e",
+          "name": "create Policy Rule",
+          "request": {
+            "name": "create Policy Rule",
+            "description": {
+              "content": "Creates a policy rule.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "policies",
+                ":policyId",
+                "rules"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "policyId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"actions\": {\n    \"enroll\": {\n      \"self\": \"<string>\"\n    },\n    \"idp\": {\n      \"providers\": [\n        {\n          \"type\": \"<string>\"\n        },\n        {\n          \"type\": \"<string>\"\n        }\n      ]\n    },\n    \"passwordChange\": {\n      \"access\": \"<string>\"\n    },\n    \"selfServicePasswordReset\": {\n      \"access\": \"<string>\"\n    },\n    \"selfServiceUnlock\": {\n      \"access\": \"<string>\"\n    },\n    \"signon\": {\n      \"access\": \"<string>\",\n      \"factorLifetime\": \"<integer>\",\n      \"factorPromptMode\": \"<string>\",\n      \"rememberDeviceByDefault\": false,\n      \"requireFactor\": false,\n      \"session\": {\n        \"maxSessionIdleMinutes\": \"<integer>\",\n        \"maxSessionLifetimeMinutes\": \"<integer>\",\n        \"usePersistentCookie\": false\n      }\n    }\n  },\n  \"conditions\": {\n    \"app\": {\n      \"exclude\": [\n        {\n          \"name\": \"<string>\",\n          \"type\": \"<string>\"\n        },\n        {\n          \"name\": \"<string>\",\n          \"type\": \"<string>\"\n        }\n      ],\n      \"include\": [\n        {\n          \"name\": \"<string>\",\n          \"type\": \"<string>\"\n        },\n        {\n          \"name\": \"<string>\",\n          \"type\": \"<string>\"\n        }\n      ]\n    },\n    \"apps\": {\n      \"exclude\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"include\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    \"authContext\": {\n      \"authType\": \"<string>\"\n    },\n    \"authProvider\": {\n      \"include\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"provider\": \"<string>\"\n    },\n    \"beforeScheduledAction\": {\n      \"duration\": {\n        \"number\": \"<integer>\",\n        \"unit\": \"<string>\"\n      },\n      \"lifecycleAction\": {\n        \"status\": \"<string>\"\n      }\n    },\n    \"clients\": {\n      \"include\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    \"context\": {\n      \"expression\": \"<string>\"\n    },\n    \"device\": {\n      \"migrated\": \"<boolean>\",\n      \"platform\": {\n        \"supportedMDMFrameworks\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"types\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      },\n      \"rooted\": \"<boolean>\",\n      \"trustLevel\": \"<string>\"\n    },\n    \"grantTypes\": {\n      \"include\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    \"groups\": {\n      \"exclude\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"include\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    \"identityProvider\": {\n      \"idpIds\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"provider\": \"<string>\"\n    },\n    \"mdmEnrollment\": {\n      \"blockNonSafeAndroid\": \"<boolean>\",\n      \"enrollment\": \"<string>\"\n    },\n    \"network\": {\n      \"connection\": \"<string>\",\n      \"exclude\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"include\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    \"people\": {\n      \"groups\": {\n        \"exclude\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"include\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      },\n      \"users\": {\n        \"exclude\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"include\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      }\n    },\n    \"platform\": {\n      \"exclude\": [\n        {\n          \"os\": {\n            \"expression\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"version\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"type\": \"<string>\"\n        },\n        {\n          \"os\": {\n            \"expression\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"version\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"type\": \"<string>\"\n        }\n      ],\n      \"include\": [\n        {\n          \"os\": {\n            \"expression\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"version\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"type\": \"<string>\"\n        },\n        {\n          \"os\": {\n            \"expression\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"version\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"type\": \"<string>\"\n        }\n      ]\n    },\n    \"risk\": {\n      \"behaviors\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    \"riskScore\": {\n      \"level\": \"<string>\"\n    },\n    \"scopes\": {\n      \"include\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    \"userIdentifier\": {\n      \"attribute\": \"<string>\",\n      \"patterns\": [\n        {\n          \"matchType\": \"<string>\",\n          \"value\": \"<string>\"\n        },\n        {\n          \"matchType\": \"<string>\",\n          \"value\": \"<string>\"\n        }\n      ],\n      \"type\": \"<string>\"\n    },\n    \"userStatus\": {\n      \"value\": \"<string>\"\n    },\n    \"users\": {\n      \"exclude\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"inactivity\": {\n        \"number\": \"<integer>\",\n        \"unit\": \"<string>\"\n      },\n      \"include\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"lifecycleExpiration\": {\n        \"lifecycleStatus\": \"<string>\",\n        \"number\": \"<integer>\",\n        \"unit\": \"<string>\"\n      },\n      \"passwordExpiration\": {\n        \"number\": \"<integer>\",\n        \"unit\": \"<string>\"\n      },\n      \"userLifecycleAttribute\": {\n        \"attributeName\": \"<string>\",\n        \"matchingValue\": \"<string>\"\n      }\n    }\n  },\n  \"name\": \"<string>\",\n  \"priority\": \"<integer>\",\n  \"status\": \"ACTIVE\",\n  \"system\": false,\n  \"type\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "528f4a1f-a3bc-4bb3-90de-732757e31961",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "policies",
+                    ":policyId",
+                    "rules"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "policyId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"actions\": {\n    \"enroll\": {\n      \"self\": \"<string>\"\n    },\n    \"idp\": {\n      \"providers\": [\n        {\n          \"type\": \"<string>\"\n        },\n        {\n          \"type\": \"<string>\"\n        }\n      ]\n    },\n    \"passwordChange\": {\n      \"access\": \"<string>\"\n    },\n    \"selfServicePasswordReset\": {\n      \"access\": \"<string>\"\n    },\n    \"selfServiceUnlock\": {\n      \"access\": \"<string>\"\n    },\n    \"signon\": {\n      \"access\": \"<string>\",\n      \"factorLifetime\": \"<integer>\",\n      \"factorPromptMode\": \"<string>\",\n      \"rememberDeviceByDefault\": false,\n      \"requireFactor\": false,\n      \"session\": {\n        \"maxSessionIdleMinutes\": \"<integer>\",\n        \"maxSessionLifetimeMinutes\": \"<integer>\",\n        \"usePersistentCookie\": false\n      }\n    }\n  },\n  \"conditions\": {\n    \"app\": {\n      \"exclude\": [\n        {\n          \"name\": \"<string>\",\n          \"type\": \"<string>\"\n        },\n        {\n          \"name\": \"<string>\",\n          \"type\": \"<string>\"\n        }\n      ],\n      \"include\": [\n        {\n          \"name\": \"<string>\",\n          \"type\": \"<string>\"\n        },\n        {\n          \"name\": \"<string>\",\n          \"type\": \"<string>\"\n        }\n      ]\n    },\n    \"apps\": {\n      \"exclude\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"include\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    \"authContext\": {\n      \"authType\": \"<string>\"\n    },\n    \"authProvider\": {\n      \"include\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"provider\": \"<string>\"\n    },\n    \"beforeScheduledAction\": {\n      \"duration\": {\n        \"number\": \"<integer>\",\n        \"unit\": \"<string>\"\n      },\n      \"lifecycleAction\": {\n        \"status\": \"<string>\"\n      }\n    },\n    \"clients\": {\n      \"include\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    \"context\": {\n      \"expression\": \"<string>\"\n    },\n    \"device\": {\n      \"migrated\": \"<boolean>\",\n      \"platform\": {\n        \"supportedMDMFrameworks\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"types\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      },\n      \"rooted\": \"<boolean>\",\n      \"trustLevel\": \"<string>\"\n    },\n    \"grantTypes\": {\n      \"include\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    \"groups\": {\n      \"exclude\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"include\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    \"identityProvider\": {\n      \"idpIds\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"provider\": \"<string>\"\n    },\n    \"mdmEnrollment\": {\n      \"blockNonSafeAndroid\": \"<boolean>\",\n      \"enrollment\": \"<string>\"\n    },\n    \"network\": {\n      \"connection\": \"<string>\",\n      \"exclude\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"include\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    \"people\": {\n      \"groups\": {\n        \"exclude\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"include\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      },\n      \"users\": {\n        \"exclude\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"include\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      }\n    },\n    \"platform\": {\n      \"exclude\": [\n        {\n          \"os\": {\n            \"expression\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"version\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"type\": \"<string>\"\n        },\n        {\n          \"os\": {\n            \"expression\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"version\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"type\": \"<string>\"\n        }\n      ],\n      \"include\": [\n        {\n          \"os\": {\n            \"expression\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"version\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"type\": \"<string>\"\n        },\n        {\n          \"os\": {\n            \"expression\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"version\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"type\": \"<string>\"\n        }\n      ]\n    },\n    \"risk\": {\n      \"behaviors\": [\n        \"<string>\"\n      ]\n    },\n    \"riskScore\": {\n      \"level\": \"<string>\"\n    },\n    \"scopes\": {\n      \"include\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    \"userIdentifier\": {\n      \"attribute\": \"<string>\",\n      \"patterns\": [\n        {\n          \"matchType\": \"<string>\",\n          \"value\": \"<string>\"\n        },\n        {\n          \"matchType\": \"<string>\",\n          \"value\": \"<string>\"\n        }\n      ],\n      \"type\": \"<string>\"\n    },\n    \"userStatus\": {\n      \"value\": \"<string>\"\n    },\n    \"users\": {\n      \"exclude\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"inactivity\": {\n        \"number\": \"<integer>\",\n        \"unit\": \"<string>\"\n      },\n      \"include\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"lifecycleExpiration\": {\n        \"lifecycleStatus\": \"<string>\",\n        \"number\": \"<integer>\",\n        \"unit\": \"<string>\"\n      },\n      \"passwordExpiration\": {\n        \"number\": \"<integer>\",\n        \"unit\": \"<string>\"\n      },\n      \"userLifecycleAttribute\": {\n        \"attributeName\": \"<string>\",\n        \"matchingValue\": \"<string>\"\n      }\n    }\n  },\n  \"name\": \"<string>\",\n  \"priority\": \"<integer>\",\n  \"status\": \"ACTIVE\",\n  \"system\": false,\n  \"type\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"actions\": {\n    \"enroll\": {\n      \"self\": \"<string>\"\n    },\n    \"idp\": {\n      \"providers\": [\n        {\n          \"id\": \"string\",\n          \"type\": \"<string>\"\n        },\n        {\n          \"id\": \"string\",\n          \"type\": \"<string>\"\n        }\n      ]\n    },\n    \"passwordChange\": {\n      \"access\": \"<string>\"\n    },\n    \"selfServicePasswordReset\": {\n      \"access\": \"<string>\"\n    },\n    \"selfServiceUnlock\": {\n      \"access\": \"<string>\"\n    },\n    \"signon\": {\n      \"access\": \"<string>\",\n      \"factorLifetime\": \"<integer>\",\n      \"factorPromptMode\": \"<string>\",\n      \"rememberDeviceByDefault\": false,\n      \"requireFactor\": false,\n      \"session\": {\n        \"maxSessionIdleMinutes\": \"<integer>\",\n        \"maxSessionLifetimeMinutes\": \"<integer>\",\n        \"usePersistentCookie\": false\n      }\n    }\n  },\n  \"conditions\": {\n    \"app\": {\n      \"exclude\": [\n        {\n          \"id\": \"string\",\n          \"name\": \"<string>\",\n          \"type\": \"<string>\"\n        },\n        {\n          \"id\": \"string\",\n          \"name\": \"<string>\",\n          \"type\": \"<string>\"\n        }\n      ],\n      \"include\": [\n        {\n          \"id\": \"string\",\n          \"name\": \"<string>\",\n          \"type\": \"<string>\"\n        },\n        {\n          \"id\": \"string\",\n          \"name\": \"<string>\",\n          \"type\": \"<string>\"\n        }\n      ]\n    },\n    \"apps\": {\n      \"exclude\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"include\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    \"authContext\": {\n      \"authType\": \"<string>\"\n    },\n    \"authProvider\": {\n      \"include\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"provider\": \"<string>\"\n    },\n    \"beforeScheduledAction\": {\n      \"duration\": {\n        \"number\": \"<integer>\",\n        \"unit\": \"<string>\"\n      },\n      \"lifecycleAction\": {\n        \"status\": \"<string>\"\n      }\n    },\n    \"clients\": {\n      \"include\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    \"context\": {\n      \"expression\": \"<string>\"\n    },\n    \"device\": {\n      \"migrated\": \"<boolean>\",\n      \"platform\": {\n        \"supportedMDMFrameworks\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"types\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      },\n      \"rooted\": \"<boolean>\",\n      \"trustLevel\": \"<string>\"\n    },\n    \"grantTypes\": {\n      \"include\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    \"groups\": {\n      \"exclude\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"include\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    \"identityProvider\": {\n      \"idpIds\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"provider\": \"<string>\"\n    },\n    \"mdmEnrollment\": {\n      \"blockNonSafeAndroid\": \"<boolean>\",\n      \"enrollment\": \"<string>\"\n    },\n    \"network\": {\n      \"connection\": \"<string>\",\n      \"exclude\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"include\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    \"people\": {\n      \"groups\": {\n        \"exclude\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"include\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      },\n      \"users\": {\n        \"exclude\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"include\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      }\n    },\n    \"platform\": {\n      \"exclude\": [\n        {\n          \"os\": {\n            \"expression\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"version\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"type\": \"<string>\"\n        },\n        {\n          \"os\": {\n            \"expression\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"version\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"type\": \"<string>\"\n        }\n      ],\n      \"include\": [\n        {\n          \"os\": {\n            \"expression\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"version\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"type\": \"<string>\"\n        },\n        {\n          \"os\": {\n            \"expression\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"version\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"type\": \"<string>\"\n        }\n      ]\n    },\n    \"risk\": {\n      \"behaviors\": [\n        \"<string>\"\n      ]\n    },\n    \"riskScore\": {\n      \"level\": \"<string>\"\n    },\n    \"scopes\": {\n      \"include\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    \"userIdentifier\": {\n      \"attribute\": \"<string>\",\n      \"patterns\": [\n        {\n          \"matchType\": \"<string>\",\n          \"value\": \"<string>\"\n        },\n        {\n          \"matchType\": \"<string>\",\n          \"value\": \"<string>\"\n        }\n      ],\n      \"type\": \"<string>\"\n    },\n    \"userStatus\": {\n      \"value\": \"<string>\"\n    },\n    \"users\": {\n      \"exclude\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"inactivity\": {\n        \"number\": \"<integer>\",\n        \"unit\": \"<string>\"\n      },\n      \"include\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"lifecycleExpiration\": {\n        \"lifecycleStatus\": \"<string>\",\n        \"number\": \"<integer>\",\n        \"unit\": \"<string>\"\n      },\n      \"passwordExpiration\": {\n        \"number\": \"<integer>\",\n        \"unit\": \"<string>\"\n      },\n      \"userLifecycleAttribute\": {\n        \"attributeName\": \"<string>\",\n        \"matchingValue\": \"<string>\"\n      }\n    }\n  },\n  \"created\": \"1952-08-27T05:42:19.847Z\",\n  \"id\": \"string\",\n  \"lastUpdated\": \"2002-08-01T02:01:18.608Z\",\n  \"name\": \"<string>\",\n  \"priority\": \"<integer>\",\n  \"status\": \"ACTIVE\",\n  \"system\": false,\n  \"type\": \"<string>\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f4d2b85d-0acb-41f2-a156-e8c7fcdbebee",
+          "name": "get Policy Rule",
+          "request": {
+            "name": "get Policy Rule",
+            "description": {
+              "content": "Gets a policy rule.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "policies",
+                ":policyId",
+                "rules",
+                ":ruleId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "policyId",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "ruleId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "ae568430-fc09-4c3e-8b67-b5b0874ab8c9",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "policies",
+                    ":policyId",
+                    "rules",
+                    ":ruleId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "policyId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "ruleId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"actions\": {\n    \"enroll\": {\n      \"self\": \"<string>\"\n    },\n    \"idp\": {\n      \"providers\": [\n        {\n          \"id\": \"string\",\n          \"type\": \"<string>\"\n        },\n        {\n          \"id\": \"string\",\n          \"type\": \"<string>\"\n        }\n      ]\n    },\n    \"passwordChange\": {\n      \"access\": \"<string>\"\n    },\n    \"selfServicePasswordReset\": {\n      \"access\": \"<string>\"\n    },\n    \"selfServiceUnlock\": {\n      \"access\": \"<string>\"\n    },\n    \"signon\": {\n      \"access\": \"<string>\",\n      \"factorLifetime\": \"<integer>\",\n      \"factorPromptMode\": \"<string>\",\n      \"rememberDeviceByDefault\": false,\n      \"requireFactor\": false,\n      \"session\": {\n        \"maxSessionIdleMinutes\": \"<integer>\",\n        \"maxSessionLifetimeMinutes\": \"<integer>\",\n        \"usePersistentCookie\": false\n      }\n    }\n  },\n  \"conditions\": {\n    \"app\": {\n      \"exclude\": [\n        {\n          \"id\": \"string\",\n          \"name\": \"<string>\",\n          \"type\": \"<string>\"\n        },\n        {\n          \"id\": \"string\",\n          \"name\": \"<string>\",\n          \"type\": \"<string>\"\n        }\n      ],\n      \"include\": [\n        {\n          \"id\": \"string\",\n          \"name\": \"<string>\",\n          \"type\": \"<string>\"\n        },\n        {\n          \"id\": \"string\",\n          \"name\": \"<string>\",\n          \"type\": \"<string>\"\n        }\n      ]\n    },\n    \"apps\": {\n      \"exclude\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"include\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    \"authContext\": {\n      \"authType\": \"<string>\"\n    },\n    \"authProvider\": {\n      \"include\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"provider\": \"<string>\"\n    },\n    \"beforeScheduledAction\": {\n      \"duration\": {\n        \"number\": \"<integer>\",\n        \"unit\": \"<string>\"\n      },\n      \"lifecycleAction\": {\n        \"status\": \"<string>\"\n      }\n    },\n    \"clients\": {\n      \"include\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    \"context\": {\n      \"expression\": \"<string>\"\n    },\n    \"device\": {\n      \"migrated\": \"<boolean>\",\n      \"platform\": {\n        \"supportedMDMFrameworks\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"types\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      },\n      \"rooted\": \"<boolean>\",\n      \"trustLevel\": \"<string>\"\n    },\n    \"grantTypes\": {\n      \"include\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    \"groups\": {\n      \"exclude\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"include\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    \"identityProvider\": {\n      \"idpIds\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"provider\": \"<string>\"\n    },\n    \"mdmEnrollment\": {\n      \"blockNonSafeAndroid\": \"<boolean>\",\n      \"enrollment\": \"<string>\"\n    },\n    \"network\": {\n      \"connection\": \"<string>\",\n      \"exclude\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"include\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    \"people\": {\n      \"groups\": {\n        \"exclude\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"include\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      },\n      \"users\": {\n        \"exclude\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"include\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      }\n    },\n    \"platform\": {\n      \"exclude\": [\n        {\n          \"os\": {\n            \"expression\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"version\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"type\": \"<string>\"\n        },\n        {\n          \"os\": {\n            \"expression\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"version\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"type\": \"<string>\"\n        }\n      ],\n      \"include\": [\n        {\n          \"os\": {\n            \"expression\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"version\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"type\": \"<string>\"\n        },\n        {\n          \"os\": {\n            \"expression\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"version\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"type\": \"<string>\"\n        }\n      ]\n    },\n    \"risk\": {\n      \"behaviors\": [\n        \"<string>\"\n      ]\n    },\n    \"riskScore\": {\n      \"level\": \"<string>\"\n    },\n    \"scopes\": {\n      \"include\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    \"userIdentifier\": {\n      \"attribute\": \"<string>\",\n      \"patterns\": [\n        {\n          \"matchType\": \"<string>\",\n          \"value\": \"<string>\"\n        },\n        {\n          \"matchType\": \"<string>\",\n          \"value\": \"<string>\"\n        }\n      ],\n      \"type\": \"<string>\"\n    },\n    \"userStatus\": {\n      \"value\": \"<string>\"\n    },\n    \"users\": {\n      \"exclude\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"inactivity\": {\n        \"number\": \"<integer>\",\n        \"unit\": \"<string>\"\n      },\n      \"include\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"lifecycleExpiration\": {\n        \"lifecycleStatus\": \"<string>\",\n        \"number\": \"<integer>\",\n        \"unit\": \"<string>\"\n      },\n      \"passwordExpiration\": {\n        \"number\": \"<integer>\",\n        \"unit\": \"<string>\"\n      },\n      \"userLifecycleAttribute\": {\n        \"attributeName\": \"<string>\",\n        \"matchingValue\": \"<string>\"\n      }\n    }\n  },\n  \"created\": \"1952-08-27T05:42:19.847Z\",\n  \"id\": \"string\",\n  \"lastUpdated\": \"2002-08-01T02:01:18.608Z\",\n  \"name\": \"<string>\",\n  \"priority\": \"<integer>\",\n  \"status\": \"ACTIVE\",\n  \"system\": false,\n  \"type\": \"<string>\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a3d4b821-79be-43d3-8c0d-d8b78e010915",
+          "name": "update Policy Rule",
+          "request": {
+            "name": "update Policy Rule",
+            "description": {
+              "content": "Updates a policy rule.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "policies",
+                ":policyId",
+                "rules",
+                ":ruleId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "policyId",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "ruleId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"actions\": {\n    \"enroll\": {\n      \"self\": \"<string>\"\n    },\n    \"idp\": {\n      \"providers\": [\n        {\n          \"type\": \"<string>\"\n        },\n        {\n          \"type\": \"<string>\"\n        }\n      ]\n    },\n    \"passwordChange\": {\n      \"access\": \"<string>\"\n    },\n    \"selfServicePasswordReset\": {\n      \"access\": \"<string>\"\n    },\n    \"selfServiceUnlock\": {\n      \"access\": \"<string>\"\n    },\n    \"signon\": {\n      \"access\": \"<string>\",\n      \"factorLifetime\": \"<integer>\",\n      \"factorPromptMode\": \"<string>\",\n      \"rememberDeviceByDefault\": false,\n      \"requireFactor\": false,\n      \"session\": {\n        \"maxSessionIdleMinutes\": \"<integer>\",\n        \"maxSessionLifetimeMinutes\": \"<integer>\",\n        \"usePersistentCookie\": false\n      }\n    }\n  },\n  \"conditions\": {\n    \"app\": {\n      \"exclude\": [\n        {\n          \"name\": \"<string>\",\n          \"type\": \"<string>\"\n        },\n        {\n          \"name\": \"<string>\",\n          \"type\": \"<string>\"\n        }\n      ],\n      \"include\": [\n        {\n          \"name\": \"<string>\",\n          \"type\": \"<string>\"\n        },\n        {\n          \"name\": \"<string>\",\n          \"type\": \"<string>\"\n        }\n      ]\n    },\n    \"apps\": {\n      \"exclude\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"include\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    \"authContext\": {\n      \"authType\": \"<string>\"\n    },\n    \"authProvider\": {\n      \"include\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"provider\": \"<string>\"\n    },\n    \"beforeScheduledAction\": {\n      \"duration\": {\n        \"number\": \"<integer>\",\n        \"unit\": \"<string>\"\n      },\n      \"lifecycleAction\": {\n        \"status\": \"<string>\"\n      }\n    },\n    \"clients\": {\n      \"include\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    \"context\": {\n      \"expression\": \"<string>\"\n    },\n    \"device\": {\n      \"migrated\": \"<boolean>\",\n      \"platform\": {\n        \"supportedMDMFrameworks\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"types\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      },\n      \"rooted\": \"<boolean>\",\n      \"trustLevel\": \"<string>\"\n    },\n    \"grantTypes\": {\n      \"include\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    \"groups\": {\n      \"exclude\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"include\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    \"identityProvider\": {\n      \"idpIds\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"provider\": \"<string>\"\n    },\n    \"mdmEnrollment\": {\n      \"blockNonSafeAndroid\": \"<boolean>\",\n      \"enrollment\": \"<string>\"\n    },\n    \"network\": {\n      \"connection\": \"<string>\",\n      \"exclude\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"include\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    \"people\": {\n      \"groups\": {\n        \"exclude\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"include\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      },\n      \"users\": {\n        \"exclude\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"include\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      }\n    },\n    \"platform\": {\n      \"exclude\": [\n        {\n          \"os\": {\n            \"expression\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"version\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"type\": \"<string>\"\n        },\n        {\n          \"os\": {\n            \"expression\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"version\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"type\": \"<string>\"\n        }\n      ],\n      \"include\": [\n        {\n          \"os\": {\n            \"expression\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"version\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"type\": \"<string>\"\n        },\n        {\n          \"os\": {\n            \"expression\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"version\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"type\": \"<string>\"\n        }\n      ]\n    },\n    \"risk\": {\n      \"behaviors\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    \"riskScore\": {\n      \"level\": \"<string>\"\n    },\n    \"scopes\": {\n      \"include\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    \"userIdentifier\": {\n      \"attribute\": \"<string>\",\n      \"patterns\": [\n        {\n          \"matchType\": \"<string>\",\n          \"value\": \"<string>\"\n        },\n        {\n          \"matchType\": \"<string>\",\n          \"value\": \"<string>\"\n        }\n      ],\n      \"type\": \"<string>\"\n    },\n    \"userStatus\": {\n      \"value\": \"<string>\"\n    },\n    \"users\": {\n      \"exclude\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"inactivity\": {\n        \"number\": \"<integer>\",\n        \"unit\": \"<string>\"\n      },\n      \"include\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"lifecycleExpiration\": {\n        \"lifecycleStatus\": \"<string>\",\n        \"number\": \"<integer>\",\n        \"unit\": \"<string>\"\n      },\n      \"passwordExpiration\": {\n        \"number\": \"<integer>\",\n        \"unit\": \"<string>\"\n      },\n      \"userLifecycleAttribute\": {\n        \"attributeName\": \"<string>\",\n        \"matchingValue\": \"<string>\"\n      }\n    }\n  },\n  \"name\": \"<string>\",\n  \"priority\": \"<integer>\",\n  \"status\": \"ACTIVE\",\n  \"system\": false,\n  \"type\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "de467813-ca5c-4709-9f84-3dbd051dae5d",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "policies",
+                    ":policyId",
+                    "rules",
+                    ":ruleId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "policyId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "ruleId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"actions\": {\n    \"enroll\": {\n      \"self\": \"<string>\"\n    },\n    \"idp\": {\n      \"providers\": [\n        {\n          \"type\": \"<string>\"\n        },\n        {\n          \"type\": \"<string>\"\n        }\n      ]\n    },\n    \"passwordChange\": {\n      \"access\": \"<string>\"\n    },\n    \"selfServicePasswordReset\": {\n      \"access\": \"<string>\"\n    },\n    \"selfServiceUnlock\": {\n      \"access\": \"<string>\"\n    },\n    \"signon\": {\n      \"access\": \"<string>\",\n      \"factorLifetime\": \"<integer>\",\n      \"factorPromptMode\": \"<string>\",\n      \"rememberDeviceByDefault\": false,\n      \"requireFactor\": false,\n      \"session\": {\n        \"maxSessionIdleMinutes\": \"<integer>\",\n        \"maxSessionLifetimeMinutes\": \"<integer>\",\n        \"usePersistentCookie\": false\n      }\n    }\n  },\n  \"conditions\": {\n    \"app\": {\n      \"exclude\": [\n        {\n          \"name\": \"<string>\",\n          \"type\": \"<string>\"\n        },\n        {\n          \"name\": \"<string>\",\n          \"type\": \"<string>\"\n        }\n      ],\n      \"include\": [\n        {\n          \"name\": \"<string>\",\n          \"type\": \"<string>\"\n        },\n        {\n          \"name\": \"<string>\",\n          \"type\": \"<string>\"\n        }\n      ]\n    },\n    \"apps\": {\n      \"exclude\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"include\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    \"authContext\": {\n      \"authType\": \"<string>\"\n    },\n    \"authProvider\": {\n      \"include\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"provider\": \"<string>\"\n    },\n    \"beforeScheduledAction\": {\n      \"duration\": {\n        \"number\": \"<integer>\",\n        \"unit\": \"<string>\"\n      },\n      \"lifecycleAction\": {\n        \"status\": \"<string>\"\n      }\n    },\n    \"clients\": {\n      \"include\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    \"context\": {\n      \"expression\": \"<string>\"\n    },\n    \"device\": {\n      \"migrated\": \"<boolean>\",\n      \"platform\": {\n        \"supportedMDMFrameworks\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"types\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      },\n      \"rooted\": \"<boolean>\",\n      \"trustLevel\": \"<string>\"\n    },\n    \"grantTypes\": {\n      \"include\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    \"groups\": {\n      \"exclude\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"include\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    \"identityProvider\": {\n      \"idpIds\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"provider\": \"<string>\"\n    },\n    \"mdmEnrollment\": {\n      \"blockNonSafeAndroid\": \"<boolean>\",\n      \"enrollment\": \"<string>\"\n    },\n    \"network\": {\n      \"connection\": \"<string>\",\n      \"exclude\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"include\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    \"people\": {\n      \"groups\": {\n        \"exclude\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"include\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      },\n      \"users\": {\n        \"exclude\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"include\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      }\n    },\n    \"platform\": {\n      \"exclude\": [\n        {\n          \"os\": {\n            \"expression\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"version\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"type\": \"<string>\"\n        },\n        {\n          \"os\": {\n            \"expression\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"version\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"type\": \"<string>\"\n        }\n      ],\n      \"include\": [\n        {\n          \"os\": {\n            \"expression\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"version\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"type\": \"<string>\"\n        },\n        {\n          \"os\": {\n            \"expression\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"version\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"type\": \"<string>\"\n        }\n      ]\n    },\n    \"risk\": {\n      \"behaviors\": [\n        \"<string>\"\n      ]\n    },\n    \"riskScore\": {\n      \"level\": \"<string>\"\n    },\n    \"scopes\": {\n      \"include\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    \"userIdentifier\": {\n      \"attribute\": \"<string>\",\n      \"patterns\": [\n        {\n          \"matchType\": \"<string>\",\n          \"value\": \"<string>\"\n        },\n        {\n          \"matchType\": \"<string>\",\n          \"value\": \"<string>\"\n        }\n      ],\n      \"type\": \"<string>\"\n    },\n    \"userStatus\": {\n      \"value\": \"<string>\"\n    },\n    \"users\": {\n      \"exclude\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"inactivity\": {\n        \"number\": \"<integer>\",\n        \"unit\": \"<string>\"\n      },\n      \"include\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"lifecycleExpiration\": {\n        \"lifecycleStatus\": \"<string>\",\n        \"number\": \"<integer>\",\n        \"unit\": \"<string>\"\n      },\n      \"passwordExpiration\": {\n        \"number\": \"<integer>\",\n        \"unit\": \"<string>\"\n      },\n      \"userLifecycleAttribute\": {\n        \"attributeName\": \"<string>\",\n        \"matchingValue\": \"<string>\"\n      }\n    }\n  },\n  \"name\": \"<string>\",\n  \"priority\": \"<integer>\",\n  \"status\": \"ACTIVE\",\n  \"system\": false,\n  \"type\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"actions\": {\n    \"enroll\": {\n      \"self\": \"<string>\"\n    },\n    \"idp\": {\n      \"providers\": [\n        {\n          \"id\": \"string\",\n          \"type\": \"<string>\"\n        },\n        {\n          \"id\": \"string\",\n          \"type\": \"<string>\"\n        }\n      ]\n    },\n    \"passwordChange\": {\n      \"access\": \"<string>\"\n    },\n    \"selfServicePasswordReset\": {\n      \"access\": \"<string>\"\n    },\n    \"selfServiceUnlock\": {\n      \"access\": \"<string>\"\n    },\n    \"signon\": {\n      \"access\": \"<string>\",\n      \"factorLifetime\": \"<integer>\",\n      \"factorPromptMode\": \"<string>\",\n      \"rememberDeviceByDefault\": false,\n      \"requireFactor\": false,\n      \"session\": {\n        \"maxSessionIdleMinutes\": \"<integer>\",\n        \"maxSessionLifetimeMinutes\": \"<integer>\",\n        \"usePersistentCookie\": false\n      }\n    }\n  },\n  \"conditions\": {\n    \"app\": {\n      \"exclude\": [\n        {\n          \"id\": \"string\",\n          \"name\": \"<string>\",\n          \"type\": \"<string>\"\n        },\n        {\n          \"id\": \"string\",\n          \"name\": \"<string>\",\n          \"type\": \"<string>\"\n        }\n      ],\n      \"include\": [\n        {\n          \"id\": \"string\",\n          \"name\": \"<string>\",\n          \"type\": \"<string>\"\n        },\n        {\n          \"id\": \"string\",\n          \"name\": \"<string>\",\n          \"type\": \"<string>\"\n        }\n      ]\n    },\n    \"apps\": {\n      \"exclude\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"include\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    \"authContext\": {\n      \"authType\": \"<string>\"\n    },\n    \"authProvider\": {\n      \"include\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"provider\": \"<string>\"\n    },\n    \"beforeScheduledAction\": {\n      \"duration\": {\n        \"number\": \"<integer>\",\n        \"unit\": \"<string>\"\n      },\n      \"lifecycleAction\": {\n        \"status\": \"<string>\"\n      }\n    },\n    \"clients\": {\n      \"include\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    \"context\": {\n      \"expression\": \"<string>\"\n    },\n    \"device\": {\n      \"migrated\": \"<boolean>\",\n      \"platform\": {\n        \"supportedMDMFrameworks\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"types\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      },\n      \"rooted\": \"<boolean>\",\n      \"trustLevel\": \"<string>\"\n    },\n    \"grantTypes\": {\n      \"include\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    \"groups\": {\n      \"exclude\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"include\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    \"identityProvider\": {\n      \"idpIds\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"provider\": \"<string>\"\n    },\n    \"mdmEnrollment\": {\n      \"blockNonSafeAndroid\": \"<boolean>\",\n      \"enrollment\": \"<string>\"\n    },\n    \"network\": {\n      \"connection\": \"<string>\",\n      \"exclude\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"include\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    \"people\": {\n      \"groups\": {\n        \"exclude\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"include\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      },\n      \"users\": {\n        \"exclude\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"include\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      }\n    },\n    \"platform\": {\n      \"exclude\": [\n        {\n          \"os\": {\n            \"expression\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"version\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"type\": \"<string>\"\n        },\n        {\n          \"os\": {\n            \"expression\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"version\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"type\": \"<string>\"\n        }\n      ],\n      \"include\": [\n        {\n          \"os\": {\n            \"expression\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"version\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"type\": \"<string>\"\n        },\n        {\n          \"os\": {\n            \"expression\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"version\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"type\": \"<string>\"\n        }\n      ]\n    },\n    \"risk\": {\n      \"behaviors\": [\n        \"<string>\"\n      ]\n    },\n    \"riskScore\": {\n      \"level\": \"<string>\"\n    },\n    \"scopes\": {\n      \"include\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    \"userIdentifier\": {\n      \"attribute\": \"<string>\",\n      \"patterns\": [\n        {\n          \"matchType\": \"<string>\",\n          \"value\": \"<string>\"\n        },\n        {\n          \"matchType\": \"<string>\",\n          \"value\": \"<string>\"\n        }\n      ],\n      \"type\": \"<string>\"\n    },\n    \"userStatus\": {\n      \"value\": \"<string>\"\n    },\n    \"users\": {\n      \"exclude\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"inactivity\": {\n        \"number\": \"<integer>\",\n        \"unit\": \"<string>\"\n      },\n      \"include\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"lifecycleExpiration\": {\n        \"lifecycleStatus\": \"<string>\",\n        \"number\": \"<integer>\",\n        \"unit\": \"<string>\"\n      },\n      \"passwordExpiration\": {\n        \"number\": \"<integer>\",\n        \"unit\": \"<string>\"\n      },\n      \"userLifecycleAttribute\": {\n        \"attributeName\": \"<string>\",\n        \"matchingValue\": \"<string>\"\n      }\n    }\n  },\n  \"created\": \"1952-08-27T05:42:19.847Z\",\n  \"id\": \"string\",\n  \"lastUpdated\": \"2002-08-01T02:01:18.608Z\",\n  \"name\": \"<string>\",\n  \"priority\": \"<integer>\",\n  \"status\": \"ACTIVE\",\n  \"system\": false,\n  \"type\": \"<string>\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "0135cf1c-6e38-4275-8590-3f5b296c77af",
+          "name": "delete Policy Rule",
+          "request": {
+            "name": "delete Policy Rule",
+            "description": {
+              "content": "Removes a policy rule.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "policies",
+                ":policyId",
+                "rules",
+                ":ruleId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "policyId",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "ruleId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "03e3c1e1-1fef-4ac7-ade1-3e6ab0a74b43",
+              "name": "No Content",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "policies",
+                    ":policyId",
+                    "rules",
+                    ":ruleId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "policyId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "ruleId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "cef214fc-7d64-41ef-95b4-88437d1fd8d7",
+          "name": "activate Policy Rule",
+          "request": {
+            "name": "activate Policy Rule",
+            "description": {
+              "content": "Activates a policy rule.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "policies",
+                ":policyId",
+                "rules",
+                ":ruleId",
+                "lifecycle",
+                "activate"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "policyId",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "ruleId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "method": "POST",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "1b649966-b336-4d0a-afed-87ce11960cd5",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "policies",
+                    ":policyId",
+                    "rules",
+                    ":ruleId",
+                    "lifecycle",
+                    "activate"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "policyId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "ruleId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "349c36ae-1181-47f9-8a08-e5a9362c057a",
+          "name": "deactivate Policy Rule",
+          "request": {
+            "name": "deactivate Policy Rule",
+            "description": {
+              "content": "Deactivates a policy rule.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "policies",
+                ":policyId",
+                "rules",
+                ":ruleId",
+                "lifecycle",
+                "deactivate"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "policyId",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "ruleId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "method": "POST",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "03065b06-03fc-4f5e-9e2b-fc21f0773df3",
+              "name": "No Content",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "policies",
+                    ":policyId",
+                    "rules",
+                    ":ruleId",
+                    "lifecycle",
+                    "deactivate"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "policyId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "ruleId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://your-subdomain.okta.com/",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "4ac04a45-44a1-4843-bcfd-cf7844bcbbec",
+    "name": "Okta Application Policy API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Allows customers to easily access the Okta API\n\nContact Support:\n Name: Okta Developer Team\n Email: devex-public@okta.com",
+      "type": "text/plain"
+    }
+  }
+}

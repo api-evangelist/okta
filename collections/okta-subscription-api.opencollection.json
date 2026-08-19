@@ -1,0 +1,187 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Okta Application Subscription API",
+    "version": "2.16.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Subscription",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Okta List all subscriptions of a Custom Role",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://your-subdomain.okta.com/api/v1/roles/:roleTypeOrRoleId/subscriptions",
+            "params": [
+              {
+                "name": "roleTypeOrRoleId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "When roleType List all subscriptions of a Role. Else when roleId List subscriptions of a Custom Role"
+        },
+        {
+          "info": {
+            "name": "Okta Get subscriptions of a Custom Role with a specific notification type",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://your-subdomain.okta.com/api/v1/roles/:roleTypeOrRoleId/subscriptions/:notificationType",
+            "params": [
+              {
+                "name": "roleTypeOrRoleId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "notificationType",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "When roleType Get subscriptions of a Role with a specific notification type. Else when roleId Get subscription of a Custom Role with a specific notification type."
+        },
+        {
+          "info": {
+            "name": "Okta Subscribe a Custom Role to a specific notification type",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://your-subdomain.okta.com/api/v1/roles/:roleTypeOrRoleId/subscriptions/:notificationType/subscribe",
+            "params": [
+              {
+                "name": "roleTypeOrRoleId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "notificationType",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "When roleType Subscribes a Role to a specific notification type. When you change the subscription status of a Role, it overrides the subscription of any individual user of that Role. Else when roleId Subscribes a Custom Role to a specific notification type. When you change the subscription status of a Custom Role, it overrides the subscription of any individual user of that Custom Role."
+        },
+        {
+          "info": {
+            "name": "Okta Unsubscribe a Custom Role from a specific notification type",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://your-subdomain.okta.com/api/v1/roles/:roleTypeOrRoleId/subscriptions/:notificationType/unsubscribe",
+            "params": [
+              {
+                "name": "roleTypeOrRoleId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "notificationType",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "When roleType Unsubscribes a Role from a specific notification type. When you change the subscription status of a Role, it overrides the subscription of any individual user of that Role. Else when roleId Unsubscribes a Custom Role from a specific notification type. When you change the subscription status of a Custom Role, it overrides the subscription of any individual user of that Custom Role."
+        },
+        {
+          "info": {
+            "name": "Okta Subscribe to a specific notification type",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://your-subdomain.okta.com/api/v1/users/:userId/subscriptions/:notificationType/subscribe",
+            "params": [
+              {
+                "name": "userId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "notificationType",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Subscribes a User to a specific notification type. Only the current User can subscribe to a specific notification type. An AccessDeniedException message is sent if requests are made from other users."
+        },
+        {
+          "info": {
+            "name": "Okta Unsubscribe from a specific notification type",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://your-subdomain.okta.com/api/v1/users/:userId/subscriptions/:notificationType/unsubscribe",
+            "params": [
+              {
+                "name": "userId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "notificationType",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Unsubscribes a User from a specific notification type. Only the current User can unsubscribe from a specific notification type. An AccessDeniedException message is sent if requests are made from other users."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

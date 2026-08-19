@@ -1,0 +1,141 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Okta Application Feature API",
+    "version": "2.16.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Feature",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "listFeatures",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://your-subdomain.okta.com/api/v1/features",
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Success"
+        },
+        {
+          "info": {
+            "name": "getFeature",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://your-subdomain.okta.com/api/v1/features/:featureId",
+            "params": [
+              {
+                "name": "featureId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Success"
+        },
+        {
+          "info": {
+            "name": "listFeatureDependencies",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://your-subdomain.okta.com/api/v1/features/:featureId/dependencies",
+            "params": [
+              {
+                "name": "featureId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Success"
+        },
+        {
+          "info": {
+            "name": "listFeatureDependents",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://your-subdomain.okta.com/api/v1/features/:featureId/dependents",
+            "params": [
+              {
+                "name": "featureId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Success"
+        },
+        {
+          "info": {
+            "name": "updateFeatureLifecycle",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://your-subdomain.okta.com/api/v1/features/:featureId/:lifecycle",
+            "params": [
+              {
+                "name": "featureId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "lifecycle",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "mode",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Success"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

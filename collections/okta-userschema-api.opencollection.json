@@ -1,0 +1,122 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Okta Application UserSchema API",
+    "version": "2.16.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "UserSchema",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Okta Fetches the Schema for an App User",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://your-subdomain.okta.com/api/v1/meta/schemas/apps/:appInstanceId/default",
+            "params": [
+              {
+                "name": "appInstanceId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Fetches the Schema for an App User"
+        },
+        {
+          "info": {
+            "name": "Okta Partial updates on the User Profile properties of the Application User Schema.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://your-subdomain.okta.com/api/v1/meta/schemas/apps/:appInstanceId/default",
+            "params": [
+              {
+                "name": "appInstanceId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Partial updates on the User Profile properties of the Application User Schema."
+        },
+        {
+          "info": {
+            "name": "Okta Fetches the schema for a Schema Id.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://your-subdomain.okta.com/api/v1/meta/schemas/user/:schemaId",
+            "params": [
+              {
+                "name": "schemaId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Fetches the schema for a Schema Id."
+        },
+        {
+          "info": {
+            "name": "updateUserProfile",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://your-subdomain.okta.com/api/v1/meta/schemas/user/:schemaId",
+            "params": [
+              {
+                "name": "schemaId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Partial updates on the User Profile properties of the user schema."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

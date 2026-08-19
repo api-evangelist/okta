@@ -1,0 +1,195 @@
+{
+  "item": [
+    {
+      "id": "6d671307-ca6c-4e49-aea7-9c0cc214386e",
+      "name": "Log",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "78c9eee5-09a8-4c49-a5d1-b3e839cbc859",
+          "name": "Fetch a list of events from your Okta organization system log.",
+          "request": {
+            "name": "Fetch a list of events from your Okta organization system log.",
+            "description": {
+              "content": "The Okta System Log API provides read access to your organization’s system log. This API provides more functionality than the Events API",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "logs"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "since",
+                  "value": "<dateTime>"
+                },
+                {
+                  "disabled": false,
+                  "key": "until",
+                  "value": "<dateTime>"
+                },
+                {
+                  "disabled": false,
+                  "key": "filter",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "q",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "100"
+                },
+                {
+                  "disabled": false,
+                  "key": "sortOrder",
+                  "value": "ASCENDING"
+                },
+                {
+                  "disabled": false,
+                  "key": "after",
+                  "value": "<string>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "bac28260-d842-4a0c-aebb-1e1b06c2e3ff",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "logs"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "since",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "until",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "q",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "100"
+                    },
+                    {
+                      "key": "sortOrder",
+                      "value": "ASCENDING"
+                    },
+                    {
+                      "key": "after",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"actor\": {\n      \"alternateId\": \"string\",\n      \"detail\": {\n        \"key_0\": {}\n      },\n      \"displayName\": \"string\",\n      \"id\": \"string\",\n      \"type\": \"string\"\n    },\n    \"authenticationContext\": {\n      \"authenticationProvider\": \"FEDERATION\",\n      \"authenticationStep\": 6297,\n      \"credentialProvider\": \"YUBIKEY\",\n      \"credentialType\": \"OAUTH2\",\n      \"externalSessionId\": \"string\",\n      \"interface\": \"string\",\n      \"issuer\": {\n        \"id\": \"string\",\n        \"type\": \"string\"\n      }\n    },\n    \"client\": {\n      \"device\": \"string\",\n      \"geographicalContext\": {\n        \"city\": \"string\",\n        \"country\": \"string\",\n        \"geolocation\": {\n          \"lat\": 7997.222843458286,\n          \"lon\": 8457.16165315849\n        },\n        \"postalCode\": \"string\",\n        \"state\": \"string\"\n      },\n      \"id\": \"string\",\n      \"ipAddress\": \"string\",\n      \"userAgent\": {\n        \"browser\": \"string\",\n        \"os\": \"string\",\n        \"rawUserAgent\": \"string\"\n      },\n      \"zone\": \"string\"\n    },\n    \"debugContext\": {\n      \"debugData\": {\n        \"key_0\": {},\n        \"key_1\": {}\n      }\n    },\n    \"displayMessage\": \"string\",\n    \"eventType\": \"string\",\n    \"legacyEventType\": \"string\",\n    \"outcome\": {\n      \"reason\": \"string\",\n      \"result\": \"string\"\n    },\n    \"published\": \"1981-06-19T09:35:16.240Z\",\n    \"request\": {\n      \"ipChain\": [\n        {\n          \"geographicalContext\": {\n            \"city\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"country\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"geolocation\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"postalCode\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"state\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"ip\": \"string\",\n          \"source\": \"string\",\n          \"version\": \"string\"\n        },\n        {\n          \"geographicalContext\": {\n            \"city\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"country\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"geolocation\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"postalCode\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"state\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"ip\": \"string\",\n          \"source\": \"string\",\n          \"version\": \"string\"\n        }\n      ]\n    },\n    \"securityContext\": {\n      \"asNumber\": 9058,\n      \"asOrg\": \"string\",\n      \"domain\": \"string\",\n      \"isProxy\": false,\n      \"isp\": \"string\"\n    },\n    \"severity\": \"DEBUG\",\n    \"target\": [\n      {\n        \"alternateId\": \"string\",\n        \"detailEntry\": {\n          \"key_0\": {},\n          \"key_1\": {},\n          \"key_2\": {},\n          \"key_3\": {}\n        },\n        \"displayName\": \"string\",\n        \"id\": \"string\",\n        \"type\": \"string\"\n      },\n      {\n        \"alternateId\": \"string\",\n        \"detailEntry\": {\n          \"key_0\": {},\n          \"key_1\": {},\n          \"key_2\": {}\n        },\n        \"displayName\": \"string\",\n        \"id\": \"string\",\n        \"type\": \"string\"\n      }\n    ],\n    \"transaction\": {\n      \"detail\": {\n        \"key_0\": {},\n        \"key_1\": {}\n      },\n      \"id\": \"string\",\n      \"type\": \"string\"\n    },\n    \"uuid\": \"string\",\n    \"version\": \"string\"\n  },\n  {\n    \"actor\": {\n      \"alternateId\": \"string\",\n      \"detail\": {\n        \"key_0\": {},\n        \"key_1\": {},\n        \"key_2\": {},\n        \"key_3\": {}\n      },\n      \"displayName\": \"string\",\n      \"id\": \"string\",\n      \"type\": \"string\"\n    },\n    \"authenticationContext\": {\n      \"authenticationProvider\": \"OKTA_AUTHENTICATION_PROVIDER\",\n      \"authenticationStep\": 7690,\n      \"credentialProvider\": \"RSA\",\n      \"credentialType\": \"SMS\",\n      \"externalSessionId\": \"string\",\n      \"interface\": \"string\",\n      \"issuer\": {\n        \"id\": \"string\",\n        \"type\": \"string\"\n      }\n    },\n    \"client\": {\n      \"device\": \"string\",\n      \"geographicalContext\": {\n        \"city\": \"string\",\n        \"country\": \"string\",\n        \"geolocation\": {\n          \"lat\": 780.1654553046533,\n          \"lon\": 8764.22753287817\n        },\n        \"postalCode\": \"string\",\n        \"state\": \"string\"\n      },\n      \"id\": \"string\",\n      \"ipAddress\": \"string\",\n      \"userAgent\": {\n        \"browser\": \"string\",\n        \"os\": \"string\",\n        \"rawUserAgent\": \"string\"\n      },\n      \"zone\": \"string\"\n    },\n    \"debugContext\": {\n      \"debugData\": {\n        \"key_0\": {},\n        \"key_1\": {},\n        \"key_2\": {}\n      }\n    },\n    \"displayMessage\": \"string\",\n    \"eventType\": \"string\",\n    \"legacyEventType\": \"string\",\n    \"outcome\": {\n      \"reason\": \"string\",\n      \"result\": \"string\"\n    },\n    \"published\": \"1979-01-16T03:24:21.461Z\",\n    \"request\": {\n      \"ipChain\": [\n        {\n          \"geographicalContext\": {\n            \"city\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"country\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"geolocation\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"postalCode\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"state\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"ip\": \"string\",\n          \"source\": \"string\",\n          \"version\": \"string\"\n        },\n        {\n          \"geographicalContext\": {\n            \"city\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"country\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"geolocation\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"postalCode\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"state\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"ip\": \"string\",\n          \"source\": \"string\",\n          \"version\": \"string\"\n        }\n      ]\n    },\n    \"securityContext\": {\n      \"asNumber\": 6360,\n      \"asOrg\": \"string\",\n      \"domain\": \"string\",\n      \"isProxy\": true,\n      \"isp\": \"string\"\n    },\n    \"severity\": \"ERROR\",\n    \"target\": [\n      {\n        \"alternateId\": \"string\",\n        \"detailEntry\": {\n          \"key_0\": {}\n        },\n        \"displayName\": \"string\",\n        \"id\": \"string\",\n        \"type\": \"string\"\n      },\n      {\n        \"alternateId\": \"string\",\n        \"detailEntry\": {\n          \"key_0\": {},\n          \"key_1\": {},\n          \"key_2\": {}\n        },\n        \"displayName\": \"string\",\n        \"id\": \"string\",\n        \"type\": \"string\"\n      }\n    ],\n    \"transaction\": {\n      \"detail\": {\n        \"key_0\": {},\n        \"key_1\": {},\n        \"key_2\": {},\n        \"key_3\": {},\n        \"key_4\": {}\n      },\n      \"id\": \"string\",\n      \"type\": \"string\"\n    },\n    \"uuid\": \"string\",\n    \"version\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://your-subdomain.okta.com/",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "e4e568b7-5104-4e09-88e4-0ba61bd4c791",
+    "name": "Okta Application Log API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Allows customers to easily access the Okta API\n\nContact Support:\n Name: Okta Developer Team\n Email: devex-public@okta.com",
+      "type": "text/plain"
+    }
+  }
+}

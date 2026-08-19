@@ -1,0 +1,104 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Okta Application LinkedObject API",
+    "version": "2.16.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "LinkedObject",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "listLinkedObjectDefinitions",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://your-subdomain.okta.com/api/v1/meta/schemas/user/linkedObjects",
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Success"
+        },
+        {
+          "info": {
+            "name": "addLinkedObjectDefinition",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://your-subdomain.okta.com/api/v1/meta/schemas/user/linkedObjects",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Success"
+        },
+        {
+          "info": {
+            "name": "getLinkedObjectDefinition",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://your-subdomain.okta.com/api/v1/meta/schemas/user/linkedObjects/:linkedObjectName",
+            "params": [
+              {
+                "name": "linkedObjectName",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Success"
+        },
+        {
+          "info": {
+            "name": "deleteLinkedObjectDefinition",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://your-subdomain.okta.com/api/v1/meta/schemas/user/linkedObjects/:linkedObjectName",
+            "params": [
+              {
+                "name": "linkedObjectName",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Success"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,1513 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Okta Application API",
+    "version": "2.16.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Application",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Okta List Applications",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://your-subdomain.okta.com/api/v1/apps",
+            "params": [
+              {
+                "name": "q",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "after",
+                "value": "",
+                "type": "query",
+                "description": "Specifies the pagination cursor for the next page of apps"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Specifies the number of results for a page"
+              },
+              {
+                "name": "filter",
+                "value": "",
+                "type": "query",
+                "description": "Filters apps by status, user.id, group.id or credentials.signing.kid expression"
+              },
+              {
+                "name": "expand",
+                "value": "",
+                "type": "query",
+                "description": "Traverses users link relationship and optionally embeds Application User resource"
+              },
+              {
+                "name": "includeNonDeleted",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Enumerates apps added to your organization with pagination. A subset of apps can be returned that match a supported filter expression or query."
+        },
+        {
+          "info": {
+            "name": "Okta Add Application",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://your-subdomain.okta.com/api/v1/apps",
+            "headers": [
+              {
+                "name": "OktaAccessGateway-Agent",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "activate",
+                "value": "",
+                "type": "query",
+                "description": "Executes activation lifecycle operation when creating the app"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Adds a new application to your Okta organization."
+        },
+        {
+          "info": {
+            "name": "Okta Get Application",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://your-subdomain.okta.com/api/v1/apps/:appId",
+            "params": [
+              {
+                "name": "appId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "expand",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Fetches an application from your Okta organization by `id`."
+        },
+        {
+          "info": {
+            "name": "Okta Update Application",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://your-subdomain.okta.com/api/v1/apps/:appId",
+            "params": [
+              {
+                "name": "appId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Updates an application in your organization."
+        },
+        {
+          "info": {
+            "name": "Okta Delete Application",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://your-subdomain.okta.com/api/v1/apps/:appId",
+            "params": [
+              {
+                "name": "appId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Removes an inactive application."
+        },
+        {
+          "info": {
+            "name": "Okta Fetches the default Provisioning Connection for an application.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://your-subdomain.okta.com/api/v1/apps/:appId/connections/default",
+            "params": [
+              {
+                "name": "appId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Get default Provisioning Connection for application"
+        },
+        {
+          "info": {
+            "name": "Okta Sets the default Provisioning Connection for an application.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://your-subdomain.okta.com/api/v1/apps/:appId/connections/default",
+            "params": [
+              {
+                "name": "appId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "activate",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Set default Provisioning Connection for application"
+        },
+        {
+          "info": {
+            "name": "Okta Activate default Provisioning Connection for application",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://your-subdomain.okta.com/api/v1/apps/:appId/connections/default/lifecycle/activate",
+            "params": [
+              {
+                "name": "appId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Activates the default Provisioning Connection for an application."
+        },
+        {
+          "info": {
+            "name": "Okta Deactivate default Provisioning Connection for application",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://your-subdomain.okta.com/api/v1/apps/:appId/connections/default/lifecycle/deactivate",
+            "params": [
+              {
+                "name": "appId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Deactivates the default Provisioning Connection for an application."
+        },
+        {
+          "info": {
+            "name": "Okta List Certificate Signing Requests for Application",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://your-subdomain.okta.com/api/v1/apps/:appId/credentials/csrs",
+            "params": [
+              {
+                "name": "appId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Enumerates Certificate Signing Requests for an application"
+        },
+        {
+          "info": {
+            "name": "Okta Generate Certificate Signing Request for Application",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://your-subdomain.okta.com/api/v1/apps/:appId/credentials/csrs",
+            "params": [
+              {
+                "name": "appId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Generates a new key pair and returns the Certificate Signing Request for it."
+        },
+        {
+          "info": {
+            "name": "getCsrForApplication",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://your-subdomain.okta.com/api/v1/apps/:appId/credentials/csrs/:csrId",
+            "params": [
+              {
+                "name": "appId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "csrId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          }
+        },
+        {
+          "info": {
+            "name": "revokeCsrFromApplication",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://your-subdomain.okta.com/api/v1/apps/:appId/credentials/csrs/:csrId",
+            "params": [
+              {
+                "name": "appId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "csrId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          }
+        },
+        {
+          "info": {
+            "name": "POST /api/v1/apps/{appId}/credentials/csrs/{csrId}/lifecycle/publish",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://your-subdomain.okta.com/api/v1/apps/:appId/credentials/csrs/:csrId/lifecycle/publish",
+            "params": [
+              {
+                "name": "appId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "csrId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          }
+        },
+        {
+          "info": {
+            "name": "Okta List Key Credentials for Application",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://your-subdomain.okta.com/api/v1/apps/:appId/credentials/keys",
+            "params": [
+              {
+                "name": "appId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Enumerates key credentials for an application"
+        },
+        {
+          "info": {
+            "name": "generateApplicationKey",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://your-subdomain.okta.com/api/v1/apps/:appId/credentials/keys/generate",
+            "params": [
+              {
+                "name": "appId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "validityYears",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Generates a new X.509 certificate for an application key credential"
+        },
+        {
+          "info": {
+            "name": "Okta Get Key Credential for Application",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://your-subdomain.okta.com/api/v1/apps/:appId/credentials/keys/:keyId",
+            "params": [
+              {
+                "name": "appId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "keyId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Gets a specific application key credential by kid"
+        },
+        {
+          "info": {
+            "name": "Okta Clone Application Key Credential",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://your-subdomain.okta.com/api/v1/apps/:appId/credentials/keys/:keyId/clone",
+            "params": [
+              {
+                "name": "appId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "keyId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "targetAid",
+                "value": "",
+                "type": "query",
+                "description": "Unique key of the target Application"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Clones a X.509 certificate for an application key credential from a source application to target application."
+        },
+        {
+          "info": {
+            "name": "Okta List client secrets",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://your-subdomain.okta.com/api/v1/apps/:appId/credentials/secrets",
+            "params": [
+              {
+                "name": "appId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Enumerates the client's collection of secrets"
+        },
+        {
+          "info": {
+            "name": "Okta Add new client secret",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://your-subdomain.okta.com/api/v1/apps/:appId/credentials/secrets",
+            "params": [
+              {
+                "name": "appId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Adds a new secret to the client's collection of secrets."
+        },
+        {
+          "info": {
+            "name": "Okta Get client secret",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://your-subdomain.okta.com/api/v1/apps/:appId/credentials/secrets/:secretId",
+            "params": [
+              {
+                "name": "appId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "secretId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Gets a specific client secret by secretId"
+        },
+        {
+          "info": {
+            "name": "deleteClientSecretForApplication",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://your-subdomain.okta.com/api/v1/apps/:appId/credentials/secrets/:secretId",
+            "params": [
+              {
+                "name": "appId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "secretId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Removes a secret from the client's collection of secrets."
+        },
+        {
+          "info": {
+            "name": "Okta Activate a client secret",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://your-subdomain.okta.com/api/v1/apps/:appId/credentials/secrets/:secretId/lifecycle/activate",
+            "params": [
+              {
+                "name": "appId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "secretId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Activates a specific client secret by secretId"
+        },
+        {
+          "info": {
+            "name": "Okta Deactivate a client secret",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://your-subdomain.okta.com/api/v1/apps/:appId/credentials/secrets/:secretId/lifecycle/deactivate",
+            "params": [
+              {
+                "name": "appId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "secretId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Deactivates a specific client secret by secretId"
+        },
+        {
+          "info": {
+            "name": "Okta Fetches the Feature objects for an application.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://your-subdomain.okta.com/api/v1/apps/:appId/features",
+            "params": [
+              {
+                "name": "appId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "List Features for application"
+        },
+        {
+          "info": {
+            "name": "Okta Fetches a Feature object for an application.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://your-subdomain.okta.com/api/v1/apps/:appId/features/:name",
+            "params": [
+              {
+                "name": "appId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "name",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Fetches a Feature object for an application."
+        },
+        {
+          "info": {
+            "name": "Okta Updates a Feature object for an application.",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://your-subdomain.okta.com/api/v1/apps/:appId/features/:name",
+            "params": [
+              {
+                "name": "appId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "name",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Updates a Feature object for an application."
+        },
+        {
+          "info": {
+            "name": "listScopeConsentGrants",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://your-subdomain.okta.com/api/v1/apps/:appId/grants",
+            "params": [
+              {
+                "name": "appId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "expand",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Lists all scope consent grants for the application"
+        },
+        {
+          "info": {
+            "name": "grantConsentToScope",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://your-subdomain.okta.com/api/v1/apps/:appId/grants",
+            "params": [
+              {
+                "name": "appId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Grants consent for the application to request an OAuth 2.0 Okta scope"
+        },
+        {
+          "info": {
+            "name": "getScopeConsentGrant",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://your-subdomain.okta.com/api/v1/apps/:appId/grants/:grantId",
+            "params": [
+              {
+                "name": "appId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "grantId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "expand",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Fetches a single scope consent grant for the application"
+        },
+        {
+          "info": {
+            "name": "revokeScopeConsentGrant",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://your-subdomain.okta.com/api/v1/apps/:appId/grants/:grantId",
+            "params": [
+              {
+                "name": "appId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "grantId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Revokes permission for the application to request the given scope"
+        },
+        {
+          "info": {
+            "name": "Okta List Groups Assigned to Application",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://your-subdomain.okta.com/api/v1/apps/:appId/groups",
+            "params": [
+              {
+                "name": "appId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "q",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "after",
+                "value": "",
+                "type": "query",
+                "description": "Specifies the pagination cursor for the next page of assignments"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Specifies the number of results for a page"
+              },
+              {
+                "name": "expand",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Enumerates group assignments for an application."
+        },
+        {
+          "info": {
+            "name": "Okta Get Assigned Group for Application",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://your-subdomain.okta.com/api/v1/apps/:appId/groups/:groupId",
+            "params": [
+              {
+                "name": "appId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "groupId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "expand",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Fetches an application group assignment"
+        },
+        {
+          "info": {
+            "name": "Okta Assign Group to Application",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://your-subdomain.okta.com/api/v1/apps/:appId/groups/:groupId",
+            "params": [
+              {
+                "name": "appId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "groupId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Assigns a group to an application"
+        },
+        {
+          "info": {
+            "name": "Okta Remove Group from Application",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://your-subdomain.okta.com/api/v1/apps/:appId/groups/:groupId",
+            "params": [
+              {
+                "name": "appId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "groupId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Removes a group assignment from an application."
+        },
+        {
+          "info": {
+            "name": "Okta Activate Application",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://your-subdomain.okta.com/api/v1/apps/:appId/lifecycle/activate",
+            "params": [
+              {
+                "name": "appId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Activates an inactive application."
+        },
+        {
+          "info": {
+            "name": "Okta Deactivate Application",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://your-subdomain.okta.com/api/v1/apps/:appId/lifecycle/deactivate",
+            "params": [
+              {
+                "name": "appId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Deactivates an active application."
+        },
+        {
+          "info": {
+            "name": "Okta The file must be in PNG, JPG, or GIF format, and less than 1 MB in size. For best results use landscape orientation, a transparent background, and a minimum size of 420px by 120px to prevent upscaling.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://your-subdomain.okta.com/api/v1/apps/:appId/logo",
+            "params": [
+              {
+                "name": "appId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "multipart-form",
+              "data": [
+                {
+                  "name": "file",
+                  "type": "text",
+                  "value": ""
+                }
+              ]
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Update the logo for an application."
+        },
+        {
+          "info": {
+            "name": "Okta Update application policy",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://your-subdomain.okta.com/api/v1/apps/:appId/policies/:policyId",
+            "params": [
+              {
+                "name": "appId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "policyId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Assign an application to a specific policy. This unassigns the application from its currently assigned policy."
+        },
+        {
+          "info": {
+            "name": "previewSAMLAppMetadata",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://your-subdomain.okta.com/api/v1/apps/:appId/sso/saml/metadata",
+            "params": [
+              {
+                "name": "appId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "kid",
+                "value": "",
+                "type": "query",
+                "description": "unique key identifier of an Application Key Credential"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Previews SAML metadata based on a specific key credential for an application"
+        },
+        {
+          "info": {
+            "name": "listOAuth2TokensForApplication",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://your-subdomain.okta.com/api/v1/apps/:appId/tokens",
+            "params": [
+              {
+                "name": "appId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "expand",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "after",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Lists all tokens for the application"
+        },
+        {
+          "info": {
+            "name": "revokeOAuth2TokensForApplication",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://your-subdomain.okta.com/api/v1/apps/:appId/tokens",
+            "params": [
+              {
+                "name": "appId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Revokes all tokens for the specified application"
+        },
+        {
+          "info": {
+            "name": "getOAuth2TokenForApplication",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://your-subdomain.okta.com/api/v1/apps/:appId/tokens/:tokenId",
+            "params": [
+              {
+                "name": "appId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "tokenId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "expand",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Gets a token for the specified application"
+        },
+        {
+          "info": {
+            "name": "revokeOAuth2TokenForApplication",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://your-subdomain.okta.com/api/v1/apps/:appId/tokens/:tokenId",
+            "params": [
+              {
+                "name": "appId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "tokenId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Revokes the specified token for the specified application"
+        },
+        {
+          "info": {
+            "name": "Okta List Users Assigned to Application",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://your-subdomain.okta.com/api/v1/apps/:appId/users",
+            "params": [
+              {
+                "name": "appId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "q",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "query_scope",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "after",
+                "value": "",
+                "type": "query",
+                "description": "specifies the pagination cursor for the next page of assignments"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "specifies the number of results for a page"
+              },
+              {
+                "name": "filter",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "expand",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Enumerates all assigned [application users](#application-user-model) for an application."
+        },
+        {
+          "info": {
+            "name": "Okta Assign User to Application for SSO & Provisioning",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://your-subdomain.okta.com/api/v1/apps/:appId/users",
+            "params": [
+              {
+                "name": "appId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Assigns an user to an application with [credentials](#application-user-credentials-object) and an app-specific [profile](#application-user-profile-object). Profile mappings defined for the application are first applied before applying any profile properties specified in the request."
+        },
+        {
+          "info": {
+            "name": "Okta Get Assigned User for Application",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://your-subdomain.okta.com/api/v1/apps/:appId/users/:userId",
+            "params": [
+              {
+                "name": "appId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "userId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "expand",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Fetches a specific user assignment for application by `id`."
+        },
+        {
+          "info": {
+            "name": "Okta Update Application Profile for Assigned User",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://your-subdomain.okta.com/api/v1/apps/:appId/users/:userId",
+            "params": [
+              {
+                "name": "appId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "userId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Updates a user's profile for an application"
+        },
+        {
+          "info": {
+            "name": "Okta Remove User from Application",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://your-subdomain.okta.com/api/v1/apps/:appId/users/:userId",
+            "params": [
+              {
+                "name": "appId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "userId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "sendEmail",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Removes an assignment for a user from an application."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

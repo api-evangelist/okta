@@ -1,0 +1,706 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Okta Application IdentityProvider API",
+    "version": "2.16.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "IdentityProvider",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Okta List Identity Providers",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://your-subdomain.okta.com/api/v1/idps",
+            "params": [
+              {
+                "name": "q",
+                "value": "",
+                "type": "query",
+                "description": "Searches the name property of IdPs for matching value"
+              },
+              {
+                "name": "after",
+                "value": "",
+                "type": "query",
+                "description": "Specifies the pagination cursor for the next page of IdPs"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Specifies the number of IdP results in a page"
+              },
+              {
+                "name": "type",
+                "value": "",
+                "type": "query",
+                "description": "Filters IdPs by type"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Enumerates IdPs in your organization with pagination. A subset of IdPs can be returned that match a supported filter expression or query."
+        },
+        {
+          "info": {
+            "name": "Okta Add Identity Provider",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://your-subdomain.okta.com/api/v1/idps",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Adds a new IdP to your organization."
+        },
+        {
+          "info": {
+            "name": "Okta List Keys",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://your-subdomain.okta.com/api/v1/idps/credentials/keys",
+            "params": [
+              {
+                "name": "after",
+                "value": "",
+                "type": "query",
+                "description": "Specifies the pagination cursor for the next page of keys"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Specifies the number of key results in a page"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Enumerates IdP key credentials."
+        },
+        {
+          "info": {
+            "name": "Okta Add X.509 Certificate Public Key",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://your-subdomain.okta.com/api/v1/idps/credentials/keys",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Adds a new X.509 certificate credential to the IdP key store."
+        },
+        {
+          "info": {
+            "name": "Okta Get Key",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://your-subdomain.okta.com/api/v1/idps/credentials/keys/:keyId",
+            "params": [
+              {
+                "name": "keyId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Gets a specific IdP Key Credential by `kid`"
+        },
+        {
+          "info": {
+            "name": "Okta Delete Key",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://your-subdomain.okta.com/api/v1/idps/credentials/keys/:keyId",
+            "params": [
+              {
+                "name": "keyId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Deletes a specific IdP Key Credential by `kid` if it is not currently being used by an Active or Inactive IdP."
+        },
+        {
+          "info": {
+            "name": "Okta Get Identity Provider",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://your-subdomain.okta.com/api/v1/idps/:idpId",
+            "params": [
+              {
+                "name": "idpId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Fetches an IdP by `id`."
+        },
+        {
+          "info": {
+            "name": "Okta Update Identity Provider",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://your-subdomain.okta.com/api/v1/idps/:idpId",
+            "params": [
+              {
+                "name": "idpId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Updates the configuration for an IdP."
+        },
+        {
+          "info": {
+            "name": "Okta Delete Identity Provider",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://your-subdomain.okta.com/api/v1/idps/:idpId",
+            "params": [
+              {
+                "name": "idpId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Removes an IdP from your organization."
+        },
+        {
+          "info": {
+            "name": "Okta List Certificate Signing Requests for IdP",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://your-subdomain.okta.com/api/v1/idps/:idpId/credentials/csrs",
+            "params": [
+              {
+                "name": "idpId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Enumerates Certificate Signing Requests for an IdP"
+        },
+        {
+          "info": {
+            "name": "Okta Generate Certificate Signing Request for IdP",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://your-subdomain.okta.com/api/v1/idps/:idpId/credentials/csrs",
+            "params": [
+              {
+                "name": "idpId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Generates a new key pair and returns a Certificate Signing Request for it."
+        },
+        {
+          "info": {
+            "name": "getCsrForIdentityProvider",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://your-subdomain.okta.com/api/v1/idps/:idpId/credentials/csrs/:csrId",
+            "params": [
+              {
+                "name": "idpId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "csrId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Gets a specific Certificate Signing Request model by id"
+        },
+        {
+          "info": {
+            "name": "revokeCsrForIdentityProvider",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://your-subdomain.okta.com/api/v1/idps/:idpId/credentials/csrs/:csrId",
+            "params": [
+              {
+                "name": "idpId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "csrId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Revoke a Certificate Signing Request and delete the key pair from the IdP"
+        },
+        {
+          "info": {
+            "name": "POST /api/v1/idps/{idpId}/credentials/csrs/{csrId}/lifecycle/publish",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://your-subdomain.okta.com/api/v1/idps/:idpId/credentials/csrs/:csrId/lifecycle/publish",
+            "params": [
+              {
+                "name": "idpId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "csrId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Update the Certificate Signing Request with a signed X.509 certificate and add it into the signing key credentials for the IdP."
+        },
+        {
+          "info": {
+            "name": "Okta List Signing Key Credentials for IdP",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://your-subdomain.okta.com/api/v1/idps/:idpId/credentials/keys",
+            "params": [
+              {
+                "name": "idpId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Enumerates signing key credentials for an IdP"
+        },
+        {
+          "info": {
+            "name": "Okta Generate New IdP Signing Key Credential",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://your-subdomain.okta.com/api/v1/idps/:idpId/credentials/keys/generate",
+            "params": [
+              {
+                "name": "idpId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "validityYears",
+                "value": "",
+                "type": "query",
+                "description": "expiry of the IdP Key Credential"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Generates a new X.509 certificate for an IdP signing key credential to be used for signing assertions sent to the IdP"
+        },
+        {
+          "info": {
+            "name": "Okta Get Signing Key Credential for IdP",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://your-subdomain.okta.com/api/v1/idps/:idpId/credentials/keys/:keyId",
+            "params": [
+              {
+                "name": "idpId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "keyId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Gets a specific IdP Key Credential by `kid`"
+        },
+        {
+          "info": {
+            "name": "Okta Clone Signing Key Credential for IdP",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://your-subdomain.okta.com/api/v1/idps/:idpId/credentials/keys/:keyId/clone",
+            "params": [
+              {
+                "name": "idpId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "keyId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "targetIdpId",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Clones a X.509 certificate for an IdP signing key credential from a source IdP to target IdP"
+        },
+        {
+          "info": {
+            "name": "Okta Activate Identity Provider",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://your-subdomain.okta.com/api/v1/idps/:idpId/lifecycle/activate",
+            "params": [
+              {
+                "name": "idpId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Activates an inactive IdP."
+        },
+        {
+          "info": {
+            "name": "Okta Deactivate Identity Provider",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://your-subdomain.okta.com/api/v1/idps/:idpId/lifecycle/deactivate",
+            "params": [
+              {
+                "name": "idpId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Deactivates an active IdP."
+        },
+        {
+          "info": {
+            "name": "Okta Find Users",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://your-subdomain.okta.com/api/v1/idps/:idpId/users",
+            "params": [
+              {
+                "name": "idpId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Find all the users linked to an identity provider"
+        },
+        {
+          "info": {
+            "name": "getIdentityProviderApplicationUser",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://your-subdomain.okta.com/api/v1/idps/:idpId/users/:userId",
+            "params": [
+              {
+                "name": "idpId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "userId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Fetches a linked IdP user by ID"
+        },
+        {
+          "info": {
+            "name": "Okta Link a user to a Social IdP without a transaction",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://your-subdomain.okta.com/api/v1/idps/:idpId/users/:userId",
+            "params": [
+              {
+                "name": "idpId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "userId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Links an Okta user to an existing Social Identity Provider. This does not support the SAML2 Identity Provider Type"
+        },
+        {
+          "info": {
+            "name": "Okta Unlink User from IdP",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://your-subdomain.okta.com/api/v1/idps/:idpId/users/:userId",
+            "params": [
+              {
+                "name": "idpId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "userId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Removes the link between the Okta user and the IdP user."
+        },
+        {
+          "info": {
+            "name": "Okta Social Authentication Token Operation",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://your-subdomain.okta.com/api/v1/idps/:idpId/users/:userId/credentials/tokens",
+            "params": [
+              {
+                "name": "idpId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "userId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Fetches the tokens minted by the Social Authentication Provider when the user authenticates with Okta via Social Auth."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,421 @@
+{
+  "item": [
+    {
+      "id": "c42a0c66-5066-4178-929c-a80d28d64d6d",
+      "name": "ProfileMapping",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "3f47a399-1ffb-4aef-a472-eb4de890ce58",
+          "name": "list Profile Mappings",
+          "request": {
+            "name": "list Profile Mappings",
+            "description": {
+              "content": "Enumerates Profile Mappings in your organization with pagination.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "mappings"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "after",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "-1"
+                },
+                {
+                  "disabled": false,
+                  "key": "sourceId",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "targetId",
+                  "value": "<string>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "82e50b0d-32b2-4aa5-8d55-856025cae900",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "mappings"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "after",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "-1"
+                    },
+                    {
+                      "key": "sourceId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "targetId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"_links\": {\n      \"key_0\": {},\n      \"key_1\": {}\n    },\n    \"id\": \"string\",\n    \"properties\": {\n      \"key_0\": {\n        \"expression\": \"string\",\n        \"pushStatus\": \"DONT_PUSH\"\n      },\n      \"key_1\": {\n        \"expression\": \"string\",\n        \"pushStatus\": \"DONT_PUSH\"\n      },\n      \"key_2\": {\n        \"expression\": \"string\",\n        \"pushStatus\": \"DONT_PUSH\"\n      }\n    },\n    \"source\": {\n      \"_links\": {\n        \"key_0\": {},\n        \"key_1\": {},\n        \"key_2\": {}\n      },\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"type\": \"string\"\n    },\n    \"target\": {\n      \"_links\": {\n        \"key_0\": {}\n      },\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"type\": \"string\"\n    }\n  },\n  {\n    \"_links\": {\n      \"key_0\": {},\n      \"key_1\": {}\n    },\n    \"id\": \"string\",\n    \"properties\": {\n      \"key_0\": {\n        \"expression\": \"string\",\n        \"pushStatus\": \"DONT_PUSH\"\n      },\n      \"key_1\": {\n        \"expression\": \"string\",\n        \"pushStatus\": \"DONT_PUSH\"\n      }\n    },\n    \"source\": {\n      \"_links\": {\n        \"key_0\": {},\n        \"key_1\": {}\n      },\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"type\": \"string\"\n    },\n    \"target\": {\n      \"_links\": {\n        \"key_0\": {}\n      },\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"type\": \"string\"\n    }\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b3bdcd13-69ab-4fb2-904d-34bb8693799f",
+          "name": "Okta Get Profile Mapping",
+          "request": {
+            "name": "Okta Get Profile Mapping",
+            "description": {
+              "content": "Fetches a single Profile Mapping referenced by its ID.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "mappings",
+                ":mappingId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "mappingId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "71bfbbfd-a09b-42c6-b34d-0258ba6252ad",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "mappings",
+                    ":mappingId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "mappingId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"_links\": {\n    \"key_0\": {},\n    \"key_1\": {}\n  },\n  \"id\": \"string\",\n  \"properties\": {\n    \"key_0\": {\n      \"expression\": \"string\",\n      \"pushStatus\": \"PUSH\"\n    }\n  },\n  \"source\": {\n    \"_links\": {\n      \"key_0\": {}\n    },\n    \"id\": \"string\",\n    \"name\": \"string\",\n    \"type\": \"string\"\n  },\n  \"target\": {\n    \"_links\": {\n      \"key_0\": {},\n      \"key_1\": {}\n    },\n    \"id\": \"string\",\n    \"name\": \"string\",\n    \"type\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "9527aef8-47c5-425f-b893-978cfb4f4e4a",
+          "name": "Okta Update Profile Mapping",
+          "request": {
+            "name": "Okta Update Profile Mapping",
+            "description": {
+              "content": "Updates an existing Profile Mapping by adding, updating, or removing one or many Property Mappings.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "mappings",
+                ":mappingId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "mappingId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"source\": {},\n  \"target\": {}\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "ce121cb2-c73c-43fe-b501-df41892f44d1",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "mappings",
+                    ":mappingId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "mappingId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"source\": {},\n  \"target\": {}\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"_links\": {\n    \"key_0\": {},\n    \"key_1\": {}\n  },\n  \"id\": \"string\",\n  \"properties\": {\n    \"key_0\": {\n      \"expression\": \"string\",\n      \"pushStatus\": \"PUSH\"\n    }\n  },\n  \"source\": {\n    \"_links\": {\n      \"key_0\": {}\n    },\n    \"id\": \"string\",\n    \"name\": \"string\",\n    \"type\": \"string\"\n  },\n  \"target\": {\n    \"_links\": {\n      \"key_0\": {},\n      \"key_1\": {}\n    },\n    \"id\": \"string\",\n    \"name\": \"string\",\n    \"type\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://your-subdomain.okta.com/",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "8e0aacf8-38aa-4321-808f-222d05956a26",
+    "name": "Okta Application ProfileMapping API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Allows customers to easily access the Okta API\n\nContact Support:\n Name: Okta Developer Team\n Email: devex-public@okta.com",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,56 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Okta Application GroupSchema API",
+    "version": "2.16.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "GroupSchema",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Okta Fetches the group schema",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://your-subdomain.okta.com/api/v1/meta/schemas/group/default",
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Fetches the group schema"
+        },
+        {
+          "info": {
+            "name": "Okta Updates, adds ore removes one or more custom Group Profile properties in the schema",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://your-subdomain.okta.com/api/v1/meta/schemas/group/default",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Updates, adds ore removes one or more custom Group Profile properties in the schema"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

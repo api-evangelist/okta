@@ -1,0 +1,1350 @@
+{
+  "item": [
+    {
+      "id": "6c5cd69d-92d3-45a7-a0c7-6de9ad4e8c6f",
+      "name": "UserFactor",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "d22c15cd-41d4-4327-b0bc-e5c342e166ef",
+          "name": "list Factors",
+          "request": {
+            "name": "list Factors",
+            "description": {
+              "content": "Enumerates all the enrolled factors for the specified user",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "users",
+                ":userId",
+                "factors"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "userId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "75f5dc6c-108c-4a5d-9491-b83b11126595",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "users",
+                    ":userId",
+                    "factors"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "userId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"_embedded\": {\n      \"key_0\": {},\n      \"key_1\": {},\n      \"key_2\": {}\n    },\n    \"_links\": {\n      \"key_0\": {}\n    },\n    \"created\": \"1990-05-28T13:01:14.740Z\",\n    \"factorType\": \"sms\",\n    \"id\": \"string\",\n    \"lastUpdated\": \"1949-02-13T08:17:12.919Z\",\n    \"provider\": \"RSA\",\n    \"status\": \"INACTIVE\",\n    \"verify\": {\n      \"activationToken\": \"string\",\n      \"answer\": \"string\",\n      \"attestation\": \"string\",\n      \"clientData\": \"string\",\n      \"nextPassCode\": \"string\",\n      \"passCode\": \"string\",\n      \"registrationData\": \"string\",\n      \"stateToken\": \"string\"\n    }\n  },\n  {\n    \"_embedded\": {\n      \"key_0\": {},\n      \"key_1\": {},\n      \"key_2\": {},\n      \"key_3\": {}\n    },\n    \"_links\": {\n      \"key_0\": {},\n      \"key_1\": {},\n      \"key_2\": {}\n    },\n    \"created\": \"1974-04-16T23:38:14.688Z\",\n    \"factorType\": \"email\",\n    \"id\": \"string\",\n    \"lastUpdated\": \"1955-08-25T17:12:22.667Z\",\n    \"provider\": \"FIDO\",\n    \"status\": \"ENROLLED\",\n    \"verify\": {\n      \"activationToken\": \"string\",\n      \"answer\": \"string\",\n      \"attestation\": \"string\",\n      \"clientData\": \"string\",\n      \"nextPassCode\": \"string\",\n      \"passCode\": \"string\",\n      \"registrationData\": \"string\",\n      \"stateToken\": \"string\"\n    }\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f12b6fda-e1c9-4488-999b-40b7acf94724",
+          "name": "Okta Enroll Factor",
+          "request": {
+            "name": "Okta Enroll Factor",
+            "description": {
+              "content": "Enrolls a user with a supported factor.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "users",
+                ":userId",
+                "factors"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "updatePhone",
+                  "value": "false"
+                },
+                {
+                  "disabled": false,
+                  "key": "templateId",
+                  "value": "<string>",
+                  "description": "id of SMS template (only for SMS factor)"
+                },
+                {
+                  "disabled": false,
+                  "key": "tokenLifetimeSeconds",
+                  "value": "300"
+                },
+                {
+                  "disabled": false,
+                  "key": "activate",
+                  "value": "false"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "userId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"factorType\": \"<string>\",\n  \"provider\": \"<string>\",\n  \"status\": \"<string>\",\n  \"verify\": {\n    \"activationToken\": \"<string>\",\n    \"answer\": \"<string>\",\n    \"attestation\": \"<string>\",\n    \"clientData\": \"<string>\",\n    \"nextPassCode\": \"<string>\",\n    \"passCode\": \"<string>\",\n    \"registrationData\": \"<string>\",\n    \"stateToken\": \"<string>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "1a64d7f4-6530-41ed-9177-e8b5b7e1e4af",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "users",
+                    ":userId",
+                    "factors"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "updatePhone",
+                      "value": "false"
+                    },
+                    {
+                      "key": "templateId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "tokenLifetimeSeconds",
+                      "value": "300"
+                    },
+                    {
+                      "key": "activate",
+                      "value": "false"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "userId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"factorType\": \"<string>\",\n  \"provider\": \"<string>\",\n  \"status\": \"<string>\",\n  \"verify\": {\n    \"activationToken\": \"<string>\",\n    \"answer\": \"<string>\",\n    \"attestation\": \"<string>\",\n    \"clientData\": \"<string>\",\n    \"nextPassCode\": \"<string>\",\n    \"passCode\": \"<string>\",\n    \"registrationData\": \"<string>\",\n    \"stateToken\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"_embedded\": {\n    \"key_0\": {}\n  },\n  \"_links\": {\n    \"key_0\": {},\n    \"key_1\": {}\n  },\n  \"created\": \"1968-05-23T21:34:54.744Z\",\n  \"factorType\": \"<string>\",\n  \"id\": \"string\",\n  \"lastUpdated\": \"2010-12-20T13:00:39.912Z\",\n  \"provider\": \"<string>\",\n  \"status\": \"<string>\",\n  \"verify\": {\n    \"activationToken\": \"<string>\",\n    \"answer\": \"<string>\",\n    \"attestation\": \"<string>\",\n    \"clientData\": \"<string>\",\n    \"nextPassCode\": \"<string>\",\n    \"passCode\": \"<string>\",\n    \"registrationData\": \"<string>\",\n    \"stateToken\": \"<string>\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "61ba603f-0615-4386-98d1-8601850510b0",
+          "name": "list Supported Factors",
+          "request": {
+            "name": "list Supported Factors",
+            "description": {
+              "content": "Enumerates all the supported factors that can be enrolled for the specified user",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "users",
+                ":userId",
+                "factors",
+                "catalog"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "userId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "99e15cdb-9a62-4997-9c88-84d0fcb72963",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "users",
+                    ":userId",
+                    "factors",
+                    "catalog"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "userId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"_embedded\": {\n      \"key_0\": {},\n      \"key_1\": {}\n    },\n    \"_links\": {\n      \"key_0\": {}\n    },\n    \"created\": \"1984-07-24T00:24:55.555Z\",\n    \"factorType\": \"<string>\",\n    \"id\": \"string\",\n    \"lastUpdated\": \"2008-04-22T00:19:52.414Z\",\n    \"provider\": \"<string>\",\n    \"status\": \"<string>\",\n    \"verify\": {\n      \"activationToken\": \"<string>\",\n      \"answer\": \"<string>\",\n      \"attestation\": \"<string>\",\n      \"clientData\": \"<string>\",\n      \"nextPassCode\": \"<string>\",\n      \"passCode\": \"<string>\",\n      \"registrationData\": \"<string>\",\n      \"stateToken\": \"<string>\"\n    }\n  },\n  {\n    \"_embedded\": {\n      \"key_0\": {},\n      \"key_1\": {}\n    },\n    \"_links\": {\n      \"key_0\": {},\n      \"key_1\": {},\n      \"key_2\": {},\n      \"key_3\": {}\n    },\n    \"created\": \"1993-10-31T05:31:02.501Z\",\n    \"factorType\": \"<string>\",\n    \"id\": \"string\",\n    \"lastUpdated\": \"1954-07-06T01:11:07.065Z\",\n    \"provider\": \"<string>\",\n    \"status\": \"<string>\",\n    \"verify\": {\n      \"activationToken\": \"<string>\",\n      \"answer\": \"<string>\",\n      \"attestation\": \"<string>\",\n      \"clientData\": \"<string>\",\n      \"nextPassCode\": \"<string>\",\n      \"passCode\": \"<string>\",\n      \"registrationData\": \"<string>\",\n      \"stateToken\": \"<string>\"\n    }\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "7f6620fb-cd76-4ab7-9465-896341492da3",
+          "name": "list Supported Security Questions",
+          "request": {
+            "name": "list Supported Security Questions",
+            "description": {
+              "content": "Enumerates all available security questions for a user's `question` factor",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "users",
+                ":userId",
+                "factors",
+                "questions"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "userId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "81394be4-2d2d-49e2-9e4b-1a355d8ae36c",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "users",
+                    ":userId",
+                    "factors",
+                    "questions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "userId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"answer\": \"string\",\n    \"question\": \"string\",\n    \"questionText\": \"string\"\n  },\n  {\n    \"answer\": \"string\",\n    \"question\": \"string\",\n    \"questionText\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c1e5f6e2-97bf-4061-9412-df9e8bc85938",
+          "name": "get Factor",
+          "request": {
+            "name": "get Factor",
+            "description": {
+              "content": "Fetches a factor for the specified user",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "users",
+                ":userId",
+                "factors",
+                ":factorId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "userId",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "factorId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "a83aa08d-f3e9-489a-987c-0047170fab8c",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "users",
+                    ":userId",
+                    "factors",
+                    ":factorId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "userId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "factorId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"_embedded\": {\n    \"key_0\": {}\n  },\n  \"_links\": {\n    \"key_0\": {},\n    \"key_1\": {}\n  },\n  \"created\": \"1968-05-23T21:34:54.744Z\",\n  \"factorType\": \"<string>\",\n  \"id\": \"string\",\n  \"lastUpdated\": \"2010-12-20T13:00:39.912Z\",\n  \"provider\": \"<string>\",\n  \"status\": \"<string>\",\n  \"verify\": {\n    \"activationToken\": \"<string>\",\n    \"answer\": \"<string>\",\n    \"attestation\": \"<string>\",\n    \"clientData\": \"<string>\",\n    \"nextPassCode\": \"<string>\",\n    \"passCode\": \"<string>\",\n    \"registrationData\": \"<string>\",\n    \"stateToken\": \"<string>\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "bc7fdd80-272a-44cd-82a6-fedaa66b1ca9",
+          "name": "delete Factor",
+          "request": {
+            "name": "delete Factor",
+            "description": {
+              "content": "Unenrolls an existing factor for the specified user, allowing the user to enroll a new factor.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "users",
+                ":userId",
+                "factors",
+                ":factorId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "userId",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "factorId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "3b2a1123-077f-4a43-8446-8e849206b63a",
+              "name": "No Content",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "users",
+                    ":userId",
+                    "factors",
+                    ":factorId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "userId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "factorId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "6e61e2b3-d5df-4a54-8338-8636fcf68851",
+          "name": "Okta Activate Factor",
+          "request": {
+            "name": "Okta Activate Factor",
+            "description": {
+              "content": "The `sms` and `token:software:totp` factor types require activation to complete the enrollment process.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "users",
+                ":userId",
+                "factors",
+                ":factorId",
+                "lifecycle",
+                "activate"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "userId",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "factorId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"attestation\": \"<string>\",\n  \"clientData\": \"<string>\",\n  \"passCode\": \"<string>\",\n  \"registrationData\": \"<string>\",\n  \"stateToken\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "455217dd-4dd5-45fc-bd98-7358a8271b90",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "users",
+                    ":userId",
+                    "factors",
+                    ":factorId",
+                    "lifecycle",
+                    "activate"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "userId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "factorId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"attestation\": \"<string>\",\n  \"clientData\": \"<string>\",\n  \"passCode\": \"<string>\",\n  \"registrationData\": \"<string>\",\n  \"stateToken\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"_embedded\": {\n    \"key_0\": {}\n  },\n  \"_links\": {\n    \"key_0\": {},\n    \"key_1\": {}\n  },\n  \"created\": \"1968-05-23T21:34:54.744Z\",\n  \"factorType\": \"<string>\",\n  \"id\": \"string\",\n  \"lastUpdated\": \"2010-12-20T13:00:39.912Z\",\n  \"provider\": \"<string>\",\n  \"status\": \"<string>\",\n  \"verify\": {\n    \"activationToken\": \"<string>\",\n    \"answer\": \"<string>\",\n    \"attestation\": \"<string>\",\n    \"clientData\": \"<string>\",\n    \"nextPassCode\": \"<string>\",\n    \"passCode\": \"<string>\",\n    \"registrationData\": \"<string>\",\n    \"stateToken\": \"<string>\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "12f7b4e6-9877-4518-9c2d-2736d3cf6c5e",
+          "name": "get Factor Transaction Status",
+          "request": {
+            "name": "get Factor Transaction Status",
+            "description": {
+              "content": "Polls factors verification transaction for status.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "users",
+                ":userId",
+                "factors",
+                ":factorId",
+                "transactions",
+                ":transactionId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "userId",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "factorId",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "transactionId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "51a493c3-091f-4019-a4d1-73e65cfebc31",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "users",
+                    ":userId",
+                    "factors",
+                    ":factorId",
+                    "transactions",
+                    ":transactionId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "userId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "factorId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "transactionId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"_embedded\": {\n    \"key_0\": {},\n    \"key_1\": {}\n  },\n  \"_links\": {\n    \"key_0\": {},\n    \"key_1\": {}\n  },\n  \"expiresAt\": \"1991-01-09T06:27:40.091Z\",\n  \"factorResult\": \"TIME_WINDOW_EXCEEDED\",\n  \"factorResultMessage\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c3f3f10c-e12d-4362-b60a-8540b781e478",
+          "name": "Okta Verify MFA Factor",
+          "request": {
+            "name": "Okta Verify MFA Factor",
+            "description": {
+              "content": "Verifies an OTP for a `token` or `token:hardware` factor",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "users",
+                ":userId",
+                "factors",
+                ":factorId",
+                "verify"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "templateId",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "tokenLifetimeSeconds",
+                  "value": "300"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "userId",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "factorId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "key": "X-Forwarded-For",
+                "value": "<string>",
+                "description": ""
+              },
+              {
+                "disabled": false,
+                "key": "User-Agent",
+                "value": "<string>",
+                "description": ""
+              },
+              {
+                "disabled": false,
+                "key": "Accept-Language",
+                "value": "<string>",
+                "description": ""
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"activationToken\": \"<string>\",\n  \"answer\": \"<string>\",\n  \"attestation\": \"<string>\",\n  \"clientData\": \"<string>\",\n  \"nextPassCode\": \"<string>\",\n  \"passCode\": \"<string>\",\n  \"registrationData\": \"<string>\",\n  \"stateToken\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "ef0e79e2-8023-46a3-9ead-9c8d0c9f7225",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "users",
+                    ":userId",
+                    "factors",
+                    ":factorId",
+                    "verify"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "templateId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "tokenLifetimeSeconds",
+                      "value": "300"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "userId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "factorId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "key": "X-Forwarded-For",
+                    "value": "<string>",
+                    "description": ""
+                  },
+                  {
+                    "disabled": false,
+                    "key": "User-Agent",
+                    "value": "<string>",
+                    "description": ""
+                  },
+                  {
+                    "disabled": false,
+                    "key": "Accept-Language",
+                    "value": "<string>",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"activationToken\": \"<string>\",\n  \"answer\": \"<string>\",\n  \"attestation\": \"<string>\",\n  \"clientData\": \"<string>\",\n  \"nextPassCode\": \"<string>\",\n  \"passCode\": \"<string>\",\n  \"registrationData\": \"<string>\",\n  \"stateToken\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"_embedded\": {\n    \"key_0\": {},\n    \"key_1\": {}\n  },\n  \"_links\": {\n    \"key_0\": {},\n    \"key_1\": {}\n  },\n  \"expiresAt\": \"1991-01-09T06:27:40.091Z\",\n  \"factorResult\": \"TIME_WINDOW_EXCEEDED\",\n  \"factorResultMessage\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://your-subdomain.okta.com/",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "e6030d86-3069-4690-9943-058d6c90cde0",
+    "name": "Okta Application UserFactor API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Allows customers to easily access the Okta API\n\nContact Support:\n Name: Okta Developer Team\n Email: devex-public@okta.com",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,3239 @@
+{
+  "item": [
+    {
+      "id": "8904823b-7cbd-4846-a52b-3c923c341076",
+      "name": "IdentityProvider",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "48874829-2e0d-4477-86bf-3789085fc7a1",
+          "name": "Okta List Identity Providers",
+          "request": {
+            "name": "Okta List Identity Providers",
+            "description": {
+              "content": "Enumerates IdPs in your organization with pagination. A subset of IdPs can be returned that match a supported filter expression or query.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "idps"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "q",
+                  "value": "<string>",
+                  "description": "Searches the name property of IdPs for matching value"
+                },
+                {
+                  "disabled": false,
+                  "key": "after",
+                  "value": "<string>",
+                  "description": "Specifies the pagination cursor for the next page of IdPs"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "20",
+                  "description": "Specifies the number of IdP results in a page"
+                },
+                {
+                  "disabled": false,
+                  "key": "type",
+                  "value": "<string>",
+                  "description": "Filters IdPs by type"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "362486f7-c70e-4f45-b0a2-17fee98a3a40",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "idps"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "q",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "after",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "20"
+                    },
+                    {
+                      "key": "type",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"_links\": {\n      \"key_0\": {}\n    },\n    \"created\": \"2005-03-22T01:48:41.693Z\",\n    \"id\": \"string\",\n    \"issuerMode\": \"CUSTOM_URL\",\n    \"lastUpdated\": \"1949-01-24T17:49:48.980Z\",\n    \"name\": \"string\",\n    \"policy\": {\n      \"accountLink\": {\n        \"action\": \"DISABLED\",\n        \"filter\": {\n          \"groups\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        }\n      },\n      \"maxClockSkew\": 7430,\n      \"provisioning\": {\n        \"action\": \"CALLOUT\",\n        \"conditions\": {\n          \"deprovisioned\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"suspended\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        },\n        \"groups\": {\n          \"action\": \"APPEND\",\n          \"assignments\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"filter\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"sourceAttributeName\": \"string\"\n        },\n        \"profileMaster\": true\n      },\n      \"subject\": {\n        \"filter\": \"string\",\n        \"format\": [\n          \"string\",\n          \"string\"\n        ],\n        \"matchAttribute\": \"string\",\n        \"matchType\": \"USERNAME_OR_EMAIL\",\n        \"userNameTemplate\": {\n          \"template\": \"string\"\n        }\n      }\n    },\n    \"protocol\": {\n      \"algorithms\": {\n        \"request\": {\n          \"signature\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        },\n        \"response\": {\n          \"signature\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        }\n      },\n      \"credentials\": {\n        \"client\": {\n          \"client_id\": \"string\",\n          \"client_secret\": \"string\"\n        },\n        \"signing\": {\n          \"kid\": \"string\",\n          \"privateKey\": \"string\",\n          \"teamId\": \"string\"\n        },\n        \"trust\": {\n          \"audience\": \"string\",\n          \"issuer\": \"string\",\n          \"kid\": \"string\",\n          \"revocation\": \"OCSP\",\n          \"revocationCacheLifetime\": 7952\n        }\n      },\n      \"endpoints\": {\n        \"acs\": {\n          \"binding\": \"HTTP-REDIRECT\",\n          \"destination\": \"string\",\n          \"type\": \"INSTANCE\",\n          \"url\": \"string\"\n        },\n        \"authorization\": {\n          \"binding\": \"HTTP-POST\",\n          \"destination\": \"string\",\n          \"type\": \"INSTANCE\",\n          \"url\": \"string\"\n        },\n        \"jwks\": {\n          \"binding\": \"HTTP-POST\",\n          \"destination\": \"string\",\n          \"type\": \"INSTANCE\",\n          \"url\": \"string\"\n        },\n        \"metadata\": {\n          \"binding\": \"HTTP-POST\",\n          \"destination\": \"string\",\n          \"type\": \"ORG\",\n          \"url\": \"string\"\n        },\n        \"slo\": {\n          \"binding\": \"HTTP-REDIRECT\",\n          \"destination\": \"string\",\n          \"type\": \"INSTANCE\",\n          \"url\": \"string\"\n        },\n        \"sso\": {\n          \"binding\": \"HTTP-REDIRECT\",\n          \"destination\": \"string\",\n          \"type\": \"ORG\",\n          \"url\": \"string\"\n        },\n        \"token\": {\n          \"binding\": \"HTTP-REDIRECT\",\n          \"destination\": \"string\",\n          \"type\": \"ORG\",\n          \"url\": \"string\"\n        },\n        \"userInfo\": {\n          \"binding\": \"HTTP-REDIRECT\",\n          \"destination\": \"string\",\n          \"type\": \"ORG\",\n          \"url\": \"string\"\n        }\n      },\n      \"issuer\": {\n        \"binding\": \"HTTP-REDIRECT\",\n        \"destination\": \"string\",\n        \"type\": \"ORG\",\n        \"url\": \"string\"\n      },\n      \"relayState\": {\n        \"format\": \"FROM_URL\"\n      },\n      \"scopes\": [\n        \"string\",\n        \"string\"\n      ],\n      \"settings\": {\n        \"nameFormat\": \"string\"\n      },\n      \"type\": \"SAML2\"\n    },\n    \"status\": \"INACTIVE\",\n    \"type\": \"GOOGLE\"\n  },\n  {\n    \"_links\": {\n      \"key_0\": {},\n      \"key_1\": {}\n    },\n    \"created\": \"1969-01-18T05:44:51.255Z\",\n    \"id\": \"string\",\n    \"issuerMode\": \"ORG_URL\",\n    \"lastUpdated\": \"1950-03-27T08:04:40.811Z\",\n    \"name\": \"string\",\n    \"policy\": {\n      \"accountLink\": {\n        \"action\": \"AUTO\",\n        \"filter\": {\n          \"groups\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        }\n      },\n      \"maxClockSkew\": 2475,\n      \"provisioning\": {\n        \"action\": \"DISABLED\",\n        \"conditions\": {\n          \"deprovisioned\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"suspended\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        },\n        \"groups\": {\n          \"action\": \"APPEND\",\n          \"assignments\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"filter\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"sourceAttributeName\": \"string\"\n        },\n        \"profileMaster\": true\n      },\n      \"subject\": {\n        \"filter\": \"string\",\n        \"format\": [\n          \"string\",\n          \"string\"\n        ],\n        \"matchAttribute\": \"string\",\n        \"matchType\": \"CUSTOM_ATTRIBUTE\",\n        \"userNameTemplate\": {\n          \"template\": \"string\"\n        }\n      }\n    },\n    \"protocol\": {\n      \"algorithms\": {\n        \"request\": {\n          \"signature\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        },\n        \"response\": {\n          \"signature\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        }\n      },\n      \"credentials\": {\n        \"client\": {\n          \"client_id\": \"string\",\n          \"client_secret\": \"string\"\n        },\n        \"signing\": {\n          \"kid\": \"string\",\n          \"privateKey\": \"string\",\n          \"teamId\": \"string\"\n        },\n        \"trust\": {\n          \"audience\": \"string\",\n          \"issuer\": \"string\",\n          \"kid\": \"string\",\n          \"revocation\": \"CRL\",\n          \"revocationCacheLifetime\": 8579\n        }\n      },\n      \"endpoints\": {\n        \"acs\": {\n          \"binding\": \"HTTP-POST\",\n          \"destination\": \"string\",\n          \"type\": \"INSTANCE\",\n          \"url\": \"string\"\n        },\n        \"authorization\": {\n          \"binding\": \"HTTP-POST\",\n          \"destination\": \"string\",\n          \"type\": \"ORG\",\n          \"url\": \"string\"\n        },\n        \"jwks\": {\n          \"binding\": \"HTTP-REDIRECT\",\n          \"destination\": \"string\",\n          \"type\": \"ORG\",\n          \"url\": \"string\"\n        },\n        \"metadata\": {\n          \"binding\": \"HTTP-REDIRECT\",\n          \"destination\": \"string\",\n          \"type\": \"INSTANCE\",\n          \"url\": \"string\"\n        },\n        \"slo\": {\n          \"binding\": \"HTTP-POST\",\n          \"destination\": \"string\",\n          \"type\": \"INSTANCE\",\n          \"url\": \"string\"\n        },\n        \"sso\": {\n          \"binding\": \"HTTP-POST\",\n          \"destination\": \"string\",\n          \"type\": \"INSTANCE\",\n          \"url\": \"string\"\n        },\n        \"token\": {\n          \"binding\": \"HTTP-POST\",\n          \"destination\": \"string\",\n          \"type\": \"ORG\",\n          \"url\": \"string\"\n        },\n        \"userInfo\": {\n          \"binding\": \"HTTP-REDIRECT\",\n          \"destination\": \"string\",\n          \"type\": \"ORG\",\n          \"url\": \"string\"\n        }\n      },\n      \"issuer\": {\n        \"binding\": \"HTTP-REDIRECT\",\n        \"destination\": \"string\",\n        \"type\": \"INSTANCE\",\n        \"url\": \"string\"\n      },\n      \"relayState\": {\n        \"format\": \"FROM_URL\"\n      },\n      \"scopes\": [\n        \"string\",\n        \"string\"\n      ],\n      \"settings\": {\n        \"nameFormat\": \"string\"\n      },\n      \"type\": \"OIDC\"\n    },\n    \"status\": \"ACTIVE\",\n    \"type\": \"X509\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b4f3a478-d46e-4642-8525-b342bd7d098d",
+          "name": "Okta Add Identity Provider",
+          "request": {
+            "name": "Okta Add Identity Provider",
+            "description": {
+              "content": "Adds a new IdP to your organization.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "idps"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"issuerMode\": \"<string>\",\n  \"name\": \"<string>\",\n  \"policy\": {\n    \"accountLink\": {\n      \"action\": \"<string>\",\n      \"filter\": {\n        \"groups\": {\n          \"include\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        }\n      }\n    },\n    \"maxClockSkew\": \"<integer>\",\n    \"provisioning\": {\n      \"action\": \"<string>\",\n      \"conditions\": {\n        \"deprovisioned\": {\n          \"action\": \"<string>\"\n        },\n        \"suspended\": {\n          \"action\": \"<string>\"\n        }\n      },\n      \"groups\": {\n        \"action\": \"<string>\",\n        \"assignments\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"filter\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"sourceAttributeName\": \"<string>\"\n      },\n      \"profileMaster\": \"<boolean>\"\n    },\n    \"subject\": {\n      \"filter\": \"<string>\",\n      \"format\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"matchAttribute\": \"<string>\",\n      \"matchType\": \"<string>\",\n      \"userNameTemplate\": {\n        \"template\": \"<string>\"\n      }\n    }\n  },\n  \"protocol\": {\n    \"algorithms\": {\n      \"request\": {\n        \"signature\": {\n          \"algorithm\": \"<string>\",\n          \"scope\": \"<string>\"\n        }\n      },\n      \"response\": {\n        \"signature\": {\n          \"algorithm\": \"<string>\",\n          \"scope\": \"<string>\"\n        }\n      }\n    },\n    \"credentials\": {\n      \"client\": {\n        \"client_id\": \"<string>\",\n        \"client_secret\": \"<string>\"\n      },\n      \"signing\": {\n        \"kid\": \"<string>\",\n        \"privateKey\": \"<string>\",\n        \"teamId\": \"<string>\"\n      },\n      \"trust\": {\n        \"audience\": \"<string>\",\n        \"issuer\": \"<string>\",\n        \"kid\": \"<string>\",\n        \"revocation\": \"<string>\",\n        \"revocationCacheLifetime\": \"<integer>\"\n      }\n    },\n    \"endpoints\": {\n      \"acs\": {\n        \"binding\": \"<string>\",\n        \"destination\": \"<string>\",\n        \"type\": \"<string>\",\n        \"url\": \"<string>\"\n      },\n      \"authorization\": {\n        \"binding\": \"<string>\",\n        \"destination\": \"<string>\",\n        \"type\": \"<string>\",\n        \"url\": \"<string>\"\n      },\n      \"jwks\": {\n        \"binding\": \"<string>\",\n        \"destination\": \"<string>\",\n        \"type\": \"<string>\",\n        \"url\": \"<string>\"\n      },\n      \"metadata\": {\n        \"binding\": \"<string>\",\n        \"destination\": \"<string>\",\n        \"type\": \"<string>\",\n        \"url\": \"<string>\"\n      },\n      \"slo\": {\n        \"binding\": \"<string>\",\n        \"destination\": \"<string>\",\n        \"type\": \"<string>\",\n        \"url\": \"<string>\"\n      },\n      \"sso\": {\n        \"binding\": \"<string>\",\n        \"destination\": \"<string>\",\n        \"type\": \"<string>\",\n        \"url\": \"<string>\"\n      },\n      \"token\": {\n        \"binding\": \"<string>\",\n        \"destination\": \"<string>\",\n        \"type\": \"<string>\",\n        \"url\": \"<string>\"\n      },\n      \"userInfo\": {\n        \"binding\": \"<string>\",\n        \"destination\": \"<string>\",\n        \"type\": \"<string>\",\n        \"url\": \"<string>\"\n      }\n    },\n    \"issuer\": {\n      \"binding\": \"<string>\",\n      \"destination\": \"<string>\",\n      \"type\": \"<string>\",\n      \"url\": \"<string>\"\n    },\n    \"relayState\": {\n      \"format\": \"<string>\"\n    },\n    \"scopes\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"settings\": {\n      \"nameFormat\": \"<string>\"\n    },\n    \"type\": \"<string>\"\n  },\n  \"status\": \"<string>\",\n  \"type\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "63c6e674-0649-4ba2-baa8-6e2db2511fac",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "idps"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"issuerMode\": \"<string>\",\n  \"name\": \"<string>\",\n  \"policy\": {\n    \"accountLink\": {\n      \"action\": \"<string>\",\n      \"filter\": {\n        \"groups\": {\n          \"include\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        }\n      }\n    },\n    \"maxClockSkew\": \"<integer>\",\n    \"provisioning\": {\n      \"action\": \"<string>\",\n      \"conditions\": {\n        \"deprovisioned\": {\n          \"action\": \"<string>\"\n        },\n        \"suspended\": {\n          \"action\": \"<string>\"\n        }\n      },\n      \"groups\": {\n        \"action\": \"<string>\",\n        \"assignments\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"filter\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"sourceAttributeName\": \"<string>\"\n      },\n      \"profileMaster\": \"<boolean>\"\n    },\n    \"subject\": {\n      \"filter\": \"<string>\",\n      \"format\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"matchAttribute\": \"<string>\",\n      \"matchType\": \"<string>\",\n      \"userNameTemplate\": {\n        \"template\": \"<string>\"\n      }\n    }\n  },\n  \"protocol\": {\n    \"algorithms\": {\n      \"request\": {\n        \"signature\": {\n          \"algorithm\": \"<string>\",\n          \"scope\": \"<string>\"\n        }\n      },\n      \"response\": {\n        \"signature\": {\n          \"algorithm\": \"<string>\",\n          \"scope\": \"<string>\"\n        }\n      }\n    },\n    \"credentials\": {\n      \"client\": {\n        \"client_id\": \"<string>\",\n        \"client_secret\": \"<string>\"\n      },\n      \"signing\": {\n        \"kid\": \"<string>\",\n        \"privateKey\": \"<string>\",\n        \"teamId\": \"<string>\"\n      },\n      \"trust\": {\n        \"audience\": \"<string>\",\n        \"issuer\": \"<string>\",\n        \"kid\": \"<string>\",\n        \"revocation\": \"<string>\",\n        \"revocationCacheLifetime\": \"<integer>\"\n      }\n    },\n    \"endpoints\": {\n      \"acs\": {\n        \"binding\": \"<string>\",\n        \"destination\": \"<string>\",\n        \"type\": \"<string>\",\n        \"url\": \"<string>\"\n      },\n      \"authorization\": {\n        \"binding\": \"<string>\",\n        \"destination\": \"<string>\",\n        \"type\": \"<string>\",\n        \"url\": \"<string>\"\n      },\n      \"jwks\": {\n        \"binding\": \"<string>\",\n        \"destination\": \"<string>\",\n        \"type\": \"<string>\",\n        \"url\": \"<string>\"\n      },\n      \"metadata\": {\n        \"binding\": \"<string>\",\n        \"destination\": \"<string>\",\n        \"type\": \"<string>\",\n        \"url\": \"<string>\"\n      },\n      \"slo\": {\n        \"binding\": \"<string>\",\n        \"destination\": \"<string>\",\n        \"type\": \"<string>\",\n        \"url\": \"<string>\"\n      },\n      \"sso\": {\n        \"binding\": \"<string>\",\n        \"destination\": \"<string>\",\n        \"type\": \"<string>\",\n        \"url\": \"<string>\"\n      },\n      \"token\": {\n        \"binding\": \"<string>\",\n        \"destination\": \"<string>\",\n        \"type\": \"<string>\",\n        \"url\": \"<string>\"\n      },\n      \"userInfo\": {\n        \"binding\": \"<string>\",\n        \"destination\": \"<string>\",\n        \"type\": \"<string>\",\n        \"url\": \"<string>\"\n      }\n    },\n    \"issuer\": {\n      \"binding\": \"<string>\",\n      \"destination\": \"<string>\",\n      \"type\": \"<string>\",\n      \"url\": \"<string>\"\n    },\n    \"relayState\": {\n      \"format\": \"<string>\"\n    },\n    \"scopes\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"settings\": {\n      \"nameFormat\": \"<string>\"\n    },\n    \"type\": \"<string>\"\n  },\n  \"status\": \"<string>\",\n  \"type\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"_links\": {\n    \"key_0\": {}\n  },\n  \"created\": \"1993-03-27T14:25:50.065Z\",\n  \"id\": \"string\",\n  \"issuerMode\": \"<string>\",\n  \"lastUpdated\": \"2011-01-17T00:40:19.377Z\",\n  \"name\": \"<string>\",\n  \"policy\": {\n    \"accountLink\": {\n      \"action\": \"<string>\",\n      \"filter\": {\n        \"groups\": {\n          \"include\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        }\n      }\n    },\n    \"maxClockSkew\": \"<integer>\",\n    \"provisioning\": {\n      \"action\": \"<string>\",\n      \"conditions\": {\n        \"deprovisioned\": {\n          \"action\": \"<string>\"\n        },\n        \"suspended\": {\n          \"action\": \"<string>\"\n        }\n      },\n      \"groups\": {\n        \"action\": \"<string>\",\n        \"assignments\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"filter\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"sourceAttributeName\": \"<string>\"\n      },\n      \"profileMaster\": \"<boolean>\"\n    },\n    \"subject\": {\n      \"filter\": \"<string>\",\n      \"format\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"matchAttribute\": \"<string>\",\n      \"matchType\": \"<string>\",\n      \"userNameTemplate\": {\n        \"template\": \"<string>\"\n      }\n    }\n  },\n  \"protocol\": {\n    \"algorithms\": {\n      \"request\": {\n        \"signature\": {\n          \"algorithm\": \"<string>\",\n          \"scope\": \"<string>\"\n        }\n      },\n      \"response\": {\n        \"signature\": {\n          \"algorithm\": \"<string>\",\n          \"scope\": \"<string>\"\n        }\n      }\n    },\n    \"credentials\": {\n      \"client\": {\n        \"client_id\": \"<string>\",\n        \"client_secret\": \"<string>\"\n      },\n      \"signing\": {\n        \"kid\": \"<string>\",\n        \"privateKey\": \"<string>\",\n        \"teamId\": \"<string>\"\n      },\n      \"trust\": {\n        \"audience\": \"<string>\",\n        \"issuer\": \"<string>\",\n        \"kid\": \"<string>\",\n        \"revocation\": \"<string>\",\n        \"revocationCacheLifetime\": \"<integer>\"\n      }\n    },\n    \"endpoints\": {\n      \"acs\": {\n        \"binding\": \"<string>\",\n        \"destination\": \"<string>\",\n        \"type\": \"<string>\",\n        \"url\": \"<string>\"\n      },\n      \"authorization\": {\n        \"binding\": \"<string>\",\n        \"destination\": \"<string>\",\n        \"type\": \"<string>\",\n        \"url\": \"<string>\"\n      },\n      \"jwks\": {\n        \"binding\": \"<string>\",\n        \"destination\": \"<string>\",\n        \"type\": \"<string>\",\n        \"url\": \"<string>\"\n      },\n      \"metadata\": {\n        \"binding\": \"<string>\",\n        \"destination\": \"<string>\",\n        \"type\": \"<string>\",\n        \"url\": \"<string>\"\n      },\n      \"slo\": {\n        \"binding\": \"<string>\",\n        \"destination\": \"<string>\",\n        \"type\": \"<string>\",\n        \"url\": \"<string>\"\n      },\n      \"sso\": {\n        \"binding\": \"<string>\",\n        \"destination\": \"<string>\",\n        \"type\": \"<string>\",\n        \"url\": \"<string>\"\n      },\n      \"token\": {\n        \"binding\": \"<string>\",\n        \"destination\": \"<string>\",\n        \"type\": \"<string>\",\n        \"url\": \"<string>\"\n      },\n      \"userInfo\": {\n        \"binding\": \"<string>\",\n        \"destination\": \"<string>\",\n        \"type\": \"<string>\",\n        \"url\": \"<string>\"\n      }\n    },\n    \"issuer\": {\n      \"binding\": \"<string>\",\n      \"destination\": \"<string>\",\n      \"type\": \"<string>\",\n      \"url\": \"<string>\"\n    },\n    \"relayState\": {\n      \"format\": \"<string>\"\n    },\n    \"scopes\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"settings\": {\n      \"nameFormat\": \"<string>\"\n    },\n    \"type\": \"<string>\"\n  },\n  \"status\": \"<string>\",\n  \"type\": \"<string>\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "6d679251-1cc7-43b0-829e-3eb54d20580a",
+          "name": "Okta List Keys",
+          "request": {
+            "name": "Okta List Keys",
+            "description": {
+              "content": "Enumerates IdP key credentials.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "idps",
+                "credentials",
+                "keys"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "after",
+                  "value": "<string>",
+                  "description": "Specifies the pagination cursor for the next page of keys"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "20",
+                  "description": "Specifies the number of key results in a page"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "2f0fc66d-e40a-400f-b8fe-a52294e3d897",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "idps",
+                    "credentials",
+                    "keys"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "after",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "20"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"_links\": {\n      \"key_0\": {},\n      \"key_1\": {},\n      \"key_2\": {},\n      \"key_3\": {}\n    },\n    \"alg\": \"string\",\n    \"created\": \"1989-02-09T14:16:53.673Z\",\n    \"e\": \"string\",\n    \"expiresAt\": \"1997-10-23T18:25:33.721Z\",\n    \"key_ops\": [\n      \"string\",\n      \"string\"\n    ],\n    \"kid\": \"string\",\n    \"kty\": \"string\",\n    \"lastUpdated\": \"2024-01-30T00:24:13.887Z\",\n    \"n\": \"string\",\n    \"status\": \"string\",\n    \"use\": \"string\",\n    \"x5c\": [\n      \"string\",\n      \"string\"\n    ],\n    \"x5t\": \"string\",\n    \"x5t#S256\": \"string\",\n    \"x5u\": \"string\"\n  },\n  {\n    \"_links\": {\n      \"key_0\": {}\n    },\n    \"alg\": \"string\",\n    \"created\": \"1997-08-07T17:22:33.215Z\",\n    \"e\": \"string\",\n    \"expiresAt\": \"1970-06-25T22:26:55.795Z\",\n    \"key_ops\": [\n      \"string\",\n      \"string\"\n    ],\n    \"kid\": \"string\",\n    \"kty\": \"string\",\n    \"lastUpdated\": \"1956-02-14T19:51:52.400Z\",\n    \"n\": \"string\",\n    \"status\": \"string\",\n    \"use\": \"string\",\n    \"x5c\": [\n      \"string\",\n      \"string\"\n    ],\n    \"x5t\": \"string\",\n    \"x5t#S256\": \"string\",\n    \"x5u\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "51db21d8-1887-4915-845e-8f1236d7129a",
+          "name": "Okta Add X.509 Certificate Public Key",
+          "request": {
+            "name": "Okta Add X.509 Certificate Public Key",
+            "description": {
+              "content": "Adds a new X.509 certificate credential to the IdP key store.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "idps",
+                "credentials",
+                "keys"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"alg\": \"<string>\",\n  \"created\": \"<dateTime>\",\n  \"e\": \"<string>\",\n  \"expiresAt\": \"<dateTime>\",\n  \"key_ops\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"kid\": \"<string>\",\n  \"kty\": \"<string>\",\n  \"lastUpdated\": \"<dateTime>\",\n  \"n\": \"<string>\",\n  \"status\": \"<string>\",\n  \"use\": \"<string>\",\n  \"x5c\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"x5t\": \"<string>\",\n  \"x5t#S256\": \"<string>\",\n  \"x5u\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "b99a98e8-afa9-4e5d-9c23-f5415eea12f4",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "idps",
+                    "credentials",
+                    "keys"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"alg\": \"<string>\",\n  \"created\": \"<dateTime>\",\n  \"e\": \"<string>\",\n  \"expiresAt\": \"<dateTime>\",\n  \"key_ops\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"kid\": \"<string>\",\n  \"kty\": \"<string>\",\n  \"lastUpdated\": \"<dateTime>\",\n  \"n\": \"<string>\",\n  \"status\": \"<string>\",\n  \"use\": \"<string>\",\n  \"x5c\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"x5t\": \"<string>\",\n  \"x5t#S256\": \"<string>\",\n  \"x5u\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"_links\": {\n    \"key_0\": {},\n    \"key_1\": {}\n  },\n  \"alg\": \"<string>\",\n  \"created\": \"<dateTime>\",\n  \"e\": \"<string>\",\n  \"expiresAt\": \"<dateTime>\",\n  \"key_ops\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"kid\": \"<string>\",\n  \"kty\": \"<string>\",\n  \"lastUpdated\": \"<dateTime>\",\n  \"n\": \"<string>\",\n  \"status\": \"<string>\",\n  \"use\": \"<string>\",\n  \"x5c\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"x5t\": \"<string>\",\n  \"x5t#S256\": \"<string>\",\n  \"x5u\": \"<string>\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "59117627-8396-41fc-be8b-bf25f48b8efe",
+          "name": "Okta Get Key",
+          "request": {
+            "name": "Okta Get Key",
+            "description": {
+              "content": "Gets a specific IdP Key Credential by `kid`",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "idps",
+                "credentials",
+                "keys",
+                ":keyId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "keyId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "6e85f3c6-644f-4237-a3f2-ab18cc44a1bb",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "idps",
+                    "credentials",
+                    "keys",
+                    ":keyId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "keyId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"_links\": {\n    \"key_0\": {},\n    \"key_1\": {}\n  },\n  \"alg\": \"<string>\",\n  \"created\": \"<dateTime>\",\n  \"e\": \"<string>\",\n  \"expiresAt\": \"<dateTime>\",\n  \"key_ops\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"kid\": \"<string>\",\n  \"kty\": \"<string>\",\n  \"lastUpdated\": \"<dateTime>\",\n  \"n\": \"<string>\",\n  \"status\": \"<string>\",\n  \"use\": \"<string>\",\n  \"x5c\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"x5t\": \"<string>\",\n  \"x5t#S256\": \"<string>\",\n  \"x5u\": \"<string>\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "003b66a3-6007-48b9-9e14-d7a1d577815c",
+          "name": "Okta Delete Key",
+          "request": {
+            "name": "Okta Delete Key",
+            "description": {
+              "content": "Deletes a specific IdP Key Credential by `kid` if it is not currently being used by an Active or Inactive IdP.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "idps",
+                "credentials",
+                "keys",
+                ":keyId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "keyId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "cdcdfdc5-5604-4f80-a948-b074ea6a2d72",
+              "name": "No Content",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "idps",
+                    "credentials",
+                    "keys",
+                    ":keyId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "keyId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "af5907bc-22f4-478d-8ff8-03c64484800c",
+          "name": "Okta Get Identity Provider",
+          "request": {
+            "name": "Okta Get Identity Provider",
+            "description": {
+              "content": "Fetches an IdP by `id`.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "idps",
+                ":idpId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "idpId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "383f4410-9d0e-4a41-a511-296407031757",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "idps",
+                    ":idpId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "idpId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"_links\": {\n    \"key_0\": {}\n  },\n  \"created\": \"1993-03-27T14:25:50.065Z\",\n  \"id\": \"string\",\n  \"issuerMode\": \"<string>\",\n  \"lastUpdated\": \"2011-01-17T00:40:19.377Z\",\n  \"name\": \"<string>\",\n  \"policy\": {\n    \"accountLink\": {\n      \"action\": \"<string>\",\n      \"filter\": {\n        \"groups\": {\n          \"include\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        }\n      }\n    },\n    \"maxClockSkew\": \"<integer>\",\n    \"provisioning\": {\n      \"action\": \"<string>\",\n      \"conditions\": {\n        \"deprovisioned\": {\n          \"action\": \"<string>\"\n        },\n        \"suspended\": {\n          \"action\": \"<string>\"\n        }\n      },\n      \"groups\": {\n        \"action\": \"<string>\",\n        \"assignments\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"filter\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"sourceAttributeName\": \"<string>\"\n      },\n      \"profileMaster\": \"<boolean>\"\n    },\n    \"subject\": {\n      \"filter\": \"<string>\",\n      \"format\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"matchAttribute\": \"<string>\",\n      \"matchType\": \"<string>\",\n      \"userNameTemplate\": {\n        \"template\": \"<string>\"\n      }\n    }\n  },\n  \"protocol\": {\n    \"algorithms\": {\n      \"request\": {\n        \"signature\": {\n          \"algorithm\": \"<string>\",\n          \"scope\": \"<string>\"\n        }\n      },\n      \"response\": {\n        \"signature\": {\n          \"algorithm\": \"<string>\",\n          \"scope\": \"<string>\"\n        }\n      }\n    },\n    \"credentials\": {\n      \"client\": {\n        \"client_id\": \"<string>\",\n        \"client_secret\": \"<string>\"\n      },\n      \"signing\": {\n        \"kid\": \"<string>\",\n        \"privateKey\": \"<string>\",\n        \"teamId\": \"<string>\"\n      },\n      \"trust\": {\n        \"audience\": \"<string>\",\n        \"issuer\": \"<string>\",\n        \"kid\": \"<string>\",\n        \"revocation\": \"<string>\",\n        \"revocationCacheLifetime\": \"<integer>\"\n      }\n    },\n    \"endpoints\": {\n      \"acs\": {\n        \"binding\": \"<string>\",\n        \"destination\": \"<string>\",\n        \"type\": \"<string>\",\n        \"url\": \"<string>\"\n      },\n      \"authorization\": {\n        \"binding\": \"<string>\",\n        \"destination\": \"<string>\",\n        \"type\": \"<string>\",\n        \"url\": \"<string>\"\n      },\n      \"jwks\": {\n        \"binding\": \"<string>\",\n        \"destination\": \"<string>\",\n        \"type\": \"<string>\",\n        \"url\": \"<string>\"\n      },\n      \"metadata\": {\n        \"binding\": \"<string>\",\n        \"destination\": \"<string>\",\n        \"type\": \"<string>\",\n        \"url\": \"<string>\"\n      },\n      \"slo\": {\n        \"binding\": \"<string>\",\n        \"destination\": \"<string>\",\n        \"type\": \"<string>\",\n        \"url\": \"<string>\"\n      },\n      \"sso\": {\n        \"binding\": \"<string>\",\n        \"destination\": \"<string>\",\n        \"type\": \"<string>\",\n        \"url\": \"<string>\"\n      },\n      \"token\": {\n        \"binding\": \"<string>\",\n        \"destination\": \"<string>\",\n        \"type\": \"<string>\",\n        \"url\": \"<string>\"\n      },\n      \"userInfo\": {\n        \"binding\": \"<string>\",\n        \"destination\": \"<string>\",\n        \"type\": \"<string>\",\n        \"url\": \"<string>\"\n      }\n    },\n    \"issuer\": {\n      \"binding\": \"<string>\",\n      \"destination\": \"<string>\",\n      \"type\": \"<string>\",\n      \"url\": \"<string>\"\n    },\n    \"relayState\": {\n      \"format\": \"<string>\"\n    },\n    \"scopes\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"settings\": {\n      \"nameFormat\": \"<string>\"\n    },\n    \"type\": \"<string>\"\n  },\n  \"status\": \"<string>\",\n  \"type\": \"<string>\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b574bd85-e457-4e63-a47c-1f646f0dea6c",
+          "name": "Okta Update Identity Provider",
+          "request": {
+            "name": "Okta Update Identity Provider",
+            "description": {
+              "content": "Updates the configuration for an IdP.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "idps",
+                ":idpId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "idpId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"issuerMode\": \"<string>\",\n  \"name\": \"<string>\",\n  \"policy\": {\n    \"accountLink\": {\n      \"action\": \"<string>\",\n      \"filter\": {\n        \"groups\": {\n          \"include\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        }\n      }\n    },\n    \"maxClockSkew\": \"<integer>\",\n    \"provisioning\": {\n      \"action\": \"<string>\",\n      \"conditions\": {\n        \"deprovisioned\": {\n          \"action\": \"<string>\"\n        },\n        \"suspended\": {\n          \"action\": \"<string>\"\n        }\n      },\n      \"groups\": {\n        \"action\": \"<string>\",\n        \"assignments\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"filter\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"sourceAttributeName\": \"<string>\"\n      },\n      \"profileMaster\": \"<boolean>\"\n    },\n    \"subject\": {\n      \"filter\": \"<string>\",\n      \"format\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"matchAttribute\": \"<string>\",\n      \"matchType\": \"<string>\",\n      \"userNameTemplate\": {\n        \"template\": \"<string>\"\n      }\n    }\n  },\n  \"protocol\": {\n    \"algorithms\": {\n      \"request\": {\n        \"signature\": {\n          \"algorithm\": \"<string>\",\n          \"scope\": \"<string>\"\n        }\n      },\n      \"response\": {\n        \"signature\": {\n          \"algorithm\": \"<string>\",\n          \"scope\": \"<string>\"\n        }\n      }\n    },\n    \"credentials\": {\n      \"client\": {\n        \"client_id\": \"<string>\",\n        \"client_secret\": \"<string>\"\n      },\n      \"signing\": {\n        \"kid\": \"<string>\",\n        \"privateKey\": \"<string>\",\n        \"teamId\": \"<string>\"\n      },\n      \"trust\": {\n        \"audience\": \"<string>\",\n        \"issuer\": \"<string>\",\n        \"kid\": \"<string>\",\n        \"revocation\": \"<string>\",\n        \"revocationCacheLifetime\": \"<integer>\"\n      }\n    },\n    \"endpoints\": {\n      \"acs\": {\n        \"binding\": \"<string>\",\n        \"destination\": \"<string>\",\n        \"type\": \"<string>\",\n        \"url\": \"<string>\"\n      },\n      \"authorization\": {\n        \"binding\": \"<string>\",\n        \"destination\": \"<string>\",\n        \"type\": \"<string>\",\n        \"url\": \"<string>\"\n      },\n      \"jwks\": {\n        \"binding\": \"<string>\",\n        \"destination\": \"<string>\",\n        \"type\": \"<string>\",\n        \"url\": \"<string>\"\n      },\n      \"metadata\": {\n        \"binding\": \"<string>\",\n        \"destination\": \"<string>\",\n        \"type\": \"<string>\",\n        \"url\": \"<string>\"\n      },\n      \"slo\": {\n        \"binding\": \"<string>\",\n        \"destination\": \"<string>\",\n        \"type\": \"<string>\",\n        \"url\": \"<string>\"\n      },\n      \"sso\": {\n        \"binding\": \"<string>\",\n        \"destination\": \"<string>\",\n        \"type\": \"<string>\",\n        \"url\": \"<string>\"\n      },\n      \"token\": {\n        \"binding\": \"<string>\",\n        \"destination\": \"<string>\",\n        \"type\": \"<string>\",\n        \"url\": \"<string>\"\n      },\n      \"userInfo\": {\n        \"binding\": \"<string>\",\n        \"destination\": \"<string>\",\n        \"type\": \"<string>\",\n        \"url\": \"<string>\"\n      }\n    },\n    \"issuer\": {\n      \"binding\": \"<string>\",\n      \"destination\": \"<string>\",\n      \"type\": \"<string>\",\n      \"url\": \"<string>\"\n    },\n    \"relayState\": {\n      \"format\": \"<string>\"\n    },\n    \"scopes\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"settings\": {\n      \"nameFormat\": \"<string>\"\n    },\n    \"type\": \"<string>\"\n  },\n  \"status\": \"<string>\",\n  \"type\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "b14a1402-76da-4649-b207-f894875ae984",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "idps",
+                    ":idpId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "idpId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"issuerMode\": \"<string>\",\n  \"name\": \"<string>\",\n  \"policy\": {\n    \"accountLink\": {\n      \"action\": \"<string>\",\n      \"filter\": {\n        \"groups\": {\n          \"include\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        }\n      }\n    },\n    \"maxClockSkew\": \"<integer>\",\n    \"provisioning\": {\n      \"action\": \"<string>\",\n      \"conditions\": {\n        \"deprovisioned\": {\n          \"action\": \"<string>\"\n        },\n        \"suspended\": {\n          \"action\": \"<string>\"\n        }\n      },\n      \"groups\": {\n        \"action\": \"<string>\",\n        \"assignments\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"filter\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"sourceAttributeName\": \"<string>\"\n      },\n      \"profileMaster\": \"<boolean>\"\n    },\n    \"subject\": {\n      \"filter\": \"<string>\",\n      \"format\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"matchAttribute\": \"<string>\",\n      \"matchType\": \"<string>\",\n      \"userNameTemplate\": {\n        \"template\": \"<string>\"\n      }\n    }\n  },\n  \"protocol\": {\n    \"algorithms\": {\n      \"request\": {\n        \"signature\": {\n          \"algorithm\": \"<string>\",\n          \"scope\": \"<string>\"\n        }\n      },\n      \"response\": {\n        \"signature\": {\n          \"algorithm\": \"<string>\",\n          \"scope\": \"<string>\"\n        }\n      }\n    },\n    \"credentials\": {\n      \"client\": {\n        \"client_id\": \"<string>\",\n        \"client_secret\": \"<string>\"\n      },\n      \"signing\": {\n        \"kid\": \"<string>\",\n        \"privateKey\": \"<string>\",\n        \"teamId\": \"<string>\"\n      },\n      \"trust\": {\n        \"audience\": \"<string>\",\n        \"issuer\": \"<string>\",\n        \"kid\": \"<string>\",\n        \"revocation\": \"<string>\",\n        \"revocationCacheLifetime\": \"<integer>\"\n      }\n    },\n    \"endpoints\": {\n      \"acs\": {\n        \"binding\": \"<string>\",\n        \"destination\": \"<string>\",\n        \"type\": \"<string>\",\n        \"url\": \"<string>\"\n      },\n      \"authorization\": {\n        \"binding\": \"<string>\",\n        \"destination\": \"<string>\",\n        \"type\": \"<string>\",\n        \"url\": \"<string>\"\n      },\n      \"jwks\": {\n        \"binding\": \"<string>\",\n        \"destination\": \"<string>\",\n        \"type\": \"<string>\",\n        \"url\": \"<string>\"\n      },\n      \"metadata\": {\n        \"binding\": \"<string>\",\n        \"destination\": \"<string>\",\n        \"type\": \"<string>\",\n        \"url\": \"<string>\"\n      },\n      \"slo\": {\n        \"binding\": \"<string>\",\n        \"destination\": \"<string>\",\n        \"type\": \"<string>\",\n        \"url\": \"<string>\"\n      },\n      \"sso\": {\n        \"binding\": \"<string>\",\n        \"destination\": \"<string>\",\n        \"type\": \"<string>\",\n        \"url\": \"<string>\"\n      },\n      \"token\": {\n        \"binding\": \"<string>\",\n        \"destination\": \"<string>\",\n        \"type\": \"<string>\",\n        \"url\": \"<string>\"\n      },\n      \"userInfo\": {\n        \"binding\": \"<string>\",\n        \"destination\": \"<string>\",\n        \"type\": \"<string>\",\n        \"url\": \"<string>\"\n      }\n    },\n    \"issuer\": {\n      \"binding\": \"<string>\",\n      \"destination\": \"<string>\",\n      \"type\": \"<string>\",\n      \"url\": \"<string>\"\n    },\n    \"relayState\": {\n      \"format\": \"<string>\"\n    },\n    \"scopes\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"settings\": {\n      \"nameFormat\": \"<string>\"\n    },\n    \"type\": \"<string>\"\n  },\n  \"status\": \"<string>\",\n  \"type\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"_links\": {\n    \"key_0\": {}\n  },\n  \"created\": \"1993-03-27T14:25:50.065Z\",\n  \"id\": \"string\",\n  \"issuerMode\": \"<string>\",\n  \"lastUpdated\": \"2011-01-17T00:40:19.377Z\",\n  \"name\": \"<string>\",\n  \"policy\": {\n    \"accountLink\": {\n      \"action\": \"<string>\",\n      \"filter\": {\n        \"groups\": {\n          \"include\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        }\n      }\n    },\n    \"maxClockSkew\": \"<integer>\",\n    \"provisioning\": {\n      \"action\": \"<string>\",\n      \"conditions\": {\n        \"deprovisioned\": {\n          \"action\": \"<string>\"\n        },\n        \"suspended\": {\n          \"action\": \"<string>\"\n        }\n      },\n      \"groups\": {\n        \"action\": \"<string>\",\n        \"assignments\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"filter\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"sourceAttributeName\": \"<string>\"\n      },\n      \"profileMaster\": \"<boolean>\"\n    },\n    \"subject\": {\n      \"filter\": \"<string>\",\n      \"format\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"matchAttribute\": \"<string>\",\n      \"matchType\": \"<string>\",\n      \"userNameTemplate\": {\n        \"template\": \"<string>\"\n      }\n    }\n  },\n  \"protocol\": {\n    \"algorithms\": {\n      \"request\": {\n        \"signature\": {\n          \"algorithm\": \"<string>\",\n          \"scope\": \"<string>\"\n        }\n      },\n      \"response\": {\n        \"signature\": {\n          \"algorithm\": \"<string>\",\n          \"scope\": \"<string>\"\n        }\n      }\n    },\n    \"credentials\": {\n      \"client\": {\n        \"client_id\": \"<string>\",\n        \"client_secret\": \"<string>\"\n      },\n      \"signing\": {\n        \"kid\": \"<string>\",\n        \"privateKey\": \"<string>\",\n        \"teamId\": \"<string>\"\n      },\n      \"trust\": {\n        \"audience\": \"<string>\",\n        \"issuer\": \"<string>\",\n        \"kid\": \"<string>\",\n        \"revocation\": \"<string>\",\n        \"revocationCacheLifetime\": \"<integer>\"\n      }\n    },\n    \"endpoints\": {\n      \"acs\": {\n        \"binding\": \"<string>\",\n        \"destination\": \"<string>\",\n        \"type\": \"<string>\",\n        \"url\": \"<string>\"\n      },\n      \"authorization\": {\n        \"binding\": \"<string>\",\n        \"destination\": \"<string>\",\n        \"type\": \"<string>\",\n        \"url\": \"<string>\"\n      },\n      \"jwks\": {\n        \"binding\": \"<string>\",\n        \"destination\": \"<string>\",\n        \"type\": \"<string>\",\n        \"url\": \"<string>\"\n      },\n      \"metadata\": {\n        \"binding\": \"<string>\",\n        \"destination\": \"<string>\",\n        \"type\": \"<string>\",\n        \"url\": \"<string>\"\n      },\n      \"slo\": {\n        \"binding\": \"<string>\",\n        \"destination\": \"<string>\",\n        \"type\": \"<string>\",\n        \"url\": \"<string>\"\n      },\n      \"sso\": {\n        \"binding\": \"<string>\",\n        \"destination\": \"<string>\",\n        \"type\": \"<string>\",\n        \"url\": \"<string>\"\n      },\n      \"token\": {\n        \"binding\": \"<string>\",\n        \"destination\": \"<string>\",\n        \"type\": \"<string>\",\n        \"url\": \"<string>\"\n      },\n      \"userInfo\": {\n        \"binding\": \"<string>\",\n        \"destination\": \"<string>\",\n        \"type\": \"<string>\",\n        \"url\": \"<string>\"\n      }\n    },\n    \"issuer\": {\n      \"binding\": \"<string>\",\n      \"destination\": \"<string>\",\n      \"type\": \"<string>\",\n      \"url\": \"<string>\"\n    },\n    \"relayState\": {\n      \"format\": \"<string>\"\n    },\n    \"scopes\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"settings\": {\n      \"nameFormat\": \"<string>\"\n    },\n    \"type\": \"<string>\"\n  },\n  \"status\": \"<string>\",\n  \"type\": \"<string>\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d5539fe4-96da-4802-aef4-303520f74fe5",
+          "name": "Okta Delete Identity Provider",
+          "request": {
+            "name": "Okta Delete Identity Provider",
+            "description": {
+              "content": "Removes an IdP from your organization.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "idps",
+                ":idpId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "idpId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "4917e3fc-9ff0-4428-9d1d-ce0fddf55b2b",
+              "name": "No Content",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "idps",
+                    ":idpId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "idpId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "740bc112-d5ad-4eab-a71a-80886d8eaddc",
+          "name": "Okta List Certificate Signing Requests for IdP",
+          "request": {
+            "name": "Okta List Certificate Signing Requests for IdP",
+            "description": {
+              "content": "Enumerates Certificate Signing Requests for an IdP",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "idps",
+                ":idpId",
+                "credentials",
+                "csrs"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "idpId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "556ed4a5-ce32-4aba-9ffe-cfce5e363d70",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "idps",
+                    ":idpId",
+                    "credentials",
+                    "csrs"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "idpId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"created\": \"1966-04-18T01:12:11.551Z\",\n    \"csr\": \"string\",\n    \"id\": \"string\",\n    \"kty\": \"string\"\n  },\n  {\n    \"created\": \"2019-12-25T01:11:25.133Z\",\n    \"csr\": \"string\",\n    \"id\": \"string\",\n    \"kty\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "71252a75-fc2b-4c7a-b28f-c473b794be76",
+          "name": "Okta Generate Certificate Signing Request for IdP",
+          "request": {
+            "name": "Okta Generate Certificate Signing Request for IdP",
+            "description": {
+              "content": "Generates a new key pair and returns a Certificate Signing Request for it.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "idps",
+                ":idpId",
+                "credentials",
+                "csrs"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "idpId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"subject\": {\n    \"commonName\": \"<string>\",\n    \"countryName\": \"<string>\",\n    \"localityName\": \"<string>\",\n    \"organizationName\": \"<string>\",\n    \"organizationalUnitName\": \"<string>\",\n    \"stateOrProvinceName\": \"<string>\"\n  },\n  \"subjectAltNames\": {\n    \"dnsNames\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "c127b183-641f-4996-b2b0-ab4733fbc05e",
+              "name": "Created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "idps",
+                    ":idpId",
+                    "credentials",
+                    "csrs"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "idpId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"subject\": {\n    \"commonName\": \"<string>\",\n    \"countryName\": \"<string>\",\n    \"localityName\": \"<string>\",\n    \"organizationName\": \"<string>\",\n    \"organizationalUnitName\": \"<string>\",\n    \"stateOrProvinceName\": \"<string>\"\n  },\n  \"subjectAltNames\": {\n    \"dnsNames\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"created\": \"1993-03-31T10:41:16.008Z\",\n  \"csr\": \"string\",\n  \"id\": \"string\",\n  \"kty\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "bc1160d2-67c7-4bf1-879e-aadbd51e2081",
+          "name": "get Csr For Identity Provider",
+          "request": {
+            "name": "get Csr For Identity Provider",
+            "description": {
+              "content": "Gets a specific Certificate Signing Request model by id",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "idps",
+                ":idpId",
+                "credentials",
+                "csrs",
+                ":csrId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "idpId",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "csrId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "601f78b5-219e-423c-b3b7-f0060ac69ce5",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "idps",
+                    ":idpId",
+                    "credentials",
+                    "csrs",
+                    ":csrId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "idpId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "csrId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"created\": \"1993-03-31T10:41:16.008Z\",\n  \"csr\": \"string\",\n  \"id\": \"string\",\n  \"kty\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "392a38eb-503a-45a1-85e3-4f9346fb7064",
+          "name": "revoke Csr For Identity Provider",
+          "request": {
+            "name": "revoke Csr For Identity Provider",
+            "description": {
+              "content": "Revoke a Certificate Signing Request and delete the key pair from the IdP",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "idps",
+                ":idpId",
+                "credentials",
+                "csrs",
+                ":csrId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "idpId",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "csrId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "318bfa45-8be5-4672-b0c6-9740a84d2f58",
+              "name": "No Content",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "idps",
+                    ":idpId",
+                    "credentials",
+                    "csrs",
+                    ":csrId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "idpId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "csrId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "0102569f-bb5b-4c4a-b3b5-3789138093c7",
+          "name": "Update the Certificate Signing Request with a signed X.509 certificate and add it into the signing key credentials for the IdP.",
+          "request": {
+            "name": "Update the Certificate Signing Request with a signed X.509 certificate and add it into the signing key credentials for the IdP.",
+            "description": {
+              "content": "Update the Certificate Signing Request with a signed X.509 certificate and add it into the signing key credentials for the IdP.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "idps",
+                ":idpId",
+                "credentials",
+                "csrs",
+                ":csrId",
+                "lifecycle",
+                "publish"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "idpId",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "csrId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "d2279962-b11c-41ac-bd79-37643f99a79e",
+              "name": "Created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "idps",
+                    ":idpId",
+                    "credentials",
+                    "csrs",
+                    ":csrId",
+                    "lifecycle",
+                    "publish"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "idpId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "csrId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"_links\": {\n    \"key_0\": {},\n    \"key_1\": {}\n  },\n  \"alg\": \"<string>\",\n  \"created\": \"<dateTime>\",\n  \"e\": \"<string>\",\n  \"expiresAt\": \"<dateTime>\",\n  \"key_ops\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"kid\": \"<string>\",\n  \"kty\": \"<string>\",\n  \"lastUpdated\": \"<dateTime>\",\n  \"n\": \"<string>\",\n  \"status\": \"<string>\",\n  \"use\": \"<string>\",\n  \"x5c\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"x5t\": \"<string>\",\n  \"x5t#S256\": \"<string>\",\n  \"x5u\": \"<string>\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f9dd7d3a-a100-4b3f-b1ae-6e053c212464",
+          "name": "Okta List Signing Key Credentials for IdP",
+          "request": {
+            "name": "Okta List Signing Key Credentials for IdP",
+            "description": {
+              "content": "Enumerates signing key credentials for an IdP",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "idps",
+                ":idpId",
+                "credentials",
+                "keys"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "idpId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "53f10e5d-6526-4af2-9d09-9ef432bc01ad",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "idps",
+                    ":idpId",
+                    "credentials",
+                    "keys"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "idpId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"_links\": {\n      \"key_0\": {}\n    },\n    \"alg\": \"<string>\",\n    \"created\": \"<dateTime>\",\n    \"e\": \"<string>\",\n    \"expiresAt\": \"<dateTime>\",\n    \"key_ops\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"kid\": \"<string>\",\n    \"kty\": \"<string>\",\n    \"lastUpdated\": \"<dateTime>\",\n    \"n\": \"<string>\",\n    \"status\": \"<string>\",\n    \"use\": \"<string>\",\n    \"x5c\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"x5t\": \"<string>\",\n    \"x5t#S256\": \"<string>\",\n    \"x5u\": \"<string>\"\n  },\n  {\n    \"_links\": {\n      \"key_0\": {},\n      \"key_1\": {},\n      \"key_2\": {},\n      \"key_3\": {}\n    },\n    \"alg\": \"<string>\",\n    \"created\": \"<dateTime>\",\n    \"e\": \"<string>\",\n    \"expiresAt\": \"<dateTime>\",\n    \"key_ops\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"kid\": \"<string>\",\n    \"kty\": \"<string>\",\n    \"lastUpdated\": \"<dateTime>\",\n    \"n\": \"<string>\",\n    \"status\": \"<string>\",\n    \"use\": \"<string>\",\n    \"x5c\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"x5t\": \"<string>\",\n    \"x5t#S256\": \"<string>\",\n    \"x5u\": \"<string>\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "8c42bc52-74d4-47e1-b7da-d99a72ef63c8",
+          "name": "Okta Generate New IdP Signing Key Credential",
+          "request": {
+            "name": "Okta Generate New IdP Signing Key Credential",
+            "description": {
+              "content": "Generates a new X.509 certificate for an IdP signing key credential to be used for signing assertions sent to the IdP",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "idps",
+                ":idpId",
+                "credentials",
+                "keys",
+                "generate"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "validityYears",
+                  "value": "<integer>",
+                  "description": "(Required) expiry of the IdP Key Credential"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "idpId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "3620428c-afd6-4a3b-b1cd-4533946eb8a7",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "idps",
+                    ":idpId",
+                    "credentials",
+                    "keys",
+                    "generate"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "validityYears",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "idpId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"_links\": {\n    \"key_0\": {},\n    \"key_1\": {}\n  },\n  \"alg\": \"<string>\",\n  \"created\": \"<dateTime>\",\n  \"e\": \"<string>\",\n  \"expiresAt\": \"<dateTime>\",\n  \"key_ops\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"kid\": \"<string>\",\n  \"kty\": \"<string>\",\n  \"lastUpdated\": \"<dateTime>\",\n  \"n\": \"<string>\",\n  \"status\": \"<string>\",\n  \"use\": \"<string>\",\n  \"x5c\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"x5t\": \"<string>\",\n  \"x5t#S256\": \"<string>\",\n  \"x5u\": \"<string>\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "1eb43da1-6f25-4e4e-8e3c-cb83096e501c",
+          "name": "Okta Get Signing Key Credential for IdP",
+          "request": {
+            "name": "Okta Get Signing Key Credential for IdP",
+            "description": {
+              "content": "Gets a specific IdP Key Credential by `kid`",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "idps",
+                ":idpId",
+                "credentials",
+                "keys",
+                ":keyId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "idpId",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "keyId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "8c8ea9af-3d78-47dd-b1de-628976eaebc1",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "idps",
+                    ":idpId",
+                    "credentials",
+                    "keys",
+                    ":keyId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "idpId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "keyId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"_links\": {\n    \"key_0\": {},\n    \"key_1\": {}\n  },\n  \"alg\": \"<string>\",\n  \"created\": \"<dateTime>\",\n  \"e\": \"<string>\",\n  \"expiresAt\": \"<dateTime>\",\n  \"key_ops\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"kid\": \"<string>\",\n  \"kty\": \"<string>\",\n  \"lastUpdated\": \"<dateTime>\",\n  \"n\": \"<string>\",\n  \"status\": \"<string>\",\n  \"use\": \"<string>\",\n  \"x5c\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"x5t\": \"<string>\",\n  \"x5t#S256\": \"<string>\",\n  \"x5u\": \"<string>\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "5733b4bf-4717-4760-9d96-7f66697df1fc",
+          "name": "Okta Clone Signing Key Credential for IdP",
+          "request": {
+            "name": "Okta Clone Signing Key Credential for IdP",
+            "description": {
+              "content": "Clones a X.509 certificate for an IdP signing key credential from a source IdP to target IdP",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "idps",
+                ":idpId",
+                "credentials",
+                "keys",
+                ":keyId",
+                "clone"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "targetIdpId",
+                  "value": "<string>",
+                  "description": "(Required) "
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "idpId",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "keyId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "43bb89fe-68de-4548-933e-c933664a4c27",
+              "name": "Created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "idps",
+                    ":idpId",
+                    "credentials",
+                    "keys",
+                    ":keyId",
+                    "clone"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "targetIdpId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "idpId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "keyId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"_links\": {\n    \"key_0\": {},\n    \"key_1\": {}\n  },\n  \"alg\": \"<string>\",\n  \"created\": \"<dateTime>\",\n  \"e\": \"<string>\",\n  \"expiresAt\": \"<dateTime>\",\n  \"key_ops\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"kid\": \"<string>\",\n  \"kty\": \"<string>\",\n  \"lastUpdated\": \"<dateTime>\",\n  \"n\": \"<string>\",\n  \"status\": \"<string>\",\n  \"use\": \"<string>\",\n  \"x5c\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"x5t\": \"<string>\",\n  \"x5t#S256\": \"<string>\",\n  \"x5u\": \"<string>\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d1af83e3-5f79-4da4-9edd-cd816cd3c812",
+          "name": "Okta Activate Identity Provider",
+          "request": {
+            "name": "Okta Activate Identity Provider",
+            "description": {
+              "content": "Activates an inactive IdP.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "idps",
+                ":idpId",
+                "lifecycle",
+                "activate"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "idpId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "994de451-fc4c-49b2-afdd-96decac01151",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "idps",
+                    ":idpId",
+                    "lifecycle",
+                    "activate"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "idpId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"_links\": {\n    \"key_0\": {}\n  },\n  \"created\": \"1993-03-27T14:25:50.065Z\",\n  \"id\": \"string\",\n  \"issuerMode\": \"<string>\",\n  \"lastUpdated\": \"2011-01-17T00:40:19.377Z\",\n  \"name\": \"<string>\",\n  \"policy\": {\n    \"accountLink\": {\n      \"action\": \"<string>\",\n      \"filter\": {\n        \"groups\": {\n          \"include\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        }\n      }\n    },\n    \"maxClockSkew\": \"<integer>\",\n    \"provisioning\": {\n      \"action\": \"<string>\",\n      \"conditions\": {\n        \"deprovisioned\": {\n          \"action\": \"<string>\"\n        },\n        \"suspended\": {\n          \"action\": \"<string>\"\n        }\n      },\n      \"groups\": {\n        \"action\": \"<string>\",\n        \"assignments\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"filter\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"sourceAttributeName\": \"<string>\"\n      },\n      \"profileMaster\": \"<boolean>\"\n    },\n    \"subject\": {\n      \"filter\": \"<string>\",\n      \"format\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"matchAttribute\": \"<string>\",\n      \"matchType\": \"<string>\",\n      \"userNameTemplate\": {\n        \"template\": \"<string>\"\n      }\n    }\n  },\n  \"protocol\": {\n    \"algorithms\": {\n      \"request\": {\n        \"signature\": {\n          \"algorithm\": \"<string>\",\n          \"scope\": \"<string>\"\n        }\n      },\n      \"response\": {\n        \"signature\": {\n          \"algorithm\": \"<string>\",\n          \"scope\": \"<string>\"\n        }\n      }\n    },\n    \"credentials\": {\n      \"client\": {\n        \"client_id\": \"<string>\",\n        \"client_secret\": \"<string>\"\n      },\n      \"signing\": {\n        \"kid\": \"<string>\",\n        \"privateKey\": \"<string>\",\n        \"teamId\": \"<string>\"\n      },\n      \"trust\": {\n        \"audience\": \"<string>\",\n        \"issuer\": \"<string>\",\n        \"kid\": \"<string>\",\n        \"revocation\": \"<string>\",\n        \"revocationCacheLifetime\": \"<integer>\"\n      }\n    },\n    \"endpoints\": {\n      \"acs\": {\n        \"binding\": \"<string>\",\n        \"destination\": \"<string>\",\n        \"type\": \"<string>\",\n        \"url\": \"<string>\"\n      },\n      \"authorization\": {\n        \"binding\": \"<string>\",\n        \"destination\": \"<string>\",\n        \"type\": \"<string>\",\n        \"url\": \"<string>\"\n      },\n      \"jwks\": {\n        \"binding\": \"<string>\",\n        \"destination\": \"<string>\",\n        \"type\": \"<string>\",\n        \"url\": \"<string>\"\n      },\n      \"metadata\": {\n        \"binding\": \"<string>\",\n        \"destination\": \"<string>\",\n        \"type\": \"<string>\",\n        \"url\": \"<string>\"\n      },\n      \"slo\": {\n        \"binding\": \"<string>\",\n        \"destination\": \"<string>\",\n        \"type\": \"<string>\",\n        \"url\": \"<string>\"\n      },\n      \"sso\": {\n        \"binding\": \"<string>\",\n        \"destination\": \"<string>\",\n        \"type\": \"<string>\",\n        \"url\": \"<string>\"\n      },\n      \"token\": {\n        \"binding\": \"<string>\",\n        \"destination\": \"<string>\",\n        \"type\": \"<string>\",\n        \"url\": \"<string>\"\n      },\n      \"userInfo\": {\n        \"binding\": \"<string>\",\n        \"destination\": \"<string>\",\n        \"type\": \"<string>\",\n        \"url\": \"<string>\"\n      }\n    },\n    \"issuer\": {\n      \"binding\": \"<string>\",\n      \"destination\": \"<string>\",\n      \"type\": \"<string>\",\n      \"url\": \"<string>\"\n    },\n    \"relayState\": {\n      \"format\": \"<string>\"\n    },\n    \"scopes\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"settings\": {\n      \"nameFormat\": \"<string>\"\n    },\n    \"type\": \"<string>\"\n  },\n  \"status\": \"<string>\",\n  \"type\": \"<string>\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e2aa457c-4854-4e93-942c-559f532cc68a",
+          "name": "Okta Deactivate Identity Provider",
+          "request": {
+            "name": "Okta Deactivate Identity Provider",
+            "description": {
+              "content": "Deactivates an active IdP.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "idps",
+                ":idpId",
+                "lifecycle",
+                "deactivate"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "idpId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "76fabb72-e211-4eca-a2ba-3a1640c87c0c",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "idps",
+                    ":idpId",
+                    "lifecycle",
+                    "deactivate"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "idpId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"_links\": {\n    \"key_0\": {}\n  },\n  \"created\": \"1993-03-27T14:25:50.065Z\",\n  \"id\": \"string\",\n  \"issuerMode\": \"<string>\",\n  \"lastUpdated\": \"2011-01-17T00:40:19.377Z\",\n  \"name\": \"<string>\",\n  \"policy\": {\n    \"accountLink\": {\n      \"action\": \"<string>\",\n      \"filter\": {\n        \"groups\": {\n          \"include\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        }\n      }\n    },\n    \"maxClockSkew\": \"<integer>\",\n    \"provisioning\": {\n      \"action\": \"<string>\",\n      \"conditions\": {\n        \"deprovisioned\": {\n          \"action\": \"<string>\"\n        },\n        \"suspended\": {\n          \"action\": \"<string>\"\n        }\n      },\n      \"groups\": {\n        \"action\": \"<string>\",\n        \"assignments\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"filter\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"sourceAttributeName\": \"<string>\"\n      },\n      \"profileMaster\": \"<boolean>\"\n    },\n    \"subject\": {\n      \"filter\": \"<string>\",\n      \"format\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"matchAttribute\": \"<string>\",\n      \"matchType\": \"<string>\",\n      \"userNameTemplate\": {\n        \"template\": \"<string>\"\n      }\n    }\n  },\n  \"protocol\": {\n    \"algorithms\": {\n      \"request\": {\n        \"signature\": {\n          \"algorithm\": \"<string>\",\n          \"scope\": \"<string>\"\n        }\n      },\n      \"response\": {\n        \"signature\": {\n          \"algorithm\": \"<string>\",\n          \"scope\": \"<string>\"\n        }\n      }\n    },\n    \"credentials\": {\n      \"client\": {\n        \"client_id\": \"<string>\",\n        \"client_secret\": \"<string>\"\n      },\n      \"signing\": {\n        \"kid\": \"<string>\",\n        \"privateKey\": \"<string>\",\n        \"teamId\": \"<string>\"\n      },\n      \"trust\": {\n        \"audience\": \"<string>\",\n        \"issuer\": \"<string>\",\n        \"kid\": \"<string>\",\n        \"revocation\": \"<string>\",\n        \"revocationCacheLifetime\": \"<integer>\"\n      }\n    },\n    \"endpoints\": {\n      \"acs\": {\n        \"binding\": \"<string>\",\n        \"destination\": \"<string>\",\n        \"type\": \"<string>\",\n        \"url\": \"<string>\"\n      },\n      \"authorization\": {\n        \"binding\": \"<string>\",\n        \"destination\": \"<string>\",\n        \"type\": \"<string>\",\n        \"url\": \"<string>\"\n      },\n      \"jwks\": {\n        \"binding\": \"<string>\",\n        \"destination\": \"<string>\",\n        \"type\": \"<string>\",\n        \"url\": \"<string>\"\n      },\n      \"metadata\": {\n        \"binding\": \"<string>\",\n        \"destination\": \"<string>\",\n        \"type\": \"<string>\",\n        \"url\": \"<string>\"\n      },\n      \"slo\": {\n        \"binding\": \"<string>\",\n        \"destination\": \"<string>\",\n        \"type\": \"<string>\",\n        \"url\": \"<string>\"\n      },\n      \"sso\": {\n        \"binding\": \"<string>\",\n        \"destination\": \"<string>\",\n        \"type\": \"<string>\",\n        \"url\": \"<string>\"\n      },\n      \"token\": {\n        \"binding\": \"<string>\",\n        \"destination\": \"<string>\",\n        \"type\": \"<string>\",\n        \"url\": \"<string>\"\n      },\n      \"userInfo\": {\n        \"binding\": \"<string>\",\n        \"destination\": \"<string>\",\n        \"type\": \"<string>\",\n        \"url\": \"<string>\"\n      }\n    },\n    \"issuer\": {\n      \"binding\": \"<string>\",\n      \"destination\": \"<string>\",\n      \"type\": \"<string>\",\n      \"url\": \"<string>\"\n    },\n    \"relayState\": {\n      \"format\": \"<string>\"\n    },\n    \"scopes\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"settings\": {\n      \"nameFormat\": \"<string>\"\n    },\n    \"type\": \"<string>\"\n  },\n  \"status\": \"<string>\",\n  \"type\": \"<string>\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "413e45b1-80df-44cd-8266-1d9042047514",
+          "name": "Okta Find Users",
+          "request": {
+            "name": "Okta Find Users",
+            "description": {
+              "content": "Find all the users linked to an identity provider",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "idps",
+                ":idpId",
+                "users"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "idpId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "200ca4c5-62d8-4261-a0af-5c5e5118c63a",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "idps",
+                    ":idpId",
+                    "users"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "idpId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"_embedded\": {\n      \"key_0\": {},\n      \"key_1\": {}\n    },\n    \"_links\": {\n      \"key_0\": {},\n      \"key_1\": {},\n      \"key_2\": {}\n    },\n    \"created\": \"string\",\n    \"externalId\": \"string\",\n    \"id\": \"string\",\n    \"lastUpdated\": \"string\",\n    \"profile\": {\n      \"key_0\": {}\n    }\n  },\n  {\n    \"_embedded\": {\n      \"key_0\": {}\n    },\n    \"_links\": {\n      \"key_0\": {}\n    },\n    \"created\": \"string\",\n    \"externalId\": \"string\",\n    \"id\": \"string\",\n    \"lastUpdated\": \"string\",\n    \"profile\": {\n      \"key_0\": {},\n      \"key_1\": {}\n    }\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a3b495a7-f111-43db-b407-7044ad7c47f3",
+          "name": "get Identity Provider Application User",
+          "request": {
+            "name": "get Identity Provider Application User",
+            "description": {
+              "content": "Fetches a linked IdP user by ID",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "idps",
+                ":idpId",
+                "users",
+                ":userId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "idpId",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "userId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "2c305a30-a3da-4852-a20c-5bb70d2b52d5",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "idps",
+                    ":idpId",
+                    "users",
+                    ":userId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "idpId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "userId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"_embedded\": {\n    \"key_0\": {},\n    \"key_1\": {},\n    \"key_2\": {}\n  },\n  \"_links\": {\n    \"key_0\": {},\n    \"key_1\": {}\n  },\n  \"created\": \"string\",\n  \"externalId\": \"string\",\n  \"id\": \"string\",\n  \"lastUpdated\": \"string\",\n  \"profile\": {\n    \"key_0\": {}\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "da872895-9004-4f20-bbd3-02807144555a",
+          "name": "Okta Link a user to a Social IdP without a transaction",
+          "request": {
+            "name": "Okta Link a user to a Social IdP without a transaction",
+            "description": {
+              "content": "Links an Okta user to an existing Social Identity Provider. This does not support the SAML2 Identity Provider Type",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "idps",
+                ":idpId",
+                "users",
+                ":userId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "idpId",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "userId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"externalId\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "3aea1116-dc5e-4477-a108-0c7a85b0cd1d",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "idps",
+                    ":idpId",
+                    "users",
+                    ":userId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "idpId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "userId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"externalId\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"_embedded\": {\n    \"key_0\": {},\n    \"key_1\": {},\n    \"key_2\": {}\n  },\n  \"_links\": {\n    \"key_0\": {},\n    \"key_1\": {}\n  },\n  \"created\": \"string\",\n  \"externalId\": \"string\",\n  \"id\": \"string\",\n  \"lastUpdated\": \"string\",\n  \"profile\": {\n    \"key_0\": {}\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "65671286-795a-4699-961a-a01e1a2dc847",
+          "name": "Okta Unlink User from IdP",
+          "request": {
+            "name": "Okta Unlink User from IdP",
+            "description": {
+              "content": "Removes the link between the Okta user and the IdP user.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "idps",
+                ":idpId",
+                "users",
+                ":userId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "idpId",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "userId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "c99c0c87-649f-4aa0-a7c5-5db61a220ae0",
+              "name": "No Content",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "idps",
+                    ":idpId",
+                    "users",
+                    ":userId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "idpId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "userId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a63ec181-fdcd-4e68-9ea5-ac0d462e5453",
+          "name": "Okta Social Authentication Token Operation",
+          "request": {
+            "name": "Okta Social Authentication Token Operation",
+            "description": {
+              "content": "Fetches the tokens minted by the Social Authentication Provider when the user authenticates with Okta via Social Auth.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "idps",
+                ":idpId",
+                "users",
+                ":userId",
+                "credentials",
+                "tokens"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "idpId",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "userId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "21977f0f-c6de-445d-a5ba-c37eefdd4468",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "idps",
+                    ":idpId",
+                    "users",
+                    ":userId",
+                    "credentials",
+                    "tokens"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "idpId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "userId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"expiresAt\": \"1993-03-14T07:59:08.333Z\",\n    \"id\": \"string\",\n    \"scopes\": [\n      \"string\",\n      \"string\"\n    ],\n    \"token\": \"string\",\n    \"tokenAuthScheme\": \"string\",\n    \"tokenType\": \"string\"\n  },\n  {\n    \"expiresAt\": \"1967-07-26T09:53:43.142Z\",\n    \"id\": \"string\",\n    \"scopes\": [\n      \"string\",\n      \"string\"\n    ],\n    \"token\": \"string\",\n    \"tokenAuthScheme\": \"string\",\n    \"tokenType\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://your-subdomain.okta.com/",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "b56379b4-8270-46a0-b87a-4f0137462bc3",
+    "name": "Okta Application IdentityProvider API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Allows customers to easily access the Okta API\n\nContact Support:\n Name: Okta Developer Team\n Email: devex-public@okta.com",
+      "type": "text/plain"
+    }
+  }
+}

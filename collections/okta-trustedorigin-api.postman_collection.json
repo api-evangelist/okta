@@ -1,0 +1,886 @@
+{
+  "item": [
+    {
+      "id": "6a1d132d-35f3-441f-ac41-44973ec262be",
+      "name": "TrustedOrigin",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "6f760405-4437-4a25-aeb3-5ae91958334d",
+          "name": "list Origins",
+          "request": {
+            "name": "list Origins",
+            "description": {
+              "content": "Success",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "trustedOrigins"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "q",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "filter",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "after",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "-1"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "46fa061f-a5fb-4035-a553-cec4e3717890",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "trustedOrigins"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "q",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "after",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "-1"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"_links\": {\n      \"key_0\": {},\n      \"key_1\": {}\n    },\n    \"created\": \"1968-06-15T05:17:11.470Z\",\n    \"createdBy\": \"string\",\n    \"id\": \"string\",\n    \"lastUpdated\": \"1979-03-27T01:23:11.290Z\",\n    \"lastUpdatedBy\": \"string\",\n    \"name\": \"string\",\n    \"origin\": \"string\",\n    \"scopes\": [\n      {\n        \"allowedOktaApps\": [\n          \"OKTA_ENDUSER\",\n          \"OKTA_ENDUSER\"\n        ],\n        \"stringValue\": \"string\",\n        \"type\": \"REDIRECT\"\n      },\n      {\n        \"allowedOktaApps\": [\n          \"OKTA_ENDUSER\",\n          \"OKTA_ENDUSER\"\n        ],\n        \"stringValue\": \"string\",\n        \"type\": \"CORS\"\n      }\n    ],\n    \"status\": \"string\"\n  },\n  {\n    \"_links\": {\n      \"key_0\": {},\n      \"key_1\": {}\n    },\n    \"created\": \"1984-06-03T08:12:10.892Z\",\n    \"createdBy\": \"string\",\n    \"id\": \"string\",\n    \"lastUpdated\": \"2012-01-02T21:15:36.677Z\",\n    \"lastUpdatedBy\": \"string\",\n    \"name\": \"string\",\n    \"origin\": \"string\",\n    \"scopes\": [\n      {\n        \"allowedOktaApps\": [\n          \"OKTA_ENDUSER\",\n          \"OKTA_ENDUSER\"\n        ],\n        \"stringValue\": \"string\",\n        \"type\": \"REDIRECT\"\n      },\n      {\n        \"allowedOktaApps\": [\n          \"OKTA_ENDUSER\",\n          \"OKTA_ENDUSER\"\n        ],\n        \"stringValue\": \"string\",\n        \"type\": \"IFRAME_EMBED\"\n      }\n    ],\n    \"status\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c521df4c-4993-4a7f-9c7e-b4f4e2ab6895",
+          "name": "create Origin",
+          "request": {
+            "name": "create Origin",
+            "description": {
+              "content": "Success",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "trustedOrigins"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"createdBy\": \"<string>\",\n  \"lastUpdatedBy\": \"<string>\",\n  \"name\": \"<string>\",\n  \"origin\": \"<string>\",\n  \"scopes\": [\n    {\n      \"allowedOktaApps\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"stringValue\": \"<string>\",\n      \"type\": \"<string>\"\n    },\n    {\n      \"allowedOktaApps\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"stringValue\": \"<string>\",\n      \"type\": \"<string>\"\n    }\n  ],\n  \"status\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "23b67be7-5d6d-4738-972e-9fd086cfa66e",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "trustedOrigins"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"createdBy\": \"<string>\",\n  \"lastUpdatedBy\": \"<string>\",\n  \"name\": \"<string>\",\n  \"origin\": \"<string>\",\n  \"scopes\": [\n    {\n      \"allowedOktaApps\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"stringValue\": \"<string>\",\n      \"type\": \"<string>\"\n    },\n    {\n      \"allowedOktaApps\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"stringValue\": \"<string>\",\n      \"type\": \"<string>\"\n    }\n  ],\n  \"status\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"_links\": {\n    \"key_0\": {},\n    \"key_1\": {},\n    \"key_2\": {},\n    \"key_3\": {}\n  },\n  \"created\": \"1966-11-03T07:03:09.892Z\",\n  \"createdBy\": \"<string>\",\n  \"id\": \"string\",\n  \"lastUpdated\": \"2014-04-11T02:53:08.064Z\",\n  \"lastUpdatedBy\": \"<string>\",\n  \"name\": \"<string>\",\n  \"origin\": \"<string>\",\n  \"scopes\": [\n    {\n      \"allowedOktaApps\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"stringValue\": \"<string>\",\n      \"type\": \"<string>\"\n    },\n    {\n      \"allowedOktaApps\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"stringValue\": \"<string>\",\n      \"type\": \"<string>\"\n    }\n  ],\n  \"status\": \"<string>\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "3e604523-2893-4ea2-9d5b-c915e3144b9d",
+          "name": "get Origin",
+          "request": {
+            "name": "get Origin",
+            "description": {
+              "content": "Success",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "trustedOrigins",
+                ":trustedOriginId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "trustedOriginId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "3bb74a21-8351-4022-85f1-152f28ad6cc1",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "trustedOrigins",
+                    ":trustedOriginId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "trustedOriginId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"_links\": {\n    \"key_0\": {},\n    \"key_1\": {},\n    \"key_2\": {},\n    \"key_3\": {}\n  },\n  \"created\": \"1966-11-03T07:03:09.892Z\",\n  \"createdBy\": \"<string>\",\n  \"id\": \"string\",\n  \"lastUpdated\": \"2014-04-11T02:53:08.064Z\",\n  \"lastUpdatedBy\": \"<string>\",\n  \"name\": \"<string>\",\n  \"origin\": \"<string>\",\n  \"scopes\": [\n    {\n      \"allowedOktaApps\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"stringValue\": \"<string>\",\n      \"type\": \"<string>\"\n    },\n    {\n      \"allowedOktaApps\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"stringValue\": \"<string>\",\n      \"type\": \"<string>\"\n    }\n  ],\n  \"status\": \"<string>\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f407f946-2b32-4b8c-93f4-b901bb9b834a",
+          "name": "update Origin",
+          "request": {
+            "name": "update Origin",
+            "description": {
+              "content": "Success",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "trustedOrigins",
+                ":trustedOriginId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "trustedOriginId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"createdBy\": \"<string>\",\n  \"lastUpdatedBy\": \"<string>\",\n  \"name\": \"<string>\",\n  \"origin\": \"<string>\",\n  \"scopes\": [\n    {\n      \"allowedOktaApps\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"stringValue\": \"<string>\",\n      \"type\": \"<string>\"\n    },\n    {\n      \"allowedOktaApps\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"stringValue\": \"<string>\",\n      \"type\": \"<string>\"\n    }\n  ],\n  \"status\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "88887258-1a30-4a76-b515-49dfcb1e5e8a",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "trustedOrigins",
+                    ":trustedOriginId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "trustedOriginId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"createdBy\": \"<string>\",\n  \"lastUpdatedBy\": \"<string>\",\n  \"name\": \"<string>\",\n  \"origin\": \"<string>\",\n  \"scopes\": [\n    {\n      \"allowedOktaApps\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"stringValue\": \"<string>\",\n      \"type\": \"<string>\"\n    },\n    {\n      \"allowedOktaApps\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"stringValue\": \"<string>\",\n      \"type\": \"<string>\"\n    }\n  ],\n  \"status\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"_links\": {\n    \"key_0\": {},\n    \"key_1\": {},\n    \"key_2\": {},\n    \"key_3\": {}\n  },\n  \"created\": \"1966-11-03T07:03:09.892Z\",\n  \"createdBy\": \"<string>\",\n  \"id\": \"string\",\n  \"lastUpdated\": \"2014-04-11T02:53:08.064Z\",\n  \"lastUpdatedBy\": \"<string>\",\n  \"name\": \"<string>\",\n  \"origin\": \"<string>\",\n  \"scopes\": [\n    {\n      \"allowedOktaApps\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"stringValue\": \"<string>\",\n      \"type\": \"<string>\"\n    },\n    {\n      \"allowedOktaApps\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"stringValue\": \"<string>\",\n      \"type\": \"<string>\"\n    }\n  ],\n  \"status\": \"<string>\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ebaa58f1-eae7-4596-8f11-d50e2e31adc9",
+          "name": "delete Origin",
+          "request": {
+            "name": "delete Origin",
+            "description": {
+              "content": "Success",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "trustedOrigins",
+                ":trustedOriginId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "trustedOriginId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "9c5207f2-e30b-4ab6-b957-91f1b0b5ab41",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "trustedOrigins",
+                    ":trustedOriginId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "trustedOriginId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c9a7e9e0-0436-4e31-922d-490a8218ecb2",
+          "name": "activate Origin",
+          "request": {
+            "name": "activate Origin",
+            "description": {
+              "content": "Success",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "trustedOrigins",
+                ":trustedOriginId",
+                "lifecycle",
+                "activate"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "trustedOriginId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "018b9b8b-2227-4f73-9408-2a07d9834360",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "trustedOrigins",
+                    ":trustedOriginId",
+                    "lifecycle",
+                    "activate"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "trustedOriginId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"_links\": {\n    \"key_0\": {},\n    \"key_1\": {},\n    \"key_2\": {},\n    \"key_3\": {}\n  },\n  \"created\": \"1966-11-03T07:03:09.892Z\",\n  \"createdBy\": \"<string>\",\n  \"id\": \"string\",\n  \"lastUpdated\": \"2014-04-11T02:53:08.064Z\",\n  \"lastUpdatedBy\": \"<string>\",\n  \"name\": \"<string>\",\n  \"origin\": \"<string>\",\n  \"scopes\": [\n    {\n      \"allowedOktaApps\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"stringValue\": \"<string>\",\n      \"type\": \"<string>\"\n    },\n    {\n      \"allowedOktaApps\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"stringValue\": \"<string>\",\n      \"type\": \"<string>\"\n    }\n  ],\n  \"status\": \"<string>\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "fe914c53-29f3-4b50-92c6-7c5830fd1582",
+          "name": "deactivate Origin",
+          "request": {
+            "name": "deactivate Origin",
+            "description": {
+              "content": "Success",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "trustedOrigins",
+                ":trustedOriginId",
+                "lifecycle",
+                "deactivate"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "trustedOriginId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "820d3e8d-1c8e-40a3-9400-e994b30f1bbf",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "trustedOrigins",
+                    ":trustedOriginId",
+                    "lifecycle",
+                    "deactivate"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "trustedOriginId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"_links\": {\n    \"key_0\": {},\n    \"key_1\": {},\n    \"key_2\": {},\n    \"key_3\": {}\n  },\n  \"created\": \"1966-11-03T07:03:09.892Z\",\n  \"createdBy\": \"<string>\",\n  \"id\": \"string\",\n  \"lastUpdated\": \"2014-04-11T02:53:08.064Z\",\n  \"lastUpdatedBy\": \"<string>\",\n  \"name\": \"<string>\",\n  \"origin\": \"<string>\",\n  \"scopes\": [\n    {\n      \"allowedOktaApps\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"stringValue\": \"<string>\",\n      \"type\": \"<string>\"\n    },\n    {\n      \"allowedOktaApps\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"stringValue\": \"<string>\",\n      \"type\": \"<string>\"\n    }\n  ],\n  \"status\": \"<string>\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://your-subdomain.okta.com/",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "4c58609b-6725-4d36-b7b2-9d31d12808a9",
+    "name": "Okta Application TrustedOrigin API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Allows customers to easily access the Okta API\n\nContact Support:\n Name: Okta Developer Team\n Email: devex-public@okta.com",
+      "type": "text/plain"
+    }
+  }
+}

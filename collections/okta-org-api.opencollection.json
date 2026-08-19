@@ -1,0 +1,343 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Okta Application Org API",
+    "version": "2.16.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Org",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Okta Get org settings",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://your-subdomain.okta.com/api/v1/org",
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Get settings of your organization."
+        },
+        {
+          "info": {
+            "name": "Okta Partial update Org setting",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://your-subdomain.okta.com/api/v1/org",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Partial update settings of your organization."
+        },
+        {
+          "info": {
+            "name": "Okta Update Org setting",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://your-subdomain.okta.com/api/v1/org",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Update settings of your organization."
+        },
+        {
+          "info": {
+            "name": "Okta Get org contact types",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://your-subdomain.okta.com/api/v1/org/contacts",
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Gets Contact Types of your organization."
+        },
+        {
+          "info": {
+            "name": "Okta Get org contact user",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://your-subdomain.okta.com/api/v1/org/contacts/:contactType",
+            "params": [
+              {
+                "name": "contactType",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Retrieves the URL of the User associated with the specified Contact Type."
+        },
+        {
+          "info": {
+            "name": "Okta Update org contact user",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://your-subdomain.okta.com/api/v1/org/contacts/:contactType",
+            "params": [
+              {
+                "name": "contactType",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Updates the User associated with the specified Contact Type."
+        },
+        {
+          "info": {
+            "name": "Okta Update org logo",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://your-subdomain.okta.com/api/v1/org/logo",
+            "body": {
+              "type": "multipart-form",
+              "data": [
+                {
+                  "name": "file",
+                  "type": "text",
+                  "value": ""
+                }
+              ]
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Updates the logo for your organization."
+        },
+        {
+          "info": {
+            "name": "Okta Get org preferences",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://your-subdomain.okta.com/api/v1/org/preferences",
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Gets preferences of your organization."
+        },
+        {
+          "info": {
+            "name": "Show Okta UI Footer",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://your-subdomain.okta.com/api/v1/org/preferences/hideEndUserFooter",
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Hide the Okta UI footer for all end users of your organization."
+        },
+        {
+          "info": {
+            "name": "Show Okta UI Footer",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://your-subdomain.okta.com/api/v1/org/preferences/showEndUserFooter",
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Makes the Okta UI footer visible for all end users of your organization."
+        },
+        {
+          "info": {
+            "name": "Get Okta Communication Settings",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://your-subdomain.okta.com/api/v1/org/privacy/oktaCommunication",
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Gets Okta Communication Settings of your organization."
+        },
+        {
+          "info": {
+            "name": "Opt in all users to Okta Communication emails",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://your-subdomain.okta.com/api/v1/org/privacy/oktaCommunication/optIn",
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Opts in all users of this org to Okta Communication emails."
+        },
+        {
+          "info": {
+            "name": "Opt out all users from Okta Communication emails",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://your-subdomain.okta.com/api/v1/org/privacy/oktaCommunication/optOut",
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Opts out all users of this org from Okta Communication emails."
+        },
+        {
+          "info": {
+            "name": "Get Okta Support settings",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://your-subdomain.okta.com/api/v1/org/privacy/oktaSupport",
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Gets Okta Support Settings of your organization."
+        },
+        {
+          "info": {
+            "name": "Extend Okta Support",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://your-subdomain.okta.com/api/v1/org/privacy/oktaSupport/extend",
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Extends the length of time that Okta Support can access your org by 24 hours. This means that 24 hours are added to the remaining access time."
+        },
+        {
+          "info": {
+            "name": "Grant Okta Support",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://your-subdomain.okta.com/api/v1/org/privacy/oktaSupport/grant",
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Enables you to temporarily allow Okta Support to access your org as an administrator for eight hours."
+        },
+        {
+          "info": {
+            "name": "Extend Okta Support",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://your-subdomain.okta.com/api/v1/org/privacy/oktaSupport/revoke",
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Revokes Okta Support access to your organization."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,410 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Okta Application Policy API",
+    "version": "2.16.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Policy",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "listPolicies",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://your-subdomain.okta.com/api/v1/policies",
+            "params": [
+              {
+                "name": "type",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "status",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "expand",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Gets all policies with the specified type."
+        },
+        {
+          "info": {
+            "name": "createPolicy",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://your-subdomain.okta.com/api/v1/policies",
+            "params": [
+              {
+                "name": "activate",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Creates a policy."
+        },
+        {
+          "info": {
+            "name": "getPolicy",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://your-subdomain.okta.com/api/v1/policies/:policyId",
+            "params": [
+              {
+                "name": "policyId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "expand",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Gets a policy."
+        },
+        {
+          "info": {
+            "name": "updatePolicy",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://your-subdomain.okta.com/api/v1/policies/:policyId",
+            "params": [
+              {
+                "name": "policyId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Updates a policy."
+        },
+        {
+          "info": {
+            "name": "deletePolicy",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://your-subdomain.okta.com/api/v1/policies/:policyId",
+            "params": [
+              {
+                "name": "policyId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Removes a policy."
+        },
+        {
+          "info": {
+            "name": "activatePolicy",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://your-subdomain.okta.com/api/v1/policies/:policyId/lifecycle/activate",
+            "params": [
+              {
+                "name": "policyId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Activates a policy."
+        },
+        {
+          "info": {
+            "name": "deactivatePolicy",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://your-subdomain.okta.com/api/v1/policies/:policyId/lifecycle/deactivate",
+            "params": [
+              {
+                "name": "policyId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Deactivates a policy."
+        },
+        {
+          "info": {
+            "name": "listPolicyRules",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://your-subdomain.okta.com/api/v1/policies/:policyId/rules",
+            "params": [
+              {
+                "name": "policyId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Enumerates all policy rules."
+        },
+        {
+          "info": {
+            "name": "createPolicyRule",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://your-subdomain.okta.com/api/v1/policies/:policyId/rules",
+            "params": [
+              {
+                "name": "policyId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Creates a policy rule."
+        },
+        {
+          "info": {
+            "name": "getPolicyRule",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://your-subdomain.okta.com/api/v1/policies/:policyId/rules/:ruleId",
+            "params": [
+              {
+                "name": "policyId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "ruleId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Gets a policy rule."
+        },
+        {
+          "info": {
+            "name": "updatePolicyRule",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://your-subdomain.okta.com/api/v1/policies/:policyId/rules/:ruleId",
+            "params": [
+              {
+                "name": "policyId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "ruleId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Updates a policy rule."
+        },
+        {
+          "info": {
+            "name": "deletePolicyRule",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://your-subdomain.okta.com/api/v1/policies/:policyId/rules/:ruleId",
+            "params": [
+              {
+                "name": "policyId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "ruleId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Removes a policy rule."
+        },
+        {
+          "info": {
+            "name": "activatePolicyRule",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://your-subdomain.okta.com/api/v1/policies/:policyId/rules/:ruleId/lifecycle/activate",
+            "params": [
+              {
+                "name": "policyId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "ruleId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Activates a policy rule."
+        },
+        {
+          "info": {
+            "name": "deactivatePolicyRule",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://your-subdomain.okta.com/api/v1/policies/:policyId/rules/:ruleId/lifecycle/deactivate",
+            "params": [
+              {
+                "name": "policyId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "ruleId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Deactivates a policy rule."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
