@@ -40,7 +40,7 @@ tags:
 url: https://raw.githubusercontent.com/api-evangelist/okta/refs/heads/main/apis.yml
 created: '2023-11-20'
 modified: '2026-05-30'
-specificationVersion: '0.19'
+specificationVersion: '0.23'
 apis:
 - aid: okta:okta-cross-app-access
   name: Cross-App Access (XAA)
