@@ -57,6 +57,12 @@ apis:
   tags:
   - Cross-App Access
   - AI Agents
+  - Authentication
+  - ID-JAG
+  - Authorization
+  tags_raw:
+  - Cross-App Access
+  - AI Agents
   - OAuth
   - ID-JAG
   - Authorization
@@ -458,6 +464,8 @@ apis:
   humanURL: https://developer.okta.com/docs/reference/
   baseURL: https://your-subdomain.okta.com
   tags:
+  - Identity Provider
+  tags_raw:
   - IdentityProvider
   properties:
   - type: OpenAPI
@@ -1098,6 +1106,8 @@ apis:
   humanURL: https://developer.okta.com/docs/reference/
   baseURL: https://your-subdomain.okta.com
   tags:
+  - User Type
+  tags_raw:
   - UserType
   properties:
   - type: OpenAPI
