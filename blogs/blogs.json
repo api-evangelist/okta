@@ -13,18 +13,16 @@
       "feed_url": "https://xaa.dev/",
       "title": "",
       "saved": 0,
-      "method": "none",
-      "error": "parse_failed"
+      "method": "none"
     },
     {
       "source": "https://developer.okta.com/signup/",
       "feed_url": "https://developer.okta.com/signup/",
       "title": "",
       "saved": 0,
-      "method": "none",
-      "error": "parse_failed"
+      "method": "none"
     }
   ],
-  "post_count": 27,
-  "fetched": "2026-08-15T12:11:08Z"
+  "post_count": 29,
+  "fetched": "2026-08-22T20:20:02Z"
 }
