@@ -12,8 +12,8 @@ info:
     OpenAPI description.
   version: 1.0.0
 sourceDescriptions:
-- name: oktaApi
-  url: ../openapi/okta-openapi-original.yml
+- name: userfactorApi
+  url: ../openapi/okta-userfactor-api-openapi.yml
   type: openapi
 workflows:
 - workflowId: enroll-and-activate-factor

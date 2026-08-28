@@ -12,8 +12,8 @@ info:
     OpenAPI description.
   version: 1.0.0
 sourceDescriptions:
-- name: oktaApi
-  url: ../openapi/okta-openapi-original.yml
+- name: applicationApi
+  url: ../openapi/okta-application-api-openapi.yml
   type: openapi
 workflows:
 - workflowId: create-and-activate-application

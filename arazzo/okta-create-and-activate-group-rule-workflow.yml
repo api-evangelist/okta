@@ -12,8 +12,8 @@ info:
     description.
   version: 1.0.0
 sourceDescriptions:
-- name: oktaApi
-  url: ../openapi/okta-openapi-original.yml
+- name: groupApi
+  url: ../openapi/okta-group-api-openapi.yml
   type: openapi
 workflows:
 - workflowId: create-and-activate-group-rule

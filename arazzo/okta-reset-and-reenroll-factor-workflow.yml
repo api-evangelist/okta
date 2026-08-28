@@ -12,8 +12,11 @@ info:
     description.
   version: 1.0.0
 sourceDescriptions:
-- name: oktaApi
-  url: ../openapi/okta-openapi-original.yml
+- name: userApi
+  url: ../openapi/okta-user-api-openapi.yml
+  type: openapi
+- name: userfactorApi
+  url: ../openapi/okta-userfactor-api-openapi.yml
   type: openapi
 workflows:
 - workflowId: reset-and-reenroll-factor

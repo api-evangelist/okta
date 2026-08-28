@@ -12,8 +12,11 @@ info:
     description.
   version: 1.0.0
 sourceDescriptions:
-- name: oktaApi
-  url: ../openapi/okta-openapi-original.yml
+- name: applicationApi
+  url: ../openapi/okta-application-api-openapi.yml
+  type: openapi
+- name: userApi
+  url: ../openapi/okta-user-api-openapi.yml
   type: openapi
 workflows:
 - workflowId: find-user-and-assign-app

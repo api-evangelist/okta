@@ -12,8 +12,11 @@ info:
     without opening the underlying OpenAPI description.
   version: 1.0.0
 sourceDescriptions:
-- name: oktaApi
-  url: ../openapi/okta-openapi-original.yml
+- name: applicationApi
+  url: ../openapi/okta-application-api-openapi.yml
+  type: openapi
+- name: groupApi
+  url: ../openapi/okta-group-api-openapi.yml
   type: openapi
 workflows:
 - workflowId: assign-group-to-application
