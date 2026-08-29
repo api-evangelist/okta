@@ -1373,10 +1373,10 @@ common:
     type: DesignSystem
   - name: Workflows Templates
     url: https://github.com/okta/workflows-templates
-    type: Samples
+    type: Examples
   - name: Customer Detections
     url: https://github.com/okta/customer-detections
-    type: Samples
+    type: Examples
   - name: Cross-App Access Sandbox
     url: https://xaa.dev/
     type: Sandbox
