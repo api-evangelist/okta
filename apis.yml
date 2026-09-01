@@ -476,7 +476,7 @@ apis:
   humanURL: https://developer.okta.com/docs/reference/
   baseURL: https://your-subdomain.okta.com
   tags:
-  - IdentityProvider
+  - Identity Provider
   tags_raw:
   - IdentityProvider
   properties:
@@ -1118,7 +1118,7 @@ apis:
   humanURL: https://developer.okta.com/docs/reference/
   baseURL: https://your-subdomain.okta.com
   tags:
-  - UserType
+  - User Type
   tags_raw:
   - UserType
   properties:
