@@ -1,6 +1,15 @@
-generated: '2026-07-15'
+generated: '2026-09-16'
 method: generated
-source: openapi/okta-openapi-original.yml
+source: openapi/okta-application-api-openapi.yml, openapi/okta-authenticator-api-openapi.yml,
+  openapi/okta-authorizationserver-api-openapi.yml, openapi/okta-brand-api-openapi.yml, openapi/okta-domain-api-openapi.yml,
+  openapi/okta-eventhook-api-openapi.yml, openapi/okta-feature-api-openapi.yml, openapi/okta-group-api-openapi.yml,
+  openapi/okta-groupschema-api-openapi.yml, openapi/okta-identity-provider-api-openapi.yml,
+  openapi/okta-inlinehook-api-openapi.yml, openapi/okta-linkedobject-api-openapi.yml, openapi/okta-log-api-openapi.yml,
+  openapi/okta-networkzone-api-openapi.yml, openapi/okta-org-api-openapi.yml, openapi/okta-policy-api-openapi.yml,
+  openapi/okta-profilemapping-api-openapi.yml, openapi/okta-session-api-openapi.yml, openapi/okta-subscription-api-openapi.yml,
+  openapi/okta-template-api-openapi.yml, openapi/okta-threatinsight-api-openapi.yml, openapi/okta-trustedorigin-api-openapi.yml,
+  openapi/okta-user-api-openapi.yml, openapi/okta-user-type-api-openapi.yml, openapi/okta-userfactor-api-openapi.yml,
+  openapi/okta-userschema-api-openapi.yml
 description: Recommended x-agentic-access execution contracts, classified heuristically from
   the OpenAPI. A governance starting point for exposing this API to AI agents — review and bind
   audience per deployment. See research/curity/agentic-governance/.
@@ -202,6 +211,7 @@ operations:
     audit: required
 - path: /api/v1/apps/{appId}/credentials/csrs/{csrId}/lifecycle/publish
   method: post
+  operationId: postApiV1AppsByAppIdCredentialsCsrsByCsrIdLifecyclePublish
   x-agentic-access:
     action-class: acting
     consequence: write
@@ -2259,6 +2269,32 @@ operations:
       - abnormal
       - high-value
     audit: required
+- path: /api/v1/meta/schemas/group/default
+  method: get
+  operationId: getGroupSchema
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/v1/meta/schemas/group/default
+  method: post
+  operationId: updateGroupSchema
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
 - path: /api/v1/idps
   method: get
   operationId: listIdentityProviders
@@ -2433,6 +2469,7 @@ operations:
     audit: required
 - path: /api/v1/idps/{idpId}/credentials/csrs/{csrId}/lifecycle/publish
   method: post
+  operationId: postApiV1IdpsByIdpIdCredentialsCsrsByCsrIdLifecyclePublish
   x-agentic-access:
     action-class: acting
     consequence: write
@@ -2708,104 +2745,6 @@ operations:
       - abnormal
       - high-value
     audit: required
-- path: /api/v1/logs
-  method: get
-  operationId: getLogs
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /api/v1/mappings
-  method: get
-  operationId: listProfileMappings
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /api/v1/mappings/{mappingId}
-  method: get
-  operationId: getProfileMapping
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /api/v1/mappings/{mappingId}
-  method: post
-  operationId: updateProfileMapping
-  x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
-    token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
-- path: /api/v1/meta/schemas/apps/{appInstanceId}/default
-  method: get
-  operationId: getApplicationUserSchema
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /api/v1/meta/schemas/apps/{appInstanceId}/default
-  method: post
-  operationId: updateApplicationUserProfile
-  x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
-    token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
-- path: /api/v1/meta/schemas/group/default
-  method: get
-  operationId: getGroupSchema
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /api/v1/meta/schemas/group/default
-  method: post
-  operationId: updateGroupSchema
-  x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
-    token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
 - path: /api/v1/meta/schemas/user/linkedObjects
   method: get
   operationId: listLinkedObjectDefinitions
@@ -2858,9 +2797,9 @@ operations:
       - abnormal
       - high-value
     audit: required
-- path: /api/v1/meta/schemas/user/{schemaId}
+- path: /api/v1/logs
   method: get
-  operationId: getUserSchema
+  operationId: getLogs
   x-agentic-access:
     action-class: connected
     consequence: read
@@ -2868,9 +2807,19 @@ operations:
     token:
       max-ttl: 3600
     audit: none
-- path: /api/v1/meta/schemas/user/{schemaId}
+- path: /api/v1/zones
+  method: get
+  operationId: listNetworkZones
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/v1/zones
   method: post
-  operationId: updateUserProfile
+  operationId: createNetworkZone
   x-agentic-access:
     action-class: acting
     consequence: write
@@ -2884,9 +2833,9 @@ operations:
       - abnormal
       - high-value
     audit: required
-- path: /api/v1/meta/types/user
+- path: /api/v1/zones/{zoneId}
   method: get
-  operationId: listUserTypes
+  operationId: getNetworkZone
   x-agentic-access:
     action-class: connected
     consequence: read
@@ -2894,35 +2843,9 @@ operations:
     token:
       max-ttl: 3600
     audit: none
-- path: /api/v1/meta/types/user
-  method: post
-  operationId: createUserType
-  x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
-    token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
-- path: /api/v1/meta/types/user/{typeId}
-  method: get
-  operationId: getUserType
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /api/v1/meta/types/user/{typeId}
+- path: /api/v1/zones/{zoneId}
   method: put
-  operationId: replaceUserType
+  operationId: updateNetworkZone
   x-agentic-access:
     action-class: acting
     consequence: write
@@ -2936,25 +2859,41 @@ operations:
       - abnormal
       - high-value
     audit: required
-- path: /api/v1/meta/types/user/{typeId}
-  method: post
-  operationId: updateUserType
-  x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
-    token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
-- path: /api/v1/meta/types/user/{typeId}
+- path: /api/v1/zones/{zoneId}
   method: delete
-  operationId: deleteUserType
+  operationId: deleteNetworkZone
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /api/v1/zones/{zoneId}/lifecycle/activate
+  method: post
+  operationId: activateNetworkZone
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /api/v1/zones/{zoneId}/lifecycle/deactivate
+  method: post
+  operationId: deactivateNetworkZone
   x-agentic-access:
     action-class: acting
     consequence: write
@@ -3404,9 +3343,9 @@ operations:
       - abnormal
       - high-value
     audit: required
-- path: /api/v1/roles/{roleTypeOrRoleId}/subscriptions
+- path: /api/v1/mappings
   method: get
-  operationId: listRoleSubscriptions
+  operationId: listProfileMappings
   x-agentic-access:
     action-class: connected
     consequence: read
@@ -3414,9 +3353,9 @@ operations:
     token:
       max-ttl: 3600
     audit: none
-- path: /api/v1/roles/{roleTypeOrRoleId}/subscriptions/{notificationType}
+- path: /api/v1/mappings/{mappingId}
   method: get
-  operationId: getRoleSubscriptionByNotificationType
+  operationId: getProfileMapping
   x-agentic-access:
     action-class: connected
     consequence: read
@@ -3424,25 +3363,9 @@ operations:
     token:
       max-ttl: 3600
     audit: none
-- path: /api/v1/roles/{roleTypeOrRoleId}/subscriptions/{notificationType}/subscribe
+- path: /api/v1/mappings/{mappingId}
   method: post
-  operationId: subscribeRoleSubscriptionByNotificationType
-  x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
-    token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
-- path: /api/v1/roles/{roleTypeOrRoleId}/subscriptions/{notificationType}/unsubscribe
-  method: post
-  operationId: unsubscribeRoleSubscriptionByNotificationType
+  operationId: updateProfileMapping
   x-agentic-access:
     action-class: acting
     consequence: write
@@ -3501,6 +3424,90 @@ operations:
 - path: /api/v1/sessions/{sessionId}/lifecycle/refresh
   method: post
   operationId: refreshSession
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /api/v1/roles/{roleTypeOrRoleId}/subscriptions
+  method: get
+  operationId: listRoleSubscriptions
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/v1/roles/{roleTypeOrRoleId}/subscriptions/{notificationType}
+  method: get
+  operationId: getRoleSubscriptionByNotificationType
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/v1/roles/{roleTypeOrRoleId}/subscriptions/{notificationType}/subscribe
+  method: post
+  operationId: subscribeRoleSubscriptionByNotificationType
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /api/v1/roles/{roleTypeOrRoleId}/subscriptions/{notificationType}/unsubscribe
+  method: post
+  operationId: unsubscribeRoleSubscriptionByNotificationType
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /api/v1/users/{userId}/subscriptions/{notificationType}/subscribe
+  method: post
+  operationId: subscribeUserSubscriptionByNotificationType
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /api/v1/users/{userId}/subscriptions/{notificationType}/unsubscribe
+  method: post
+  operationId: unsubscribeUserSubscriptionByNotificationType
   x-agentic-access:
     action-class: acting
     consequence: write
@@ -3958,120 +3965,7 @@ operations:
     audit: required
 - path: /api/v1/users/{userId}/credentials/forgot_password
   method: post
-  x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
-    token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
-- path: /api/v1/users/{userId}/factors
-  method: get
-  operationId: listFactors
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /api/v1/users/{userId}/factors
-  method: post
-  operationId: enrollFactor
-  x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
-    token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
-- path: /api/v1/users/{userId}/factors/catalog
-  method: get
-  operationId: listSupportedFactors
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /api/v1/users/{userId}/factors/questions
-  method: get
-  operationId: listSupportedSecurityQuestions
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /api/v1/users/{userId}/factors/{factorId}
-  method: get
-  operationId: getFactor
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /api/v1/users/{userId}/factors/{factorId}
-  method: delete
-  operationId: deleteFactor
-  x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
-    token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
-- path: /api/v1/users/{userId}/factors/{factorId}/lifecycle/activate
-  method: post
-  operationId: activateFactor
-  x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
-    token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
-- path: /api/v1/users/{userId}/factors/{factorId}/transactions/{transactionId}
-  method: get
-  operationId: getFactorTransactionStatus
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /api/v1/users/{userId}/factors/{factorId}/verify
-  method: post
-  operationId: verifyFactor
+  operationId: postApiV1UsersByUserIdCredentialsForgotPassword
   x-agentic-access:
     action-class: acting
     consequence: write
@@ -4565,41 +4459,9 @@ operations:
     token:
       max-ttl: 3600
     audit: none
-- path: /api/v1/users/{userId}/subscriptions/{notificationType}/subscribe
-  method: post
-  operationId: subscribeUserSubscriptionByNotificationType
-  x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
-    token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
-- path: /api/v1/users/{userId}/subscriptions/{notificationType}/unsubscribe
-  method: post
-  operationId: unsubscribeUserSubscriptionByNotificationType
-  x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
-    token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
-- path: /api/v1/zones
+- path: /api/v1/meta/types/user
   method: get
-  operationId: listNetworkZones
+  operationId: listUserTypes
   x-agentic-access:
     action-class: connected
     consequence: read
@@ -4607,9 +4469,9 @@ operations:
     token:
       max-ttl: 3600
     audit: none
-- path: /api/v1/zones
+- path: /api/v1/meta/types/user
   method: post
-  operationId: createNetworkZone
+  operationId: createUserType
   x-agentic-access:
     action-class: acting
     consequence: write
@@ -4623,9 +4485,9 @@ operations:
       - abnormal
       - high-value
     audit: required
-- path: /api/v1/zones/{zoneId}
+- path: /api/v1/meta/types/user/{typeId}
   method: get
-  operationId: getNetworkZone
+  operationId: getUserType
   x-agentic-access:
     action-class: connected
     consequence: read
@@ -4633,9 +4495,9 @@ operations:
     token:
       max-ttl: 3600
     audit: none
-- path: /api/v1/zones/{zoneId}
+- path: /api/v1/meta/types/user/{typeId}
   method: put
-  operationId: updateNetworkZone
+  operationId: replaceUserType
   x-agentic-access:
     action-class: acting
     consequence: write
@@ -4649,9 +4511,25 @@ operations:
       - abnormal
       - high-value
     audit: required
-- path: /api/v1/zones/{zoneId}
+- path: /api/v1/meta/types/user/{typeId}
+  method: post
+  operationId: updateUserType
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /api/v1/meta/types/user/{typeId}
   method: delete
-  operationId: deleteNetworkZone
+  operationId: deleteUserType
   x-agentic-access:
     action-class: acting
     consequence: write
@@ -4665,9 +4543,19 @@ operations:
       - abnormal
       - high-value
     audit: required
-- path: /api/v1/zones/{zoneId}/lifecycle/activate
+- path: /api/v1/users/{userId}/factors
+  method: get
+  operationId: listFactors
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/v1/users/{userId}/factors
   method: post
-  operationId: activateNetworkZone
+  operationId: enrollFactor
   x-agentic-access:
     action-class: acting
     consequence: write
@@ -4681,9 +4569,133 @@ operations:
       - abnormal
       - high-value
     audit: required
-- path: /api/v1/zones/{zoneId}/lifecycle/deactivate
+- path: /api/v1/users/{userId}/factors/catalog
+  method: get
+  operationId: listSupportedFactors
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/v1/users/{userId}/factors/questions
+  method: get
+  operationId: listSupportedSecurityQuestions
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/v1/users/{userId}/factors/{factorId}
+  method: get
+  operationId: getFactor
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/v1/users/{userId}/factors/{factorId}
+  method: delete
+  operationId: deleteFactor
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /api/v1/users/{userId}/factors/{factorId}/lifecycle/activate
   method: post
-  operationId: deactivateNetworkZone
+  operationId: activateFactor
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /api/v1/users/{userId}/factors/{factorId}/transactions/{transactionId}
+  method: get
+  operationId: getFactorTransactionStatus
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/v1/users/{userId}/factors/{factorId}/verify
+  method: post
+  operationId: verifyFactor
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /api/v1/meta/schemas/apps/{appInstanceId}/default
+  method: get
+  operationId: getApplicationUserSchema
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/v1/meta/schemas/apps/{appInstanceId}/default
+  method: post
+  operationId: updateApplicationUserProfile
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /api/v1/meta/schemas/user/{schemaId}
+  method: get
+  operationId: getUserSchema
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/v1/meta/schemas/user/{schemaId}
+  method: post
+  operationId: updateUserProfile
   x-agentic-access:
     action-class: acting
     consequence: write
