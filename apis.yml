@@ -471,48 +471,6 @@ apis:
     url: plans/okta-plans-pricing.yml
   - type: FinOps
     url: finops/okta-finops.yml
-- aid: okta:okta-identityprovider-api
-  name: Okta IdentityProvider API
-  description: The IdentityProvider API from Okta — 16 operation(s) for identityprovider.
-  humanURL: https://developer.okta.com/docs/reference/
-  baseURL: https://your-subdomain.okta.com
-  tags:
-  - Identity Provider
-  tags_raw:
-  - IdentityProvider
-  properties:
-  - type: OpenAPI
-    url: openapi/okta-identityprovider-api-openapi.yml
-  - type: Documentation
-    url: https://developer.okta.com/docs/reference/
-  - type: OpenAPISource
-    url: https://github.com/okta/okta-management-openapi-spec
-  - type: AsyncAPI
-    url: asyncapi/okta-events-asyncapi.yml
-  - type: Authentication
-    url: https://developer.okta.com/docs/guides/implement-grant-type/authcodepkce/main/
-  - type: RateLimits
-    url: rate-limits/okta-rate-limits.yml
-  - type: GraphQL
-    url: graphql/okta-graphql.md
-  - type: JSONSchema
-    url: json-schema/okta-user-schema.json
-  - type: JSONSchema
-    url: json-schema/okta-group-schema.json
-  - type: JSONSchema
-    url: json-schema/okta-application-schema.json
-  - type: JSONStructure
-    url: json-structure/okta-user-structure.json
-  - type: JSONLD
-    url: json-ld/okta-context.jsonld
-  - type: SpectralRules
-    url: rules/okta-rules.yml
-  - type: Vocabulary
-    url: vocabulary/okta-vocabulary.yml
-  - type: Plans
-    url: plans/okta-plans-pricing.yml
-  - type: FinOps
-    url: finops/okta-finops.yml
 - aid: okta:okta-inlinehook-api
   name: Okta InlineHook API
   description: The InlineHook API from Okta — 5 operation(s) for inlinehook.
@@ -1113,18 +1071,56 @@ apis:
     url: plans/okta-plans-pricing.yml
   - type: FinOps
     url: finops/okta-finops.yml
-- aid: okta:okta-usertype-api
-  name: Okta UserType API
-  description: The UserType API from Okta — 2 operation(s) for usertype.
-  humanURL: https://developer.okta.com/docs/reference/
-  baseURL: https://your-subdomain.okta.com
+- aid: okta:okta-identity-provider-api
+  name: Okta Identity Provider API
+  description: The Identity Provider API from Okta — 16 operation(s) for identity provider.
+  humanURL: https://xaa.dev/
+  baseURL: https://xaa.dev
   tags:
-  - User Type
-  tags_raw:
-  - UserType
+  - Identity Provider
   properties:
   - type: OpenAPI
-    url: openapi/okta-usertype-api-openapi.yml
+    url: openapi/okta-identity-provider-api-openapi.yml
+  - type: Documentation
+    url: https://developer.okta.com/docs/reference/
+  - type: OpenAPISource
+    url: https://github.com/okta/okta-management-openapi-spec
+  - type: AsyncAPI
+    url: asyncapi/okta-events-asyncapi.yml
+  - type: Authentication
+    url: https://developer.okta.com/docs/guides/implement-grant-type/authcodepkce/main/
+  - type: RateLimits
+    url: rate-limits/okta-rate-limits.yml
+  - type: GraphQL
+    url: graphql/okta-graphql.md
+  - type: JSONSchema
+    url: json-schema/okta-user-schema.json
+  - type: JSONSchema
+    url: json-schema/okta-group-schema.json
+  - type: JSONSchema
+    url: json-schema/okta-application-schema.json
+  - type: JSONStructure
+    url: json-structure/okta-user-structure.json
+  - type: JSONLD
+    url: json-ld/okta-context.jsonld
+  - type: SpectralRules
+    url: rules/okta-rules.yml
+  - type: Vocabulary
+    url: vocabulary/okta-vocabulary.yml
+  - type: Plans
+    url: plans/okta-plans-pricing.yml
+  - type: FinOps
+    url: finops/okta-finops.yml
+- aid: okta:okta-user-type-api
+  name: Okta User Type API
+  description: The User Type API from Okta — 2 operation(s) for user type.
+  humanURL: https://xaa.dev/
+  baseURL: https://xaa.dev
+  tags:
+  - User Type
+  properties:
+  - type: OpenAPI
+    url: openapi/okta-user-type-api-openapi.yml
   - type: Documentation
     url: https://developer.okta.com/docs/reference/
   - type: OpenAPISource
