@@ -37,12 +37,13 @@ accessModel:
   method: derived
 image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/okta.png
 tags:
+- SSO
+- Okta
 - Identity
 - Workforce Identity
 - Customer Identity
 - Authentication
 - Authorization
-- SSO
 - Multi-Factor Authentication
 - Identity Governance
 - Privileged Access
