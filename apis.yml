@@ -42,6 +42,22 @@ tags:
 - Customer Identity
 - Authentication
 - Authorization
+- SSO
+- Multi-Factor Authentication
+- Identity Governance
+- Privileged Access
+- AI Agents
+- Cross-App Access
+- MCP
+- Platform
+tags_raw:
+- Single Sign-On
+- Okta
+- Identity
+- Workforce Identity
+- Customer Identity
+- Authentication
+- Authorization
 - Single Sign-On
 - Multi-Factor Authentication
 - Identity Governance
@@ -50,7 +66,6 @@ tags:
 - Cross-App Access
 - MCP
 - Platform
-- Okta
 url: https://raw.githubusercontent.com/api-evangelist/okta/refs/heads/main/apis.yml
 created: '2023-11-20'
 modified: '2026-05-30'
@@ -238,6 +253,8 @@ apis:
   humanURL: https://developer.okta.com/docs/reference/
   baseURL: https://your-subdomain.okta.com
   tags:
+  - Brands
+  tags_raw:
   - Brand
   properties:
   - type: OpenAPI
@@ -758,6 +775,8 @@ apis:
   humanURL: https://developer.okta.com/docs/reference/
   baseURL: https://your-subdomain.okta.com
   tags:
+  - Sessions
+  tags_raw:
   - Session
   properties:
   - type: OpenAPI
@@ -838,6 +857,8 @@ apis:
   humanURL: https://developer.okta.com/docs/reference/
   baseURL: https://your-subdomain.okta.com
   tags:
+  - Templates
+  tags_raw:
   - Template
   properties:
   - type: OpenAPI
