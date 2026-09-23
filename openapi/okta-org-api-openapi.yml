@@ -1,6 +1,6 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
-  title: Okta Application Org API
+  title: Okta Org API
   description: Allows customers to easily access the Okta API
   termsOfService: https://developer.okta.com/terms/
   contact:
@@ -350,21 +350,6 @@ components:
         operationId: updateOrgContactUser
       x-okta-tags:
       - Org
-    OrgOktaCommunicationSetting:
-      type: object
-      properties:
-        _links:
-          type: object
-        optOutEmailUsers:
-          type: boolean
-          readOnly: true
-      x-okta-operations:
-      - alias: optInUsersToOktaCommunicationEmails
-        operationId: optInUsersToOktaCommunicationEmails
-      - alias: optOutUsersFromOktaCommunicationEmails
-        operationId: optOutUsersFromOktaCommunicationEmails
-      x-okta-tags:
-      - Org
     UserIdString:
       type: object
       properties:
@@ -462,15 +447,6 @@ components:
         operationId: updateOrgLogo
       x-okta-tags:
       - Org
-    OrgContactTypeObj:
-      type: object
-      properties:
-        _links:
-          type: object
-        contactType:
-          $ref: '#/components/schemas/OrgContactType'
-      x-okta-tags:
-      - Org
     OrgOktaSupportSettingsObj:
       type: object
       properties:
@@ -491,18 +467,26 @@ components:
         operationId: revokeOktaSupport
       x-okta-tags:
       - Org
+    OrgOktaCommunicationSetting:
+      type: object
+      properties:
+        _links:
+          type: object
+        optOutEmailUsers:
+          type: boolean
+          readOnly: true
+      x-okta-operations:
+      - alias: optInUsersToOktaCommunicationEmails
+        operationId: optInUsersToOktaCommunicationEmails
+      - alias: optOutUsersFromOktaCommunicationEmails
+        operationId: optOutUsersFromOktaCommunicationEmails
+      x-okta-tags:
+      - Org
     OrgContactType:
       type: string
       enum:
       - BILLING
       - TECHNICAL
-      x-okta-tags:
-      - Org
-    OrgOktaSupportSetting:
-      type: string
-      enum:
-      - DISABLED
-      - ENABLED
       x-okta-tags:
       - Org
     OrgPreferences:
@@ -518,6 +502,22 @@ components:
         operationId: hideOktaUIFooter
       - alias: showEndUserFooter
         operationId: showOktaUIFooter
+      x-okta-tags:
+      - Org
+    OrgOktaSupportSetting:
+      type: string
+      enum:
+      - DISABLED
+      - ENABLED
+      x-okta-tags:
+      - Org
+    OrgContactTypeObj:
+      type: object
+      properties:
+        _links:
+          type: object
+        contactType:
+          $ref: '#/components/schemas/OrgContactType'
       x-okta-tags:
       - Org
   securitySchemes:

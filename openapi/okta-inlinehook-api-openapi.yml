@@ -1,6 +1,6 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
-  title: Okta Application InlineHook API
+  title: Okta Inline Hook API
   description: Allows customers to easily access the Okta API
   termsOfService: https://developer.okta.com/terms/
   contact:
@@ -38,6 +38,8 @@ paths:
                   $ref: '#/components/schemas/InlineHook'
       security:
       - api_token: []
+      summary: List inline hooks
+      x-summary-source: derived
     post:
       tags:
       - InlineHook
@@ -59,6 +61,8 @@ paths:
       security:
       - api_token: []
       x-codegen-request-body-name: inlineHook
+      summary: Create inline hook
+      x-summary-source: derived
   /api/v1/inlineHooks/{inlineHookId}:
     get:
       tags:
@@ -80,6 +84,8 @@ paths:
                 $ref: '#/components/schemas/InlineHook'
       security:
       - api_token: []
+      summary: Get inline hook
+      x-summary-source: derived
     put:
       tags:
       - InlineHook
@@ -107,6 +113,8 @@ paths:
       security:
       - api_token: []
       x-codegen-request-body-name: inlineHook
+      summary: Update inline hook
+      x-summary-source: derived
     delete:
       tags:
       - InlineHook
@@ -124,6 +132,8 @@ paths:
           content: {}
       security:
       - api_token: []
+      summary: Delete inline hook
+      x-summary-source: derived
   /api/v1/inlineHooks/{inlineHookId}/execute:
     post:
       tags:
@@ -152,6 +162,8 @@ paths:
       security:
       - api_token: []
       x-codegen-request-body-name: payloadData
+      summary: Execute inline hook
+      x-summary-source: derived
   /api/v1/inlineHooks/{inlineHookId}/lifecycle/activate:
     post:
       tags:
@@ -173,6 +185,8 @@ paths:
                 $ref: '#/components/schemas/InlineHook'
       security:
       - api_token: []
+      summary: Activate inline hook
+      x-summary-source: derived
   /api/v1/inlineHooks/{inlineHookId}/lifecycle/deactivate:
     post:
       tags:
@@ -194,11 +208,77 @@ paths:
                 $ref: '#/components/schemas/InlineHook'
       security:
       - api_token: []
+      summary: Deactivate inline hook
+      x-summary-source: derived
 components:
   schemas:
+    InlineHookResponseCommands:
+      type: object
+      properties:
+        type:
+          type: string
+        value:
+          type: array
+          items:
+            $ref: '#/components/schemas/InlineHookResponseCommandValue'
+      x-okta-tags:
+      - InlineHook
+    InlineHookChannelConfigAuthScheme:
+      type: object
+      properties:
+        key:
+          type: string
+        type:
+          type: string
+        value:
+          type: string
+      x-okta-tags:
+      - InlineHook
+    InlineHookChannelConfig:
+      type: object
+      properties:
+        authScheme:
+          $ref: '#/components/schemas/InlineHookChannelConfigAuthScheme'
+        headers:
+          type: array
+          items:
+            $ref: '#/components/schemas/InlineHookChannelConfigHeaders'
+        method:
+          type: string
+        uri:
+          type: string
+      x-okta-tags:
+      - InlineHook
     InlineHookPayload:
       type: object
       x-okta-extensible: true
+      x-okta-tags:
+      - InlineHook
+    InlineHookChannelConfigHeaders:
+      type: object
+      properties:
+        key:
+          type: string
+        value:
+          type: string
+      x-okta-tags:
+      - InlineHook
+    InlineHookResponseCommandValue:
+      type: object
+      properties:
+        op:
+          type: string
+        path:
+          type: string
+        value:
+          type: string
+      x-okta-tags:
+      - InlineHook
+    InlineHookStatus:
+      type: string
+      enum:
+      - ACTIVE
+      - INACTIVE
       x-okta-tags:
       - InlineHook
     InlineHook:
@@ -270,15 +350,13 @@ components:
         operationId: executeInlineHook
       x-okta-tags:
       - InlineHook
-    InlineHookChannelConfigAuthScheme:
+    InlineHookResponse:
       type: object
       properties:
-        key:
-          type: string
-        type:
-          type: string
-        value:
-          type: string
+        commands:
+          type: array
+          items:
+            $ref: '#/components/schemas/InlineHookResponseCommands'
       x-okta-tags:
       - InlineHook
     InlineHookChannel:
@@ -294,28 +372,6 @@ components:
           type: string
       x-okta-tags:
       - InlineHook
-    InlineHookResponseCommandValue:
-      type: object
-      properties:
-        op:
-          type: string
-        path:
-          type: string
-        value:
-          type: string
-      x-okta-tags:
-      - InlineHook
-    InlineHookResponseCommands:
-      type: object
-      properties:
-        type:
-          type: string
-        value:
-          type: array
-          items:
-            $ref: '#/components/schemas/InlineHookResponseCommandValue'
-      x-okta-tags:
-      - InlineHook
     InlineHookType:
       type: string
       enum:
@@ -324,46 +380,6 @@ components:
       - com.okta.saml.tokens.transform
       - com.okta.user.pre-registration
       - com.okta.user.credential.password.import
-      x-okta-tags:
-      - InlineHook
-    InlineHookResponse:
-      type: object
-      properties:
-        commands:
-          type: array
-          items:
-            $ref: '#/components/schemas/InlineHookResponseCommands'
-      x-okta-tags:
-      - InlineHook
-    InlineHookChannelConfigHeaders:
-      type: object
-      properties:
-        key:
-          type: string
-        value:
-          type: string
-      x-okta-tags:
-      - InlineHook
-    InlineHookChannelConfig:
-      type: object
-      properties:
-        authScheme:
-          $ref: '#/components/schemas/InlineHookChannelConfigAuthScheme'
-        headers:
-          type: array
-          items:
-            $ref: '#/components/schemas/InlineHookChannelConfigHeaders'
-        method:
-          type: string
-        uri:
-          type: string
-      x-okta-tags:
-      - InlineHook
-    InlineHookStatus:
-      type: string
-      enum:
-      - ACTIVE
-      - INACTIVE
       x-okta-tags:
       - InlineHook
   securitySchemes:

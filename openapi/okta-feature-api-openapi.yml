@@ -1,6 +1,6 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
-  title: Okta Application Feature API
+  title: Okta Feature API
   description: Allows customers to easily access the Okta API
   termsOfService: https://developer.okta.com/terms/
   contact:
@@ -33,6 +33,8 @@ paths:
                   $ref: '#/components/schemas/Feature'
       security:
       - api_token: []
+      summary: List features
+      x-summary-source: derived
   /api/v1/features/{featureId}:
     get:
       tags:
@@ -54,6 +56,8 @@ paths:
                 $ref: '#/components/schemas/Feature'
       security:
       - api_token: []
+      summary: Get feature
+      x-summary-source: derived
   /api/v1/features/{featureId}/dependencies:
     get:
       tags:
@@ -77,6 +81,8 @@ paths:
                   $ref: '#/components/schemas/Feature'
       security:
       - api_token: []
+      summary: List feature dependencies
+      x-summary-source: derived
   /api/v1/features/{featureId}/dependents:
     get:
       tags:
@@ -100,6 +106,8 @@ paths:
                   $ref: '#/components/schemas/Feature'
       security:
       - api_token: []
+      summary: List feature dependents
+      x-summary-source: derived
   /api/v1/features/{featureId}/{lifecycle}:
     post:
       tags:
@@ -130,8 +138,16 @@ paths:
                 $ref: '#/components/schemas/Feature'
       security:
       - api_token: []
+      summary: Update feature lifecycle
+      x-summary-source: derived
 components:
   schemas:
+    FeatureType:
+      type: string
+      enum:
+      - self-service
+      x-okta-tags:
+      - Feature
     FeatureStage:
       type: object
       properties:
@@ -148,10 +164,11 @@ components:
       - DISABLED
       x-okta-tags:
       - Common
-    FeatureType:
+    FeatureStageValue:
       type: string
       enum:
-      - self-service
+      - EA
+      - BETA
       x-okta-tags:
       - Feature
     FeatureStageState:
@@ -203,13 +220,6 @@ components:
         - dest: featureId
           src: id
         operationId: listFeatureDependencies
-      x-okta-tags:
-      - Feature
-    FeatureStageValue:
-      type: string
-      enum:
-      - EA
-      - BETA
       x-okta-tags:
       - Feature
   securitySchemes:

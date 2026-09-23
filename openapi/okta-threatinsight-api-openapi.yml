@@ -1,6 +1,6 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
-  title: Okta Application ThreatInsight API
+  title: Okta Threat Insight API
   description: Allows customers to easily access the Okta API
   termsOfService: https://developer.okta.com/terms/
   contact:
@@ -31,6 +31,8 @@ paths:
                 $ref: '#/components/schemas/ThreatInsightConfiguration'
       security:
       - api_token: []
+      summary: Get current configuration
+      x-summary-source: derived
     post:
       tags:
       - ThreatInsight
@@ -52,6 +54,8 @@ paths:
       security:
       - api_token: []
       x-codegen-request-body-name: ThreatInsightConfiguration
+      summary: Update configuration
+      x-summary-source: derived
 components:
   schemas:
     ThreatInsightConfiguration:

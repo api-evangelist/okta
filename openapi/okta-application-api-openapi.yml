@@ -1,4 +1,4 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
   title: Okta Application API
   description: Allows customers to easily access the Okta API
@@ -175,7 +175,7 @@ paths:
     get:
       tags:
       - Application
-      summary: Okta Fetches the default Provisioning Connection for an application.
+      summary: Okta Fetches the default Provisioning Connection for an application
       description: Get default Provisioning Connection for application
       operationId: getDefaultProvisioningConnectionForApplication
       parameters:
@@ -199,7 +199,7 @@ paths:
     post:
       tags:
       - Application
-      summary: Okta Sets the default Provisioning Connection for an application.
+      summary: Okta Sets the default Provisioning Connection for an application
       description: Set default Provisioning Connection for application
       operationId: setDefaultProvisioningConnectionForApplication
       parameters:
@@ -355,6 +355,8 @@ paths:
                 $ref: '#/components/schemas/Csr'
       security:
       - api_token: []
+      summary: Get csr for application
+      x-summary-source: derived
     delete:
       tags:
       - Application
@@ -376,6 +378,8 @@ paths:
           content: {}
       security:
       - api_token: []
+      summary: Revoke csr from application
+      x-summary-source: derived
   /api/v1/apps/{appId}/credentials/csrs/{csrId}/lifecycle/publish:
     post:
       tags:
@@ -446,6 +450,10 @@ paths:
           name: certificate
           required: true
           type: string
+      summary: Create api apps by app id credentials csrs by csr id lifecycle publish
+      x-summary-source: derived
+      operationId: postApiV1AppsByAppIdCredentialsCsrsByCsrIdLifecyclePublish
+      x-operation-id-source: derived
   /api/v1/apps/{appId}/credentials/keys:
     get:
       tags:
@@ -495,6 +503,8 @@ paths:
                 $ref: '#/components/schemas/JsonWebKey'
       security:
       - api_token: []
+      summary: Generate application key
+      x-summary-source: derived
   /api/v1/apps/{appId}/credentials/keys/{keyId}:
     get:
       tags:
@@ -656,6 +666,8 @@ paths:
           content: {}
       security:
       - api_token: []
+      summary: Delete client secret for application
+      x-summary-source: derived
   /api/v1/apps/{appId}/credentials/secrets/{secretId}/lifecycle/activate:
     post:
       tags:
@@ -714,7 +726,7 @@ paths:
     get:
       tags:
       - Application
-      summary: Okta Fetches the Feature objects for an application.
+      summary: Okta Fetches the Feature objects for an application
       description: List Features for application
       operationId: listFeaturesForApplication
       parameters:
@@ -741,7 +753,7 @@ paths:
     get:
       tags:
       - Application
-      summary: Okta Fetches a Feature object for an application.
+      summary: Okta Fetches a Feature object for an application
       description: Fetches a Feature object for an application.
       operationId: getFeatureForApplication
       parameters:
@@ -770,7 +782,7 @@ paths:
     put:
       tags:
       - Application
-      summary: Okta Updates a Feature object for an application.
+      summary: Okta Updates a Feature object for an application
       description: Updates a Feature object for an application.
       operationId: updateFeatureForApplication
       parameters:
@@ -830,6 +842,8 @@ paths:
                   $ref: '#/components/schemas/OAuth2ScopeConsentGrant'
       security:
       - api_token: []
+      summary: List scope consent grants
+      x-summary-source: derived
     post:
       tags:
       - Application
@@ -857,6 +871,8 @@ paths:
       security:
       - api_token: []
       x-codegen-request-body-name: oAuth2ScopeConsentGrant
+      summary: Grant consent to scope
+      x-summary-source: derived
   /api/v1/apps/{appId}/grants/{grantId}:
     get:
       tags:
@@ -887,6 +903,8 @@ paths:
                 $ref: '#/components/schemas/OAuth2ScopeConsentGrant'
       security:
       - api_token: []
+      summary: Get scope consent grant
+      x-summary-source: derived
     delete:
       tags:
       - Application
@@ -909,6 +927,8 @@ paths:
           content: {}
       security:
       - api_token: []
+      summary: Revoke scope consent grant
+      x-summary-source: derived
   /api/v1/apps/{appId}/groups:
     get:
       tags:
@@ -1082,7 +1102,7 @@ paths:
     post:
       tags:
       - Application
-      summary: Okta The file must be in PNG, JPG, or GIF format, and less than 1 MB in size. For best results use landscape orientation, a transparent background, and a minimum size of 420px by 120px to prevent upscaling.
+      summary: Okta The file must be in PNG, JPG, or GIF format, and less than 1 MB in size.
       description: Update the logo for an application.
       operationId: uploadApplicationLogo
       parameters:
@@ -1226,6 +1246,8 @@ paths:
                           attribute: true
       security:
       - api_token: []
+      summary: Preview SAML app metadata
+      x-summary-source: derived
   /api/v1/apps/{appId}/tokens:
     get:
       tags:
@@ -1263,6 +1285,8 @@ paths:
                   $ref: '#/components/schemas/OAuth2Token'
       security:
       - api_token: []
+      summary: List OAuth2 tokens for application
+      x-summary-source: derived
     delete:
       tags:
       - Application
@@ -1280,6 +1304,8 @@ paths:
           content: {}
       security:
       - api_token: []
+      summary: Revoke OAuth2 tokens for application
+      x-summary-source: derived
   /api/v1/apps/{appId}/tokens/{tokenId}:
     get:
       tags:
@@ -1310,6 +1336,8 @@ paths:
                 $ref: '#/components/schemas/OAuth2Token'
       security:
       - api_token: []
+      summary: Get OAuth2 token for application
+      x-summary-source: derived
     delete:
       tags:
       - Application
@@ -1332,12 +1360,14 @@ paths:
           content: {}
       security:
       - api_token: []
+      summary: Revoke OAuth2 token for application
+      x-summary-source: derived
   /api/v1/apps/{appId}/users:
     get:
       tags:
       - Application
       summary: Okta List Users Assigned to Application
-      description: Enumerates all assigned [application users](#application-user-model) for an application.
+      description: Enumerates all assigned application users for an application.
       operationId: listApplicationUsers
       parameters:
       - name: appId
@@ -1388,7 +1418,7 @@ paths:
       tags:
       - Application
       summary: Okta Assign User to Application for SSO & Provisioning
-      description: Assigns an user to an application with [credentials](#application-user-credentials-object) and an app-specific [profile](#application-user-profile-object). Profile mappings defined for the application are first applied before applying any profile properties specified in the request.
+      description: Assigns an user to an application with credentials and an app-specific profile. Profile mappings defined for the application are first applied before applying any profile properties specified in the request.
       operationId: assignUserToApplication
       parameters:
       - name: appId
@@ -1508,64 +1538,6 @@ paths:
       - api_token: []
 components:
   schemas:
-    ProvisioningConnection:
-      type: object
-      properties:
-        _links:
-          type: object
-          additionalProperties:
-            type: object
-            properties: {}
-          readOnly: true
-        authScheme:
-          $ref: '#/components/schemas/ProvisioningConnectionAuthScheme'
-        status:
-          $ref: '#/components/schemas/ProvisioningConnectionStatus'
-      x-okta-operations:
-      - alias: getDefaultProvisioningConnectionForApplication
-        operationId: getDefaultProvisioningConnectionForApplication
-      - alias: activateDefaultProvisioningConnectionForApplication
-        operationId: activateDefaultProvisioningConnectionForApplication
-      - alias: deactivateDefaultProvisioningConnectionForApplication
-        operationId: deactivateDefaultProvisioningConnectionForApplication
-      x-okta-tags:
-      - Application
-    ApplicationCredentialsSigning:
-      type: object
-      properties:
-        kid:
-          type: string
-        lastRotated:
-          type: string
-          format: date-time
-          readOnly: true
-        nextRotation:
-          type: string
-          format: date-time
-          readOnly: true
-        rotationMode:
-          type: string
-        use:
-          $ref: '#/components/schemas/ApplicationCredentialsSigningUse'
-      x-okta-tags:
-      - Application
-    CsrMetadataSubject:
-      type: object
-      properties:
-        commonName:
-          type: string
-        countryName:
-          type: string
-        localityName:
-          type: string
-        organizationName:
-          type: string
-        organizationalUnitName:
-          type: string
-        stateOrProvinceName:
-          type: string
-      x-okta-tags:
-      - Application
     OAuth2ScopeConsentGrantStatus:
       type: string
       enum:
@@ -1573,84 +1545,13 @@ components:
       - REVOKED
       x-okta-tags:
       - Application
-    OAuth2Actor:
+    ApplicationSettingsNotes:
       type: object
       properties:
-        id:
+        admin:
           type: string
-          readOnly: true
-        type:
+        enduser:
           type: string
-      x-okta-tags:
-      - Application
-    ClientSecret:
-      type: object
-      properties:
-        _links:
-          type: object
-          additionalProperties:
-            type: object
-            properties: {}
-          readOnly: true
-        client_secret:
-          type: string
-        created:
-          type: string
-          format: date-time
-          readOnly: true
-        id:
-          type: string
-          readOnly: true
-        lastUpdated:
-          type: string
-          format: date-time
-          readOnly: true
-        secret_hash:
-          type: string
-        status:
-          type: string
-          enum:
-          - ACTIVE
-          - INACTIVE
-      x-okta-tags:
-      - Application
-    ClientSecretMetadata:
-      type: object
-      properties:
-        client_secret:
-          type: string
-      x-okta-tags:
-      - Application
-    SeedEnum:
-      type: string
-      enum:
-      - OKTA
-      - RANDOM
-      x-okta-tags:
-      - Application
-    Csr:
-      type: object
-      properties:
-        created:
-          type: string
-          format: date-time
-          readOnly: true
-        csr:
-          type: string
-          readOnly: true
-        id:
-          type: string
-          readOnly: true
-        kty:
-          type: string
-          readOnly: true
-      x-okta-tags:
-      - Application
-    LifecycleCreateSettingObject:
-      type: object
-      properties:
-        status:
-          $ref: '#/components/schemas/EnabledStatus'
       x-okta-tags:
       - Application
     OAuth2ScopeConsentGrant:
@@ -1695,25 +1596,122 @@ components:
           type: string
       x-okta-tags:
       - Application
-    CapabilitiesCreateObject:
-      type: object
-      properties:
-        lifecycleCreate:
-          $ref: '#/components/schemas/LifecycleCreateSettingObject'
-      x-okta-tags:
-      - Application
-    ApplicationSignOnMode:
+    ProvisioningConnectionStatus:
       type: string
       enum:
-      - BOOKMARK
-      - BASIC_AUTH
-      - BROWSER_PLUGIN
-      - SECURE_PASSWORD_STORE
-      - AUTO_LOGIN
-      - WS_FEDERATION
-      - SAML_2_0
-      - OPENID_CONNECT
-      - SAML_1_1
+      - DISABLED
+      - ENABLED
+      - UNKNOWN
+      x-okta-tags:
+      - Application
+    AppUserCredentials:
+      type: object
+      properties:
+        password:
+          $ref: '#/components/schemas/AppUserPasswordCredential'
+        userName:
+          type: string
+      x-okta-tags:
+      - Application
+    ApplicationAccessibility:
+      type: object
+      properties:
+        errorRedirectUrl:
+          type: string
+        loginRedirectUrl:
+          type: string
+        selfService:
+          type: boolean
+      x-okta-tags:
+      - Application
+    AppUser:
+      type: object
+      properties:
+        _embedded:
+          type: object
+          additionalProperties:
+            type: object
+            properties: {}
+          readOnly: true
+        _links:
+          type: object
+          additionalProperties:
+            type: object
+            properties: {}
+          readOnly: true
+        created:
+          type: string
+          format: date-time
+          readOnly: true
+        credentials:
+          $ref: '#/components/schemas/AppUserCredentials'
+        externalId:
+          type: string
+          readOnly: true
+        id:
+          type: string
+        lastSync:
+          type: string
+          format: date-time
+          readOnly: true
+        lastUpdated:
+          type: string
+          format: date-time
+          readOnly: true
+        passwordChanged:
+          type: string
+          format: date-time
+          readOnly: true
+        profile:
+          type: object
+          additionalProperties:
+            type: object
+            properties: {}
+        scope:
+          type: string
+        status:
+          type: string
+          readOnly: true
+        statusChanged:
+          type: string
+          format: date-time
+          readOnly: true
+        syncState:
+          type: string
+          readOnly: true
+      x-okta-crud:
+      - alias: update
+        arguments:
+        - dest: appId
+          parentSrc: appId
+        - dest: userId
+          src: id
+        - dest: appUser
+          self: true
+        operationId: updateApplicationUser
+      - alias: delete
+        arguments:
+        - dest: appId
+          parentSrc: appId
+        - dest: userId
+          src: id
+        operationId: deleteApplicationUser
+      x-okta-tags:
+      - Application
+    LifecycleCreateSettingObject:
+      type: object
+      properties:
+        status:
+          $ref: '#/components/schemas/EnabledStatus'
+      x-okta-tags:
+      - Application
+    CsrMetadataSubjectAltNames:
+      type: object
+      properties:
+        dnsNames:
+          type: array
+          items:
+            type: string
       x-okta-tags:
       - Application
     AppUserPasswordCredential:
@@ -1724,13 +1722,104 @@ components:
           format: password
       x-okta-tags:
       - Application
-    ApplicationVisibilityHide:
+    ApplicationCredentialsSigning:
       type: object
       properties:
-        iOS:
-          type: boolean
-        web:
-          type: boolean
+        kid:
+          type: string
+        lastRotated:
+          type: string
+          format: date-time
+          readOnly: true
+        nextRotation:
+          type: string
+          format: date-time
+          readOnly: true
+        rotationMode:
+          type: string
+        use:
+          $ref: '#/components/schemas/ApplicationCredentialsSigningUse'
+      x-okta-tags:
+      - Application
+    ApplicationLicensing:
+      type: object
+      properties:
+        seatCount:
+          type: integer
+      x-okta-tags:
+      - Application
+    SeedEnum:
+      type: string
+      enum:
+      - OKTA
+      - RANDOM
+      x-okta-tags:
+      - Application
+    ProvisioningConnectionProfile:
+      type: object
+      properties:
+        authScheme:
+          $ref: '#/components/schemas/ProvisioningConnectionAuthScheme'
+        token:
+          type: string
+      x-okta-operations:
+      - alias: setDefaultProvisioningConnectionForApplication
+        operationId: setDefaultProvisioningConnectionForApplication
+      x-okta-tags:
+      - Application
+    JsonWebKey:
+      type: object
+      properties:
+        _links:
+          type: object
+          additionalProperties:
+            type: object
+            properties: {}
+          readOnly: true
+        alg:
+          type: string
+        created:
+          type: string
+          format: date-time
+        e:
+          type: string
+        expiresAt:
+          type: string
+          format: date-time
+        key_ops:
+          type: array
+          items:
+            type: string
+        kid:
+          type: string
+        kty:
+          type: string
+        lastUpdated:
+          type: string
+          format: date-time
+        n:
+          type: string
+        status:
+          type: string
+        use:
+          type: string
+        x5c:
+          type: array
+          items:
+            type: string
+        x5t:
+          type: string
+        x5t#S256:
+          type: string
+        x5u:
+          type: string
+      x-okta-tags:
+      - Application
+    OAuth2ScopeConsentGrantSource:
+      type: string
+      enum:
+      - END_USER
+      - ADMIN
       x-okta-tags:
       - Application
     ApplicationSettingsNotificationsVpn:
@@ -1744,13 +1833,35 @@ components:
           $ref: '#/components/schemas/ApplicationSettingsNotificationsVpnNetwork'
       x-okta-tags:
       - Application
-    ApplicationSettingsNotes:
+    ClientSecret:
       type: object
       properties:
-        admin:
+        _links:
+          type: object
+          additionalProperties:
+            type: object
+            properties: {}
+          readOnly: true
+        client_secret:
           type: string
-        enduser:
+        created:
           type: string
+          format: date-time
+          readOnly: true
+        id:
+          type: string
+          readOnly: true
+        lastUpdated:
+          type: string
+          format: date-time
+          readOnly: true
+        secret_hash:
+          type: string
+        status:
+          type: string
+          enum:
+          - ACTIVE
+          - INACTIVE
       x-okta-tags:
       - Application
     Application:
@@ -2007,64 +2118,146 @@ components:
           SECURE_PASSWORD_STORE: '#/definitions/SecurePasswordStoreApplication'
           WS_FEDERATION: '#/definitions/WsFederationApplication'
         propertyName: signOnMode
-    ProvisioningConnectionProfile:
+    ProvisioningConnectionRequest:
       type: object
       properties:
-        authScheme:
-          $ref: '#/components/schemas/ProvisioningConnectionAuthScheme'
-        token:
-          type: string
-      x-okta-operations:
-      - alias: setDefaultProvisioningConnectionForApplication
-        operationId: setDefaultProvisioningConnectionForApplication
+        profile:
+          $ref: '#/components/schemas/ProvisioningConnectionProfile'
       x-okta-tags:
       - Application
-    ApplicationGroupAssignment:
+    ProvisioningConnectionAuthScheme:
+      type: string
+      enum:
+      - TOKEN
+      - UNKNOWN
+      x-okta-tags:
+      - Application
+    CapabilitiesUpdateObject:
       type: object
       properties:
-        _embedded:
+        lifecycleDeactivate:
+          $ref: '#/components/schemas/LifecycleDeactivateSettingObject'
+        password:
+          $ref: '#/components/schemas/PasswordSettingObject'
+        profile:
+          $ref: '#/components/schemas/ProfileSettingObject'
+      x-okta-tags:
+      - Application
+    ClientSecretMetadata:
+      type: object
+      properties:
+        client_secret:
+          type: string
+      x-okta-tags:
+      - Application
+    ApplicationSettingsNotificationsVpnNetwork:
+      type: object
+      properties:
+        connection:
+          type: string
+        exclude:
+          type: array
+          items:
+            type: string
+        include:
+          type: array
+          items:
+            type: string
+      x-okta-tags:
+      - Application
+    PasswordSettingObject:
+      type: object
+      properties:
+        change:
+          $ref: '#/components/schemas/ChangeEnum'
+        seed:
+          $ref: '#/components/schemas/SeedEnum'
+        status:
+          $ref: '#/components/schemas/EnabledStatus'
+      x-okta-tags:
+      - Application
+    ApplicationVisibility:
+      type: object
+      properties:
+        appLinks:
           type: object
           additionalProperties:
-            type: object
-            properties: {}
+            type: boolean
+        autoLaunch:
+          type: boolean
+        autoSubmitToolbar:
+          type: boolean
+        hide:
+          $ref: '#/components/schemas/ApplicationVisibilityHide'
+      x-okta-tags:
+      - Application
+    ApplicationCredentials:
+      type: object
+      properties:
+        signing:
+          $ref: '#/components/schemas/ApplicationCredentialsSigning'
+        userNameTemplate:
+          $ref: '#/components/schemas/ApplicationCredentialsUsernameTemplate'
+      x-okta-tags:
+      - Application
+    EnabledStatus:
+      type: string
+      enum:
+      - ENABLED
+      - DISABLED
+      x-okta-tags:
+      - Common
+    LifecycleDeactivateSettingObject:
+      type: object
+      properties:
+        status:
+          $ref: '#/components/schemas/EnabledStatus'
+      x-okta-tags:
+      - Application
+    OAuth2Actor:
+      type: object
+      properties:
+        id:
+          type: string
           readOnly: true
+        type:
+          type: string
+      x-okta-tags:
+      - Application
+    ChangeEnum:
+      type: string
+      enum:
+      - KEEP_EXISTING
+      - CHANGE
+      x-okta-tags:
+      - Application
+    ApplicationFeature:
+      type: object
+      properties:
         _links:
           type: object
           additionalProperties:
             type: object
             properties: {}
           readOnly: true
-        id:
+        capabilities:
+          $ref: '#/components/schemas/CapabilitiesObject'
+        description:
           type: string
-          readOnly: true
-        lastUpdated:
+        name:
           type: string
-          format: date-time
-          readOnly: true
-        priority:
-          type: integer
-        profile:
-          type: object
-          additionalProperties:
-            type: object
-            properties: {}
-      x-okta-crud:
-      - alias: delete
-        arguments:
-        - dest: appId
-          parentSrc: appId
-        - dest: groupId
-          src: id
-        operationId: deleteApplicationGroupAssignment
+        status:
+          $ref: '#/components/schemas/EnabledStatus'
+      x-okta-operations:
+      - alias: listFeaturesForApplication
+        operationId: listFeaturesForApplication
       x-okta-tags:
       - Application
-    CapabilitiesObject:
+    CapabilitiesCreateObject:
       type: object
       properties:
-        create:
-          $ref: '#/components/schemas/CapabilitiesCreateObject'
-        update:
-          $ref: '#/components/schemas/CapabilitiesUpdateObject'
+        lifecycleCreate:
+          $ref: '#/components/schemas/LifecycleCreateSettingObject'
       x-okta-tags:
       - Application
     OAuth2Token:
@@ -2114,68 +2307,42 @@ components:
           type: string
       x-okta-tags:
       - Application
-    ApplicationFeature:
+    ApplicationCredentialsUsernameTemplate:
       type: object
       properties:
-        _links:
-          type: object
-          additionalProperties:
-            type: object
-            properties: {}
-          readOnly: true
-        capabilities:
-          $ref: '#/components/schemas/CapabilitiesObject'
-        description:
+        pushStatus:
           type: string
-        name:
+        suffix:
           type: string
-        status:
-          $ref: '#/components/schemas/EnabledStatus'
-      x-okta-operations:
-      - alias: listFeaturesForApplication
-        operationId: listFeaturesForApplication
-      x-okta-tags:
-      - Application
-    ApplicationCredentials:
-      type: object
-      properties:
-        signing:
-          $ref: '#/components/schemas/ApplicationCredentialsSigning'
-        userNameTemplate:
-          $ref: '#/components/schemas/ApplicationCredentialsUsernameTemplate'
-      x-okta-tags:
-      - Application
-    ApplicationSettingsNotificationsVpnNetwork:
-      type: object
-      properties:
-        connection:
+        template:
           type: string
-        exclude:
-          type: array
-          items:
-            type: string
-        include:
-          type: array
-          items:
-            type: string
+        type:
+          type: string
       x-okta-tags:
       - Application
-    CsrMetadataSubjectAltNames:
+    CsrMetadataSubject:
       type: object
       properties:
-        dnsNames:
-          type: array
-          items:
-            type: string
+        commonName:
+          type: string
+        countryName:
+          type: string
+        localityName:
+          type: string
+        organizationName:
+          type: string
+        organizationalUnitName:
+          type: string
+        stateOrProvinceName:
+          type: string
       x-okta-tags:
       - Application
-    ProvisioningConnectionRequest:
-      type: object
-      properties:
-        profile:
-          $ref: '#/components/schemas/ProvisioningConnectionProfile'
+    ApplicationCredentialsSigningUse:
+      type: string
+      enum:
+      - sig
       x-okta-tags:
-      - Application
+      - AuthorizationServer
     ApplicationSettings:
       type: object
       properties:
@@ -2191,53 +2358,7 @@ components:
           $ref: '#/components/schemas/ApplicationSettingsNotifications'
       x-okta-tags:
       - Application
-    ProvisioningConnectionStatus:
-      type: string
-      enum:
-      - DISABLED
-      - ENABLED
-      - UNKNOWN
-      x-okta-tags:
-      - Application
-    ProfileSettingObject:
-      type: object
-      properties:
-        status:
-          $ref: '#/components/schemas/EnabledStatus'
-      x-okta-tags:
-      - Application
-    CsrMetadata:
-      type: object
-      properties:
-        subject:
-          $ref: '#/components/schemas/CsrMetadataSubject'
-        subjectAltNames:
-          $ref: '#/components/schemas/CsrMetadataSubjectAltNames'
-      x-okta-tags:
-      - Application
-    ApplicationVisibility:
-      type: object
-      properties:
-        appLinks:
-          type: object
-          additionalProperties:
-            type: boolean
-        autoLaunch:
-          type: boolean
-        autoSubmitToolbar:
-          type: boolean
-        hide:
-          $ref: '#/components/schemas/ApplicationVisibilityHide'
-      x-okta-tags:
-      - Application
-    ChangeEnum:
-      type: string
-      enum:
-      - KEEP_EXISTING
-      - CHANGE
-      x-okta-tags:
-      - Application
-    AppUser:
+    ApplicationGroupAssignment:
       type: object
       properties:
         _embedded:
@@ -2252,80 +2373,70 @@ components:
             type: object
             properties: {}
           readOnly: true
-        created:
-          type: string
-          format: date-time
-          readOnly: true
-        credentials:
-          $ref: '#/components/schemas/AppUserCredentials'
-        externalId:
-          type: string
-          readOnly: true
         id:
           type: string
-        lastSync:
-          type: string
-          format: date-time
           readOnly: true
         lastUpdated:
           type: string
           format: date-time
           readOnly: true
-        passwordChanged:
-          type: string
-          format: date-time
-          readOnly: true
+        priority:
+          type: integer
         profile:
           type: object
           additionalProperties:
             type: object
             properties: {}
-        scope:
-          type: string
-        status:
-          type: string
-          readOnly: true
-        statusChanged:
-          type: string
-          format: date-time
-          readOnly: true
-        syncState:
-          type: string
-          readOnly: true
       x-okta-crud:
-      - alias: update
-        arguments:
-        - dest: appId
-          parentSrc: appId
-        - dest: userId
-          src: id
-        - dest: appUser
-          self: true
-        operationId: updateApplicationUser
       - alias: delete
         arguments:
         - dest: appId
           parentSrc: appId
-        - dest: userId
+        - dest: groupId
           src: id
-        operationId: deleteApplicationUser
+        operationId: deleteApplicationGroupAssignment
       x-okta-tags:
       - Application
-    ApplicationLicensing:
-      type: object
-      properties:
-        seatCount:
-          type: integer
-      x-okta-tags:
-      - Application
-    OAuth2ScopeConsentGrantSource:
+    ApplicationSignOnMode:
       type: string
       enum:
-      - END_USER
-      - ADMIN
+      - BOOKMARK
+      - BASIC_AUTH
+      - BROWSER_PLUGIN
+      - SECURE_PASSWORD_STORE
+      - AUTO_LOGIN
+      - WS_FEDERATION
+      - SAML_2_0
+      - OPENID_CONNECT
+      - SAML_1_1
       x-okta-tags:
       - Application
-    JsonWebKey:
+    ProfileSettingObject:
+      type: object
+      properties:
+        status:
+          $ref: '#/components/schemas/EnabledStatus'
+      x-okta-tags:
+      - Application
+    Csr:
+      type: object
+      properties:
+        created:
+          type: string
+          format: date-time
+          readOnly: true
+        csr:
+          type: string
+          readOnly: true
+        id:
+          type: string
+          readOnly: true
+        kty:
+          type: string
+          readOnly: true
+      x-okta-tags:
+      - Application
+    ProvisioningConnection:
       type: object
       properties:
         _links:
@@ -2334,99 +2445,17 @@ components:
             type: object
             properties: {}
           readOnly: true
-        alg:
-          type: string
-        created:
-          type: string
-          format: date-time
-        e:
-          type: string
-        expiresAt:
-          type: string
-          format: date-time
-        key_ops:
-          type: array
-          items:
-            type: string
-        kid:
-          type: string
-        kty:
-          type: string
-        lastUpdated:
-          type: string
-          format: date-time
-        n:
-          type: string
+        authScheme:
+          $ref: '#/components/schemas/ProvisioningConnectionAuthScheme'
         status:
-          type: string
-        use:
-          type: string
-        x5c:
-          type: array
-          items:
-            type: string
-        x5t:
-          type: string
-        x5t#S256:
-          type: string
-        x5u:
-          type: string
-      x-okta-tags:
-      - Application
-    ApplicationAccessibility:
-      type: object
-      properties:
-        errorRedirectUrl:
-          type: string
-        loginRedirectUrl:
-          type: string
-        selfService:
-          type: boolean
-      x-okta-tags:
-      - Application
-    ApplicationSettingsNotifications:
-      type: object
-      properties:
-        vpn:
-          $ref: '#/components/schemas/ApplicationSettingsNotificationsVpn'
-      x-okta-tags:
-      - Application
-    ApplicationCredentialsSigningUse:
-      type: string
-      enum:
-      - sig
-      x-okta-tags:
-      - AuthorizationServer
-    CapabilitiesUpdateObject:
-      type: object
-      properties:
-        lifecycleDeactivate:
-          $ref: '#/components/schemas/LifecycleDeactivateSettingObject'
-        password:
-          $ref: '#/components/schemas/PasswordSettingObject'
-        profile:
-          $ref: '#/components/schemas/ProfileSettingObject'
-      x-okta-tags:
-      - Application
-    EnabledStatus:
-      type: string
-      enum:
-      - ENABLED
-      - DISABLED
-      x-okta-tags:
-      - Common
-    LifecycleDeactivateSettingObject:
-      type: object
-      properties:
-        status:
-          $ref: '#/components/schemas/EnabledStatus'
-      x-okta-tags:
-      - Application
-    ProvisioningConnectionAuthScheme:
-      type: string
-      enum:
-      - TOKEN
-      - UNKNOWN
+          $ref: '#/components/schemas/ProvisioningConnectionStatus'
+      x-okta-operations:
+      - alias: getDefaultProvisioningConnectionForApplication
+        operationId: getDefaultProvisioningConnectionForApplication
+      - alias: activateDefaultProvisioningConnectionForApplication
+        operationId: activateDefaultProvisioningConnectionForApplication
+      - alias: deactivateDefaultProvisioningConnectionForApplication
+        operationId: deactivateDefaultProvisioningConnectionForApplication
       x-okta-tags:
       - Application
     ApplicationSettingsApplication:
@@ -2448,37 +2477,38 @@ components:
           type: string
       x-okta-tags:
       - Application
-    AppUserCredentials:
+    ApplicationSettingsNotifications:
       type: object
       properties:
-        password:
-          $ref: '#/components/schemas/AppUserPasswordCredential'
-        userName:
-          type: string
+        vpn:
+          $ref: '#/components/schemas/ApplicationSettingsNotificationsVpn'
       x-okta-tags:
       - Application
-    PasswordSettingObject:
+    CapabilitiesObject:
       type: object
       properties:
-        change:
-          $ref: '#/components/schemas/ChangeEnum'
-        seed:
-          $ref: '#/components/schemas/SeedEnum'
-        status:
-          $ref: '#/components/schemas/EnabledStatus'
+        create:
+          $ref: '#/components/schemas/CapabilitiesCreateObject'
+        update:
+          $ref: '#/components/schemas/CapabilitiesUpdateObject'
       x-okta-tags:
       - Application
-    ApplicationCredentialsUsernameTemplate:
+    ApplicationVisibilityHide:
       type: object
       properties:
-        pushStatus:
-          type: string
-        suffix:
-          type: string
-        template:
-          type: string
-        type:
-          type: string
+        iOS:
+          type: boolean
+        web:
+          type: boolean
+      x-okta-tags:
+      - Application
+    CsrMetadata:
+      type: object
+      properties:
+        subject:
+          $ref: '#/components/schemas/CsrMetadataSubject'
+        subjectAltNames:
+          $ref: '#/components/schemas/CsrMetadataSubjectAltNames'
       x-okta-tags:
       - Application
   securitySchemes:

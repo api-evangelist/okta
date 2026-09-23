@@ -1,6 +1,6 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
-  title: Okta Application EventHook API
+  title: Okta Event Hook API
   description: Allows customers to easily access the Okta API
   termsOfService: https://developer.okta.com/terms/
   contact:
@@ -33,6 +33,8 @@ paths:
                   $ref: '#/components/schemas/EventHook'
       security:
       - api_token: []
+      summary: List event hooks
+      x-summary-source: derived
     post:
       tags:
       - EventHook
@@ -54,6 +56,8 @@ paths:
       security:
       - api_token: []
       x-codegen-request-body-name: eventHook
+      summary: Create event hook
+      x-summary-source: derived
   /api/v1/eventHooks/{eventHookId}:
     get:
       tags:
@@ -75,6 +79,8 @@ paths:
                 $ref: '#/components/schemas/EventHook'
       security:
       - api_token: []
+      summary: Get event hook
+      x-summary-source: derived
     put:
       tags:
       - EventHook
@@ -102,6 +108,8 @@ paths:
       security:
       - api_token: []
       x-codegen-request-body-name: eventHook
+      summary: Update event hook
+      x-summary-source: derived
     delete:
       tags:
       - EventHook
@@ -119,6 +127,8 @@ paths:
           content: {}
       security:
       - api_token: []
+      summary: Delete event hook
+      x-summary-source: derived
   /api/v1/eventHooks/{eventHookId}/lifecycle/activate:
     post:
       tags:
@@ -140,6 +150,8 @@ paths:
                 $ref: '#/components/schemas/EventHook'
       security:
       - api_token: []
+      summary: Activate event hook
+      x-summary-source: derived
   /api/v1/eventHooks/{eventHookId}/lifecycle/deactivate:
     post:
       tags:
@@ -161,6 +173,8 @@ paths:
                 $ref: '#/components/schemas/EventHook'
       security:
       - api_token: []
+      summary: Deactivate event hook
+      x-summary-source: derived
   /api/v1/eventHooks/{eventHookId}/lifecycle/verify:
     post:
       tags:
@@ -182,8 +196,45 @@ paths:
                 $ref: '#/components/schemas/EventHook'
       security:
       - api_token: []
+      summary: Verify event hook
+      x-summary-source: derived
 components:
   schemas:
+    EventHookChannelConfigAuthSchemeType:
+      type: string
+      enum:
+      - HEADER
+      x-okta-tags:
+      - EventHook
+    EventSubscriptions:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            type: string
+        type:
+          type: string
+          enum:
+          - EVENT_TYPE
+          - FLOW_EVENT
+      discriminator:
+        propertyName: type
+      x-okta-tags:
+      - EventHook
+    EventHookChannelConfig:
+      type: object
+      properties:
+        authScheme:
+          $ref: '#/components/schemas/EventHookChannelConfigAuthScheme'
+        headers:
+          type: array
+          items:
+            $ref: '#/components/schemas/EventHookChannelConfigHeader'
+        uri:
+          type: string
+      x-okta-tags:
+      - EventHook
     EventHookChannelConfigAuthScheme:
       type: object
       properties:
@@ -283,41 +334,6 @@ components:
         - dest: eventHookId
           src: id
         operationId: verifyEventHook
-      x-okta-tags:
-      - EventHook
-    EventHookChannelConfig:
-      type: object
-      properties:
-        authScheme:
-          $ref: '#/components/schemas/EventHookChannelConfigAuthScheme'
-        headers:
-          type: array
-          items:
-            $ref: '#/components/schemas/EventHookChannelConfigHeader'
-        uri:
-          type: string
-      x-okta-tags:
-      - EventHook
-    EventSubscriptions:
-      type: object
-      properties:
-        items:
-          type: array
-          items:
-            type: string
-        type:
-          type: string
-          enum:
-          - EVENT_TYPE
-          - FLOW_EVENT
-      discriminator:
-        propertyName: type
-      x-okta-tags:
-      - EventHook
-    EventHookChannelConfigAuthSchemeType:
-      type: string
-      enum:
-      - HEADER
       x-okta-tags:
       - EventHook
     EventHookChannelConfigHeader:

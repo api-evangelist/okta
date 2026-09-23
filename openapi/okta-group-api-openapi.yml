@@ -1,6 +1,6 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
-  title: Okta Application Group API
+  title: Okta Group API
   description: Allows customers to easily access the Okta API
   termsOfService: https://developer.okta.com/terms/
   contact:
@@ -207,6 +207,8 @@ paths:
       security:
       - api_token: []
       x-codegen-request-body-name: groupRule
+      summary: Update group rule
+      x-summary-source: derived
     delete:
       tags:
       - Group
@@ -399,6 +401,8 @@ paths:
                   $ref: '#/components/schemas/Role'
       security:
       - api_token: []
+      summary: List group assigned roles
+      x-summary-source: derived
     post:
       tags:
       - Group
@@ -433,6 +437,8 @@ paths:
       security:
       - api_token: []
       x-codegen-request-body-name: assignRoleRequest
+      summary: Assign role to group
+      x-summary-source: derived
   /api/v1/groups/{groupId}/roles/{roleId}:
     get:
       tags:
@@ -459,6 +465,8 @@ paths:
                 $ref: '#/components/schemas/Role'
       security:
       - api_token: []
+      summary: Get role
+      x-summary-source: derived
     delete:
       tags:
       - Group
@@ -481,6 +489,8 @@ paths:
           content: {}
       security:
       - api_token: []
+      summary: Remove role from group
+      x-summary-source: derived
   /api/v1/groups/{groupId}/roles/{roleId}/targets/catalog/apps:
     get:
       tags:
@@ -519,6 +529,8 @@ paths:
                   $ref: '#/components/schemas/CatalogApplication'
       security:
       - api_token: []
+      summary: List application targets for application administrator role for group
+      x-summary-source: derived
   /api/v1/groups/{groupId}/roles/{roleId}/targets/catalog/apps/{appName}:
     put:
       tags:
@@ -547,6 +559,8 @@ paths:
           content: {}
       security:
       - api_token: []
+      summary: Add application target to admin role given to group
+      x-summary-source: derived
     delete:
       tags:
       - Group
@@ -574,6 +588,8 @@ paths:
           content: {}
       security:
       - api_token: []
+      summary: Remove application target from application administrator role given to group
+      x-summary-source: derived
   /api/v1/groups/{groupId}/roles/{roleId}/targets/catalog/apps/{appName}/{applicationId}:
     put:
       tags:
@@ -679,6 +695,8 @@ paths:
                   $ref: '#/components/schemas/Group'
       security:
       - api_token: []
+      summary: List group targets for group role
+      x-summary-source: derived
   /api/v1/groups/{groupId}/roles/{roleId}/targets/groups/{targetGroupId}:
     put:
       tags:
@@ -706,6 +724,8 @@ paths:
           content: {}
       security:
       - api_token: []
+      summary: Add group target to group administrator role for group
+      x-summary-source: derived
     delete:
       tags:
       - Group
@@ -732,6 +752,8 @@ paths:
           content: {}
       security:
       - api_token: []
+      summary: Remove group target from group administrator role given to group
+      x-summary-source: derived
   /api/v1/groups/{groupId}/users:
     get:
       tags:
@@ -817,6 +839,86 @@ paths:
       - api_token: []
 components:
   schemas:
+    UserCredentials:
+      type: object
+      properties:
+        password:
+          $ref: '#/components/schemas/PasswordCredential'
+        provider:
+          $ref: '#/components/schemas/AuthenticationProvider'
+        recovery_question:
+          $ref: '#/components/schemas/RecoveryQuestionCredential'
+      x-okta-tags:
+      - User
+    GroupRuleAction:
+      type: object
+      properties:
+        assignUserToGroups:
+          $ref: '#/components/schemas/GroupRuleGroupAssignment'
+      x-okta-tags:
+      - GroupRule
+    CatalogApplication:
+      type: object
+      properties:
+        _links:
+          type: object
+          additionalProperties:
+            type: object
+            properties: {}
+          readOnly: true
+        category:
+          type: string
+        description:
+          type: string
+        displayName:
+          type: string
+        features:
+          type: array
+          items:
+            type: string
+        id:
+          type: string
+          readOnly: true
+        lastUpdated:
+          type: string
+          format: date-time
+          readOnly: true
+        name:
+          type: string
+        signOnModes:
+          type: array
+          items:
+            type: string
+        status:
+          $ref: '#/components/schemas/CatalogApplicationStatus'
+        verificationStatus:
+          type: string
+        website:
+          type: string
+      x-okta-tags:
+      - Role
+    ApplicationSettingsNotes:
+      type: object
+      properties:
+        admin:
+          type: string
+        enduser:
+          type: string
+      x-okta-tags:
+      - Application
+    GroupRuleUserCondition:
+      type: object
+      properties:
+        exclude:
+          type: array
+          items:
+            type: string
+        include:
+          type: array
+          items:
+            type: string
+      x-okta-tags:
+      - GroupRule
     GroupRuleGroupAssignment:
       type: object
       properties:
@@ -826,6 +928,79 @@ components:
             type: string
       x-okta-tags:
       - GroupRule
+    GroupRulePeopleCondition:
+      type: object
+      properties:
+        groups:
+          $ref: '#/components/schemas/GroupRuleGroupCondition'
+        users:
+          $ref: '#/components/schemas/GroupRuleUserCondition'
+      x-okta-tags:
+      - GroupRule
+    PasswordCredentialHook:
+      type: object
+      properties:
+        type:
+          type: string
+      x-okta-tags:
+      - User
+    GroupRuleConditions:
+      type: object
+      properties:
+        expression:
+          $ref: '#/components/schemas/GroupRuleExpression'
+        people:
+          $ref: '#/components/schemas/GroupRulePeopleCondition'
+      x-okta-tags:
+      - GroupRule
+    ApplicationAccessibility:
+      type: object
+      properties:
+        errorRedirectUrl:
+          type: string
+        loginRedirectUrl:
+          type: string
+        selfService:
+          type: boolean
+      x-okta-tags:
+      - Application
+    AuthenticationProviderType:
+      type: string
+      enum:
+      - ACTIVE_DIRECTORY
+      - FEDERATION
+      - LDAP
+      - OKTA
+      - SOCIAL
+      - IMPORT
+      x-okta-tags:
+      - User
+    PasswordCredentialHashAlgorithm:
+      type: string
+      enum:
+      - BCRYPT
+      - SHA-512
+      - SHA-256
+      - SHA-1
+      - MD5
+      x-okta-tags:
+      - User
+    AuthenticationProvider:
+      type: object
+      properties:
+        name:
+          type: string
+        type:
+          $ref: '#/components/schemas/AuthenticationProviderType'
+      x-okta-tags:
+      - User
+    RoleStatus:
+      type: string
+      enum:
+      - ACTIVE
+      - INACTIVE
+      x-okta-tags:
+      - User
     ApplicationCredentialsSigning:
       type: object
       properties:
@@ -845,6 +1020,13 @@ components:
           $ref: '#/components/schemas/ApplicationCredentialsSigningUse'
       x-okta-tags:
       - Application
+    ApplicationLicensing:
+      type: object
+      properties:
+        seatCount:
+          type: integer
+      x-okta-tags:
+      - Application
     CatalogApplicationStatus:
       type: string
       enum:
@@ -852,15 +1034,6 @@ components:
       - INACTIVE
       x-okta-tags:
       - Role
-    AuthenticationProvider:
-      type: object
-      properties:
-        name:
-          type: string
-        type:
-          $ref: '#/components/schemas/AuthenticationProviderType'
-      x-okta-tags:
-      - User
     UserType:
       type: object
       properties:
@@ -926,100 +1099,6 @@ components:
         operationId: replaceUserType
       x-okta-tags:
       - UserType
-    GroupRuleExpression:
-      type: object
-      properties:
-        type:
-          type: string
-        value:
-          type: string
-      x-okta-tags:
-      - GroupRule
-    GroupRule:
-      type: object
-      properties:
-        actions:
-          $ref: '#/components/schemas/GroupRuleAction'
-        conditions:
-          $ref: '#/components/schemas/GroupRuleConditions'
-        created:
-          type: string
-          format: date-time
-          readOnly: true
-        id:
-          type: string
-          readOnly: true
-        lastUpdated:
-          type: string
-          format: date-time
-          readOnly: true
-        name:
-          type: string
-        status:
-          $ref: '#/components/schemas/GroupRuleStatus'
-        type:
-          type: string
-      x-okta-crud:
-      - alias: update
-        arguments:
-        - dest: ruleId
-          src: id
-        - dest: groupRule
-          self: true
-        operationId: updateGroupRule
-      - alias: delete
-        arguments:
-        - dest: ruleId
-          src: id
-        operationId: deleteGroupRule
-      x-okta-operations:
-      - alias: activate
-        arguments:
-        - dest: ruleId
-          src: id
-        operationId: activateGroupRule
-      - alias: deactivate
-        arguments:
-        - dest: ruleId
-          src: id
-        operationId: deactivateGroupRule
-      x-okta-tags:
-      - GroupRule
-    ApplicationSignOnMode:
-      type: string
-      enum:
-      - BOOKMARK
-      - BASIC_AUTH
-      - BROWSER_PLUGIN
-      - SECURE_PASSWORD_STORE
-      - AUTO_LOGIN
-      - WS_FEDERATION
-      - SAML_2_0
-      - OPENID_CONNECT
-      - SAML_1_1
-      x-okta-tags:
-      - Application
-    GroupRuleStatus:
-      type: string
-      enum:
-      - ACTIVE
-      - INACTIVE
-      - INVALID
-      x-okta-tags:
-      - GroupRule
-    GroupRuleGroupCondition:
-      type: object
-      properties:
-        exclude:
-          type: array
-          items:
-            type: string
-        include:
-          type: array
-          items:
-            type: string
-      x-okta-tags:
-      - GroupRule
     Role:
       type: object
       properties:
@@ -1102,15 +1181,6 @@ components:
         operationId: addApplicationTargetToAdminRoleForUser
       x-okta-tags:
       - User
-    ApplicationSettingsNotes:
-      type: object
-      properties:
-        admin:
-          type: string
-        enduser:
-          type: string
-      x-okta-tags:
-      - Application
     ApplicationSettingsNotificationsVpn:
       type: object
       properties:
@@ -1122,15 +1192,29 @@ components:
           $ref: '#/components/schemas/ApplicationSettingsNotificationsVpnNetwork'
       x-okta-tags:
       - Application
-    ApplicationVisibilityHide:
+    GroupProfile:
       type: object
       properties:
-        iOS:
-          type: boolean
-        web:
-          type: boolean
+        description:
+          type: string
+        name:
+          type: string
+      x-okta-extensible: true
       x-okta-tags:
-      - Application
+      - Group
+    UserStatus:
+      type: string
+      enum:
+      - ACTIVE
+      - DEPROVISIONED
+      - LOCKED_OUT
+      - PASSWORD_EXPIRED
+      - PROVISIONED
+      - RECOVERY
+      - STAGED
+      - SUSPENDED
+      x-okta-tags:
+      - User
     Application:
       type: object
       properties:
@@ -1689,61 +1773,7 @@ components:
         operationId: removeLinkedObjectForUser
       x-okta-tags:
       - User
-    PasswordCredentialHash:
-      type: object
-      properties:
-        algorithm:
-          $ref: '#/components/schemas/PasswordCredentialHashAlgorithm'
-        salt:
-          type: string
-        saltOrder:
-          type: string
-        value:
-          type: string
-        workFactor:
-          type: integer
-      x-okta-tags:
-      - User
-    UserCredentials:
-      type: object
-      properties:
-        password:
-          $ref: '#/components/schemas/PasswordCredential'
-        provider:
-          $ref: '#/components/schemas/AuthenticationProvider'
-        recovery_question:
-          $ref: '#/components/schemas/RecoveryQuestionCredential'
-      x-okta-tags:
-      - User
-    RoleAssignmentType:
-      type: string
-      enum:
-      - GROUP
-      - USER
-      x-okta-tags:
-      - Role
-    PasswordCredential:
-      type: object
-      properties:
-        hash:
-          $ref: '#/components/schemas/PasswordCredentialHash'
-        hook:
-          $ref: '#/components/schemas/PasswordCredentialHook'
-        value:
-          type: string
-          format: password
-      x-okta-tags:
-      - User
-    GroupRulePeopleCondition:
-      type: object
-      properties:
-        groups:
-          $ref: '#/components/schemas/GroupRuleGroupCondition'
-        users:
-          $ref: '#/components/schemas/GroupRuleUserCondition'
-      x-okta-tags:
-      - GroupRule
-    GroupRuleUserCondition:
+    GroupRuleGroupCondition:
       type: object
       properties:
         exclude:
@@ -1756,55 +1786,6 @@ components:
             type: string
       x-okta-tags:
       - GroupRule
-    UserStatus:
-      type: string
-      enum:
-      - ACTIVE
-      - DEPROVISIONED
-      - LOCKED_OUT
-      - PASSWORD_EXPIRED
-      - PROVISIONED
-      - RECOVERY
-      - STAGED
-      - SUSPENDED
-      x-okta-tags:
-      - User
-    AssignRoleRequest:
-      type: object
-      properties:
-        type:
-          $ref: '#/components/schemas/RoleType'
-      x-okta-tags:
-      - Role
-    GroupRuleAction:
-      type: object
-      properties:
-        assignUserToGroups:
-          $ref: '#/components/schemas/GroupRuleGroupAssignment'
-      x-okta-tags:
-      - GroupRule
-    ApplicationCredentialsUsernameTemplate:
-      type: object
-      properties:
-        pushStatus:
-          type: string
-        suffix:
-          type: string
-        template:
-          type: string
-        type:
-          type: string
-      x-okta-tags:
-      - Application
-    ApplicationCredentials:
-      type: object
-      properties:
-        signing:
-          $ref: '#/components/schemas/ApplicationCredentialsSigning'
-        userNameTemplate:
-          $ref: '#/components/schemas/ApplicationCredentialsUsernameTemplate'
-      x-okta-tags:
-      - Application
     ApplicationSettingsNotificationsVpnNetwork:
       type: object
       properties:
@@ -1820,36 +1801,57 @@ components:
             type: string
       x-okta-tags:
       - Application
-    AuthenticationProviderType:
-      type: string
-      enum:
-      - ACTIVE_DIRECTORY
-      - FEDERATION
-      - LDAP
-      - OKTA
-      - SOCIAL
-      - IMPORT
-      x-okta-tags:
-      - User
-    CatalogApplication:
+    ApplicationVisibility:
       type: object
       properties:
-        _links:
+        appLinks:
           type: object
           additionalProperties:
-            type: object
-            properties: {}
+            type: boolean
+        autoLaunch:
+          type: boolean
+        autoSubmitToolbar:
+          type: boolean
+        hide:
+          $ref: '#/components/schemas/ApplicationVisibilityHide'
+      x-okta-tags:
+      - Application
+    ApplicationCredentials:
+      type: object
+      properties:
+        signing:
+          $ref: '#/components/schemas/ApplicationCredentialsSigning'
+        userNameTemplate:
+          $ref: '#/components/schemas/ApplicationCredentialsUsernameTemplate'
+      x-okta-tags:
+      - Application
+    AssignRoleRequest:
+      type: object
+      properties:
+        type:
+          $ref: '#/components/schemas/RoleType'
+      x-okta-tags:
+      - Role
+    RecoveryQuestionCredential:
+      type: object
+      properties:
+        answer:
+          type: string
+        question:
+          type: string
+      x-okta-tags:
+      - User
+    GroupRule:
+      type: object
+      properties:
+        actions:
+          $ref: '#/components/schemas/GroupRuleAction'
+        conditions:
+          $ref: '#/components/schemas/GroupRuleConditions'
+        created:
+          type: string
+          format: date-time
           readOnly: true
-        category:
-          type: string
-        description:
-          type: string
-        displayName:
-          type: string
-        features:
-          type: array
-          items:
-            type: string
         id:
           type: string
           readOnly: true
@@ -1859,16 +1861,49 @@ components:
           readOnly: true
         name:
           type: string
-        signOnModes:
-          type: array
-          items:
-            type: string
         status:
-          $ref: '#/components/schemas/CatalogApplicationStatus'
-        verificationStatus:
+          $ref: '#/components/schemas/GroupRuleStatus'
+        type:
           type: string
-        website:
-          type: string
+      x-okta-crud:
+      - alias: update
+        arguments:
+        - dest: ruleId
+          src: id
+        - dest: groupRule
+          self: true
+        operationId: updateGroupRule
+      - alias: delete
+        arguments:
+        - dest: ruleId
+          src: id
+        operationId: deleteGroupRule
+      x-okta-operations:
+      - alias: activate
+        arguments:
+        - dest: ruleId
+          src: id
+        operationId: activateGroupRule
+      - alias: deactivate
+        arguments:
+        - dest: ruleId
+          src: id
+        operationId: deactivateGroupRule
+      x-okta-tags:
+      - GroupRule
+    GroupRuleStatus:
+      type: string
+      enum:
+      - ACTIVE
+      - INACTIVE
+      - INVALID
+      x-okta-tags:
+      - GroupRule
+    RoleAssignmentType:
+      type: string
+      enum:
+      - GROUP
+      - USER
       x-okta-tags:
       - Role
     RoleType:
@@ -1887,6 +1922,201 @@ components:
       - CUSTOM
       x-okta-tags:
       - Role
+    GroupRuleExpression:
+      type: object
+      properties:
+        type:
+          type: string
+        value:
+          type: string
+      x-okta-tags:
+      - GroupRule
+    PasswordCredential:
+      type: object
+      properties:
+        hash:
+          $ref: '#/components/schemas/PasswordCredentialHash'
+        hook:
+          $ref: '#/components/schemas/PasswordCredentialHook'
+        value:
+          type: string
+          format: password
+      x-okta-tags:
+      - User
+    ApplicationCredentialsUsernameTemplate:
+      type: object
+      properties:
+        pushStatus:
+          type: string
+        suffix:
+          type: string
+        template:
+          type: string
+        type:
+          type: string
+      x-okta-tags:
+      - Application
+    GroupType:
+      type: string
+      enum:
+      - OKTA_GROUP
+      - APP_GROUP
+      - BUILT_IN
+      x-okta-tags:
+      - Group
+    ApplicationCredentialsSigningUse:
+      type: string
+      enum:
+      - sig
+      x-okta-tags:
+      - AuthorizationServer
+    ApplicationSettings:
+      type: object
+      properties:
+        app:
+          $ref: '#/components/schemas/ApplicationSettingsApplication'
+        implicitAssignment:
+          type: boolean
+        inlineHookId:
+          type: string
+        notes:
+          $ref: '#/components/schemas/ApplicationSettingsNotes'
+        notifications:
+          $ref: '#/components/schemas/ApplicationSettingsNotifications'
+      x-okta-tags:
+      - Application
+    ApplicationSignOnMode:
+      type: string
+      enum:
+      - BOOKMARK
+      - BASIC_AUTH
+      - BROWSER_PLUGIN
+      - SECURE_PASSWORD_STORE
+      - AUTO_LOGIN
+      - WS_FEDERATION
+      - SAML_2_0
+      - OPENID_CONNECT
+      - SAML_1_1
+      x-okta-tags:
+      - Application
+    ApplicationSettingsApplication:
+      type: object
+      properties:
+        acsUrl:
+          type: string
+        buttonField:
+          type: string
+        loginUrlRegex:
+          type: string
+        orgName:
+          type: string
+        passwordField:
+          type: string
+        url:
+          type: string
+        usernameField:
+          type: string
+      x-okta-tags:
+      - Application
+    ApplicationSettingsNotifications:
+      type: object
+      properties:
+        vpn:
+          $ref: '#/components/schemas/ApplicationSettingsNotificationsVpn'
+      x-okta-tags:
+      - Application
+    PasswordCredentialHash:
+      type: object
+      properties:
+        algorithm:
+          $ref: '#/components/schemas/PasswordCredentialHashAlgorithm'
+        salt:
+          type: string
+        saltOrder:
+          type: string
+        value:
+          type: string
+        workFactor:
+          type: integer
+      x-okta-tags:
+      - User
+    UserProfile:
+      type: object
+      properties:
+        city:
+          type: string
+        costCenter:
+          type: string
+        countryCode:
+          type: string
+        department:
+          type: string
+        displayName:
+          type: string
+        division:
+          type: string
+        email:
+          type: string
+        employeeNumber:
+          type: string
+        firstName:
+          type: string
+        honorificPrefix:
+          type: string
+        honorificSuffix:
+          type: string
+        lastName:
+          type: string
+        locale:
+          type: string
+        login:
+          type: string
+        manager:
+          type: string
+        managerId:
+          type: string
+        middleName:
+          type: string
+        mobilePhone:
+          type: string
+        nickName:
+          type: string
+        organization:
+          type: string
+        postalAddress:
+          type: string
+        preferredLanguage:
+          type: string
+        primaryPhone:
+          type: string
+        profileUrl:
+          type: string
+        secondEmail:
+          type: string
+        state:
+          type: string
+        streetAddress:
+          type: string
+        timezone:
+          type: string
+        title:
+          type: string
+        userType:
+          type: string
+        zipCode:
+          type: string
+      x-okta-extensible: true
+      x-okta-tags:
+      - User
+    ApplicationVisibilityHide:
+      type: object
+      properties:
+        iOS:
+          type: boolean
+        web:
+          type: boolean
+      x-okta-tags:
+      - Application
     Group:
       type: object
       properties:
@@ -1962,214 +2192,6 @@ components:
         operationId: assignRoleToGroup
       x-okta-tags:
       - Group
-    ApplicationSettings:
-      type: object
-      properties:
-        app:
-          $ref: '#/components/schemas/ApplicationSettingsApplication'
-        implicitAssignment:
-          type: boolean
-        inlineHookId:
-          type: string
-        notes:
-          $ref: '#/components/schemas/ApplicationSettingsNotes'
-        notifications:
-          $ref: '#/components/schemas/ApplicationSettingsNotifications'
-      x-okta-tags:
-      - Application
-    RoleStatus:
-      type: string
-      enum:
-      - ACTIVE
-      - INACTIVE
-      x-okta-tags:
-      - User
-    UserProfile:
-      type: object
-      properties:
-        city:
-          type: string
-        costCenter:
-          type: string
-        countryCode:
-          type: string
-        department:
-          type: string
-        displayName:
-          type: string
-        division:
-          type: string
-        email:
-          type: string
-        employeeNumber:
-          type: string
-        firstName:
-          type: string
-        honorificPrefix:
-          type: string
-        honorificSuffix:
-          type: string
-        lastName:
-          type: string
-        locale:
-          type: string
-        login:
-          type: string
-        manager:
-          type: string
-        managerId:
-          type: string
-        middleName:
-          type: string
-        mobilePhone:
-          type: string
-        nickName:
-          type: string
-        organization:
-          type: string
-        postalAddress:
-          type: string
-        preferredLanguage:
-          type: string
-        primaryPhone:
-          type: string
-        profileUrl:
-          type: string
-        secondEmail:
-          type: string
-        state:
-          type: string
-        streetAddress:
-          type: string
-        timezone:
-          type: string
-        title:
-          type: string
-        userType:
-          type: string
-        zipCode:
-          type: string
-      x-okta-extensible: true
-      x-okta-tags:
-      - User
-    ApplicationVisibility:
-      type: object
-      properties:
-        appLinks:
-          type: object
-          additionalProperties:
-            type: boolean
-        autoLaunch:
-          type: boolean
-        autoSubmitToolbar:
-          type: boolean
-        hide:
-          $ref: '#/components/schemas/ApplicationVisibilityHide'
-      x-okta-tags:
-      - Application
-    PasswordCredentialHook:
-      type: object
-      properties:
-        type:
-          type: string
-      x-okta-tags:
-      - User
-    ApplicationLicensing:
-      type: object
-      properties:
-        seatCount:
-          type: integer
-      x-okta-tags:
-      - Application
-    PasswordCredentialHashAlgorithm:
-      type: string
-      enum:
-      - BCRYPT
-      - SHA-512
-      - SHA-256
-      - SHA-1
-      - MD5
-      x-okta-tags:
-      - User
-    RecoveryQuestionCredential:
-      type: object
-      properties:
-        answer:
-          type: string
-        question:
-          type: string
-      x-okta-tags:
-      - User
-    GroupProfile:
-      type: object
-      properties:
-        description:
-          type: string
-        name:
-          type: string
-      x-okta-extensible: true
-      x-okta-tags:
-      - Group
-    ApplicationAccessibility:
-      type: object
-      properties:
-        errorRedirectUrl:
-          type: string
-        loginRedirectUrl:
-          type: string
-        selfService:
-          type: boolean
-      x-okta-tags:
-      - Application
-    ApplicationSettingsNotifications:
-      type: object
-      properties:
-        vpn:
-          $ref: '#/components/schemas/ApplicationSettingsNotificationsVpn'
-      x-okta-tags:
-      - Application
-    ApplicationCredentialsSigningUse:
-      type: string
-      enum:
-      - sig
-      x-okta-tags:
-      - AuthorizationServer
-    GroupType:
-      type: string
-      enum:
-      - OKTA_GROUP
-      - APP_GROUP
-      - BUILT_IN
-      x-okta-tags:
-      - Group
-    GroupRuleConditions:
-      type: object
-      properties:
-        expression:
-          $ref: '#/components/schemas/GroupRuleExpression'
-        people:
-          $ref: '#/components/schemas/GroupRulePeopleCondition'
-      x-okta-tags:
-      - GroupRule
-    ApplicationSettingsApplication:
-      type: object
-      properties:
-        acsUrl:
-          type: string
-        buttonField:
-          type: string
-        loginUrlRegex:
-          type: string
-        orgName:
-          type: string
-        passwordField:
-          type: string
-        url:
-          type: string
-        usernameField:
-          type: string
-      x-okta-tags:
-      - Application
   securitySchemes:
     api_token:
       type: apiKey

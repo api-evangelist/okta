@@ -1,6 +1,6 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
-  title: Okta Application ProfileMapping API
+  title: Okta Profile Mapping API
   description: Allows customers to easily access the Okta API
   termsOfService: https://developer.okta.com/terms/
   contact:
@@ -52,6 +52,8 @@ paths:
                   $ref: '#/components/schemas/ProfileMapping'
       security:
       - api_token: []
+      summary: List profile mappings
+      x-summary-source: derived
   /api/v1/mappings/{mappingId}:
     get:
       tags:
@@ -104,13 +106,6 @@ paths:
       x-codegen-request-body-name: profileMapping
 components:
   schemas:
-    ProfileMappingPropertyPushStatus:
-      type: object
-      enum:
-      - PUSH
-      - DONT_PUSH
-      x-okta-tags:
-      - ProfileMapping
     ProfileMapping:
       type: object
       properties:
@@ -145,6 +140,15 @@ components:
         operationId: updateProfileMapping
       x-okta-tags:
       - ProfileMapping
+    ProfileMappingProperty:
+      type: object
+      properties:
+        expression:
+          type: string
+        pushStatus:
+          $ref: '#/components/schemas/ProfileMappingPropertyPushStatus'
+      x-okta-tags:
+      - ProfileMapping
     ProfileMappingSource:
       type: object
       properties:
@@ -165,13 +169,11 @@ components:
           readOnly: true
       x-okta-tags:
       - ProfileMapping
-    ProfileMappingProperty:
+    ProfileMappingPropertyPushStatus:
       type: object
-      properties:
-        expression:
-          type: string
-        pushStatus:
-          $ref: '#/components/schemas/ProfileMappingPropertyPushStatus'
+      enum:
+      - PUSH
+      - DONT_PUSH
       x-okta-tags:
       - ProfileMapping
   securitySchemes:

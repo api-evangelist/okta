@@ -1,6 +1,6 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
-  title: Okta Application LinkedObject API
+  title: Okta Linked Object API
   description: Allows customers to easily access the Okta API
   termsOfService: https://developer.okta.com/terms/
   contact:
@@ -33,6 +33,8 @@ paths:
                   $ref: '#/components/schemas/LinkedObject'
       security:
       - api_token: []
+      summary: List linked object definitions
+      x-summary-source: derived
     post:
       tags:
       - LinkedObject
@@ -54,6 +56,8 @@ paths:
       security:
       - api_token: []
       x-codegen-request-body-name: linkedObject
+      summary: Add linked object definition
+      x-summary-source: derived
   /api/v1/meta/schemas/user/linkedObjects/{linkedObjectName}:
     get:
       tags:
@@ -75,6 +79,8 @@ paths:
                 $ref: '#/components/schemas/LinkedObject'
       security:
       - api_token: []
+      summary: Get linked object definition
+      x-summary-source: derived
     delete:
       tags:
       - LinkedObject
@@ -92,25 +98,14 @@ paths:
           content: {}
       security:
       - api_token: []
+      summary: Delete linked object definition
+      x-summary-source: derived
 components:
   schemas:
     LinkedObjectDetailsType:
       type: string
       enum:
       - USER
-      x-okta-tags:
-      - LinkedObject
-    LinkedObjectDetails:
-      type: object
-      properties:
-        description:
-          type: string
-        name:
-          type: string
-        title:
-          type: string
-        type:
-          $ref: '#/components/schemas/LinkedObjectDetailsType'
       x-okta-tags:
       - LinkedObject
     LinkedObject:
@@ -140,6 +135,19 @@ components:
         - dest: linkedObjectName
           self: true
         operationId: deleteLinkedObjectDefinition
+      x-okta-tags:
+      - LinkedObject
+    LinkedObjectDetails:
+      type: object
+      properties:
+        description:
+          type: string
+        name:
+          type: string
+        title:
+          type: string
+        type:
+          $ref: '#/components/schemas/LinkedObjectDetailsType'
       x-okta-tags:
       - LinkedObject
   securitySchemes:

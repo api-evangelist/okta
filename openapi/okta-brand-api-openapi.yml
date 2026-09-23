@@ -1,6 +1,6 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
-  title: Okta Application Brand API
+  title: Okta Brand API
   description: Allows customers to easily access the Okta API
   termsOfService: https://developer.okta.com/terms/
   contact:
@@ -671,7 +671,7 @@ paths:
     delete:
       tags:
       - Brand
-      summary: Deletes a Theme favicon. The org then uses the Okta default favicon.
+      summary: Deletes a Theme favicon. The org then uses the Okta default favicon
       description: Deletes a Theme favicon. The org then uses the Okta default favicon.
       operationId: deleteBrandThemeFavicon
       parameters:
@@ -742,7 +742,7 @@ paths:
     delete:
       tags:
       - Brand
-      summary: Deletes a Theme logo. The org then uses the Okta default logo.
+      summary: Deletes a Theme logo. The org then uses the Okta default logo
       description: Deletes a Theme logo. The org then uses the Okta default logo.
       operationId: deleteBrandThemeLogo
       parameters:
@@ -767,63 +767,14 @@ paths:
       - api_token: []
 components:
   schemas:
-    EmailTemplateCustomization:
+    ImageUploadResponse:
       type: object
       properties:
-        _links:
-          type: object
-          additionalProperties:
-            type: object
-            properties: {}
-          readOnly: true
-        body:
-          type: string
-        created:
-          type: string
-          format: date-time
-          readOnly: true
-        id:
+        url:
           type: string
           readOnly: true
-        isDefault:
-          type: boolean
-        language:
-          type: string
-          description: unique under each email template
-        lastUpdated:
-          type: string
-          format: date-time
-          readOnly: true
-        subject:
-          type: string
-      x-okta-tags:
-      - Brands
-    EmailTemplateTouchPointVariant:
-      type: string
-      enum:
-      - OKTA_DEFAULT
-      - FULL_THEME
       x-okta-tags:
       - Brand
-    EmailTemplateContent:
-      type: object
-      properties:
-        _links:
-          type: object
-          additionalProperties:
-            type: object
-            properties: {}
-          readOnly: true
-        body:
-          type: string
-        fromAddress:
-          type: string
-        fromName:
-          type: string
-        subject:
-          type: string
-      x-okta-tags:
-      - Brands
     SignInPageTouchPointVariant:
       type: string
       enum:
@@ -839,39 +790,6 @@ components:
       - WHITE_LOGO_BACKGROUND
       - FULL_THEME
       - LOGO_ON_FULL_WHITE_BACKGROUND
-      x-okta-tags:
-      - Brand
-    Brand:
-      type: object
-      properties:
-        _links:
-          type: object
-          additionalProperties:
-            type: object
-            properties: {}
-          readOnly: true
-        agreeToCustomPrivacyPolicy:
-          type: boolean
-        customPrivacyPolicyUrl:
-          type: string
-        id:
-          type: string
-          readOnly: true
-        removePoweredByOkta:
-          type: boolean
-      x-okta-crud:
-      - alias: read
-        arguments:
-        - dest: brandId
-          src: id
-        operationId: getBrand
-      - alias: update
-        arguments:
-        - dest: brandId
-          src: id
-        - dest: brand
-          self: true
-        operationId: updateBrand
       x-okta-tags:
       - Brand
     EmailTemplate:
@@ -914,35 +832,6 @@ components:
         operationId: sendTestEmail
       x-okta-tags:
       - Brands
-    EmailTemplateCustomizationRequest:
-      type: object
-      properties:
-        body:
-          type: string
-        isDefault:
-          type: boolean
-        language:
-          type: string
-          description: unique under each email template
-        subject:
-          type: string
-      x-okta-tags:
-      - Brands
-    EmailTemplateTestRequest:
-      type: object
-      properties:
-        customizationId:
-          type: string
-      x-okta-tags:
-      - Brands
-    ImageUploadResponse:
-      type: object
-      properties:
-        url:
-          type: string
-          readOnly: true
-      x-okta-tags:
-      - Brand
     Theme:
       type: object
       properties:
@@ -991,6 +880,84 @@ components:
         operationId: deleteBrandThemeBackgroundImage
       x-okta-tags:
       - Brand
+    EmailTemplateCustomization:
+      type: object
+      properties:
+        _links:
+          type: object
+          additionalProperties:
+            type: object
+            properties: {}
+          readOnly: true
+        body:
+          type: string
+        created:
+          type: string
+          format: date-time
+          readOnly: true
+        id:
+          type: string
+          readOnly: true
+        isDefault:
+          type: boolean
+        language:
+          type: string
+          description: unique under each email template
+        lastUpdated:
+          type: string
+          format: date-time
+          readOnly: true
+        subject:
+          type: string
+      x-okta-tags:
+      - Brands
+    EmailTemplateTouchPointVariant:
+      type: string
+      enum:
+      - OKTA_DEFAULT
+      - FULL_THEME
+      x-okta-tags:
+      - Brand
+    Brand:
+      type: object
+      properties:
+        _links:
+          type: object
+          additionalProperties:
+            type: object
+            properties: {}
+          readOnly: true
+        agreeToCustomPrivacyPolicy:
+          type: boolean
+        customPrivacyPolicyUrl:
+          type: string
+        id:
+          type: string
+          readOnly: true
+        removePoweredByOkta:
+          type: boolean
+      x-okta-crud:
+      - alias: read
+        arguments:
+        - dest: brandId
+          src: id
+        operationId: getBrand
+      - alias: update
+        arguments:
+        - dest: brandId
+          src: id
+        - dest: brand
+          self: true
+        operationId: updateBrand
+      x-okta-tags:
+      - Brand
+    EmailTemplateTestRequest:
+      type: object
+      properties:
+        customizationId:
+          type: string
+      x-okta-tags:
+      - Brands
     ErrorPageTouchPointVariant:
       type: string
       enum:
@@ -999,6 +966,39 @@ components:
       - BACKGROUND_IMAGE
       x-okta-tags:
       - Brand
+    EmailTemplateContent:
+      type: object
+      properties:
+        _links:
+          type: object
+          additionalProperties:
+            type: object
+            properties: {}
+          readOnly: true
+        body:
+          type: string
+        fromAddress:
+          type: string
+        fromName:
+          type: string
+        subject:
+          type: string
+      x-okta-tags:
+      - Brands
+    EmailTemplateCustomizationRequest:
+      type: object
+      properties:
+        body:
+          type: string
+        isDefault:
+          type: boolean
+        language:
+          type: string
+          description: unique under each email template
+        subject:
+          type: string
+      x-okta-tags:
+      - Brands
     ThemeResponse:
       type: object
       properties:

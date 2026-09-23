@@ -1,6 +1,6 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
-  title: Okta Application UserType API
+  title: Okta User Type API
   description: Allows customers to easily access the Okta API
   termsOfService: https://developer.okta.com/terms/
   contact:
@@ -14,12 +14,12 @@ info:
 servers:
 - url: https://your-subdomain.okta.com/
 tags:
-- name: UserType
+- name: User Type
 paths:
   /api/v1/meta/types/user:
     get:
       tags:
-      - UserType
+      - User Type
       description: Fetches all User Types in your org
       operationId: listUserTypes
       responses:
@@ -33,9 +33,11 @@ paths:
                   $ref: '#/components/schemas/UserType'
       security:
       - api_token: []
+      summary: List user types
+      x-summary-source: derived
     post:
       tags:
-      - UserType
+      - User Type
       description: Creates a new User Type. A default User Type is automatically created along with your org, and you may add another 9 User Types for a maximum of 10.
       operationId: createUserType
       requestBody:
@@ -54,10 +56,12 @@ paths:
       security:
       - api_token: []
       x-codegen-request-body-name: userType
+      summary: Create user type
+      x-summary-source: derived
   /api/v1/meta/types/user/{typeId}:
     get:
       tags:
-      - UserType
+      - User Type
       description: Fetches a User Type by ID. The special identifier `default` may be used to fetch the default User Type.
       operationId: getUserType
       parameters:
@@ -75,9 +79,11 @@ paths:
                 $ref: '#/components/schemas/UserType'
       security:
       - api_token: []
+      summary: Get user type
+      x-summary-source: derived
     put:
       tags:
-      - UserType
+      - User Type
       description: Replace an existing User Type
       operationId: replaceUserType
       parameters:
@@ -102,9 +108,11 @@ paths:
       security:
       - api_token: []
       x-codegen-request-body-name: userType
+      summary: Replace user type
+      x-summary-source: derived
     post:
       tags:
-      - UserType
+      - User Type
       description: Updates an existing User Type
       operationId: updateUserType
       parameters:
@@ -129,9 +137,11 @@ paths:
       security:
       - api_token: []
       x-codegen-request-body-name: userType
+      summary: Update user type
+      x-summary-source: derived
     delete:
       tags:
-      - UserType
+      - User Type
       description: Deletes a User Type permanently. This operation is not permitted for the default type, nor for any User Type that has existing users
       operationId: deleteUserType
       parameters:
@@ -146,6 +156,8 @@ paths:
           content: {}
       security:
       - api_token: []
+      summary: Delete user type
+      x-summary-source: derived
 components:
   schemas:
     UserType:

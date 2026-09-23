@@ -1,6 +1,6 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
-  title: Okta Application GroupSchema API
+  title: Okta Group Schema API
   description: Allows customers to easily access the Okta API
   termsOfService: https://developer.okta.com/terms/
   contact:
@@ -35,7 +35,7 @@ paths:
     post:
       tags:
       - GroupSchema
-      summary: Okta Updates, adds ore removes one or more custom Group Profile properties in the schema
+      summary: Okta Updates, adds ore removes one or more custom Group Profile properties in…
       description: Updates, adds ore removes one or more custom Group Profile properties in the schema
       operationId: updateGroupSchema
       requestBody:
@@ -56,12 +56,41 @@ paths:
       x-codegen-request-body-name: body
 components:
   schemas:
-    UserSchemaAttributeMasterType:
-      type: string
+    UserSchemaAttributeUnion:
+      type: object
       enum:
-      - PROFILE_MASTER
-      - OKTA
-      - OVERRIDE
+      - DISABLE
+      - ENABLE
+      x-okta-tags:
+      - UserSchema
+    UserSchemaPropertiesProfileItem:
+      type: object
+      properties:
+        $ref:
+          type: string
+      x-okta-tags:
+      - UserSchema
+    UserSchemaPropertiesProfile:
+      type: object
+      properties:
+        allOf:
+          type: array
+          items:
+            $ref: '#/components/schemas/UserSchemaPropertiesProfileItem'
+      x-okta-tags:
+      - UserSchema
+    UserSchemaAttributeScope:
+      type: object
+      enum:
+      - SELF
+      - NONE
+      x-okta-tags:
+      - UserSchema
+    UserSchemaProperties:
+      type: object
+      properties:
+        profile:
+          $ref: '#/components/schemas/UserSchemaPropertiesProfile'
       x-okta-tags:
       - UserSchema
     GroupSchemaAttribute:
@@ -109,52 +138,33 @@ components:
           type: string
       x-okta-tags:
       - GroupSchema
-    UserSchemaAttributeMasterPriority:
+    UserSchemaAttributeMaster:
       type: object
       properties:
-        type:
-          type: string
-        value:
-          type: string
-      x-okta-tags:
-      - UserSchema
-    GroupSchemaCustom:
-      type: object
-      properties:
-        id:
-          type: string
-          readOnly: true
-        properties:
-          type: object
-          additionalProperties:
-            $ref: '#/components/schemas/GroupSchemaAttribute'
-        required:
+        priority:
           type: array
           items:
-            type: string
+            $ref: '#/components/schemas/UserSchemaAttributeMasterPriority'
         type:
-          type: string
-      x-okta-tags:
-      - GroupSchema
-    UserSchemaAttributeUnion:
-      type: object
-      enum:
-      - DISABLE
-      - ENABLE
+          $ref: '#/components/schemas/UserSchemaAttributeMasterType'
       x-okta-tags:
       - UserSchema
-    UserSchemaAttributeScope:
-      type: object
-      enum:
-      - SELF
-      - NONE
-      x-okta-tags:
-      - UserSchema
-    UserSchemaProperties:
+    GroupSchemaBaseProperties:
       type: object
       properties:
-        profile:
-          $ref: '#/components/schemas/UserSchemaPropertiesProfile'
+        description:
+          $ref: '#/components/schemas/GroupSchemaAttribute'
+        name:
+          $ref: '#/components/schemas/GroupSchemaAttribute'
+      x-okta-tags:
+      - GroupSchema
+    UserSchemaAttributePermission:
+      type: object
+      properties:
+        action:
+          type: string
+        principal:
+          type: string
       x-okta-tags:
       - UserSchema
     UserSchemaAttributeEnum:
@@ -163,22 +173,6 @@ components:
         const:
           type: string
         title:
-          type: string
-      x-okta-tags:
-      - UserSchema
-    UserSchemaPropertiesProfile:
-      type: object
-      properties:
-        allOf:
-          type: array
-          items:
-            $ref: '#/components/schemas/UserSchemaPropertiesProfileItem'
-      x-okta-tags:
-      - UserSchema
-    UserSchemaPropertiesProfileItem:
-      type: object
-      properties:
-        $ref:
           type: string
       x-okta-tags:
       - UserSchema
@@ -192,15 +186,6 @@ components:
       - array
       x-okta-tags:
       - UserSchema
-    GroupSchemaBaseProperties:
-      type: object
-      properties:
-        description:
-          $ref: '#/components/schemas/GroupSchemaAttribute'
-        name:
-          $ref: '#/components/schemas/GroupSchemaAttribute'
-      x-okta-tags:
-      - GroupSchema
     UserSchemaAttributeItems:
       type: object
       properties:
@@ -216,20 +201,21 @@ components:
           type: string
       x-okta-tags:
       - UserSchema
-    GroupSchemaBase:
+    UserSchemaAttributeMasterType:
+      type: string
+      enum:
+      - PROFILE_MASTER
+      - OKTA
+      - OVERRIDE
+      x-okta-tags:
+      - UserSchema
+    GroupSchemaDefinitions:
       type: object
       properties:
-        id:
-          type: string
-          readOnly: true
-        properties:
-          $ref: '#/components/schemas/GroupSchemaBaseProperties'
-        required:
-          type: array
-          items:
-            type: string
-        type:
-          type: string
+        base:
+          $ref: '#/components/schemas/GroupSchemaBase'
+        custom:
+          $ref: '#/components/schemas/GroupSchemaCustom'
       x-okta-tags:
       - GroupSchema
     GroupSchema:
@@ -269,35 +255,49 @@ components:
           readOnly: true
       x-okta-tags:
       - GroupSchema
-    UserSchemaAttributeMaster:
+    UserSchemaAttributeMasterPriority:
       type: object
       properties:
-        priority:
+        type:
+          type: string
+        value:
+          type: string
+      x-okta-tags:
+      - UserSchema
+    GroupSchemaCustom:
+      type: object
+      properties:
+        id:
+          type: string
+          readOnly: true
+        properties:
+          type: object
+          additionalProperties:
+            $ref: '#/components/schemas/GroupSchemaAttribute'
+        required:
           type: array
           items:
-            $ref: '#/components/schemas/UserSchemaAttributeMasterPriority'
+            type: string
         type:
-          $ref: '#/components/schemas/UserSchemaAttributeMasterType'
-      x-okta-tags:
-      - UserSchema
-    GroupSchemaDefinitions:
-      type: object
-      properties:
-        base:
-          $ref: '#/components/schemas/GroupSchemaBase'
-        custom:
-          $ref: '#/components/schemas/GroupSchemaCustom'
+          type: string
       x-okta-tags:
       - GroupSchema
-    UserSchemaAttributePermission:
+    GroupSchemaBase:
       type: object
       properties:
-        action:
+        id:
           type: string
-        principal:
+          readOnly: true
+        properties:
+          $ref: '#/components/schemas/GroupSchemaBaseProperties'
+        required:
+          type: array
+          items:
+            type: string
+        type:
           type: string
       x-okta-tags:
-      - UserSchema
+      - GroupSchema
   securitySchemes:
     api_token:
       type: apiKey

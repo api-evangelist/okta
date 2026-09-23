@@ -1,32 +1,7 @@
 {
   "provider": "okta",
   "sources": [
-    "okta-application-api-openapi.yml",
-    "okta-authenticator-api-openapi.yml",
-    "okta-authorizationserver-api-openapi.yml",
-    "okta-brand-api-openapi.yml",
-    "okta-domain-api-openapi.yml",
-    "okta-eventhook-api-openapi.yml",
-    "okta-feature-api-openapi.yml",
-    "okta-group-api-openapi.yml",
-    "okta-groupschema-api-openapi.yml",
-    "okta-identityprovider-api-openapi.yml",
-    "okta-inlinehook-api-openapi.yml",
-    "okta-linkedobject-api-openapi.yml",
-    "okta-log-api-openapi.yml",
-    "okta-networkzone-api-openapi.yml",
-    "okta-org-api-openapi.yml",
-    "okta-policy-api-openapi.yml",
-    "okta-profilemapping-api-openapi.yml",
-    "okta-session-api-openapi.yml",
-    "okta-subscription-api-openapi.yml",
-    "okta-template-api-openapi.yml",
-    "okta-threatinsight-api-openapi.yml",
-    "okta-trustedorigin-api-openapi.yml",
-    "okta-user-api-openapi.yml",
-    "okta-userfactor-api-openapi.yml",
-    "okta-userschema-api-openapi.yml",
-    "okta-usertype-api-openapi.yml"
+    "_original/okta-openapi-original.yml"
   ],
   "outputs": [
     "okta-application-api-openapi.yml",
@@ -56,11 +31,45 @@
     "okta-userschema-api-openapi.yml",
     "okta-usertype-api-openapi.yml"
   ],
-  "archived": [],
+  "archived": [
+    "deleted 2 superseded output(s) from the previous generation"
+  ],
   "errors": [
-    "okta-user-api-openapi.yml: dangling $ref: #/definitions/UserCredentials"
+    "okta-openapi-original.yml: dangling $ref: #/definitions/UserCredentials"
   ],
   "warnings": [],
-  "notes": [],
-  "skipped": []
+  "notes": [
+    "sourced from openapi/_original/ (1 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "okta-openapi-original.yml: upgraded openapi 3.0.1 -> OpenAPI 3.2.0",
+    "superseded outputs removed: okta-identity-provider-api-openapi.yml, okta-user-type-api-openapi.yml",
+    "apis.yml register: written (+2 apis, 28 total)"
+  ],
+  "skipped": [
+    "okta-application-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "okta-authenticator-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "okta-authorizationserver-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "okta-brand-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "okta-domain-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "okta-eventhook-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "okta-feature-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "okta-group-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "okta-groupschema-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "okta-identity-provider-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "okta-inlinehook-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "okta-linkedobject-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "okta-log-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "okta-networkzone-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "okta-org-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "okta-policy-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "okta-profilemapping-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "okta-session-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "okta-subscription-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "okta-template-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "okta-threatinsight-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "okta-trustedorigin-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "okta-user-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "okta-user-type-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "okta-userfactor-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "okta-userschema-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }

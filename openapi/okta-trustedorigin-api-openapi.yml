@@ -1,6 +1,6 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
-  title: Okta Application TrustedOrigin API
+  title: Okta Trusted Origin API
   description: Allows customers to easily access the Okta API
   termsOfService: https://developer.okta.com/terms/
   contact:
@@ -52,6 +52,8 @@ paths:
                   $ref: '#/components/schemas/TrustedOrigin'
       security:
       - api_token: []
+      summary: List origins
+      x-summary-source: derived
     post:
       tags:
       - TrustedOrigin
@@ -73,6 +75,8 @@ paths:
       security:
       - api_token: []
       x-codegen-request-body-name: trustedOrigin
+      summary: Create origin
+      x-summary-source: derived
   /api/v1/trustedOrigins/{trustedOriginId}:
     get:
       tags:
@@ -94,6 +98,8 @@ paths:
                 $ref: '#/components/schemas/TrustedOrigin'
       security:
       - api_token: []
+      summary: Get origin
+      x-summary-source: derived
     put:
       tags:
       - TrustedOrigin
@@ -121,6 +127,8 @@ paths:
       security:
       - api_token: []
       x-codegen-request-body-name: trustedOrigin
+      summary: Update origin
+      x-summary-source: derived
     delete:
       tags:
       - TrustedOrigin
@@ -138,6 +146,8 @@ paths:
           content: {}
       security:
       - api_token: []
+      summary: Delete origin
+      x-summary-source: derived
   /api/v1/trustedOrigins/{trustedOriginId}/lifecycle/activate:
     post:
       tags:
@@ -159,6 +169,8 @@ paths:
                 $ref: '#/components/schemas/TrustedOrigin'
       security:
       - api_token: []
+      summary: Activate origin
+      x-summary-source: derived
   /api/v1/trustedOrigins/{trustedOriginId}/lifecycle/deactivate:
     post:
       tags:
@@ -180,6 +192,8 @@ paths:
                 $ref: '#/components/schemas/TrustedOrigin'
       security:
       - api_token: []
+      summary: Deactivate origin
+      x-summary-source: derived
 components:
   schemas:
     TrustedOrigin:
@@ -239,6 +253,20 @@ components:
         operationId: deleteOrigin
       x-okta-tags:
       - TrustedOrigin
+    IframeEmbedScopeAllowedApps:
+      type: string
+      enum:
+      - OKTA_ENDUSER
+      x-okta-tags:
+      - Role
+    ScopeType:
+      type: string
+      enum:
+      - CORS
+      - REDIRECT
+      - IFRAME_EMBED
+      x-okta-tags:
+      - Role
     Scope:
       type: object
       properties:
@@ -250,20 +278,6 @@ components:
           type: string
         type:
           $ref: '#/components/schemas/ScopeType'
-      x-okta-tags:
-      - Role
-    ScopeType:
-      type: string
-      enum:
-      - CORS
-      - REDIRECT
-      - IFRAME_EMBED
-      x-okta-tags:
-      - Role
-    IframeEmbedScopeAllowedApps:
-      type: string
-      enum:
-      - OKTA_ENDUSER
       x-okta-tags:
       - Role
   securitySchemes:

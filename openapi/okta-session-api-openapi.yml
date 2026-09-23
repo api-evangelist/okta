@@ -1,6 +1,6 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
-  title: Okta Application Session API
+  title: Okta Session API
   description: Allows customers to easily access the Okta API
   termsOfService: https://developer.okta.com/terms/
   contact:
@@ -63,6 +63,8 @@ paths:
                 $ref: '#/components/schemas/Session'
       security:
       - api_token: []
+      summary: Get session
+      x-summary-source: derived
     delete:
       tags:
       - Session
@@ -112,50 +114,6 @@ paths:
       - api_token: []
 components:
   schemas:
-    SessionAuthenticationMethod:
-      type: string
-      enum:
-      - pwd
-      - swk
-      - hwk
-      - otp
-      - sms
-      - tel
-      - geo
-      - fpt
-      - kba
-      - mfa
-      - mca
-      - sc
-      x-okta-tags:
-      - Session
-    CreateSessionRequest:
-      type: object
-      properties:
-        sessionToken:
-          type: string
-      x-okta-tags:
-      - Session
-    SessionIdentityProvider:
-      type: object
-      properties:
-        id:
-          type: string
-          readOnly: true
-        type:
-          $ref: '#/components/schemas/SessionIdentityProviderType'
-      x-okta-tags:
-      - Session
-    SessionIdentityProviderType:
-      type: string
-      enum:
-      - ACTIVE_DIRECTORY
-      - LDAP
-      - OKTA
-      - FEDERATION
-      - SOCIAL
-      x-okta-tags:
-      - Session
     Session:
       type: object
       properties:
@@ -218,12 +176,56 @@ components:
         operationId: refreshSession
       x-okta-tags:
       - Session
+    SessionIdentityProvider:
+      type: object
+      properties:
+        id:
+          type: string
+          readOnly: true
+        type:
+          $ref: '#/components/schemas/SessionIdentityProviderType'
+      x-okta-tags:
+      - Session
     SessionStatus:
       type: string
       enum:
       - ACTIVE
       - MFA_ENROLL
       - MFA_REQUIRED
+      x-okta-tags:
+      - Session
+    SessionAuthenticationMethod:
+      type: string
+      enum:
+      - pwd
+      - swk
+      - hwk
+      - otp
+      - sms
+      - tel
+      - geo
+      - fpt
+      - kba
+      - mfa
+      - mca
+      - sc
+      x-okta-tags:
+      - Session
+    CreateSessionRequest:
+      type: object
+      properties:
+        sessionToken:
+          type: string
+      x-okta-tags:
+      - Session
+    SessionIdentityProviderType:
+      type: string
+      enum:
+      - ACTIVE_DIRECTORY
+      - LDAP
+      - OKTA
+      - FEDERATION
+      - SOCIAL
       x-okta-tags:
       - Session
   securitySchemes:

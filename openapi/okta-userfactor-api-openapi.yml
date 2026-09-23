@@ -1,6 +1,6 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
-  title: Okta Application UserFactor API
+  title: Okta User Factor API
   description: Allows customers to easily access the Okta API
   termsOfService: https://developer.okta.com/terms/
   contact:
@@ -39,6 +39,8 @@ paths:
                   $ref: '#/components/schemas/UserFactor'
       security:
       - api_token: []
+      summary: List factors
+      x-summary-source: derived
     post:
       tags:
       - UserFactor
@@ -116,6 +118,8 @@ paths:
                   $ref: '#/components/schemas/UserFactor'
       security:
       - api_token: []
+      summary: List supported factors
+      x-summary-source: derived
   /api/v1/users/{userId}/factors/questions:
     get:
       tags:
@@ -139,6 +143,8 @@ paths:
                   $ref: '#/components/schemas/SecurityQuestion'
       security:
       - api_token: []
+      summary: List supported security questions
+      x-summary-source: derived
   /api/v1/users/{userId}/factors/{factorId}:
     get:
       tags:
@@ -165,6 +171,8 @@ paths:
                 $ref: '#/components/schemas/UserFactor'
       security:
       - api_token: []
+      summary: Get factor
+      x-summary-source: derived
     delete:
       tags:
       - UserFactor
@@ -187,6 +195,8 @@ paths:
           content: {}
       security:
       - api_token: []
+      summary: Delete factor
+      x-summary-source: derived
   /api/v1/users/{userId}/factors/{factorId}/lifecycle/activate:
     post:
       tags:
@@ -252,6 +262,8 @@ paths:
                 $ref: '#/components/schemas/VerifyUserFactorResponse'
       security:
       - api_token: []
+      summary: Get factor transaction status
+      x-summary-source: derived
   /api/v1/users/{userId}/factors/{factorId}/verify:
     post:
       tags:
@@ -316,71 +328,36 @@ paths:
       x-codegen-request-body-name: body
 components:
   schemas:
-    FactorStatus:
-      type: string
-      enum:
-      - PENDING_ACTIVATION
-      - ACTIVE
-      - INACTIVE
-      - NOT_SETUP
-      - ENROLLED
-      - DISABLED
-      - EXPIRED
-      x-okta-tags:
-      - UserFactor
-    VerifyUserFactorResponse:
+    VerifyFactorRequest:
       type: object
       properties:
-        _embedded:
-          type: object
-          additionalProperties:
-            type: object
-            properties: {}
-          readOnly: true
-        _links:
-          type: object
-          additionalProperties:
-            type: object
-            properties: {}
-          readOnly: true
-        expiresAt:
+        activationToken:
           type: string
-          format: date-time
-          readOnly: true
-        factorResult:
+        answer:
           type: string
-          enum:
-          - SUCCESS
-          - EXPIRED
-          - CHALLENGE
-          - WAITING
-          - FAILED
-          - REJECTED
-          - TIMEOUT
-          - TIME_WINDOW_EXCEEDED
-          - PASSCODE_REPLAYED
-          - ERROR
-        factorResultMessage:
+        attestation:
+          type: string
+        clientData:
+          type: string
+        nextPassCode:
+          type: string
+        passCode:
+          type: string
+        registrationData:
+          type: string
+        stateToken:
           type: string
       x-okta-tags:
       - UserFactor
-    FactorType:
-      type: string
-      enum:
-      - call
-      - email
-      - hotp
-      - push
-      - question
-      - signed_nonce
-      - sms
-      - token:hardware
-      - token:hotp
-      - token:software:totp
-      - token
-      - u2f
-      - web
-      - webauthn
+    SecurityQuestion:
+      type: object
+      properties:
+        answer:
+          type: string
+        question:
+          type: string
+        questionText:
+          type: string
       x-okta-tags:
       - UserFactor
     UserFactor:
@@ -458,24 +435,51 @@ components:
           web: '#/definitions/WebUserFactor'
           webauthn: '#/definitions/WebAuthnUserFactor'
         propertyName: factorType
-    VerifyFactorRequest:
+    FactorStatus:
+      type: string
+      enum:
+      - PENDING_ACTIVATION
+      - ACTIVE
+      - INACTIVE
+      - NOT_SETUP
+      - ENROLLED
+      - DISABLED
+      - EXPIRED
+      x-okta-tags:
+      - UserFactor
+    VerifyUserFactorResponse:
       type: object
       properties:
-        activationToken:
+        _embedded:
+          type: object
+          additionalProperties:
+            type: object
+            properties: {}
+          readOnly: true
+        _links:
+          type: object
+          additionalProperties:
+            type: object
+            properties: {}
+          readOnly: true
+        expiresAt:
           type: string
-        answer:
+          format: date-time
+          readOnly: true
+        factorResult:
           type: string
-        attestation:
-          type: string
-        clientData:
-          type: string
-        nextPassCode:
-          type: string
-        passCode:
-          type: string
-        registrationData:
-          type: string
-        stateToken:
+          enum:
+          - SUCCESS
+          - EXPIRED
+          - CHALLENGE
+          - WAITING
+          - FAILED
+          - REJECTED
+          - TIMEOUT
+          - TIME_WINDOW_EXCEEDED
+          - PASSCODE_REPLAYED
+          - ERROR
+        factorResultMessage:
           type: string
       x-okta-tags:
       - UserFactor
@@ -493,6 +497,25 @@ components:
       - APPLE
       x-okta-tags:
       - UserFactor
+    FactorType:
+      type: string
+      enum:
+      - call
+      - email
+      - hotp
+      - push
+      - question
+      - signed_nonce
+      - sms
+      - token:hardware
+      - token:hotp
+      - token:software:totp
+      - token
+      - u2f
+      - web
+      - webauthn
+      x-okta-tags:
+      - UserFactor
     ActivateFactorRequest:
       type: object
       properties:
@@ -505,17 +528,6 @@ components:
         registrationData:
           type: string
         stateToken:
-          type: string
-      x-okta-tags:
-      - UserFactor
-    SecurityQuestion:
-      type: object
-      properties:
-        answer:
-          type: string
-        question:
-          type: string
-        questionText:
           type: string
       x-okta-tags:
       - UserFactor

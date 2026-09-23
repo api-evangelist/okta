@@ -1,6 +1,6 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
-  title: Okta Application NetworkZone API
+  title: Okta Network Zone API
   description: Allows customers to easily access the Okta API
   termsOfService: https://developer.okta.com/terms/
   contact:
@@ -267,6 +267,13 @@ components:
         operationId: deactivateNetworkZone
       x-okta-tags:
       - NetworkZone
+    NetworkZoneAddressType:
+      type: string
+      enum:
+      - CIDR
+      - RANGE
+      x-okta-tags:
+      - NetworkZone
     NetworkZoneType:
       type: string
       enum:
@@ -304,13 +311,6 @@ components:
       enum:
       - POLICY
       - BLOCKLIST
-      x-okta-tags:
-      - NetworkZone
-    NetworkZoneAddressType:
-      type: string
-      enum:
-      - CIDR
-      - RANGE
       x-okta-tags:
       - NetworkZone
   securitySchemes:
