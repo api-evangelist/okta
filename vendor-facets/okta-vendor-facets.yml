@@ -1,0 +1,244 @@
+# Vendor facets — Okta. Workforce/customer identity platform whose org authorization server serves a
+# full discovery document at the ROOT of its host (issuer, authorization_code, registration_endpoint,
+# PAR, DPoP, private_key_jwt — fetched live from okta.okta.com on 2026-09-25). With a custom domain on
+# the provider's own namespace that lands three agent-readiness dimensions at once. What it cannot
+# reach: RFC 9728 protected-resource metadata (the provider's resource server must serve it), every
+# OpenAPI check, and consent_identity. Agent SSO / Cross App Access is real and GA but no check reads it.
+vendor: okta
+name: Okta
+website: https://www.okta.com
+areas:
+- identity
+registry_keys:
+- okta
+rubric_schema_version: 0.22.0
+generated: '2026-09-25'
+features_refreshed: '2026-09-25'
+basis: capability
+summary: >-
+  Okta's lift lands on the agent-readiness identity dimensions, and only when the provider fronts its
+  Okta org with a custom domain on its own namespace and that host is on the provider's record: the root
+  discovery document then reads as served auth (0.9), served delegated identity and dynamic client registration.
+  Okta's registration endpoint requires an admin-scoped token (okta.clients.register), so the DCR point
+  the rubric awards is not open agent self-registration. Protected-resource metadata, the provider's OpenAPI
+  security declarations and consent/bot-identity signals stay the provider's work.
+features:
+- id: custom-url-domain
+  name: Custom URL domain for the Okta org
+  description: >-
+    Serves the Okta org, sign-in and OAuth endpoints on a subdomain the customer owns (login.example.com),
+    with Okta-managed or bring-your-own certificates; up to three by default.
+  source: https://developer.okta.com/docs/guides/custom-url-domain/main/
+  tier: all
+- id: root-discovery-document
+  name: Org authorization server discovery at the host root
+  description: >-
+    The org authorization server answers /.well-known/openid-configuration at the host root with issuer,
+    authorization_code in grant_types_supported, registration_endpoint, PAR, DPoP algorithms and private_key_jwt.
+  source: https://okta.okta.com/.well-known/openid-configuration
+  tier: all
+- id: custom-authorization-server
+  name: Custom authorization servers (API Access Management)
+  description: >-
+    Authorization servers for the customer's own APIs with custom scopes and claims; discovery is path-scoped
+    under /oauth2/{id}/.
+  source: https://developer.okta.com/docs/concepts/auth-servers/
+  tier: paid
+- id: dynamic-client-registration
+  name: Dynamic Client Registration API
+  description: >-
+    /oauth2/v1/clients largely follows RFC 7591 but is called with an admin-scoped token (okta.clients.register);
+    DCR-created apps default to consent_method REQUIRED.
+  source: https://developer.okta.com/docs/api/openapi/okta-oauth/oauth/tag/Client/
+  tier: all
+- id: dpop
+  name: DPoP sender-constrained access tokens
+  description: >-
+    RFC 9449 DPoP-bound access tokens per client app; the resource server must validate the proof and
+    the cnf thumbprint.
+  source: https://developer.okta.com/docs/guides/dpop/nonoktaresourceserver/main/
+  tier: all
+- id: agent-sso-cross-app-access
+  name: Agent SSO / Cross App Access
+  description: >-
+    GA 2026-08-24 in core Okta SSO; registers agents in Universal Directory and issues short-lived governed
+    tokens via Cross App Access, adopted as MCP's Enterprise-Managed Authorization extension.
+  source: >-
+    https://www.okta.com/newsroom/press-releases/okta-brings-first-class-identity-to-ai-agents-with-agent-sso/
+  tier: all
+maps:
+- feature: root-discovery-document
+  check: auth_clarity
+  layer: agent_readiness
+  grade: served
+  provider_must: >-
+    Put the Okta org behind a custom URL domain on its own namespace (login.example.com) and get that
+    host onto its record (apis.yml pointer or the host graph). The harvest probes only the host root and
+    only hosts the provider owns; the path-scoped custom-authorization-server document (/oauth2/default/...)
+    is never probed.
+  note: >-
+    Custom URL domains are available across plans per the fetched guide; Okta caps them at three by default.
+  points: 10
+  baseline_pass_rate: 0.474
+- feature: root-discovery-document
+  check: delegated_identity
+  layer: agent_readiness
+  grade: served
+  provider_must: >-
+    Same custom-domain host on record; authorization_code is in the root document's grant_types_supported.
+  points: 6
+  baseline_pass_rate: 0.209
+- feature: dynamic-client-registration
+  check: dynamic_client_registration
+  layer: agent_readiness
+  provider_must: Same custom-domain host on record; the root document always carries registration_endpoint.
+  note: >-
+    The rubric reads the key, not whether registration is open. Okta's endpoint needs an okta.clients.register
+    admin token, so an MCP client cannot actually self-register anonymously. The point is awarded; the
+    capability it describes is only half there.
+  points: 6
+  baseline_pass_rate: 0.134
+- feature: custom-authorization-server
+  check: oauth_scopes_enumerated
+  layer: composite
+  conditional: true
+  condition: >-
+    Only if the provider's own OpenAPI declares an oauth2 scheme and enumerates the custom scopes it defined
+    in Okta; the IdP never writes the provider's contract.
+  catalog_pass_rate: 0.866
+  facet: contract_quality
+  points: 4
+  baseline_pass_rate: 0.902
+  saturated: true
+  saturated_note: >-
+    90% of providers with a contract, docs and a reference already earn this; the vendor cannot move it
+    for most of its buyers.
+- feature: custom-authorization-server
+  check: reg_oauth_scopes
+  layer: composite
+  conditional: true
+  condition: >-
+    Only for a provider in a regulated regime that publishes its scopes as an OAuthScopes pointer or scopes
+    artifact.
+  catalog_pass_rate: 0.11
+  facet: regulatory
+  points: 10
+  baseline_pass_rate: 0.29
+- feature: dpop
+  check: reg_fapi_profile
+  layer: composite
+  conditional: true
+  condition: >-
+    Banking/open-finance regime only, and only when the provider's own auth documentation states it uses
+    PAR, private_key_jwt or bound tokens; Okta offering them is not the provider documenting them.
+  catalog_pass_rate: 0.196
+  facet: regulatory
+  points: 6
+  baseline_pass_rate: 0.463
+- feature: dynamic-client-registration
+  check: reg_consent_model
+  layer: composite
+  conditional: true
+  condition: >-
+    Regulated regime only, and only if the provider documents its consent/authorization model; Okta's
+    REQUIRED consent default for DCR apps is a building block, not a published model.
+  catalog_pass_rate: 0.126
+  facet: regulatory
+  points: 7
+  baseline_pass_rate: 0.431
+earns_nothing:
+- feature: root-discovery-document
+  check: well_known_published
+  why: >-
+    That check wants an api-catalog, security.txt, protected-resource or AAuth document; an openid-configuration
+    is none of them.
+- feature: agent-sso-cross-app-access
+  check: consent_identity
+  why: >-
+    Cross App Access identifies agents to Okta-connected apps in-band; consent_identity reads AIPREF,
+    Content-Signal, Web Bot Auth or HTTP Message Signatures pointers, none of which Agent SSO produces.
+out_of_reach:
+  checks:
+  - protected_resource_metadata
+  - security_schemes_defined
+  - oauth_flows_current
+  - consent_identity
+  - authentication_documented
+  note: >-
+    RFC 9728 metadata is served by the provider's resource/MCP server, and no Okta library that serves
+    it was found; the OpenAPI checks and the Authentication pointer are the provider's own writing.
+unscored_practice:
+- feature: agent-sso-cross-app-access
+  why: >-
+    Enterprise-managed agent authorization (ID-JAG / Cross App Access) is now an MCP extension; no dimension
+    reads it.
+- feature: root-discovery-document
+  why: >-
+    The served document advertises the implicit and password grants; oauth_flows_current reads only OpenAPI
+    securitySchemes, so a deprecated grant advertised in live discovery goes unscored.
+surface:
+  contract_quality:
+    reachable: 4.0
+    total: 211
+  regulatory:
+    reachable: 23.0
+    total: 108
+  agent_readiness:
+    reachable: 21.0
+    total: 139
+hard_rule: >-
+  A model, not a score. Adopting this vendor changes a provider's Kin Score only when the provider publishes
+  the resulting artifacts on its own surface; nothing here writes a score, and no sponsorship or partnership
+  can.
+method: searched
+source:
+- https://developer.okta.com/docs/api/openapi/okta-oauth/oauth/tag/Client/
+- https://developer.okta.com/docs/concepts/auth-servers/
+- https://developer.okta.com/docs/guides/custom-url-domain/main/
+- https://developer.okta.com/docs/guides/dpop/nonoktaresourceserver/main/
+- https://okta.okta.com/.well-known/openid-configuration
+- >-
+  https://www.okta.com/newsroom/press-releases/okta-brings-first-class-identity-to-ai-agents-with-agent-sso/
+measured:
+  cohort:
+    method: vendors-catalog.json detections (CNAME / header / URL shape / markup), never a name match
+    detected: 1
+    in_baseline: 0
+  control:
+    basis: providers earning contract_present + documentation_present + api_reference_present, minus the
+      cohort
+    n: 5216
+  metric: >-
+    cohort_pct / control_pct = mean share of the check's points earned (derived and platform credit weighted),
+    x100
+  measured_on: '2026-09-25'
+  status: 'not measurable: 0 detected customers clear the baseline (need 20)'
+simulation:
+  simulated_on: '2026-09-25'
+  rubric: 0.23.0
+  population: providers publishing a contract (contract_present earned), replayable exactly
+  providers: 8977
+  providers_unreplayable: 987
+  providers_moved: 8071
+  conditional_rows: excluded (they depend on what the API already does)
+  composite_lift:
+    median: 0.0
+    p75: 0.0
+    p90: 0.0
+    max: 0.0
+    mean_among_movers: 0.0
+  agent_readiness_lift:
+    median: 12.6
+    p75: 12.6
+    p90: 14.6
+    max: 17.6
+    mean_among_movers: 12.3
+  facet_lift_median_among_movers: {}
+  composite_band_moves: {}
+  agent_readiness_band_moves:
+    agent-aware -> agent-ready: 4886
+    agent-ready -> agent-native: 314
+    agent-aware -> agent-native: 43
+  method: >-
+    each provider's own kin/checks file, the vendor's maps at their stated credit, the scorer's composite
+    formula; from -> to, nothing written

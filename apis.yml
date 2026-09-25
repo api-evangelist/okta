@@ -1125,6 +1125,8 @@ apis:
   - type: FinOps
     url: finops/okta-finops.yml
 common:
+  - type: VendorFacets
+    url: vendor-facets/okta-vendor-facets.yml
   - type: AgenticAccess
     url: agentic-access/okta-agentic-access.yml
   - type: TrustCenter
