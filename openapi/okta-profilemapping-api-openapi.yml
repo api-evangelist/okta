@@ -106,6 +106,15 @@ paths:
       x-codegen-request-body-name: profileMapping
 components:
   schemas:
+    ProfileMappingProperty:
+      type: object
+      properties:
+        expression:
+          type: string
+        pushStatus:
+          $ref: '#/components/schemas/ProfileMappingPropertyPushStatus'
+      x-okta-tags:
+      - ProfileMapping
     ProfileMapping:
       type: object
       properties:
@@ -138,15 +147,6 @@ components:
         - dest: mappingId
           src: id
         operationId: updateProfileMapping
-      x-okta-tags:
-      - ProfileMapping
-    ProfileMappingProperty:
-      type: object
-      properties:
-        expression:
-          type: string
-        pushStatus:
-          $ref: '#/components/schemas/ProfileMappingPropertyPushStatus'
       x-okta-tags:
       - ProfileMapping
     ProfileMappingSource:

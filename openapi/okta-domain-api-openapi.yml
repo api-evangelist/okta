@@ -144,23 +144,11 @@ paths:
       - api_token: []
 components:
   schemas:
-    DomainCertificate:
-      type: object
-      properties:
-        certificate:
-          type: string
-        certificateChain:
-          type: string
-        privateKey:
-          type: string
-        type:
-          $ref: '#/components/schemas/DomainCertificateType'
-      x-okta-operations:
-      - alias: createCertificate
-        arguments:
-        - dest: certificate
-          self: true
-        operationId: createCertificate
+    DomainCertificateSourceType:
+      type: string
+      enum:
+      - MANUAL
+      - OKTA_MANAGED
       x-okta-tags:
       - Domain
     DomainCertificateType:
@@ -169,19 +157,15 @@ components:
       - PEM
       x-okta-tags:
       - Domain
-    DNSRecord:
+    DomainCertificateMetadata:
       type: object
       properties:
         expiration:
           type: string
-        fqdn:
+        fingerprint:
           type: string
-        recordType:
-          $ref: '#/components/schemas/DNSRecordType'
-        values:
-          type: array
-          items:
-            type: string
+        subject:
+          type: string
       x-okta-tags:
       - Domain
     DNSRecordType:
@@ -189,17 +173,6 @@ components:
       enum:
       - TXT
       - CNAME
-      x-okta-tags:
-      - Domain
-    DomainValidationStatus:
-      type: string
-      enum:
-      - NOT_STARTED
-      - IN_PROGRESS
-      - VERIFIED
-      - FAILED_TO_VERIFY
-      - DOMAIN_TAKEN
-      - COMPLETED
       x-okta-tags:
       - Domain
     DomainListResponse:
@@ -231,22 +204,49 @@ components:
           $ref: '#/components/schemas/DomainValidationStatus'
       x-okta-tags:
       - Domain
-    DomainCertificateSourceType:
-      type: string
-      enum:
-      - MANUAL
-      - OKTA_MANAGED
+    DomainCertificate:
+      type: object
+      properties:
+        certificate:
+          type: string
+        certificateChain:
+          type: string
+        privateKey:
+          type: string
+        type:
+          $ref: '#/components/schemas/DomainCertificateType'
+      x-okta-operations:
+      - alias: createCertificate
+        arguments:
+        - dest: certificate
+          self: true
+        operationId: createCertificate
       x-okta-tags:
       - Domain
-    DomainCertificateMetadata:
+    DomainValidationStatus:
+      type: string
+      enum:
+      - NOT_STARTED
+      - IN_PROGRESS
+      - VERIFIED
+      - FAILED_TO_VERIFY
+      - DOMAIN_TAKEN
+      - COMPLETED
+      x-okta-tags:
+      - Domain
+    DNSRecord:
       type: object
       properties:
         expiration:
           type: string
-        fingerprint:
+        fqdn:
           type: string
-        subject:
-          type: string
+        recordType:
+          $ref: '#/components/schemas/DNSRecordType'
+        values:
+          type: array
+          items:
+            type: string
       x-okta-tags:
       - Domain
   securitySchemes:

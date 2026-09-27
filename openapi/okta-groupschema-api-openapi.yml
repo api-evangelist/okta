@@ -56,6 +56,22 @@ paths:
       x-codegen-request-body-name: body
 components:
   schemas:
+    GroupSchemaBaseProperties:
+      type: object
+      properties:
+        description:
+          $ref: '#/components/schemas/GroupSchemaAttribute'
+        name:
+          $ref: '#/components/schemas/GroupSchemaAttribute'
+      x-okta-tags:
+      - GroupSchema
+    UserSchemaAttributeScope:
+      type: object
+      enum:
+      - SELF
+      - NONE
+      x-okta-tags:
+      - UserSchema
     UserSchemaAttributeUnion:
       type: object
       enum:
@@ -63,10 +79,143 @@ components:
       - ENABLE
       x-okta-tags:
       - UserSchema
-    UserSchemaPropertiesProfileItem:
+    UserSchemaAttributeItems:
       type: object
       properties:
-        $ref:
+        enum:
+          type: array
+          items:
+            type: string
+        oneOf:
+          type: array
+          items:
+            $ref: '#/components/schemas/UserSchemaAttributeEnum'
+        type:
+          type: string
+      x-okta-tags:
+      - UserSchema
+    UserSchemaAttributeMasterPriority:
+      type: object
+      properties:
+        type:
+          type: string
+        value:
+          type: string
+      x-okta-tags:
+      - UserSchema
+    UserSchemaAttributeType:
+      type: string
+      enum:
+      - string
+      - boolean
+      - number
+      - integer
+      - array
+      x-okta-tags:
+      - UserSchema
+    GroupSchema:
+      type: object
+      properties:
+        $schema:
+          type: string
+          readOnly: true
+        _links:
+          type: object
+          additionalProperties:
+            type: object
+            properties: {}
+          readOnly: true
+        created:
+          type: string
+          readOnly: true
+        definitions:
+          $ref: '#/components/schemas/GroupSchemaDefinitions'
+        description:
+          type: string
+        id:
+          type: string
+          readOnly: true
+        lastUpdated:
+          type: string
+          readOnly: true
+        name:
+          type: string
+          readOnly: true
+        properties:
+          $ref: '#/components/schemas/UserSchemaProperties'
+        title:
+          type: string
+        type:
+          type: string
+          readOnly: true
+      x-okta-tags:
+      - GroupSchema
+    GroupSchemaBase:
+      type: object
+      properties:
+        id:
+          type: string
+          readOnly: true
+        properties:
+          $ref: '#/components/schemas/GroupSchemaBaseProperties'
+        required:
+          type: array
+          items:
+            type: string
+        type:
+          type: string
+      x-okta-tags:
+      - GroupSchema
+    UserSchemaProperties:
+      type: object
+      properties:
+        profile:
+          $ref: '#/components/schemas/UserSchemaPropertiesProfile'
+      x-okta-tags:
+      - UserSchema
+    UserSchemaAttributeMaster:
+      type: object
+      properties:
+        priority:
+          type: array
+          items:
+            $ref: '#/components/schemas/UserSchemaAttributeMasterPriority'
+        type:
+          $ref: '#/components/schemas/UserSchemaAttributeMasterType'
+      x-okta-tags:
+      - UserSchema
+    GroupSchemaCustom:
+      type: object
+      properties:
+        id:
+          type: string
+          readOnly: true
+        properties:
+          type: object
+          additionalProperties:
+            $ref: '#/components/schemas/GroupSchemaAttribute'
+        required:
+          type: array
+          items:
+            type: string
+        type:
+          type: string
+      x-okta-tags:
+      - GroupSchema
+    UserSchemaAttributeMasterType:
+      type: string
+      enum:
+      - PROFILE_MASTER
+      - OKTA
+      - OVERRIDE
+      x-okta-tags:
+      - UserSchema
+    UserSchemaAttributeEnum:
+      type: object
+      properties:
+        const:
+          type: string
+        title:
           type: string
       x-okta-tags:
       - UserSchema
@@ -79,20 +228,15 @@ components:
             $ref: '#/components/schemas/UserSchemaPropertiesProfileItem'
       x-okta-tags:
       - UserSchema
-    UserSchemaAttributeScope:
-      type: object
-      enum:
-      - SELF
-      - NONE
-      x-okta-tags:
-      - UserSchema
-    UserSchemaProperties:
+    GroupSchemaDefinitions:
       type: object
       properties:
-        profile:
-          $ref: '#/components/schemas/UserSchemaPropertiesProfile'
+        base:
+          $ref: '#/components/schemas/GroupSchemaBase'
+        custom:
+          $ref: '#/components/schemas/GroupSchemaCustom'
       x-okta-tags:
-      - UserSchema
+      - GroupSchema
     GroupSchemaAttribute:
       type: object
       properties:
@@ -138,26 +282,6 @@ components:
           type: string
       x-okta-tags:
       - GroupSchema
-    UserSchemaAttributeMaster:
-      type: object
-      properties:
-        priority:
-          type: array
-          items:
-            $ref: '#/components/schemas/UserSchemaAttributeMasterPriority'
-        type:
-          $ref: '#/components/schemas/UserSchemaAttributeMasterType'
-      x-okta-tags:
-      - UserSchema
-    GroupSchemaBaseProperties:
-      type: object
-      properties:
-        description:
-          $ref: '#/components/schemas/GroupSchemaAttribute'
-        name:
-          $ref: '#/components/schemas/GroupSchemaAttribute'
-      x-okta-tags:
-      - GroupSchema
     UserSchemaAttributePermission:
       type: object
       properties:
@@ -167,137 +291,13 @@ components:
           type: string
       x-okta-tags:
       - UserSchema
-    UserSchemaAttributeEnum:
+    UserSchemaPropertiesProfileItem:
       type: object
       properties:
-        const:
-          type: string
-        title:
+        $ref:
           type: string
       x-okta-tags:
       - UserSchema
-    UserSchemaAttributeType:
-      type: string
-      enum:
-      - string
-      - boolean
-      - number
-      - integer
-      - array
-      x-okta-tags:
-      - UserSchema
-    UserSchemaAttributeItems:
-      type: object
-      properties:
-        enum:
-          type: array
-          items:
-            type: string
-        oneOf:
-          type: array
-          items:
-            $ref: '#/components/schemas/UserSchemaAttributeEnum'
-        type:
-          type: string
-      x-okta-tags:
-      - UserSchema
-    UserSchemaAttributeMasterType:
-      type: string
-      enum:
-      - PROFILE_MASTER
-      - OKTA
-      - OVERRIDE
-      x-okta-tags:
-      - UserSchema
-    GroupSchemaDefinitions:
-      type: object
-      properties:
-        base:
-          $ref: '#/components/schemas/GroupSchemaBase'
-        custom:
-          $ref: '#/components/schemas/GroupSchemaCustom'
-      x-okta-tags:
-      - GroupSchema
-    GroupSchema:
-      type: object
-      properties:
-        $schema:
-          type: string
-          readOnly: true
-        _links:
-          type: object
-          additionalProperties:
-            type: object
-            properties: {}
-          readOnly: true
-        created:
-          type: string
-          readOnly: true
-        definitions:
-          $ref: '#/components/schemas/GroupSchemaDefinitions'
-        description:
-          type: string
-        id:
-          type: string
-          readOnly: true
-        lastUpdated:
-          type: string
-          readOnly: true
-        name:
-          type: string
-          readOnly: true
-        properties:
-          $ref: '#/components/schemas/UserSchemaProperties'
-        title:
-          type: string
-        type:
-          type: string
-          readOnly: true
-      x-okta-tags:
-      - GroupSchema
-    UserSchemaAttributeMasterPriority:
-      type: object
-      properties:
-        type:
-          type: string
-        value:
-          type: string
-      x-okta-tags:
-      - UserSchema
-    GroupSchemaCustom:
-      type: object
-      properties:
-        id:
-          type: string
-          readOnly: true
-        properties:
-          type: object
-          additionalProperties:
-            $ref: '#/components/schemas/GroupSchemaAttribute'
-        required:
-          type: array
-          items:
-            type: string
-        type:
-          type: string
-      x-okta-tags:
-      - GroupSchema
-    GroupSchemaBase:
-      type: object
-      properties:
-        id:
-          type: string
-          readOnly: true
-        properties:
-          $ref: '#/components/schemas/GroupSchemaBaseProperties'
-        required:
-          type: array
-          items:
-            type: string
-        type:
-          type: string
-      x-okta-tags:
-      - GroupSchema
   securitySchemes:
     api_token:
       type: apiKey

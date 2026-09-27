@@ -1125,334 +1125,13 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    AuthorizationServerPolicy:
+    AuthorizationServerPolicyRuleActions:
       type: object
       properties:
-        _embedded:
-          type: object
-          additionalProperties:
-            type: object
-            properties: {}
-          readOnly: true
-        _links:
-          type: object
-          additionalProperties:
-            type: object
-            properties: {}
-          readOnly: true
-        conditions:
-          $ref: '#/components/schemas/PolicyRuleConditions'
-        created:
-          type: string
-          format: date-time
-          readOnly: true
-        description:
-          type: string
-        id:
-          type: string
-          readOnly: true
-        lastUpdated:
-          type: string
-          format: date-time
-          readOnly: true
-        name:
-          type: string
-        priority:
-          type: integer
-        status:
-          type: string
-          enum:
-          - ACTIVE
-          - INACTIVE
-        system:
-          type: boolean
-        type:
-          $ref: '#/components/schemas/PolicyType'
-      x-okta-crud:
-      - alias: read
-        arguments:
-        - dest: policyId
-          src: id
-        operationId: getAuthorizationServerPolicy
-      - alias: update
-        arguments:
-        - dest: policyId
-          src: id
-        - dest: policy
-          self: true
-        operationId: updateAuthorizationServerPolicy
-      - alias: delete
-        arguments:
-        - dest: policyId
-          src: id
-        operationId: deleteAuthorizationServerPolicy
-      x-okta-operations:
-      - alias: listPolicyRules
-        arguments:
-        - dest: policyId
-          src: id
-        operationId: listAuthorizationServerPolicyRules
-      - alias: createPolicyRule
-        arguments:
-        - dest: policyId
-          src: id
-        operationId: createAuthorizationServerPolicyRule
-      - alias: getPolicyRule
-        arguments:
-        - dest: policyId
-          src: id
-        operationId: getAuthorizationServerPolicyRule
-      - alias: deletePolicyRule
-        arguments:
-        - dest: policyId
-          src: id
-        operationId: deleteAuthorizationServerPolicyRule
-      - alias: activate
-        arguments:
-        - dest: policyId
-          src: id
-        operationId: activateAuthorizationServerPolicy
-      - alias: deactivate
-        arguments:
-        - dest: policyId
-          src: id
-        operationId: deactivateAuthorizationServerPolicy
+        token:
+          $ref: '#/components/schemas/TokenAuthorizationServerPolicyRuleAction'
       x-okta-tags:
-      - AuthorizationServer
-    PlatformConditionEvaluatorPlatformOperatingSystem:
-      type: object
-      properties:
-        expression:
-          type: string
-        type:
-          type: string
-          enum:
-          - ANDROID
-          - IOS
-          - WINDOWS
-          - OSX
-          - OTHER
-          - ANY
-        version:
-          $ref: '#/components/schemas/PlatformConditionEvaluatorPlatformOperatingSystemVersion'
-      x-okta-tags:
-      - Policy
-    DevicePolicyRuleCondition:
-      type: object
-      properties:
-        migrated:
-          type: boolean
-        platform:
-          $ref: '#/components/schemas/DevicePolicyRuleConditionPlatform'
-        rooted:
-          type: boolean
-        trustLevel:
-          type: string
-          enum:
-          - ANY
-          - TRUSTED
-      x-okta-tags:
-      - Policy
-    PolicyRuleConditions:
-      type: object
-      properties:
-        app:
-          $ref: '#/components/schemas/AppAndInstancePolicyRuleCondition'
-        apps:
-          $ref: '#/components/schemas/AppInstancePolicyRuleCondition'
-        authContext:
-          $ref: '#/components/schemas/PolicyRuleAuthContextCondition'
-        authProvider:
-          $ref: '#/components/schemas/PasswordPolicyAuthenticationProviderCondition'
-        beforeScheduledAction:
-          $ref: '#/components/schemas/BeforeScheduledActionPolicyRuleCondition'
-        clients:
-          $ref: '#/components/schemas/ClientPolicyCondition'
-        context:
-          $ref: '#/components/schemas/ContextPolicyRuleCondition'
-        device:
-          $ref: '#/components/schemas/DevicePolicyRuleCondition'
-        grantTypes:
-          $ref: '#/components/schemas/GrantTypePolicyRuleCondition'
-        groups:
-          $ref: '#/components/schemas/GroupPolicyRuleCondition'
-        identityProvider:
-          $ref: '#/components/schemas/IdentityProviderPolicyRuleCondition'
-        mdmEnrollment:
-          $ref: '#/components/schemas/MDMEnrollmentPolicyRuleCondition'
-        network:
-          $ref: '#/components/schemas/PolicyNetworkCondition'
-        people:
-          $ref: '#/components/schemas/PolicyPeopleCondition'
-        platform:
-          $ref: '#/components/schemas/PlatformPolicyRuleCondition'
-        risk:
-          $ref: '#/components/schemas/RiskPolicyRuleCondition'
-        riskScore:
-          $ref: '#/components/schemas/RiskScorePolicyRuleCondition'
-        scopes:
-          $ref: '#/components/schemas/OAuth2ScopesMediationPolicyRuleCondition'
-        userIdentifier:
-          $ref: '#/components/schemas/UserIdentifierPolicyRuleCondition'
-        userStatus:
-          $ref: '#/components/schemas/UserStatusPolicyRuleCondition'
-        users:
-          $ref: '#/components/schemas/UserPolicyRuleCondition'
-      x-okta-tags:
-      - Policy
-    OAuth2ScopesMediationPolicyRuleCondition:
-      type: object
-      properties:
-        include:
-          type: array
-          items:
-            type: string
-      x-okta-tags:
-      - Application
-    UserStatusPolicyRuleCondition:
-      type: object
-      properties:
-        value:
-          type: string
-          enum:
-          - ACTIVE
-          - INACTIVE
-          - PENDING
-          - DELETED
-          - EXPIRED_PASSWORD
-          - ACTIVATING
-          - SUSPENDED
-          - DELETING
-      x-okta-tags:
-      - Policy
-    AppAndInstancePolicyRuleCondition:
-      type: object
-      properties:
-        exclude:
-          type: array
-          items:
-            $ref: '#/components/schemas/AppAndInstanceConditionEvaluatorAppOrInstance'
-        include:
-          type: array
-          items:
-            $ref: '#/components/schemas/AppAndInstanceConditionEvaluatorAppOrInstance'
-      x-okta-tags:
-      - Policy
-    ClientPolicyCondition:
-      type: object
-      properties:
-        include:
-          type: array
-          items:
-            type: string
-      x-okta-tags:
-      - Policy
-    ScheduledUserLifecycleAction:
-      type: object
-      properties:
-        status:
-          type: string
-          enum:
-          - ACTIVE
-          - INACTIVE
-          - PENDING
-          - DELETED
-          - EXPIRED_PASSWORD
-          - ACTIVATING
-          - SUSPENDED
-          - DELETING
-      x-okta-tags:
-      - Policy
-    OAuth2Claim:
-      type: object
-      properties:
-        _links:
-          type: object
-          additionalProperties:
-            type: object
-            properties: {}
-          readOnly: true
-        alwaysIncludeInToken:
-          type: boolean
-        claimType:
-          type: string
-          enum:
-          - IDENTITY
-          - RESOURCE
-        conditions:
-          $ref: '#/components/schemas/OAuth2ClaimConditions'
-        group_filter_type:
-          type: string
-          enum:
-          - STARTS_WITH
-          - EQUALS
-          - CONTAINS
-          - REGEX
-        id:
-          type: string
-          readOnly: true
-        name:
-          type: string
-        status:
-          type: string
-          enum:
-          - ACTIVE
-          - INACTIVE
-        system:
-          type: boolean
-        value:
-          type: string
-        valueType:
-          type: string
-          enum:
-          - EXPRESSION
-          - GROUPS
-          - SYSTEM
-      x-okta-tags:
-      - Application
-    AuthorizationServerCredentials:
-      type: object
-      properties:
-        signing:
-          $ref: '#/components/schemas/AuthorizationServerCredentialsSigningConfig'
-      x-okta-tags:
-      - Application
-    GroupPolicyRuleCondition:
-      type: object
-      properties:
-        exclude:
-          type: array
-          items:
-            type: string
-        include:
-          type: array
-          items:
-            type: string
-      x-okta-tags:
-      - Policy
-    OAuth2Client:
-      type: object
-      properties:
-        _links:
-          type: object
-          additionalProperties:
-            type: object
-            properties: {}
-          readOnly: true
-        client_id:
-          type: string
-          readOnly: true
-        client_name:
-          type: string
-          readOnly: true
-        client_uri:
-          type: string
-          readOnly: true
-        logo_uri:
-          type: string
-          readOnly: true
-      x-okta-tags:
-      - Application
+      - AuthorizationServerPolicy
     IdentityProviderPolicyRuleCondition:
       type: object
       properties:
@@ -1468,88 +1147,15 @@ components:
           - SPECIFIC_IDP
       x-okta-tags:
       - Policy
-    PolicyNetworkCondition:
+    PolicyPeopleCondition:
       type: object
       properties:
-        connection:
-          type: string
-          enum:
-          - ANYWHERE
-          - ZONE
-        exclude:
-          type: array
-          items:
-            type: string
-        include:
-          type: array
-          items:
-            type: string
+        groups:
+          $ref: '#/components/schemas/GroupCondition'
+        users:
+          $ref: '#/components/schemas/UserCondition'
       x-okta-tags:
       - Policy
-    AppAndInstanceConditionEvaluatorAppOrInstance:
-      type: object
-      properties:
-        id:
-          type: string
-          readOnly: true
-        name:
-          type: string
-        type:
-          type: string
-          enum:
-          - APP_TYPE
-          - APP
-      x-okta-tags:
-      - Policy
-    OAuth2RefreshToken:
-      type: object
-      properties:
-        _embedded:
-          type: object
-          additionalProperties:
-            type: object
-            properties: {}
-          readOnly: true
-        _links:
-          type: object
-          additionalProperties:
-            type: object
-            properties: {}
-          readOnly: true
-        clientId:
-          type: string
-        created:
-          type: string
-          format: date-time
-          readOnly: true
-        createdBy:
-          $ref: '#/components/schemas/OAuth2Actor'
-        expiresAt:
-          type: string
-          format: date-time
-          readOnly: true
-        id:
-          type: string
-          readOnly: true
-        issuer:
-          type: string
-        lastUpdated:
-          type: string
-          format: date-time
-          readOnly: true
-        scopes:
-          type: array
-          items:
-            type: string
-        status:
-          type: string
-          enum:
-          - ACTIVE
-          - REVOKED
-        userId:
-          type: string
-      x-okta-tags:
-      - Application
     PolicyRuleAuthContextCondition:
       type: object
       properties:
@@ -1558,426 +1164,6 @@ components:
           enum:
           - ANY
           - RADIUS
-      x-okta-tags:
-      - Policy
-    UserIdentifierConditionEvaluatorPattern:
-      type: object
-      properties:
-        matchType:
-          type: string
-          enum:
-          - SUFFIX
-          - EXPRESSION
-          - STARTS_WITH
-          - EQUALS
-          - CONTAINS
-        value:
-          type: string
-      x-okta-tags:
-      - Policy
-    AuthorizationServerCredentialsUse:
-      type: string
-      enum:
-      - sig
-      x-okta-tags:
-      - AuthorizationServer
-    JsonWebKey:
-      type: object
-      properties:
-        _links:
-          type: object
-          additionalProperties:
-            type: object
-            properties: {}
-          readOnly: true
-        alg:
-          type: string
-        created:
-          type: string
-          format: date-time
-        e:
-          type: string
-        expiresAt:
-          type: string
-          format: date-time
-        key_ops:
-          type: array
-          items:
-            type: string
-        kid:
-          type: string
-        kty:
-          type: string
-        lastUpdated:
-          type: string
-          format: date-time
-        n:
-          type: string
-        status:
-          type: string
-        use:
-          type: string
-        x5c:
-          type: array
-          items:
-            type: string
-        x5t:
-          type: string
-        x5t#S256:
-          type: string
-        x5u:
-          type: string
-      x-okta-tags:
-      - Application
-    AuthorizationServerPolicyRule:
-      type: object
-      properties:
-        actions:
-          $ref: '#/components/schemas/AuthorizationServerPolicyRuleActions'
-        conditions:
-          $ref: '#/components/schemas/AuthorizationServerPolicyRuleConditions'
-        created:
-          type: string
-          format: date-time
-          readOnly: true
-        id:
-          type: string
-          readOnly: true
-        lastUpdated:
-          type: string
-          format: date-time
-          readOnly: true
-        name:
-          type: string
-        priority:
-          type: integer
-        status:
-          type: string
-          default: ACTIVE
-          enum:
-          - ACTIVE
-          - INACTIVE
-        system:
-          type: boolean
-          default: false
-        type:
-          type: string
-          enum:
-          - RESOURCE_ACCESS
-      x-okta-crud:
-      - alias: update
-        arguments:
-        - dest: ruleId
-          src: id
-        - dest: policyRule
-          self: true
-        - dest: policyId
-          parentSrc: id
-        operationId: updateAuthorizationServerPolicyRule
-      - alias: delete
-        arguments:
-        - dest: ruleId
-          src: id
-        - dest: policyId
-          parentSrc: policyId
-        operationId: deleteAuthorizationServerPolicyRule
-      x-okta-operations:
-      - alias: activate
-        arguments:
-        - dest: ruleId
-          src: id
-        - dest: policyId
-          parentSrc: policyId
-        operationId: activateAuthorizationServerPolicyRule
-      - alias: deactivate
-        arguments:
-        - dest: ruleId
-          src: id
-        - dest: policyId
-          parentSrc: policyId
-        operationId: deactivateAuthorizationServerPolicyRule
-      x-okta-tags:
-      - AuthorizationServerPolicy
-    LifecycleExpirationPolicyRuleCondition:
-      type: object
-      properties:
-        lifecycleStatus:
-          type: string
-        number:
-          type: integer
-        unit:
-          type: string
-      x-okta-tags:
-      - Policy
-    PlatformPolicyRuleCondition:
-      type: object
-      properties:
-        exclude:
-          type: array
-          items:
-            $ref: '#/components/schemas/PlatformConditionEvaluatorPlatform'
-        include:
-          type: array
-          items:
-            $ref: '#/components/schemas/PlatformConditionEvaluatorPlatform'
-      x-okta-tags:
-      - Policy
-    GroupCondition:
-      type: object
-      properties:
-        exclude:
-          type: array
-          items:
-            type: string
-        include:
-          type: array
-          items:
-            type: string
-      x-okta-tags:
-      - Policy
-    TokenAuthorizationServerPolicyRuleActionInlineHook:
-      type: object
-      properties:
-        id:
-          type: string
-      x-okta-tags:
-      - AuthorizationServerPolicy
-    JwkUse:
-      type: object
-      properties:
-        use:
-          type: string
-          enum:
-          - sig
-      x-okta-tags:
-      - Application
-    UserIdentifierPolicyRuleCondition:
-      type: object
-      properties:
-        attribute:
-          type: string
-        patterns:
-          type: array
-          items:
-            $ref: '#/components/schemas/UserIdentifierConditionEvaluatorPattern'
-        type:
-          type: string
-          enum:
-          - IDENTIFIER
-          - ATTRIBUTE
-      x-okta-tags:
-      - Policy
-    PolicyType:
-      type: string
-      enum:
-      - OAUTH_AUTHORIZATION_POLICY
-      - OKTA_SIGN_ON
-      - PASSWORD
-      - IDP_DISCOVERY
-      - PROFILE_ENROLLMENT
-      - ACCESS_POLICY
-      - MFA_ENROLL
-      x-okta-tags:
-      - Policy
-    UserPolicyRuleCondition:
-      type: object
-      properties:
-        exclude:
-          type: array
-          items:
-            type: string
-        inactivity:
-          $ref: '#/components/schemas/InactivityPolicyRuleCondition'
-        include:
-          type: array
-          items:
-            type: string
-        lifecycleExpiration:
-          $ref: '#/components/schemas/LifecycleExpirationPolicyRuleCondition'
-        passwordExpiration:
-          $ref: '#/components/schemas/PasswordExpirationPolicyRuleCondition'
-        userLifecycleAttribute:
-          $ref: '#/components/schemas/UserLifecycleAttributePolicyRuleCondition'
-      x-okta-tags:
-      - Policy
-    UserLifecycleAttributePolicyRuleCondition:
-      type: object
-      properties:
-        attributeName:
-          type: string
-        matchingValue:
-          type: string
-      x-okta-tags:
-      - Policy
-    PlatformConditionEvaluatorPlatform:
-      type: object
-      properties:
-        os:
-          $ref: '#/components/schemas/PlatformConditionEvaluatorPlatformOperatingSystem'
-        type:
-          type: string
-          enum:
-          - DESKTOP
-          - MOBILE
-          - OTHER
-          - ANY
-      x-okta-tags:
-      - Policy
-    AuthorizationServerPolicyRuleConditions:
-      type: object
-      properties:
-        clients:
-          $ref: '#/components/schemas/ClientPolicyCondition'
-        grantTypes:
-          $ref: '#/components/schemas/GrantTypePolicyRuleCondition'
-        people:
-          $ref: '#/components/schemas/PolicyPeopleCondition'
-        scopes:
-          $ref: '#/components/schemas/OAuth2ScopesMediationPolicyRuleCondition'
-      x-okta-tags:
-      - AuthorizationServerPolicy
-    OAuth2ClaimConditions:
-      type: object
-      properties:
-        scopes:
-          type: array
-          items:
-            type: string
-      x-okta-tags:
-      - Application
-    OAuth2Scope:
-      type: object
-      properties:
-        consent:
-          type: string
-          enum:
-          - REQUIRED
-          - IMPLICIT
-          - ADMIN
-        default:
-          type: boolean
-        description:
-          type: string
-        displayName:
-          type: string
-        id:
-          type: string
-          readOnly: true
-        metadataPublish:
-          type: string
-          enum:
-          - ALL_CLIENTS
-          - NO_CLIENTS
-        name:
-          type: string
-        system:
-          type: boolean
-      x-okta-tags:
-      - Application
-    AuthorizationServerCredentialsRotationMode:
-      type: string
-      enum:
-      - AUTO
-      - MANUAL
-      x-okta-tags:
-      - AuthorizationServer
-    InactivityPolicyRuleCondition:
-      type: object
-      properties:
-        number:
-          type: integer
-        unit:
-          type: string
-      x-okta-tags:
-      - Policy
-    AuthorizationServerPolicyRuleActions:
-      type: object
-      properties:
-        token:
-          $ref: '#/components/schemas/TokenAuthorizationServerPolicyRuleAction'
-      x-okta-tags:
-      - AuthorizationServerPolicy
-    PasswordPolicyAuthenticationProviderCondition:
-      type: object
-      properties:
-        include:
-          type: array
-          items:
-            type: string
-        provider:
-          type: string
-          enum:
-          - ACTIVE_DIRECTORY
-          - ANY
-          - LDAP
-          - OKTA
-      x-okta-tags:
-      - Policy
-    MDMEnrollmentPolicyRuleCondition:
-      type: object
-      properties:
-        blockNonSafeAndroid:
-          type: boolean
-        enrollment:
-          type: string
-          enum:
-          - OMM
-          - ANY_OR_NONE
-      x-okta-tags:
-      - Policy
-    BeforeScheduledActionPolicyRuleCondition:
-      type: object
-      properties:
-        duration:
-          $ref: '#/components/schemas/Duration'
-        lifecycleAction:
-          $ref: '#/components/schemas/ScheduledUserLifecycleAction'
-      x-okta-tags:
-      - Policy
-    OAuth2Actor:
-      type: object
-      properties:
-        id:
-          type: string
-          readOnly: true
-        type:
-          type: string
-      x-okta-tags:
-      - Application
-    RiskPolicyRuleCondition:
-      type: object
-      properties:
-        behaviors:
-          uniqueItems: true
-          type: array
-          items:
-            type: string
-      x-okta-tags:
-      - Policy
-    TokenAuthorizationServerPolicyRuleAction:
-      type: object
-      properties:
-        accessTokenLifetimeMinutes:
-          type: integer
-        inlineHook:
-          $ref: '#/components/schemas/TokenAuthorizationServerPolicyRuleActionInlineHook'
-        refreshTokenLifetimeMinutes:
-          type: integer
-        refreshTokenWindowMinutes:
-          type: integer
-      x-okta-tags:
-      - AuthorizationServerPolicy
-    UserCondition:
-      type: object
-      properties:
-        exclude:
-          type: array
-          items:
-            type: string
-        include:
-          type: array
-          items:
-            type: string
       x-okta-tags:
       - Policy
     ContextPolicyRuleCondition:
@@ -2179,25 +1365,124 @@ components:
         operationId: updateOAuth2Scope
       x-okta-tags:
       - AuthorizationServer
-    AuthorizationServerCredentialsSigningConfig:
+    ScheduledUserLifecycleAction:
       type: object
       properties:
-        kid:
+        status:
           type: string
-        lastRotated:
-          type: string
-          format: date-time
-          readOnly: true
-        nextRotation:
-          type: string
-          format: date-time
-          readOnly: true
-        rotationMode:
-          $ref: '#/components/schemas/AuthorizationServerCredentialsRotationMode'
-        use:
-          $ref: '#/components/schemas/AuthorizationServerCredentialsUse'
+          enum:
+          - ACTIVE
+          - INACTIVE
+          - PENDING
+          - DELETED
+          - EXPIRED_PASSWORD
+          - ACTIVATING
+          - SUSPENDED
+          - DELETING
       x-okta-tags:
-      - AuthorizationServer
+      - Policy
+    UserIdentifierConditionEvaluatorPattern:
+      type: object
+      properties:
+        matchType:
+          type: string
+          enum:
+          - SUFFIX
+          - EXPRESSION
+          - STARTS_WITH
+          - EQUALS
+          - CONTAINS
+        value:
+          type: string
+      x-okta-tags:
+      - Policy
+    PasswordExpirationPolicyRuleCondition:
+      type: object
+      properties:
+        number:
+          type: integer
+        unit:
+          type: string
+      x-okta-tags:
+      - Policy
+    OAuth2ClaimConditions:
+      type: object
+      properties:
+        scopes:
+          type: array
+          items:
+            type: string
+      x-okta-tags:
+      - Application
+    AuthorizationServerPolicyRuleConditions:
+      type: object
+      properties:
+        clients:
+          $ref: '#/components/schemas/ClientPolicyCondition'
+        grantTypes:
+          $ref: '#/components/schemas/GrantTypePolicyRuleCondition'
+        people:
+          $ref: '#/components/schemas/PolicyPeopleCondition'
+        scopes:
+          $ref: '#/components/schemas/OAuth2ScopesMediationPolicyRuleCondition'
+      x-okta-tags:
+      - AuthorizationServerPolicy
+    ClientPolicyCondition:
+      type: object
+      properties:
+        include:
+          type: array
+          items:
+            type: string
+      x-okta-tags:
+      - Policy
+    OAuth2Claim:
+      type: object
+      properties:
+        _links:
+          type: object
+          additionalProperties:
+            type: object
+            properties: {}
+          readOnly: true
+        alwaysIncludeInToken:
+          type: boolean
+        claimType:
+          type: string
+          enum:
+          - IDENTITY
+          - RESOURCE
+        conditions:
+          $ref: '#/components/schemas/OAuth2ClaimConditions'
+        group_filter_type:
+          type: string
+          enum:
+          - STARTS_WITH
+          - EQUALS
+          - CONTAINS
+          - REGEX
+        id:
+          type: string
+          readOnly: true
+        name:
+          type: string
+        status:
+          type: string
+          enum:
+          - ACTIVE
+          - INACTIVE
+        system:
+          type: boolean
+        value:
+          type: string
+        valueType:
+          type: string
+          enum:
+          - EXPRESSION
+          - GROUPS
+          - SYSTEM
+      x-okta-tags:
+      - Application
     AppInstancePolicyRuleCondition:
       type: object
       properties:
@@ -2211,24 +1496,178 @@ components:
             type: string
       x-okta-tags:
       - Policy
-    Duration:
+    MDMEnrollmentPolicyRuleCondition:
       type: object
       properties:
-        number:
+        blockNonSafeAndroid:
+          type: boolean
+        enrollment:
+          type: string
+          enum:
+          - OMM
+          - ANY_OR_NONE
+      x-okta-tags:
+      - Policy
+    AuthorizationServerPolicy:
+      type: object
+      properties:
+        _embedded:
+          type: object
+          additionalProperties:
+            type: object
+            properties: {}
+          readOnly: true
+        _links:
+          type: object
+          additionalProperties:
+            type: object
+            properties: {}
+          readOnly: true
+        conditions:
+          $ref: '#/components/schemas/PolicyRuleConditions'
+        created:
+          type: string
+          format: date-time
+          readOnly: true
+        description:
+          type: string
+        id:
+          type: string
+          readOnly: true
+        lastUpdated:
+          type: string
+          format: date-time
+          readOnly: true
+        name:
+          type: string
+        priority:
           type: integer
-        unit:
+        status:
+          type: string
+          enum:
+          - ACTIVE
+          - INACTIVE
+        system:
+          type: boolean
+        type:
+          $ref: '#/components/schemas/PolicyType'
+      x-okta-crud:
+      - alias: read
+        arguments:
+        - dest: policyId
+          src: id
+        operationId: getAuthorizationServerPolicy
+      - alias: update
+        arguments:
+        - dest: policyId
+          src: id
+        - dest: policy
+          self: true
+        operationId: updateAuthorizationServerPolicy
+      - alias: delete
+        arguments:
+        - dest: policyId
+          src: id
+        operationId: deleteAuthorizationServerPolicy
+      x-okta-operations:
+      - alias: listPolicyRules
+        arguments:
+        - dest: policyId
+          src: id
+        operationId: listAuthorizationServerPolicyRules
+      - alias: createPolicyRule
+        arguments:
+        - dest: policyId
+          src: id
+        operationId: createAuthorizationServerPolicyRule
+      - alias: getPolicyRule
+        arguments:
+        - dest: policyId
+          src: id
+        operationId: getAuthorizationServerPolicyRule
+      - alias: deletePolicyRule
+        arguments:
+        - dest: policyId
+          src: id
+        operationId: deleteAuthorizationServerPolicyRule
+      - alias: activate
+        arguments:
+        - dest: policyId
+          src: id
+        operationId: activateAuthorizationServerPolicy
+      - alias: deactivate
+        arguments:
+        - dest: policyId
+          src: id
+        operationId: deactivateAuthorizationServerPolicy
+      x-okta-tags:
+      - AuthorizationServer
+    PlatformConditionEvaluatorPlatformOperatingSystem:
+      type: object
+      properties:
+        expression:
+          type: string
+        type:
+          type: string
+          enum:
+          - ANDROID
+          - IOS
+          - WINDOWS
+          - OSX
+          - OTHER
+          - ANY
+        version:
+          $ref: '#/components/schemas/PlatformConditionEvaluatorPlatformOperatingSystemVersion'
+      x-okta-tags:
+      - Policy
+    UserLifecycleAttributePolicyRuleCondition:
+      type: object
+      properties:
+        attributeName:
+          type: string
+        matchingValue:
           type: string
       x-okta-tags:
       - Policy
-    GrantTypePolicyRuleCondition:
+    AuthorizationServerCredentialsUse:
+      type: string
+      enum:
+      - sig
+      x-okta-tags:
+      - AuthorizationServer
+    UserCondition:
       type: object
       properties:
+        exclude:
+          type: array
+          items:
+            type: string
         include:
           type: array
           items:
             type: string
       x-okta-tags:
       - Policy
+    TokenAuthorizationServerPolicyRuleAction:
+      type: object
+      properties:
+        accessTokenLifetimeMinutes:
+          type: integer
+        inlineHook:
+          $ref: '#/components/schemas/TokenAuthorizationServerPolicyRuleActionInlineHook'
+        refreshTokenLifetimeMinutes:
+          type: integer
+        refreshTokenWindowMinutes:
+          type: integer
+      x-okta-tags:
+      - AuthorizationServerPolicy
+    TokenAuthorizationServerPolicyRuleActionInlineHook:
+      type: object
+      properties:
+        id:
+          type: string
+      x-okta-tags:
+      - AuthorizationServerPolicy
     PlatformConditionEvaluatorPlatformOperatingSystemVersion:
       type: object
       properties:
@@ -2241,6 +1680,40 @@ components:
           type: string
       x-okta-tags:
       - Policy
+    GroupCondition:
+      type: object
+      properties:
+        exclude:
+          type: array
+          items:
+            type: string
+        include:
+          type: array
+          items:
+            type: string
+      x-okta-tags:
+      - Policy
+    UserPolicyRuleCondition:
+      type: object
+      properties:
+        exclude:
+          type: array
+          items:
+            type: string
+        inactivity:
+          $ref: '#/components/schemas/InactivityPolicyRuleCondition'
+        include:
+          type: array
+          items:
+            type: string
+        lifecycleExpiration:
+          $ref: '#/components/schemas/LifecycleExpirationPolicyRuleCondition'
+        passwordExpiration:
+          $ref: '#/components/schemas/PasswordExpirationPolicyRuleCondition'
+        userLifecycleAttribute:
+          $ref: '#/components/schemas/UserLifecycleAttributePolicyRuleCondition'
+      x-okta-tags:
+      - Policy
     RiskScorePolicyRuleCondition:
       type: object
       properties:
@@ -2248,15 +1721,256 @@ components:
           type: string
       x-okta-tags:
       - Policy
-    PolicyPeopleCondition:
+    BeforeScheduledActionPolicyRuleCondition:
       type: object
       properties:
-        groups:
-          $ref: '#/components/schemas/GroupCondition'
-        users:
-          $ref: '#/components/schemas/UserCondition'
+        duration:
+          $ref: '#/components/schemas/Duration'
+        lifecycleAction:
+          $ref: '#/components/schemas/ScheduledUserLifecycleAction'
       x-okta-tags:
       - Policy
+    DevicePolicyRuleCondition:
+      type: object
+      properties:
+        migrated:
+          type: boolean
+        platform:
+          $ref: '#/components/schemas/DevicePolicyRuleConditionPlatform'
+        rooted:
+          type: boolean
+        trustLevel:
+          type: string
+          enum:
+          - ANY
+          - TRUSTED
+      x-okta-tags:
+      - Policy
+    OAuth2Actor:
+      type: object
+      properties:
+        id:
+          type: string
+          readOnly: true
+        type:
+          type: string
+      x-okta-tags:
+      - Application
+    GroupPolicyRuleCondition:
+      type: object
+      properties:
+        exclude:
+          type: array
+          items:
+            type: string
+        include:
+          type: array
+          items:
+            type: string
+      x-okta-tags:
+      - Policy
+    InactivityPolicyRuleCondition:
+      type: object
+      properties:
+        number:
+          type: integer
+        unit:
+          type: string
+      x-okta-tags:
+      - Policy
+    PasswordPolicyAuthenticationProviderCondition:
+      type: object
+      properties:
+        include:
+          type: array
+          items:
+            type: string
+        provider:
+          type: string
+          enum:
+          - ACTIVE_DIRECTORY
+          - ANY
+          - LDAP
+          - OKTA
+      x-okta-tags:
+      - Policy
+    JwkUse:
+      type: object
+      properties:
+        use:
+          type: string
+          enum:
+          - sig
+      x-okta-tags:
+      - Application
+    AppAndInstancePolicyRuleCondition:
+      type: object
+      properties:
+        exclude:
+          type: array
+          items:
+            $ref: '#/components/schemas/AppAndInstanceConditionEvaluatorAppOrInstance'
+        include:
+          type: array
+          items:
+            $ref: '#/components/schemas/AppAndInstanceConditionEvaluatorAppOrInstance'
+      x-okta-tags:
+      - Policy
+    PlatformPolicyRuleCondition:
+      type: object
+      properties:
+        exclude:
+          type: array
+          items:
+            $ref: '#/components/schemas/PlatformConditionEvaluatorPlatform'
+        include:
+          type: array
+          items:
+            $ref: '#/components/schemas/PlatformConditionEvaluatorPlatform'
+      x-okta-tags:
+      - Policy
+    JsonWebKey:
+      type: object
+      properties:
+        _links:
+          type: object
+          additionalProperties:
+            type: object
+            properties: {}
+          readOnly: true
+        alg:
+          type: string
+        created:
+          type: string
+          format: date-time
+        e:
+          type: string
+        expiresAt:
+          type: string
+          format: date-time
+        key_ops:
+          type: array
+          items:
+            type: string
+        kid:
+          type: string
+        kty:
+          type: string
+        lastUpdated:
+          type: string
+          format: date-time
+        n:
+          type: string
+        status:
+          type: string
+        use:
+          type: string
+        x5c:
+          type: array
+          items:
+            type: string
+        x5t:
+          type: string
+        x5t#S256:
+          type: string
+        x5u:
+          type: string
+      x-okta-tags:
+      - Application
+    GrantTypePolicyRuleCondition:
+      type: object
+      properties:
+        include:
+          type: array
+          items:
+            type: string
+      x-okta-tags:
+      - Policy
+    OAuth2RefreshToken:
+      type: object
+      properties:
+        _embedded:
+          type: object
+          additionalProperties:
+            type: object
+            properties: {}
+          readOnly: true
+        _links:
+          type: object
+          additionalProperties:
+            type: object
+            properties: {}
+          readOnly: true
+        clientId:
+          type: string
+        created:
+          type: string
+          format: date-time
+          readOnly: true
+        createdBy:
+          $ref: '#/components/schemas/OAuth2Actor'
+        expiresAt:
+          type: string
+          format: date-time
+          readOnly: true
+        id:
+          type: string
+          readOnly: true
+        issuer:
+          type: string
+        lastUpdated:
+          type: string
+          format: date-time
+          readOnly: true
+        scopes:
+          type: array
+          items:
+            type: string
+        status:
+          type: string
+          enum:
+          - ACTIVE
+          - REVOKED
+        userId:
+          type: string
+      x-okta-tags:
+      - Application
+    AuthorizationServerCredentialsRotationMode:
+      type: string
+      enum:
+      - AUTO
+      - MANUAL
+      x-okta-tags:
+      - AuthorizationServer
+    PolicyType:
+      type: string
+      enum:
+      - OAUTH_AUTHORIZATION_POLICY
+      - OKTA_SIGN_ON
+      - PASSWORD
+      - IDP_DISCOVERY
+      - PROFILE_ENROLLMENT
+      - ACCESS_POLICY
+      - MFA_ENROLL
+      x-okta-tags:
+      - Policy
+    RiskPolicyRuleCondition:
+      type: object
+      properties:
+        behaviors:
+          uniqueItems: true
+          type: array
+          items:
+            type: string
+      x-okta-tags:
+      - Policy
+    AuthorizationServerCredentials:
+      type: object
+      properties:
+        signing:
+          $ref: '#/components/schemas/AuthorizationServerCredentialsSigningConfig'
+      x-okta-tags:
+      - Application
     DevicePolicyRuleConditionPlatform:
       type: object
       properties:
@@ -2279,13 +1993,299 @@ components:
             - WINDOWS
       x-okta-tags:
       - Policy
-    PasswordExpirationPolicyRuleCondition:
+    LifecycleExpirationPolicyRuleCondition:
+      type: object
+      properties:
+        lifecycleStatus:
+          type: string
+        number:
+          type: integer
+        unit:
+          type: string
+      x-okta-tags:
+      - Policy
+    UserIdentifierPolicyRuleCondition:
+      type: object
+      properties:
+        attribute:
+          type: string
+        patterns:
+          type: array
+          items:
+            $ref: '#/components/schemas/UserIdentifierConditionEvaluatorPattern'
+        type:
+          type: string
+          enum:
+          - IDENTIFIER
+          - ATTRIBUTE
+      x-okta-tags:
+      - Policy
+    OAuth2Client:
+      type: object
+      properties:
+        _links:
+          type: object
+          additionalProperties:
+            type: object
+            properties: {}
+          readOnly: true
+        client_id:
+          type: string
+          readOnly: true
+        client_name:
+          type: string
+          readOnly: true
+        client_uri:
+          type: string
+          readOnly: true
+        logo_uri:
+          type: string
+          readOnly: true
+      x-okta-tags:
+      - Application
+    PolicyRuleConditions:
+      type: object
+      properties:
+        app:
+          $ref: '#/components/schemas/AppAndInstancePolicyRuleCondition'
+        apps:
+          $ref: '#/components/schemas/AppInstancePolicyRuleCondition'
+        authContext:
+          $ref: '#/components/schemas/PolicyRuleAuthContextCondition'
+        authProvider:
+          $ref: '#/components/schemas/PasswordPolicyAuthenticationProviderCondition'
+        beforeScheduledAction:
+          $ref: '#/components/schemas/BeforeScheduledActionPolicyRuleCondition'
+        clients:
+          $ref: '#/components/schemas/ClientPolicyCondition'
+        context:
+          $ref: '#/components/schemas/ContextPolicyRuleCondition'
+        device:
+          $ref: '#/components/schemas/DevicePolicyRuleCondition'
+        grantTypes:
+          $ref: '#/components/schemas/GrantTypePolicyRuleCondition'
+        groups:
+          $ref: '#/components/schemas/GroupPolicyRuleCondition'
+        identityProvider:
+          $ref: '#/components/schemas/IdentityProviderPolicyRuleCondition'
+        mdmEnrollment:
+          $ref: '#/components/schemas/MDMEnrollmentPolicyRuleCondition'
+        network:
+          $ref: '#/components/schemas/PolicyNetworkCondition'
+        people:
+          $ref: '#/components/schemas/PolicyPeopleCondition'
+        platform:
+          $ref: '#/components/schemas/PlatformPolicyRuleCondition'
+        risk:
+          $ref: '#/components/schemas/RiskPolicyRuleCondition'
+        riskScore:
+          $ref: '#/components/schemas/RiskScorePolicyRuleCondition'
+        scopes:
+          $ref: '#/components/schemas/OAuth2ScopesMediationPolicyRuleCondition'
+        userIdentifier:
+          $ref: '#/components/schemas/UserIdentifierPolicyRuleCondition'
+        userStatus:
+          $ref: '#/components/schemas/UserStatusPolicyRuleCondition'
+        users:
+          $ref: '#/components/schemas/UserPolicyRuleCondition'
+      x-okta-tags:
+      - Policy
+    PlatformConditionEvaluatorPlatform:
+      type: object
+      properties:
+        os:
+          $ref: '#/components/schemas/PlatformConditionEvaluatorPlatformOperatingSystem'
+        type:
+          type: string
+          enum:
+          - DESKTOP
+          - MOBILE
+          - OTHER
+          - ANY
+      x-okta-tags:
+      - Policy
+    OAuth2Scope:
+      type: object
+      properties:
+        consent:
+          type: string
+          enum:
+          - REQUIRED
+          - IMPLICIT
+          - ADMIN
+        default:
+          type: boolean
+        description:
+          type: string
+        displayName:
+          type: string
+        id:
+          type: string
+          readOnly: true
+        metadataPublish:
+          type: string
+          enum:
+          - ALL_CLIENTS
+          - NO_CLIENTS
+        name:
+          type: string
+        system:
+          type: boolean
+      x-okta-tags:
+      - Application
+    AuthorizationServerCredentialsSigningConfig:
+      type: object
+      properties:
+        kid:
+          type: string
+        lastRotated:
+          type: string
+          format: date-time
+          readOnly: true
+        nextRotation:
+          type: string
+          format: date-time
+          readOnly: true
+        rotationMode:
+          $ref: '#/components/schemas/AuthorizationServerCredentialsRotationMode'
+        use:
+          $ref: '#/components/schemas/AuthorizationServerCredentialsUse'
+      x-okta-tags:
+      - AuthorizationServer
+    AppAndInstanceConditionEvaluatorAppOrInstance:
+      type: object
+      properties:
+        id:
+          type: string
+          readOnly: true
+        name:
+          type: string
+        type:
+          type: string
+          enum:
+          - APP_TYPE
+          - APP
+      x-okta-tags:
+      - Policy
+    PolicyNetworkCondition:
+      type: object
+      properties:
+        connection:
+          type: string
+          enum:
+          - ANYWHERE
+          - ZONE
+        exclude:
+          type: array
+          items:
+            type: string
+        include:
+          type: array
+          items:
+            type: string
+      x-okta-tags:
+      - Policy
+    OAuth2ScopesMediationPolicyRuleCondition:
+      type: object
+      properties:
+        include:
+          type: array
+          items:
+            type: string
+      x-okta-tags:
+      - Application
+    Duration:
       type: object
       properties:
         number:
           type: integer
         unit:
           type: string
+      x-okta-tags:
+      - Policy
+    AuthorizationServerPolicyRule:
+      type: object
+      properties:
+        actions:
+          $ref: '#/components/schemas/AuthorizationServerPolicyRuleActions'
+        conditions:
+          $ref: '#/components/schemas/AuthorizationServerPolicyRuleConditions'
+        created:
+          type: string
+          format: date-time
+          readOnly: true
+        id:
+          type: string
+          readOnly: true
+        lastUpdated:
+          type: string
+          format: date-time
+          readOnly: true
+        name:
+          type: string
+        priority:
+          type: integer
+        status:
+          type: string
+          default: ACTIVE
+          enum:
+          - ACTIVE
+          - INACTIVE
+        system:
+          type: boolean
+          default: false
+        type:
+          type: string
+          enum:
+          - RESOURCE_ACCESS
+      x-okta-crud:
+      - alias: update
+        arguments:
+        - dest: ruleId
+          src: id
+        - dest: policyRule
+          self: true
+        - dest: policyId
+          parentSrc: id
+        operationId: updateAuthorizationServerPolicyRule
+      - alias: delete
+        arguments:
+        - dest: ruleId
+          src: id
+        - dest: policyId
+          parentSrc: policyId
+        operationId: deleteAuthorizationServerPolicyRule
+      x-okta-operations:
+      - alias: activate
+        arguments:
+        - dest: ruleId
+          src: id
+        - dest: policyId
+          parentSrc: policyId
+        operationId: activateAuthorizationServerPolicyRule
+      - alias: deactivate
+        arguments:
+        - dest: ruleId
+          src: id
+        - dest: policyId
+          parentSrc: policyId
+        operationId: deactivateAuthorizationServerPolicyRule
+      x-okta-tags:
+      - AuthorizationServerPolicy
+    UserStatusPolicyRuleCondition:
+      type: object
+      properties:
+        value:
+          type: string
+          enum:
+          - ACTIVE
+          - INACTIVE
+          - PENDING
+          - DELETED
+          - EXPIRED_PASSWORD
+          - ACTIVATING
+          - SUSPENDED
+          - DELETING
       x-okta-tags:
       - Policy
   securitySchemes:

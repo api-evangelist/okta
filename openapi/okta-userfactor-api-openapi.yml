@@ -328,25 +328,71 @@ paths:
       x-codegen-request-body-name: body
 components:
   schemas:
-    VerifyFactorRequest:
+    VerifyUserFactorResponse:
       type: object
       properties:
-        activationToken:
+        _embedded:
+          type: object
+          additionalProperties:
+            type: object
+            properties: {}
+          readOnly: true
+        _links:
+          type: object
+          additionalProperties:
+            type: object
+            properties: {}
+          readOnly: true
+        expiresAt:
           type: string
-        answer:
+          format: date-time
+          readOnly: true
+        factorResult:
           type: string
-        attestation:
+          enum:
+          - SUCCESS
+          - EXPIRED
+          - CHALLENGE
+          - WAITING
+          - FAILED
+          - REJECTED
+          - TIMEOUT
+          - TIME_WINDOW_EXCEEDED
+          - PASSCODE_REPLAYED
+          - ERROR
+        factorResultMessage:
           type: string
-        clientData:
-          type: string
-        nextPassCode:
-          type: string
-        passCode:
-          type: string
-        registrationData:
-          type: string
-        stateToken:
-          type: string
+      x-okta-tags:
+      - UserFactor
+    FactorType:
+      type: string
+      enum:
+      - call
+      - email
+      - hotp
+      - push
+      - question
+      - signed_nonce
+      - sms
+      - token:hardware
+      - token:hotp
+      - token:software:totp
+      - token
+      - u2f
+      - web
+      - webauthn
+      x-okta-tags:
+      - UserFactor
+    FactorStatus:
+      type: string
+      enum:
+      - PENDING_ACTIVATION
+      - ACTIVE
+      - INACTIVE
+      - NOT_SETUP
+      - ENROLLED
+      - DISABLED
+      - EXPIRED
       x-okta-tags:
       - UserFactor
     SecurityQuestion:
@@ -435,51 +481,39 @@ components:
           web: '#/definitions/WebUserFactor'
           webauthn: '#/definitions/WebAuthnUserFactor'
         propertyName: factorType
-    FactorStatus:
-      type: string
-      enum:
-      - PENDING_ACTIVATION
-      - ACTIVE
-      - INACTIVE
-      - NOT_SETUP
-      - ENROLLED
-      - DISABLED
-      - EXPIRED
-      x-okta-tags:
-      - UserFactor
-    VerifyUserFactorResponse:
+    ActivateFactorRequest:
       type: object
       properties:
-        _embedded:
-          type: object
-          additionalProperties:
-            type: object
-            properties: {}
-          readOnly: true
-        _links:
-          type: object
-          additionalProperties:
-            type: object
-            properties: {}
-          readOnly: true
-        expiresAt:
+        attestation:
           type: string
-          format: date-time
-          readOnly: true
-        factorResult:
+        clientData:
           type: string
-          enum:
-          - SUCCESS
-          - EXPIRED
-          - CHALLENGE
-          - WAITING
-          - FAILED
-          - REJECTED
-          - TIMEOUT
-          - TIME_WINDOW_EXCEEDED
-          - PASSCODE_REPLAYED
-          - ERROR
-        factorResultMessage:
+        passCode:
+          type: string
+        registrationData:
+          type: string
+        stateToken:
+          type: string
+      x-okta-tags:
+      - UserFactor
+    VerifyFactorRequest:
+      type: object
+      properties:
+        activationToken:
+          type: string
+        answer:
+          type: string
+        attestation:
+          type: string
+        clientData:
+          type: string
+        nextPassCode:
+          type: string
+        passCode:
+          type: string
+        registrationData:
+          type: string
+        stateToken:
           type: string
       x-okta-tags:
       - UserFactor
@@ -495,40 +529,6 @@ components:
       - YUBICO
       - CUSTOM
       - APPLE
-      x-okta-tags:
-      - UserFactor
-    FactorType:
-      type: string
-      enum:
-      - call
-      - email
-      - hotp
-      - push
-      - question
-      - signed_nonce
-      - sms
-      - token:hardware
-      - token:hotp
-      - token:software:totp
-      - token
-      - u2f
-      - web
-      - webauthn
-      x-okta-tags:
-      - UserFactor
-    ActivateFactorRequest:
-      type: object
-      properties:
-        attestation:
-          type: string
-        clientData:
-          type: string
-        passCode:
-          type: string
-        registrationData:
-          type: string
-        stateToken:
-          type: string
       x-okta-tags:
       - UserFactor
   securitySchemes:

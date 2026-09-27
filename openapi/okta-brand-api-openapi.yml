@@ -767,71 +767,20 @@ paths:
       - api_token: []
 components:
   schemas:
-    ImageUploadResponse:
+    EmailTemplateTestRequest:
       type: object
       properties:
-        url:
+        customizationId:
           type: string
-          readOnly: true
-      x-okta-tags:
-      - Brand
-    SignInPageTouchPointVariant:
-      type: string
-      enum:
-      - OKTA_DEFAULT
-      - BACKGROUND_SECONDARY_COLOR
-      - BACKGROUND_IMAGE
-      x-okta-tags:
-      - Brand
-    EndUserDashboardTouchPointVariant:
-      type: string
-      enum:
-      - OKTA_DEFAULT
-      - WHITE_LOGO_BACKGROUND
-      - FULL_THEME
-      - LOGO_ON_FULL_WHITE_BACKGROUND
-      x-okta-tags:
-      - Brand
-    EmailTemplate:
-      type: object
-      properties:
-        _links:
-          type: object
-          additionalProperties:
-            type: object
-            properties: {}
-          readOnly: true
-        name:
-          type: string
-          readOnly: true
-      x-okta-crud:
-      - alias: read
-        operationId: getEmailTemplate
-      x-okta-operations:
-      - alias: getEmailTemplate
-        operationId: getEmailTemplate
-      - alias: deleteEmailTemplateCustomizations
-        operationId: deleteEmailTemplateCustomizations
-      - alias: listEmailTemplateCustomizations
-        operationId: listEmailTemplateCustomizations
-      - alias: createEmailTemplateCustomization
-        operationId: createEmailTemplateCustomization
-      - alias: deleteEmailTemplateCustomization
-        operationId: deleteEmailTemplateCustomization
-      - alias: getEmailTemplateCustomization
-        operationId: getEmailTemplateCustomization
-      - alias: updateEmailTemplateCustomization
-        operationId: updateEmailTemplateCustomization
-      - alias: getEmailTemplateCustomizationPreview
-        operationId: getEmailTemplateCustomizationPreview
-      - alias: getEmailTemplateDefaultContent
-        operationId: getEmailTemplateDefaultContent
-      - alias: getEmailTemplateDefaultContentPreview
-        operationId: getEmailTemplateDefaultContentPreview
-      - alias: sendTestEmail
-        operationId: sendTestEmail
       x-okta-tags:
       - Brands
+    EmailTemplateTouchPointVariant:
+      type: string
+      enum:
+      - OKTA_DEFAULT
+      - FULL_THEME
+      x-okta-tags:
+      - Brand
     Theme:
       type: object
       properties:
@@ -880,6 +829,53 @@ components:
         operationId: deleteBrandThemeBackgroundImage
       x-okta-tags:
       - Brand
+    EndUserDashboardTouchPointVariant:
+      type: string
+      enum:
+      - OKTA_DEFAULT
+      - WHITE_LOGO_BACKGROUND
+      - FULL_THEME
+      - LOGO_ON_FULL_WHITE_BACKGROUND
+      x-okta-tags:
+      - Brand
+    ErrorPageTouchPointVariant:
+      type: string
+      enum:
+      - OKTA_DEFAULT
+      - BACKGROUND_SECONDARY_COLOR
+      - BACKGROUND_IMAGE
+      x-okta-tags:
+      - Brand
+    SignInPageTouchPointVariant:
+      type: string
+      enum:
+      - OKTA_DEFAULT
+      - BACKGROUND_SECONDARY_COLOR
+      - BACKGROUND_IMAGE
+      x-okta-tags:
+      - Brand
+    EmailTemplateCustomizationRequest:
+      type: object
+      properties:
+        body:
+          type: string
+        isDefault:
+          type: boolean
+        language:
+          type: string
+          description: unique under each email template
+        subject:
+          type: string
+      x-okta-tags:
+      - Brands
+    ImageUploadResponse:
+      type: object
+      properties:
+        url:
+          type: string
+          readOnly: true
+      x-okta-tags:
+      - Brand
     EmailTemplateCustomization:
       type: object
       properties:
@@ -911,14 +907,7 @@ components:
           type: string
       x-okta-tags:
       - Brands
-    EmailTemplateTouchPointVariant:
-      type: string
-      enum:
-      - OKTA_DEFAULT
-      - FULL_THEME
-      x-okta-tags:
-      - Brand
-    Brand:
+    EmailTemplate:
       type: object
       properties:
         _links:
@@ -927,76 +916,35 @@ components:
             type: object
             properties: {}
           readOnly: true
-        agreeToCustomPrivacyPolicy:
-          type: boolean
-        customPrivacyPolicyUrl:
-          type: string
-        id:
+        name:
           type: string
           readOnly: true
-        removePoweredByOkta:
-          type: boolean
       x-okta-crud:
       - alias: read
-        arguments:
-        - dest: brandId
-          src: id
-        operationId: getBrand
-      - alias: update
-        arguments:
-        - dest: brandId
-          src: id
-        - dest: brand
-          self: true
-        operationId: updateBrand
-      x-okta-tags:
-      - Brand
-    EmailTemplateTestRequest:
-      type: object
-      properties:
-        customizationId:
-          type: string
-      x-okta-tags:
-      - Brands
-    ErrorPageTouchPointVariant:
-      type: string
-      enum:
-      - OKTA_DEFAULT
-      - BACKGROUND_SECONDARY_COLOR
-      - BACKGROUND_IMAGE
-      x-okta-tags:
-      - Brand
-    EmailTemplateContent:
-      type: object
-      properties:
-        _links:
-          type: object
-          additionalProperties:
-            type: object
-            properties: {}
-          readOnly: true
-        body:
-          type: string
-        fromAddress:
-          type: string
-        fromName:
-          type: string
-        subject:
-          type: string
-      x-okta-tags:
-      - Brands
-    EmailTemplateCustomizationRequest:
-      type: object
-      properties:
-        body:
-          type: string
-        isDefault:
-          type: boolean
-        language:
-          type: string
-          description: unique under each email template
-        subject:
-          type: string
+        operationId: getEmailTemplate
+      x-okta-operations:
+      - alias: getEmailTemplate
+        operationId: getEmailTemplate
+      - alias: deleteEmailTemplateCustomizations
+        operationId: deleteEmailTemplateCustomizations
+      - alias: listEmailTemplateCustomizations
+        operationId: listEmailTemplateCustomizations
+      - alias: createEmailTemplateCustomization
+        operationId: createEmailTemplateCustomization
+      - alias: deleteEmailTemplateCustomization
+        operationId: deleteEmailTemplateCustomization
+      - alias: getEmailTemplateCustomization
+        operationId: getEmailTemplateCustomization
+      - alias: updateEmailTemplateCustomization
+        operationId: updateEmailTemplateCustomization
+      - alias: getEmailTemplateCustomizationPreview
+        operationId: getEmailTemplateCustomizationPreview
+      - alias: getEmailTemplateDefaultContent
+        operationId: getEmailTemplateDefaultContent
+      - alias: getEmailTemplateDefaultContentPreview
+        operationId: getEmailTemplateDefaultContentPreview
+      - alias: sendTestEmail
+        operationId: sendTestEmail
       x-okta-tags:
       - Brands
     ThemeResponse:
@@ -1038,6 +986,58 @@ components:
           $ref: '#/components/schemas/SignInPageTouchPointVariant'
       x-okta-tags:
       - Brand
+    Brand:
+      type: object
+      properties:
+        _links:
+          type: object
+          additionalProperties:
+            type: object
+            properties: {}
+          readOnly: true
+        agreeToCustomPrivacyPolicy:
+          type: boolean
+        customPrivacyPolicyUrl:
+          type: string
+        id:
+          type: string
+          readOnly: true
+        removePoweredByOkta:
+          type: boolean
+      x-okta-crud:
+      - alias: read
+        arguments:
+        - dest: brandId
+          src: id
+        operationId: getBrand
+      - alias: update
+        arguments:
+        - dest: brandId
+          src: id
+        - dest: brand
+          self: true
+        operationId: updateBrand
+      x-okta-tags:
+      - Brand
+    EmailTemplateContent:
+      type: object
+      properties:
+        _links:
+          type: object
+          additionalProperties:
+            type: object
+            properties: {}
+          readOnly: true
+        body:
+          type: string
+        fromAddress:
+          type: string
+        fromName:
+          type: string
+        subject:
+          type: string
+      x-okta-tags:
+      - Brands
   securitySchemes:
     api_token:
       type: apiKey

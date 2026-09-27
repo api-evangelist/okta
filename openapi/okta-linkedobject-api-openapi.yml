@@ -108,6 +108,19 @@ components:
       - USER
       x-okta-tags:
       - LinkedObject
+    LinkedObjectDetails:
+      type: object
+      properties:
+        description:
+          type: string
+        name:
+          type: string
+        title:
+          type: string
+        type:
+          $ref: '#/components/schemas/LinkedObjectDetailsType'
+      x-okta-tags:
+      - LinkedObject
     LinkedObject:
       type: object
       properties:
@@ -135,19 +148,6 @@ components:
         - dest: linkedObjectName
           self: true
         operationId: deleteLinkedObjectDefinition
-      x-okta-tags:
-      - LinkedObject
-    LinkedObjectDetails:
-      type: object
-      properties:
-        description:
-          type: string
-        name:
-          type: string
-        title:
-          type: string
-        type:
-          $ref: '#/components/schemas/LinkedObjectDetailsType'
       x-okta-tags:
       - LinkedObject
   securitySchemes:

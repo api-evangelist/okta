@@ -1571,103 +1571,15 @@ paths:
       - api_token: []
 components:
   schemas:
-    UserCredentials:
+    IdentityProviderCredentialsClient:
       type: object
       properties:
-        password:
-          $ref: '#/components/schemas/PasswordCredential'
-        provider:
-          $ref: '#/components/schemas/AuthenticationProvider'
-        recovery_question:
-          $ref: '#/components/schemas/RecoveryQuestionCredential'
-      x-okta-tags:
-      - User
-    ProtocolAlgorithmType:
-      type: object
-      properties:
-        signature:
-          $ref: '#/components/schemas/ProtocolAlgorithmTypeSignature'
+        client_id:
+          type: string
+        client_secret:
+          type: string
       x-okta-tags:
       - IdentityProvider
-    NotificationType:
-      type: string
-      enum:
-      - CONNECTOR_AGENT
-      - USER_LOCKED_OUT
-      - APP_IMPORT
-      - LDAP_AGENT
-      - AD_AGENT
-      - OKTA_ANNOUNCEMENT
-      - OKTA_ISSUE
-      - OKTA_UPDATE
-      - IWA_AGENT
-      - USER_DEPROVISION
-      - REPORT_SUSPICIOUS_ACTIVITY
-      - RATELIMIT_NOTIFICATION
-      x-okta-tags:
-      - Subscription
-    OAuth2ScopeConsentGrantStatus:
-      type: string
-      enum:
-      - ACTIVE
-      - REVOKED
-      x-okta-tags:
-      - Application
-    CatalogApplication:
-      type: object
-      properties:
-        _links:
-          type: object
-          additionalProperties:
-            type: object
-            properties: {}
-          readOnly: true
-        category:
-          type: string
-        description:
-          type: string
-        displayName:
-          type: string
-        features:
-          type: array
-          items:
-            type: string
-        id:
-          type: string
-          readOnly: true
-        lastUpdated:
-          type: string
-          format: date-time
-          readOnly: true
-        name:
-          type: string
-        signOnModes:
-          type: array
-          items:
-            type: string
-        status:
-          $ref: '#/components/schemas/CatalogApplicationStatus'
-        verificationStatus:
-          type: string
-        website:
-          type: string
-      x-okta-tags:
-      - Role
-    CreateUserRequest:
-      type: object
-      properties:
-        credentials:
-          $ref: '#/components/schemas/UserCredentials'
-        groupIds:
-          type: array
-          items:
-            type: string
-        profile:
-          $ref: '#/components/schemas/UserProfile'
-        type:
-          $ref: '#/components/schemas/UserType'
-      x-okta-tags:
-      - User
     OAuth2ScopeConsentGrant:
       type: object
       properties:
@@ -1710,13 +1622,67 @@ components:
           type: string
       x-okta-tags:
       - Application
-    ProvisioningConditions:
+    PasswordCredentialHook:
       type: object
       properties:
-        deprovisioned:
-          $ref: '#/components/schemas/ProvisioningDeprovisionedCondition'
-        suspended:
-          $ref: '#/components/schemas/ProvisioningSuspendedCondition'
+        type:
+          type: string
+      x-okta-tags:
+      - User
+    PolicySubjectMatchType:
+      type: string
+      enum:
+      - USERNAME
+      - EMAIL
+      - USERNAME_OR_EMAIL
+      - CUSTOM_ATTRIBUTE
+      x-okta-tags:
+      - Policy
+    PasswordCredentialHash:
+      type: object
+      properties:
+        algorithm:
+          $ref: '#/components/schemas/PasswordCredentialHashAlgorithm'
+        salt:
+          type: string
+        saltOrder:
+          type: string
+        value:
+          type: string
+        workFactor:
+          type: integer
+      x-okta-tags:
+      - User
+    IdentityProviderPolicy:
+      type: object
+      properties:
+        accountLink:
+          $ref: '#/components/schemas/PolicyAccountLink'
+        maxClockSkew:
+          type: integer
+        provisioning:
+          $ref: '#/components/schemas/Provisioning'
+        subject:
+          $ref: '#/components/schemas/PolicySubject'
+      x-okta-parent: '#/definitions/Policy'
+      x-okta-tags:
+      - Policy
+    IdentityProviderCredentials:
+      type: object
+      properties:
+        client:
+          $ref: '#/components/schemas/IdentityProviderCredentialsClient'
+        signing:
+          $ref: '#/components/schemas/IdentityProviderCredentialsSigning'
+        trust:
+          $ref: '#/components/schemas/IdentityProviderCredentialsTrust'
+      x-okta-tags:
+      - IdentityProvider
+    ProtocolRelayStateFormat:
+      type: string
+      enum:
+      - OPAQUE
+      - FROM_URL
       x-okta-tags:
       - IdentityProvider
     Subscription:
@@ -1755,121 +1721,14 @@ components:
         operationId: unsubscribeUserSubscriptionByNotificationType
       x-okta-tags:
       - Role
-    ProtocolEndpoint:
+    TempPassword:
       type: object
       properties:
-        binding:
+        tempPassword:
           type: string
-          enum:
-          - HTTP-POST
-          - HTTP-REDIRECT
-        destination:
-          type: string
-        type:
-          type: string
-          enum:
-          - INSTANCE
-          - ORG
-        url:
-          type: string
-      x-okta-tags:
-      - IdentityProvider
-    PolicyAccountLink:
-      type: object
-      properties:
-        action:
-          type: string
-          enum:
-          - AUTO
-          - DISABLED
-        filter:
-          $ref: '#/components/schemas/PolicyAccountLinkFilter'
-      x-okta-tags:
-      - Policy
-    PasswordCredentialHook:
-      type: object
-      properties:
-        type:
-          type: string
+          readOnly: true
       x-okta-tags:
       - User
-    ProvisioningDeprovisionedCondition:
-      type: object
-      properties:
-        action:
-          type: string
-          enum:
-          - NONE
-          - REACTIVATE
-      x-okta-tags:
-      - IdentityProvider
-    OAuth2Client:
-      type: object
-      properties:
-        _links:
-          type: object
-          additionalProperties:
-            type: object
-            properties: {}
-          readOnly: true
-        client_id:
-          type: string
-          readOnly: true
-        client_name:
-          type: string
-          readOnly: true
-        client_uri:
-          type: string
-          readOnly: true
-        logo_uri:
-          type: string
-          readOnly: true
-      x-okta-tags:
-      - Application
-    AuthenticationProviderType:
-      type: string
-      enum:
-      - ACTIVE_DIRECTORY
-      - FEDERATION
-      - LDAP
-      - OKTA
-      - SOCIAL
-      - IMPORT
-      x-okta-tags:
-      - User
-    PasswordCredentialHashAlgorithm:
-      type: string
-      enum:
-      - BCRYPT
-      - SHA-512
-      - SHA-256
-      - SHA-1
-      - MD5
-      x-okta-tags:
-      - User
-    AuthenticationProvider:
-      type: object
-      properties:
-        name:
-          type: string
-        type:
-          $ref: '#/components/schemas/AuthenticationProviderType'
-      x-okta-tags:
-      - User
-    IdentityProviderPolicy:
-      type: object
-      properties:
-        accountLink:
-          $ref: '#/components/schemas/PolicyAccountLink'
-        maxClockSkew:
-          type: integer
-        provisioning:
-          $ref: '#/components/schemas/Provisioning'
-        subject:
-          $ref: '#/components/schemas/PolicySubject'
-      x-okta-parent: '#/definitions/Policy'
-      x-okta-tags:
-      - Policy
     IdentityProvider:
       type: object
       properties:
@@ -2030,313 +1889,13 @@ components:
         operationId: listSocialAuthTokens
       x-okta-tags:
       - IdentityProvider
-    OAuth2RefreshToken:
+    ProtocolSettings:
       type: object
       properties:
-        _embedded:
-          type: object
-          additionalProperties:
-            type: object
-            properties: {}
-          readOnly: true
-        _links:
-          type: object
-          additionalProperties:
-            type: object
-            properties: {}
-          readOnly: true
-        clientId:
+        nameFormat:
           type: string
-        created:
-          type: string
-          format: date-time
-          readOnly: true
-        createdBy:
-          $ref: '#/components/schemas/OAuth2Actor'
-        expiresAt:
-          type: string
-          format: date-time
-          readOnly: true
-        id:
-          type: string
-          readOnly: true
-        issuer:
-          type: string
-        lastUpdated:
-          type: string
-          format: date-time
-          readOnly: true
-        scopes:
-          type: array
-          items:
-            type: string
-        status:
-          type: string
-          enum:
-          - ACTIVE
-          - REVOKED
-        userId:
-          type: string
-      x-okta-tags:
-      - Application
-    RoleStatus:
-      type: string
-      enum:
-      - ACTIVE
-      - INACTIVE
-      x-okta-tags:
-      - User
-    Provisioning:
-      type: object
-      properties:
-        action:
-          type: string
-          enum:
-          - AUTO
-          - CALLOUT
-          - DISABLED
-        conditions:
-          $ref: '#/components/schemas/ProvisioningConditions'
-        groups:
-          $ref: '#/components/schemas/ProvisioningGroups'
-        profileMaster:
-          type: boolean
       x-okta-tags:
       - IdentityProvider
-    ProvisioningSuspendedCondition:
-      type: object
-      properties:
-        action:
-          type: string
-          enum:
-          - NONE
-          - UNSUSPEND
-      x-okta-tags:
-      - IdentityProvider
-    TempPassword:
-      type: object
-      properties:
-        tempPassword:
-          type: string
-          readOnly: true
-      x-okta-tags:
-      - User
-    CatalogApplicationStatus:
-      type: string
-      enum:
-      - ACTIVE
-      - INACTIVE
-      x-okta-tags:
-      - Role
-    UserType:
-      type: object
-      properties:
-        _links:
-          type: object
-          additionalProperties:
-            type: object
-            properties: {}
-          readOnly: true
-        created:
-          type: string
-          format: date-time
-          readOnly: true
-        createdBy:
-          type: string
-          readOnly: true
-        default:
-          type: boolean
-          readOnly: true
-        description:
-          type: string
-        displayName:
-          type: string
-        id:
-          type: string
-        lastUpdated:
-          type: string
-          format: date-time
-          readOnly: true
-        lastUpdatedBy:
-          type: string
-          readOnly: true
-        name:
-          type: string
-      x-okta-crud:
-      - alias: create
-        arguments:
-        - dest: userType
-          self: true
-        operationId: createUserType
-      - alias: update
-        arguments:
-        - dest: typeId
-          src: id
-        - dest: userType
-          self: true
-        operationId: updateUserType
-      - alias: read
-        arguments:
-        - dest: typeId
-          src: id
-        operationId: getUserType
-      - alias: delete
-        arguments:
-        - dest: typeId
-          src: id
-        operationId: deleteUserType
-      x-okta-operations:
-      - alias: replaceUserType
-        arguments:
-        - dest: roleId
-          src: id
-        operationId: replaceUserType
-      x-okta-tags:
-      - UserType
-    PolicySubjectMatchType:
-      type: string
-      enum:
-      - USERNAME
-      - EMAIL
-      - USERNAME_OR_EMAIL
-      - CUSTOM_ATTRIBUTE
-      x-okta-tags:
-      - Policy
-    Role:
-      type: object
-      properties:
-        _embedded:
-          type: object
-          additionalProperties:
-            type: object
-            properties: {}
-          readOnly: true
-        _links:
-          type: object
-          additionalProperties:
-            type: object
-            properties: {}
-          readOnly: true
-        assignmentType:
-          $ref: '#/components/schemas/RoleAssignmentType'
-        created:
-          type: string
-          format: date-time
-          readOnly: true
-        description:
-          type: string
-        id:
-          type: string
-          readOnly: true
-        label:
-          type: string
-          readOnly: true
-        lastUpdated:
-          type: string
-          format: date-time
-          readOnly: true
-        status:
-          $ref: '#/components/schemas/RoleStatus'
-        type:
-          $ref: '#/components/schemas/RoleType'
-      x-okta-operations:
-      - alias: addAdminGroupTarget
-        arguments:
-        - dest: roleId
-          src: id
-        - dest: groupId
-          parentSrc: id
-        operationId: addGroupTargetToGroupAdministratorRoleForGroup
-      - alias: addAppInstanceTargetToAdminRole
-        arguments:
-        - dest: roleId
-          src: id
-        - dest: groupId
-          parentSrc: id
-        operationId: addApplicationInstanceTargetToAppAdminRoleGivenToGroup
-      - alias: addAppTargetToAdminRole
-        arguments:
-        - dest: roleId
-          src: id
-        - dest: groupId
-          parentSrc: id
-        operationId: addApplicationTargetToAdminRoleGivenToGroup
-      - alias: addAllAppsAsTargetToRole
-        arguments:
-        - dest: roleId
-          src: id
-        - dest: userId
-          parentSrc: id
-        operationId: addAllAppsAsTargetToRole
-      - alias: addAppTargetToAppAdminRoleForUser
-        arguments:
-        - dest: roleId
-          src: id
-        - dest: userId
-          parentSrc: id
-        operationId: addApplicationTargetToAppAdminRoleForUser
-      - alias: addAppTargetToAdminRoleForUser
-        arguments:
-        - dest: roleId
-          src: id
-        - dest: userId
-          parentSrc: id
-        operationId: addApplicationTargetToAdminRoleForUser
-      x-okta-tags:
-      - User
-    SubscriptionStatus:
-      type: string
-      enum:
-      - subscribed
-      - unsubscribed
-      x-okta-tags:
-      - Role
-    GroupProfile:
-      type: object
-      properties:
-        description:
-          type: string
-        name:
-          type: string
-      x-okta-extensible: true
-      x-okta-tags:
-      - Group
-    OAuth2ScopeConsentGrantSource:
-      type: string
-      enum:
-      - END_USER
-      - ADMIN
-      x-okta-tags:
-      - Application
-    UserStatus:
-      type: string
-      enum:
-      - ACTIVE
-      - DEPROVISIONED
-      - LOCKED_OUT
-      - PASSWORD_EXPIRED
-      - PROVISIONED
-      - RECOVERY
-      - STAGED
-      - SUSPENDED
-      x-okta-tags:
-      - User
-    PolicyAccountLinkFilterGroups:
-      type: object
-      properties:
-        include:
-          type: array
-          items:
-            type: string
-      x-okta-tags:
-      - Policy
-    PolicyUserNameTemplate:
-      type: object
-      properties:
-        template:
-          type: string
-      x-okta-tags:
-      - Policy
     User:
       type: object
       properties:
@@ -2641,6 +2200,33 @@ components:
         operationId: removeLinkedObjectForUser
       x-okta-tags:
       - User
+    GroupType:
+      type: string
+      enum:
+      - OKTA_GROUP
+      - APP_GROUP
+      - BUILT_IN
+      x-okta-tags:
+      - Group
+    ProtocolEndpoint:
+      type: object
+      properties:
+        binding:
+          type: string
+          enum:
+          - HTTP-POST
+          - HTTP-REDIRECT
+        destination:
+          type: string
+        type:
+          type: string
+          enum:
+          - INSTANCE
+          - ORG
+        url:
+          type: string
+      x-okta-tags:
+      - IdentityProvider
     ProtocolRelayState:
       type: object
       properties:
@@ -2648,12 +2234,329 @@ components:
           $ref: '#/components/schemas/ProtocolRelayStateFormat'
       x-okta-tags:
       - IdentityProvider
+    UserType:
+      type: object
+      properties:
+        _links:
+          type: object
+          additionalProperties:
+            type: object
+            properties: {}
+          readOnly: true
+        created:
+          type: string
+          format: date-time
+          readOnly: true
+        createdBy:
+          type: string
+          readOnly: true
+        default:
+          type: boolean
+          readOnly: true
+        description:
+          type: string
+        displayName:
+          type: string
+        id:
+          type: string
+        lastUpdated:
+          type: string
+          format: date-time
+          readOnly: true
+        lastUpdatedBy:
+          type: string
+          readOnly: true
+        name:
+          type: string
+      x-okta-crud:
+      - alias: create
+        arguments:
+        - dest: userType
+          self: true
+        operationId: createUserType
+      - alias: update
+        arguments:
+        - dest: typeId
+          src: id
+        - dest: userType
+          self: true
+        operationId: updateUserType
+      - alias: read
+        arguments:
+        - dest: typeId
+          src: id
+        operationId: getUserType
+      - alias: delete
+        arguments:
+        - dest: typeId
+          src: id
+        operationId: deleteUserType
+      x-okta-operations:
+      - alias: replaceUserType
+        arguments:
+        - dest: roleId
+          src: id
+        operationId: replaceUserType
+      x-okta-tags:
+      - UserType
+    ProvisioningConditions:
+      type: object
+      properties:
+        deprovisioned:
+          $ref: '#/components/schemas/ProvisioningDeprovisionedCondition'
+        suspended:
+          $ref: '#/components/schemas/ProvisioningSuspendedCondition'
+      x-okta-tags:
+      - IdentityProvider
+    AssignRoleRequest:
+      type: object
+      properties:
+        type:
+          $ref: '#/components/schemas/RoleType'
+      x-okta-tags:
+      - Role
+    NotificationType:
+      type: string
+      enum:
+      - CONNECTOR_AGENT
+      - USER_LOCKED_OUT
+      - APP_IMPORT
+      - LDAP_AGENT
+      - AD_AGENT
+      - OKTA_ANNOUNCEMENT
+      - OKTA_ISSUE
+      - OKTA_UPDATE
+      - IWA_AGENT
+      - USER_DEPROVISION
+      - REPORT_SUSPICIOUS_ACTIVITY
+      - RATELIMIT_NOTIFICATION
+      x-okta-tags:
+      - Subscription
+    SubscriptionStatus:
+      type: string
+      enum:
+      - subscribed
+      - unsubscribed
+      x-okta-tags:
+      - Role
+    AuthenticationProviderType:
+      type: string
+      enum:
+      - ACTIVE_DIRECTORY
+      - FEDERATION
+      - LDAP
+      - OKTA
+      - SOCIAL
+      - IMPORT
+      x-okta-tags:
+      - User
     ResetPasswordToken:
       type: object
       properties:
         resetPasswordUrl:
           type: string
           readOnly: true
+      x-okta-tags:
+      - User
+    PasswordCredential:
+      type: object
+      properties:
+        hash:
+          $ref: '#/components/schemas/PasswordCredentialHash'
+        hook:
+          $ref: '#/components/schemas/PasswordCredentialHook'
+        value:
+          type: string
+          format: password
+      x-okta-tags:
+      - User
+    PolicyAccountLinkFilterGroups:
+      type: object
+      properties:
+        include:
+          type: array
+          items:
+            type: string
+      x-okta-tags:
+      - Policy
+    PolicyAccountLink:
+      type: object
+      properties:
+        action:
+          type: string
+          enum:
+          - AUTO
+          - DISABLED
+        filter:
+          $ref: '#/components/schemas/PolicyAccountLinkFilter'
+      x-okta-tags:
+      - Policy
+    OAuth2ScopeConsentGrantSource:
+      type: string
+      enum:
+      - END_USER
+      - ADMIN
+      x-okta-tags:
+      - Application
+    ProvisioningGroups:
+      type: object
+      properties:
+        action:
+          type: string
+          enum:
+          - NONE
+          - APPEND
+          - SYNC
+          - ASSIGN
+        assignments:
+          type: array
+          items:
+            type: string
+        filter:
+          type: array
+          items:
+            type: string
+        sourceAttributeName:
+          type: string
+      x-okta-tags:
+      - IdentityProvider
+    OAuth2Actor:
+      type: object
+      properties:
+        id:
+          type: string
+          readOnly: true
+        type:
+          type: string
+      x-okta-tags:
+      - Application
+    PolicyAccountLinkFilter:
+      type: object
+      properties:
+        groups:
+          $ref: '#/components/schemas/PolicyAccountLinkFilterGroups'
+      x-okta-tags:
+      - Policy
+    GroupProfile:
+      type: object
+      properties:
+        description:
+          type: string
+        name:
+          type: string
+      x-okta-extensible: true
+      x-okta-tags:
+      - Group
+    CatalogApplicationStatus:
+      type: string
+      enum:
+      - ACTIVE
+      - INACTIVE
+      x-okta-tags:
+      - Role
+    PolicyUserNameTemplate:
+      type: object
+      properties:
+        template:
+          type: string
+      x-okta-tags:
+      - Policy
+    RoleType:
+      type: string
+      enum:
+      - SUPER_ADMIN
+      - ORG_ADMIN
+      - APP_ADMIN
+      - USER_ADMIN
+      - HELP_DESK_ADMIN
+      - READ_ONLY_ADMIN
+      - MOBILE_ADMIN
+      - API_ACCESS_MANAGEMENT_ADMIN
+      - REPORT_ADMIN
+      - GROUP_MEMBERSHIP_ADMIN
+      - CUSTOM
+      x-okta-tags:
+      - Role
+    Role:
+      type: object
+      properties:
+        _embedded:
+          type: object
+          additionalProperties:
+            type: object
+            properties: {}
+          readOnly: true
+        _links:
+          type: object
+          additionalProperties:
+            type: object
+            properties: {}
+          readOnly: true
+        assignmentType:
+          $ref: '#/components/schemas/RoleAssignmentType'
+        created:
+          type: string
+          format: date-time
+          readOnly: true
+        description:
+          type: string
+        id:
+          type: string
+          readOnly: true
+        label:
+          type: string
+          readOnly: true
+        lastUpdated:
+          type: string
+          format: date-time
+          readOnly: true
+        status:
+          $ref: '#/components/schemas/RoleStatus'
+        type:
+          $ref: '#/components/schemas/RoleType'
+      x-okta-operations:
+      - alias: addAdminGroupTarget
+        arguments:
+        - dest: roleId
+          src: id
+        - dest: groupId
+          parentSrc: id
+        operationId: addGroupTargetToGroupAdministratorRoleForGroup
+      - alias: addAppInstanceTargetToAdminRole
+        arguments:
+        - dest: roleId
+          src: id
+        - dest: groupId
+          parentSrc: id
+        operationId: addApplicationInstanceTargetToAppAdminRoleGivenToGroup
+      - alias: addAppTargetToAdminRole
+        arguments:
+        - dest: roleId
+          src: id
+        - dest: groupId
+          parentSrc: id
+        operationId: addApplicationTargetToAdminRoleGivenToGroup
+      - alias: addAllAppsAsTargetToRole
+        arguments:
+        - dest: roleId
+          src: id
+        - dest: userId
+          parentSrc: id
+        operationId: addAllAppsAsTargetToRole
+      - alias: addAppTargetToAppAdminRoleForUser
+        arguments:
+        - dest: roleId
+          src: id
+        - dest: userId
+          parentSrc: id
+        operationId: addApplicationTargetToAppAdminRoleForUser
+      - alias: addAppTargetToAdminRoleForUser
+        arguments:
+        - dest: roleId
+          src: id
+        - dest: userId
+          parentSrc: id
+        operationId: addApplicationTargetToAdminRoleForUser
       x-okta-tags:
       - User
     ResponseLinks:
@@ -2667,25 +2570,102 @@ components:
           readOnly: true
       x-okta-tags:
       - User
-    IdentityProviderCredentialsTrust:
+    ProvisioningDeprovisionedCondition:
       type: object
       properties:
-        audience:
-          type: string
-        issuer:
-          type: string
-        kid:
-          type: string
-        revocation:
+        action:
           type: string
           enum:
-          - CRL
-          - DELTA_CRL
-          - OCSP
-        revocationCacheLifetime:
-          type: integer
+          - NONE
+          - REACTIVATE
       x-okta-tags:
       - IdentityProvider
+    ChangePasswordRequest:
+      type: object
+      properties:
+        newPassword:
+          $ref: '#/components/schemas/PasswordCredential'
+        oldPassword:
+          $ref: '#/components/schemas/PasswordCredential'
+      x-okta-tags:
+      - User
+    ForgotPasswordResponse:
+      type: object
+      properties:
+        resetPasswordUrl:
+          type: string
+          readOnly: true
+      x-okta-tags:
+      - User
+    OAuth2ScopeConsentGrantStatus:
+      type: string
+      enum:
+      - ACTIVE
+      - REVOKED
+      x-okta-tags:
+      - Application
+    RoleAssignmentType:
+      type: string
+      enum:
+      - GROUP
+      - USER
+      x-okta-tags:
+      - Role
+    ProvisioningSuspendedCondition:
+      type: object
+      properties:
+        action:
+          type: string
+          enum:
+          - NONE
+          - UNSUSPEND
+      x-okta-tags:
+      - IdentityProvider
+    ProtocolAlgorithms:
+      type: object
+      properties:
+        request:
+          $ref: '#/components/schemas/ProtocolAlgorithmType'
+        response:
+          $ref: '#/components/schemas/ProtocolAlgorithmType'
+      x-okta-tags:
+      - IdentityProvider
+    RecoveryQuestionCredential:
+      type: object
+      properties:
+        answer:
+          type: string
+        question:
+          type: string
+      x-okta-tags:
+      - User
+    Provisioning:
+      type: object
+      properties:
+        action:
+          type: string
+          enum:
+          - AUTO
+          - CALLOUT
+          - DISABLED
+        conditions:
+          $ref: '#/components/schemas/ProvisioningConditions'
+        groups:
+          $ref: '#/components/schemas/ProvisioningGroups'
+        profileMaster:
+          type: boolean
+      x-okta-tags:
+      - IdentityProvider
+    PasswordCredentialHashAlgorithm:
+      type: string
+      enum:
+      - BCRYPT
+      - SHA-512
+      - SHA-256
+      - SHA-1
+      - MD5
+      x-okta-tags:
+      - User
     Protocol:
       type: object
       properties:
@@ -2714,335 +2694,55 @@ components:
           - MTLS
       x-okta-tags:
       - IdentityProvider
-    IdentityProviderCredentialsSigning:
+    OAuth2RefreshToken:
       type: object
       properties:
-        kid:
-          type: string
-        privateKey:
-          type: string
-        teamId:
-          type: string
-      x-okta-tags:
-      - IdentityProvider
-    AssignRoleRequest:
-      type: object
-      properties:
-        type:
-          $ref: '#/components/schemas/RoleType'
-      x-okta-tags:
-      - Role
-    RecoveryQuestionCredential:
-      type: object
-      properties:
-        answer:
-          type: string
-        question:
-          type: string
-      x-okta-tags:
-      - User
-    IdentityProviderCredentials:
-      type: object
-      properties:
-        client:
-          $ref: '#/components/schemas/IdentityProviderCredentialsClient'
-        signing:
-          $ref: '#/components/schemas/IdentityProviderCredentialsSigning'
-        trust:
-          $ref: '#/components/schemas/IdentityProviderCredentialsTrust'
-      x-okta-tags:
-      - IdentityProvider
-    UserActivationToken:
-      type: object
-      properties:
-        activationToken:
-          type: string
+        _embedded:
+          type: object
+          additionalProperties:
+            type: object
+            properties: {}
           readOnly: true
-        activationUrl:
-          type: string
+        _links:
+          type: object
+          additionalProperties:
+            type: object
+            properties: {}
           readOnly: true
-      x-okta-tags:
-      - User
-    RoleAssignmentType:
-      type: string
-      enum:
-      - GROUP
-      - USER
-      x-okta-tags:
-      - Role
-    OAuth2Actor:
-      type: object
-      properties:
+        clientId:
+          type: string
+        created:
+          type: string
+          format: date-time
+          readOnly: true
+        createdBy:
+          $ref: '#/components/schemas/OAuth2Actor'
+        expiresAt:
+          type: string
+          format: date-time
+          readOnly: true
         id:
           type: string
           readOnly: true
-        type:
+        issuer:
+          type: string
+        lastUpdated:
+          type: string
+          format: date-time
+          readOnly: true
+        scopes:
+          type: array
+          items:
+            type: string
+        status:
+          type: string
+          enum:
+          - ACTIVE
+          - REVOKED
+        userId:
           type: string
       x-okta-tags:
       - Application
-    RoleType:
-      type: string
-      enum:
-      - SUPER_ADMIN
-      - ORG_ADMIN
-      - APP_ADMIN
-      - USER_ADMIN
-      - HELP_DESK_ADMIN
-      - READ_ONLY_ADMIN
-      - MOBILE_ADMIN
-      - API_ACCESS_MANAGEMENT_ADMIN
-      - REPORT_ADMIN
-      - GROUP_MEMBERSHIP_ADMIN
-      - CUSTOM
-      x-okta-tags:
-      - Role
-    ProvisioningGroups:
-      type: object
-      properties:
-        action:
-          type: string
-          enum:
-          - NONE
-          - APPEND
-          - SYNC
-          - ASSIGN
-        assignments:
-          type: array
-          items:
-            type: string
-        filter:
-          type: array
-          items:
-            type: string
-        sourceAttributeName:
-          type: string
-      x-okta-tags:
-      - IdentityProvider
-    PasswordCredential:
-      type: object
-      properties:
-        hash:
-          $ref: '#/components/schemas/PasswordCredentialHash'
-        hook:
-          $ref: '#/components/schemas/PasswordCredentialHook'
-        value:
-          type: string
-          format: password
-      x-okta-tags:
-      - User
-    GroupType:
-      type: string
-      enum:
-      - OKTA_GROUP
-      - APP_GROUP
-      - BUILT_IN
-      x-okta-tags:
-      - Group
-    AppLink:
-      type: object
-      properties:
-        appAssignmentId:
-          type: string
-          readOnly: true
-        appInstanceId:
-          type: string
-          readOnly: true
-        appName:
-          type: string
-          readOnly: true
-        credentialsSetup:
-          type: boolean
-          readOnly: true
-        hidden:
-          type: boolean
-          readOnly: true
-        id:
-          type: string
-          readOnly: true
-        label:
-          type: string
-          readOnly: true
-        linkUrl:
-          type: string
-          readOnly: true
-        logoUrl:
-          type: string
-          readOnly: true
-        sortOrder:
-          type: integer
-          readOnly: true
-      x-okta-tags:
-      - User
-    PolicySubject:
-      type: object
-      properties:
-        filter:
-          type: string
-        format:
-          type: array
-          items:
-            type: string
-        matchAttribute:
-          type: string
-        matchType:
-          $ref: '#/components/schemas/PolicySubjectMatchType'
-        userNameTemplate:
-          $ref: '#/components/schemas/PolicyUserNameTemplate'
-      x-okta-tags:
-      - Policy
-    ProtocolRelayStateFormat:
-      type: string
-      enum:
-      - OPAQUE
-      - FROM_URL
-      x-okta-tags:
-      - IdentityProvider
-    ProtocolEndpoints:
-      type: object
-      properties:
-        acs:
-          $ref: '#/components/schemas/ProtocolEndpoint'
-        authorization:
-          $ref: '#/components/schemas/ProtocolEndpoint'
-        jwks:
-          $ref: '#/components/schemas/ProtocolEndpoint'
-        metadata:
-          $ref: '#/components/schemas/ProtocolEndpoint'
-        slo:
-          $ref: '#/components/schemas/ProtocolEndpoint'
-        sso:
-          $ref: '#/components/schemas/ProtocolEndpoint'
-        token:
-          $ref: '#/components/schemas/ProtocolEndpoint'
-        userInfo:
-          $ref: '#/components/schemas/ProtocolEndpoint'
-      x-okta-tags:
-      - IdentityProvider
-    ForgotPasswordResponse:
-      type: object
-      properties:
-        resetPasswordUrl:
-          type: string
-          readOnly: true
-      x-okta-tags:
-      - User
-    ProtocolSettings:
-      type: object
-      properties:
-        nameFormat:
-          type: string
-      x-okta-tags:
-      - IdentityProvider
-    ProtocolAlgorithms:
-      type: object
-      properties:
-        request:
-          $ref: '#/components/schemas/ProtocolAlgorithmType'
-        response:
-          $ref: '#/components/schemas/ProtocolAlgorithmType'
-      x-okta-tags:
-      - IdentityProvider
-    IdentityProviderCredentialsClient:
-      type: object
-      properties:
-        client_id:
-          type: string
-        client_secret:
-          type: string
-      x-okta-tags:
-      - IdentityProvider
-    ChangePasswordRequest:
-      type: object
-      properties:
-        newPassword:
-          $ref: '#/components/schemas/PasswordCredential'
-        oldPassword:
-          $ref: '#/components/schemas/PasswordCredential'
-      x-okta-tags:
-      - User
-    PasswordCredentialHash:
-      type: object
-      properties:
-        algorithm:
-          $ref: '#/components/schemas/PasswordCredentialHashAlgorithm'
-        salt:
-          type: string
-        saltOrder:
-          type: string
-        value:
-          type: string
-        workFactor:
-          type: integer
-      x-okta-tags:
-      - User
-    UserProfile:
-      type: object
-      properties:
-        city:
-          type: string
-        costCenter:
-          type: string
-        countryCode:
-          type: string
-        department:
-          type: string
-        displayName:
-          type: string
-        division:
-          type: string
-        email:
-          type: string
-        employeeNumber:
-          type: string
-        firstName:
-          type: string
-        honorificPrefix:
-          type: string
-        honorificSuffix:
-          type: string
-        lastName:
-          type: string
-        locale:
-          type: string
-        login:
-          type: string
-        manager:
-          type: string
-        managerId:
-          type: string
-        middleName:
-          type: string
-        mobilePhone:
-          type: string
-        nickName:
-          type: string
-        organization:
-          type: string
-        postalAddress:
-          type: string
-        preferredLanguage:
-          type: string
-        primaryPhone:
-          type: string
-        profileUrl:
-          type: string
-        secondEmail:
-          type: string
-        state:
-          type: string
-        streetAddress:
-          type: string
-        timezone:
-          type: string
-        title:
-          type: string
-        userType:
-          type: string
-        zipCode:
-          type: string
-      x-okta-extensible: true
-      x-okta-tags:
-      - User
     Group:
       type: object
       properties:
@@ -3118,6 +2818,53 @@ components:
         operationId: assignRoleToGroup
       x-okta-tags:
       - Group
+    ProtocolAlgorithmType:
+      type: object
+      properties:
+        signature:
+          $ref: '#/components/schemas/ProtocolAlgorithmTypeSignature'
+      x-okta-tags:
+      - IdentityProvider
+    IdentityProviderCredentialsTrust:
+      type: object
+      properties:
+        audience:
+          type: string
+        issuer:
+          type: string
+        kid:
+          type: string
+        revocation:
+          type: string
+          enum:
+          - CRL
+          - DELTA_CRL
+          - OCSP
+        revocationCacheLifetime:
+          type: integer
+      x-okta-tags:
+      - IdentityProvider
+    ProtocolEndpoints:
+      type: object
+      properties:
+        acs:
+          $ref: '#/components/schemas/ProtocolEndpoint'
+        authorization:
+          $ref: '#/components/schemas/ProtocolEndpoint'
+        jwks:
+          $ref: '#/components/schemas/ProtocolEndpoint'
+        metadata:
+          $ref: '#/components/schemas/ProtocolEndpoint'
+        slo:
+          $ref: '#/components/schemas/ProtocolEndpoint'
+        sso:
+          $ref: '#/components/schemas/ProtocolEndpoint'
+        token:
+          $ref: '#/components/schemas/ProtocolEndpoint'
+        userInfo:
+          $ref: '#/components/schemas/ProtocolEndpoint'
+      x-okta-tags:
+      - IdentityProvider
     ProtocolAlgorithmTypeSignature:
       type: object
       properties:
@@ -3133,13 +2880,266 @@ components:
           - NONE
       x-okta-tags:
       - IdentityProvider
-    PolicyAccountLinkFilter:
+    UserCredentials:
       type: object
       properties:
-        groups:
-          $ref: '#/components/schemas/PolicyAccountLinkFilterGroups'
+        password:
+          $ref: '#/components/schemas/PasswordCredential'
+        provider:
+          $ref: '#/components/schemas/AuthenticationProvider'
+        recovery_question:
+          $ref: '#/components/schemas/RecoveryQuestionCredential'
+      x-okta-tags:
+      - User
+    AppLink:
+      type: object
+      properties:
+        appAssignmentId:
+          type: string
+          readOnly: true
+        appInstanceId:
+          type: string
+          readOnly: true
+        appName:
+          type: string
+          readOnly: true
+        credentialsSetup:
+          type: boolean
+          readOnly: true
+        hidden:
+          type: boolean
+          readOnly: true
+        id:
+          type: string
+          readOnly: true
+        label:
+          type: string
+          readOnly: true
+        linkUrl:
+          type: string
+          readOnly: true
+        logoUrl:
+          type: string
+          readOnly: true
+        sortOrder:
+          type: integer
+          readOnly: true
+      x-okta-tags:
+      - User
+    UserStatus:
+      type: string
+      enum:
+      - ACTIVE
+      - DEPROVISIONED
+      - LOCKED_OUT
+      - PASSWORD_EXPIRED
+      - PROVISIONED
+      - RECOVERY
+      - STAGED
+      - SUSPENDED
+      x-okta-tags:
+      - User
+    OAuth2Client:
+      type: object
+      properties:
+        _links:
+          type: object
+          additionalProperties:
+            type: object
+            properties: {}
+          readOnly: true
+        client_id:
+          type: string
+          readOnly: true
+        client_name:
+          type: string
+          readOnly: true
+        client_uri:
+          type: string
+          readOnly: true
+        logo_uri:
+          type: string
+          readOnly: true
+      x-okta-tags:
+      - Application
+    IdentityProviderCredentialsSigning:
+      type: object
+      properties:
+        kid:
+          type: string
+        privateKey:
+          type: string
+        teamId:
+          type: string
+      x-okta-tags:
+      - IdentityProvider
+    UserProfile:
+      type: object
+      properties:
+        city:
+          type: string
+        costCenter:
+          type: string
+        countryCode:
+          type: string
+        department:
+          type: string
+        displayName:
+          type: string
+        division:
+          type: string
+        email:
+          type: string
+        employeeNumber:
+          type: string
+        firstName:
+          type: string
+        honorificPrefix:
+          type: string
+        honorificSuffix:
+          type: string
+        lastName:
+          type: string
+        locale:
+          type: string
+        login:
+          type: string
+        manager:
+          type: string
+        managerId:
+          type: string
+        middleName:
+          type: string
+        mobilePhone:
+          type: string
+        nickName:
+          type: string
+        organization:
+          type: string
+        postalAddress:
+          type: string
+        preferredLanguage:
+          type: string
+        primaryPhone:
+          type: string
+        profileUrl:
+          type: string
+        secondEmail:
+          type: string
+        state:
+          type: string
+        streetAddress:
+          type: string
+        timezone:
+          type: string
+        title:
+          type: string
+        userType:
+          type: string
+        zipCode:
+          type: string
+      x-okta-extensible: true
+      x-okta-tags:
+      - User
+    PolicySubject:
+      type: object
+      properties:
+        filter:
+          type: string
+        format:
+          type: array
+          items:
+            type: string
+        matchAttribute:
+          type: string
+        matchType:
+          $ref: '#/components/schemas/PolicySubjectMatchType'
+        userNameTemplate:
+          $ref: '#/components/schemas/PolicyUserNameTemplate'
       x-okta-tags:
       - Policy
+    CreateUserRequest:
+      type: object
+      properties:
+        credentials:
+          $ref: '#/components/schemas/UserCredentials'
+        groupIds:
+          type: array
+          items:
+            type: string
+        profile:
+          $ref: '#/components/schemas/UserProfile'
+        type:
+          $ref: '#/components/schemas/UserType'
+      x-okta-tags:
+      - User
+    UserActivationToken:
+      type: object
+      properties:
+        activationToken:
+          type: string
+          readOnly: true
+        activationUrl:
+          type: string
+          readOnly: true
+      x-okta-tags:
+      - User
+    RoleStatus:
+      type: string
+      enum:
+      - ACTIVE
+      - INACTIVE
+      x-okta-tags:
+      - User
+    CatalogApplication:
+      type: object
+      properties:
+        _links:
+          type: object
+          additionalProperties:
+            type: object
+            properties: {}
+          readOnly: true
+        category:
+          type: string
+        description:
+          type: string
+        displayName:
+          type: string
+        features:
+          type: array
+          items:
+            type: string
+        id:
+          type: string
+          readOnly: true
+        lastUpdated:
+          type: string
+          format: date-time
+          readOnly: true
+        name:
+          type: string
+        signOnModes:
+          type: array
+          items:
+            type: string
+        status:
+          $ref: '#/components/schemas/CatalogApplicationStatus'
+        verificationStatus:
+          type: string
+        website:
+          type: string
+      x-okta-tags:
+      - Role
+    AuthenticationProvider:
+      type: object
+      properties:
+        name:
+          type: string
+        type:
+          $ref: '#/components/schemas/AuthenticationProviderType'
+      x-okta-tags:
+      - User
   securitySchemes:
     api_token:
       type: apiKey

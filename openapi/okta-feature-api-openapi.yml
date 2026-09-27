@@ -142,42 +142,6 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    FeatureType:
-      type: string
-      enum:
-      - self-service
-      x-okta-tags:
-      - Feature
-    FeatureStage:
-      type: object
-      properties:
-        state:
-          $ref: '#/components/schemas/FeatureStageState'
-        value:
-          $ref: '#/components/schemas/FeatureStageValue'
-      x-okta-tags:
-      - Feature
-    EnabledStatus:
-      type: string
-      enum:
-      - ENABLED
-      - DISABLED
-      x-okta-tags:
-      - Common
-    FeatureStageValue:
-      type: string
-      enum:
-      - EA
-      - BETA
-      x-okta-tags:
-      - Feature
-    FeatureStageState:
-      type: string
-      enum:
-      - OPEN
-      - CLOSED
-      x-okta-tags:
-      - Feature
     Feature:
       type: object
       properties:
@@ -220,6 +184,42 @@ components:
         - dest: featureId
           src: id
         operationId: listFeatureDependencies
+      x-okta-tags:
+      - Feature
+    FeatureType:
+      type: string
+      enum:
+      - self-service
+      x-okta-tags:
+      - Feature
+    EnabledStatus:
+      type: string
+      enum:
+      - ENABLED
+      - DISABLED
+      x-okta-tags:
+      - Common
+    FeatureStage:
+      type: object
+      properties:
+        state:
+          $ref: '#/components/schemas/FeatureStageState'
+        value:
+          $ref: '#/components/schemas/FeatureStageValue'
+      x-okta-tags:
+      - Feature
+    FeatureStageState:
+      type: string
+      enum:
+      - OPEN
+      - CLOSED
+      x-okta-tags:
+      - Feature
+    FeatureStageValue:
+      type: string
+      enum:
+      - EA
+      - BETA
       x-okta-tags:
       - Feature
   securitySchemes:

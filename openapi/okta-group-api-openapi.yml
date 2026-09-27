@@ -839,111 +839,19 @@ paths:
       - api_token: []
 components:
   schemas:
-    UserCredentials:
+    ApplicationCredentialsUsernameTemplate:
       type: object
       properties:
-        password:
-          $ref: '#/components/schemas/PasswordCredential'
-        provider:
-          $ref: '#/components/schemas/AuthenticationProvider'
-        recovery_question:
-          $ref: '#/components/schemas/RecoveryQuestionCredential'
-      x-okta-tags:
-      - User
-    GroupRuleAction:
-      type: object
-      properties:
-        assignUserToGroups:
-          $ref: '#/components/schemas/GroupRuleGroupAssignment'
-      x-okta-tags:
-      - GroupRule
-    CatalogApplication:
-      type: object
-      properties:
-        _links:
-          type: object
-          additionalProperties:
-            type: object
-            properties: {}
-          readOnly: true
-        category:
+        pushStatus:
           type: string
-        description:
+        suffix:
           type: string
-        displayName:
+        template:
           type: string
-        features:
-          type: array
-          items:
-            type: string
-        id:
-          type: string
-          readOnly: true
-        lastUpdated:
-          type: string
-          format: date-time
-          readOnly: true
-        name:
-          type: string
-        signOnModes:
-          type: array
-          items:
-            type: string
-        status:
-          $ref: '#/components/schemas/CatalogApplicationStatus'
-        verificationStatus:
-          type: string
-        website:
-          type: string
-      x-okta-tags:
-      - Role
-    ApplicationSettingsNotes:
-      type: object
-      properties:
-        admin:
-          type: string
-        enduser:
-          type: string
-      x-okta-tags:
-      - Application
-    GroupRuleUserCondition:
-      type: object
-      properties:
-        exclude:
-          type: array
-          items:
-            type: string
-        include:
-          type: array
-          items:
-            type: string
-      x-okta-tags:
-      - GroupRule
-    GroupRuleGroupAssignment:
-      type: object
-      properties:
-        groupIds:
-          type: array
-          items:
-            type: string
-      x-okta-tags:
-      - GroupRule
-    GroupRulePeopleCondition:
-      type: object
-      properties:
-        groups:
-          $ref: '#/components/schemas/GroupRuleGroupCondition'
-        users:
-          $ref: '#/components/schemas/GroupRuleUserCondition'
-      x-okta-tags:
-      - GroupRule
-    PasswordCredentialHook:
-      type: object
-      properties:
         type:
           type: string
       x-okta-tags:
-      - User
+      - Application
     GroupRuleConditions:
       type: object
       properties:
@@ -953,522 +861,38 @@ components:
           $ref: '#/components/schemas/GroupRulePeopleCondition'
       x-okta-tags:
       - GroupRule
-    ApplicationAccessibility:
+    ApplicationSettingsNotes:
       type: object
       properties:
-        errorRedirectUrl:
+        admin:
           type: string
-        loginRedirectUrl:
+        enduser:
           type: string
-        selfService:
-          type: boolean
       x-okta-tags:
       - Application
-    AuthenticationProviderType:
-      type: string
-      enum:
-      - ACTIVE_DIRECTORY
-      - FEDERATION
-      - LDAP
-      - OKTA
-      - SOCIAL
-      - IMPORT
-      x-okta-tags:
-      - User
-    PasswordCredentialHashAlgorithm:
-      type: string
-      enum:
-      - BCRYPT
-      - SHA-512
-      - SHA-256
-      - SHA-1
-      - MD5
-      x-okta-tags:
-      - User
-    AuthenticationProvider:
+    GroupRulePeopleCondition:
       type: object
       properties:
-        name:
-          type: string
+        groups:
+          $ref: '#/components/schemas/GroupRuleGroupCondition'
+        users:
+          $ref: '#/components/schemas/GroupRuleUserCondition'
+      x-okta-tags:
+      - GroupRule
+    ApplicationSettingsNotifications:
+      type: object
+      properties:
+        vpn:
+          $ref: '#/components/schemas/ApplicationSettingsNotificationsVpn'
+      x-okta-tags:
+      - Application
+    PasswordCredentialHook:
+      type: object
+      properties:
         type:
-          $ref: '#/components/schemas/AuthenticationProviderType'
+          type: string
       x-okta-tags:
       - User
-    RoleStatus:
-      type: string
-      enum:
-      - ACTIVE
-      - INACTIVE
-      x-okta-tags:
-      - User
-    ApplicationCredentialsSigning:
-      type: object
-      properties:
-        kid:
-          type: string
-        lastRotated:
-          type: string
-          format: date-time
-          readOnly: true
-        nextRotation:
-          type: string
-          format: date-time
-          readOnly: true
-        rotationMode:
-          type: string
-        use:
-          $ref: '#/components/schemas/ApplicationCredentialsSigningUse'
-      x-okta-tags:
-      - Application
-    ApplicationLicensing:
-      type: object
-      properties:
-        seatCount:
-          type: integer
-      x-okta-tags:
-      - Application
-    CatalogApplicationStatus:
-      type: string
-      enum:
-      - ACTIVE
-      - INACTIVE
-      x-okta-tags:
-      - Role
-    UserType:
-      type: object
-      properties:
-        _links:
-          type: object
-          additionalProperties:
-            type: object
-            properties: {}
-          readOnly: true
-        created:
-          type: string
-          format: date-time
-          readOnly: true
-        createdBy:
-          type: string
-          readOnly: true
-        default:
-          type: boolean
-          readOnly: true
-        description:
-          type: string
-        displayName:
-          type: string
-        id:
-          type: string
-        lastUpdated:
-          type: string
-          format: date-time
-          readOnly: true
-        lastUpdatedBy:
-          type: string
-          readOnly: true
-        name:
-          type: string
-      x-okta-crud:
-      - alias: create
-        arguments:
-        - dest: userType
-          self: true
-        operationId: createUserType
-      - alias: update
-        arguments:
-        - dest: typeId
-          src: id
-        - dest: userType
-          self: true
-        operationId: updateUserType
-      - alias: read
-        arguments:
-        - dest: typeId
-          src: id
-        operationId: getUserType
-      - alias: delete
-        arguments:
-        - dest: typeId
-          src: id
-        operationId: deleteUserType
-      x-okta-operations:
-      - alias: replaceUserType
-        arguments:
-        - dest: roleId
-          src: id
-        operationId: replaceUserType
-      x-okta-tags:
-      - UserType
-    Role:
-      type: object
-      properties:
-        _embedded:
-          type: object
-          additionalProperties:
-            type: object
-            properties: {}
-          readOnly: true
-        _links:
-          type: object
-          additionalProperties:
-            type: object
-            properties: {}
-          readOnly: true
-        assignmentType:
-          $ref: '#/components/schemas/RoleAssignmentType'
-        created:
-          type: string
-          format: date-time
-          readOnly: true
-        description:
-          type: string
-        id:
-          type: string
-          readOnly: true
-        label:
-          type: string
-          readOnly: true
-        lastUpdated:
-          type: string
-          format: date-time
-          readOnly: true
-        status:
-          $ref: '#/components/schemas/RoleStatus'
-        type:
-          $ref: '#/components/schemas/RoleType'
-      x-okta-operations:
-      - alias: addAdminGroupTarget
-        arguments:
-        - dest: roleId
-          src: id
-        - dest: groupId
-          parentSrc: id
-        operationId: addGroupTargetToGroupAdministratorRoleForGroup
-      - alias: addAppInstanceTargetToAdminRole
-        arguments:
-        - dest: roleId
-          src: id
-        - dest: groupId
-          parentSrc: id
-        operationId: addApplicationInstanceTargetToAppAdminRoleGivenToGroup
-      - alias: addAppTargetToAdminRole
-        arguments:
-        - dest: roleId
-          src: id
-        - dest: groupId
-          parentSrc: id
-        operationId: addApplicationTargetToAdminRoleGivenToGroup
-      - alias: addAllAppsAsTargetToRole
-        arguments:
-        - dest: roleId
-          src: id
-        - dest: userId
-          parentSrc: id
-        operationId: addAllAppsAsTargetToRole
-      - alias: addAppTargetToAppAdminRoleForUser
-        arguments:
-        - dest: roleId
-          src: id
-        - dest: userId
-          parentSrc: id
-        operationId: addApplicationTargetToAppAdminRoleForUser
-      - alias: addAppTargetToAdminRoleForUser
-        arguments:
-        - dest: roleId
-          src: id
-        - dest: userId
-          parentSrc: id
-        operationId: addApplicationTargetToAdminRoleForUser
-      x-okta-tags:
-      - User
-    ApplicationSettingsNotificationsVpn:
-      type: object
-      properties:
-        helpUrl:
-          type: string
-        message:
-          type: string
-        network:
-          $ref: '#/components/schemas/ApplicationSettingsNotificationsVpnNetwork'
-      x-okta-tags:
-      - Application
-    GroupProfile:
-      type: object
-      properties:
-        description:
-          type: string
-        name:
-          type: string
-      x-okta-extensible: true
-      x-okta-tags:
-      - Group
-    UserStatus:
-      type: string
-      enum:
-      - ACTIVE
-      - DEPROVISIONED
-      - LOCKED_OUT
-      - PASSWORD_EXPIRED
-      - PROVISIONED
-      - RECOVERY
-      - STAGED
-      - SUSPENDED
-      x-okta-tags:
-      - User
-    Application:
-      type: object
-      properties:
-        _embedded:
-          type: object
-          additionalProperties:
-            type: object
-            properties: {}
-          readOnly: true
-        _links:
-          type: object
-          additionalProperties:
-            type: object
-            properties: {}
-          readOnly: true
-        accessibility:
-          $ref: '#/components/schemas/ApplicationAccessibility'
-        created:
-          type: string
-          format: date-time
-          readOnly: true
-        credentials:
-          $ref: '#/components/schemas/ApplicationCredentials'
-        features:
-          type: array
-          items:
-            type: string
-        id:
-          type: string
-          readOnly: true
-        label:
-          type: string
-        lastUpdated:
-          type: string
-          format: date-time
-          readOnly: true
-        licensing:
-          $ref: '#/components/schemas/ApplicationLicensing'
-        name:
-          type: string
-          readOnly: true
-        profile:
-          type: object
-          additionalProperties:
-            type: object
-            properties: {}
-        settings:
-          $ref: '#/components/schemas/ApplicationSettings'
-        signOnMode:
-          $ref: '#/components/schemas/ApplicationSignOnMode'
-        status:
-          type: string
-          readOnly: true
-          enum:
-          - ACTIVE
-          - INACTIVE
-          - DELETED
-        visibility:
-          $ref: '#/components/schemas/ApplicationVisibility'
-      x-okta-crud:
-      - alias: read
-        arguments:
-        - dest: appId
-          src: id
-        operationId: getApplication
-      - alias: update
-        arguments:
-        - dest: appId
-          src: id
-        - dest: application
-          self: true
-        operationId: updateApplication
-      - alias: delete
-        arguments:
-        - dest: appId
-          src: id
-        operationId: deleteApplication
-      x-okta-operations:
-      - alias: activate
-        arguments:
-        - dest: appId
-          src: id
-        operationId: activateApplication
-      - alias: deactivate
-        arguments:
-        - dest: appId
-          src: id
-        operationId: deactivateApplication
-      - alias: listApplicationUsers
-        arguments:
-        - dest: appId
-          src: id
-        operationId: listApplicationUsers
-      - alias: assignUserToApplication
-        arguments:
-        - dest: appId
-          src: id
-        operationId: assignUserToApplication
-      - alias: getApplicationUser
-        arguments:
-        - dest: appId
-          src: id
-        operationId: getApplicationUser
-      - alias: createApplicationGroupAssignment
-        arguments:
-        - dest: appId
-          src: id
-        operationId: createApplicationGroupAssignment
-      - alias: getApplicationGroupAssignment
-        arguments:
-        - dest: appId
-          src: id
-        operationId: getApplicationGroupAssignment
-      - alias: cloneApplicationKey
-        arguments:
-        - dest: appId
-          src: id
-        operationId: cloneApplicationKey
-      - alias: getApplicationKey
-        arguments:
-        - dest: appId
-          src: id
-        operationId: getApplicationKey
-      - alias: listGroupAssignments
-        arguments:
-        - dest: appId
-          src: id
-        operationId: listApplicationGroupAssignments
-      - alias: listKeys
-        arguments:
-        - dest: appId
-          src: id
-        operationId: listApplicationKeys
-      - alias: generateKey
-        arguments:
-        - dest: appId
-          src: id
-        operationId: generateApplicationKey
-      - alias: generateCsr
-        arguments:
-        - dest: appId
-          src: id
-        operationId: generateCsrForApplication
-      - alias: getCsr
-        arguments:
-        - dest: appId
-          src: id
-        operationId: getCsrForApplication
-      - alias: revokeCsr
-        arguments:
-        - dest: appId
-          src: id
-        operationId: revokeCsrFromApplication
-      - alias: listCsrs
-        arguments:
-        - dest: appId
-          src: id
-        operationId: listCsrsForApplication
-      - alias: publishCerCert
-        arguments:
-        - dest: appId
-          src: id
-        operationId: publishCerCert
-      - alias: publishBinaryCerCert
-        arguments:
-        - dest: appId
-          src: id
-        operationId: publishBinaryCerCert
-      - alias: publishDerCert
-        arguments:
-        - dest: appId
-          src: id
-        operationId: publishDerCert
-      - alias: publishBinaryDerCert
-        arguments:
-        - dest: appId
-          src: id
-        operationId: publishBinaryDerCert
-      - alias: publishBinaryPemCert
-        arguments:
-        - dest: appId
-          src: id
-        operationId: publishBinaryPemCert
-      - alias: listOAuth2Tokens
-        arguments:
-        - dest: appId
-          src: id
-        operationId: listOAuth2TokensForApplication
-      - alias: revokeOAuth2TokenForApplication
-        arguments:
-        - dest: appId
-          src: id
-        operationId: revokeOAuth2TokenForApplication
-      - alias: getOAuth2Token
-        arguments:
-        - dest: appId
-          src: id
-        operationId: getOAuth2TokenForApplication
-      - alias: revokeOAuth2Tokens
-        arguments:
-        - dest: appId
-          src: id
-        operationId: revokeOAuth2TokensForApplication
-      - alias: listScopeConsentGrants
-        arguments:
-        - dest: appId
-          src: id
-        operationId: listScopeConsentGrants
-      - alias: grantConsentToScope
-        arguments:
-        - dest: appId
-          src: id
-        operationId: grantConsentToScope
-      - alias: revokeScopeConsentGrant
-        arguments:
-        - dest: appId
-          src: id
-        operationId: revokeScopeConsentGrant
-      - alias: getScopeConsentGrant
-        arguments:
-        - dest: appId
-          src: id
-        operationId: getScopeConsentGrant
-      - alias: uploadApplicationLogo
-        operationId: uploadApplicationLogo
-      - alias: getFeatureForApplication
-        arguments:
-        - dest: appId
-          src: id
-        operationId: getFeatureForApplication
-      - alias: updateFeatureForApplication
-        arguments:
-        - dest: appId
-          src: id
-        operationId: updateFeatureForApplication
-      - alias: updateApplicationPolicy
-        arguments:
-        - dest: appId
-          src: id
-        operationId: updateApplicationPolicy
-      x-okta-tags:
-      - Application
-      x-openapi-v3-discriminator:
-        mapping:
-          AUTO_LOGIN: '#/definitions/AutoLoginApplication'
-          BASIC_AUTH: '#/definitions/BasicAuthApplication'
-          BOOKMARK: '#/definitions/BookmarkApplication'
-          BROWSER_PLUGIN: '#/definitions/BrowserPluginApplication'
-          OPENID_CONNECT: '#/definitions/OpenIdConnectApplication'
-          SAML_1_1: '#/definitions/SamlApplication'
-          SAML_2_0: '#/definitions/SamlApplication'
-          SECURE_PASSWORD_STORE: '#/definitions/SecurePasswordStoreApplication'
-          WS_FEDERATION: '#/definitions/WsFederationApplication'
-        propertyName: signOnMode
     User:
       type: object
       properties:
@@ -1773,7 +1197,214 @@ components:
         operationId: removeLinkedObjectForUser
       x-okta-tags:
       - User
-    GroupRuleGroupCondition:
+    PasswordCredentialHash:
+      type: object
+      properties:
+        algorithm:
+          $ref: '#/components/schemas/PasswordCredentialHashAlgorithm'
+        salt:
+          type: string
+        saltOrder:
+          type: string
+        value:
+          type: string
+        workFactor:
+          type: integer
+      x-okta-tags:
+      - User
+    ApplicationSignOnMode:
+      type: string
+      enum:
+      - BOOKMARK
+      - BASIC_AUTH
+      - BROWSER_PLUGIN
+      - SECURE_PASSWORD_STORE
+      - AUTO_LOGIN
+      - WS_FEDERATION
+      - SAML_2_0
+      - OPENID_CONNECT
+      - SAML_1_1
+      x-okta-tags:
+      - Application
+    ApplicationSettings:
+      type: object
+      properties:
+        app:
+          $ref: '#/components/schemas/ApplicationSettingsApplication'
+        implicitAssignment:
+          type: boolean
+        inlineHookId:
+          type: string
+        notes:
+          $ref: '#/components/schemas/ApplicationSettingsNotes'
+        notifications:
+          $ref: '#/components/schemas/ApplicationSettingsNotifications'
+      x-okta-tags:
+      - Application
+    ApplicationVisibility:
+      type: object
+      properties:
+        appLinks:
+          type: object
+          additionalProperties:
+            type: boolean
+        autoLaunch:
+          type: boolean
+        autoSubmitToolbar:
+          type: boolean
+        hide:
+          $ref: '#/components/schemas/ApplicationVisibilityHide'
+      x-okta-tags:
+      - Application
+    ApplicationCredentials:
+      type: object
+      properties:
+        signing:
+          $ref: '#/components/schemas/ApplicationCredentialsSigning'
+        userNameTemplate:
+          $ref: '#/components/schemas/ApplicationCredentialsUsernameTemplate'
+      x-okta-tags:
+      - Application
+    GroupType:
+      type: string
+      enum:
+      - OKTA_GROUP
+      - APP_GROUP
+      - BUILT_IN
+      x-okta-tags:
+      - Group
+    ApplicationAccessibility:
+      type: object
+      properties:
+        errorRedirectUrl:
+          type: string
+        loginRedirectUrl:
+          type: string
+        selfService:
+          type: boolean
+      x-okta-tags:
+      - Application
+    UserType:
+      type: object
+      properties:
+        _links:
+          type: object
+          additionalProperties:
+            type: object
+            properties: {}
+          readOnly: true
+        created:
+          type: string
+          format: date-time
+          readOnly: true
+        createdBy:
+          type: string
+          readOnly: true
+        default:
+          type: boolean
+          readOnly: true
+        description:
+          type: string
+        displayName:
+          type: string
+        id:
+          type: string
+        lastUpdated:
+          type: string
+          format: date-time
+          readOnly: true
+        lastUpdatedBy:
+          type: string
+          readOnly: true
+        name:
+          type: string
+      x-okta-crud:
+      - alias: create
+        arguments:
+        - dest: userType
+          self: true
+        operationId: createUserType
+      - alias: update
+        arguments:
+        - dest: typeId
+          src: id
+        - dest: userType
+          self: true
+        operationId: updateUserType
+      - alias: read
+        arguments:
+        - dest: typeId
+          src: id
+        operationId: getUserType
+      - alias: delete
+        arguments:
+        - dest: typeId
+          src: id
+        operationId: deleteUserType
+      x-okta-operations:
+      - alias: replaceUserType
+        arguments:
+        - dest: roleId
+          src: id
+        operationId: replaceUserType
+      x-okta-tags:
+      - UserType
+    GroupRuleGroupAssignment:
+      type: object
+      properties:
+        groupIds:
+          type: array
+          items:
+            type: string
+      x-okta-tags:
+      - GroupRule
+    AssignRoleRequest:
+      type: object
+      properties:
+        type:
+          $ref: '#/components/schemas/RoleType'
+      x-okta-tags:
+      - Role
+    GroupRuleAction:
+      type: object
+      properties:
+        assignUserToGroups:
+          $ref: '#/components/schemas/GroupRuleGroupAssignment'
+      x-okta-tags:
+      - GroupRule
+    AuthenticationProviderType:
+      type: string
+      enum:
+      - ACTIVE_DIRECTORY
+      - FEDERATION
+      - LDAP
+      - OKTA
+      - SOCIAL
+      - IMPORT
+      x-okta-tags:
+      - User
+    PasswordCredential:
+      type: object
+      properties:
+        hash:
+          $ref: '#/components/schemas/PasswordCredentialHash'
+        hook:
+          $ref: '#/components/schemas/PasswordCredentialHook'
+        value:
+          type: string
+          format: password
+      x-okta-tags:
+      - User
+    ApplicationVisibilityHide:
+      type: object
+      properties:
+        iOS:
+          type: boolean
+        web:
+          type: boolean
+      x-okta-tags:
+      - Application
+    GroupRuleUserCondition:
       type: object
       properties:
         exclude:
@@ -1801,109 +1432,21 @@ components:
             type: string
       x-okta-tags:
       - Application
-    ApplicationVisibility:
+    GroupProfile:
       type: object
       properties:
-        appLinks:
-          type: object
-          additionalProperties:
-            type: boolean
-        autoLaunch:
-          type: boolean
-        autoSubmitToolbar:
-          type: boolean
-        hide:
-          $ref: '#/components/schemas/ApplicationVisibilityHide'
-      x-okta-tags:
-      - Application
-    ApplicationCredentials:
-      type: object
-      properties:
-        signing:
-          $ref: '#/components/schemas/ApplicationCredentialsSigning'
-        userNameTemplate:
-          $ref: '#/components/schemas/ApplicationCredentialsUsernameTemplate'
-      x-okta-tags:
-      - Application
-    AssignRoleRequest:
-      type: object
-      properties:
-        type:
-          $ref: '#/components/schemas/RoleType'
-      x-okta-tags:
-      - Role
-    RecoveryQuestionCredential:
-      type: object
-      properties:
-        answer:
+        description:
           type: string
-        question:
-          type: string
-      x-okta-tags:
-      - User
-    GroupRule:
-      type: object
-      properties:
-        actions:
-          $ref: '#/components/schemas/GroupRuleAction'
-        conditions:
-          $ref: '#/components/schemas/GroupRuleConditions'
-        created:
-          type: string
-          format: date-time
-          readOnly: true
-        id:
-          type: string
-          readOnly: true
-        lastUpdated:
-          type: string
-          format: date-time
-          readOnly: true
         name:
           type: string
-        status:
-          $ref: '#/components/schemas/GroupRuleStatus'
-        type:
-          type: string
-      x-okta-crud:
-      - alias: update
-        arguments:
-        - dest: ruleId
-          src: id
-        - dest: groupRule
-          self: true
-        operationId: updateGroupRule
-      - alias: delete
-        arguments:
-        - dest: ruleId
-          src: id
-        operationId: deleteGroupRule
-      x-okta-operations:
-      - alias: activate
-        arguments:
-        - dest: ruleId
-          src: id
-        operationId: activateGroupRule
-      - alias: deactivate
-        arguments:
-        - dest: ruleId
-          src: id
-        operationId: deactivateGroupRule
+      x-okta-extensible: true
       x-okta-tags:
-      - GroupRule
-    GroupRuleStatus:
+      - Group
+    CatalogApplicationStatus:
       type: string
       enum:
       - ACTIVE
       - INACTIVE
-      - INVALID
-      x-okta-tags:
-      - GroupRule
-    RoleAssignmentType:
-      type: string
-      enum:
-      - GROUP
-      - USER
       x-okta-tags:
       - Role
     RoleType:
@@ -1931,192 +1474,122 @@ components:
           type: string
       x-okta-tags:
       - GroupRule
-    PasswordCredential:
-      type: object
-      properties:
-        hash:
-          $ref: '#/components/schemas/PasswordCredentialHash'
-        hook:
-          $ref: '#/components/schemas/PasswordCredentialHook'
-        value:
-          type: string
-          format: password
+    GroupRuleStatus:
+      type: string
+      enum:
+      - ACTIVE
+      - INACTIVE
+      - INVALID
       x-okta-tags:
-      - User
-    ApplicationCredentialsUsernameTemplate:
+      - GroupRule
+    Role:
       type: object
       properties:
-        pushStatus:
+        _embedded:
+          type: object
+          additionalProperties:
+            type: object
+            properties: {}
+          readOnly: true
+        _links:
+          type: object
+          additionalProperties:
+            type: object
+            properties: {}
+          readOnly: true
+        assignmentType:
+          $ref: '#/components/schemas/RoleAssignmentType'
+        created:
           type: string
-        suffix:
+          format: date-time
+          readOnly: true
+        description:
           type: string
-        template:
+        id:
           type: string
+          readOnly: true
+        label:
+          type: string
+          readOnly: true
+        lastUpdated:
+          type: string
+          format: date-time
+          readOnly: true
+        status:
+          $ref: '#/components/schemas/RoleStatus'
         type:
-          type: string
-      x-okta-tags:
-      - Application
-    GroupType:
-      type: string
-      enum:
-      - OKTA_GROUP
-      - APP_GROUP
-      - BUILT_IN
-      x-okta-tags:
-      - Group
-    ApplicationCredentialsSigningUse:
-      type: string
-      enum:
-      - sig
-      x-okta-tags:
-      - AuthorizationServer
-    ApplicationSettings:
-      type: object
-      properties:
-        app:
-          $ref: '#/components/schemas/ApplicationSettingsApplication'
-        implicitAssignment:
-          type: boolean
-        inlineHookId:
-          type: string
-        notes:
-          $ref: '#/components/schemas/ApplicationSettingsNotes'
-        notifications:
-          $ref: '#/components/schemas/ApplicationSettingsNotifications'
-      x-okta-tags:
-      - Application
-    ApplicationSignOnMode:
-      type: string
-      enum:
-      - BOOKMARK
-      - BASIC_AUTH
-      - BROWSER_PLUGIN
-      - SECURE_PASSWORD_STORE
-      - AUTO_LOGIN
-      - WS_FEDERATION
-      - SAML_2_0
-      - OPENID_CONNECT
-      - SAML_1_1
-      x-okta-tags:
-      - Application
-    ApplicationSettingsApplication:
-      type: object
-      properties:
-        acsUrl:
-          type: string
-        buttonField:
-          type: string
-        loginUrlRegex:
-          type: string
-        orgName:
-          type: string
-        passwordField:
-          type: string
-        url:
-          type: string
-        usernameField:
-          type: string
-      x-okta-tags:
-      - Application
-    ApplicationSettingsNotifications:
-      type: object
-      properties:
-        vpn:
-          $ref: '#/components/schemas/ApplicationSettingsNotificationsVpn'
-      x-okta-tags:
-      - Application
-    PasswordCredentialHash:
-      type: object
-      properties:
-        algorithm:
-          $ref: '#/components/schemas/PasswordCredentialHashAlgorithm'
-        salt:
-          type: string
-        saltOrder:
-          type: string
-        value:
-          type: string
-        workFactor:
-          type: integer
+          $ref: '#/components/schemas/RoleType'
+      x-okta-operations:
+      - alias: addAdminGroupTarget
+        arguments:
+        - dest: roleId
+          src: id
+        - dest: groupId
+          parentSrc: id
+        operationId: addGroupTargetToGroupAdministratorRoleForGroup
+      - alias: addAppInstanceTargetToAdminRole
+        arguments:
+        - dest: roleId
+          src: id
+        - dest: groupId
+          parentSrc: id
+        operationId: addApplicationInstanceTargetToAppAdminRoleGivenToGroup
+      - alias: addAppTargetToAdminRole
+        arguments:
+        - dest: roleId
+          src: id
+        - dest: groupId
+          parentSrc: id
+        operationId: addApplicationTargetToAdminRoleGivenToGroup
+      - alias: addAllAppsAsTargetToRole
+        arguments:
+        - dest: roleId
+          src: id
+        - dest: userId
+          parentSrc: id
+        operationId: addAllAppsAsTargetToRole
+      - alias: addAppTargetToAppAdminRoleForUser
+        arguments:
+        - dest: roleId
+          src: id
+        - dest: userId
+          parentSrc: id
+        operationId: addApplicationTargetToAppAdminRoleForUser
+      - alias: addAppTargetToAdminRoleForUser
+        arguments:
+        - dest: roleId
+          src: id
+        - dest: userId
+          parentSrc: id
+        operationId: addApplicationTargetToAdminRoleForUser
       x-okta-tags:
       - User
-    UserProfile:
+    RoleAssignmentType:
+      type: string
+      enum:
+      - GROUP
+      - USER
+      x-okta-tags:
+      - Role
+    RecoveryQuestionCredential:
       type: object
       properties:
-        city:
+        answer:
           type: string
-        costCenter:
+        question:
           type: string
-        countryCode:
-          type: string
-        department:
-          type: string
-        displayName:
-          type: string
-        division:
-          type: string
-        email:
-          type: string
-        employeeNumber:
-          type: string
-        firstName:
-          type: string
-        honorificPrefix:
-          type: string
-        honorificSuffix:
-          type: string
-        lastName:
-          type: string
-        locale:
-          type: string
-        login:
-          type: string
-        manager:
-          type: string
-        managerId:
-          type: string
-        middleName:
-          type: string
-        mobilePhone:
-          type: string
-        nickName:
-          type: string
-        organization:
-          type: string
-        postalAddress:
-          type: string
-        preferredLanguage:
-          type: string
-        primaryPhone:
-          type: string
-        profileUrl:
-          type: string
-        secondEmail:
-          type: string
-        state:
-          type: string
-        streetAddress:
-          type: string
-        timezone:
-          type: string
-        title:
-          type: string
-        userType:
-          type: string
-        zipCode:
-          type: string
-      x-okta-extensible: true
       x-okta-tags:
       - User
-    ApplicationVisibilityHide:
-      type: object
-      properties:
-        iOS:
-          type: boolean
-        web:
-          type: boolean
+    PasswordCredentialHashAlgorithm:
+      type: string
+      enum:
+      - BCRYPT
+      - SHA-512
+      - SHA-256
+      - SHA-1
+      - MD5
       x-okta-tags:
-      - Application
+      - User
     Group:
       type: object
       properties:
@@ -2192,6 +1665,533 @@ components:
         operationId: assignRoleToGroup
       x-okta-tags:
       - Group
+    ApplicationCredentialsSigning:
+      type: object
+      properties:
+        kid:
+          type: string
+        lastRotated:
+          type: string
+          format: date-time
+          readOnly: true
+        nextRotation:
+          type: string
+          format: date-time
+          readOnly: true
+        rotationMode:
+          type: string
+        use:
+          $ref: '#/components/schemas/ApplicationCredentialsSigningUse'
+      x-okta-tags:
+      - Application
+    Application:
+      type: object
+      properties:
+        _embedded:
+          type: object
+          additionalProperties:
+            type: object
+            properties: {}
+          readOnly: true
+        _links:
+          type: object
+          additionalProperties:
+            type: object
+            properties: {}
+          readOnly: true
+        accessibility:
+          $ref: '#/components/schemas/ApplicationAccessibility'
+        created:
+          type: string
+          format: date-time
+          readOnly: true
+        credentials:
+          $ref: '#/components/schemas/ApplicationCredentials'
+        features:
+          type: array
+          items:
+            type: string
+        id:
+          type: string
+          readOnly: true
+        label:
+          type: string
+        lastUpdated:
+          type: string
+          format: date-time
+          readOnly: true
+        licensing:
+          $ref: '#/components/schemas/ApplicationLicensing'
+        name:
+          type: string
+          readOnly: true
+        profile:
+          type: object
+          additionalProperties:
+            type: object
+            properties: {}
+        settings:
+          $ref: '#/components/schemas/ApplicationSettings'
+        signOnMode:
+          $ref: '#/components/schemas/ApplicationSignOnMode'
+        status:
+          type: string
+          readOnly: true
+          enum:
+          - ACTIVE
+          - INACTIVE
+          - DELETED
+        visibility:
+          $ref: '#/components/schemas/ApplicationVisibility'
+      x-okta-crud:
+      - alias: read
+        arguments:
+        - dest: appId
+          src: id
+        operationId: getApplication
+      - alias: update
+        arguments:
+        - dest: appId
+          src: id
+        - dest: application
+          self: true
+        operationId: updateApplication
+      - alias: delete
+        arguments:
+        - dest: appId
+          src: id
+        operationId: deleteApplication
+      x-okta-operations:
+      - alias: activate
+        arguments:
+        - dest: appId
+          src: id
+        operationId: activateApplication
+      - alias: deactivate
+        arguments:
+        - dest: appId
+          src: id
+        operationId: deactivateApplication
+      - alias: listApplicationUsers
+        arguments:
+        - dest: appId
+          src: id
+        operationId: listApplicationUsers
+      - alias: assignUserToApplication
+        arguments:
+        - dest: appId
+          src: id
+        operationId: assignUserToApplication
+      - alias: getApplicationUser
+        arguments:
+        - dest: appId
+          src: id
+        operationId: getApplicationUser
+      - alias: createApplicationGroupAssignment
+        arguments:
+        - dest: appId
+          src: id
+        operationId: createApplicationGroupAssignment
+      - alias: getApplicationGroupAssignment
+        arguments:
+        - dest: appId
+          src: id
+        operationId: getApplicationGroupAssignment
+      - alias: cloneApplicationKey
+        arguments:
+        - dest: appId
+          src: id
+        operationId: cloneApplicationKey
+      - alias: getApplicationKey
+        arguments:
+        - dest: appId
+          src: id
+        operationId: getApplicationKey
+      - alias: listGroupAssignments
+        arguments:
+        - dest: appId
+          src: id
+        operationId: listApplicationGroupAssignments
+      - alias: listKeys
+        arguments:
+        - dest: appId
+          src: id
+        operationId: listApplicationKeys
+      - alias: generateKey
+        arguments:
+        - dest: appId
+          src: id
+        operationId: generateApplicationKey
+      - alias: generateCsr
+        arguments:
+        - dest: appId
+          src: id
+        operationId: generateCsrForApplication
+      - alias: getCsr
+        arguments:
+        - dest: appId
+          src: id
+        operationId: getCsrForApplication
+      - alias: revokeCsr
+        arguments:
+        - dest: appId
+          src: id
+        operationId: revokeCsrFromApplication
+      - alias: listCsrs
+        arguments:
+        - dest: appId
+          src: id
+        operationId: listCsrsForApplication
+      - alias: publishCerCert
+        arguments:
+        - dest: appId
+          src: id
+        operationId: publishCerCert
+      - alias: publishBinaryCerCert
+        arguments:
+        - dest: appId
+          src: id
+        operationId: publishBinaryCerCert
+      - alias: publishDerCert
+        arguments:
+        - dest: appId
+          src: id
+        operationId: publishDerCert
+      - alias: publishBinaryDerCert
+        arguments:
+        - dest: appId
+          src: id
+        operationId: publishBinaryDerCert
+      - alias: publishBinaryPemCert
+        arguments:
+        - dest: appId
+          src: id
+        operationId: publishBinaryPemCert
+      - alias: listOAuth2Tokens
+        arguments:
+        - dest: appId
+          src: id
+        operationId: listOAuth2TokensForApplication
+      - alias: revokeOAuth2TokenForApplication
+        arguments:
+        - dest: appId
+          src: id
+        operationId: revokeOAuth2TokenForApplication
+      - alias: getOAuth2Token
+        arguments:
+        - dest: appId
+          src: id
+        operationId: getOAuth2TokenForApplication
+      - alias: revokeOAuth2Tokens
+        arguments:
+        - dest: appId
+          src: id
+        operationId: revokeOAuth2TokensForApplication
+      - alias: listScopeConsentGrants
+        arguments:
+        - dest: appId
+          src: id
+        operationId: listScopeConsentGrants
+      - alias: grantConsentToScope
+        arguments:
+        - dest: appId
+          src: id
+        operationId: grantConsentToScope
+      - alias: revokeScopeConsentGrant
+        arguments:
+        - dest: appId
+          src: id
+        operationId: revokeScopeConsentGrant
+      - alias: getScopeConsentGrant
+        arguments:
+        - dest: appId
+          src: id
+        operationId: getScopeConsentGrant
+      - alias: uploadApplicationLogo
+        operationId: uploadApplicationLogo
+      - alias: getFeatureForApplication
+        arguments:
+        - dest: appId
+          src: id
+        operationId: getFeatureForApplication
+      - alias: updateFeatureForApplication
+        arguments:
+        - dest: appId
+          src: id
+        operationId: updateFeatureForApplication
+      - alias: updateApplicationPolicy
+        arguments:
+        - dest: appId
+          src: id
+        operationId: updateApplicationPolicy
+      x-okta-tags:
+      - Application
+      x-openapi-v3-discriminator:
+        mapping:
+          AUTO_LOGIN: '#/definitions/AutoLoginApplication'
+          BASIC_AUTH: '#/definitions/BasicAuthApplication'
+          BOOKMARK: '#/definitions/BookmarkApplication'
+          BROWSER_PLUGIN: '#/definitions/BrowserPluginApplication'
+          OPENID_CONNECT: '#/definitions/OpenIdConnectApplication'
+          SAML_1_1: '#/definitions/SamlApplication'
+          SAML_2_0: '#/definitions/SamlApplication'
+          SECURE_PASSWORD_STORE: '#/definitions/SecurePasswordStoreApplication'
+          WS_FEDERATION: '#/definitions/WsFederationApplication'
+        propertyName: signOnMode
+    GroupRule:
+      type: object
+      properties:
+        actions:
+          $ref: '#/components/schemas/GroupRuleAction'
+        conditions:
+          $ref: '#/components/schemas/GroupRuleConditions'
+        created:
+          type: string
+          format: date-time
+          readOnly: true
+        id:
+          type: string
+          readOnly: true
+        lastUpdated:
+          type: string
+          format: date-time
+          readOnly: true
+        name:
+          type: string
+        status:
+          $ref: '#/components/schemas/GroupRuleStatus'
+        type:
+          type: string
+      x-okta-crud:
+      - alias: update
+        arguments:
+        - dest: ruleId
+          src: id
+        - dest: groupRule
+          self: true
+        operationId: updateGroupRule
+      - alias: delete
+        arguments:
+        - dest: ruleId
+          src: id
+        operationId: deleteGroupRule
+      x-okta-operations:
+      - alias: activate
+        arguments:
+        - dest: ruleId
+          src: id
+        operationId: activateGroupRule
+      - alias: deactivate
+        arguments:
+        - dest: ruleId
+          src: id
+        operationId: deactivateGroupRule
+      x-okta-tags:
+      - GroupRule
+    ApplicationCredentialsSigningUse:
+      type: string
+      enum:
+      - sig
+      x-okta-tags:
+      - AuthorizationServer
+    UserCredentials:
+      type: object
+      properties:
+        password:
+          $ref: '#/components/schemas/PasswordCredential'
+        provider:
+          $ref: '#/components/schemas/AuthenticationProvider'
+        recovery_question:
+          $ref: '#/components/schemas/RecoveryQuestionCredential'
+      x-okta-tags:
+      - User
+    ApplicationSettingsApplication:
+      type: object
+      properties:
+        acsUrl:
+          type: string
+        buttonField:
+          type: string
+        loginUrlRegex:
+          type: string
+        orgName:
+          type: string
+        passwordField:
+          type: string
+        url:
+          type: string
+        usernameField:
+          type: string
+      x-okta-tags:
+      - Application
+    UserStatus:
+      type: string
+      enum:
+      - ACTIVE
+      - DEPROVISIONED
+      - LOCKED_OUT
+      - PASSWORD_EXPIRED
+      - PROVISIONED
+      - RECOVERY
+      - STAGED
+      - SUSPENDED
+      x-okta-tags:
+      - User
+    ApplicationSettingsNotificationsVpn:
+      type: object
+      properties:
+        helpUrl:
+          type: string
+        message:
+          type: string
+        network:
+          $ref: '#/components/schemas/ApplicationSettingsNotificationsVpnNetwork'
+      x-okta-tags:
+      - Application
+    UserProfile:
+      type: object
+      properties:
+        city:
+          type: string
+        costCenter:
+          type: string
+        countryCode:
+          type: string
+        department:
+          type: string
+        displayName:
+          type: string
+        division:
+          type: string
+        email:
+          type: string
+        employeeNumber:
+          type: string
+        firstName:
+          type: string
+        honorificPrefix:
+          type: string
+        honorificSuffix:
+          type: string
+        lastName:
+          type: string
+        locale:
+          type: string
+        login:
+          type: string
+        manager:
+          type: string
+        managerId:
+          type: string
+        middleName:
+          type: string
+        mobilePhone:
+          type: string
+        nickName:
+          type: string
+        organization:
+          type: string
+        postalAddress:
+          type: string
+        preferredLanguage:
+          type: string
+        primaryPhone:
+          type: string
+        profileUrl:
+          type: string
+        secondEmail:
+          type: string
+        state:
+          type: string
+        streetAddress:
+          type: string
+        timezone:
+          type: string
+        title:
+          type: string
+        userType:
+          type: string
+        zipCode:
+          type: string
+      x-okta-extensible: true
+      x-okta-tags:
+      - User
+    ApplicationLicensing:
+      type: object
+      properties:
+        seatCount:
+          type: integer
+      x-okta-tags:
+      - Application
+    GroupRuleGroupCondition:
+      type: object
+      properties:
+        exclude:
+          type: array
+          items:
+            type: string
+        include:
+          type: array
+          items:
+            type: string
+      x-okta-tags:
+      - GroupRule
+    RoleStatus:
+      type: string
+      enum:
+      - ACTIVE
+      - INACTIVE
+      x-okta-tags:
+      - User
+    CatalogApplication:
+      type: object
+      properties:
+        _links:
+          type: object
+          additionalProperties:
+            type: object
+            properties: {}
+          readOnly: true
+        category:
+          type: string
+        description:
+          type: string
+        displayName:
+          type: string
+        features:
+          type: array
+          items:
+            type: string
+        id:
+          type: string
+          readOnly: true
+        lastUpdated:
+          type: string
+          format: date-time
+          readOnly: true
+        name:
+          type: string
+        signOnModes:
+          type: array
+          items:
+            type: string
+        status:
+          $ref: '#/components/schemas/CatalogApplicationStatus'
+        verificationStatus:
+          type: string
+        website:
+          type: string
+      x-okta-tags:
+      - Role
+    AuthenticationProvider:
+      type: object
+      properties:
+        name:
+          type: string
+        type:
+          $ref: '#/components/schemas/AuthenticationProviderType'
+      x-okta-tags:
+      - User
   securitySchemes:
     api_token:
       type: apiKey

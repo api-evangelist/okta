@@ -119,29 +119,6 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    UserSchemaAttributeUnion:
-      type: object
-      enum:
-      - DISABLE
-      - ENABLE
-      x-okta-tags:
-      - UserSchema
-    UserSchemaPropertiesProfileItem:
-      type: object
-      properties:
-        $ref:
-          type: string
-      x-okta-tags:
-      - UserSchema
-    UserSchemaPropertiesProfile:
-      type: object
-      properties:
-        allOf:
-          type: array
-          items:
-            $ref: '#/components/schemas/UserSchemaPropertiesProfileItem'
-      x-okta-tags:
-      - UserSchema
     UserSchemaAttribute:
       type: object
       properties:
@@ -189,66 +166,33 @@ components:
           type: string
       x-okta-tags:
       - UserSchema
-    UserSchemaProperties:
+    UserSchemaAttributeScope:
       type: object
-      properties:
-        profile:
-          $ref: '#/components/schemas/UserSchemaPropertiesProfile'
+      enum:
+      - SELF
+      - NONE
       x-okta-tags:
       - UserSchema
-    UserSchema:
+    UserSchemaAttributeUnion:
       type: object
-      properties:
-        $schema:
-          type: string
-          readOnly: true
-        _links:
-          type: object
-          additionalProperties:
-            type: object
-            properties: {}
-          readOnly: true
-        created:
-          type: string
-          readOnly: true
-        definitions:
-          $ref: '#/components/schemas/UserSchemaDefinitions'
-        id:
-          type: string
-          readOnly: true
-        lastUpdated:
-          type: string
-          readOnly: true
-        name:
-          type: string
-          readOnly: true
-        properties:
-          $ref: '#/components/schemas/UserSchemaProperties'
-        title:
-          type: string
-        type:
-          type: string
-          readOnly: true
+      enum:
+      - DISABLE
+      - ENABLE
       x-okta-tags:
       - UserSchema
-    UserSchemaDefinitions:
+    UserSchemaAttributeItems:
       type: object
       properties:
-        base:
-          $ref: '#/components/schemas/UserSchemaBase'
-        custom:
-          $ref: '#/components/schemas/UserSchemaPublic'
-      x-okta-tags:
-      - UserSchema
-    UserSchemaAttributeMaster:
-      type: object
-      properties:
-        priority:
+        enum:
           type: array
           items:
-            $ref: '#/components/schemas/UserSchemaAttributeMasterPriority'
+            type: string
+        oneOf:
+          type: array
+          items:
+            $ref: '#/components/schemas/UserSchemaAttributeEnum'
         type:
-          $ref: '#/components/schemas/UserSchemaAttributeMasterType'
+          type: string
       x-okta-tags:
       - UserSchema
     UserSchemaAttributePermission:
@@ -260,20 +204,23 @@ components:
           type: string
       x-okta-tags:
       - UserSchema
-    UserSchemaAttributeScope:
-      type: object
-      enum:
-      - SELF
-      - NONE
-      x-okta-tags:
-      - UserSchema
-    UserSchemaAttributeEnum:
+    UserSchemaAttributeMasterPriority:
       type: object
       properties:
-        const:
+        type:
           type: string
-        title:
+        value:
           type: string
+      x-okta-tags:
+      - UserSchema
+    UserSchemaAttributeType:
+      type: string
+      enum:
+      - string
+      - boolean
+      - number
+      - integer
+      - array
       x-okta-tags:
       - UserSchema
     UserSchemaBaseProperties:
@@ -343,14 +290,108 @@ components:
           $ref: '#/components/schemas/UserSchemaAttribute'
       x-okta-tags:
       - UserSchema
-    UserSchemaAttributeType:
+    UserSchemaProperties:
+      type: object
+      properties:
+        profile:
+          $ref: '#/components/schemas/UserSchemaPropertiesProfile'
+      x-okta-tags:
+      - UserSchema
+    UserSchemaAttributeMaster:
+      type: object
+      properties:
+        priority:
+          type: array
+          items:
+            $ref: '#/components/schemas/UserSchemaAttributeMasterPriority'
+        type:
+          $ref: '#/components/schemas/UserSchemaAttributeMasterType'
+      x-okta-tags:
+      - UserSchema
+    UserSchemaBase:
+      type: object
+      properties:
+        id:
+          type: string
+          readOnly: true
+        properties:
+          $ref: '#/components/schemas/UserSchemaBaseProperties'
+        required:
+          type: array
+          items:
+            type: string
+        type:
+          type: string
+      x-okta-tags:
+      - UserSchema
+    UserSchemaAttributeEnum:
+      type: object
+      properties:
+        const:
+          type: string
+        title:
+          type: string
+      x-okta-tags:
+      - UserSchema
+    UserSchemaPropertiesProfile:
+      type: object
+      properties:
+        allOf:
+          type: array
+          items:
+            $ref: '#/components/schemas/UserSchemaPropertiesProfileItem'
+      x-okta-tags:
+      - UserSchema
+    UserSchemaAttributeMasterType:
       type: string
       enum:
-      - string
-      - boolean
-      - number
-      - integer
-      - array
+      - PROFILE_MASTER
+      - OKTA
+      - OVERRIDE
+      x-okta-tags:
+      - UserSchema
+    UserSchema:
+      type: object
+      properties:
+        $schema:
+          type: string
+          readOnly: true
+        _links:
+          type: object
+          additionalProperties:
+            type: object
+            properties: {}
+          readOnly: true
+        created:
+          type: string
+          readOnly: true
+        definitions:
+          $ref: '#/components/schemas/UserSchemaDefinitions'
+        id:
+          type: string
+          readOnly: true
+        lastUpdated:
+          type: string
+          readOnly: true
+        name:
+          type: string
+          readOnly: true
+        properties:
+          $ref: '#/components/schemas/UserSchemaProperties'
+        title:
+          type: string
+        type:
+          type: string
+          readOnly: true
+      x-okta-tags:
+      - UserSchema
+    UserSchemaDefinitions:
+      type: object
+      properties:
+        base:
+          $ref: '#/components/schemas/UserSchemaBase'
+        custom:
+          $ref: '#/components/schemas/UserSchemaPublic'
       x-okta-tags:
       - UserSchema
     UserSchemaPublic:
@@ -371,51 +412,10 @@ components:
           type: string
       x-okta-tags:
       - UserSchema
-    UserSchemaAttributeItems:
+    UserSchemaPropertiesProfileItem:
       type: object
       properties:
-        enum:
-          type: array
-          items:
-            type: string
-        oneOf:
-          type: array
-          items:
-            $ref: '#/components/schemas/UserSchemaAttributeEnum'
-        type:
-          type: string
-      x-okta-tags:
-      - UserSchema
-    UserSchemaAttributeMasterType:
-      type: string
-      enum:
-      - PROFILE_MASTER
-      - OKTA
-      - OVERRIDE
-      x-okta-tags:
-      - UserSchema
-    UserSchemaBase:
-      type: object
-      properties:
-        id:
-          type: string
-          readOnly: true
-        properties:
-          $ref: '#/components/schemas/UserSchemaBaseProperties'
-        required:
-          type: array
-          items:
-            type: string
-        type:
-          type: string
-      x-okta-tags:
-      - UserSchema
-    UserSchemaAttributeMasterPriority:
-      type: object
-      properties:
-        type:
-          type: string
-        value:
+        $ref:
           type: string
       x-okta-tags:
       - UserSchema
