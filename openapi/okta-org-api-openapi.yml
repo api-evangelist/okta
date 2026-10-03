@@ -331,23 +331,12 @@ paths:
       - api_token: []
 components:
   schemas:
-    OrgContactUser:
+    UserIdString:
       type: object
       properties:
-        _links:
-          type: object
-          additionalProperties:
-            type: object
-            properties: {}
-          readOnly: true
         userId:
           type: string
-      x-okta-operations:
-      - alias: updateContactUser
-        arguments:
-        - dest: userId
-          src: userId
-        operationId: updateOrgContactUser
+      x-okta-parent: '#/definitions/OrgContactUser'
       x-okta-tags:
       - Org
     OrgContactTypeObj:
@@ -359,19 +348,38 @@ components:
           $ref: '#/components/schemas/OrgContactType'
       x-okta-tags:
       - Org
-    OrgPreferences:
+    OrgContactType:
+      type: string
+      enum:
+      - BILLING
+      - TECHNICAL
+      x-okta-tags:
+      - Org
+    OrgOktaSupportSetting:
+      type: string
+      enum:
+      - DISABLED
+      - ENABLED
+      x-okta-tags:
+      - Org
+    OrgOktaSupportSettingsObj:
       type: object
       properties:
         _links:
           type: object
-        showEndUserFooter:
-          type: boolean
+        expiration:
+          type: string
+          format: date-time
           readOnly: true
+        support:
+          $ref: '#/components/schemas/OrgOktaSupportSetting'
       x-okta-operations:
-      - alias: hideEndUserFooter
-        operationId: hideOktaUIFooter
-      - alias: showEndUserFooter
-        operationId: showOktaUIFooter
+      - alias: extendOktaSupport
+        operationId: extendOktaSupport
+      - alias: grantOktaSupport
+        operationId: grantOktaSupport
+      - alias: revokeOktaSupport
+        operationId: revokeOktaSupport
       x-okta-tags:
       - Org
     OrgOktaCommunicationSetting:
@@ -389,18 +397,19 @@ components:
         operationId: optOutUsersFromOktaCommunicationEmails
       x-okta-tags:
       - Org
-    OrgContactType:
-      type: string
-      enum:
-      - BILLING
-      - TECHNICAL
-      x-okta-tags:
-      - Org
-    OrgOktaSupportSetting:
-      type: string
-      enum:
-      - DISABLED
-      - ENABLED
+    OrgPreferences:
+      type: object
+      properties:
+        _links:
+          type: object
+        showEndUserFooter:
+          type: boolean
+          readOnly: true
+      x-okta-operations:
+      - alias: hideEndUserFooter
+        operationId: hideOktaUIFooter
+      - alias: showEndUserFooter
+        operationId: showOktaUIFooter
       x-okta-tags:
       - Org
     OrgSetting:
@@ -492,32 +501,23 @@ components:
         operationId: updateOrgLogo
       x-okta-tags:
       - Org
-    OrgOktaSupportSettingsObj:
+    OrgContactUser:
       type: object
       properties:
         _links:
           type: object
-        expiration:
-          type: string
-          format: date-time
+          additionalProperties:
+            type: object
+            properties: {}
           readOnly: true
-        support:
-          $ref: '#/components/schemas/OrgOktaSupportSetting'
-      x-okta-operations:
-      - alias: extendOktaSupport
-        operationId: extendOktaSupport
-      - alias: grantOktaSupport
-        operationId: grantOktaSupport
-      - alias: revokeOktaSupport
-        operationId: revokeOktaSupport
-      x-okta-tags:
-      - Org
-    UserIdString:
-      type: object
-      properties:
         userId:
           type: string
-      x-okta-parent: '#/definitions/OrgContactUser'
+      x-okta-operations:
+      - alias: updateContactUser
+        arguments:
+        - dest: userId
+          src: userId
+        operationId: updateOrgContactUser
       x-okta-tags:
       - Org
   securitySchemes:

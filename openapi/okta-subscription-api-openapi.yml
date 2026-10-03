@@ -183,6 +183,30 @@ paths:
       - api_token: []
 components:
   schemas:
+    NotificationType:
+      type: string
+      enum:
+      - CONNECTOR_AGENT
+      - USER_LOCKED_OUT
+      - APP_IMPORT
+      - LDAP_AGENT
+      - AD_AGENT
+      - OKTA_ANNOUNCEMENT
+      - OKTA_ISSUE
+      - OKTA_UPDATE
+      - IWA_AGENT
+      - USER_DEPROVISION
+      - REPORT_SUSPICIOUS_ACTIVITY
+      - RATELIMIT_NOTIFICATION
+      x-okta-tags:
+      - Subscription
+    SubscriptionStatus:
+      type: string
+      enum:
+      - subscribed
+      - unsubscribed
+      x-okta-tags:
+      - Role
     Subscription:
       type: object
       properties:
@@ -217,30 +241,6 @@ components:
         operationId: subscribeRoleSubscriptionByNotificationType
       - alias: unsubscribeUserSubscriptionByNotificationType
         operationId: unsubscribeUserSubscriptionByNotificationType
-      x-okta-tags:
-      - Role
-    NotificationType:
-      type: string
-      enum:
-      - CONNECTOR_AGENT
-      - USER_LOCKED_OUT
-      - APP_IMPORT
-      - LDAP_AGENT
-      - AD_AGENT
-      - OKTA_ANNOUNCEMENT
-      - OKTA_ISSUE
-      - OKTA_UPDATE
-      - IWA_AGENT
-      - USER_DEPROVISION
-      - REPORT_SUSPICIOUS_ACTIVITY
-      - RATELIMIT_NOTIFICATION
-      x-okta-tags:
-      - Subscription
-    SubscriptionStatus:
-      type: string
-      enum:
-      - subscribed
-      - unsubscribed
       x-okta-tags:
       - Role
   securitySchemes:

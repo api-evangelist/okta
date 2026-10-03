@@ -204,10 +204,17 @@ components:
       - IFRAME_EMBED
       x-okta-tags:
       - Role
-    IframeEmbedScopeAllowedApps:
-      type: string
-      enum:
-      - OKTA_ENDUSER
+    Scope:
+      type: object
+      properties:
+        allowedOktaApps:
+          type: array
+          items:
+            $ref: '#/components/schemas/IframeEmbedScopeAllowedApps'
+        stringValue:
+          type: string
+        type:
+          $ref: '#/components/schemas/ScopeType'
       x-okta-tags:
       - Role
     TrustedOrigin:
@@ -267,17 +274,10 @@ components:
         operationId: deleteOrigin
       x-okta-tags:
       - TrustedOrigin
-    Scope:
-      type: object
-      properties:
-        allowedOktaApps:
-          type: array
-          items:
-            $ref: '#/components/schemas/IframeEmbedScopeAllowedApps'
-        stringValue:
-          type: string
-        type:
-          $ref: '#/components/schemas/ScopeType'
+    IframeEmbedScopeAllowedApps:
+      type: string
+      enum:
+      - OKTA_ENDUSER
       x-okta-tags:
       - Role
   securitySchemes:

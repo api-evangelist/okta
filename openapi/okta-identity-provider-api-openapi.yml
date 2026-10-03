@@ -714,12 +714,171 @@ paths:
       - api_token: []
 components:
   schemas:
+    ProtocolEndpoints:
+      type: object
+      properties:
+        acs:
+          $ref: '#/components/schemas/ProtocolEndpoint'
+        authorization:
+          $ref: '#/components/schemas/ProtocolEndpoint'
+        jwks:
+          $ref: '#/components/schemas/ProtocolEndpoint'
+        metadata:
+          $ref: '#/components/schemas/ProtocolEndpoint'
+        slo:
+          $ref: '#/components/schemas/ProtocolEndpoint'
+        sso:
+          $ref: '#/components/schemas/ProtocolEndpoint'
+        token:
+          $ref: '#/components/schemas/ProtocolEndpoint'
+        userInfo:
+          $ref: '#/components/schemas/ProtocolEndpoint'
+      x-okta-tags:
+      - IdentityProvider
+    ProtocolRelayState:
+      type: object
+      properties:
+        format:
+          $ref: '#/components/schemas/ProtocolRelayStateFormat'
+      x-okta-tags:
+      - IdentityProvider
+    ProvisioningGroups:
+      type: object
+      properties:
+        action:
+          type: string
+          enum:
+          - NONE
+          - APPEND
+          - SYNC
+          - ASSIGN
+        assignments:
+          type: array
+          items:
+            type: string
+        filter:
+          type: array
+          items:
+            type: string
+        sourceAttributeName:
+          type: string
+      x-okta-tags:
+      - IdentityProvider
+    ProtocolAlgorithms:
+      type: object
+      properties:
+        request:
+          $ref: '#/components/schemas/ProtocolAlgorithmType'
+        response:
+          $ref: '#/components/schemas/ProtocolAlgorithmType'
+      x-okta-tags:
+      - IdentityProvider
+    PolicyUserNameTemplate:
+      type: object
+      properties:
+        template:
+          type: string
+      x-okta-tags:
+      - Policy
+    PolicySubject:
+      type: object
+      properties:
+        filter:
+          type: string
+        format:
+          type: array
+          items:
+            type: string
+        matchAttribute:
+          type: string
+        matchType:
+          $ref: '#/components/schemas/PolicySubjectMatchType'
+        userNameTemplate:
+          $ref: '#/components/schemas/PolicyUserNameTemplate'
+      x-okta-tags:
+      - Policy
+    ProvisioningSuspendedCondition:
+      type: object
+      properties:
+        action:
+          type: string
+          enum:
+          - NONE
+          - UNSUSPEND
+      x-okta-tags:
+      - IdentityProvider
     IdentityProviderCredentialsClient:
       type: object
       properties:
         client_id:
           type: string
         client_secret:
+          type: string
+      x-okta-tags:
+      - IdentityProvider
+    ProtocolAlgorithmTypeSignature:
+      type: object
+      properties:
+        algorithm:
+          type: string
+        scope:
+          type: string
+          enum:
+          - RESPONSE
+          - TOKEN
+          - ANY
+          - REQUEST
+          - NONE
+      x-okta-tags:
+      - IdentityProvider
+    PolicyAccountLinkFilterGroups:
+      type: object
+      properties:
+        include:
+          type: array
+          items:
+            type: string
+      x-okta-tags:
+      - Policy
+    CsrMetadataSubjectAltNames:
+      type: object
+      properties:
+        dnsNames:
+          type: array
+          items:
+            type: string
+      x-okta-tags:
+      - Application
+    ProtocolAlgorithmType:
+      type: object
+      properties:
+        signature:
+          $ref: '#/components/schemas/ProtocolAlgorithmTypeSignature'
+      x-okta-tags:
+      - IdentityProvider
+    ProtocolEndpoint:
+      type: object
+      properties:
+        binding:
+          type: string
+          enum:
+          - HTTP-POST
+          - HTTP-REDIRECT
+        destination:
+          type: string
+        type:
+          type: string
+          enum:
+          - INSTANCE
+          - ORG
+        url:
+          type: string
+      x-okta-tags:
+      - IdentityProvider
+    ProtocolSettings:
+      type: object
+      properties:
+        nameFormat:
           type: string
       x-okta-tags:
       - IdentityProvider
@@ -732,15 +891,42 @@ components:
           $ref: '#/components/schemas/CsrMetadataSubjectAltNames'
       x-okta-tags:
       - Application
-    PolicySubjectMatchType:
-      type: string
-      enum:
-      - USERNAME
-      - EMAIL
-      - USERNAME_OR_EMAIL
-      - CUSTOM_ATTRIBUTE
+    Csr:
+      type: object
+      properties:
+        created:
+          type: string
+          format: date-time
+          readOnly: true
+        csr:
+          type: string
+          readOnly: true
+        id:
+          type: string
+          readOnly: true
+        kty:
+          type: string
+          readOnly: true
+      x-okta-tags:
+      - Application
+    PolicyAccountLinkFilter:
+      type: object
+      properties:
+        groups:
+          $ref: '#/components/schemas/PolicyAccountLinkFilterGroups'
       x-okta-tags:
       - Policy
+    IdentityProviderCredentialsSigning:
+      type: object
+      properties:
+        kid:
+          type: string
+        privateKey:
+          type: string
+        teamId:
+          type: string
+      x-okta-tags:
+      - IdentityProvider
     IdentityProviderPolicy:
       type: object
       properties:
@@ -755,6 +941,90 @@ components:
       x-okta-parent: '#/definitions/Policy'
       x-okta-tags:
       - Policy
+    JsonWebKey:
+      type: object
+      properties:
+        _links:
+          type: object
+          additionalProperties:
+            type: object
+            properties: {}
+          readOnly: true
+        alg:
+          type: string
+        created:
+          type: string
+          format: date-time
+        e:
+          type: string
+        expiresAt:
+          type: string
+          format: date-time
+        key_ops:
+          type: array
+          items:
+            type: string
+        kid:
+          type: string
+        kty:
+          type: string
+        lastUpdated:
+          type: string
+          format: date-time
+        n:
+          type: string
+        status:
+          type: string
+        use:
+          type: string
+        x5c:
+          type: array
+          items:
+            type: string
+        x5t:
+          type: string
+        x5t#S256:
+          type: string
+        x5u:
+          type: string
+      x-okta-tags:
+      - Application
+    ProvisioningDeprovisionedCondition:
+      type: object
+      properties:
+        action:
+          type: string
+          enum:
+          - NONE
+          - REACTIVATE
+      x-okta-tags:
+      - IdentityProvider
+    Provisioning:
+      type: object
+      properties:
+        action:
+          type: string
+          enum:
+          - AUTO
+          - CALLOUT
+          - DISABLED
+        conditions:
+          $ref: '#/components/schemas/ProvisioningConditions'
+        groups:
+          $ref: '#/components/schemas/ProvisioningGroups'
+        profileMaster:
+          type: boolean
+      x-okta-tags:
+      - IdentityProvider
+    PolicySubjectMatchType:
+      type: string
+      enum:
+      - USERNAME
+      - EMAIL
+      - USERNAME_OR_EMAIL
+      - CUSTOM_ATTRIBUTE
+      x-okta-tags:
+      - Policy
     IdentityProviderCredentials:
       type: object
       properties:
@@ -766,13 +1036,23 @@ components:
           $ref: '#/components/schemas/IdentityProviderCredentialsTrust'
       x-okta-tags:
       - IdentityProvider
-    ProtocolRelayStateFormat:
-      type: string
-      enum:
-      - OPAQUE
-      - FROM_URL
+    CsrMetadataSubject:
+      type: object
+      properties:
+        commonName:
+          type: string
+        countryName:
+          type: string
+        localityName:
+          type: string
+        organizationName:
+          type: string
+        organizationalUnitName:
+          type: string
+        stateOrProvinceName:
+          type: string
       x-okta-tags:
-      - IdentityProvider
+      - Application
     IdentityProvider:
       type: object
       properties:
@@ -933,74 +1213,6 @@ components:
         operationId: listSocialAuthTokens
       x-okta-tags:
       - IdentityProvider
-    ProtocolSettings:
-      type: object
-      properties:
-        nameFormat:
-          type: string
-      x-okta-tags:
-      - IdentityProvider
-    ProtocolEndpoint:
-      type: object
-      properties:
-        binding:
-          type: string
-          enum:
-          - HTTP-POST
-          - HTTP-REDIRECT
-        destination:
-          type: string
-        type:
-          type: string
-          enum:
-          - INSTANCE
-          - ORG
-        url:
-          type: string
-      x-okta-tags:
-      - IdentityProvider
-    ProtocolRelayState:
-      type: object
-      properties:
-        format:
-          $ref: '#/components/schemas/ProtocolRelayStateFormat'
-      x-okta-tags:
-      - IdentityProvider
-    ProvisioningConditions:
-      type: object
-      properties:
-        deprovisioned:
-          $ref: '#/components/schemas/ProvisioningDeprovisionedCondition'
-        suspended:
-          $ref: '#/components/schemas/ProvisioningSuspendedCondition'
-      x-okta-tags:
-      - IdentityProvider
-    PolicyAccountLinkFilterGroups:
-      type: object
-      properties:
-        include:
-          type: array
-          items:
-            type: string
-      x-okta-tags:
-      - Policy
-    CsrMetadataSubject:
-      type: object
-      properties:
-        commonName:
-          type: string
-        countryName:
-          type: string
-        localityName:
-          type: string
-        organizationName:
-          type: string
-        organizationalUnitName:
-          type: string
-        stateOrProvinceName:
-          type: string
-      x-okta-tags:
-      - Application
     PolicyAccountLink:
       type: object
       properties:
@@ -1013,267 +1225,6 @@ components:
           $ref: '#/components/schemas/PolicyAccountLinkFilter'
       x-okta-tags:
       - Policy
-    ProvisioningGroups:
-      type: object
-      properties:
-        action:
-          type: string
-          enum:
-          - NONE
-          - APPEND
-          - SYNC
-          - ASSIGN
-        assignments:
-          type: array
-          items:
-            type: string
-        filter:
-          type: array
-          items:
-            type: string
-        sourceAttributeName:
-          type: string
-      x-okta-tags:
-      - IdentityProvider
-    PolicyAccountLinkFilter:
-      type: object
-      properties:
-        groups:
-          $ref: '#/components/schemas/PolicyAccountLinkFilterGroups'
-      x-okta-tags:
-      - Policy
-    PolicyUserNameTemplate:
-      type: object
-      properties:
-        template:
-          type: string
-      x-okta-tags:
-      - Policy
-    ProvisioningDeprovisionedCondition:
-      type: object
-      properties:
-        action:
-          type: string
-          enum:
-          - NONE
-          - REACTIVATE
-      x-okta-tags:
-      - IdentityProvider
-    UserIdentityProviderLinkRequest:
-      type: object
-      properties:
-        externalId:
-          type: string
-      x-okta-tags:
-      - Policy
-    JsonWebKey:
-      type: object
-      properties:
-        _links:
-          type: object
-          additionalProperties:
-            type: object
-            properties: {}
-          readOnly: true
-        alg:
-          type: string
-        created:
-          type: string
-          format: date-time
-        e:
-          type: string
-        expiresAt:
-          type: string
-          format: date-time
-        key_ops:
-          type: array
-          items:
-            type: string
-        kid:
-          type: string
-        kty:
-          type: string
-        lastUpdated:
-          type: string
-          format: date-time
-        n:
-          type: string
-        status:
-          type: string
-        use:
-          type: string
-        x5c:
-          type: array
-          items:
-            type: string
-        x5t:
-          type: string
-        x5t#S256:
-          type: string
-        x5u:
-          type: string
-      x-okta-tags:
-      - Application
-    SocialAuthToken:
-      type: object
-      properties:
-        expiresAt:
-          type: string
-          format: date-time
-          readOnly: true
-        id:
-          type: string
-          readOnly: true
-        scopes:
-          type: array
-          items:
-            type: string
-        token:
-          type: string
-        tokenAuthScheme:
-          type: string
-        tokenType:
-          type: string
-      x-okta-tags:
-      - IdentityProvider
-    ProvisioningSuspendedCondition:
-      type: object
-      properties:
-        action:
-          type: string
-          enum:
-          - NONE
-          - UNSUSPEND
-      x-okta-tags:
-      - IdentityProvider
-    ProtocolAlgorithms:
-      type: object
-      properties:
-        request:
-          $ref: '#/components/schemas/ProtocolAlgorithmType'
-        response:
-          $ref: '#/components/schemas/ProtocolAlgorithmType'
-      x-okta-tags:
-      - IdentityProvider
-    CsrMetadataSubjectAltNames:
-      type: object
-      properties:
-        dnsNames:
-          type: array
-          items:
-            type: string
-      x-okta-tags:
-      - Application
-    Provisioning:
-      type: object
-      properties:
-        action:
-          type: string
-          enum:
-          - AUTO
-          - CALLOUT
-          - DISABLED
-        conditions:
-          $ref: '#/components/schemas/ProvisioningConditions'
-        groups:
-          $ref: '#/components/schemas/ProvisioningGroups'
-        profileMaster:
-          type: boolean
-      x-okta-tags:
-      - IdentityProvider
-    Csr:
-      type: object
-      properties:
-        created:
-          type: string
-          format: date-time
-          readOnly: true
-        csr:
-          type: string
-          readOnly: true
-        id:
-          type: string
-          readOnly: true
-        kty:
-          type: string
-          readOnly: true
-      x-okta-tags:
-      - Application
-    Protocol:
-      type: object
-      properties:
-        algorithms:
-          $ref: '#/components/schemas/ProtocolAlgorithms'
-        credentials:
-          $ref: '#/components/schemas/IdentityProviderCredentials'
-        endpoints:
-          $ref: '#/components/schemas/ProtocolEndpoints'
-        issuer:
-          $ref: '#/components/schemas/ProtocolEndpoint'
-        relayState:
-          $ref: '#/components/schemas/ProtocolRelayState'
-        scopes:
-          type: array
-          items:
-            type: string
-        settings:
-          $ref: '#/components/schemas/ProtocolSettings'
-        type:
-          type: string
-          enum:
-          - SAML2
-          - OIDC
-          - OAUTH2
-          - MTLS
-      x-okta-tags:
-      - IdentityProvider
-    ProtocolAlgorithmType:
-      type: object
-      properties:
-        signature:
-          $ref: '#/components/schemas/ProtocolAlgorithmTypeSignature'
-      x-okta-tags:
-      - IdentityProvider
-    IdentityProviderCredentialsTrust:
-      type: object
-      properties:
-        audience:
-          type: string
-        issuer:
-          type: string
-        kid:
-          type: string
-        revocation:
-          type: string
-          enum:
-          - CRL
-          - DELTA_CRL
-          - OCSP
-        revocationCacheLifetime:
-          type: integer
-      x-okta-tags:
-      - IdentityProvider
-    ProtocolEndpoints:
-      type: object
-      properties:
-        acs:
-          $ref: '#/components/schemas/ProtocolEndpoint'
-        authorization:
-          $ref: '#/components/schemas/ProtocolEndpoint'
-        jwks:
-          $ref: '#/components/schemas/ProtocolEndpoint'
-        metadata:
-          $ref: '#/components/schemas/ProtocolEndpoint'
-        slo:
-          $ref: '#/components/schemas/ProtocolEndpoint'
-        sso:
-          $ref: '#/components/schemas/ProtocolEndpoint'
-        token:
-          $ref: '#/components/schemas/ProtocolEndpoint'
-        userInfo:
-          $ref: '#/components/schemas/ProtocolEndpoint'
-      x-okta-tags:
-      - IdentityProvider
     IdentityProviderApplicationUser:
       type: object
       properties:
@@ -1305,47 +1256,96 @@ components:
             properties: {}
       x-okta-tags:
       - IdentityProvider
-    IdentityProviderCredentialsSigning:
-      type: object
-      properties:
-        kid:
-          type: string
-        privateKey:
-          type: string
-        teamId:
-          type: string
+    ProtocolRelayStateFormat:
+      type: string
+      enum:
+      - OPAQUE
+      - FROM_URL
       x-okta-tags:
       - IdentityProvider
-    PolicySubject:
+    IdentityProviderCredentialsTrust:
       type: object
       properties:
-        filter:
+        audience:
           type: string
-        format:
+        issuer:
+          type: string
+        kid:
+          type: string
+        revocation:
+          type: string
+          enum:
+          - CRL
+          - DELTA_CRL
+          - OCSP
+        revocationCacheLifetime:
+          type: integer
+      x-okta-tags:
+      - IdentityProvider
+    UserIdentityProviderLinkRequest:
+      type: object
+      properties:
+        externalId:
+          type: string
+      x-okta-tags:
+      - Policy
+    ProvisioningConditions:
+      type: object
+      properties:
+        deprovisioned:
+          $ref: '#/components/schemas/ProvisioningDeprovisionedCondition'
+        suspended:
+          $ref: '#/components/schemas/ProvisioningSuspendedCondition'
+      x-okta-tags:
+      - IdentityProvider
+    SocialAuthToken:
+      type: object
+      properties:
+        expiresAt:
+          type: string
+          format: date-time
+          readOnly: true
+        id:
+          type: string
+          readOnly: true
+        scopes:
           type: array
           items:
             type: string
-        matchAttribute:
+        token:
           type: string
-        matchType:
-          $ref: '#/components/schemas/PolicySubjectMatchType'
-        userNameTemplate:
-          $ref: '#/components/schemas/PolicyUserNameTemplate'
+        tokenAuthScheme:
+          type: string
+        tokenType:
+          type: string
       x-okta-tags:
-      - Policy
-    ProtocolAlgorithmTypeSignature:
+      - IdentityProvider
+    Protocol:
       type: object
       properties:
-        algorithm:
-          type: string
-        scope:
+        algorithms:
+          $ref: '#/components/schemas/ProtocolAlgorithms'
+        credentials:
+          $ref: '#/components/schemas/IdentityProviderCredentials'
+        endpoints:
+          $ref: '#/components/schemas/ProtocolEndpoints'
+        issuer:
+          $ref: '#/components/schemas/ProtocolEndpoint'
+        relayState:
+          $ref: '#/components/schemas/ProtocolRelayState'
+        scopes:
+          type: array
+          items:
+            type: string
+        settings:
+          $ref: '#/components/schemas/ProtocolSettings'
+        type:
           type: string
           enum:
-          - RESPONSE
-          - TOKEN
-          - ANY
-          - REQUEST
-          - NONE
+          - SAML2
+          - OIDC
+          - OAUTH2
+          - MTLS
       x-okta-tags:
       - IdentityProvider
   securitySchemes:

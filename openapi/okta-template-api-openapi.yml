@@ -161,12 +161,6 @@ paths:
       - api_token: []
 components:
   schemas:
-    SmsTemplateType:
-      type: string
-      enum:
-      - SMS_VERIFY_CODE
-      x-okta-tags:
-      - Template
     SmsTemplate:
       type: object
       properties:
@@ -223,6 +217,12 @@ components:
     SmsTemplateTranslations:
       type: object
       x-okta-extensible: true
+      x-okta-tags:
+      - Template
+    SmsTemplateType:
+      type: string
+      enum:
+      - SMS_VERIFY_CODE
       x-okta-tags:
       - Template
   securitySchemes:

@@ -144,35 +144,19 @@ paths:
       - api_token: []
 components:
   schemas:
-    DomainCertificateSourceType:
-      type: string
-      enum:
-      - MANUAL
-      - OKTA_MANAGED
-      x-okta-tags:
-      - Domain
-    DomainCertificateType:
-      type: string
-      enum:
-      - PEM
-      x-okta-tags:
-      - Domain
-    DomainCertificateMetadata:
+    DNSRecord:
       type: object
       properties:
         expiration:
           type: string
-        fingerprint:
+        fqdn:
           type: string
-        subject:
-          type: string
-      x-okta-tags:
-      - Domain
-    DNSRecordType:
-      type: string
-      enum:
-      - TXT
-      - CNAME
+        recordType:
+          $ref: '#/components/schemas/DNSRecordType'
+        values:
+          type: array
+          items:
+            type: string
       x-okta-tags:
       - Domain
     DomainListResponse:
@@ -182,26 +166,6 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Domain'
-      x-okta-tags:
-      - Domain
-    Domain:
-      type: object
-      properties:
-        certificateSourceType:
-          $ref: '#/components/schemas/DomainCertificateSourceType'
-        dnsRecords:
-          type: array
-          items:
-            $ref: '#/components/schemas/DNSRecord'
-        domain:
-          type: string
-        id:
-          type: string
-          readOnly: true
-        publicCertificate:
-          $ref: '#/components/schemas/DomainCertificateMetadata'
-        validationStatus:
-          $ref: '#/components/schemas/DomainValidationStatus'
       x-okta-tags:
       - Domain
     DomainCertificate:
@@ -234,19 +198,55 @@ components:
       - COMPLETED
       x-okta-tags:
       - Domain
-    DNSRecord:
+    DomainCertificateSourceType:
+      type: string
+      enum:
+      - MANUAL
+      - OKTA_MANAGED
+      x-okta-tags:
+      - Domain
+    DomainCertificateMetadata:
       type: object
       properties:
         expiration:
           type: string
-        fqdn:
+        fingerprint:
           type: string
-        recordType:
-          $ref: '#/components/schemas/DNSRecordType'
-        values:
+        subject:
+          type: string
+      x-okta-tags:
+      - Domain
+    DNSRecordType:
+      type: string
+      enum:
+      - TXT
+      - CNAME
+      x-okta-tags:
+      - Domain
+    Domain:
+      type: object
+      properties:
+        certificateSourceType:
+          $ref: '#/components/schemas/DomainCertificateSourceType'
+        dnsRecords:
           type: array
           items:
-            type: string
+            $ref: '#/components/schemas/DNSRecord'
+        domain:
+          type: string
+        id:
+          type: string
+          readOnly: true
+        publicCertificate:
+          $ref: '#/components/schemas/DomainCertificateMetadata'
+        validationStatus:
+          $ref: '#/components/schemas/DomainValidationStatus'
+      x-okta-tags:
+      - Domain
+    DomainCertificateType:
+      type: string
+      enum:
+      - PEM
       x-okta-tags:
       - Domain
   securitySchemes:

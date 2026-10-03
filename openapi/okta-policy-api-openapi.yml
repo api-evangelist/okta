@@ -385,113 +385,18 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    PolicyPeopleCondition:
+    PlatformConditionEvaluatorPlatform:
       type: object
       properties:
-        groups:
-          $ref: '#/components/schemas/GroupCondition'
-        users:
-          $ref: '#/components/schemas/UserCondition'
-      x-okta-tags:
-      - Policy
-    PolicyRuleAuthContextCondition:
-      type: object
-      properties:
-        authType:
+        os:
+          $ref: '#/components/schemas/PlatformConditionEvaluatorPlatformOperatingSystem'
+        type:
           type: string
           enum:
+          - DESKTOP
+          - MOBILE
+          - OTHER
           - ANY
-          - RADIUS
-      x-okta-tags:
-      - Policy
-    ContextPolicyRuleCondition:
-      type: object
-      properties:
-        expression:
-          type: string
-      x-okta-tags:
-      - Policy
-    ScheduledUserLifecycleAction:
-      type: object
-      properties:
-        status:
-          type: string
-          enum:
-          - ACTIVE
-          - INACTIVE
-          - PENDING
-          - DELETED
-          - EXPIRED_PASSWORD
-          - ACTIVATING
-          - SUSPENDED
-          - DELETING
-      x-okta-tags:
-      - Policy
-    UserIdentifierConditionEvaluatorPattern:
-      type: object
-      properties:
-        matchType:
-          type: string
-          enum:
-          - SUFFIX
-          - EXPRESSION
-          - STARTS_WITH
-          - EQUALS
-          - CONTAINS
-        value:
-          type: string
-      x-okta-tags:
-      - Policy
-    PasswordExpirationPolicyRuleCondition:
-      type: object
-      properties:
-        number:
-          type: integer
-        unit:
-          type: string
-      x-okta-tags:
-      - Policy
-    ClientPolicyCondition:
-      type: object
-      properties:
-        include:
-          type: array
-          items:
-            type: string
-      x-okta-tags:
-      - Policy
-    AppInstancePolicyRuleCondition:
-      type: object
-      properties:
-        exclude:
-          type: array
-          items:
-            type: string
-        include:
-          type: array
-          items:
-            type: string
-      x-okta-tags:
-      - Policy
-    MDMEnrollmentPolicyRuleCondition:
-      type: object
-      properties:
-        blockNonSafeAndroid:
-          type: boolean
-        enrollment:
-          type: string
-          enum:
-          - OMM
-          - ANY_OR_NONE
-      x-okta-tags:
-      - Policy
-    UserLifecycleAttributePolicyRuleCondition:
-      type: object
-      properties:
-        attributeName:
-          type: string
-        matchingValue:
-          type: string
       x-okta-tags:
       - Policy
     PlatformConditionEvaluatorPlatformOperatingSystem:
@@ -512,87 +417,35 @@ components:
           $ref: '#/components/schemas/PlatformConditionEvaluatorPlatformOperatingSystemVersion'
       x-okta-tags:
       - Policy
-    PolicyRuleActionsEnrollSelf:
-      type: string
-      enum:
-      - CHALLENGE
-      - LOGIN
-      - NEVER
-      x-okta-tags:
-      - Policy
-    UserCondition:
+    IdentityProviderPolicyRuleCondition:
       type: object
       properties:
-        exclude:
+        idpIds:
           type: array
           items:
             type: string
-        include:
-          type: array
-          items:
-            type: string
-      x-okta-tags:
-      - Policy
-    PlatformConditionEvaluatorPlatformOperatingSystemVersion:
-      type: object
-      properties:
-        matchType:
+        provider:
           type: string
           enum:
-          - EXPRESSION
-          - SEMVER
+          - ANY
+          - OKTA
+          - SPECIFIC_IDP
+      x-okta-tags:
+      - Policy
+    UserStatusPolicyRuleCondition:
+      type: object
+      properties:
         value:
           type: string
-      x-okta-tags:
-      - Policy
-    UserPolicyRuleCondition:
-      type: object
-      properties:
-        exclude:
-          type: array
-          items:
-            type: string
-        inactivity:
-          $ref: '#/components/schemas/InactivityPolicyRuleCondition'
-        include:
-          type: array
-          items:
-            type: string
-        lifecycleExpiration:
-          $ref: '#/components/schemas/LifecycleExpirationPolicyRuleCondition'
-        passwordExpiration:
-          $ref: '#/components/schemas/PasswordExpirationPolicyRuleCondition'
-        userLifecycleAttribute:
-          $ref: '#/components/schemas/UserLifecycleAttributePolicyRuleCondition'
-      x-okta-tags:
-      - Policy
-    RiskScorePolicyRuleCondition:
-      type: object
-      properties:
-        level:
-          type: string
-      x-okta-tags:
-      - Policy
-    BeforeScheduledActionPolicyRuleCondition:
-      type: object
-      properties:
-        duration:
-          $ref: '#/components/schemas/Duration'
-        lifecycleAction:
-          $ref: '#/components/schemas/ScheduledUserLifecycleAction'
-      x-okta-tags:
-      - Policy
-    GroupCondition:
-      type: object
-      properties:
-        exclude:
-          type: array
-          items:
-            type: string
-        include:
-          type: array
-          items:
-            type: string
+          enum:
+          - ACTIVE
+          - INACTIVE
+          - PENDING
+          - DELETED
+          - EXPIRED_PASSWORD
+          - ACTIVATING
+          - SUSPENDED
+          - DELETING
       x-okta-tags:
       - Policy
     DevicePolicyRuleCondition:
@@ -611,17 +464,26 @@ components:
           - TRUSTED
       x-okta-tags:
       - Policy
-    GroupPolicyRuleCondition:
+    MDMEnrollmentPolicyRuleCondition:
       type: object
       properties:
-        exclude:
-          type: array
-          items:
-            type: string
-        include:
-          type: array
-          items:
-            type: string
+        blockNonSafeAndroid:
+          type: boolean
+        enrollment:
+          type: string
+          enum:
+          - OMM
+          - ANY_OR_NONE
+      x-okta-tags:
+      - Policy
+    PasswordPolicyRuleAction:
+      type: object
+      properties:
+        access:
+          type: string
+          enum:
+          - ALLOW
+          - DENY
       x-okta-tags:
       - Policy
     OktaSignOnPolicyRuleSignonActions:
@@ -650,38 +512,14 @@ components:
           $ref: '#/components/schemas/OktaSignOnPolicyRuleSignonSessionActions'
       x-okta-tags:
       - Policy
-    IdpPolicyRuleAction:
+    RiskPolicyRuleCondition:
       type: object
       properties:
-        providers:
-          type: array
-          items:
-            $ref: '#/components/schemas/IdpPolicyRuleActionProvider'
-      x-okta-tags:
-      - Policy
-    InactivityPolicyRuleCondition:
-      type: object
-      properties:
-        number:
-          type: integer
-        unit:
-          type: string
-      x-okta-tags:
-      - Policy
-    PasswordPolicyAuthenticationProviderCondition:
-      type: object
-      properties:
-        include:
+        behaviors:
+          uniqueItems: true
           type: array
           items:
             type: string
-        provider:
-          type: string
-          enum:
-          - ACTIVE_DIRECTORY
-          - ANY
-          - LDAP
-          - OKTA
       x-okta-tags:
       - Policy
     AppAndInstancePolicyRuleCondition:
@@ -697,37 +535,157 @@ components:
             $ref: '#/components/schemas/AppAndInstanceConditionEvaluatorAppOrInstance'
       x-okta-tags:
       - Policy
-    IdpPolicyRuleActionProvider:
-      type: object
-      properties:
-        id:
-          type: string
-          readOnly: true
-        type:
-          type: string
-      x-okta-tags:
-      - Policy
-    PasswordPolicyRuleAction:
-      type: object
-      properties:
-        access:
-          type: string
-          enum:
-          - ALLOW
-          - DENY
-      x-okta-tags:
-      - Policy
-    PlatformPolicyRuleCondition:
+    UserPolicyRuleCondition:
       type: object
       properties:
         exclude:
           type: array
           items:
-            $ref: '#/components/schemas/PlatformConditionEvaluatorPlatform'
+            type: string
+        inactivity:
+          $ref: '#/components/schemas/InactivityPolicyRuleCondition'
         include:
           type: array
           items:
-            $ref: '#/components/schemas/PlatformConditionEvaluatorPlatform'
+            type: string
+        lifecycleExpiration:
+          $ref: '#/components/schemas/LifecycleExpirationPolicyRuleCondition'
+        passwordExpiration:
+          $ref: '#/components/schemas/PasswordExpirationPolicyRuleCondition'
+        userLifecycleAttribute:
+          $ref: '#/components/schemas/UserLifecycleAttributePolicyRuleCondition'
+      x-okta-tags:
+      - Policy
+    LifecycleExpirationPolicyRuleCondition:
+      type: object
+      properties:
+        lifecycleStatus:
+          type: string
+        number:
+          type: integer
+        unit:
+          type: string
+      x-okta-tags:
+      - Policy
+    UserIdentifierConditionEvaluatorPattern:
+      type: object
+      properties:
+        matchType:
+          type: string
+          enum:
+          - SUFFIX
+          - EXPRESSION
+          - STARTS_WITH
+          - EQUALS
+          - CONTAINS
+        value:
+          type: string
+      x-okta-tags:
+      - Policy
+    ContextPolicyRuleCondition:
+      type: object
+      properties:
+        expression:
+          type: string
+      x-okta-tags:
+      - Policy
+    Duration:
+      type: object
+      properties:
+        number:
+          type: integer
+        unit:
+          type: string
+      x-okta-tags:
+      - Policy
+    PolicyRuleConditions:
+      type: object
+      properties:
+        app:
+          $ref: '#/components/schemas/AppAndInstancePolicyRuleCondition'
+        apps:
+          $ref: '#/components/schemas/AppInstancePolicyRuleCondition'
+        authContext:
+          $ref: '#/components/schemas/PolicyRuleAuthContextCondition'
+        authProvider:
+          $ref: '#/components/schemas/PasswordPolicyAuthenticationProviderCondition'
+        beforeScheduledAction:
+          $ref: '#/components/schemas/BeforeScheduledActionPolicyRuleCondition'
+        clients:
+          $ref: '#/components/schemas/ClientPolicyCondition'
+        context:
+          $ref: '#/components/schemas/ContextPolicyRuleCondition'
+        device:
+          $ref: '#/components/schemas/DevicePolicyRuleCondition'
+        grantTypes:
+          $ref: '#/components/schemas/GrantTypePolicyRuleCondition'
+        groups:
+          $ref: '#/components/schemas/GroupPolicyRuleCondition'
+        identityProvider:
+          $ref: '#/components/schemas/IdentityProviderPolicyRuleCondition'
+        mdmEnrollment:
+          $ref: '#/components/schemas/MDMEnrollmentPolicyRuleCondition'
+        network:
+          $ref: '#/components/schemas/PolicyNetworkCondition'
+        people:
+          $ref: '#/components/schemas/PolicyPeopleCondition'
+        platform:
+          $ref: '#/components/schemas/PlatformPolicyRuleCondition'
+        risk:
+          $ref: '#/components/schemas/RiskPolicyRuleCondition'
+        riskScore:
+          $ref: '#/components/schemas/RiskScorePolicyRuleCondition'
+        scopes:
+          $ref: '#/components/schemas/OAuth2ScopesMediationPolicyRuleCondition'
+        userIdentifier:
+          $ref: '#/components/schemas/UserIdentifierPolicyRuleCondition'
+        userStatus:
+          $ref: '#/components/schemas/UserStatusPolicyRuleCondition'
+        users:
+          $ref: '#/components/schemas/UserPolicyRuleCondition'
+      x-okta-tags:
+      - Policy
+    UserIdentifierPolicyRuleCondition:
+      type: object
+      properties:
+        attribute:
+          type: string
+        patterns:
+          type: array
+          items:
+            $ref: '#/components/schemas/UserIdentifierConditionEvaluatorPattern'
+        type:
+          type: string
+          enum:
+          - IDENTIFIER
+          - ATTRIBUTE
+      x-okta-tags:
+      - Policy
+    ClientPolicyCondition:
+      type: object
+      properties:
+        include:
+          type: array
+          items:
+            type: string
+      x-okta-tags:
+      - Policy
+    PolicyNetworkCondition:
+      type: object
+      properties:
+        connection:
+          type: string
+          enum:
+          - ANYWHERE
+          - ZONE
+        exclude:
+          type: array
+          items:
+            type: string
+        include:
+          type: array
+          items:
+            type: string
       x-okta-tags:
       - Policy
     Policy:
@@ -829,9 +787,100 @@ components:
           PASSWORD: '#/definitions/PasswordPolicy'
           PROFILE_ENROLLMENT: '#/definitions/ProfileEnrollmentPolicy'
         propertyName: type
+    PolicyRuleActionsEnrollSelf:
+      type: string
+      enum:
+      - CHALLENGE
+      - LOGIN
+      - NEVER
+      x-okta-tags:
+      - Policy
     GrantTypePolicyRuleCondition:
       type: object
       properties:
+        include:
+          type: array
+          items:
+            type: string
+      x-okta-tags:
+      - Policy
+    GroupCondition:
+      type: object
+      properties:
+        exclude:
+          type: array
+          items:
+            type: string
+        include:
+          type: array
+          items:
+            type: string
+      x-okta-tags:
+      - Policy
+    PolicyRuleActionsEnroll:
+      type: object
+      properties:
+        self:
+          $ref: '#/components/schemas/PolicyRuleActionsEnrollSelf'
+      x-okta-tags:
+      - Policy
+    PasswordExpirationPolicyRuleCondition:
+      type: object
+      properties:
+        number:
+          type: integer
+        unit:
+          type: string
+      x-okta-tags:
+      - Policy
+    PolicyPeopleCondition:
+      type: object
+      properties:
+        groups:
+          $ref: '#/components/schemas/GroupCondition'
+        users:
+          $ref: '#/components/schemas/UserCondition'
+      x-okta-tags:
+      - Policy
+    PlatformConditionEvaluatorPlatformOperatingSystemVersion:
+      type: object
+      properties:
+        matchType:
+          type: string
+          enum:
+          - EXPRESSION
+          - SEMVER
+        value:
+          type: string
+      x-okta-tags:
+      - Policy
+    IdpPolicyRuleActionProvider:
+      type: object
+      properties:
+        id:
+          type: string
+          readOnly: true
+        type:
+          type: string
+      x-okta-tags:
+      - Policy
+    PolicyRuleAuthContextCondition:
+      type: object
+      properties:
+        authType:
+          type: string
+          enum:
+          - ANY
+          - RADIUS
+      x-okta-tags:
+      - Policy
+    UserCondition:
+      type: object
+      properties:
+        exclude:
+          type: array
+          items:
+            type: string
         include:
           type: array
           items:
@@ -855,15 +904,59 @@ components:
           $ref: '#/components/schemas/OktaSignOnPolicyRuleSignonActions'
       x-okta-tags:
       - Policy
-    OAuth2ScopesMediationPolicyRuleCondition:
+    ScheduledUserLifecycleAction:
       type: object
       properties:
-        include:
-          type: array
-          items:
-            type: string
+        status:
+          type: string
+          enum:
+          - ACTIVE
+          - INACTIVE
+          - PENDING
+          - DELETED
+          - EXPIRED_PASSWORD
+          - ACTIVATING
+          - SUSPENDED
+          - DELETING
       x-okta-tags:
-      - Application
+      - Policy
+    RiskScorePolicyRuleCondition:
+      type: object
+      properties:
+        level:
+          type: string
+      x-okta-tags:
+      - Policy
+    UserLifecycleAttributePolicyRuleCondition:
+      type: object
+      properties:
+        attributeName:
+          type: string
+        matchingValue:
+          type: string
+      x-okta-tags:
+      - Policy
+    PolicyType:
+      type: string
+      enum:
+      - OAUTH_AUTHORIZATION_POLICY
+      - OKTA_SIGN_ON
+      - PASSWORD
+      - IDP_DISCOVERY
+      - PROFILE_ENROLLMENT
+      - ACCESS_POLICY
+      - MFA_ENROLL
+      x-okta-tags:
+      - Policy
+    BeforeScheduledActionPolicyRuleCondition:
+      type: object
+      properties:
+        duration:
+          $ref: '#/components/schemas/Duration'
+        lifecycleAction:
+          $ref: '#/components/schemas/ScheduledUserLifecycleAction'
+      x-okta-tags:
+      - Policy
     PolicyRule:
       type: object
       properties:
@@ -953,33 +1046,17 @@ components:
           default: false
       x-okta-tags:
       - Policy
-    PolicyType:
-      type: string
-      enum:
-      - OAUTH_AUTHORIZATION_POLICY
-      - OKTA_SIGN_ON
-      - PASSWORD
-      - IDP_DISCOVERY
-      - PROFILE_ENROLLMENT
-      - ACCESS_POLICY
-      - MFA_ENROLL
-      x-okta-tags:
-      - Policy
-    RiskPolicyRuleCondition:
+    AppInstancePolicyRuleCondition:
       type: object
       properties:
-        behaviors:
-          uniqueItems: true
+        exclude:
           type: array
           items:
             type: string
-      x-okta-tags:
-      - Policy
-    PolicyRuleActionsEnroll:
-      type: object
-      properties:
-        self:
-          $ref: '#/components/schemas/PolicyRuleActionsEnrollSelf'
+        include:
+          type: array
+          items:
+            type: string
       x-okta-tags:
       - Policy
     DevicePolicyRuleConditionPlatform:
@@ -1004,94 +1081,6 @@ components:
             - WINDOWS
       x-okta-tags:
       - Policy
-    LifecycleExpirationPolicyRuleCondition:
-      type: object
-      properties:
-        lifecycleStatus:
-          type: string
-        number:
-          type: integer
-        unit:
-          type: string
-      x-okta-tags:
-      - Policy
-    UserIdentifierPolicyRuleCondition:
-      type: object
-      properties:
-        attribute:
-          type: string
-        patterns:
-          type: array
-          items:
-            $ref: '#/components/schemas/UserIdentifierConditionEvaluatorPattern'
-        type:
-          type: string
-          enum:
-          - IDENTIFIER
-          - ATTRIBUTE
-      x-okta-tags:
-      - Policy
-    PolicyRuleConditions:
-      type: object
-      properties:
-        app:
-          $ref: '#/components/schemas/AppAndInstancePolicyRuleCondition'
-        apps:
-          $ref: '#/components/schemas/AppInstancePolicyRuleCondition'
-        authContext:
-          $ref: '#/components/schemas/PolicyRuleAuthContextCondition'
-        authProvider:
-          $ref: '#/components/schemas/PasswordPolicyAuthenticationProviderCondition'
-        beforeScheduledAction:
-          $ref: '#/components/schemas/BeforeScheduledActionPolicyRuleCondition'
-        clients:
-          $ref: '#/components/schemas/ClientPolicyCondition'
-        context:
-          $ref: '#/components/schemas/ContextPolicyRuleCondition'
-        device:
-          $ref: '#/components/schemas/DevicePolicyRuleCondition'
-        grantTypes:
-          $ref: '#/components/schemas/GrantTypePolicyRuleCondition'
-        groups:
-          $ref: '#/components/schemas/GroupPolicyRuleCondition'
-        identityProvider:
-          $ref: '#/components/schemas/IdentityProviderPolicyRuleCondition'
-        mdmEnrollment:
-          $ref: '#/components/schemas/MDMEnrollmentPolicyRuleCondition'
-        network:
-          $ref: '#/components/schemas/PolicyNetworkCondition'
-        people:
-          $ref: '#/components/schemas/PolicyPeopleCondition'
-        platform:
-          $ref: '#/components/schemas/PlatformPolicyRuleCondition'
-        risk:
-          $ref: '#/components/schemas/RiskPolicyRuleCondition'
-        riskScore:
-          $ref: '#/components/schemas/RiskScorePolicyRuleCondition'
-        scopes:
-          $ref: '#/components/schemas/OAuth2ScopesMediationPolicyRuleCondition'
-        userIdentifier:
-          $ref: '#/components/schemas/UserIdentifierPolicyRuleCondition'
-        userStatus:
-          $ref: '#/components/schemas/UserStatusPolicyRuleCondition'
-        users:
-          $ref: '#/components/schemas/UserPolicyRuleCondition'
-      x-okta-tags:
-      - Policy
-    PlatformConditionEvaluatorPlatform:
-      type: object
-      properties:
-        os:
-          $ref: '#/components/schemas/PlatformConditionEvaluatorPlatformOperatingSystem'
-        type:
-          type: string
-          enum:
-          - DESKTOP
-          - MOBILE
-          - OTHER
-          - ANY
-      x-okta-tags:
-      - Policy
     AppAndInstanceConditionEvaluatorAppOrInstance:
       type: object
       properties:
@@ -1107,14 +1096,56 @@ components:
           - APP
       x-okta-tags:
       - Policy
-    PolicyNetworkCondition:
+    IdpPolicyRuleAction:
       type: object
       properties:
-        connection:
+        providers:
+          type: array
+          items:
+            $ref: '#/components/schemas/IdpPolicyRuleActionProvider'
+      x-okta-tags:
+      - Policy
+    PasswordPolicyAuthenticationProviderCondition:
+      type: object
+      properties:
+        include:
+          type: array
+          items:
+            type: string
+        provider:
           type: string
           enum:
-          - ANYWHERE
-          - ZONE
+          - ACTIVE_DIRECTORY
+          - ANY
+          - LDAP
+          - OKTA
+      x-okta-tags:
+      - Policy
+    OAuth2ScopesMediationPolicyRuleCondition:
+      type: object
+      properties:
+        include:
+          type: array
+          items:
+            type: string
+      x-okta-tags:
+      - Application
+    PlatformPolicyRuleCondition:
+      type: object
+      properties:
+        exclude:
+          type: array
+          items:
+            $ref: '#/components/schemas/PlatformConditionEvaluatorPlatform'
+        include:
+          type: array
+          items:
+            $ref: '#/components/schemas/PlatformConditionEvaluatorPlatform'
+      x-okta-tags:
+      - Policy
+    GroupPolicyRuleCondition:
+      type: object
+      properties:
         exclude:
           type: array
           items:
@@ -1125,44 +1156,13 @@ components:
             type: string
       x-okta-tags:
       - Policy
-    IdentityProviderPolicyRuleCondition:
-      type: object
-      properties:
-        idpIds:
-          type: array
-          items:
-            type: string
-        provider:
-          type: string
-          enum:
-          - ANY
-          - OKTA
-          - SPECIFIC_IDP
-      x-okta-tags:
-      - Policy
-    Duration:
+    InactivityPolicyRuleCondition:
       type: object
       properties:
         number:
           type: integer
         unit:
           type: string
-      x-okta-tags:
-      - Policy
-    UserStatusPolicyRuleCondition:
-      type: object
-      properties:
-        value:
-          type: string
-          enum:
-          - ACTIVE
-          - INACTIVE
-          - PENDING
-          - DELETED
-          - EXPIRED_PASSWORD
-          - ACTIVATING
-          - SUSPENDED
-          - DELETING
       x-okta-tags:
       - Policy
   securitySchemes:

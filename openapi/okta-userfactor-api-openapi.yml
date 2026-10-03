@@ -328,59 +328,25 @@ paths:
       x-codegen-request-body-name: body
 components:
   schemas:
-    VerifyUserFactorResponse:
+    VerifyFactorRequest:
       type: object
       properties:
-        _embedded:
-          type: object
-          additionalProperties:
-            type: object
-            properties: {}
-          readOnly: true
-        _links:
-          type: object
-          additionalProperties:
-            type: object
-            properties: {}
-          readOnly: true
-        expiresAt:
+        activationToken:
           type: string
-          format: date-time
-          readOnly: true
-        factorResult:
+        answer:
           type: string
-          enum:
-          - SUCCESS
-          - EXPIRED
-          - CHALLENGE
-          - WAITING
-          - FAILED
-          - REJECTED
-          - TIMEOUT
-          - TIME_WINDOW_EXCEEDED
-          - PASSCODE_REPLAYED
-          - ERROR
-        factorResultMessage:
+        attestation:
           type: string
-      x-okta-tags:
-      - UserFactor
-    FactorType:
-      type: string
-      enum:
-      - call
-      - email
-      - hotp
-      - push
-      - question
-      - signed_nonce
-      - sms
-      - token:hardware
-      - token:hotp
-      - token:software:totp
-      - token
-      - u2f
-      - web
-      - webauthn
+        clientData:
+          type: string
+        nextPassCode:
+          type: string
+        passCode:
+          type: string
+        registrationData:
+          type: string
+        stateToken:
+          type: string
       x-okta-tags:
       - UserFactor
     FactorStatus:
@@ -393,17 +359,6 @@ components:
       - ENROLLED
       - DISABLED
       - EXPIRED
-      x-okta-tags:
-      - UserFactor
-    SecurityQuestion:
-      type: object
-      properties:
-        answer:
-          type: string
-        question:
-          type: string
-        questionText:
-          type: string
       x-okta-tags:
       - UserFactor
     UserFactor:
@@ -481,33 +436,78 @@ components:
           web: '#/definitions/WebUserFactor'
           webauthn: '#/definitions/WebAuthnUserFactor'
         propertyName: factorType
+    FactorType:
+      type: string
+      enum:
+      - call
+      - email
+      - hotp
+      - push
+      - question
+      - signed_nonce
+      - sms
+      - token:hardware
+      - token:hotp
+      - token:software:totp
+      - token
+      - u2f
+      - web
+      - webauthn
+      x-okta-tags:
+      - UserFactor
+    SecurityQuestion:
+      type: object
+      properties:
+        answer:
+          type: string
+        question:
+          type: string
+        questionText:
+          type: string
+      x-okta-tags:
+      - UserFactor
+    VerifyUserFactorResponse:
+      type: object
+      properties:
+        _embedded:
+          type: object
+          additionalProperties:
+            type: object
+            properties: {}
+          readOnly: true
+        _links:
+          type: object
+          additionalProperties:
+            type: object
+            properties: {}
+          readOnly: true
+        expiresAt:
+          type: string
+          format: date-time
+          readOnly: true
+        factorResult:
+          type: string
+          enum:
+          - SUCCESS
+          - EXPIRED
+          - CHALLENGE
+          - WAITING
+          - FAILED
+          - REJECTED
+          - TIMEOUT
+          - TIME_WINDOW_EXCEEDED
+          - PASSCODE_REPLAYED
+          - ERROR
+        factorResultMessage:
+          type: string
+      x-okta-tags:
+      - UserFactor
     ActivateFactorRequest:
       type: object
       properties:
         attestation:
           type: string
         clientData:
-          type: string
-        passCode:
-          type: string
-        registrationData:
-          type: string
-        stateToken:
-          type: string
-      x-okta-tags:
-      - UserFactor
-    VerifyFactorRequest:
-      type: object
-      properties:
-        activationToken:
-          type: string
-        answer:
-          type: string
-        attestation:
-          type: string
-        clientData:
-          type: string
-        nextPassCode:
           type: string
         passCode:
           type: string

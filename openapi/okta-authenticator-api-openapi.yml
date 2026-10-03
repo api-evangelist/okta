@@ -160,6 +160,23 @@ paths:
       x-summary-source: derived
 components:
   schemas:
+    RequiredEnum:
+      type: string
+      enum:
+      - ALWAYS
+      - HIGH_RISK_ONLY
+      - NEVER
+      x-okta-tags:
+      - Authenticator
+    AuthenticatorProvider:
+      type: object
+      properties:
+        configuration:
+          $ref: '#/components/schemas/AuthenticatorProviderConfiguration'
+        type:
+          type: string
+      x-okta-tags:
+      - Authenticator
     AuthenticatorProviderConfiguration:
       type: object
       properties:
@@ -181,30 +198,11 @@ components:
           $ref: '#/components/schemas/AuthenticatorProviderConfigurationUserNamePlate'
       x-okta-tags:
       - Authenticator
-    AllowedForEnum:
-      type: string
-      enum:
-      - recovery
-      - sso
-      - any
-      - none
-      x-okta-tags:
-      - Authenticator
-    AuthenticatorProvider:
+    Compliance:
       type: object
       properties:
-        configuration:
-          $ref: '#/components/schemas/AuthenticatorProviderConfiguration'
-        type:
-          type: string
-      x-okta-tags:
-      - Authenticator
-    RequiredEnum:
-      type: string
-      enum:
-      - ALWAYS
-      - HIGH_RISK_ONLY
-      - NEVER
+        fips:
+          $ref: '#/components/schemas/FipsEnum'
       x-okta-tags:
       - Authenticator
     ChannelBinding:
@@ -216,35 +214,13 @@ components:
           type: string
       x-okta-tags:
       - Authenticator
-    Compliance:
-      type: object
-      properties:
-        fips:
-          $ref: '#/components/schemas/FipsEnum'
-      x-okta-tags:
-      - Authenticator
-    FipsEnum:
+    AllowedForEnum:
       type: string
       enum:
-      - REQUIRED
-      - OPTIONAL
-      x-okta-tags:
-      - Authenticator
-    AuthenticatorSettings:
-      type: object
-      properties:
-        allowedFor:
-          $ref: '#/components/schemas/AllowedForEnum'
-        appInstanceId:
-          type: string
-        channelBinding:
-          $ref: '#/components/schemas/ChannelBinding'
-        compliance:
-          $ref: '#/components/schemas/Compliance'
-        tokenLifetimeInMinutes:
-          type: integer
-        userVerification:
-          $ref: '#/components/schemas/UserVerificationEnum'
+      - recovery
+      - sso
+      - any
+      - none
       x-okta-tags:
       - Authenticator
     UserVerificationEnum:
@@ -252,25 +228,6 @@ components:
       enum:
       - REQUIRED
       - PREFERRED
-      x-okta-tags:
-      - Authenticator
-    AuthenticatorType:
-      type: string
-      enum:
-      - app
-      - password
-      - security_question
-      - phone
-      - email
-      - security_key
-      - federated
-      x-okta-tags:
-      - Authenticator
-    AuthenticatorProviderConfigurationUserNamePlate:
-      type: object
-      properties:
-        template:
-          type: string
       x-okta-tags:
       - Authenticator
     AuthenticatorStatus:
@@ -334,6 +291,49 @@ components:
         - dest: authenticatorId
           src: id
         operationId: deactivateAuthenticator
+      x-okta-tags:
+      - Authenticator
+    AuthenticatorProviderConfigurationUserNamePlate:
+      type: object
+      properties:
+        template:
+          type: string
+      x-okta-tags:
+      - Authenticator
+    AuthenticatorType:
+      type: string
+      enum:
+      - app
+      - password
+      - security_question
+      - phone
+      - email
+      - security_key
+      - federated
+      x-okta-tags:
+      - Authenticator
+    FipsEnum:
+      type: string
+      enum:
+      - REQUIRED
+      - OPTIONAL
+      x-okta-tags:
+      - Authenticator
+    AuthenticatorSettings:
+      type: object
+      properties:
+        allowedFor:
+          $ref: '#/components/schemas/AllowedForEnum'
+        appInstanceId:
+          type: string
+        channelBinding:
+          $ref: '#/components/schemas/ChannelBinding'
+        compliance:
+          $ref: '#/components/schemas/Compliance'
+        tokenLifetimeInMinutes:
+          type: integer
+        userVerification:
+          $ref: '#/components/schemas/UserVerificationEnum'
       x-okta-tags:
       - Authenticator
   securitySchemes:

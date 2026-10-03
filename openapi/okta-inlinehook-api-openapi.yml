@@ -212,35 +212,6 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    InlineHookPayload:
-      type: object
-      x-okta-extensible: true
-      x-okta-tags:
-      - InlineHook
-    InlineHookChannel:
-      type: object
-      properties:
-        config:
-          $ref: '#/components/schemas/InlineHookChannelConfig'
-        type:
-          type: string
-          enum:
-          - HTTP
-        version:
-          type: string
-      x-okta-tags:
-      - InlineHook
-    InlineHookResponseCommands:
-      type: object
-      properties:
-        type:
-          type: string
-        value:
-          type: array
-          items:
-            $ref: '#/components/schemas/InlineHookResponseCommandValue'
-      x-okta-tags:
-      - InlineHook
     InlineHook:
       type: object
       properties:
@@ -310,23 +281,15 @@ components:
         operationId: executeInlineHook
       x-okta-tags:
       - InlineHook
-    InlineHookResponse:
+    InlineHookResponseCommands:
       type: object
       properties:
-        commands:
+        type:
+          type: string
+        value:
           type: array
           items:
-            $ref: '#/components/schemas/InlineHookResponseCommands'
-      x-okta-tags:
-      - InlineHook
-    InlineHookType:
-      type: string
-      enum:
-      - com.okta.oauth2.tokens.transform
-      - com.okta.import.transform
-      - com.okta.saml.tokens.transform
-      - com.okta.user.pre-registration
-      - com.okta.user.credential.password.import
+            $ref: '#/components/schemas/InlineHookResponseCommandValue'
       x-okta-tags:
       - InlineHook
     InlineHookChannelConfig:
@@ -341,22 +304,6 @@ components:
         method:
           type: string
         uri:
-          type: string
-      x-okta-tags:
-      - InlineHook
-    InlineHookStatus:
-      type: string
-      enum:
-      - ACTIVE
-      - INACTIVE
-      x-okta-tags:
-      - InlineHook
-    InlineHookChannelConfigHeaders:
-      type: object
-      properties:
-        key:
-          type: string
-        value:
           type: string
       x-okta-tags:
       - InlineHook
@@ -380,6 +327,59 @@ components:
           type: string
         value:
           type: string
+      x-okta-tags:
+      - InlineHook
+    InlineHookType:
+      type: string
+      enum:
+      - com.okta.oauth2.tokens.transform
+      - com.okta.import.transform
+      - com.okta.saml.tokens.transform
+      - com.okta.user.pre-registration
+      - com.okta.user.credential.password.import
+      x-okta-tags:
+      - InlineHook
+    InlineHookChannel:
+      type: object
+      properties:
+        config:
+          $ref: '#/components/schemas/InlineHookChannelConfig'
+        type:
+          type: string
+          enum:
+          - HTTP
+        version:
+          type: string
+      x-okta-tags:
+      - InlineHook
+    InlineHookChannelConfigHeaders:
+      type: object
+      properties:
+        key:
+          type: string
+        value:
+          type: string
+      x-okta-tags:
+      - InlineHook
+    InlineHookResponse:
+      type: object
+      properties:
+        commands:
+          type: array
+          items:
+            $ref: '#/components/schemas/InlineHookResponseCommands'
+      x-okta-tags:
+      - InlineHook
+    InlineHookPayload:
+      type: object
+      x-okta-extensible: true
+      x-okta-tags:
+      - InlineHook
+    InlineHookStatus:
+      type: string
+      enum:
+      - ACTIVE
+      - INACTIVE
       x-okta-tags:
       - InlineHook
   securitySchemes:

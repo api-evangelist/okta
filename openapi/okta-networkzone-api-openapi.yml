@@ -188,41 +188,11 @@ paths:
       - api_token: []
 components:
   schemas:
-    NetworkZoneAddressType:
-      type: string
-      enum:
-      - CIDR
-      - RANGE
-      x-okta-tags:
-      - NetworkZone
-    NetworkZoneStatus:
-      type: string
-      enum:
-      - ACTIVE
-      - INACTIVE
-      x-okta-tags:
-      - NetworkZone
-    NetworkZoneAddress:
-      type: object
-      properties:
-        type:
-          $ref: '#/components/schemas/NetworkZoneAddressType'
-        value:
-          type: string
-      x-okta-tags:
-      - NetworkZone
     NetworkZoneType:
       type: string
       enum:
       - IP
       - DYNAMIC
-      x-okta-tags:
-      - NetworkZone
-    NetworkZoneUsage:
-      type: string
-      enum:
-      - POLICY
-      - BLOCKLIST
       x-okta-tags:
       - NetworkZone
     NetworkZoneLocation:
@@ -232,6 +202,13 @@ components:
           type: string
         region:
           type: string
+      x-okta-tags:
+      - NetworkZone
+    NetworkZoneUsage:
+      type: string
+      enum:
+      - POLICY
+      - BLOCKLIST
       x-okta-tags:
       - NetworkZone
     NetworkZone:
@@ -311,6 +288,29 @@ components:
         - dest: zoneId
           src: id
         operationId: deactivateNetworkZone
+      x-okta-tags:
+      - NetworkZone
+    NetworkZoneAddressType:
+      type: string
+      enum:
+      - CIDR
+      - RANGE
+      x-okta-tags:
+      - NetworkZone
+    NetworkZoneStatus:
+      type: string
+      enum:
+      - ACTIVE
+      - INACTIVE
+      x-okta-tags:
+      - NetworkZone
+    NetworkZoneAddress:
+      type: object
+      properties:
+        type:
+          $ref: '#/components/schemas/NetworkZoneAddressType'
+        value:
+          type: string
       x-okta-tags:
       - NetworkZone
   securitySchemes:
