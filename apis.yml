@@ -1,18 +1,15 @@
 aid: okta
-
 name: Okta
-
-description: Okta is the workforce identity incumbent — its Identity Cloud platform (also called the Okta Workforce
-  Identity Platform) covers Single Sign-On, Adaptive MFA, Universal Directory, Lifecycle Management, Identity Governance,
-  Privileged Access, Device Access, Identity Threat Protection, Identity Security Posture Management, Access Gateway,
-  and API Access Management. Customer identity is handled by Auth0, which Okta acquired in 2021 and now operates as
-  its consumer-facing identity arm. The platform now extends to securing AI agents via Okta for AI Agents and the
-  Cross-App Access (XAA) protocol — an emerging OAuth profile based on the IETF ID-JAG draft for agent-to-app
-  authorization. The Okta Management API is the primary developer surface, with an official MCP server (okta-mcp-server)
-  exposing administrative operations to LLM agents under human-in-the-loop confirmation.
-
+description: Okta is the workforce identity incumbent — its Identity Cloud platform (also called the Okta
+  Workforce Identity Platform) covers Single Sign-On, Adaptive MFA, Universal Directory, Lifecycle Management,
+  Identity Governance, Privileged Access, Device Access, Identity Threat Protection, Identity Security
+  Posture Management, Access Gateway, and API Access Management. Customer identity is handled by Auth0,
+  which Okta acquired in 2021 and now operates as its consumer-facing identity arm. The platform now extends
+  to securing AI agents via Okta for AI Agents and the Cross-App Access (XAA) protocol — an emerging OAuth
+  profile based on the IETF ID-JAG draft for agent-to-app authorization. The Okta Management API is the
+  primary developer surface, with an official MCP server (okta-mcp-server) exposing administrative operations
+  to LLM agents under human-in-the-loop confirmation.
 kind: contract
-
 deliveryModel:
   model: saas
   open_source: false
@@ -25,7 +22,6 @@ deliveryModel:
   - pricing
   generated: '2026-08-28'
   method: derived
-
 accessModel:
   pricing: paid
   onboarding: unknown
@@ -40,9 +36,7 @@ accessModel:
   - security
   generated: '2026-09-03'
   method: derived
-
 image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/okta.png
-
 tags:
 - SSO
 - Okta
@@ -59,7 +53,6 @@ tags:
 - MCP
 - Platform
 - Identity Federation
-
 tags_raw:
 - Single Sign-On
 - Okta
@@ -77,296 +70,293 @@ tags_raw:
 - MCP
 - Platform
 - Identity Federation
-
 url: https://raw.githubusercontent.com/api-evangelist/okta/refs/heads/main/apis.yml
-
 created: '2023-11-20'
-
 modified: '2026-05-30'
-
 specificationVersion: '0.23'
-
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
-
 common:
-  - type: SecurityTxt
-    url: well-known/okta-bugcrowd-security.txt
-  - type: Spectral
-    url: rules/okta-rules.yml
-  - type: Spectral
-    url: rules/okta-jsonschema-spectral-rules.yml
-  - type: Spectral
-    url: rules/okta-asyncapi-spectral-rules.yml
-  - type: AgentSkill
-    url: skills/_index.yml
-  - type: DataModel
-    url: data-model/okta-data-model.yml
-  - type: ChangeLog
-    url: changelog/okta-changelog.yml
-  - type: Compliance
-    url: https://security.okta.com/
-  - type: Security
-    url: https://bugcrowd.com/auth0-okta
-  - type: ErrorCatalog
-    url: errors/okta-problem-types.yml
-  - type: Conformance
-    url: conformance/okta-conformance.yml
-  - type: LLMsTxt
-    url: llms/okta-llms.txt
-  - type: SecurityTxt
-    url: well-known/okta-security.txt
-  - type: WellKnown
-    url: well-known/okta-well-known.yml
-  - type: Hosts
-    url: hosts/okta-hosts.yml
-  - type: Vendors
-    url: vendors/okta-vendors.yml
-  - type: Packages
-    url: packages/okta-packages.yml
-  - type: Newsroom
-    url: https://www.okta.com/newsroom/
-  - type: Leadership
-    url: https://www.okta.com/company/leadership/
-  - type: GettingStarted
-    url: https://www.okta.com/identity-101/digital-onboarding-definition-benefits-how-it-works
-  - type: OAuthScopes
-    url: scopes/okta-scopes.yml
-  - type: VendorFacets
-    url: vendor-facets/okta-vendor-facets.yml
-  - type: AgenticAccess
-    url: agentic-access/okta-agentic-access.yml
-  - type: TrustCenter
-    url: security/okta-trust-center.yml
-  - type: VulnerabilityDisclosure
-    url: security/okta-vulnerability-disclosure.yml
-  - type: DomainSecurity
-    url: security/okta-domain-security.yml
-  - type: Authentication
-    url: authentication/okta-authentication.yml
-  - type: PostmanWorkspace
-    url: https://www.postman.com/kinlaneapi/okta/overview
-  - type: Arazzo
-    url: arazzo/okta-assign-admin-role-to-group-workflow.yml
-    name: Okta Assign Admin Role to Group
-  - type: Arazzo
-    url: arazzo/okta-assign-admin-role-to-user-workflow.yml
-    name: Okta Assign Admin Role to User
-  - type: Arazzo
-    url: arazzo/okta-assign-group-to-application-workflow.yml
-    name: Okta Assign Group to Application
-  - type: Arazzo
-    url: arazzo/okta-create-and-activate-application-workflow.yml
-    name: Okta Create and Activate Application
-  - type: Arazzo
-    url: arazzo/okta-create-and-activate-authenticator-workflow.yml
-    name: Okta Create and Activate Authenticator
-  - type: Arazzo
-    url: arazzo/okta-create-and-activate-group-rule-workflow.yml
-    name: Okta Create and Activate Group Rule
-  - type: Arazzo
-    url: arazzo/okta-create-and-refresh-session-workflow.yml
-    name: Okta Create and Refresh Session
-  - type: Arazzo
-    url: arazzo/okta-create-app-assign-user-and-activate-workflow.yml
-    name: Okta Create Application, Assign User, and Activate
-  - type: Arazzo
-    url: arazzo/okta-create-group-and-add-members-workflow.yml
-    name: Okta Create Group and Add Members
-  - type: Arazzo
-    url: arazzo/okta-create-policy-with-rule-workflow.yml
-    name: Okta Create Policy with Rule and Activate
-  - type: Arazzo
-    url: arazzo/okta-create-user-with-group-membership-workflow.yml
-    name: Okta Create User with Group Membership
-  - type: Arazzo
-    url: arazzo/okta-deactivate-and-delete-user-workflow.yml
-    name: Okta Deactivate and Delete User
-  - type: Arazzo
-    url: arazzo/okta-enroll-and-activate-factor-workflow.yml
-    name: Okta Enroll and Activate User Factor
-  - type: Arazzo
-    url: arazzo/okta-find-user-and-assign-app-workflow.yml
-    name: Okta Find User and Assign Application
-  - type: Arazzo
-    url: arazzo/okta-find-user-and-suspend-workflow.yml
-    name: Okta Find User and Suspend
-  - type: Arazzo
-    url: arazzo/okta-offboard-user-clear-sessions-workflow.yml
-    name: Okta Offboard User and Clear Sessions
-  - type: Arazzo
-    url: arazzo/okta-onboard-user-to-group-and-app-workflow.yml
-    name: Okta Onboard User to Group and Application
-  - type: Arazzo
-    url: arazzo/okta-provision-admin-user-workflow.yml
-    name: Okta Provision Admin User
-  - type: Arazzo
-    url: arazzo/okta-reactivate-suspended-user-workflow.yml
-    name: Okta Restore Suspended User
-  - type: Arazzo
-    url: arazzo/okta-reset-and-reenroll-factor-workflow.yml
-    name: Okta Reset and Re-enroll User Factor
-  - type: Arazzo
-    url: arazzo/okta-update-group-rule-expression-workflow.yml
-    name: Okta Update Group Rule Expression
-  - type: LinkedIn
-    url: https://www.linkedin.com/company/okta-inc-
-  - type: Website
-    url: https://www.okta.com/
-  - type: Portal
-    url: https://developer.okta.com/
-  - type: Documentation
-    url: https://developer.okta.com/docs/reference/
-  - type: Authentication
-    url: https://developer.okta.com/docs/reference/api/authn/
-  - type: GitHubOrganization
-    url: https://github.com/okta
-  - type: StatusPage
-    url: https://status.okta.com/
-  - type: Support
-    url: https://support.okta.com/
-  - type: Concepts
-    url: https://developer.okta.com/docs/concepts/
-  - type: Guides
-    url: https://developer.okta.com/docs/guides/
-  - type: SDKs
-    url: https://developer.okta.com/code/
-  - type: ChangeLog
-    url: https://developer.okta.com/docs/release-notes/
-  - type: Login
-    url: https://developer.okta.com/login/
-  - type: Signup
-    url: https://developer.okta.com/signup/
-  - type: Blog
-    url: https://developer.okta.com/blog/
-  - type: Plans
-    url: https://www.okta.com/pricing/
-  - type: Forums
-    url: https://devforum.okta.com/
-  - type: TermsOfService
-    url: https://developer.okta.com/terms/
-  - type: PrivacyPolicy
-    url: https://www.okta.com/privacy-policy/
-  - type: Features
-    data:
-    - 'Workforce Identity Starter at $6/user/mo: SSO + MFA + Universal Directory + 5 Workflows ($1,500/yr minimum)'
-    - 'Core Essentials at $14/user/mo: Adaptive MFA, Privileged Access, Lifecycle Mgmt, Access Governance'
-    - 'Essentials at $17/user/mo: All Core Essentials + 50 Workflows'
-    - 'Professional: Device Access, ISPM, Identity Threat Protection, Sandbox, Unlimited Workflows (custom pricing)'
-    - 'Enterprise: API Access Management, Access Gateway, M2M Tokens (custom pricing)'
-    - 'Customer Identity (Auth0) Enterprise Base: $3K/mo base + B2C / B2B suites'
-    - Default rate limits 600 req/min on most endpoints
-    - OAuth /token at 1,000 req/min
-    - System Log endpoint capped at 120 req/min
-    - 'Protocols: OIDC, SAML, WS-Fed, SCIM'
-    - Universal Directory with custom attributes
-    - Workflows for no-code automation (5 / 50 / unlimited by SKU)
-    - Adaptive MFA with risk-based policies
-    - Identity Threat Protection (Professional+)
-    - Identity Security Posture Management (Professional+)
-    - API Access Management (Enterprise) — OAuth as a Service
-    - 'Okta for AI Agents: agent discovery, registration, ownership, least-privilege, revocation'
-    - 'Cross-App Access (XAA): OAuth ID-JAG draft for agent-to-app authorization'
-    - 'Okta MCP Server: Python, LLM-facing admin CRUD with confirmation gates'
-    sources:
-    - https://www.okta.com/pricing/
-    - https://www.okta.com/
-    - https://xaa.dev/
-    - https://github.com/okta/okta-mcp-server
-    updated: '2026-05-22'
-  - type: Integrations
-    url: https://www.okta.com/integrations/
-  - type: OpenIntegrationNetwork
-    url: https://www.okta.com/integrations/
-  - name: Okta MCP Server
-    url: https://github.com/okta/okta-mcp-server
-    type: MCPServer
-  - name: Okta CLI
-    url: https://github.com/okta/okta-cli
-    type: CLI
-  - name: Okta CLI Client (Go)
-    url: https://github.com/okta/okta-cli-client
-    type: CLI
-  - name: Terraform Provider for Okta
-    url: https://github.com/okta/terraform-provider-okta
-    type: Terraform
-  - name: Terraform Provider for Okta PAM
-    url: https://github.com/okta/terraform-provider-oktapam
-    type: Terraform
-  - name: Okta Management OpenAPI Spec
-    url: https://github.com/okta/okta-management-openapi-spec
-    type: OpenAPISource
-  - name: Java SDK
-    url: https://github.com/okta/okta-sdk-java
-    type: SDKs
-  - name: .NET SDK
-    url: https://github.com/okta/okta-sdk-dotnet
-    type: SDKs
-  - name: Go SDK
-    url: https://github.com/okta/okta-sdk-golang
-    type: SDKs
-  - name: Python SDK
-    url: https://github.com/okta/okta-sdk-python
-    type: SDKs
-  - name: Node.js SDK
-    url: https://github.com/okta/okta-sdk-nodejs
-    type: SDKs
-  - name: JavaScript Auth SDK
-    url: https://github.com/okta/okta-auth-js
-    type: SDKs
-  - name: React SDK
-    url: https://github.com/okta/okta-react
-    type: SDKs
-  - name: Angular SDK
-    url: https://github.com/okta/okta-angular
-    type: SDKs
-  - name: Vue SDK
-    url: https://github.com/okta/okta-vue
-    type: SDKs
-  - name: React Native SDK
-    url: https://github.com/okta/okta-react-native
-    type: SDKs
-  - name: Swift Mobile SDK
-    url: https://github.com/okta/okta-mobile-swift
-    type: SDKs
-  - name: Kotlin Mobile SDK
-    url: https://github.com/okta/okta-mobile-kotlin
-    type: SDKs
-  - name: Spring Boot Starter
-    url: https://github.com/okta/okta-spring-boot
-    type: SDKs
-  - name: Okta Sign-In Widget
-    url: https://github.com/okta/okta-signin-widget
-    type: SDKs
-  - name: OIDC Middleware (Node)
-    url: https://github.com/okta/okta-oidc-middleware
-    type: SDKs
-  - name: JWT Verifier (Java)
-    url: https://github.com/okta/okta-jwt-verifier-java
-    type: SDKs
-  - name: JWT Verifier (Python)
-    url: https://github.com/okta/okta-jwt-verifier-python
-    type: SDKs
-  - name: Odyssey Design System
-    url: https://github.com/okta/odyssey
-    type: DesignSystem
-  - name: Workflows Templates
-    url: https://github.com/okta/workflows-templates
-    type: Examples
-  - name: Customer Detections
-    url: https://github.com/okta/customer-detections
-    type: Examples
-  - name: Cross-App Access Sandbox
-    url: https://xaa.dev/
-    type: Sandbox
-
+- type: SecurityTxt
+  url: well-known/okta-bugcrowd-security.txt
+- type: Spectral
+  url: rules/okta-rules.yml
+- type: Spectral
+  url: rules/okta-jsonschema-spectral-rules.yml
+- type: Spectral
+  url: rules/okta-asyncapi-spectral-rules.yml
+- type: AgentSkill
+  url: skills/_index.yml
+- type: DataModel
+  url: data-model/okta-data-model.yml
+- type: ChangeLog
+  url: changelog/okta-changelog.yml
+- type: Compliance
+  url: https://security.okta.com/
+- type: Security
+  url: https://bugcrowd.com/auth0-okta
+- type: ErrorCatalog
+  url: errors/okta-problem-types.yml
+- type: Conformance
+  url: conformance/okta-conformance.yml
+- type: LLMsTxt
+  url: llms/okta-llms.txt
+- type: SecurityTxt
+  url: well-known/okta-security.txt
+- type: WellKnown
+  url: well-known/okta-well-known.yml
+- type: Hosts
+  url: hosts/okta-hosts.yml
+- type: Vendors
+  url: vendors/okta-vendors.yml
+- type: Packages
+  url: packages/okta-packages.yml
+- type: Newsroom
+  url: https://www.okta.com/newsroom/
+- type: Leadership
+  url: https://www.okta.com/company/leadership/
+- type: GettingStarted
+  url: https://www.okta.com/identity-101/digital-onboarding-definition-benefits-how-it-works
+- type: OAuthScopes
+  url: scopes/okta-scopes.yml
+- type: VendorFacets
+  url: vendor-facets/okta-vendor-facets.yml
+- type: AgenticAccess
+  url: agentic-access/okta-agentic-access.yml
+- type: TrustCenter
+  url: security/okta-trust-center.yml
+- type: VulnerabilityDisclosure
+  url: security/okta-vulnerability-disclosure.yml
+- type: DomainSecurity
+  url: security/okta-domain-security.yml
+- type: Authentication
+  url: authentication/okta-authentication.yml
+- type: PostmanWorkspace
+  url: https://www.postman.com/kinlaneapi/okta/overview
+- type: Arazzo
+  url: arazzo/okta-assign-admin-role-to-group-workflow.yml
+  name: Okta Assign Admin Role to Group
+- type: Arazzo
+  url: arazzo/okta-assign-admin-role-to-user-workflow.yml
+  name: Okta Assign Admin Role to User
+- type: Arazzo
+  url: arazzo/okta-assign-group-to-application-workflow.yml
+  name: Okta Assign Group to Application
+- type: Arazzo
+  url: arazzo/okta-create-and-activate-application-workflow.yml
+  name: Okta Create and Activate Application
+- type: Arazzo
+  url: arazzo/okta-create-and-activate-authenticator-workflow.yml
+  name: Okta Create and Activate Authenticator
+- type: Arazzo
+  url: arazzo/okta-create-and-activate-group-rule-workflow.yml
+  name: Okta Create and Activate Group Rule
+- type: Arazzo
+  url: arazzo/okta-create-and-refresh-session-workflow.yml
+  name: Okta Create and Refresh Session
+- type: Arazzo
+  url: arazzo/okta-create-app-assign-user-and-activate-workflow.yml
+  name: Okta Create Application, Assign User, and Activate
+- type: Arazzo
+  url: arazzo/okta-create-group-and-add-members-workflow.yml
+  name: Okta Create Group and Add Members
+- type: Arazzo
+  url: arazzo/okta-create-policy-with-rule-workflow.yml
+  name: Okta Create Policy with Rule and Activate
+- type: Arazzo
+  url: arazzo/okta-create-user-with-group-membership-workflow.yml
+  name: Okta Create User with Group Membership
+- type: Arazzo
+  url: arazzo/okta-deactivate-and-delete-user-workflow.yml
+  name: Okta Deactivate and Delete User
+- type: Arazzo
+  url: arazzo/okta-enroll-and-activate-factor-workflow.yml
+  name: Okta Enroll and Activate User Factor
+- type: Arazzo
+  url: arazzo/okta-find-user-and-assign-app-workflow.yml
+  name: Okta Find User and Assign Application
+- type: Arazzo
+  url: arazzo/okta-find-user-and-suspend-workflow.yml
+  name: Okta Find User and Suspend
+- type: Arazzo
+  url: arazzo/okta-offboard-user-clear-sessions-workflow.yml
+  name: Okta Offboard User and Clear Sessions
+- type: Arazzo
+  url: arazzo/okta-onboard-user-to-group-and-app-workflow.yml
+  name: Okta Onboard User to Group and Application
+- type: Arazzo
+  url: arazzo/okta-provision-admin-user-workflow.yml
+  name: Okta Provision Admin User
+- type: Arazzo
+  url: arazzo/okta-reactivate-suspended-user-workflow.yml
+  name: Okta Restore Suspended User
+- type: Arazzo
+  url: arazzo/okta-reset-and-reenroll-factor-workflow.yml
+  name: Okta Reset and Re-enroll User Factor
+- type: Arazzo
+  url: arazzo/okta-update-group-rule-expression-workflow.yml
+  name: Okta Update Group Rule Expression
+- type: LinkedIn
+  url: https://www.linkedin.com/company/okta-inc-
+- type: Website
+  url: https://www.okta.com/
+- type: Portal
+  url: https://developer.okta.com/
+- type: Documentation
+  url: https://developer.okta.com/docs/reference/
+- type: Authentication
+  url: https://developer.okta.com/docs/reference/api/authn/
+- type: GitHubOrganization
+  url: https://github.com/okta
+- type: StatusPage
+  url: https://status.okta.com/
+- type: Support
+  url: https://support.okta.com/
+- type: Concepts
+  url: https://developer.okta.com/docs/concepts/
+- type: Guides
+  url: https://developer.okta.com/docs/guides/
+- type: SDKs
+  url: https://developer.okta.com/code/
+- type: ChangeLog
+  url: https://developer.okta.com/docs/release-notes/
+- type: Login
+  url: https://developer.okta.com/login/
+- type: Signup
+  url: https://developer.okta.com/signup/
+- type: Blog
+  url: https://developer.okta.com/blog/
+- type: Plans
+  url: https://www.okta.com/pricing/
+- type: Forums
+  url: https://devforum.okta.com/
+- type: TermsOfService
+  url: https://developer.okta.com/terms/
+- type: PrivacyPolicy
+  url: https://www.okta.com/privacy-policy/
+- type: Features
+  data:
+  - 'Workforce Identity Starter at $6/user/mo: SSO + MFA + Universal Directory + 5 Workflows ($1,500/yr
+    minimum)'
+  - 'Core Essentials at $14/user/mo: Adaptive MFA, Privileged Access, Lifecycle Mgmt, Access Governance'
+  - 'Essentials at $17/user/mo: All Core Essentials + 50 Workflows'
+  - 'Professional: Device Access, ISPM, Identity Threat Protection, Sandbox, Unlimited Workflows (custom
+    pricing)'
+  - 'Enterprise: API Access Management, Access Gateway, M2M Tokens (custom pricing)'
+  - 'Customer Identity (Auth0) Enterprise Base: $3K/mo base + B2C / B2B suites'
+  - Default rate limits 600 req/min on most endpoints
+  - OAuth /token at 1,000 req/min
+  - System Log endpoint capped at 120 req/min
+  - 'Protocols: OIDC, SAML, WS-Fed, SCIM'
+  - Universal Directory with custom attributes
+  - Workflows for no-code automation (5 / 50 / unlimited by SKU)
+  - Adaptive MFA with risk-based policies
+  - Identity Threat Protection (Professional+)
+  - Identity Security Posture Management (Professional+)
+  - API Access Management (Enterprise) — OAuth as a Service
+  - 'Okta for AI Agents: agent discovery, registration, ownership, least-privilege, revocation'
+  - 'Cross-App Access (XAA): OAuth ID-JAG draft for agent-to-app authorization'
+  - 'Okta MCP Server: Python, LLM-facing admin CRUD with confirmation gates'
+  sources:
+  - https://www.okta.com/pricing/
+  - https://www.okta.com/
+  - https://xaa.dev/
+  - https://github.com/okta/okta-mcp-server
+  updated: '2026-05-22'
+- type: Integrations
+  url: https://www.okta.com/integrations/
+- type: OpenIntegrationNetwork
+  url: https://www.okta.com/integrations/
+- name: Okta MCP Server
+  url: https://github.com/okta/okta-mcp-server
+  type: MCPServer
+- name: Okta CLI
+  url: https://github.com/okta/okta-cli
+  type: CLI
+- name: Okta CLI Client (Go)
+  url: https://github.com/okta/okta-cli-client
+  type: CLI
+- name: Terraform Provider for Okta
+  url: https://github.com/okta/terraform-provider-okta
+  type: Terraform
+- name: Terraform Provider for Okta PAM
+  url: https://github.com/okta/terraform-provider-oktapam
+  type: Terraform
+- name: Okta Management OpenAPI Spec
+  url: https://github.com/okta/okta-management-openapi-spec
+  type: OpenAPISource
+- name: Java SDK
+  url: https://github.com/okta/okta-sdk-java
+  type: SDKs
+- name: .NET SDK
+  url: https://github.com/okta/okta-sdk-dotnet
+  type: SDKs
+- name: Go SDK
+  url: https://github.com/okta/okta-sdk-golang
+  type: SDKs
+- name: Python SDK
+  url: https://github.com/okta/okta-sdk-python
+  type: SDKs
+- name: Node.js SDK
+  url: https://github.com/okta/okta-sdk-nodejs
+  type: SDKs
+- name: JavaScript Auth SDK
+  url: https://github.com/okta/okta-auth-js
+  type: SDKs
+- name: React SDK
+  url: https://github.com/okta/okta-react
+  type: SDKs
+- name: Angular SDK
+  url: https://github.com/okta/okta-angular
+  type: SDKs
+- name: Vue SDK
+  url: https://github.com/okta/okta-vue
+  type: SDKs
+- name: React Native SDK
+  url: https://github.com/okta/okta-react-native
+  type: SDKs
+- name: Swift Mobile SDK
+  url: https://github.com/okta/okta-mobile-swift
+  type: SDKs
+- name: Kotlin Mobile SDK
+  url: https://github.com/okta/okta-mobile-kotlin
+  type: SDKs
+- name: Spring Boot Starter
+  url: https://github.com/okta/okta-spring-boot
+  type: SDKs
+- name: Okta Sign-In Widget
+  url: https://github.com/okta/okta-signin-widget
+  type: SDKs
+- name: OIDC Middleware (Node)
+  url: https://github.com/okta/okta-oidc-middleware
+  type: SDKs
+- name: JWT Verifier (Java)
+  url: https://github.com/okta/okta-jwt-verifier-java
+  type: SDKs
+- name: JWT Verifier (Python)
+  url: https://github.com/okta/okta-jwt-verifier-python
+  type: SDKs
+- name: Odyssey Design System
+  url: https://github.com/okta/odyssey
+  type: DesignSystem
+- name: Workflows Templates
+  url: https://github.com/okta/workflows-templates
+  type: Examples
+- name: Customer Detections
+  url: https://github.com/okta/customer-detections
+  type: Examples
+- name: Cross-App Access Sandbox
+  url: https://xaa.dev/
+  type: Sandbox
+- type: CapabilityMap
+  url: capabilities/okta-capability-edges.yml
+  name: Okta Business Capability Map
 apis:
 - aid: okta:okta-cross-app-access
   name: Cross-App Access (XAA)
-  description: >-
-    Cross-App Access is Okta's emerging OAuth profile for secure agent-to-app and app-to-app authorization,
-    based on the IETF draft "OAuth Identity Assertion Authorization Grant" (ID-JAG, draft-ietf-oauth-identity-assertion-authz-grant).
+  description: Cross-App Access is Okta's emerging OAuth profile for secure agent-to-app and app-to-app
+    authorization, based on the IETF draft "OAuth Identity Assertion Authorization Grant" (ID-JAG, draft-ietf-oauth-identity-assertion-authz-grant).
     It lets an Identity Provider mint an identity assertion that downstream resource applications can
     exchange for a scoped access token, eliminating long-lived unmanaged credentials between AI agents
     and SaaS apps. Okta operates xaa.dev as a public sandbox for testing requesting and resource application
@@ -394,18 +384,15 @@ apis:
   - type: Sandbox
     url: https://xaa.dev/
   - type: Blog
-    url: >-
-      https://developer.okta.com/blog/2026/01/20/introducing-xaadev-a-playground-for-cross-app-access
+    url: https://developer.okta.com/blog/2026/01/20/introducing-xaadev-a-playground-for-cross-app-access
   - type: Blog
-    url: >-
-      https://developer.okta.com/blog/2026/02/10/make-secure-app-to-app-connections-using-cross-app-access
+    url: https://developer.okta.com/blog/2026/02/10/make-secure-app-to-app-connections-using-cross-app-access
 - aid: okta:okta-for-ai-agents
   name: Okta for AI Agents
-  description: >-
-    Okta for AI Agents secures the full lifecycle of AI agents — discovery, registration with mandatory
-    human ownership, least-privilege scope enforcement, runtime monitoring, and instant revocation — within
-    the Okta identity control plane. It complements Cross-App Access (XAA) which secures the agent-to-app
-    connection itself. Distributed as an add-on across Workforce Identity SKUs.
+  description: Okta for AI Agents secures the full lifecycle of AI agents — discovery, registration with
+    mandatory human ownership, least-privilege scope enforcement, runtime monitoring, and instant revocation
+    — within the Okta identity control plane. It complements Cross-App Access (XAA) which secures the
+    agent-to-app connection itself. Distributed as an add-on across Workforce Identity SKUs.
   humanURL: https://www.okta.com/
   image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
   tags:
@@ -1338,10 +1325,9 @@ apis:
     url: finops/okta-finops.yml
 - aid: okta:okta-appauthenticator-api
   name: Okta App Authenticator API
-  description: >-
-    The MyAccount App Authenticators API provides operations to enroll, update, and delete an app authenticator.
-    The API also allows users to view and verify pending notification challenges. The API only supports
-    custom authenticators. See the [Custom authenticator integration guide](https://developer.okta.com/docs/guides/authenticators-custom-authenticator/android/main/).
+  description: 'The MyAccount App Authenticators API provides operations to enroll, update, and delete
+    an app authenticator. The API also allows users to view and verify pending notification challenges.
+    The API only supports custom authenticators. See the [Custom authenticator integration guide](https://developer.okta.com/docs/guides/authenticators-custom-authenticator/android/main/).
 
 
     ### API versioning
@@ -1352,7 +1338,7 @@ apis:
 
     Accept: application/json; okta-version=1.0.0
 
-    ```
+    ```'
   humanURL: https://xaa.dev/
   baseURL: https://xaa.dev
   tags:
@@ -1390,9 +1376,9 @@ apis:
     url: finops/okta-finops.yml
 - aid: okta:okta-authenticators-api
   name: Okta Authenticators API
-  description: >-
-    <div class="x-lifecycle-container"><x-lifecycle class="lea"></x-lifecycle> <x-lifecycle class="oie"></x-lifecycle></div>The
-    MyAccount Authenticators API provides operations to list all available authenticators and enrollments.
+  description: '<div class="x-lifecycle-container"><x-lifecycle class="lea"></x-lifecycle> <x-lifecycle
+    class="oie"></x-lifecycle></div>The MyAccount Authenticators API provides operations to list all available
+    authenticators and enrollments.
 
 
     ### API versioning
@@ -1403,7 +1389,7 @@ apis:
 
     Accept: application/json; okta-version=1.0.0
 
-    ```
+    ```'
   humanURL: https://xaa.dev/
   baseURL: https://xaa.dev
   tags:
@@ -1441,9 +1427,8 @@ apis:
     url: finops/okta-finops.yml
 - aid: okta:okta-email-api
   name: Okta Email API
-  description: >-
-    The MyAccount Email API provides operations to enroll, update, and delete emails. The API also provides
-    utilities to create, view, and answer verification challenges.
+  description: 'The MyAccount Email API provides operations to enroll, update, and delete emails. The
+    API also provides utilities to create, view, and answer verification challenges.
 
 
     ### API versioning
@@ -1454,7 +1439,7 @@ apis:
 
     Accept: application/json; okta-version=1.0.0
 
-    ```
+    ```'
   humanURL: https://xaa.dev/
   baseURL: https://xaa.dev
   tags:
@@ -1492,10 +1477,10 @@ apis:
     url: finops/okta-finops.yml
 - aid: okta:okta-oktaapplications-api
   name: Okta Okta Applications API
-  description: >-
-    <div class="x-lifecycle-container"><x-lifecycle class="lea"></x-lifecycle> <x-lifecycle class="oie"></x-lifecycle></div>The
-    MyAccount Profile API provides operations to view the Okta apps list. Okta creates and maintains Okta
-    apps, or first-party apps, for example, the Admin Console and End-User Dashboard.
+  description: '<div class="x-lifecycle-container"><x-lifecycle class="lea"></x-lifecycle> <x-lifecycle
+    class="oie"></x-lifecycle></div>The MyAccount Profile API provides operations to view the Okta apps
+    list. Okta creates and maintains Okta apps, or first-party apps, for example, the Admin Console and
+    End-User Dashboard.
 
 
     ### API versioning
@@ -1506,7 +1491,7 @@ apis:
 
     Accept: application/json; okta-version=1.0.0
 
-    ```
+    ```'
   humanURL: https://xaa.dev/
   baseURL: https://xaa.dev
   tags:
@@ -1544,9 +1529,8 @@ apis:
     url: finops/okta-finops.yml
 - aid: okta:okta-organization-api
   name: Okta Organization API
-  description: >-
-    <div class="x-lifecycle-container"><x-lifecycle class="lea"></x-lifecycle> <x-lifecycle class="oie"></x-lifecycle></div>The
-    MyAccount Profile API provides operations to view org details.
+  description: '<div class="x-lifecycle-container"><x-lifecycle class="lea"></x-lifecycle> <x-lifecycle
+    class="oie"></x-lifecycle></div>The MyAccount Profile API provides operations to view org details.
 
 
     ### API versioning
@@ -1557,7 +1541,7 @@ apis:
 
     Accept: application/json; okta-version=1.0.0
 
-    ```
+    ```'
   humanURL: https://xaa.dev/
   baseURL: https://xaa.dev
   tags:
@@ -1595,8 +1579,7 @@ apis:
     url: finops/okta-finops.yml
 - aid: okta:okta-password-api
   name: Okta Password API
-  description: >-
-    The MyAccount Password API provides operations to enroll, update, and delete passwords.
+  description: 'The MyAccount Password API provides operations to enroll, update, and delete passwords.
 
 
     > **Note:** Super admins can enable the IDP MyAccount API password feature. See [Enable self-service
@@ -1611,7 +1594,7 @@ apis:
 
     Accept: application/json; okta-version=1.0.0
 
-    ```
+    ```'
   humanURL: https://xaa.dev/
   baseURL: https://xaa.dev
   tags:
@@ -1649,9 +1632,8 @@ apis:
     url: finops/okta-finops.yml
 - aid: okta:okta-phone-api
   name: Okta Phone API
-  description: >-
-    The MyAccount Phone API provides operations to enroll, update, and delete phone numbers. The API also
-    provides utilities to create, view, and answer verification challenges.
+  description: 'The MyAccount Phone API provides operations to enroll, update, and delete phone numbers.
+    The API also provides utilities to create, view, and answer verification challenges.
 
 
     ### API versioning
@@ -1662,7 +1644,7 @@ apis:
 
     Accept: application/json; okta-version=1.0.0
 
-    ```
+    ```'
   humanURL: https://xaa.dev/
   baseURL: https://xaa.dev
   tags:
@@ -1700,9 +1682,8 @@ apis:
     url: finops/okta-finops.yml
 - aid: okta:okta-profile-api
   name: Okta Profile API
-  description: >-
-    The MyAccount Profile API provides operations to enroll and update profile fields. The API also allows
-    viewing of all allowed profile fields.
+  description: 'The MyAccount Profile API provides operations to enroll and update profile fields. The
+    API also allows viewing of all allowed profile fields.
 
 
     ### API versioning
@@ -1713,7 +1694,7 @@ apis:
 
     Accept: application/json; okta-version=1.0.0
 
-    ```
+    ```'
   humanURL: https://xaa.dev/
   baseURL: https://xaa.dev
   tags:
@@ -1751,8 +1732,7 @@ apis:
     url: finops/okta-finops.yml
 - aid: okta:okta-sessions-api
   name: Okta Sessions API
-  description: >-
-    The MyAccount Sessions API provides operations to manage sessions.
+  description: 'The MyAccount Sessions API provides operations to manage sessions.
 
 
     See [sessions](/openapi/okta-management/management/tag/Session/) for more information.
@@ -1766,7 +1746,7 @@ apis:
 
     Accept: application/json; okta-version=1.0.0
 
-    ```
+    ```'
   humanURL: https://xaa.dev/
   baseURL: https://xaa.dev
   tags:
