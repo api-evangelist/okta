@@ -106,6 +106,22 @@ paths:
       x-codegen-request-body-name: profileMapping
 components:
   schemas:
+    ProfileMappingProperty:
+      type: object
+      properties:
+        expression:
+          type: string
+        pushStatus:
+          $ref: '#/components/schemas/ProfileMappingPropertyPushStatus'
+      x-okta-tags:
+      - ProfileMapping
+    ProfileMappingPropertyPushStatus:
+      type: object
+      enum:
+      - PUSH
+      - DONT_PUSH
+      x-okta-tags:
+      - ProfileMapping
     ProfileMappingSource:
       type: object
       properties:
@@ -124,13 +140,6 @@ components:
         type:
           type: string
           readOnly: true
-      x-okta-tags:
-      - ProfileMapping
-    ProfileMappingPropertyPushStatus:
-      type: object
-      enum:
-      - PUSH
-      - DONT_PUSH
       x-okta-tags:
       - ProfileMapping
     ProfileMapping:
@@ -165,15 +174,6 @@ components:
         - dest: mappingId
           src: id
         operationId: updateProfileMapping
-      x-okta-tags:
-      - ProfileMapping
-    ProfileMappingProperty:
-      type: object
-      properties:
-        expression:
-          type: string
-        pushStatus:
-          $ref: '#/components/schemas/ProfileMappingPropertyPushStatus'
       x-okta-tags:
       - ProfileMapping
   securitySchemes:

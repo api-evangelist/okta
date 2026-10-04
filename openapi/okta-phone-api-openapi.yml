@@ -1,0 +1,858 @@
+openapi: 3.2.0
+info:
+  title: MyAccount Management Phone API
+  version: 2025.01.1
+  description: 'APIs for managing a user''s own emails, phones, profile, and app authenticators.
+
+    > **Note:** The MyAccount API doesn''t support delegated authentication.'
+  termsOfService: https://developer.okta.com/terms/
+  contact:
+    name: Okta Developer Team
+    url: https://developer.okta.com/
+    email: devex-public@okta.com
+  license:
+    name: Apache-2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0.html
+  x-logo:
+    url: logo.svg
+    backgroundColor: transparent
+    altText: Okta Developer
+servers:
+- url: https://{yourOktaDomain}
+  variables:
+    yourOktaDomain:
+      default: subdomain.okta.com
+      description: The domain of your organization. This can be an official Okta domain (for example, `okta.com` or `oktapreview.com`) or one of your configured custom domains.
+tags:
+- name: Phone
+  description: 'The MyAccount Phone API provides operations to enroll, update, and delete phone numbers. The API also provides utilities to create, view, and answer verification challenges.
+
+
+    ### API versioning
+
+    A valid API version in the `Accept` header is required to access the API. Current version: `1.0.0`
+
+    ```json
+
+    Accept: application/json; okta-version=1.0.0
+
+    ```'
+paths:
+  /idp/myaccount/phones:
+    get:
+      summary: List all Phones
+      description: Lists the current user's phone information for all phones. Includes a collection of links for each phone describing the acceptable operations.
+      operationId: listPhones
+      responses:
+        '200':
+          $ref: '#/components/responses/Phone-Array-Response'
+        '401':
+          $ref: '#/components/responses/Error-IdpMyAccountNotEnabled-Response-401'
+      security:
+      - oauth2:
+        - okta.myAccount.phone.read
+      tags:
+      - Phone
+      x-okta-lifecycle:
+        lifecycle: GA
+        isGenerallyAvailable: true
+    post:
+      summary: Create a Phone
+      description: Creates an `UNVERIFIED` status phone for either the SMS or CALL method to the user's MyAccount setting
+      operationId: createPhone
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                profile:
+                  type: object
+                  description: Defines the phone number on the profile
+                  properties:
+                    phoneNumber:
+                      type: string
+                      description: The newly added phone number
+                      example: 555-555-5555
+                sendCode:
+                  type: boolean
+                  default: true
+                  description: Whether to send a challenge to the newly added phone
+                method:
+                  type: string
+                  enum:
+                  - SMS
+                  - CALL
+                  example: SMS
+                  writeOnly: true
+                  description: The method of the challenge sent to the newly added phone. Applicable when sendCode is true.
+              required:
+              - profile
+            examples:
+              Okta-Sends-Challenge:
+                value:
+                  profile:
+                    phoneNumber: +1(444)444-4444
+                  sendCode: true
+                  method: SMS
+      responses:
+        '201':
+          $ref: '#/components/responses/Unverified-Phone-Response'
+        '400':
+          $ref: '#/components/responses/Error-Create-Phone-Response-400'
+        '401':
+          $ref: '#/components/responses/Error-IdpMyAccountNotEnabled-Response-401'
+        '403':
+          $ref: '#/components/responses/Error-CreateChallengeVerify-Phone-Response-403'
+        '409':
+          $ref: '#/components/responses/Error-PhoneNumberExists-Response-409'
+        '500':
+          $ref: '#/components/responses/Error-FailedToSendOutOfBandChallenge-Response-500'
+      security:
+      - oauth2:
+        - okta.myAccount.phone.manage
+      tags:
+      - Phone
+      x-okta-lifecycle:
+        lifecycle: GA
+        isGenerallyAvailable: true
+  /idp/myaccount/phones/{id}:
+    parameters:
+    - schema:
+        type: string
+        example: sms10ltpSdwXJCem80g4
+      description: The ID of the phone. Obtain the ID of the phone through `GET /idp/myaccount/phones` or `POST /idp/myaccount/phones` when adding a new phone.
+      name: id
+      in: path
+      required: true
+    get:
+      summary: Retrieve a Phone
+      description: Retrieves the current user's phone information by ID. Along with a collection of links describing the operations that can be performed to the phone.
+      operationId: getPhone
+      responses:
+        '200':
+          $ref: '#/components/responses/Verified-Phone-Response'
+        '401':
+          $ref: '#/components/responses/Error-IdpMyAccountNotEnabled-Response-401'
+        '404':
+          $ref: '#/components/responses/Error-InvalidFactorId-Response-404'
+      security:
+      - oauth2:
+        - okta.myAccount.phone.read
+      tags:
+      - Phone
+      x-okta-lifecycle:
+        lifecycle: GA
+        isGenerallyAvailable: true
+    delete:
+      summary: Delete a Phone
+      description: Deletes the current user's phone information by ID
+      operationId: deletePhone
+      responses:
+        '204':
+          description: No Content
+          content:
+            application/json;okta-version=1.0.0: {}
+        '401':
+          $ref: '#/components/responses/Error-IdpMyAccountNotEnabled-Response-401'
+        '403':
+          $ref: '#/components/responses/Error-Delete-Phone-Response-403'
+        '404':
+          $ref: '#/components/responses/Error-InvalidFactorId-Response-404'
+      security:
+      - oauth2:
+        - okta.myAccount.phone.manage
+      tags:
+      - Phone
+      x-okta-lifecycle:
+        lifecycle: GA
+        isGenerallyAvailable: true
+  /idp/myaccount/phones/{id}/challenge:
+    parameters:
+    - schema:
+        type: string
+        example: sms18vtfKgzqDhNqP0g4
+        description: ID of the phone. Obtain the ID of the phone through `GET /idp/myaccount/phones` or `POST /idp/myaccount/phones` when adding a new phone.
+      name: id
+      in: path
+      required: true
+    post:
+      summary: Send a Phone Challenge
+      description: 'Sends a phone challenge using one of two methods: `SMS` or `CALL`. This request can also handle a resend challenge (retry).
+
+
+        Upon a successful challenge, the user receives a verification code by `SMS` or `CALL`. Send a `POST` request to the `/idp/myaccount/phones/{id}/verify` endpoint to use the verification code to verify the phone number. The verification code expires in five minutes.
+
+
+        > **Notes:**
+
+        > * Sending requests to the `/idp/myaccount/phones/{id}/challenge` endpoint more often than once every 30 seconds, or at a rate that exceeds the rate limit rule configured by the admin, returns a 429 (Too Many Requests) error.'
+      operationId: sendPhoneChallenge
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                method:
+                  type: string
+                  example: SMS
+                  description: The method with which the challenge should be sent
+                  enum:
+                  - SMS
+                  - CALL
+                  writeOnly: true
+                retry:
+                  type: boolean
+                  description: Indicates whether this is a normal challenge or retry
+                  default: false
+              required:
+              - method
+            examples:
+              Send-SMS-Challenge:
+                value:
+                  method: SMS
+              Send-Voice-Challenge:
+                value:
+                  method: CALL
+      responses:
+        '200':
+          $ref: '#/components/responses/Challenged-Phone-Response'
+        '400':
+          $ref: '#/components/responses/Error-Challenge-Phone-Response-400'
+        '401':
+          $ref: '#/components/responses/Error-IdpMyAccountNotEnabled-Response-401'
+        '403':
+          $ref: '#/components/responses/Error-CreateChallengeVerify-Phone-Response-403'
+        '404':
+          $ref: '#/components/responses/Error-InvalidFactorId-Response-404'
+        '500':
+          $ref: '#/components/responses/Error-FailedToSendOutOfBandChallenge-Response-500'
+      security:
+      - oauth2:
+        - okta.myAccount.phone.manage
+      tags:
+      - Phone
+      x-okta-lifecycle:
+        lifecycle: GA
+        isGenerallyAvailable: true
+  /idp/myaccount/phones/{id}/verify:
+    parameters:
+    - schema:
+        type: string
+        example: sms18vtfKgzqDhNqP0g4
+        description: The phone ID. Obtain the ID of the phone through `GET /idp/myaccount/phones` or `POST /idp/myaccount/phones` when adding a new phone.
+      name: id
+      in: path
+      required: true
+    post:
+      summary: Verify a Phone Challenge
+      description: 'Verifies the phone number with the verification code that the user receives through `SMS` or `CALL`. The phone number is active upon a successful verification.
+
+
+        > **Notes:**
+
+        > * Sending requests to the `/idp/myaccount/phones/{id}/verify` endpoint at a rate that exceeds the rate limit rule configured by the admin returns a 429 (Too Many Requests) error.'
+      operationId: verifyPhoneChallenge
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                verificationCode:
+                  type: string
+                  example: '492592'
+                  format: password
+                  description: A six-digit verification code that the user receives through SMS or CALL
+                  writeOnly: true
+              required:
+              - verificationCode
+            examples:
+              Verify-SMS-Challenge:
+                value:
+                  verificationCode: 048284
+      responses:
+        '204':
+          description: No Content
+          content:
+            application/json;okta-version=1.0.0: {}
+        '400':
+          $ref: '#/components/responses/Error-Verify-Phone-Response-400'
+        '401':
+          $ref: '#/components/responses/Error-VerifyPhoneEmail-Response-401'
+        '403':
+          $ref: '#/components/responses/Error-CreateChallengeVerify-Phone-Response-403'
+        '404':
+          $ref: '#/components/responses/Error-InvalidFactorId-Response-404'
+        '409':
+          $ref: '#/components/responses/Error-InvalidTransaction-Response-409'
+      security:
+      - oauth2:
+        - okta.myAccount.phone.manage
+      tags:
+      - Phone
+      x-okta-lifecycle:
+        lifecycle: GA
+        isGenerallyAvailable: true
+components:
+  responses:
+    Error-InvalidFactorId-Response-404:
+      description: Not Found
+      content:
+        application/json;okta-version=1.0.0:
+          schema:
+            $ref: '#/components/schemas/Error'
+          examples:
+            Invalid-Phone-Factor-Id-404:
+              value:
+                errorCode: E0000008
+                errorSummary: The requested path was not found
+                errorLink: E0000008
+                errorId: oaejUwz8U5FQ_SyggQwz1kC3w
+                errorCauses:
+                - errorSummary: This operation couldn't be completed as requested due to an issue with the specified authenticator.
+    Error-IdpMyAccountNotEnabled-Response-401:
+      description: Unauthorized
+      content:
+        application/json;okta-version=1.0.0:
+          schema:
+            $ref: '#/components/schemas/Error'
+          examples:
+            IDP-MyAccount-not-enabled-401:
+              value:
+                errorCode: E0000015
+                errorSummary: You do not have permission to access the feature you are requesting
+                errorLink: E0000015
+                errorId: oaeStOuPPxDRUm3PJhf-tL7bQ
+                errorCauses: []
+    Challenged-Phone-Response:
+      description: Example response after challenging a phone
+      content:
+        application/json;okta-version=1.0.0:
+          schema:
+            type: object
+            properties:
+              _links:
+                type: object
+                description: Discoverable resources related to the phone challenge
+                properties:
+                  verify:
+                    type: object
+                    description: Link to the resource (verify)
+                    required:
+                    - href
+                    - hints
+                    properties:
+                      href:
+                        type: string
+                        description: Link URI
+                        minLength: 1
+                      hints:
+                        type: object
+                        description: Describes the allowed HTTP verbs for the `href`
+                        required:
+                        - allow
+                        properties:
+                          allow:
+                            type: array
+                            items:
+                              type: string
+                              enum:
+                              - GET
+          examples:
+            Success-Response:
+              value:
+                _links:
+                  verify:
+                    href: https://example.okta.com/idp/myaccount/emails/e2a84ed3cc538f75457596faa74a4532/challenge/myaccount.2wdtXPtmS0WpKq4bnjlYIw/verify
+                    hints:
+                      allow:
+                      - POST
+    Error-Create-Phone-Response-400:
+      description: Bad Request
+      content:
+        application/json;okta-version=1.0.0:
+          schema:
+            $ref: '#/components/schemas/Error'
+          examples:
+            Invalid-Method:
+              value:
+                errorCode: E0000001
+                errorSummary: 'Api validation failed: Method'
+                errorLink: E0000001
+                errorId: oaejUwz8U5FQ_SyggQwz1kC3w
+                errorCauses:
+                - errorSummary: Invalid method some_invalid_method in the request.
+            Not-A-Number:
+              value:
+                errorCode: E0000001
+                errorSummary: 'Api validation failed: Error type: NOT_A_NUMBER. The string supplied did not seem to be a phone number.'
+                errorLink: E0000001
+                errorId: oaejUwz8U5FQ_SyggQwz1kC3w
+                errorCauses:
+                - errorSummary: Invalid phone number.
+            Invalid-Country-Code:
+              value:
+                errorCode: E0000001
+                errorSummary: 'Api validation failed: Error type: INVALID_COUNTRY_CODE. Could not interpret numbers after plus-sign.'
+                errorLink: E0000001
+                errorId: oaejUwz8U5FQ_SyggQwz1kC3w
+                errorCauses:
+                - errorSummary: Invalid phone number.
+            Too-Long:
+              value:
+                errorCode: E0000001
+                errorSummary: 'Api validation failed: Error type: TOO_LONG. The string supplied is too long to be a phone number.'
+                errorLink: E0000001
+                errorId: oaejUwz8U5FQ_SyggQwz1kC3w
+                errorCauses:
+                - errorSummary: Invalid phone number.
+            Invalid-Transaction-Data-Type:
+              value:
+                errorCode: E0000001
+                errorSummary: 'Api validation failed: Transaction'
+                errorLink: E0000001
+                errorId: oaejUwz8U5FQ_SyggQwz1kC3w
+                errorCauses:
+                - errorSummary: Invalid transaction.
+            Cardinality-Max-Reached:
+              value:
+                errorCode: E0000001
+                errorSummary: 'Api validation failed: Exceeded cardinality max'
+                errorLink: E0000001
+                errorId: oaejUwz8U5FQ_SyggQwz1kC3w
+                errorCauses:
+                - errorSummary: This user account has reached the maximum number of enrolled phone numbers.
+    Error-PhoneNumberExists-Response-409:
+      description: Conflict
+      content:
+        application/json;okta-version=1.0.0:
+          schema:
+            $ref: '#/components/schemas/Error'
+          examples:
+            Phone-Number-Exists-409:
+              value:
+                errorCode: E0000157
+                errorSummary: 'Another authenticator with key: +14161111111 is already active.'
+                errorLink: E0000157
+                errorId: oaejUwz8U5FQ_SyggQwz1kC3w
+                errorCauses:
+                - errorSummary: This phone number is already assigned to the current user account.
+    Error-InvalidTransaction-Response-409:
+      description: Conflict
+      content:
+        application/json;okta-version=1.0.0:
+          schema:
+            $ref: '#/components/schemas/Error'
+          examples:
+            Invalid-Transaction-409:
+              value:
+                errorCode: E0000157
+                errorSummary: 'Another authenticator with key: transactionHandle is already active.'
+                errorLink: E0000157
+                errorId: oaejUwz8U5FQ_SyggQwz1kC3w
+                errorCauses:
+                - errorSummary: Failed to find a transaction. Either the challenge was answered or the factor id is invalid.
+    Error-VerifyPhoneEmail-Response-401:
+      description: Unauthorized
+      content:
+        application/json;okta-version=1.0.0:
+          schema:
+            $ref: '#/components/schemas/Error'
+          examples:
+            IDP-MyAccount-not-enabled-401:
+              value:
+                errorCode: E0000015
+                errorSummary: You do not have permission to access the feature you are requesting
+                errorLink: E0000015
+                errorId: oaeStOuPPxDRUm3PJhf-tL7bQ
+                errorCauses: []
+            Unauthorized-User-401:
+              value:
+                errorCode: E0000004
+                errorSummary: Authentication failed
+                errorLink: E0000004
+                errorId: oaejUwz8U5FQ_SyggQwz1kC3w
+                errorCauses:
+                - errorSummary: User is not authorized.
+            User-Failed-To-Answer-Challenge-401:
+              value:
+                errorCode: E0000004
+                errorSummary: Authentication failed
+                errorLink: E0000004
+                errorId: oaejUwz8U5FQ_SyggQwz1kC3w
+                errorCauses:
+                - errorSummary: The verification challenge failed due to an invalid code.
+    Error-Challenge-Phone-Response-400:
+      description: Bad Request
+      content:
+        application/json;okta-version=1.0.0:
+          schema:
+            $ref: '#/components/schemas/Error'
+          examples:
+            Invalid-Method:
+              value:
+                errorCode: E0000001
+                errorSummary: 'Api validation failed: Method'
+                errorLink: E0000001
+                errorId: oaejUwz8U5FQ_SyggQwz1kC3w
+                errorCauses:
+                - errorSummary: Invalid method some_invalid_method in the request.
+            Invalid-Transaction-Data-Type:
+              value:
+                errorCode: E0000001
+                errorSummary: 'Api validation failed: Transaction'
+                errorLink: E0000001
+                errorId: oaejUwz8U5FQ_SyggQwz1kC3w
+                errorCauses:
+                - errorSummary: Invalid transaction.
+    Error-CreateChallengeVerify-Phone-Response-403:
+      description: Forbidden
+      content:
+        application/json;okta-version=1.0.0:
+          schema:
+            $ref: '#/components/schemas/Error'
+          examples:
+            Phone-Authenticator-Disabled:
+              value:
+                errorCode: E0000038
+                errorSummary: This operation is not allowed in the user's current status.
+                errorLink: E0000038
+                errorId: oaejUwz8U5FQ_SyggQwz1kC3w
+                errorCauses:
+                - errorSummary: Phone authenticator is not enabled for your org.
+            Invalid-Authentication-Method-Type:
+              value:
+                errorCode: E0000038
+                errorSummary: This operation is not allowed in the user's current status.
+                errorLink: E0000038
+                errorId: oaejUwz8U5FQ_SyggQwz1kC3w
+                errorCauses:
+                - errorSummary: Method some_invalid_method is not enabled for your org.
+    Unverified-Phone-Response:
+      description: Example response
+      content:
+        application/json;okta-version=1.0.0:
+          schema:
+            $ref: '#/components/schemas/Phone'
+          examples:
+            Success-Response:
+              value:
+                id: sms18vtfKgzqDhNqP0g4
+                status: UNVERIFIED
+                profile:
+                  phoneNumber: +1(444)444-4444
+                _links:
+                  self:
+                    href: https://example.okta.com/idp/myaccount/phones/sms18vtfKgzqDhNqP0g4
+                    hints:
+                      allow:
+                      - GET
+                      - DELETE
+                  challenge:
+                    href: https://example.okta.com/idp/myaccount/phones/sms18vtfKgzqDhNqP0g4/challenge
+                    hints:
+                      allow:
+                      - POST
+                  verify:
+                    href: https://example.okta.com/idp/myaccount/phones/sms18vtfKgzqDhNqP0g4/verify
+                    hints:
+                      allow:
+                      - POST
+    Error-Delete-Phone-Response-403:
+      description: Forbidden
+      content:
+        application/json;okta-version=1.0.0:
+          schema:
+            $ref: '#/components/schemas/Error'
+          examples:
+            Phone-Authenticator-Disabled:
+              value:
+                errorCode: E0000038
+                errorSummary: This operation is not allowed in the user's current status.
+                errorLink: E0000038
+                errorId: oaejUwz8U5FQ_SyggQwz1kC3w
+                errorCauses:
+                - errorSummary: Phone authenticator is not enabled for your org.
+    Phone-Array-Response:
+      description: Example response
+      content:
+        application/json;okta-version=1.0.0:
+          schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/Phone'
+          examples:
+            Success-Response:
+              value:
+              - id: sms10ltpSdwXJCem80g4
+                status: VERIFIED
+                profile:
+                  phoneNumber: '+13333333333'
+                _links:
+                  self:
+                    href: https://example.okta.com/idp/myaccount/phones/sms10ltpSdwXJCem80g4
+                    hints:
+                      allow:
+                      - GET
+                      - DELETE
+                  challenge:
+                    href: https://example.okta.com/idp/myaccount/phones/sms10ltpSdwXJCem80g4/challenge
+                    hints:
+                      allow:
+                      - POST
+              - id: sms18vrvVDDmi4Qlz0g4
+                status: UNVERIFIED
+                profile:
+                  phoneNumber: '+12222222222'
+                _links:
+                  self:
+                    href: https://example.okta.com/idp/myaccount/phones/sms18vrvVDDmi4Qlz0g4
+                    hints:
+                      allow:
+                      - GET
+                      - DELETE
+                  challenge:
+                    href: https://example.okta.com/idp/myaccount/phones/sms18vrvVDDmi4Qlz0g4/challenge
+                    hints:
+                      allow:
+                      - POST
+                  verify:
+                    href: https://example.okta.com/idp/myaccount/phones/sms18vrvVDDmi4Qlz0g4/verify
+                    hints:
+                      allow:
+                      - POST
+    Error-FailedToSendOutOfBandChallenge-Response-500:
+      description: Internal Server Error
+      content:
+        application/json;okta-version=1.0.0:
+          schema:
+            $ref: '#/components/schemas/Error'
+          examples:
+            Failed-To-Send-Out-Of-Band-Challenge-500:
+              value:
+                errorCode: E0000138
+                errorSummary: There was an internal error with call provider(s).
+                errorLink: E0000138
+                errorId: oaejUwz8U5FQ_SyggQwz1kC3w
+                errorCauses:
+                - errorSummary: Failed to send the out of band OTP challenge. Set "retry" to "true" in the API request body and resubmit the API call to the endpoint.
+    Error-Verify-Phone-Response-400:
+      description: Bad Request
+      content:
+        application/json;okta-version=1.0.0:
+          schema:
+            $ref: '#/components/schemas/Error'
+          examples:
+            Invalid-Method:
+              value:
+                errorCode: E0000001
+                errorSummary: 'Api validation failed: Method'
+                errorLink: E0000001
+                errorId: oaejUwz8U5FQ_SyggQwz1kC3w
+                errorCauses:
+                - errorSummary: Invalid method some_invalid_method in the request.
+            Invalid-Transaction-Data-Type:
+              value:
+                errorCode: E0000001
+                errorSummary: 'Api validation failed: Transaction'
+                errorLink: E0000001
+                errorId: oaejUwz8U5FQ_SyggQwz1kC3w
+                errorCauses:
+                - errorSummary: Invalid transaction.
+            Invalid-Phone-Factor-Id:
+              value:
+                errorCode: E0000001
+                errorSummary: 'Api validation failed: factorId and/or verificationCode'
+                errorLink: E0000001
+                errorId: oaejUwz8U5FQ_SyggQwz1kC3w
+                errorCauses:
+                - errorSummary: This operation couldn't be completed as requested due to an issue with the specified authenticator.
+    Verified-Phone-Response:
+      description: Example response
+      content:
+        application/json;okta-version=1.0.0:
+          schema:
+            $ref: '#/components/schemas/Phone'
+          examples:
+            Success-Response:
+              value:
+                id: sms10ltpSdwXJCem80g4
+                status: VERIFIED
+                profile:
+                  phoneNumber: +1(333)333-3333
+                _links:
+                  self:
+                    href: https://example.okta.com/idp/myaccount/phones/sms10ltpSdwXJCem80g4
+                    hints:
+                      allow:
+                      - GET
+                      - DELETE
+                  challenge:
+                    href: https://example.okta.com/idp/myaccount/phones/sms10ltpSdwXJCem80g4/challenge
+                    hints:
+                      allow:
+                      - POST
+  schemas:
+    Error:
+      description: Standard API error object
+      type: object
+      properties:
+        errorCauses:
+          type: array
+          description: (Optional) Further information about what caused this error
+          items:
+            type: object
+            properties:
+              errorSummary:
+                type: string
+                description: A natural language explanation of the error
+                example: Bad request because XYZ is missing.
+                readOnly: true
+        errorCode:
+          type: string
+          description: A code that is associated with this error type
+          example: E0000001
+          readOnly: true
+        errorId:
+          type: string
+          description: A unique identifier for this error. This can be used by Okta Support to help with troubleshooting.
+          example: oaeWGQKoQHeQmy0u8w8bPwi_Q
+          readOnly: true
+        errorLink:
+          type: string
+          description: A link to documentation with a more detailed explanation of the error (not yet implemented and is currently the same value as the 'errorCode')
+          example: E0000001
+          readOnly: true
+        errorSummary:
+          type: string
+          description: A natural language explanation of the error
+          example: Bad request because XYZ is missing.
+          readOnly: true
+    Phone:
+      description: Phone object
+      type: object
+      properties:
+        id:
+          type: string
+          description: The phone ID of the caller
+          minLength: 1
+          readOnly: true
+        profile:
+          type: object
+          description: Defines the phone number on the profile
+          required:
+          - phoneNumber
+          properties:
+            phoneNumber:
+              type: string
+              description: The phone number on the profile
+              minLength: 1
+        status:
+          type: string
+          description: The phone status of the caller
+          enum:
+          - VERIFIED
+          - UNVERIFIED
+          minLength: 1
+          readOnly: true
+        _links:
+          type: object
+          description: Discoverable resources related to the caller's phone
+          properties:
+            self:
+              type: object
+              description: Link to the resource (self)
+              properties:
+                href:
+                  type: string
+                  description: Link URI
+                  minLength: 1
+                hints:
+                  type: object
+                  description: Describes the allowed HTTP verbs for the `href`
+                  properties:
+                    allow:
+                      type: array
+                      items:
+                        type: string
+                        enum:
+                        - GET
+                        - DELETE
+                        - PUT
+            challenge:
+              type: object
+              description: Link to the resource (challenge)
+              properties:
+                href:
+                  type: string
+                  description: Link URI
+                  minLength: 1
+                hints:
+                  type: object
+                  description: Describes the allowed HTTP verbs for the `href`
+                  properties:
+                    allow:
+                      type: array
+                      items:
+                        type: string
+                        enum:
+                        - DELETE
+                        - GET
+                        - POST
+                        - PUT
+            verify:
+              type: object
+              description: Link to the resource (verify)
+              properties:
+                href:
+                  type: string
+                  description: Link URI
+                  minLength: 1
+                hints:
+                  type: object
+                  description: Describes the allowed HTTP verbs for the `href`
+                  properties:
+                    allow:
+                      type: array
+                      items:
+                        type: string
+                        enum:
+                        - DELETE
+                        - GET
+                        - POST
+                        - PUT
+      required:
+      - id
+      - status
+      - profile
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      description: 'Pass the access_token as the value of the Authorization header: `Authorization: Bearer {access_token}`'
+      flows:
+        authorizationCode:
+          authorizationUrl: /oauth2/v1/authorize
+          tokenUrl: /oauth2/v1/token
+          scopes:
+            okta.myAccount.appAuthenticator.maintenance.manage: Write access to non-sensitive attributes of user app authenticator enrollments
+            okta.myAccount.appAuthenticator.maintenance.read: Read access to non-sensitive attributes of user app authenticator enrollments
+            okta.myAccount.appAuthenticator.manage: Write access to user app authenticator enrollments
+            okta.myAccount.appAuthenticator.read: Read access to user app authenticator enrollments
+            okta.myAccount.authenticators.manage: Write access to user authenticator enrollments
+            okta.myAccount.authenticators.read: Read access to user authenticator configurations and enrollments
+            okta.myAccount.email.manage: Write access to user emails
+            okta.myAccount.email.read: Read access to user emails
+            okta.myAccount.oktaApplications.read: Read access to the Okta apps list
+            okta.myAccount.organization.read: Read access to org details
+            okta.myAccount.password.manage: Write access to user password
+            okta.myAccount.password.read: Read access to user password metadata
+            okta.myAccount.phone.manage: Write access to user phones
+            okta.myAccount.phone.read: Read access to user phones
+            okta.myAccount.profile.manage: Write access to user profile and schema
+            okta.myAccount.profile.read: Read access to user profile and schema
+            okta.myAccount.sessions.manage: Write access to user sessions
+externalDocs:
+  description: Find more info here
+  url: https://developer.okta.com

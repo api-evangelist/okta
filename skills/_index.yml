@@ -1,0 +1,30 @@
+generated: '2026-10-03'
+method: generated
+generator: extract-docs-artifacts.py skills (local)
+source: openapi/okta-user-api-openapi.yml
+skills:
+- file: skills/okta-create-and-retrieve-user.md
+  name: okta-create-and-retrieve-user
+  api: openapi/okta-user-api-openapi.yml
+  operations:
+  - createUser
+  - getUser
+- file: skills/okta-create-group-and-assign-role.md
+  name: okta-create-group-and-assign-role
+  api: openapi/okta-group-api-openapi.yml
+  operations:
+  - createGroup
+  - assignRoleToGroup
+  - addApplicationTargetToAdminRoleGivenToGroup
+- file: skills/okta-create-and-retrieve-application.md
+  name: okta-create-and-retrieve-application
+  api: openapi/okta-application-api-openapi.yml
+  operations:
+  - createApplication
+  - getApplication
+- file: skills/okta-create-and-activate-authorization-server.md
+  name: okta-create-and-activate-authorization-server
+  api: openapi/okta-authorizationserver-api-openapi.yml
+  operations:
+  - createAuthorizationServer
+  - activateAuthorizationServer

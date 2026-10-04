@@ -1,0 +1,319 @@
+generated: '2026-10-03'
+method: derived
+source: the pre-flight dossier, apis.yml pointers, spec servers, well-known, vendors -- nothing fetched here
+generator: derive-hosts.py
+summary:
+  hosts: 25
+  own: 19
+  other_domain: 3
+  platform: 3
+  roles:
+  - api
+  - docs
+  - identity
+  - other
+  - partner
+  - sandbox
+  - security
+  - source
+  - status
+  - support
+  - website
+hosts:
+- host: api.okta.com
+  found_by:
+  - contract-discovery
+  types: []
+  serves: []
+  registrable_domain: okta.com
+  role: api
+  relation: own
+- host: api.xaa.dev
+  found_by:
+  - contract-discovery
+  types: []
+  serves: []
+  registrable_domain: xaa.dev
+  role: api
+  relation: other-domain
+- host: apis.okta.com
+  found_by:
+  - probed
+  - site-links
+  - namespace-probe
+  types: []
+  serves: []
+  status: 200
+  registrable_domain: okta.com
+  role: api
+  relation: own
+- host: bugcrowd.com
+  found_by:
+  - pointer
+  types:
+  - Security
+  serves: []
+  registrable_domain: bugcrowd.com
+  role: security
+  relation: other-domain
+- host: developer.okta.com
+  found_by:
+  - pointer
+  - apis[]
+  - probed
+  - site-links
+  - namespace-probe
+  - docs-index
+  - well-known
+  - vendor-detect
+  types:
+  - Portal
+  - Documentation
+  - Authentication
+  - Concepts
+  - Guides
+  - SDKs
+  - ChangeLog
+  - Login
+  - Signup
+  - Blog
+  - TermsOfService
+  serves:
+  - docs
+  - cdn
+  title: Home | Okta Developer
+  status: 200
+  vendor: cloudfront
+  registrable_domain: okta.com
+  role: docs
+  relation: own
+- host: devforum.okta.com
+  found_by:
+  - pointer
+  - probed
+  - site-links
+  - well-known
+  types:
+  - Forums
+  serves: []
+  registrable_domain: okta.com
+  role: other
+  relation: own
+- host: github.com
+  found_by:
+  - pointer
+  types:
+  - GitHubOrganization
+  - MCPServer
+  - CLI
+  - Terraform
+  - OpenAPISource
+  - SDKs
+  - DesignSystem
+  - Examples
+  serves: []
+  registrable_domain: github.com
+  role: source
+  relation: platform
+- host: help.okta.com
+  found_by:
+  - probed
+  - site-links
+  - docs-index
+  types: []
+  serves:
+  - docs
+  registrable_domain: okta.com
+  role: support
+  relation: own
+- host: investor.okta.com
+  found_by:
+  - probed
+  - site-links
+  types: []
+  serves: []
+  registrable_domain: okta.com
+  role: other
+  relation: own
+- host: login.okta.com
+  found_by:
+  - probed
+  - site-links
+  types: []
+  serves: []
+  registrable_domain: okta.com
+  role: identity
+  relation: own
+- host: mcp.okta.com
+  found_by:
+  - probed
+  - contract-discovery
+  - well-known
+  types: []
+  serves: []
+  registrable_domain: okta.com
+  role: other
+  relation: own
+- host: okta.com
+  found_by:
+  - probed
+  - site-links
+  types: []
+  serves: []
+  registrable_domain: okta.com
+  role: other
+  relation: own
+- host: pages.okta.com
+  found_by:
+  - probed
+  - site-links
+  types: []
+  serves: []
+  registrable_domain: okta.com
+  role: other
+  relation: own
+- host: partner.okta.com
+  found_by:
+  - probed
+  - site-links
+  - namespace-probe
+  types: []
+  serves: []
+  title: Partner Community - Sign In
+  status: 200
+  registrable_domain: okta.com
+  role: partner
+  relation: own
+- host: rewards.okta.com
+  found_by:
+  - probed
+  - site-links
+  types: []
+  serves: []
+  registrable_domain: okta.com
+  role: other
+  relation: own
+- host: sandbox.okta.com
+  found_by:
+  - probed
+  - site-links
+  - namespace-probe
+  types: []
+  serves: []
+  title: SANDBOX - Sign In
+  status: 200
+  registrable_domain: okta.com
+  role: sandbox
+  relation: own
+- host: security.okta.com
+  found_by:
+  - pointer
+  types:
+  - Compliance
+  serves: []
+  registrable_domain: okta.com
+  role: other
+  relation: own
+- host: status.okta.com
+  found_by:
+  - pointer
+  - probed
+  - site-links
+  - well-known
+  types:
+  - StatusPage
+  serves: []
+  registrable_domain: okta.com
+  role: status
+  relation: own
+- host: support.okta.com
+  found_by:
+  - pointer
+  - probed
+  - site-links
+  - well-known
+  types:
+  - Support
+  serves: []
+  registrable_domain: okta.com
+  role: support
+  relation: own
+- host: trust.okta.com
+  found_by:
+  - probed
+  - site-links
+  types: []
+  serves: []
+  registrable_domain: okta.com
+  role: other
+  relation: own
+- host: www.linkedin.com
+  found_by:
+  - pointer
+  types:
+  - LinkedIn
+  serves: []
+  registrable_domain: linkedin.com
+  role: other
+  relation: platform
+- host: www.okta.com
+  found_by:
+  - pointer
+  - apis[]
+  - probed
+  - docs-index
+  - well-known
+  - vendor-detect
+  types:
+  - Newsroom
+  - Leadership
+  - GettingStarted
+  - Website
+  - Plans
+  - PrivacyPolicy
+  - Integrations
+  - OpenIntegrationNetwork
+  serves:
+  - docs
+  - cdn
+  - identity
+  vendor: cloudflare
+  registrable_domain: okta.com
+  role: website
+  relation: own
+- host: www.postman.com
+  found_by:
+  - pointer
+  types:
+  - PostmanWorkspace
+  serves: []
+  registrable_domain: postman.com
+  role: other
+  relation: platform
+- host: xaa.dev
+  found_by:
+  - pointer
+  - apis[]
+  - probed
+  - contract-discovery
+  - well-known
+  types:
+  - Sandbox
+  serves:
+  - api
+  - docs
+  registrable_domain: xaa.dev
+  role: other
+  relation: other-domain
+- host: your-subdomain.okta.com
+  found_by:
+  - apis[]
+  - probed
+  - contract-discovery
+  - well-known
+  types: []
+  serves:
+  - api
+  registrable_domain: okta.com
+  role: other
+  relation: own

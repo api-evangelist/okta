@@ -193,26 +193,11 @@ components:
       - BETA
       x-okta-tags:
       - Feature
-    FeatureType:
-      type: string
-      enum:
-      - self-service
-      x-okta-tags:
-      - Feature
     FeatureStageState:
       type: string
       enum:
       - OPEN
       - CLOSED
-      x-okta-tags:
-      - Feature
-    FeatureStage:
-      type: object
-      properties:
-        state:
-          $ref: '#/components/schemas/FeatureStageState'
-        value:
-          $ref: '#/components/schemas/FeatureStageValue'
       x-okta-tags:
       - Feature
     EnabledStatus:
@@ -222,6 +207,21 @@ components:
       - DISABLED
       x-okta-tags:
       - Common
+    FeatureStage:
+      type: object
+      properties:
+        state:
+          $ref: '#/components/schemas/FeatureStageState'
+        value:
+          $ref: '#/components/schemas/FeatureStageValue'
+      x-okta-tags:
+      - Feature
+    FeatureType:
+      type: string
+      enum:
+      - self-service
+      x-okta-tags:
+      - Feature
   securitySchemes:
     api_token:
       type: apiKey

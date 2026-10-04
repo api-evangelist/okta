@@ -1,0 +1,75 @@
+generated: '2026-10-03'
+method: derived
+generator: derive-problem-types.py
+source:
+- openapi/okta-application-api-openapi.yml
+- openapi/okta-authenticator-api-openapi.yml
+- openapi/okta-authorizationserver-api-openapi.yml
+- openapi/okta-brand-api-openapi.yml
+- openapi/okta-domain-api-openapi.yml
+- openapi/okta-eventhook-api-openapi.yml
+- openapi/okta-feature-api-openapi.yml
+- openapi/okta-group-api-openapi.yml
+- openapi/okta-groupschema-api-openapi.yml
+- openapi/okta-identity-provider-api-openapi.yml
+- openapi/okta-inlinehook-api-openapi.yml
+- openapi/okta-linkedobject-api-openapi.yml
+format: custom
+envelope:
+  media_type: application/json;okta-version=1.0.0
+  schema: Error
+coverage:
+  operations: 374
+  statuses_declared: 7
+problems:
+- status: 400
+  title: Bad Request
+  description: Bad Request
+  operations: 20
+  media_types:
+  - application/json;okta-version=1.0.0
+  schema: Error
+- status: 401
+  title: Unauthorized
+  description: Unauthorized
+  operations: 27
+  media_types:
+  - application/json;okta-version=1.0.0
+  schema: Error
+- status: 403
+  title: Forbidden
+  description: Forbidden
+  operations: 17
+  media_types:
+  - application/json;okta-version=1.0.0
+  - application/json
+  schema: Error
+- status: 404
+  title: Not Found
+  description: Not Found
+  operations: 43
+  media_types:
+  - application/json;okta-version=1.0.0
+  - application/json
+  schema: Error
+- status: 409
+  title: Conflict
+  description: Conflict
+  operations: 6
+  media_types:
+  - application/json;okta-version=1.0.0
+  schema: Error
+- status: 429
+  title: Too Many Requests
+  description: Too Many Requests
+  operations: 4
+  media_types:
+  - application/json
+  schema: Error
+- status: 500
+  title: Internal Server Error
+  description: Internal Server Error
+  operations: 2
+  media_types:
+  - application/json;okta-version=1.0.0
+  schema: Error

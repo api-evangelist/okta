@@ -122,6 +122,16 @@ components:
       - MFA_REQUIRED
       x-okta-tags:
       - Session
+    SessionIdentityProviderType:
+      type: string
+      enum:
+      - ACTIVE_DIRECTORY
+      - LDAP
+      - OKTA
+      - FEDERATION
+      - SOCIAL
+      x-okta-tags:
+      - Session
     Session:
       type: object
       properties:
@@ -182,16 +192,6 @@ components:
         - dest: sessionId
           src: id
         operationId: refreshSession
-      x-okta-tags:
-      - Session
-    SessionIdentityProviderType:
-      type: string
-      enum:
-      - ACTIVE_DIRECTORY
-      - LDAP
-      - OKTA
-      - FEDERATION
-      - SOCIAL
       x-okta-tags:
       - Session
     CreateSessionRequest:

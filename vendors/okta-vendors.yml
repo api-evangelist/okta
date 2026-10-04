@@ -1,0 +1,74 @@
+generated: '2026-10-03'
+method: probed
+source: pre-flight dossier (docs platform, portal detections) + CNAME chains and response headers of the hosts apis.yml names
+registry: all/0-working/vendors.yml
+areas_vocabulary:
+- documentation
+- developer-portal
+- api-gateway
+- cdn
+- hosting
+- sdk-generation
+- api-collections
+- status-page
+- support
+- community
+- identity
+- mcp-hosting
+vendors:
+- vendor: cloudflare
+  name: Cloudflare
+  area: cdn
+  host: www.okta.com
+  evidence: cname:cloudflare.net
+  signal: cname
+  confidence: high
+  kin_score:
+  - https_enforced
+  - hsts
+- vendor: cloudfront
+  name: Amazon CloudFront
+  area: cdn
+  host: developer.okta.com
+  evidence: cname:cloudfront.net
+  signal: cname
+  confidence: high
+  kin_score: []
+- vendor: fastly
+  name: Fastly
+  area: cdn
+  host: www.okta.com
+  evidence: header:x-served-by:cache-
+  signal: header
+  confidence: high
+  kin_score: []
+- vendor: okta
+  name: Okta
+  area: identity
+  host: api.okta.com
+  evidence: okta-api-oauth-authorization-server.json names okta in its OAuth metadata
+  signal: oauth-metadata
+  confidence: high
+  kin_score:
+  - authentication
+reliance:
+  areas_vendor_served:
+  - cdn
+  - identity
+  vendor_count: 4
+  areas_observed: 12
+  share_of_observable_areas: 0.167
+  note: areas where a third party was DETECTED serving this provider; an area absent here was either self-run or not observed, and this script
+    cannot tell those apart
+checked:
+- 'docs-platform: custom'
+- www.okta.com (GettingStarted)
+- www.okta.com (Website)
+- developer.okta.com (Portal)
+- developer.okta.com (Documentation)
+- status.okta.com (StatusPage)
+- support.okta.com (Support)
+- developer.okta.com (Login)
+- xaa.dev (baseURL)
+- your-subdomain.okta.com (baseURL)
+- mcp.okta.com (mcp)

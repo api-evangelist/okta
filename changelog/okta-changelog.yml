@@ -1,0 +1,34 @@
+generated: '2026-10-03'
+method: searched
+generator: extract-docs-artifacts.py (local)
+source: https://www.okta.com/identity-101/plan-a-successful-migration-strategy/
+sources:
+- https://www.okta.com/identity-101/plan-a-successful-migration-strategy/
+- https://www.okta.com/blog/company-and-culture/launch-week-whats-new-for-okta-emea-in-q2/
+- https://www.okta.com/blog/product-innovation/okta-workflows-flow-versioning/
+- https://help.okta.com/en-us/content/topics/releasenotes/okta-relnotes.htm
+entries:
+- breaking: false
+  highlights:
+  - Production 2026.09.1
+  - September 29, 2026
+  date: '2026-09-29'
+- breaking: false
+  highlights:
+  - Production 2026.09.2
+  - October 5, 2026
+  date: '2026-10-05'
+- breaking: false
+  highlights:
+  - Preview 2026.09.2
+  - September 30, 2026
+  date: '2026-09-30'
+- breaking: false
+  highlights:
+  - Preview 2026.41.0
+  - October 7, 2026
+  date: '2026-10-07'
+current_version: 2026.09.1
+note: Beginning in October, Okta release version notations are changing from year.month to year.week. For example, 2026.10.0 will become 2026.41.0,
+  where 41 indicates the week of the year that the deployment occurs.
+docs: https://www.okta.com/identity-101/plan-a-successful-migration-strategy/

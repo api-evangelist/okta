@@ -196,25 +196,10 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    ScopeType:
+    IframeEmbedScopeAllowedApps:
       type: string
       enum:
-      - CORS
-      - REDIRECT
-      - IFRAME_EMBED
-      x-okta-tags:
-      - Role
-    Scope:
-      type: object
-      properties:
-        allowedOktaApps:
-          type: array
-          items:
-            $ref: '#/components/schemas/IframeEmbedScopeAllowedApps'
-        stringValue:
-          type: string
-        type:
-          $ref: '#/components/schemas/ScopeType'
+      - OKTA_ENDUSER
       x-okta-tags:
       - Role
     TrustedOrigin:
@@ -274,10 +259,25 @@ components:
         operationId: deleteOrigin
       x-okta-tags:
       - TrustedOrigin
-    IframeEmbedScopeAllowedApps:
+    ScopeType:
       type: string
       enum:
-      - OKTA_ENDUSER
+      - CORS
+      - REDIRECT
+      - IFRAME_EMBED
+      x-okta-tags:
+      - Role
+    Scope:
+      type: object
+      properties:
+        allowedOktaApps:
+          type: array
+          items:
+            $ref: '#/components/schemas/IframeEmbedScopeAllowedApps'
+        stringValue:
+          type: string
+        type:
+          $ref: '#/components/schemas/ScopeType'
       x-okta-tags:
       - Role
   securitySchemes:

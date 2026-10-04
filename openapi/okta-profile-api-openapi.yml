@@ -1,0 +1,409 @@
+openapi: 3.2.0
+info:
+  title: MyAccount Management Profile API
+  version: 2025.01.1
+  description: 'APIs for managing a user''s own emails, phones, profile, and app authenticators.
+
+    > **Note:** The MyAccount API doesn''t support delegated authentication.'
+  termsOfService: https://developer.okta.com/terms/
+  contact:
+    name: Okta Developer Team
+    url: https://developer.okta.com/
+    email: devex-public@okta.com
+  license:
+    name: Apache-2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0.html
+  x-logo:
+    url: logo.svg
+    backgroundColor: transparent
+    altText: Okta Developer
+servers:
+- url: https://{yourOktaDomain}
+  variables:
+    yourOktaDomain:
+      default: subdomain.okta.com
+      description: The domain of your organization. This can be an official Okta domain (for example, `okta.com` or `oktapreview.com`) or one of your configured custom domains.
+tags:
+- name: Profile
+  description: 'The MyAccount Profile API provides operations to enroll and update profile fields. The API also allows viewing of all allowed profile fields.
+
+
+    ### API versioning
+
+    A valid API version in the `Accept` header is required to access the API. Current version: `1.0.0`
+
+    ```json
+
+    Accept: application/json; okta-version=1.0.0
+
+    ```'
+paths:
+  /idp/myaccount/profile:
+    get:
+      summary: Retrieve my Profile
+      description: Retrieves the caller's Okta user profile, without attributes excluded by the Get my user profile schema
+      operationId: getProfile
+      responses:
+        '200':
+          description: OK
+          $ref: '#/components/responses/Profile-Retrieval-Response'
+        '401':
+          $ref: '#/components/responses/Error-IdpMyAccountNotEnabled-Response-401'
+      security:
+      - oauth2:
+        - okta.myAccount.profile.read
+      tags:
+      - Profile
+      x-okta-lifecycle:
+        lifecycle: GA
+        isGenerallyAvailable: true
+    put:
+      summary: Replace my User Profile
+      description: 'Replaces the caller''s user profile
+
+
+        > **Note:** This API differs from the the existing Users API in that only the PUT operation is supported. Partial updates (PATCH requests) aren''t available. All values returned by fetching a user profile must pass to the MyAccount API, or the update doesn''t pass validation. This applies even if the omitted schema property is optional. To ensure an optional property passes, enter a value of ''null''.'
+      operationId: replaceProfile
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                profile:
+                  type: object
+                  description: The properties defined in the schema
+            examples:
+              Update-Profile:
+                value:
+                  profile:
+                    customBoolean: true
+                    foo: bar
+                    login: example@ex.ample.com
+                    mobilePhone: 555-555-5555
+                    customInteger: 42
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json;okta-version=1.0.0:
+              schema:
+                $ref: '#/components/schemas/Profile'
+              examples:
+                Success-Response:
+                  value:
+                    createdAt: '2020-01-14T20:05:32.000Z'
+                    modifiedAt: '2020-01-14T20:05:32.000Z'
+                    profile:
+                      customBoolean: true
+                      foo: bar
+                      login: example@ex.ample.com
+                      mobilePhone: 555-555-5555
+                      customInteger: 42
+                    _links:
+                      self:
+                        href: https://example.okta.com/idp/myaccount/profile
+                      describedBy:
+                        href: https://example.okta.com/idp/myaccount/profile/schema
+        '400':
+          $ref: '#/components/responses/Error-UpdateProfile-Response-400'
+        '401':
+          $ref: '#/components/responses/Error-IdpMyAccountNotEnabled-Response-401'
+      security:
+      - oauth2:
+        - okta.myAccount.profile.manage
+      tags:
+      - Profile
+      x-okta-lifecycle:
+        lifecycle: GA
+        isGenerallyAvailable: true
+  /idp/myaccount/profile/schema:
+    get:
+      summary: Retrieve my Profile Schema
+      description: 'Retrieves the appropriate user profile schema for the caller''s user type
+
+
+        > **Note:** If a property''s value isn''t visible to an end user (because it''s hidden or sensitive), then the property''s definition is also hidden in the output of the MyAccount API.'
+      operationId: getProfileSchema
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json;okta-version=1.0.0:
+              schema:
+                $ref: '#/components/schemas/Schema'
+              examples:
+                Success-Response:
+                  value:
+                    properties:
+                      customBoolean:
+                        permissions:
+                          SELF: READ_WRITE
+                        title: customBoolean
+                        type: boolean
+                      foo:
+                        permissions:
+                          SELF: READ_ONLY
+                        title: foo
+                        type: string
+                      login:
+                        maxLength: 100
+                        minLength: 5
+                        permissions:
+                          SELF: READ_ONLY
+                        required: true
+                        title: Username
+                        type: string
+                      mobilePhone:
+                        maxLength: 100
+                        permissions:
+                          SELF: READ_WRITE
+                        title: Mobile phone
+                        type: string
+                      customInteger:
+                        permissions:
+                          SELF: READ_WRITE
+                        title: customInteger
+                        type: integer
+                    _links:
+                      self:
+                        href: https://example.okta.com/idp/myaccount/profile/schema
+                      user:
+                        href: https://example.okta.com/idp/myaccount/profile
+        '401':
+          $ref: '#/components/responses/Error-IdpMyAccountNotEnabled-Response-401'
+      security:
+      - oauth2:
+        - okta.myAccount.profile.read
+      tags:
+      - Profile
+      x-okta-lifecycle:
+        lifecycle: GA
+        isGenerallyAvailable: true
+components:
+  responses:
+    Profile-Retrieval-Response:
+      description: Example response
+      content:
+        application/json;okta-version=1.0.0:
+          schema:
+            $ref: '#/components/schemas/Profile'
+          examples:
+            Success-Response:
+              value:
+                createdAt: '2020-01-14T20:05:32.000Z'
+                modifiedAt: '2020-01-14T20:05:32.000Z'
+                profile:
+                  customBoolean: false
+                  foo: bar
+                  login: example@ex.ample.com
+                  mobilePhone: +1(555)555-5555
+                  customInteger: 42
+                _links:
+                  self:
+                    href: https://example.okta.com/idp/myaccount/profile
+                  describedBy:
+                    href: https://example.okta.com/idp/myaccount/profile/schema
+    Error-IdpMyAccountNotEnabled-Response-401:
+      description: Unauthorized
+      content:
+        application/json;okta-version=1.0.0:
+          schema:
+            $ref: '#/components/schemas/Error'
+          examples:
+            IDP-MyAccount-not-enabled-401:
+              value:
+                errorCode: E0000015
+                errorSummary: You do not have permission to access the feature you are requesting
+                errorLink: E0000015
+                errorId: oaeStOuPPxDRUm3PJhf-tL7bQ
+                errorCauses: []
+    Error-UpdateProfile-Response-400:
+      description: Bad Request
+      content:
+        application/json;okta-version=1.0.0:
+          schema:
+            $ref: '#/components/schemas/Error'
+          examples:
+            Invalid-Email-Update-From-Profile:
+              value:
+                errorCode: E0000001
+                errorSummary: 'Api validation failed: forUpdate'
+                errorLink: E0000001
+                errorId: oaejUwz8U5FQ_SyggQwz1kC3w
+                errorCauses:
+                - errorSummary: You cannot update email attributes using the profile endpoint. Use the emails endpoint to make any required changes.
+            Invalid-Value-Type-For-Property:
+              value:
+                errorCode: E0000001
+                errorSummary: 'Api validation failed: forUpdate'
+                errorLink: E0000001
+                errorId: oaejUwz8U5FQ_SyggQwz1kC3w
+                errorCauses:
+                - errorSummary: Invalid value data type for property 'some-property'
+            Missing-Property-Value-For-Self-Update:
+              value:
+                errorCode: E0000001
+                errorSummary: 'Api validation failed: forUpdate'
+                errorLink: E0000001
+                errorId: oaejUwz8U5FQ_SyggQwz1kC3w
+                errorCauses:
+                - errorSummary: Property 'some-property' needs a value passed.  To unset it, explicitly set it to null.
+            Read-Only-Property-Changed-For-Self-Update:
+              value:
+                errorCode: E0000001
+                errorSummary: 'Api validation failed: forUpdate'
+                errorLink: E0000001
+                errorId: oaejUwz8U5FQ_SyggQwz1kC3w
+                errorCauses:
+                - errorSummary: Property 'some-property' is read only.  The value supplied must exactly match the existing value.
+            Corrupt-Profile-Prevents-Self-Update:
+              value:
+                errorCode: E0000001
+                errorSummary: 'Api validation failed: forUpdate'
+                errorLink: E0000001
+                errorId: oaejUwz8U5FQ_SyggQwz1kC3w
+                errorCauses:
+                - errorSummary: Your profile is corrupt in a way that requires administrative intervention.  Please contact support.
+            Concealed-Or-Unknown-Property-For-Self-Update:
+              value:
+                errorCode: E0000001
+                errorSummary: 'Api validation failed: forUpdate'
+                errorLink: E0000001
+                errorId: oaejUwz8U5FQ_SyggQwz1kC3w
+                errorCauses:
+                - errorSummary: Property 'some-property' does not exist or is not accessible.
+  schemas:
+    Error:
+      description: Standard API error object
+      type: object
+      properties:
+        errorCauses:
+          type: array
+          description: (Optional) Further information about what caused this error
+          items:
+            type: object
+            properties:
+              errorSummary:
+                type: string
+                description: A natural language explanation of the error
+                example: Bad request because XYZ is missing.
+                readOnly: true
+        errorCode:
+          type: string
+          description: A code that is associated with this error type
+          example: E0000001
+          readOnly: true
+        errorId:
+          type: string
+          description: A unique identifier for this error. This can be used by Okta Support to help with troubleshooting.
+          example: oaeWGQKoQHeQmy0u8w8bPwi_Q
+          readOnly: true
+        errorLink:
+          type: string
+          description: A link to documentation with a more detailed explanation of the error (not yet implemented and is currently the same value as the 'errorCode')
+          example: E0000001
+          readOnly: true
+        errorSummary:
+          type: string
+          description: A natural language explanation of the error
+          example: Bad request because XYZ is missing.
+          readOnly: true
+    Schema:
+      title: Schema
+      description: Describes a user's directory profile schema (based on UD)
+      type: object
+      properties:
+        properties:
+          type: object
+          description: The properties defined in the [user profile schema](https://developer.okta.com/docs/api/openapi/okta-management/management/tag/Schema/)
+          readOnly: true
+        _links:
+          type: object
+          description: Discoverable resources related to the user's directory profile
+          properties:
+            self:
+              type: object
+              description: Link to the resource (self)
+              properties:
+                href:
+                  type: string
+                  description: Link URI
+                  format: uri
+                  readOnly: true
+            user:
+              type: object
+              description: Link to the resource (user)
+              properties:
+                href:
+                  type: string
+                  description: Link URI
+                  format: uri
+                  readOnly: true
+    Profile:
+      description: Profile object based on the user's directory profile schema (based on UD)
+      type: object
+      properties:
+        createdAt:
+          type: string
+          description: The timestamp of the creation of the caller's account
+          format: date-time
+          readOnly: true
+        modifiedAt:
+          type: string
+          description: The timestamp of the last update to the caller's account
+          format: date-time
+          readOnly: true
+        profile:
+          type: object
+          description: The properties defined in the [user profile schema](https://developer.okta.com/docs/api/openapi/okta-management/management/tag/Schema/)
+        _links:
+          type: object
+          properties:
+            self:
+              type: object
+              description: Link to the resource (self)
+              properties:
+                href:
+                  type: string
+                  description: Link URI
+                  format: uri
+                  readOnly: true
+            describedBy:
+              type: object
+              description: Link to the resource (describedBy)
+              properties:
+                href:
+                  type: string
+                  description: Link URI
+                  format: uri
+                  readOnly: true
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      description: 'Pass the access_token as the value of the Authorization header: `Authorization: Bearer {access_token}`'
+      flows:
+        authorizationCode:
+          authorizationUrl: /oauth2/v1/authorize
+          tokenUrl: /oauth2/v1/token
+          scopes:
+            okta.myAccount.appAuthenticator.maintenance.manage: Write access to non-sensitive attributes of user app authenticator enrollments
+            okta.myAccount.appAuthenticator.maintenance.read: Read access to non-sensitive attributes of user app authenticator enrollments
+            okta.myAccount.appAuthenticator.manage: Write access to user app authenticator enrollments
+            okta.myAccount.appAuthenticator.read: Read access to user app authenticator enrollments
+            okta.myAccount.authenticators.manage: Write access to user authenticator enrollments
+            okta.myAccount.authenticators.read: Read access to user authenticator configurations and enrollments
+            okta.myAccount.email.manage: Write access to user emails
+            okta.myAccount.email.read: Read access to user emails
+            okta.myAccount.oktaApplications.read: Read access to the Okta apps list
+            okta.myAccount.organization.read: Read access to org details
+            okta.myAccount.password.manage: Write access to user password
+            okta.myAccount.password.read: Read access to user password metadata
+            okta.myAccount.phone.manage: Write access to user phones
+            okta.myAccount.phone.read: Read access to user phones
+            okta.myAccount.profile.manage: Write access to user profile and schema
+            okta.myAccount.profile.read: Read access to user profile and schema
+            okta.myAccount.sessions.manage: Write access to user sessions
+externalDocs:
+  description: Find more info here
+  url: https://developer.okta.com

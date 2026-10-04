@@ -1,0 +1,115 @@
+generated: '2026-10-03'
+method: derived
+source: openapi/okta-management.yaml
+schemes:
+- name: oauth2
+  source: openapi/okta-management.yaml
+  flows:
+  - flow: authorizationCode
+    authorizationUrl: /oauth2/v1/authorize
+    tokenUrl: /oauth2/v1/token
+  description: 'Pass the access_token as the value of the Authorization header: `Authorization:
+    Bearer {access_token}`'
+scopes:
+- scope: okta.myAccount.appAuthenticator.maintenance.manage
+  description: Write access to non-sensitive attributes of user app authenticator enrollments
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/okta-management.yaml
+- scope: okta.myAccount.appAuthenticator.maintenance.read
+  description: Read access to non-sensitive attributes of user app authenticator enrollments
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/okta-management.yaml
+- scope: okta.myAccount.appAuthenticator.manage
+  description: Write access to user app authenticator enrollments
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/okta-management.yaml
+- scope: okta.myAccount.appAuthenticator.read
+  description: Read access to user app authenticator enrollments
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/okta-management.yaml
+- scope: okta.myAccount.authenticators.manage
+  description: Write access to user authenticator enrollments
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/okta-management.yaml
+- scope: okta.myAccount.authenticators.read
+  description: Read access to user authenticator configurations and enrollments
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/okta-management.yaml
+- scope: okta.myAccount.email.manage
+  description: Write access to user emails
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/okta-management.yaml
+- scope: okta.myAccount.email.read
+  description: Read access to user emails
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/okta-management.yaml
+- scope: okta.myAccount.oktaApplications.read
+  description: Read access to the Okta apps list
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/okta-management.yaml
+- scope: okta.myAccount.organization.read
+  description: Read access to org details
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/okta-management.yaml
+- scope: okta.myAccount.password.manage
+  description: Write access to user password
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/okta-management.yaml
+- scope: okta.myAccount.password.read
+  description: Read access to user password metadata
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/okta-management.yaml
+- scope: okta.myAccount.phone.manage
+  description: Write access to user phones
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/okta-management.yaml
+- scope: okta.myAccount.phone.read
+  description: Read access to user phones
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/okta-management.yaml
+- scope: okta.myAccount.profile.manage
+  description: Write access to user profile and schema
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/okta-management.yaml
+- scope: okta.myAccount.profile.read
+  description: Read access to user profile and schema
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/okta-management.yaml
+- scope: okta.myAccount.sessions.manage
+  description: Write access to user sessions
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/okta-management.yaml

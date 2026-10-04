@@ -1,0 +1,32 @@
+generated: '2026-10-03'
+method: searched
+generator: extract-docs-artifacts.py (local)
+source: https://www.okta.com/identity-101/zero-trust-framework-a-comprehensive-modern-security-model/
+sources:
+- https://www.okta.com/identity-101/zero-trust-framework-a-comprehensive-modern-security-model/
+- https://www.okta.com/identity-101/gdpr-compliant/
+- https://www.okta.com/identity-101/zero-trust-implementation-remodeling-modern-security/
+- https://www.okta.com/identity-101/what-is-pci/
+standards:
+- id: gdpr
+  conforms: true
+  evidence: GDPR Compliant | Okta
+- id: openapi-3.0
+  conforms: true
+  evidence: the document declares 3.0.3
+- id: openapi-3.2
+  conforms: true
+  evidence: the document declares 3.2.0
+- id: oauth2
+  conforms: true
+  evidence: 'securitySchemes: api_token (apiKey), oauth2 (oauth2)'
+- id: rfc9457
+  conforms: false
+  evidence: no response declares application/problem+json
+- id: idempotency
+  conforms: false
+  evidence: no idempotency key parameter on mutating operations
+- id: pagination
+  conforms: true
+  evidence: list operations take cursor, limit
+docs: https://www.okta.com/identity-101/zero-trust-framework-a-comprehensive-modern-security-model/

@@ -328,37 +328,23 @@ paths:
       x-codegen-request-body-name: body
 components:
   schemas:
-    VerifyFactorRequest:
-      type: object
-      properties:
-        activationToken:
-          type: string
-        answer:
-          type: string
-        attestation:
-          type: string
-        clientData:
-          type: string
-        nextPassCode:
-          type: string
-        passCode:
-          type: string
-        registrationData:
-          type: string
-        stateToken:
-          type: string
-      x-okta-tags:
-      - UserFactor
-    FactorStatus:
+    FactorType:
       type: string
       enum:
-      - PENDING_ACTIVATION
-      - ACTIVE
-      - INACTIVE
-      - NOT_SETUP
-      - ENROLLED
-      - DISABLED
-      - EXPIRED
+      - call
+      - email
+      - hotp
+      - push
+      - question
+      - signed_nonce
+      - sms
+      - token:hardware
+      - token:hotp
+      - token:software:totp
+      - token
+      - u2f
+      - web
+      - webauthn
       x-okta-tags:
       - UserFactor
     UserFactor:
@@ -436,23 +422,33 @@ components:
           web: '#/definitions/WebUserFactor'
           webauthn: '#/definitions/WebAuthnUserFactor'
         propertyName: factorType
-    FactorType:
+    FactorProvider:
       type: string
       enum:
-      - call
-      - email
-      - hotp
-      - push
-      - question
-      - signed_nonce
-      - sms
-      - token:hardware
-      - token:hotp
-      - token:software:totp
-      - token
-      - u2f
-      - web
-      - webauthn
+      - OKTA
+      - RSA
+      - FIDO
+      - GOOGLE
+      - SYMANTEC
+      - DUO
+      - YUBICO
+      - CUSTOM
+      - APPLE
+      x-okta-tags:
+      - UserFactor
+    ActivateFactorRequest:
+      type: object
+      properties:
+        attestation:
+          type: string
+        clientData:
+          type: string
+        passCode:
+          type: string
+        registrationData:
+          type: string
+        stateToken:
+          type: string
       x-okta-tags:
       - UserFactor
     SecurityQuestion:
@@ -464,6 +460,18 @@ components:
           type: string
         questionText:
           type: string
+      x-okta-tags:
+      - UserFactor
+    FactorStatus:
+      type: string
+      enum:
+      - PENDING_ACTIVATION
+      - ACTIVE
+      - INACTIVE
+      - NOT_SETUP
+      - ENROLLED
+      - DISABLED
+      - EXPIRED
       x-okta-tags:
       - UserFactor
     VerifyUserFactorResponse:
@@ -502,12 +510,18 @@ components:
           type: string
       x-okta-tags:
       - UserFactor
-    ActivateFactorRequest:
+    VerifyFactorRequest:
       type: object
       properties:
+        activationToken:
+          type: string
+        answer:
+          type: string
         attestation:
           type: string
         clientData:
+          type: string
+        nextPassCode:
           type: string
         passCode:
           type: string
@@ -515,20 +529,6 @@ components:
           type: string
         stateToken:
           type: string
-      x-okta-tags:
-      - UserFactor
-    FactorProvider:
-      type: string
-      enum:
-      - OKTA
-      - RSA
-      - FIDO
-      - GOOGLE
-      - SYMANTEC
-      - DUO
-      - YUBICO
-      - CUSTOM
-      - APPLE
       x-okta-tags:
       - UserFactor
   securitySchemes:

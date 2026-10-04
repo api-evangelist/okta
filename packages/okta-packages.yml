@@ -1,0 +1,39 @@
+generated: '2026-10-03'
+method: probed
+generator: harvest-packages.py
+source: registry metadata endpoints (registry.npmjs.org, pypi.org, rubygems.org, api.nuget.org, packagist.org, crates.io)
+ownership_rule: 'official: true only when the registry metadata (homepage, repository, author, URLs) names the provider''s domain (agentic-access/okta-agentic-access.yml,
+  arazzo/okta-assign-admin-role-to-group-workflow.yml, arazzo/okta-assign-admin-role-to-user-workflow.yml, arazzo/okta-assign-group-to-application-workflow.yml,
+  arazzo/okta-create-and-activate-application-workflow.yml, arazzo/okta-create-and-activate-authenticator-workflow.yml, arazzo/okta-create-and-activate-group-rule-workflow.yml,
+  arazzo/okta-create-and-refresh-session-workflow.yml, arazzo/okta-create-app-assign-user-and-activate-workflow.yml, arazzo/okta-create-group-and-add-members-workflow.yml,
+  arazzo/okta-create-policy-with-rule-workflow.yml, arazzo/okta-create-user-with-group-membership-workflow.yml, arazzo/okta-deactivate-and-delete-user-workflow.yml,
+  arazzo/okta-enroll-and-activate-factor-workflow.yml, arazzo/okta-find-user-and-assign-app-workflow.yml, arazzo/okta-find-user-and-suspend-workflow.yml,
+  arazzo/okta-offboard-user-clear-sessions-workflow.yml, arazzo/okta-onboard-user-to-group-and-app-workflow.yml, arazzo/okta-provision-admin-user-workflow.yml,
+  arazzo/okta-reactivate-suspended-user-workflow.yml, arazzo/okta-reset-and-reenroll-factor-workflow.yml, arazzo/okta-update-group-rule-expression-workflow.yml,
+  authentication/okta-authentication.yml, linkedin.com, okta.com, postman.com, security/okta-domain-security.yml, security/okta-trust-center.yml,
+  security/okta-vulnerability-disclosure.yml, vendor-facets/okta-vendor-facets.yml, xaa.dev) or its accepted GitHub org.'
+packages:
+- name: okta
+  registry: pypi
+  url: https://pypi.org/project/okta/
+  language: Python
+  official: true
+  version: 3.4.6
+  published: '2026-09-21'
+  evidence: metadata names okta.com
+- name: okta
+  registry: npm
+  url: https://www.npmjs.com/package/okta
+  language: JavaScript
+  official: false
+  version: 1.0.0
+  published: '2016-07-09'
+  evidence: 'name match only: the metadata names neither the provider''s domain nor its GitHub org'
+- name: okta
+  registry: crates
+  url: https://crates.io/crates/okta
+  language: Rust
+  official: false
+  version: 0.7.1
+  published: '2023-09-01'
+  evidence: 'name match only: the metadata names neither the provider''s domain nor its GitHub org'

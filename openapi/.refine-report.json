@@ -1,7 +1,8 @@
 {
   "provider": "okta",
   "sources": [
-    "_original/okta-openapi-original.yml"
+    "_original/okta-openapi-original.yml",
+    "okta-management.yaml"
   ],
   "outputs": [
     "okta-application-api-openapi.yml",
@@ -29,10 +30,20 @@
     "okta-user-api-openapi.yml",
     "okta-userfactor-api-openapi.yml",
     "okta-userschema-api-openapi.yml",
-    "okta-usertype-api-openapi.yml"
+    "okta-usertype-api-openapi.yml",
+    "okta-appauthenticator-api-openapi.yml",
+    "okta-authenticators-api-openapi.yml",
+    "okta-email-api-openapi.yml",
+    "okta-oktaapplications-api-openapi.yml",
+    "okta-organization-api-openapi.yml",
+    "okta-password-api-openapi.yml",
+    "okta-phone-api-openapi.yml",
+    "okta-profile-api-openapi.yml",
+    "okta-sessions-api-openapi.yml"
   ],
   "archived": [
-    "deleted 2 superseded output(s) from the previous generation"
+    "deleted 2 superseded output(s) from the previous generation",
+    "archived openapi/okta-management.yaml"
   ],
   "errors": [
     "okta-openapi-original.yml: dangling $ref: #/definitions/UserCredentials"
@@ -41,8 +52,9 @@
   "notes": [
     "sourced from openapi/_original/ (1 archived document(s)); previously refined output at the top level was skipped rather than re-split",
     "okta-openapi-original.yml: upgraded openapi 3.0.1 -> OpenAPI 3.2.0",
+    "okta-management.yaml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
     "superseded outputs removed: okta-identity-provider-api-openapi.yml, okta-user-type-api-openapi.yml",
-    "apis.yml register: written (+2 apis, 28 total)"
+    "apis.yml register: written (+11 apis, 37 total)"
   ],
   "skipped": [
     "okta-application-api-openapi.yml: previously refined output, superseded by openapi/_original/",

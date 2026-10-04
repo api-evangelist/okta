@@ -161,6 +161,11 @@ paths:
       - api_token: []
 components:
   schemas:
+    SmsTemplateTranslations:
+      type: object
+      x-okta-extensible: true
+      x-okta-tags:
+      - Template
     SmsTemplate:
       type: object
       properties:
@@ -212,11 +217,6 @@ components:
         - dest: smsTemplate
           self: true
         operationId: partialUpdateSmsTemplate
-      x-okta-tags:
-      - Template
-    SmsTemplateTranslations:
-      type: object
-      x-okta-extensible: true
       x-okta-tags:
       - Template
     SmsTemplateType:
