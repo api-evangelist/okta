@@ -1,0 +1,118 @@
+slug: okta
+provider: Okta
+generated_by: planning/capability-mapping/scripts/classify_capabilities.py
+model: claude-opus-5
+frame:
+- Software & Technology
+min_confidence: 0.7
+capability_model:
+  source: https://github.com/vincentmakes/turbo-ea-capabilities
+  license: CC-BY-4.0
+  attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
+    CC BY 4.0
+  notice: NOTICE
+edge_count: 10
+edges:
+- tag: User
+  spec_file: okta-user-api-openapi.yml
+  capability_id: BC-620.20
+  capability_id_l1: BC-620
+  capability_name: Identity & Access Management
+  confidence: 0.95
+  evidence: POST /api/v1/users createUser; DELETE /api/v1/users/{userId} deactivateOrDeleteUser; DELETE
+    /api/v1/users/{userId}/clients/{clientId}/grants revokeGrantsForUserAndClient
+  reason: 'Core workforce identity surface: user creation, update, deactivation, app assignments, OAuth
+    grants and refresh tokens — plainly identity and access management, not HR employee records.'
+- tag: UserFactor
+  spec_file: okta-userfactor-api-openapi.yml
+  capability_id: BC-620.20
+  capability_id_l1: BC-620
+  capability_name: Identity & Access Management
+  confidence: 0.95
+  evidence: POST /api/v1/users/{userId}/factors enrollFactor; POST /api/v1/users/{userId}/factors/{factorId}/verify  Okta
+    Verify MFA Factor
+  reason: Enrollment, activation and verification of MFA authentication factors per user — unambiguously
+    identity and access management (adaptive MFA).
+- tag: Identity Provider
+  spec_file: okta-identity-provider-api-openapi.yml
+  capability_id: BC-620.20
+  capability_id_l1: BC-620
+  capability_name: Identity & Access Management
+  confidence: 0.92
+  evidence: POST /api/v1/idps createIdentityProvider 'Okta Add Identity Provider'; listIdentityProviderKeys;
+    IdentityProviderPolicy, PolicyAccountLinkFilter
+  reason: Registration and credential management of external identity providers is federation — explicitly
+    within Identity & Access Management.
+- tag: Authenticator
+  spec_file: okta-authenticator-api-openapi.yml
+  capability_id: BC-620.20
+  capability_id_l1: BC-620
+  capability_name: Identity & Access Management
+  confidence: 0.88
+  evidence: '''Okta Lists all available Authenticators''; ''Okta Create an Authenticator''; schemas AuthenticatorType,
+    UserVerificationEnum, ChannelBinding, FipsEnum'
+  reason: Lifecycle management of authentication factors (authenticators used for MFA/user verification)
+    is squarely Identity & Access Management for the workforce identity platform.
+- tag: Group
+  spec_file: okta-group-api-openapi.yml
+  capability_id: BC-620.20
+  capability_id_l1: BC-620
+  capability_name: Identity & Access Management
+  confidence: 0.88
+  evidence: GET /api/v1/groups listGroups; POST /api/v1/groups/rules createGroupRule; schemas GroupRuleGroupAssignment,
+    AssignRoleRequest
+  reason: Operations manage directory groups and rule-based group assignment used to grant access — core
+    identity & access management for this workforce identity vendor.
+- tag: Application
+  spec_file: okta-application-api-openapi.yml
+  capability_id: BC-620.20
+  capability_id_l1: BC-620
+  capability_name: Identity & Access Management
+  confidence: 0.85
+  evidence: '''Okta Add Application''; ''Okta Fetches the default Provisioning Connection for an application'';
+    schemas ApplicationSignOnMode, AppUserCredentials, ProvisioningConnection, OAuth2ScopeConsentGrantSource'
+  reason: Operations manage application integrations, their sign-on modes, user provisioning connections
+    and app-user credentials within the Okta directory — the core of federated single sign-on and user
+    access provisioning, i.e. Identity & Access Management.
+- tag: Session
+  spec_file: okta-session-api-openapi.yml
+  capability_id: BC-620.20
+  capability_id_l1: BC-620
+  capability_name: Identity & Access Management
+  confidence: 0.85
+  evidence: POST /api/v1/sessions createSession 'Okta Create Session with Session Token'; endSession 'Okta
+    Close Session'; SessionAuthenticationMethod
+  reason: Creating, refreshing and terminating authenticated user sessions is authentication/session control
+    — Identity & Access Management.
+- tag: AuthorizationServer
+  spec_file: okta-authorizationserver-api-openapi.yml
+  capability_id: BC-620.20
+  capability_id_l1: BC-620
+  capability_name: Identity & Access Management
+  confidence: 0.8
+  evidence: '''Create authorization server''; ''List OAuth2 claims''; ''List refresh tokens for authorization
+    server and client''; schemas OAuth2Scope, AuthorizationServerPolicyRule, DevicePolicyRuleCondition'
+  reason: OAuth2 authorization servers, scopes, claims, token lifecycle and access policy rule conditions
+    are access-control and federation mechanics — Identity & Access Management. A Developer Identity &
+    Credential reading is possible but the policy-rule and claim surface is general-purpose access management,
+    not a developer-ecosystem programme.
+- tag: Policy
+  spec_file: okta-policy-api-openapi.yml
+  capability_id: BC-620.20
+  capability_id_l1: BC-620
+  capability_name: Identity & Access Management
+  confidence: 0.8
+  evidence: POST /api/v1/policies/{policyId}/rules createPolicyRule; schemas PasswordPolicyRuleAction,
+    OktaSignOnPolicyRuleSignonActions, MDMEnrollmentPolicyRuleCondition
+  reason: Policies and rules here are sign-on, password and MFA/device access policies — authentication
+    and access control rules, i.e. IAM, rather than generic corporate policy management.
+- tag: ThreatInsight
+  spec_file: okta-threatinsight-api-openapi.yml
+  capability_id: BC-620.30
+  capability_id_l1: BC-620
+  capability_name: Threat Detection & Response Management
+  confidence: 0.75
+  evidence: GET /api/v1/threats/configuration getCurrentConfiguration; schema ThreatInsightConfiguration
+  reason: Okta ThreatInsight configures detection and blocking of malicious/suspicious authentication
+    traffic, which is threat detection and response tooling configuration. Thin surface (two config operations)
+    so confidence is moderate.

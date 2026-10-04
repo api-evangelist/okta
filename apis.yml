@@ -52,6 +52,8 @@ tags:
 - MCP
 - Platform
 - Identity Federation
+- OpenID Connect
+- Identity and Access Management
 tags_raw:
 - Single Sign-On
 - Okta
@@ -69,6 +71,8 @@ tags_raw:
 - MCP
 - Platform
 - Identity Federation
+- OpenID Connect
+- Identity and Access Management
 url: https://raw.githubusercontent.com/api-evangelist/okta/refs/heads/main/apis.yml
 created: '2023-11-20'
 modified: '2026-05-30'
@@ -1125,6 +1129,9 @@ apis:
   - type: FinOps
     url: finops/okta-finops.yml
 common:
+  - type: CapabilityMap
+    url: capabilities/okta-capability-edges.yml
+    name: Okta Business Capability Map
   - type: VendorFacets
     url: vendor-facets/okta-vendor-facets.yml
   - type: AgenticAccess
