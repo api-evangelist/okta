@@ -1,0 +1,12 @@
+{
+ "url": "https://raw.githubusercontent.com/okta/okta-management-openapi-spec/HEAD/dist/legacy-v1-swagger/spec.json",
+ "requested_url": "https://raw.githubusercontent.com/okta/okta-management-openapi-spec/HEAD/dist/legacy-v1-swagger/spec.json",
+ "status": 200,
+ "content_type": "text/plain; charset=utf-8",
+ "bytes": 633378,
+ "sha256": "7e5249c3057164d1330e2429e149bbdab403ba5d1712e8ae268f49bdc15df5e1",
+ "fetched_at": "2026-10-04",
+ "fetched_by": "APIEvangelist-Harvest/1.0 (+https://apievangelist.com)",
+ "match": "equivalent",
+ "note": "Re-fetched from the provider by verify-openapi-sources.py; the provider's current document describes the same operations (Jaccard 1.0), but the bytes differ, so the archive is an earlier or reformatted copy."
+}
