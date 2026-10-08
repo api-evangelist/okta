@@ -166,3 +166,61 @@ addOns:
     pricing: custom
   - name: Workflows (additional executions)
     pricing: custom
+x-canonical:
+  generated: '2026-10-08'
+  vocabulary: all/0-working/economics/plans-canonical.yml
+  models:
+  - seat
+  - subscription
+  units:
+  - object
+  - seat
+  plans:
+  - name: Starter
+    access: paid
+    model: seat
+    model_how: derived
+    units:
+    - seat
+    periods:
+    - month
+  - name: Core Essentials
+    access: paid
+    model: seat
+    model_how: derived
+    units:
+    - seat
+    periods:
+    - month
+  - name: Essentials
+    access: paid
+    model: seat
+    model_how: derived
+    units:
+    - seat
+    periods:
+    - month
+  - name: Professional
+    access: enterprise
+    model: seat
+    model_how: derived
+    units:
+    - seat
+    periods:
+    - month
+  - name: Enterprise
+    access: enterprise
+    model: seat
+    model_how: derived
+    units:
+    - seat
+    periods:
+    - month
+  - name: Customer Identity Enterprise Base (Auth0)
+    access: enterprise
+    model: subscription
+    model_how: derived
+    units:
+    - object
+    periods:
+    - month
