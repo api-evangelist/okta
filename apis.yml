@@ -78,6 +78,10 @@ maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
 common:
+- type: RateLimits
+  url: rate-limits/okta-rate-limits.yml
+- type: FinOps
+  url: finops/okta-finops.yml
 - type: SecurityTxt
   url: well-known/okta-bugcrowd-security.txt
 - type: Spectral
