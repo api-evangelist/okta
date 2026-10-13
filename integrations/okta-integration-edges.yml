@@ -4,6 +4,7 @@ source:
 - https://zapier.com/apps/okta/integrations
 - https://n8n.io/integrations/okta/
 checked:
+- https://aws.amazon.com/marketplace/
 - https://composio.dev/toolkits/okta
 - https://monid.ai/tools/okta
 - https://n8n.io/integrations/okta/
@@ -164197,6 +164198,24 @@ edges:
   features:
   - API
   - CUSTOM_SOM
+- partner_name: AWS Marketplace
+  partner: amazon-web-services
+  partner_match: aggregator
+  type: marketplace
+  marketplace: aws-marketplace
+  channel: distribution
+  relationship: platform-app
+  direction: provider-built
+  evidence: https://aws.amazon.com/marketplace/seller-profile?id=845ffe82-76a9-43cd-bca0-91a05954fb3e
+  listing_count: 4
+  apps:
+  - Okta Platform
+  - Auth0 Platform
+  - Okta Workforce - Starter
+  - Okta Platform - Starter Workforce Suite + Professional Services
+  seller_name: Okta, Inc
+  detected_by: sweep-cloud-marketplaces.py
+  detected: '2026-10-13'
 templates:
 - title: Send Slack channel messages for new Okta events
   url: https://zapier.com/apps/okta/integrations/slack/1306951/send-slack-channel-messages-for-new-okta-events
