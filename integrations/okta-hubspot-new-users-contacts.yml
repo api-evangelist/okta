@@ -1,0 +1,67 @@
+arazzo: 1.0.1
+info:
+  title: Okta HubSpot new users contacts
+  summary: Create HubSpot contacts for new Okta users
+  description: Create HubSpot contacts for new Okta users. Generated from the marketplace edge linked in x-integration; guessed steps are listed there.
+  version: 1.0.0
+sourceDescriptions:
+- name: oktaUsers
+  url: https://raw.githubusercontent.com/api-evangelist/okta/refs/heads/main/openapi/okta-user-api-openapi.yml
+  type: openapi
+- name: hubspotBasic
+  url: https://raw.githubusercontent.com/api-evangelist/hubspot/refs/heads/main/openapi/hubspot-basic-api-openapi.yml
+  type: openapi
+workflows:
+- workflowId: hubspot-new-users-contacts
+  summary: Create HubSpot contacts for new Okta users
+  description: Create HubSpot contacts for new Okta users.
+  inputs:
+    type: object
+    properties:
+      filter:
+        type: string
+        description: e.g. created gt "2026-10-13T00:00:00.000Z"
+  steps:
+  - stepId: list-okta-users
+    description: List recently created Okta users.
+    operationId: $sourceDescriptions.oktaUsers.listUsers
+    parameters:
+    - name: filter
+      in: query
+      value: $inputs.filter
+    - name: limit
+      in: query
+      value: 1
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      email: $response.body#/0/profile/email
+      firstName: $response.body#/0/profile/firstName
+      lastName: $response.body#/0/profile/lastName
+  - stepId: create-hubspot-contact
+    description: Create the HubSpot contact.
+    operationId: $sourceDescriptions.hubspotBasic.post-/crm/objects/2026-03/contacts_create
+    requestBody:
+      contentType: application/json
+      payload:
+        properties:
+          email: $steps.list-okta-users.outputs.email
+          firstname: $steps.list-okta-users.outputs.firstName
+          lastname: $steps.list-okta-users.outputs.lastName
+    successCriteria:
+    - condition: $statusCode == 201
+    outputs:
+      contactId: $response.body#/id
+  outputs:
+    contactId: $steps.create-hubspot-contact.outputs.contactId
+x-integration:
+  partner: hubspot
+  edge_evidence: https://zapier.com/apps/okta/integrations/hubspot
+  edge_type: marketplace
+  method: generated
+  generated: '2026-10-13'
+  generator: claude-opus-5.5 market-workflows
+  guessed_steps:
+  - step: list-okta-users
+    cause: catalog
+    why: edge evidence names no specific trigger; "new user" is modeled as listUsers with a created filter, which the spec does not define as a new-user feed

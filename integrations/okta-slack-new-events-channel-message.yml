@@ -1,0 +1,80 @@
+arazzo: 1.0.1
+info:
+  title: Okta Slack new events channel message
+  summary: Send Slack channel messages for new Okta System Log events
+  description: Send Slack channel messages for new Okta System Log events. Generated from the marketplace edge linked in x-integration; guessed steps are listed there.
+  version: 1.0.0
+sourceDescriptions:
+- name: oktaLog
+  url: https://raw.githubusercontent.com/api-evangelist/okta/refs/heads/main/openapi/okta-log-api-openapi.yml
+  type: openapi
+- name: slackChat
+  url: https://raw.githubusercontent.com/api-evangelist/slack/refs/heads/main/openapi/slack-chat-api-openapi.yml
+  type: openapi
+workflows:
+- workflowId: slack-new-events-channel-message
+  summary: Send Slack channel messages for new Okta System Log events
+  description: Send Slack channel messages for new Okta System Log events.
+  inputs:
+    type: object
+    properties:
+      since:
+        type: string
+        format: date-time
+      filter:
+        type: string
+        description: Okta System Log filter expression
+      channel:
+        type: string
+      slackToken:
+        type: string
+  steps:
+  - stepId: get-new-events
+    description: Fetch new events from the Okta System Log.
+    operationId: $sourceDescriptions.oktaLog.getLogs
+    parameters:
+    - name: since
+      in: query
+      value: $inputs.since
+    - name: filter
+      in: query
+      value: $inputs.filter
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      eventType: $response.body#/0/eventType
+      displayMessage: $response.body#/0/displayMessage
+      published: $response.body#/0/published
+  - stepId: post-slack-message
+    description: Post the event to a Slack channel.
+    operationId: $sourceDescriptions.slackChat.postChatPostmessage
+    parameters:
+    - name: token
+      in: header
+      value: $inputs.slackToken
+    requestBody:
+      contentType: application/x-www-form-urlencoded
+      payload:
+        channel: $inputs.channel
+        text: $steps.get-new-events.outputs.displayMessage
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      ts: $response.body#/ts
+  outputs:
+    messageTs: $steps.post-slack-message.outputs.ts
+x-integration:
+  partner: slack
+  template: https://zapier.com/apps/okta/integrations/slack/1306951/send-slack-channel-messages-for-new-okta-events
+  edge_evidence: https://zapier.com/apps/okta/integrations/slack/1306951/send-slack-channel-messages-for-new-okta-events
+  edge_type: marketplace
+  method: generated
+  generated: '2026-10-13'
+  generator: claude-opus-5.5 market-workflows
+  guessed_steps:
+  - step: get-new-events
+    cause: provider-contract
+    why: LogEvent fields displayMessage/eventType are assumed from the Okta System Log shape; only the first event is relayed, the spec does not settle "new" beyond the since filter
+  - step: post-slack-message
+    cause: partner-contract
+    why: the 200 response schema does not settle the ts output path

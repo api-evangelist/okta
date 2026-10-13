@@ -15,8 +15,8 @@
   evidence: https://zapier.com/apps/okta/integrations/slack/1306951/send-slack-channel-messages-for-new-okta-events
   template: https://zapier.com/apps/okta/integrations/slack/1306951/send-slack-channel-messages-for-new-okta-events
   source: template
-  status: pending-generation
-  arazzo: null
+  arazzo: okta-slack-new-events-channel-message.yml
+  status: arazzo
 - slug: okta-create-google-sheets-rows-to-generate-okta-users
   label: Create Google Sheets rows to generate Okta users
   partner: google-sheets
@@ -29,8 +29,8 @@
   evidence: https://zapier.com/apps/google-sheets/integrations/okta/50767/create-google-sheets-rows-to-generate-okta-users
   template: https://zapier.com/apps/google-sheets/integrations/okta/50767/create-google-sheets-rows-to-generate-okta-users
   source: template
-  status: pending-generation
-  arazzo: null
+  arazzo: okta-google-sheets-rows-create-users.yml
+  status: arazzo
 - slug: okta-create-okta-users-from-new-google-forms-responses
   label: Create Okta users from new Google Forms responses
   partner: google-forms
@@ -43,8 +43,8 @@
   evidence: https://zapier.com/apps/google-forms/integrations/okta/50769/create-okta-users-from-new-google-forms-responses
   template: https://zapier.com/apps/google-forms/integrations/okta/50769/create-okta-users-from-new-google-forms-responses
   source: template
-  status: pending-generation
-  arazzo: null
+  arazzo: okta-google-forms-responses-create-users.yml
+  status: arazzo
 - slug: okta-create-users-in-okta-with-new-google-sheets-rows-in-team-drive
   label: Create users in Okta with new Google Sheets rows in Team Drive
   partner: google-sheets
@@ -57,6 +57,8 @@
   evidence: https://zapier.com/apps/google-sheets/integrations/okta/60489/create-users-in-okta-with-new-google-sheets-rows-in-team-drive
   template: https://zapier.com/apps/google-sheets/integrations/okta/60489/create-users-in-okta-with-new-google-sheets-rows-in-team-drive
   source: template
+  related_arazzo:
+  - okta-google-sheets-rows-create-users.yml
   status: pending-generation
   arazzo: null
 - slug: okta-hubspot
@@ -69,8 +71,8 @@
   channel: ipaas-usage
   evidence: https://zapier.com/apps/okta/integrations/hubspot
   source: edge
-  status: pending-generation
-  arazzo: null
+  arazzo: okta-hubspot-new-users-contacts.yml
+  status: arazzo
 - slug: okta-jira-service-management
   label: Jira Service Management
   partner_name: Jira Service Management
@@ -92,8 +94,8 @@
   channel: ipaas-usage
   evidence: https://zapier.com/apps/okta/integrations/mailchimp
   source: edge
-  status: pending-generation
-  arazzo: null
+  arazzo: okta-mailchimp-new-users-subscribe.yml
+  status: arazzo
 - slug: okta-jira-software-cloud
   label: Jira Software Cloud
   partner_name: Jira Software Cloud

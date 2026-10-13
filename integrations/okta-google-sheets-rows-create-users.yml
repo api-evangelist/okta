@@ -1,0 +1,79 @@
+arazzo: 1.0.1
+info:
+  title: Okta Google Sheets rows create users
+  summary: Create Okta users from new Google Sheets rows
+  description: Create Okta users from new Google Sheets rows. Generated from the marketplace edge linked in x-integration; guessed steps are listed there.
+  version: 1.0.0
+sourceDescriptions:
+- name: googleSheetsValues
+  url: https://raw.githubusercontent.com/api-evangelist/google-sheets/refs/heads/main/openapi/google-sheets-values-api-openapi.yml
+  type: openapi
+- name: oktaUsers
+  url: https://raw.githubusercontent.com/api-evangelist/okta/refs/heads/main/openapi/okta-user-api-openapi.yml
+  type: openapi
+workflows:
+- workflowId: google-sheets-rows-create-users
+  summary: Create Okta users from new Google Sheets rows
+  description: Create Okta users from new Google Sheets rows.
+  inputs:
+    type: object
+    properties:
+      spreadsheetId:
+        type: string
+      range:
+        type: string
+        description: A1 range of the new row, columns email, firstName, lastName
+      activate:
+        type: boolean
+        default: true
+  steps:
+  - stepId: read-sheet-row
+    description: Read the new row from Google Sheets.
+    operationId: $sourceDescriptions.googleSheetsValues.getValues
+    parameters:
+    - name: spreadsheetId
+      in: path
+      value: $inputs.spreadsheetId
+    - name: range
+      in: path
+      value: $inputs.range
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      email: $response.body#/values/0/0
+      firstName: $response.body#/values/0/1
+      lastName: $response.body#/values/0/2
+  - stepId: create-okta-user
+    description: Create (and activate) the Okta user.
+    operationId: $sourceDescriptions.oktaUsers.createUser
+    parameters:
+    - name: activate
+      in: query
+      value: $inputs.activate
+    requestBody:
+      contentType: application/json
+      payload:
+        profile:
+          email: $steps.read-sheet-row.outputs.email
+          login: $steps.read-sheet-row.outputs.email
+          firstName: $steps.read-sheet-row.outputs.firstName
+          lastName: $steps.read-sheet-row.outputs.lastName
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      userId: $response.body#/id
+      status: $response.body#/status
+  outputs:
+    userId: $steps.create-okta-user.outputs.userId
+x-integration:
+  partner: google-sheets
+  template: https://zapier.com/apps/google-sheets/integrations/okta/50767/create-google-sheets-rows-to-generate-okta-users
+  edge_evidence: https://zapier.com/apps/google-sheets/integrations/okta/50767/create-google-sheets-rows-to-generate-okta-users
+  edge_type: marketplace
+  method: generated
+  generated: '2026-10-13'
+  generator: claude-opus-5.5 market-workflows
+  guessed_steps:
+  - step: read-sheet-row
+    cause: partner-contract
+    why: ValueRange.values is an untyped 2-D array, so the column order email/firstName/lastName is a sheet convention, not settled by the spec

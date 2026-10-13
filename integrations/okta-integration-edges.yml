@@ -164278,3 +164278,13 @@ templates:
   - google-sheets
   - okta
 template_total: 43
+skips:
+- label: Create users in Okta with new Google Sheets rows in Team Drive
+  cause: catalog
+  why: same Google Sheets row -> Okta createUser flow as template 50767, already generated as okta-google-sheets-rows-create-users; skipped to spread across partners
+- label: Datadog
+  cause: catalog
+  why: not generated this pass; partner spread capped at 5 workflows and the Datadog repo is being written by another agent
+- label: Workday
+  cause: catalog
+  why: not generated this pass; partner spread capped at 5 workflows and the Workday repo is being written by another agent

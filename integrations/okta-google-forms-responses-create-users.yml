@@ -1,0 +1,81 @@
+arazzo: 1.0.1
+info:
+  title: Okta Google Forms responses create users
+  summary: Create Okta users from new Google Forms responses
+  description: Create Okta users from new Google Forms responses. Generated from the marketplace edge linked in x-integration; guessed steps are listed there.
+  version: 1.0.0
+sourceDescriptions:
+- name: googleFormsResponses
+  url: https://raw.githubusercontent.com/api-evangelist/google-forms/refs/heads/main/openapi/google-forms-responses-api-openapi.yml
+  type: openapi
+- name: oktaUsers
+  url: https://raw.githubusercontent.com/api-evangelist/okta/refs/heads/main/openapi/okta-user-api-openapi.yml
+  type: openapi
+workflows:
+- workflowId: google-forms-responses-create-users
+  summary: Create Okta users from new Google Forms responses
+  description: Create Okta users from new Google Forms responses.
+  inputs:
+    type: object
+    properties:
+      formId:
+        type: string
+      emailQuestionId:
+        type: string
+      firstNameQuestionId:
+        type: string
+      lastNameQuestionId:
+        type: string
+      activate:
+        type: boolean
+        default: true
+  steps:
+  - stepId: list-responses
+    description: List the newest form responses.
+    operationId: $sourceDescriptions.googleFormsResponses.listFormResponses
+    parameters:
+    - name: formId
+      in: path
+      value: $inputs.formId
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      email: $response.body#/responses/0/respondentEmail
+      answers: $response.body#/responses/0/answers
+  - stepId: create-okta-user
+    description: Create (and activate) the Okta user.
+    operationId: $sourceDescriptions.oktaUsers.createUser
+    parameters:
+    - name: activate
+      in: query
+      value: $inputs.activate
+    requestBody:
+      contentType: application/json
+      payload:
+        profile:
+          email: $steps.list-responses.outputs.email
+          login: $steps.list-responses.outputs.email
+          firstName: $steps.list-responses.outputs.answers
+          lastName: $steps.list-responses.outputs.answers
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      userId: $response.body#/id
+      status: $response.body#/status
+  outputs:
+    userId: $steps.create-okta-user.outputs.userId
+x-integration:
+  partner: google-forms
+  template: https://zapier.com/apps/google-forms/integrations/okta/50769/create-okta-users-from-new-google-forms-responses
+  edge_evidence: https://zapier.com/apps/google-forms/integrations/okta/50769/create-okta-users-from-new-google-forms-responses
+  edge_type: marketplace
+  method: generated
+  generated: '2026-10-13'
+  generator: claude-opus-5.5 market-workflows
+  guessed_steps:
+  - step: list-responses
+    cause: partner-contract
+    why: respondentEmail is only set when the form collects emails, and answers is a map keyed by question id, so first/last name cannot be addressed by a static JSON pointer
+  - step: create-okta-user
+    cause: partner-contract
+    why: firstName/lastName are wired from the whole answers map; a runtime must pick answers[<questionId>].textAnswers.answers[0].value

@@ -1,0 +1,212 @@
+# DERIVED by derive-integration-map.py (roadmap#949): each integration workflow, step by step,
+# resolved to spec file -> tag -> business capability (Turbo EA, CC BY 4.0) and the operation's
+# phrasing intent. Read from our own files; an unmapped link says why.
+slug: okta
+workflows:
+- file: okta-google-forms-responses-create-users.yml
+  title: Okta Google Forms responses create users
+  partner: google-forms
+  template: https://zapier.com/apps/google-forms/integrations/okta/50769/create-okta-users-from-new-google-forms-responses
+  repos:
+  - google-forms
+  - okta
+  steps:
+  - step: list-responses
+    repo: google-forms
+    spec_file: google-forms-responses-api-openapi.yml
+    operationId: listFormResponses
+    tag: Responses
+    capability_id: null
+    capability: null
+    capability_l1: null
+    intent: null
+    effect: null
+    unmapped: no capability edge for this spec file
+  - step: create-okta-user
+    repo: okta
+    spec_file: okta-user-api-openapi.yml
+    operationId: createUser
+    tag: User
+    capability_id: BC-620.20
+    capability: Identity & Access Management
+    capability_l1: BC-620
+    intent: null
+    effect: null
+    unmapped: null
+  connects:
+    google-forms:
+      capabilities: []
+      tags:
+      - Responses
+    okta:
+      capabilities:
+      - BC-620.20
+      tags:
+      - User
+  intents: []
+- file: okta-google-sheets-rows-create-users.yml
+  title: Okta Google Sheets rows create users
+  partner: google-sheets
+  template: https://zapier.com/apps/google-sheets/integrations/okta/50767/create-google-sheets-rows-to-generate-okta-users
+  repos:
+  - google-sheets
+  - okta
+  steps:
+  - step: read-sheet-row
+    repo: google-sheets
+    spec_file: google-sheets-values-api-openapi.yml
+    operationId: getValues
+    tag: Values
+    capability_id: null
+    capability: null
+    capability_l1: null
+    intent: null
+    effect: null
+    unmapped: no capability edge for this spec file
+  - step: create-okta-user
+    repo: okta
+    spec_file: okta-user-api-openapi.yml
+    operationId: createUser
+    tag: User
+    capability_id: BC-620.20
+    capability: Identity & Access Management
+    capability_l1: BC-620
+    intent: null
+    effect: null
+    unmapped: null
+  connects:
+    google-sheets:
+      capabilities: []
+      tags:
+      - Values
+    okta:
+      capabilities:
+      - BC-620.20
+      tags:
+      - User
+  intents: []
+- file: okta-hubspot-new-users-contacts.yml
+  title: Okta HubSpot new users contacts
+  partner: hubspot
+  template: null
+  repos:
+  - okta
+  - hubspot
+  steps:
+  - step: list-okta-users
+    repo: okta
+    spec_file: okta-user-api-openapi.yml
+    operationId: listUsers
+    tag: User
+    capability_id: BC-620.20
+    capability: Identity & Access Management
+    capability_l1: BC-620
+    intent: null
+    effect: null
+    unmapped: null
+  - step: create-hubspot-contact
+    repo: hubspot
+    spec_file: hubspot-basic-api-openapi.yml
+    operationId: post-/crm/objects/2026-03/contacts_create
+    tag: Basic
+    capability_id: null
+    capability: null
+    capability_l1: null
+    intent: Create a contact
+    effect: write
+    unmapped: no capability edge for this spec file
+  connects:
+    okta:
+      capabilities:
+      - BC-620.20
+      tags:
+      - User
+    hubspot:
+      capabilities: []
+      tags:
+      - Basic
+  intents:
+  - Create a contact
+- file: okta-mailchimp-new-users-subscribe.yml
+  title: Okta Mailchimp new users subscribe
+  partner: mailchimp
+  template: null
+  repos:
+  - okta
+  - mailchimp
+  steps:
+  - step: list-okta-users
+    repo: okta
+    spec_file: okta-user-api-openapi.yml
+    operationId: listUsers
+    tag: User
+    capability_id: BC-620.20
+    capability: Identity & Access Management
+    capability_l1: BC-620
+    intent: null
+    effect: null
+    unmapped: null
+  - step: add-list-member
+    repo: mailchimp
+    spec_file: mailchimp-lists-api-openapi.yml
+    operationId: postListsIdMembers
+    tag: Lists
+    capability_id: null
+    capability: null
+    capability_l1: null
+    intent: Add a new subscriber to an audience
+    effect: write
+    unmapped: no capability edge for this spec file
+  connects:
+    okta:
+      capabilities:
+      - BC-620.20
+      tags:
+      - User
+    mailchimp:
+      capabilities: []
+      tags:
+      - Lists
+  intents:
+  - Add a new subscriber to an audience
+- file: okta-slack-new-events-channel-message.yml
+  title: Okta Slack new events channel message
+  partner: slack
+  template: https://zapier.com/apps/okta/integrations/slack/1306951/send-slack-channel-messages-for-new-okta-events
+  repos:
+  - okta
+  - slack
+  steps:
+  - step: get-new-events
+    repo: okta
+    spec_file: okta-log-api-openapi.yml
+    operationId: getLogs
+    tag: Log
+    capability_id: null
+    capability: null
+    capability_l1: null
+    intent: null
+    effect: null
+    unmapped: no capability edge for this spec file
+  - step: post-slack-message
+    repo: slack
+    spec_file: slack-chat-api-openapi.yml
+    operationId: postChatPostmessage
+    tag: Chat
+    capability_id: null
+    capability: null
+    capability_l1: null
+    intent: Send a message to a channel
+    effect: write
+    unmapped: no capability edge for this spec file
+  connects:
+    okta:
+      capabilities: []
+      tags:
+      - Log
+    slack:
+      capabilities: []
+      tags:
+      - Chat
+  intents:
+  - Send a message to a channel

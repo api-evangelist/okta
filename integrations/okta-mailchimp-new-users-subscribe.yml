@@ -1,0 +1,76 @@
+arazzo: 1.0.1
+info:
+  title: Okta Mailchimp new users subscribe
+  summary: Subscribe new Okta users to a Mailchimp audience
+  description: Subscribe new Okta users to a Mailchimp audience. Generated from the marketplace edge linked in x-integration; guessed steps are listed there.
+  version: 1.0.0
+sourceDescriptions:
+- name: oktaUsers
+  url: https://raw.githubusercontent.com/api-evangelist/okta/refs/heads/main/openapi/okta-user-api-openapi.yml
+  type: openapi
+- name: mailchimpLists
+  url: https://raw.githubusercontent.com/api-evangelist/mailchimp/refs/heads/main/openapi/mailchimp-lists-api-openapi.yml
+  type: openapi
+workflows:
+- workflowId: mailchimp-new-users-subscribe
+  summary: Subscribe new Okta users to a Mailchimp audience
+  description: Subscribe new Okta users to a Mailchimp audience.
+  inputs:
+    type: object
+    properties:
+      filter:
+        type: string
+      listId:
+        type: string
+  steps:
+  - stepId: list-okta-users
+    description: List recently created Okta users.
+    operationId: $sourceDescriptions.oktaUsers.listUsers
+    parameters:
+    - name: filter
+      in: query
+      value: $inputs.filter
+    - name: limit
+      in: query
+      value: 1
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      email: $response.body#/0/profile/email
+      firstName: $response.body#/0/profile/firstName
+      lastName: $response.body#/0/profile/lastName
+  - stepId: add-list-member
+    description: Add the user to the Mailchimp audience.
+    operationId: $sourceDescriptions.mailchimpLists.postListsIdMembers
+    parameters:
+    - name: list_id
+      in: path
+      value: $inputs.listId
+    requestBody:
+      contentType: application/json
+      payload:
+        email_address: $steps.list-okta-users.outputs.email
+        status: subscribed
+        merge_fields:
+          FNAME: $steps.list-okta-users.outputs.firstName
+          LNAME: $steps.list-okta-users.outputs.lastName
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      memberId: $response.body#/id
+  outputs:
+    memberId: $steps.add-list-member.outputs.memberId
+x-integration:
+  partner: mailchimp
+  edge_evidence: https://zapier.com/apps/okta/integrations/mailchimp
+  edge_type: marketplace
+  method: generated
+  generated: '2026-10-13'
+  generator: claude-opus-5.5 market-workflows
+  guessed_steps:
+  - step: list-okta-users
+    cause: catalog
+    why: edge evidence names no specific trigger; "new user" is modeled as listUsers with a created filter
+  - step: add-list-member
+    cause: partner-contract
+    why: FNAME/LNAME merge tags are audience defaults, not settled by the spec
