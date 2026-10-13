@@ -373,6 +373,18 @@
   source: edge
   status: pending-partner-spec
   arazzo: null
+- slug: okta-aws-marketplace
+  label: AWS Marketplace
+  partner: amazon-web-services
+  partner_name: AWS Marketplace
+  type: marketplace
+  marketplace: aws-marketplace
+  channel: distribution
+  evidence: https://aws.amazon.com/marketplace/seller-profile?id=845ffe82-76a9-43cd-bca0-91a05954fb3e
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
 - slug: okta-openid-foundation-certification
   label: OpenID Foundation certification
   partner_name: OpenID Foundation certification
@@ -59729,6 +59741,7 @@
   arazzo: null
 - slug: okta-observe
   label: Observe
+  partner: observeinc
   partner_name: Observe
   category: Automation
   type: marketplace
@@ -94164,18 +94177,6 @@
   marketplace: own
   channel: partner-built
   evidence: https://www.okta.com/integrations/сaleroapiservice/
-  source: edge
-  relationship: platform-app
-  status: not-a-workflow
-  arazzo: null
-- slug: okta-aws-marketplace
-  label: AWS Marketplace
-  partner: amazon-web-services
-  partner_name: AWS Marketplace
-  type: marketplace
-  marketplace: aws-marketplace
-  channel: distribution
-  evidence: https://aws.amazon.com/marketplace/seller-profile?id=845ffe82-76a9-43cd-bca0-91a05954fb3e
   source: edge
   relationship: platform-app
   status: not-a-workflow

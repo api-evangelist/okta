@@ -683,6 +683,24 @@ edges:
   direction: third-party
   category: Team Collaboration
   partner_url: https://www.atlassian.com/
+- partner_name: AWS Marketplace
+  partner: amazon-web-services
+  partner_match: aggregator
+  type: marketplace
+  marketplace: aws-marketplace
+  channel: distribution
+  relationship: platform-app
+  direction: provider-built
+  evidence: https://aws.amazon.com/marketplace/seller-profile?id=845ffe82-76a9-43cd-bca0-91a05954fb3e
+  listing_count: 4
+  apps:
+  - Okta Platform
+  - Auth0 Platform
+  - Okta Workforce - Starter
+  - Okta Platform - Starter Workforce Suite + Professional Services
+  seller_name: Okta, Inc
+  detected_by: sweep-cloud-marketplaces.py
+  detected: '2026-10-13'
 - partner_name: OpenID Foundation certification
   partner: null
   partner_match: domain
@@ -8746,7 +8764,7 @@ edges:
   app: Amazon Business
   partner: null
   partner_match: null
-  partner_candidate: shared:amazon.com(216)
+  partner_candidate: shared:amazon.com(215)
   type: marketplace
   marketplace: own
   channel: partner-built
@@ -15526,7 +15544,7 @@ edges:
   app: AWS ClientVPN
   partner: null
   partner_match: null
-  partner_candidate: shared:amazon.com(216)
+  partner_candidate: shared:amazon.com(215)
   type: marketplace
   marketplace: own
   channel: partner-built
@@ -103919,8 +103937,8 @@ edges:
   - SAML
 - partner_name: Observe
   app: Observe
-  partner: null
-  partner_match: null
+  partner: observeinc
+  partner_match: domain
   partner_candidate: null
   type: marketplace
   marketplace: own
@@ -164198,24 +164216,6 @@ edges:
   features:
   - API
   - CUSTOM_SOM
-- partner_name: AWS Marketplace
-  partner: amazon-web-services
-  partner_match: aggregator
-  type: marketplace
-  marketplace: aws-marketplace
-  channel: distribution
-  relationship: platform-app
-  direction: provider-built
-  evidence: https://aws.amazon.com/marketplace/seller-profile?id=845ffe82-76a9-43cd-bca0-91a05954fb3e
-  listing_count: 4
-  apps:
-  - Okta Platform
-  - Auth0 Platform
-  - Okta Workforce - Starter
-  - Okta Platform - Starter Workforce Suite + Professional Services
-  seller_name: Okta, Inc
-  detected_by: sweep-cloud-marketplaces.py
-  detected: '2026-10-13'
 templates:
 - title: Send Slack channel messages for new Okta events
   url: https://zapier.com/apps/okta/integrations/slack/1306951/send-slack-channel-messages-for-new-okta-events
