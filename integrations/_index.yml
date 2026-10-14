@@ -94183,31 +94183,6 @@
   relationship: distribution-channel
   status: not-a-workflow
   arazzo: null
-- slug: okta-bamboohr-own
-  label: BambooHR (own)
-  partner: bamboohr
-  partner_name: BambooHR (own)
-  category: Identity Management
-  type: marketplace
-  marketplace: own
-  channel: partner-built
-  evidence: https://www.bamboohr.com/integrations/listings/okta
-  source: edge
-  relationship: platform-app
-  status: not-a-workflow
-  arazzo: null
-- slug: okta-crowdstrike-own
-  label: CrowdStrike (own)
-  partner: crowdstrike
-  partner_name: CrowdStrike (own)
-  type: marketplace
-  marketplace: own
-  channel: partner-built
-  evidence: https://marketplace.crowdstrike.com/listings/okta/
-  source: edge
-  relationship: platform-app
-  status: not-a-workflow
-  arazzo: null
 - slug: okta-fdx-financial-data-exchange
   label: FDX (Financial Data Exchange)
   partner: fdx
@@ -94232,5 +94207,30 @@
     matched_by: domain:okta.com
     detected_by: sweep-fdx.py
     detected: '2026-10-14'
+  status: not-a-workflow
+  arazzo: null
+- slug: okta-bamboohr-own
+  label: BambooHR (own)
+  partner: bamboohr
+  partner_name: BambooHR (own)
+  category: Identity Management
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://www.bamboohr.com/integrations/listings/okta
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: okta-crowdstrike-own
+  label: CrowdStrike (own)
+  partner: crowdstrike
+  partner_name: CrowdStrike (own)
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.crowdstrike.com/listings/okta/
+  source: edge
+  relationship: platform-app
   status: not-a-workflow
   arazzo: null
