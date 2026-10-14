@@ -12,6 +12,7 @@ checked:
 - https://n8n.io/integrations/okta/
 - https://oinmanager.okta.com/api/v1/catalog/integrations
 - https://openid.net/developers/certified-openid-connect-implementations/
+- https://registry.financialdataexchange.org/
 - https://www.okta.com/integrations/
 - https://zapier.com/apps/okta/integrations
 summary: null
@@ -164251,6 +164252,30 @@ edges:
   listing_count: 1
   detected: '2026-10-14'
   detected_by: mirror-platform-listings.py
+- partner_name: FDX (Financial Data Exchange)
+  partner: fdx
+  type: contract
+  channel: standard-directory
+  relationship: standard-participant
+  direction: partner-built
+  evidence: https://registry.financialdataexchange.org/
+  contract_reference:
+    register: FDX Registry
+    standard: FDX API
+    spec_file: null
+    register_api: https://registry.financialdataexchange.org/fdxregistryapi/organizations/search/listingTags
+    role: data-recipient
+    member_type: MEMBER
+    registered_name: Okta
+    register_id: 238
+    registered_website: https://www.okta.com/
+    country: United States
+    fdx_version: null
+    matched_by: domain:okta.com
+    detected_by: sweep-fdx.py
+    detected: '2026-10-14'
+  detected_by: sweep-fdx.py
+  first_seen: '2026-10-14'
 templates:
 - title: Send Slack channel messages for new Okta events
   url: https://zapier.com/apps/okta/integrations/slack/1306951/send-slack-channel-messages-for-new-okta-events
