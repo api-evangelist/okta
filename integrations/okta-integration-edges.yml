@@ -4,6 +4,8 @@ source:
 - https://zapier.com/apps/okta/integrations
 - https://n8n.io/integrations/okta/
 checked:
+- bamboohr/integrations/bamboohr-integration-edges.yml
+- crowdstrike/integrations/crowdstrike-integration-edges.yml
 - https://aws.amazon.com/marketplace/
 - https://composio.dev/toolkits/okta
 - https://monid.ai/tools/okta
@@ -164216,6 +164218,39 @@ edges:
   seller_name: Okta, Inc
   detected_by: sweep-cloud-marketplaces.py
   detected: '2026-10-13'
+- partner_name: BambooHR (own)
+  partner: bamboohr
+  partner_match: mirror
+  mirror_match: domain
+  type: marketplace
+  relationship: platform-app
+  direction: third-party
+  channel: partner-built
+  marketplace: own
+  evidence: https://www.bamboohr.com/integrations/listings/okta
+  mirror_of: bamboohr/integrations/bamboohr-integration-edges.yml
+  apps:
+  - Okta
+  listing_count: 1
+  detected: '2026-10-14'
+  detected_by: mirror-platform-listings.py
+  category: Identity Management
+- partner_name: CrowdStrike (own)
+  partner: crowdstrike
+  partner_match: mirror
+  mirror_match: domain
+  type: marketplace
+  relationship: platform-app
+  direction: third-party
+  channel: partner-built
+  marketplace: own
+  evidence: https://marketplace.crowdstrike.com/listings/okta/
+  mirror_of: crowdstrike/integrations/crowdstrike-integration-edges.yml
+  apps:
+  - Okta Identity-centric Zero Trust
+  listing_count: 1
+  detected: '2026-10-14'
+  detected_by: mirror-platform-listings.py
 templates:
 - title: Send Slack channel messages for new Okta events
   url: https://zapier.com/apps/okta/integrations/slack/1306951/send-slack-channel-messages-for-new-okta-events
@@ -164281,10 +164316,13 @@ template_total: 43
 skips:
 - label: Create users in Okta with new Google Sheets rows in Team Drive
   cause: catalog
-  why: same Google Sheets row -> Okta createUser flow as template 50767, already generated as okta-google-sheets-rows-create-users; skipped to spread across partners
+  why: same Google Sheets row -> Okta createUser flow as template 50767, already generated as okta-google-sheets-rows-create-users;
+    skipped to spread across partners
 - label: Datadog
   cause: catalog
-  why: not generated this pass; partner spread capped at 5 workflows and the Datadog repo is being written by another agent
+  why: not generated this pass; partner spread capped at 5 workflows and the Datadog repo is being written by another
+    agent
 - label: Workday
   cause: catalog
-  why: not generated this pass; partner spread capped at 5 workflows and the Workday repo is being written by another agent
+  why: not generated this pass; partner spread capped at 5 workflows and the Workday repo is being written by another
+    agent
