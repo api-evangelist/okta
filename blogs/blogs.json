@@ -2,11 +2,19 @@
   "repo": "okta",
   "feeds": [
     {
-      "source": "https://xaa.dev/",
-      "feed_url": "https://xaa.dev/",
+      "source": "https://developer.okta.com/blog/",
+      "feed_url": "https://developer.okta.com/blog/",
       "title": "",
       "saved": 0,
       "method": "none"
+    },
+    {
+      "source": "https://developer.okta.com/blog/2026/01/20/introducing-xaadev-a-playground-for-cross-app-access",
+      "error": "HTTPError"
+    },
+    {
+      "source": "https://developer.okta.com/blog/2026/02/10/make-secure-app-to-app-connections-using-cross-app-access",
+      "error": "HTTPError"
     },
     {
       "source": "https://developer.okta.com/signup/",
@@ -21,10 +29,17 @@
       "title": "",
       "saved": 0,
       "method": "feed"
+    },
+    {
+      "source": "https://xaa.dev/",
+      "feed_url": "https://xaa.dev/",
+      "title": "",
+      "saved": 0,
+      "method": "none"
     }
   ],
-  "post_count": 32,
-  "fetched": "2026-10-03T12:30:02Z",
+  "post_count": 33,
+  "fetched": "2026-10-10T13:15:00Z",
   "feed_nature": "vendor-blog",
   "feed_nature_basis": "path_blog",
   "feed_nature_note": "Whether these posts are the vendor publishing or its support community, decided on the URL path grammar of the saved posts -- not the hostname, which carries both on Khoros, and not author diversity, which flags large vendor blogs as forums. 'undetermined' means undetermined."
