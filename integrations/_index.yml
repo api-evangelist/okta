@@ -94423,7 +94423,7 @@
     - alpha
     in_cloud: true
     builder: unknown (community connector; contributor not in the record)
-  status: pending-generation
+  status: not-a-workflow
   arazzo: null
 - slug: okta-meltano
   label: Meltano
@@ -94455,7 +94455,7 @@
     - bronze
     - unknown
     builder: 'community (Meltano Hub variant maintainers: airbyte, rshah-amplify)'
-  status: pending-partner-spec
+  status: not-a-workflow
   arazzo: null
 - slug: okta-microsoft-teams-own
   label: Microsoft Teams (own)
