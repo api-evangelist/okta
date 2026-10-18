@@ -47,7 +47,7 @@ tags:
 - Authorization
 - Multi-Factor Authentication
 - Identity Governance
-- Privileged Access
+- Privileged Access Management
 - AI Agents
 - Cross-App Access
 - MCP
@@ -1702,6 +1702,8 @@ apis:
   humanURL: https://xaa.dev/
   baseURL: https://xaa.dev
   tags:
+  - Profiles
+  tags_raw:
   - Profile
   properties:
   - type: OpenAPI
