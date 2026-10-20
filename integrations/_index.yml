@@ -15,6 +15,7 @@
   evidence: https://zapier.com/apps/okta/integrations/slack/1306951/send-slack-channel-messages-for-new-okta-events
   template: https://zapier.com/apps/okta/integrations/slack/1306951/send-slack-channel-messages-for-new-okta-events
   source: template
+  relationship: ipaas-bridge
   arazzo: okta-slack-new-events-channel-message.yml
   status: arazzo
 - slug: okta-create-google-sheets-rows-to-generate-okta-users
@@ -29,6 +30,7 @@
   evidence: https://zapier.com/apps/google-sheets/integrations/okta/50767/create-google-sheets-rows-to-generate-okta-users
   template: https://zapier.com/apps/google-sheets/integrations/okta/50767/create-google-sheets-rows-to-generate-okta-users
   source: template
+  relationship: ipaas-bridge
   arazzo: okta-google-sheets-rows-create-users.yml
   status: arazzo
 - slug: okta-create-okta-users-from-new-google-forms-responses
@@ -43,8 +45,24 @@
   evidence: https://zapier.com/apps/google-forms/integrations/okta/50769/create-okta-users-from-new-google-forms-responses
   template: https://zapier.com/apps/google-forms/integrations/okta/50769/create-okta-users-from-new-google-forms-responses
   source: template
+  relationship: ipaas-bridge
   arazzo: okta-google-forms-responses-create-users.yml
   status: arazzo
+- slug: okta-generate-users-in-okta-from-new-custom-salesforce-objects
+  label: Generate users in Okta from new custom Salesforce objects
+  partner: salesforce
+  partner_name: Salesforce
+  category: CRM (Customer Relationship Management)
+  use_case: Generate users in Okta from new custom Salesforce objects
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/okta/integrations/salesforce/50773/generate-users-in-okta-from-new-custom-salesforce-objects
+  template: https://zapier.com/apps/okta/integrations/salesforce/50773/generate-users-in-okta-from-new-custom-salesforce-objects
+  source: template
+  relationship: ipaas-bridge
+  status: pending-generation
+  arazzo: null
 - slug: okta-create-users-in-okta-with-new-google-sheets-rows-in-team-drive
   label: Create users in Okta with new Google Sheets rows in Team Drive
   partner: google-sheets
@@ -59,321 +77,8 @@
   source: template
   related_arazzo:
   - okta-google-sheets-rows-create-users.yml
+  relationship: ipaas-bridge
   status: pending-generation
-  arazzo: null
-- slug: okta-hubspot
-  label: HubSpot
-  partner: hubspot
-  partner_name: HubSpot
-  category: Marketing Automation
-  type: marketplace
-  marketplace: zapier
-  channel: ipaas-usage
-  evidence: https://zapier.com/apps/okta/integrations/hubspot
-  source: edge
-  arazzo: okta-hubspot-new-users-contacts.yml
-  status: arazzo
-- slug: okta-jira-service-management
-  label: Jira Service Management
-  partner_name: Jira Service Management
-  category: Customer Support
-  type: marketplace
-  marketplace: zapier
-  channel: ipaas-usage
-  evidence: https://zapier.com/apps/okta/integrations/jira-service-management
-  source: edge
-  status: pending-partner-spec
-  arazzo: null
-- slug: okta-mailchimp
-  label: Mailchimp
-  partner: mailchimp
-  partner_name: Mailchimp
-  category: Marketing Automation
-  type: marketplace
-  marketplace: zapier
-  channel: ipaas-usage
-  evidence: https://zapier.com/apps/okta/integrations/mailchimp
-  source: edge
-  arazzo: okta-mailchimp-new-users-subscribe.yml
-  status: arazzo
-- slug: okta-jira-software-cloud
-  label: Jira Software Cloud
-  partner_name: Jira Software Cloud
-  category: Project Management
-  type: marketplace
-  marketplace: zapier
-  channel: ipaas-usage
-  evidence: https://zapier.com/apps/okta/integrations/jira-software-cloud
-  source: edge
-  status: pending-partner-spec
-  arazzo: null
-- slug: okta-hibob
-  label: Hibob
-  partner_name: Hibob
-  category: HR Talent & Recruitment
-  type: marketplace
-  marketplace: zapier
-  channel: ipaas-usage
-  evidence: https://zapier.com/apps/okta/integrations/hibob
-  source: edge
-  status: pending-partner-spec
-  arazzo: null
-- slug: okta-freshservice
-  label: Freshservice
-  partner: freshservice
-  partner_name: Freshservice
-  category: Server Monitoring
-  type: marketplace
-  marketplace: zapier
-  channel: ipaas-usage
-  evidence: https://zapier.com/apps/okta/integrations/freshservice
-  source: edge
-  status: pending-generation
-  arazzo: null
-- slug: okta-google-workspace-admin
-  label: Google Workspace Admin
-  partner_name: Google Workspace Admin
-  category: Google
-  type: marketplace
-  marketplace: zapier
-  channel: ipaas-usage
-  evidence: https://zapier.com/apps/okta/integrations/google-workspace-admin
-  source: edge
-  status: pending-partner-spec
-  arazzo: null
-- slug: okta-discord
-  label: Discord
-  partner: discord
-  partner_name: Discord
-  category: Team Chat
-  type: marketplace
-  marketplace: zapier
-  channel: ipaas-usage
-  evidence: https://zapier.com/apps/okta/integrations/discord
-  source: edge
-  status: pending-generation
-  arazzo: null
-- slug: okta-intercom
-  label: Intercom
-  partner: intercom
-  partner_name: Intercom
-  category: Customer Support
-  type: marketplace
-  marketplace: zapier
-  channel: ipaas-usage
-  evidence: https://zapier.com/apps/okta/integrations/intercom
-  source: edge
-  status: pending-generation
-  arazzo: null
-- slug: okta-google-calendar
-  label: Google Calendar
-  partner: google-calendar
-  partner_name: Google Calendar
-  category: Calendar
-  type: marketplace
-  marketplace: zapier
-  channel: ipaas-usage
-  evidence: https://zapier.com/apps/okta/integrations/google-calendar
-  source: edge
-  status: pending-generation
-  arazzo: null
-- slug: okta-cognito-forms
-  label: Cognito Forms
-  partner: cognito-forms
-  partner_name: Cognito Forms
-  category: Forms & Surveys
-  type: marketplace
-  marketplace: zapier
-  channel: ipaas-usage
-  evidence: https://zapier.com/apps/okta/integrations/cognito-forms
-  source: edge
-  status: pending-generation
-  arazzo: null
-- slug: okta-aws-lambda
-  label: AWS Lambda
-  partner: aws-lambda
-  partner_name: AWS Lambda
-  category: Amazon
-  type: marketplace
-  marketplace: zapier
-  channel: ipaas-usage
-  evidence: https://zapier.com/apps/okta/integrations/aws-lambda
-  source: edge
-  status: pending-generation
-  arazzo: null
-- slug: okta-datadog
-  label: Datadog
-  partner: datadog
-  partner_name: Datadog
-  category: Server Monitoring
-  type: marketplace
-  marketplace: zapier
-  channel: ipaas-usage
-  evidence: https://zapier.com/apps/okta/integrations/datadog
-  source: edge
-  status: pending-generation
-  arazzo: null
-- slug: okta-people-hr
-  label: People HR
-  partner_name: People HR
-  category: HR Talent & Recruitment
-  type: marketplace
-  marketplace: zapier
-  channel: ipaas-usage
-  evidence: https://zapier.com/apps/okta/integrations/people-hr
-  source: edge
-  status: pending-partner-spec
-  arazzo: null
-- slug: okta-postgresql
-  label: PostgreSQL
-  partner: postgresql
-  partner_name: PostgreSQL
-  category: Databases
-  type: marketplace
-  marketplace: zapier
-  channel: ipaas-usage
-  evidence: https://zapier.com/apps/okta/integrations/postgresql
-  source: edge
-  status: pending-partner-spec
-  arazzo: null
-- slug: okta-wrangle
-  label: Wrangle
-  partner: wrangle
-  partner_name: Wrangle
-  category: Team Collaboration
-  type: marketplace
-  marketplace: zapier
-  channel: ipaas-usage
-  evidence: https://zapier.com/apps/okta/integrations/wrangle-io
-  source: edge
-  status: pending-partner-spec
-  arazzo: null
-- slug: okta-wix
-  label: Wix
-  partner: wix
-  partner_name: Wix
-  category: Website Builders
-  type: marketplace
-  marketplace: zapier
-  channel: ipaas-usage
-  evidence: https://zapier.com/apps/okta/integrations/wix
-  source: edge
-  status: pending-generation
-  arazzo: null
-- slug: okta-ashby
-  label: Ashby
-  partner: ashby
-  partner_name: Ashby
-  category: HR Talent & Recruitment
-  type: marketplace
-  marketplace: zapier
-  channel: ipaas-usage
-  evidence: https://zapier.com/apps/okta/integrations/ashby
-  source: edge
-  status: pending-generation
-  arazzo: null
-- slug: okta-azure-devops
-  label: Azure DevOps
-  partner_name: Azure DevOps
-  category: Developer Tools
-  type: marketplace
-  marketplace: zapier
-  channel: ipaas-usage
-  evidence: https://zapier.com/apps/okta/integrations/azure-devops
-  source: edge
-  status: pending-partner-spec
-  arazzo: null
-- slug: okta-zoho-crm
-  label: Zoho CRM
-  partner: zoho-crm
-  partner_name: Zoho CRM
-  category: CRM (Customer Relationship Management)
-  type: marketplace
-  marketplace: zapier
-  channel: ipaas-usage
-  evidence: https://zapier.com/apps/okta/integrations/zoho-crm
-  source: edge
-  status: pending-generation
-  arazzo: null
-- slug: okta-zendesk
-  label: Zendesk
-  partner: zendesk
-  partner_name: Zendesk
-  category: Customer Support
-  type: marketplace
-  marketplace: zapier
-  channel: ipaas-usage
-  evidence: https://zapier.com/apps/okta/integrations/zendesk
-  source: edge
-  status: pending-generation
-  arazzo: null
-- slug: okta-ignition
-  label: Ignition
-  partner_name: Ignition
-  category: Proposal & Invoice Management
-  type: marketplace
-  marketplace: zapier
-  channel: ipaas-usage
-  evidence: https://zapier.com/apps/okta/integrations/ignition
-  source: edge
-  status: pending-partner-spec
-  arazzo: null
-- slug: okta-workday
-  label: Workday
-  partner: workday
-  partner_name: Workday
-  category: HR Talent & Recruitment
-  type: marketplace
-  marketplace: zapier
-  channel: ipaas-usage
-  evidence: https://zapier.com/apps/okta/integrations/workday
-  source: edge
-  status: pending-generation
-  arazzo: null
-- slug: okta-spotme
-  label: SpotMe
-  partner_name: SpotMe
-  category: Event Management
-  type: marketplace
-  marketplace: zapier
-  channel: ipaas-usage
-  evidence: https://zapier.com/apps/okta/integrations/spotme
-  source: edge
-  status: pending-partner-spec
-  arazzo: null
-- slug: okta-amazon-s3
-  label: Amazon S3
-  partner: amazon-s3
-  partner_name: Amazon S3
-  category: Amazon
-  type: marketplace
-  marketplace: zapier
-  channel: ipaas-usage
-  evidence: https://zapier.com/apps/okta/integrations/amazon-s3
-  source: edge
-  status: pending-generation
-  arazzo: null
-- slug: okta-formsite
-  label: Formsite
-  partner_name: Formsite
-  category: Forms & Surveys
-  type: marketplace
-  marketplace: zapier
-  channel: ipaas-usage
-  evidence: https://zapier.com/apps/okta/integrations/formsite
-  source: edge
-  status: pending-partner-spec
-  arazzo: null
-- slug: okta-confluence-cloud
-  label: Confluence Cloud
-  partner_name: Confluence Cloud
-  category: Team Collaboration
-  type: marketplace
-  marketplace: zapier
-  channel: ipaas-usage
-  evidence: https://zapier.com/apps/okta/integrations/confluence-cloud
-  source: edge
-  status: pending-partner-spec
   arazzo: null
 - slug: okta-aws-marketplace
   label: AWS Marketplace
@@ -7725,6 +7430,19 @@
   type: marketplace
   marketplace: own
   evidence: https://www.okta.com/integrations/ascentonline/
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: okta-ashby
+  label: Ashby
+  partner: ashby
+  partner_name: Ashby
+  category: Single Sign-On
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://www.okta.com/integrations/ashby/
   source: edge
   relationship: platform-app
   status: not-a-workflow
@@ -18734,6 +18452,17 @@
   relationship: platform-app
   status: not-a-workflow
   arazzo: null
+- slug: okta-cognito-forms
+  label: Cognito Forms
+  partner_name: Cognito Forms
+  category: Single Sign-On
+  type: marketplace
+  marketplace: own
+  evidence: https://www.okta.com/integrations/cognitoforms/
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
 - slug: okta-cognos-provisioning-connector-by-aquera
   label: Cognos Provisioning Connector by Aquera
   partner_name: Cognos Provisioning Connector by Aquera
@@ -22513,6 +22242,17 @@
   type: marketplace
   marketplace: own
   evidence: https://www.okta.com/integrations/datacastle/
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: okta-datadog
+  label: Datadog
+  partner_name: Datadog
+  category: Identity Governance and Administration (IGA)
+  type: marketplace
+  marketplace: own
+  evidence: https://www.okta.com/integrations/datadog/
   source: edge
   relationship: platform-app
   status: not-a-workflow
@@ -40067,6 +39807,17 @@
   relationship: platform-app
   status: not-a-workflow
   arazzo: null
+- slug: okta-hubspot
+  label: HubSpot
+  partner_name: HubSpot
+  category: Single Sign-On
+  type: marketplace
+  marketplace: own
+  evidence: https://www.okta.com/integrations/hubspotsaml/
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
 - slug: okta-hubwoo
   label: Hubwoo
   partner_name: Hubwoo
@@ -45451,6 +45202,18 @@
   type: marketplace
   marketplace: own
   evidence: https://www.okta.com/integrations/intercall/
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: okta-intercom
+  label: Intercom
+  partner_name: Intercom
+  category: Lifecycle Management
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://www.okta.com/integrations/intercom/
   source: edge
   relationship: platform-app
   status: not-a-workflow
@@ -52399,6 +52162,17 @@
   type: marketplace
   marketplace: own
   evidence: https://www.okta.com/integrations/mahalo/
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: okta-mailchimp
+  label: Mailchimp
+  partner_name: Mailchimp
+  category: Single Sign-On
+  type: marketplace
+  marketplace: own
+  evidence: https://www.okta.com/integrations/mailchimp/
   source: edge
   relationship: platform-app
   status: not-a-workflow
@@ -78202,6 +77976,18 @@
   relationship: platform-app
   status: not-a-workflow
   arazzo: null
+- slug: okta-spotme
+  label: SpotMe
+  partner_name: SpotMe
+  category: Single Sign-On
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://www.okta.com/integrations/spotme/
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
 - slug: okta-spreadshirt
   label: Spreadshirt
   partner_name: Spreadshirt
@@ -91838,6 +91624,17 @@
   relationship: platform-app
   status: not-a-workflow
   arazzo: null
+- slug: okta-workday
+  label: Workday
+  partner_name: Workday
+  category: AI Agent Providers
+  type: marketplace
+  marketplace: own
+  evidence: https://www.okta.com/integrations/workday/
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
 - slug: okta-workdaycommunity
   label: WorkdayCommunity
   partner_name: WorkdayCommunity
@@ -93468,6 +93265,17 @@
   relationship: platform-app
   status: not-a-workflow
   arazzo: null
+- slug: okta-zendesk
+  label: Zendesk
+  partner_name: Zendesk
+  category: Single Sign-On
+  type: marketplace
+  marketplace: own
+  evidence: https://www.okta.com/integrations/zendesk/
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
 - slug: okta-zendesk-provisioning-connector-by-aquera
   label: Zendesk Provisioning Connector by Aquera
   partner_name: Zendesk Provisioning Connector by Aquera
@@ -94056,6 +93864,17 @@
   type: marketplace
   marketplace: own
   evidence: https://www.okta.com/integrations/zohobooks_uk/
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: okta-zoho-crm
+  label: Zoho CRM
+  partner_name: Zoho CRM
+  category: Single Sign-On
+  type: marketplace
+  marketplace: own
+  evidence: https://www.okta.com/integrations/zohocrm/
   source: edge
   relationship: platform-app
   status: not-a-workflow
@@ -94696,4 +94515,208 @@
     detected_by: sweep-compliance-assurance.py
     detected: '2026-10-20'
   status: not-a-workflow
+  arazzo: null
+- slug: okta-jira-service-management
+  label: Jira Service Management
+  partner: jira
+  partner_name: Jira Service Management
+  category: Customer Support
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/okta/integrations/jira-service-management
+  source: edge
+  relationship: ipaas-bridge
+  status: pending-generation
+  arazzo: null
+- slug: okta-jira-software-cloud
+  label: Jira Software Cloud
+  partner: jira
+  partner_name: Jira Software Cloud
+  category: Project Management
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/okta/integrations/jira-software-cloud
+  source: edge
+  relationship: ipaas-bridge
+  status: pending-generation
+  arazzo: null
+- slug: okta-hibob
+  label: Hibob
+  partner: bob
+  partner_name: Hibob
+  category: HR Talent & Recruitment
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/okta/integrations/hibob
+  source: edge
+  relationship: ipaas-bridge
+  status: pending-generation
+  arazzo: null
+- slug: okta-freshservice
+  label: Freshservice
+  partner: freshservice
+  partner_name: Freshservice
+  category: Server Monitoring
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/okta/integrations/freshservice
+  source: edge
+  relationship: ipaas-bridge
+  status: pending-generation
+  arazzo: null
+- slug: okta-google-workspace-admin
+  label: Google Workspace Admin
+  partner: google-workspace
+  partner_name: Google Workspace Admin
+  category: Google
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/okta/integrations/google-workspace-admin
+  source: edge
+  relationship: ipaas-bridge
+  status: pending-generation
+  arazzo: null
+- slug: okta-discord
+  label: Discord
+  partner: discord
+  partner_name: Discord
+  category: Team Chat
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/okta/integrations/discord
+  source: edge
+  relationship: ipaas-bridge
+  status: pending-generation
+  arazzo: null
+- slug: okta-google-calendar
+  label: Google Calendar
+  partner: google-calendar
+  partner_name: Google Calendar
+  category: Calendar
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/okta/integrations/google-calendar
+  source: edge
+  relationship: ipaas-bridge
+  status: pending-generation
+  arazzo: null
+- slug: okta-aws-lambda
+  label: AWS Lambda
+  partner: aws-lambda
+  partner_name: AWS Lambda
+  category: Amazon
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/okta/integrations/aws-lambda
+  source: edge
+  relationship: ipaas-bridge
+  status: pending-generation
+  arazzo: null
+- slug: okta-people-hr
+  label: People HR
+  partner_name: People HR
+  category: HR Talent & Recruitment
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/okta/integrations/people-hr
+  source: edge
+  relationship: ipaas-bridge
+  status: pending-partner-spec
+  arazzo: null
+- slug: okta-postgresql
+  label: PostgreSQL
+  partner: postgresql
+  partner_name: PostgreSQL
+  category: Databases
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/okta/integrations/postgresql
+  source: edge
+  relationship: ipaas-bridge
+  status: pending-partner-spec
+  arazzo: null
+- slug: okta-wrangle
+  label: Wrangle
+  partner: wrangle
+  partner_name: Wrangle
+  category: Team Collaboration
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/okta/integrations/wrangle-io
+  source: edge
+  relationship: ipaas-bridge
+  status: pending-partner-spec
+  arazzo: null
+- slug: okta-wix
+  label: Wix
+  partner: wix
+  partner_name: Wix
+  category: Website Builders
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/okta/integrations/wix
+  source: edge
+  relationship: ipaas-bridge
+  status: pending-generation
+  arazzo: null
+- slug: okta-azure-devops
+  label: Azure DevOps
+  partner_name: Azure DevOps
+  category: Developer Tools
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/okta/integrations/azure-devops
+  source: edge
+  relationship: ipaas-bridge
+  status: pending-partner-spec
+  arazzo: null
+- slug: okta-ignition
+  label: Ignition
+  partner_name: Ignition
+  category: Proposal & Invoice Management
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/okta/integrations/ignition
+  source: edge
+  relationship: ipaas-bridge
+  status: pending-partner-spec
+  arazzo: null
+- slug: okta-amazon-s3
+  label: Amazon S3
+  partner: amazon-s3
+  partner_name: Amazon S3
+  category: Amazon
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/okta/integrations/amazon-s3
+  source: edge
+  relationship: ipaas-bridge
+  status: pending-generation
+  arazzo: null
+- slug: okta-formsite
+  label: Formsite
+  partner_name: Formsite
+  category: Forms & Surveys
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/okta/integrations/formsite
+  source: edge
+  relationship: ipaas-bridge
+  status: pending-partner-spec
   arazzo: null

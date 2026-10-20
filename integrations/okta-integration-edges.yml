@@ -1,8 +1,9 @@
-generated: '2026-10-12'
+generated: '2026-10-20'
 method: searched
 source:
 - https://zapier.com/apps/okta/integrations
 - https://n8n.io/integrations/okta/
+- https://www.okta.com/integrations/
 checked:
 - bamboohr/integrations/bamboohr-integration-edges.yml
 - crowdstrike/integrations/crowdstrike-integration-edges.yml
@@ -45,6 +46,14 @@ checked:
 - zendesk/integrations/zendesk-integration-edges.yml
 summary: null
 marketplace_apps:
+- marketplace: own
+  channel: partner-built
+  app: okta
+  url: https://www.okta.com/integrations/
+  api: https://oinmanager.okta.com/api/v1/catalog/integrations
+  app_count: 8397
+  adapter: sweep-identity.py:oin-catalog
+  listed: 8397
 - marketplace: zapier
   channel: ipaas-listing
   app: okta
@@ -83,637 +92,14 @@ marketplace_apps:
   app: okta
   url: https://n8n.io/integrations/okta/
   identity: title
-  pair_pages: 290
+  pair_pages: 5
   pairs:
-  - omeda
-  - omniconvert
-  - omnimind
-  - on2air
-  - one-ai
-  - one-simple-api
-  - onfleet
   - openai
-  - opencti
-  - openthesaurus
-  - openweathermap
-  - opn-formerly-omise
-  - oracle-database
-  - orbit
-  - order-desk
-  - ortto
-  - oura
-  - paddle
-  - pagerduty
-  - paperform
-  - papyrs
-  - parsehub
-  - parseprompt
-  - passcreator
-  - passslot
-  - patreon
-  - paymo
-  - paypal
-  - peekalink
-  - perplexity
-  - persio
-  - personal-ai
-  - phantombuster
-  - philips-hue
-  - phrase
-  - pinata
-  - pinboard
-  - pinterest
-  - pipedrive
-  - pipefy
-  - pirate-weather
-  - pitchly
-  - pivotal-tracker
-  - planview-leankit
-  - planyo-online-booking
-  - platformly
-  - plecto
-  - plivo
-  - postbin
   - postgres
-  - posthog
-  - practitest
-  - predisai
-  - prodia
-  - product-hunt
-  - profitwell
-  - project-bubble-proprofs-project
-  - prompthub
-  - prospe-ai
-  - pushbullet
-  - pushcut
-  - pusher
-  - pushover
-  - qradar
-  - qualaroo
-  - qualys
-  - quentn
-  - questdb
-  - quick-base
-  - quickbooks-online
-  - quickchart
-  - quintadb
-  - rabbitmq
-  - radar
-  - raindrop
-  - rapid7-insightvm
-  - raven-tools
-  - rawg-video-games-database
-  - read-ai
-  - realphonevalidation
-  - recharge
-  - recorded-future
-  - redash
-  - reddit
-  - redis
-  - relevance-ai
-  - relink-url-shortener
-  - relysia
-  - replyio
-  - retable
-  - reverse-contact
-  - rewardful
-  - ritekit
-  - roboflow
-  - robolytix
-  - roboresponseai
-  - rocketchat
-  - rollbar
-  - rootly
-  - route4me
-  - rundeck
-  - s3
-  - sales-simplify
-  - salesforce
-  - salesmaa
-  - salesmate
-  - salesmsg
-  - salesrocks
-  - samsung-smartthings
-  - scrape-itcloud
-  - scrapeninja
-  - seamless-ai
-  - search-and-save
-  - seatable
-  - securityscorecard
-  - segment
-  - sekoia
-  - sellix
-  - sembly-ai
-  - sendgrid
-  - sendy
-  - sentryio
-  - servicenow
-  - sharly-ai
-  - shiphero
-  - shipstation
-  - shopify
-  - shortio
-  - shuffler
-  - sierra-interactive
-  - sifter
-  - signaturit
-  - signl4
-  - signrequest
-  - simpleem
-  - simplehash
-  - simplekpi
-  - simplelocalize
-  - simplero
-  - simpletexting
-  - sitecreatorio
-  - sitespeakai
   - slack
-  - smaily
-  - smartreach
-  - smartsuite
-  - sms-it
-  - sms-magic
-  - sms77
-  - snapdocs
-  - snatchbot
-  - snipcart
-  - snowflake
-  - solve-data
-  - specter
-  - splunk
-  - spondyr
-  - spontit
-  - sportsdata
-  - spotify
-  - spydra
-  - sslmate-cert-spotter-api
-  - stackby
-  - stammerai
-  - starton
-  - statuscake
-  - storyblok
-  - strapi
-  - strava
-  - stripe
-  - studio-by-ai21-labs
-  - suitedash
   - supabase
-  - supernormal
-  - superpowered
-  - supportivekoala
-  - survicate
-  - swagup
-  - switchboard
-  - syncly
-  - syncromsp
-  - synthesia
-  - taiga
-  - talentlms
-  - talknotes
-  - tapfiliate
-  - td-ameritrade
-  - teachable
-  - team-up
-  - teamdeck
-  - teamgate
-  - teknoir
   - telegram
-  - testmonitor
-  - textcortex-ai
-  - textgain
-  - textkit
-  - textmagic
-  - thankster
-  - the-customer-factor
-  - the-leap
-  - thehive
-  - thehive-5
-  - thoughtfulgpt
-  - thrivecart
-  - tidb-cloud
-  - tierion
-  - tilda
-  - timescaledb
-  - timetonic
-  - tinyurl
-  - tisane-labs
-  - todoist
-  - token-metrics
-  - toket
-  - totango
-  - trackvia
-  - transifex
-  - travisci
-  - trellix-epo
-  - trello
-  - trengo
-  - trevorio
-  - turbohire
-  - tuskr
-  - tuulio
-  - twake
-  - twilio
-  - twist
-  - twitter
-  - unbounce
-  - unisender
-  - unleashed-software
-  - upkeep
-  - uplead
-  - uproc
-  - uptimerobot
-  - uptimetoolbox
-  - urlscanio
-  - uservoice
-  - venafi-tls-protect-cloud
-  - venafi-tls-protect-datacenter
-  - venly
-  - verifalia
-  - vero
-  - vimeo
-  - virustotal
-  - vivifyscrum
-  - voicit
-  - vonage
-  - vowel
-  - watchsignals
-  - waveline-extract
-  - webex-by-cisco
-  - webflow
-  - webscraperio
-  - wekan
-  - whal3s
-  - whatconverts
-  - whatsapp-business-cloud
-  - wise
-  - wizychat
-  - wonderchat
-  - wondercraft
-  - woocommerce
-  - woodpeckerco
-  - wordpress
-  - workast
-  - workboard
-  - woxo
-  - writesonic
-  - wubook-ratechecker
-  - xero
-  - xtractly
-  - ybug
-  - ycode
-  - yodiz
-  - yourls
-  - youtube
-  - zabbix
-  - zammad
-  - zendesk
-  - zenrows
-  - zoho-books
-  - zoho-crm
-  - zoho-desk
-  - zonka-feedback
-  - zoom
-  - zscaler-zia
-  - zulip
-- marketplace: own
-  channel: partner-built
-  app: okta
-  url: https://www.okta.com/integrations/
-  api: https://oinmanager.okta.com/api/v1/catalog/integrations
-  app_count: 8397
-  adapter: sweep-identity.py:oin-catalog
-  listed: 8397
 edges:
-- partner_name: Slack
-  partner: slack
-  partner_match: name-exact
-  partner_candidate: null
-  type: marketplace
-  marketplace: zapier
-  channel: ipaas-usage
-  evidence: https://zapier.com/apps/okta/integrations/slack
-  direction: third-party
-  category: Team Chat
-  partner_url: https://slack.com/
-- partner_name: HubSpot
-  partner: hubspot
-  partner_match: domain
-  partner_candidate: null
-  type: marketplace
-  marketplace: zapier
-  channel: ipaas-usage
-  evidence: https://zapier.com/apps/okta/integrations/hubspot
-  direction: third-party
-  category: Marketing Automation
-  partner_url: http://www.hubspot.com/
-- partner_name: Jira Service Management
-  partner: null
-  partner_match: null
-  partner_candidate: null
-  type: marketplace
-  marketplace: zapier
-  channel: ipaas-usage
-  evidence: https://zapier.com/apps/okta/integrations/jira-service-management
-  direction: third-party
-  category: Customer Support
-  partner_url: https://www.atlassian.com/software/jira/service-desk
-- partner_name: Mailchimp
-  partner: mailchimp
-  partner_match: name-exact
-  partner_candidate: null
-  type: marketplace
-  marketplace: zapier
-  channel: ipaas-usage
-  evidence: https://zapier.com/apps/okta/integrations/mailchimp
-  direction: third-party
-  category: Marketing Automation
-  partner_url: https://mailchimp.com/
-- partner_name: Jira Software Cloud
-  partner: null
-  partner_match: null
-  partner_candidate: null
-  type: marketplace
-  marketplace: zapier
-  channel: ipaas-usage
-  evidence: https://zapier.com/apps/okta/integrations/jira-software-cloud
-  direction: third-party
-  category: Project Management
-  partner_url: https://www.atlassian.com/software/jira
-- partner_name: Google Forms
-  partner: google-forms
-  partner_match: name-exact
-  partner_candidate: null
-  type: marketplace
-  marketplace: zapier
-  channel: ipaas-usage
-  evidence: https://zapier.com/apps/okta/integrations/google-forms
-  direction: third-party
-  category: Forms & Surveys
-  partner_url: http://google.com/
-- partner_name: Hibob
-  partner: null
-  partner_match: null
-  partner_candidate: null
-  type: marketplace
-  marketplace: zapier
-  channel: ipaas-usage
-  evidence: https://zapier.com/apps/okta/integrations/hibob
-  direction: third-party
-  category: HR Talent & Recruitment
-  partner_url: https://www.hibob.com/
-- partner_name: Freshservice
-  partner: freshservice
-  partner_match: name-exact
-  partner_candidate: null
-  type: marketplace
-  marketplace: zapier
-  channel: ipaas-usage
-  evidence: https://zapier.com/apps/okta/integrations/freshservice
-  direction: third-party
-  category: Server Monitoring
-  partner_url: https://freshservice.com/
-- partner_name: Google Workspace Admin
-  partner: null
-  partner_match: null
-  partner_candidate: null
-  type: marketplace
-  marketplace: zapier
-  channel: ipaas-usage
-  evidence: https://zapier.com/apps/okta/integrations/google-workspace-admin
-  direction: third-party
-  category: Google
-  partner_url: https://workspace.google.com/
-- partner_name: Discord
-  partner: discord
-  partner_match: name-exact
-  partner_candidate: null
-  type: marketplace
-  marketplace: zapier
-  channel: ipaas-usage
-  evidence: https://zapier.com/apps/okta/integrations/discord
-  direction: third-party
-  category: Team Chat
-  partner_url: https://discordapp.com/
-- partner_name: Intercom
-  partner: intercom
-  partner_match: domain
-  partner_candidate: null
-  type: marketplace
-  marketplace: zapier
-  channel: ipaas-usage
-  evidence: https://zapier.com/apps/okta/integrations/intercom
-  direction: third-party
-  category: Customer Support
-  partner_url: https://www.intercom.com/welcome-to-intercom?utm_source=external-website&utm_medium=partner&utm_campaign=20220503_all_oc_all_global_gl_all_all_par_extmktplc&utm_term=zapier
-- partner_name: Google Calendar
-  partner: google-calendar
-  partner_match: name-exact
-  partner_candidate: null
-  type: marketplace
-  marketplace: zapier
-  channel: ipaas-usage
-  evidence: https://zapier.com/apps/okta/integrations/google-calendar
-  direction: third-party
-  category: Calendar
-  partner_url: https://calendar.google.com/
-- partner_name: Cognito Forms
-  partner: cognito-forms
-  partner_match: domain
-  partner_candidate: null
-  type: marketplace
-  marketplace: zapier
-  channel: ipaas-usage
-  evidence: https://zapier.com/apps/okta/integrations/cognito-forms
-  direction: third-party
-  category: Forms & Surveys
-  partner_url: https://www.cognitoforms.com/
-- partner_name: AWS Lambda
-  partner: aws-lambda
-  partner_match: name-exact
-  partner_candidate: null
-  type: marketplace
-  marketplace: zapier
-  channel: ipaas-usage
-  evidence: https://zapier.com/apps/okta/integrations/aws-lambda
-  direction: third-party
-  category: Amazon
-  partner_url: http://aws.amazon.com/lambda/
-- partner_name: Datadog
-  partner: datadog
-  partner_match: name-exact
-  partner_candidate: null
-  type: marketplace
-  marketplace: zapier
-  channel: ipaas-usage
-  evidence: https://zapier.com/apps/okta/integrations/datadog
-  direction: third-party
-  category: Server Monitoring
-  partner_url: http://www.datadoghq.com/
-- partner_name: People HR
-  partner: null
-  partner_match: null
-  partner_candidate: null
-  type: marketplace
-  marketplace: zapier
-  channel: ipaas-usage
-  evidence: https://zapier.com/apps/okta/integrations/people-hr
-  direction: third-party
-  category: HR Talent & Recruitment
-  partner_url: http://www.peoplehr.com/
-- partner_name: Google Sheets
-  partner: google-sheets
-  partner_match: name-exact
-  partner_candidate: null
-  type: marketplace
-  marketplace: zapier
-  channel: ipaas-usage
-  evidence: https://zapier.com/apps/okta/integrations/google-sheets
-  direction: third-party
-  category: Google
-  partner_url: http://sheets.google.com/
-- partner_name: PostgreSQL
-  partner: postgresql
-  partner_match: domain
-  partner_candidate: null
-  type: marketplace
-  marketplace: zapier
-  channel: ipaas-usage
-  evidence: https://zapier.com/apps/okta/integrations/postgresql
-  direction: third-party
-  category: Databases
-  partner_url: http://www.postgresql.org/
-- partner_name: Wrangle
-  partner: wrangle
-  partner_match: domain
-  partner_candidate: null
-  type: marketplace
-  marketplace: zapier
-  channel: ipaas-usage
-  evidence: https://zapier.com/apps/okta/integrations/wrangle-io
-  direction: third-party
-  category: Team Collaboration
-  partner_url: https://www.wrangle.io/
-- partner_name: Wix
-  partner: wix
-  partner_match: name-exact
-  partner_candidate: null
-  type: marketplace
-  marketplace: zapier
-  channel: ipaas-usage
-  evidence: https://zapier.com/apps/okta/integrations/wix
-  direction: third-party
-  category: Website Builders
-  partner_url: https://www.wix.com/
-- partner_name: Ashby
-  partner: ashby
-  partner_match: name-exact
-  partner_candidate: null
-  type: marketplace
-  marketplace: zapier
-  channel: ipaas-usage
-  evidence: https://zapier.com/apps/okta/integrations/ashby
-  direction: third-party
-  category: HR Talent & Recruitment
-  partner_url: https://www.ashbyhq.com/
-- partner_name: Azure DevOps
-  partner: null
-  partner_match: null
-  partner_candidate: null
-  type: marketplace
-  marketplace: zapier
-  channel: ipaas-usage
-  evidence: https://zapier.com/apps/okta/integrations/azure-devops
-  direction: third-party
-  category: Developer Tools
-  partner_url: https://www.visualstudio.com/
-- partner_name: Zoho CRM
-  partner: zoho-crm
-  partner_match: name-exact
-  partner_candidate: null
-  type: marketplace
-  marketplace: zapier
-  channel: ipaas-usage
-  evidence: https://zapier.com/apps/okta/integrations/zoho-crm
-  direction: third-party
-  category: CRM (Customer Relationship Management)
-  partner_url: https://go.zoho.com/wOk
-- partner_name: Zendesk
-  partner: zendesk
-  partner_match: name-exact
-  partner_candidate: null
-  type: marketplace
-  marketplace: zapier
-  channel: ipaas-usage
-  evidence: https://zapier.com/apps/okta/integrations/zendesk
-  direction: third-party
-  category: Customer Support
-  partner_url: https://www.zendesk.com/
-- partner_name: Ignition
-  partner: null
-  partner_match: null
-  partner_candidate: null
-  type: marketplace
-  marketplace: zapier
-  channel: ipaas-usage
-  evidence: https://zapier.com/apps/okta/integrations/ignition
-  direction: third-party
-  category: Proposal & Invoice Management
-  partner_url: https://www.ignitionapp.com/
-- partner_name: Workday
-  partner: workday
-  partner_match: name-exact
-  partner_candidate: null
-  type: marketplace
-  marketplace: zapier
-  channel: ipaas-usage
-  evidence: https://zapier.com/apps/okta/integrations/workday
-  direction: third-party
-  category: HR Talent & Recruitment
-  partner_url: https://www.workday.com/
-- partner_name: SpotMe
-  partner: null
-  partner_match: null
-  partner_candidate: null
-  type: marketplace
-  marketplace: zapier
-  channel: ipaas-usage
-  evidence: https://zapier.com/apps/okta/integrations/spotme
-  direction: third-party
-  category: Event Management
-  partner_url: https://spotme.com/
-- partner_name: Amazon S3
-  partner: amazon-s3
-  partner_match: name-exact
-  partner_candidate: null
-  type: marketplace
-  marketplace: zapier
-  channel: ipaas-usage
-  evidence: https://zapier.com/apps/okta/integrations/amazon-s3
-  direction: third-party
-  category: Amazon
-  partner_url: https://zapier.com/aws.amazon.com
-- partner_name: Formsite
-  partner: null
-  partner_match: null
-  partner_candidate: null
-  type: marketplace
-  marketplace: zapier
-  channel: ipaas-usage
-  evidence: https://zapier.com/apps/okta/integrations/formsite
-  direction: third-party
-  category: Forms & Surveys
-  partner_url: https://www.formsite.com/
-- partner_name: Confluence Cloud
-  partner: null
-  partner_match: null
-  partner_candidate: null
-  type: marketplace
-  marketplace: zapier
-  channel: ipaas-usage
-  evidence: https://zapier.com/apps/okta/integrations/confluence-cloud
-  direction: third-party
-  category: Team Collaboration
-  partner_url: https://www.atlassian.com/
 - partner_name: AWS Marketplace
   partner: amazon-web-services
   partner_match: aggregator
@@ -164909,6 +164295,366 @@ edges:
     detected: '2026-10-20'
   detected_by: sweep-compliance-assurance.py
   first_seen: '2026-10-20'
+- partner_name: Slack
+  partner: slack
+  partner_match: name-exact
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  relationship: ipaas-bridge
+  evidence: https://zapier.com/apps/okta/integrations/slack
+  direction: third-party
+  category: Team Chat
+  partner_url: https://slack.com/
+- partner_name: HubSpot
+  partner: hubspot
+  partner_match: domain
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  relationship: ipaas-bridge
+  evidence: https://zapier.com/apps/okta/integrations/hubspot
+  direction: third-party
+  category: Marketing Automation
+  partner_url: http://www.hubspot.com/
+- partner_name: Jira Service Management
+  partner: jira
+  partner_match: domain+name-among-holders
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  relationship: ipaas-bridge
+  evidence: https://zapier.com/apps/okta/integrations/jira-service-management
+  direction: third-party
+  category: Customer Support
+  partner_url: https://www.atlassian.com/software/jira/service-desk
+- partner_name: Mailchimp
+  partner: mailchimp
+  partner_match: domain+name-among-holders
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  relationship: ipaas-bridge
+  evidence: https://zapier.com/apps/okta/integrations/mailchimp
+  direction: third-party
+  category: Marketing Automation
+  partner_url: https://mailchimp.com/
+- partner_name: Jira Software Cloud
+  partner: jira
+  partner_match: domain+name-among-holders
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  relationship: ipaas-bridge
+  evidence: https://zapier.com/apps/okta/integrations/jira-software-cloud
+  direction: third-party
+  category: Project Management
+  partner_url: https://www.atlassian.com/software/jira
+- partner_name: Google Forms
+  partner: google-forms
+  partner_match: domain+name-among-holders
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  relationship: ipaas-bridge
+  evidence: https://zapier.com/apps/okta/integrations/google-forms
+  direction: third-party
+  category: Forms & Surveys
+  partner_url: http://google.com/
+- partner_name: Hibob
+  partner: bob
+  partner_match: domain
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  relationship: ipaas-bridge
+  evidence: https://zapier.com/apps/okta/integrations/hibob
+  direction: third-party
+  category: HR Talent & Recruitment
+  partner_url: https://www.hibob.com/
+- partner_name: Freshservice
+  partner: freshservice
+  partner_match: name-exact
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  relationship: ipaas-bridge
+  evidence: https://zapier.com/apps/okta/integrations/freshservice
+  direction: third-party
+  category: Server Monitoring
+  partner_url: https://freshservice.com/
+- partner_name: Google Workspace Admin
+  partner: google-workspace
+  partner_match: domain+name-among-holders
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  relationship: ipaas-bridge
+  evidence: https://zapier.com/apps/okta/integrations/google-workspace-admin
+  direction: third-party
+  category: Google
+  partner_url: https://workspace.google.com/
+- partner_name: Discord
+  partner: discord
+  partner_match: name-exact
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  relationship: ipaas-bridge
+  evidence: https://zapier.com/apps/okta/integrations/discord
+  direction: third-party
+  category: Team Chat
+  partner_url: https://discordapp.com/
+- partner_name: Intercom
+  partner: intercom
+  partner_match: domain
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  relationship: ipaas-bridge
+  evidence: https://zapier.com/apps/okta/integrations/intercom
+  direction: third-party
+  category: Customer Support
+  partner_url: https://www.intercom.com/welcome-to-intercom?utm_source=external-website&utm_medium=partner&utm_campaign=20220503_all_oc_all_global_gl_all_all_par_extmktplc&utm_term=zapier
+- partner_name: Google Calendar
+  partner: google-calendar
+  partner_match: domain+name-among-holders
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  relationship: ipaas-bridge
+  evidence: https://zapier.com/apps/okta/integrations/google-calendar
+  direction: third-party
+  category: Calendar
+  partner_url: https://calendar.google.com/
+- partner_name: Cognito Forms
+  partner: cognito-forms
+  partner_match: domain
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  relationship: ipaas-bridge
+  evidence: https://zapier.com/apps/okta/integrations/cognito-forms
+  direction: third-party
+  category: Forms & Surveys
+  partner_url: https://www.cognitoforms.com/
+- partner_name: AWS Lambda
+  partner: aws-lambda
+  partner_match: domain+name-among-holders
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  relationship: ipaas-bridge
+  evidence: https://zapier.com/apps/okta/integrations/aws-lambda
+  direction: third-party
+  category: Amazon
+  partner_url: http://aws.amazon.com/lambda/
+- partner_name: Datadog
+  partner: datadog
+  partner_match: domain+name-among-holders
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  relationship: ipaas-bridge
+  evidence: https://zapier.com/apps/okta/integrations/datadog
+  direction: third-party
+  category: Server Monitoring
+  partner_url: http://www.datadoghq.com/
+- partner_name: People HR
+  partner: null
+  partner_match: null
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  relationship: ipaas-bridge
+  evidence: https://zapier.com/apps/okta/integrations/people-hr
+  direction: third-party
+  category: HR Talent & Recruitment
+  partner_url: http://www.peoplehr.com/
+- partner_name: Google Sheets
+  partner: google-sheets
+  partner_match: domain+name-among-holders
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  relationship: ipaas-bridge
+  evidence: https://zapier.com/apps/okta/integrations/google-sheets
+  direction: third-party
+  category: Google
+  partner_url: http://sheets.google.com/
+- partner_name: PostgreSQL
+  partner: postgresql
+  partner_match: domain
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  relationship: ipaas-bridge
+  evidence: https://zapier.com/apps/okta/integrations/postgresql
+  direction: third-party
+  category: Databases
+  partner_url: http://www.postgresql.org/
+- partner_name: Wrangle
+  partner: wrangle
+  partner_match: domain
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  relationship: ipaas-bridge
+  evidence: https://zapier.com/apps/okta/integrations/wrangle-io
+  direction: third-party
+  category: Team Collaboration
+  partner_url: https://www.wrangle.io/
+- partner_name: Wix
+  partner: wix
+  partner_match: domain
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  relationship: ipaas-bridge
+  evidence: https://zapier.com/apps/okta/integrations/wix
+  direction: third-party
+  category: Website Builders
+  partner_url: https://www.wix.com/
+- partner_name: Ashby
+  partner: ashby
+  partner_match: domain
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  relationship: ipaas-bridge
+  evidence: https://zapier.com/apps/okta/integrations/ashby
+  direction: third-party
+  category: HR Talent & Recruitment
+  partner_url: https://www.ashbyhq.com/
+- partner_name: Azure DevOps
+  partner: null
+  partner_match: null
+  partner_candidate: rest-client
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  relationship: ipaas-bridge
+  evidence: https://zapier.com/apps/okta/integrations/azure-devops
+  direction: third-party
+  category: Developer Tools
+  partner_url: https://www.visualstudio.com/
+- partner_name: Zoho CRM
+  partner: zoho-crm
+  partner_match: domain+name-among-holders
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  relationship: ipaas-bridge
+  evidence: https://zapier.com/apps/okta/integrations/zoho-crm
+  direction: third-party
+  category: CRM (Customer Relationship Management)
+  partner_url: https://go.zoho.com/wOk
+- partner_name: Zendesk
+  partner: zendesk
+  partner_match: domain+name-among-holders
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  relationship: ipaas-bridge
+  evidence: https://zapier.com/apps/okta/integrations/zendesk
+  direction: third-party
+  category: Customer Support
+  partner_url: https://www.zendesk.com/
+- partner_name: Ignition
+  partner: null
+  partner_match: null
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  relationship: ipaas-bridge
+  evidence: https://zapier.com/apps/okta/integrations/ignition
+  direction: third-party
+  category: Proposal & Invoice Management
+  partner_url: https://www.ignitionapp.com/
+- partner_name: Workday
+  partner: workday
+  partner_match: domain+name-among-holders
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  relationship: ipaas-bridge
+  evidence: https://zapier.com/apps/okta/integrations/workday
+  direction: third-party
+  category: HR Talent & Recruitment
+  partner_url: https://www.workday.com/
+- partner_name: SpotMe
+  partner: null
+  partner_match: null
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  relationship: ipaas-bridge
+  evidence: https://zapier.com/apps/okta/integrations/spotme
+  direction: third-party
+  category: Event Management
+  partner_url: https://spotme.com/
+- partner_name: Salesforce
+  partner: salesforce
+  partner_match: domain+name-among-holders
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  relationship: ipaas-bridge
+  evidence: https://zapier.com/apps/okta/integrations/salesforce
+  direction: third-party
+  category: CRM (Customer Relationship Management)
+  partner_url: https://www.salesforce.com/
+- partner_name: Amazon S3
+  partner: amazon-s3
+  partner_match: name-exact
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  relationship: ipaas-bridge
+  evidence: https://zapier.com/apps/okta/integrations/amazon-s3
+  direction: third-party
+  category: Amazon
+  partner_url: https://zapier.com/aws.amazon.com
+- partner_name: Formsite
+  partner: null
+  partner_match: null
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  relationship: ipaas-bridge
+  evidence: https://zapier.com/apps/okta/integrations/formsite
+  direction: third-party
+  category: Forms & Surveys
+  partner_url: https://www.formsite.com/
 templates:
 - title: Send Slack channel messages for new Okta events
   url: https://zapier.com/apps/okta/integrations/slack/1306951/send-slack-channel-messages-for-new-okta-events
@@ -164970,7 +164716,6 @@ templates:
   apps:
   - google-sheets
   - okta
-template_total: 43
 skips:
 - label: Create users in Okta with new Google Sheets rows in Team Drive
   cause: catalog
@@ -164984,3 +164729,4 @@ skips:
   cause: catalog
   why: not generated this pass; partner spread capped at 5 workflows and the Workday repo is being written by another
     agent
+template_total: 43
