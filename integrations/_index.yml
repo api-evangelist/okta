@@ -375,6 +375,241 @@
   source: edge
   status: pending-partner-spec
   arazzo: null
+- slug: okta-aws-marketplace
+  label: AWS Marketplace
+  partner: amazon-web-services
+  partner_name: AWS Marketplace
+  type: marketplace
+  marketplace: aws-marketplace
+  channel: distribution
+  evidence: https://aws.amazon.com/marketplace/seller-profile?id=845ffe82-76a9-43cd-bca0-91a05954fb3e
+  source: edge
+  relationship: distribution-channel
+  status: not-a-workflow
+  arazzo: null
+- slug: okta-pypi
+  label: PyPI
+  partner: pypi
+  partner_name: PyPI
+  category: official SDK (Python)
+  type: register
+  channel: package-registry
+  evidence: https://pypi.org/project/okta/
+  source: edge
+  relationship: distribution-channel
+  contract_reference:
+    register: PyPI (public registry JSON)
+    spec_file: null
+    language: Python
+    packages:
+    - name: okta
+      version: 3.4.6
+      released: '2026-09-21'
+      released_field: upload_time
+      lapsed: false
+      page: https://pypi.org/project/okta/
+      repo_leg: github-org:okta
+      publisher_leg: email:okta.com
+      matched_by: domain
+    current: true
+    signal_note: 'an official package on the registry: distribution, not an integration; lapsed = no release in
+      24 months'
+    detected_by: sweep-official-sdks.py
+    detected: '2026-10-18'
+  status: not-a-workflow
+  arazzo: null
+- slug: okta-airbyte
+  label: Airbyte
+  partner: airbyte
+  partner_name: Airbyte
+  type: marketplace
+  marketplace: airbyte-registry
+  channel: elt-connector
+  evidence: https://docs.airbyte.com/integrations/sources/okta
+  source: edge
+  relationship: ipaas-bridge
+  contract_reference:
+    register: Airbyte connector registry (connectors.airbyte.com cloud_registry.json + oss_registry.json)
+    spec_file: null
+    role: elt-connector:airbyte-community
+    registered_name: Okta
+    matched_domain: okta.com
+    matched_by: domain
+    detected_by: sweep-data-integration.py
+    detected: '2026-10-18'
+    signal_note: one edge per (provider, platform); connectors, streams, packages and usage are context, never read
+    connectors:
+    - airbyte/source-okta
+    support_level:
+    - community
+    release_stage:
+    - alpha
+    in_cloud: true
+    builder: unknown (community connector; contributor not in the record)
+  status: not-a-workflow
+  arazzo: null
+- slug: okta-fivetran
+  label: Fivetran
+  partner: fivetran
+  partner_name: Fivetran
+  type: marketplace
+  marketplace: fivetran-connectors
+  channel: elt-connector
+  evidence: https://fivetran.com/docs/connectors/applications/okta
+  source: edge
+  relationship: ipaas-bridge
+  contract_reference:
+    register: Fivetran connectors (fivetran.com/docs/connectors, docs-sitemap.xml + Partner-Built program)
+    spec_file: null
+    role: elt-connector:fivetran
+    registered_name: Okta
+    matched_domain: okta.com
+    matched_by: domain
+    detected_by: sweep-data-integration.py
+    detected: '2026-10-18'
+    signal_note: one edge per (provider, platform); connectors, streams, packages and usage are context, never read
+    connector_paths:
+    - connectors/applications/okta
+    vendor_link: https://www.okta.com/
+    builder: Fivetran
+  status: not-a-workflow
+  arazzo: null
+- slug: okta-meltano
+  label: Meltano
+  partner: meltano
+  partner_name: Meltano
+  type: marketplace
+  marketplace: meltano-hub
+  channel: elt-connector
+  evidence: https://hub.meltano.com/extractors/tap-okta--airbyte
+  source: edge
+  relationship: ipaas-bridge
+  contract_reference:
+    register: Meltano Hub (github.com/meltano/hub _data/meltano extractors + loaders)
+    spec_file: null
+    role: elt-connector:meltano-hub
+    registered_name: Okta
+    matched_domain: okta.com
+    matched_by: domain
+    detected_by: sweep-data-integration.py
+    detected: '2026-10-18'
+    signal_note: one edge per (provider, platform); connectors, streams, packages and usage are context, never read
+    plugins:
+    - tap-okta--airbyte
+    - tap-okta--rshah-amplify
+    maintenance_status:
+    - beta
+    - unknown
+    quality:
+    - bronze
+    - unknown
+    builder: 'community (Meltano Hub variant maintainers: airbyte, rshah-amplify)'
+  status: not-a-workflow
+  arazzo: null
+- slug: okta-fdx-financial-data-exchange
+  label: FDX (Financial Data Exchange)
+  partner: fdx
+  partner_name: FDX (Financial Data Exchange)
+  type: contract
+  channel: standard-directory
+  evidence: https://registry.financialdataexchange.org/
+  source: edge
+  relationship: standard-participant
+  contract_reference:
+    register: FDX Registry
+    standard: FDX API
+    spec_file: null
+    register_api: https://registry.financialdataexchange.org/fdxregistryapi/organizations/search/listingTags
+    role: data-recipient
+    member_type: MEMBER
+    registered_name: Okta
+    register_id: 238
+    registered_website: https://www.okta.com/
+    country: United States
+    fdx_version: null
+    matched_by: domain:okta.com
+    detected_by: sweep-fdx.py
+    detected: '2026-10-19'
+  status: not-a-workflow
+  arazzo: null
+- slug: okta-fedramp
+  label: FedRAMP
+  partner_name: FedRAMP
+  category: FedRAMP authorization
+  type: contract
+  channel: regulator-register
+  evidence: https://marketplace.fedramp.gov/products/FR2131856836
+  source: edge
+  relationship: standard-participant
+  contract_reference:
+    register: FedRAMP Marketplace data (github.com/18F/fedramp-data data/data.json @4b73d9247f)
+    standard: FedRAMP
+    spec_file: null
+    role: fedramp-authorized
+    registered_name: Okta
+    register_id: FR2131856836
+    matched_domain: okta.com
+    matched_by: domain
+    domain_source: website
+    designations:
+    - Compliant
+    packages:
+    - Okta IDaaS Government High Cloud (GHC)
+    - Okta IDaaS Regulated Cloud
+    service_models:
+    - SaaS
+    paths:
+    - Agency
+    signal_note: certified_products = one entry per AUTHORIZED impact level, never per package; packages, service
+      models, paths and leveraging agencies are context, never counted. The register lists current designations
+      only (revoked / expired are removed), so lapsed is always false
+    detected_by: sweep-gov-cloud.py
+    detected: '2026-10-15'
+    certified_products:
+    - product: FedRAMP Moderate
+      impact_level: Moderate
+      lapsed: false
+      latest_authorization: '2020-07-20'
+    - product: FedRAMP High
+      impact_level: High
+      lapsed: false
+      latest_authorization: '2023-09-19'
+  status: not-a-workflow
+  arazzo: null
+- slug: okta-govramp
+  label: GovRAMP
+  partner_name: GovRAMP
+  category: GovRAMP authorization
+  type: register
+  channel: standard-directory
+  evidence: https://govramp.org/program-participants
+  source: edge
+  relationship: standard-participant
+  contract_reference:
+    register: GovRAMP Program Participants (govramp.org/program-participants)
+    standard: GovRAMP
+    spec_file: null
+    role: govramp-authorized
+    registered_name: Okta
+    register_id: SR21015
+    matched_domain: okta.com
+    matched_by: domain
+    domain_source: contact-email
+    statuses:
+    - Authorized
+    offerings:
+    - Okta IDaaS
+    signal_note: certified_products = one entry per AUTHORIZED impact level (Authorized / Provisionally Authorized),
+      never per offering; Progressing / Pending / Ready / Core are participation only
+    detected_by: sweep-gov-cloud.py
+    detected: '2026-10-15'
+    certified_products:
+    - product: GovRAMP Moderate
+      impact_level: Moderate
+      lapsed: false
+      latest_authorization: '2024-08-19'
+  status: not-a-workflow
+  arazzo: null
 - slug: okta-openid-foundation-certification
   label: OpenID Foundation certification
   partner_name: OpenID Foundation certification
@@ -471,7 +706,7 @@
 - slug: okta-1password-enterprise-password-manager
   label: 1Password Enterprise Password Manager
   partner_name: 1Password Enterprise Password Manager
-  category: Lifecycle Management
+  category: Single Sign-On
   type: marketplace
   marketplace: own
   channel: partner-built
@@ -4945,7 +5180,7 @@
 - slug: okta-aws-account-federation
   label: AWS Account Federation
   partner_name: AWS Account Federation
-  category: Single Sign-On
+  category: Lifecycle Management
   type: marketplace
   marketplace: own
   evidence: https://www.okta.com/integrations/amazon_aws/
@@ -21320,6 +21555,17 @@
   relationship: platform-app
   status: not-a-workflow
   arazzo: null
+- slug: okta-cryptr
+  label: Cryptr
+  partner_name: Cryptr
+  category: Lifecycle Management
+  type: marketplace
+  marketplace: own
+  evidence: https://www.okta.com/integrations/Cryptr/
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
 - slug: okta-crystalknows
   label: CrystalKnows
   partner_name: CrystalKnows
@@ -21619,7 +21865,7 @@
 - slug: okta-cursor
   label: Cursor
   partner_name: Cursor
-  category: Single Sign-On
+  category: Multi-factor Authentication (MFA)
   type: marketplace
   marketplace: own
   evidence: https://www.okta.com/integrations/cursor/
@@ -23018,6 +23264,17 @@
   marketplace: own
   channel: partner-built
   evidence: https://www.okta.com/integrations/delightiq/
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: okta-delinea-platform
+  label: Delinea Platform
+  partner_name: Delinea Platform
+  category: Lifecycle Management
+  type: marketplace
+  marketplace: own
+  evidence: https://www.okta.com/integrations/delinea_platform/
   source: edge
   relationship: platform-app
   status: not-a-workflow
@@ -28571,6 +28828,7 @@
   arazzo: null
 - slug: okta-emburse
   label: Emburse
+  partner: emburse
   partner_name: Emburse
   category: Single Sign-On
   type: marketplace
@@ -32696,17 +32954,6 @@
   marketplace: own
   channel: partner-built
   evidence: https://www.okta.com/integrations/fivetonine/
-  source: edge
-  relationship: platform-app
-  status: not-a-workflow
-  arazzo: null
-- slug: okta-fivetran
-  label: Fivetran
-  partner_name: Fivetran
-  category: Single Sign-On
-  type: marketplace
-  marketplace: own
-  evidence: https://www.okta.com/integrations/fivetran/
   source: edge
   relationship: platform-app
   status: not-a-workflow
@@ -40717,6 +40964,7 @@
   arazzo: null
 - slug: okta-idrive
   label: IDrive
+  partner: idrive
   partner_name: IDrive
   category: Single Sign-On
   type: marketplace
@@ -40729,6 +40977,7 @@
   arazzo: null
 - slug: okta-idrive360
   label: IDrive360
+  partner: idrive
   partner_name: IDrive360
   category: Single Sign-On
   type: marketplace
@@ -43195,6 +43444,19 @@
   relationship: platform-app
   status: not-a-workflow
   arazzo: null
+- slug: okta-culture-amp
+  label: Culture Amp
+  partner: culture-amp
+  partner_name: Culture Amp
+  category: Single Sign-On
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://www.okta.com/integrations/integrator-3575724_testsamlintegration_1/
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
 - slug: okta-spark-hr
   label: Spark HR
   partner_name: Spark HR
@@ -43931,6 +44193,19 @@
   relationship: platform-app
   status: not-a-workflow
   arazzo: null
+- slug: okta-semperis-lightning
+  label: Semperis Lightning
+  partner: semperis
+  partner_name: Semperis Lightning
+  category: Single Sign-On
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://www.okta.com/integrations/integrator-5737243_semperislightning_1/
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
 - slug: okta-shiphero
   label: ShipHero
   partner_name: ShipHero
@@ -44054,7 +44329,7 @@
   label: STLabs
   partner: st-labs
   partner_name: STLabs
-  category: Single Sign-On
+  category: Automation
   type: marketplace
   marketplace: own
   channel: partner-built
@@ -44538,6 +44813,17 @@
   relationship: platform-app
   status: not-a-workflow
   arazzo: null
+- slug: okta-init
+  label: Init
+  partner_name: Init
+  category: Automation
+  type: marketplace
+  marketplace: own
+  evidence: https://www.okta.com/integrations/integrator-7960189_init_1/
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
 - slug: okta-evidr-compliance
   label: Evidr Compliance
   partner_name: Evidr Compliance
@@ -44614,6 +44900,17 @@
   type: marketplace
   marketplace: own
   evidence: https://www.okta.com/integrations/integrator-8103491_magnitestreamr_1/
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: okta-cust
+  label: Cust
+  partner_name: Cust
+  category: Lifecycle Management
+  type: marketplace
+  marketplace: own
+  evidence: https://www.okta.com/integrations/integrator-8138083_cust_1/
   source: edge
   relationship: platform-app
   status: not-a-workflow
@@ -44864,6 +45161,18 @@
   type: marketplace
   marketplace: own
   evidence: https://www.okta.com/integrations/integrator-9000108_lyster_1/
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: okta-oblique
+  label: Oblique
+  partner_name: Oblique
+  category: Single Sign-On
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://www.okta.com/integrations/integrator-9005483_obliquesecurity_1/
   source: edge
   relationship: platform-app
   status: not-a-workflow
@@ -47350,10 +47659,10 @@
   relationship: platform-app
   status: not-a-workflow
   arazzo: null
-- slug: okta-juno
-  label: Juno
-  partner_name: Juno
-  category: Single Sign-On
+- slug: okta-juno-journey
+  label: Juno Journey
+  partner_name: Juno Journey
+  category: Lifecycle Management
   type: marketplace
   marketplace: own
   channel: partner-built
@@ -64494,7 +64803,7 @@
   label: PipeDrive
   partner: pipedrive
   partner_name: PipeDrive
-  category: Single Sign-On
+  category: Lifecycle Management
   type: marketplace
   marketplace: own
   channel: partner-built
@@ -72484,7 +72793,7 @@
 - slug: okta-scim-2-0-test-app-header-auth
   label: SCIM 2.0 Test App (Header Auth)
   partner_name: SCIM 2.0 Test App (Header Auth)
-  category: Single Sign-On
+  category: Lifecycle Management
   type: marketplace
   marketplace: own
   evidence: https://www.okta.com/integrations/scim2headerauth/
@@ -74911,6 +75220,7 @@
   arazzo: null
 - slug: okta-signicat
   label: Signicat
+  partner: signicat
   partner_name: Signicat
   category: Single Sign-On
   type: marketplace
@@ -79456,7 +79766,7 @@
 - slug: okta-sumo-logic
   label: Sumo Logic
   partner_name: Sumo Logic
-  category: Single Sign-On
+  category: Zero Trust
   type: marketplace
   marketplace: own
   evidence: https://www.okta.com/integrations/sumologic/
@@ -83500,7 +83810,7 @@
 - slug: okta-tines
   label: Tines
   partner_name: Tines
-  category: Single Sign-On
+  category: AI Agent Providers
   type: marketplace
   marketplace: own
   evidence: https://www.okta.com/integrations/tinescom/
@@ -91508,7 +91818,7 @@
 - slug: okta-workato
   label: Workato
   partner_name: Workato
-  category: Single Sign-On
+  category: Automation
   type: marketplace
   marketplace: own
   evidence: https://www.okta.com/integrations/workato/
@@ -94171,69 +94481,6 @@
   relationship: platform-app
   status: not-a-workflow
   arazzo: null
-- slug: okta-aws-marketplace
-  label: AWS Marketplace
-  partner: amazon-web-services
-  partner_name: AWS Marketplace
-  type: marketplace
-  marketplace: aws-marketplace
-  channel: distribution
-  evidence: https://aws.amazon.com/marketplace/seller-profile?id=845ffe82-76a9-43cd-bca0-91a05954fb3e
-  source: edge
-  relationship: distribution-channel
-  status: not-a-workflow
-  arazzo: null
-- slug: okta-fdx-financial-data-exchange
-  label: FDX (Financial Data Exchange)
-  partner: fdx
-  partner_name: FDX (Financial Data Exchange)
-  type: contract
-  channel: standard-directory
-  evidence: https://registry.financialdataexchange.org/
-  source: edge
-  relationship: standard-participant
-  contract_reference:
-    register: FDX Registry
-    standard: FDX API
-    spec_file: null
-    register_api: https://registry.financialdataexchange.org/fdxregistryapi/organizations/search/listingTags
-    role: data-recipient
-    member_type: MEMBER
-    registered_name: Okta
-    register_id: 238
-    registered_website: https://www.okta.com/
-    country: United States
-    fdx_version: null
-    matched_by: domain:okta.com
-    detected_by: sweep-fdx.py
-    detected: '2026-10-14'
-  status: not-a-workflow
-  arazzo: null
-- slug: okta-bamboohr-own
-  label: BambooHR (own)
-  partner: bamboohr
-  partner_name: BambooHR (own)
-  category: Identity Management
-  type: marketplace
-  marketplace: own
-  channel: partner-built
-  evidence: https://www.bamboohr.com/integrations/listings/okta
-  source: edge
-  relationship: platform-app
-  status: not-a-workflow
-  arazzo: null
-- slug: okta-crowdstrike-own
-  label: CrowdStrike (own)
-  partner: crowdstrike
-  partner_name: CrowdStrike (own)
-  type: marketplace
-  marketplace: own
-  channel: partner-built
-  evidence: https://marketplace.crowdstrike.com/listings/okta/
-  source: edge
-  relationship: platform-app
-  status: not-a-workflow
-  arazzo: null
 - slug: okta-cncf-cloud-native-landscape
   label: CNCF (Cloud Native Landscape)
   partner: cncf
@@ -94241,11 +94488,11 @@
   category: Cloud native landscape
   type: register
   channel: standard-directory
-  evidence: https://github.com/cncf/landscape/blob/3a7d378b1824b82e729a453bb03fa6f1e37557e1/landscape.yml
+  evidence: https://github.com/cncf/landscape/blob/42dd4cd91dad8ec8558ac02467a43f0805b9957a/landscape.yml
   source: edge
   relationship: standard-participant
   contract_reference:
-    register: CNCF Cloud Native Landscape (github.com/cncf/landscape landscape.yml @3a7d378b18)
+    register: CNCF Cloud Native Landscape (github.com/cncf/landscape landscape.yml @42dd4cd91d)
     spec_file: null
     standard: Cloud Native (CNCF)
     role: cncf-member (Silver)
@@ -94264,7 +94511,7 @@
     signal_note: 'participation only: a landscape listing is standard-participant evidence, not depth. Entries,
       categories, tier and projects are CONTEXT, never read (breadth is not credit)'
     detected_by: sweep-cloud-native.py
-    detected: '2026-10-15'
+    detected: '2026-10-19'
   status: not-a-workflow
   arazzo: null
 - slug: okta-zapier
@@ -94299,7 +94546,7 @@
   type: marketplace
   marketplace: n8n-nodes-base
   channel: open-source-node
-  evidence: https://github.com/n8n-io/n8n/tree/860f1273ebd73fabbd668cbec2c49ed9b48a286d/packages/nodes-base/nodes/Okta
+  evidence: https://github.com/n8n-io/n8n/tree/f73dc337f8dc61a4fd44aebe41c55faafe4f53a4/packages/nodes-base/nodes/Okta
   source: edge
   relationship: ipaas-bridge
   contract_reference:
@@ -94317,144 +94564,29 @@
     builder: n8n (built-in node)
   status: not-a-workflow
   arazzo: null
-- slug: okta-fedramp
-  label: FedRAMP
-  partner_name: FedRAMP
-  category: FedRAMP authorization
-  type: contract
-  channel: regulator-register
-  evidence: https://marketplace.fedramp.gov/products/FR2131856836
-  source: edge
-  relationship: standard-participant
-  contract_reference:
-    register: FedRAMP Marketplace data (github.com/18F/fedramp-data data/data.json @4b73d9247f)
-    standard: FedRAMP
-    spec_file: null
-    role: fedramp-authorized
-    registered_name: Okta
-    register_id: FR2131856836
-    matched_domain: okta.com
-    matched_by: domain
-    domain_source: website
-    designations:
-    - Compliant
-    packages:
-    - Okta IDaaS Government High Cloud (GHC)
-    - Okta IDaaS Regulated Cloud
-    service_models:
-    - SaaS
-    paths:
-    - Agency
-    signal_note: certified_products = one entry per AUTHORIZED impact level, never per package; packages, service
-      models, paths and leveraging agencies are context, never counted. The register lists current designations
-      only (revoked / expired are removed), so lapsed is always false
-    detected_by: sweep-gov-cloud.py
-    detected: '2026-10-15'
-    certified_products:
-    - product: FedRAMP Moderate
-      impact_level: Moderate
-      lapsed: false
-      latest_authorization: '2020-07-20'
-    - product: FedRAMP High
-      impact_level: High
-      lapsed: false
-      latest_authorization: '2023-09-19'
-  status: not-a-workflow
-  arazzo: null
-- slug: okta-govramp
-  label: GovRAMP
-  partner_name: GovRAMP
-  category: GovRAMP authorization
-  type: register
-  channel: standard-directory
-  evidence: https://govramp.org/program-participants
-  source: edge
-  relationship: standard-participant
-  contract_reference:
-    register: GovRAMP Program Participants (govramp.org/program-participants)
-    standard: GovRAMP
-    spec_file: null
-    role: govramp-authorized
-    registered_name: Okta
-    register_id: SR21015
-    matched_domain: okta.com
-    matched_by: domain
-    domain_source: contact-email
-    statuses:
-    - Authorized
-    offerings:
-    - Okta IDaaS
-    signal_note: certified_products = one entry per AUTHORIZED impact level (Authorized / Provisionally Authorized),
-      never per offering; Progressing / Pending / Ready / Core are participation only
-    detected_by: sweep-gov-cloud.py
-    detected: '2026-10-15'
-    certified_products:
-    - product: GovRAMP Moderate
-      impact_level: Moderate
-      lapsed: false
-      latest_authorization: '2024-08-19'
-  status: not-a-workflow
-  arazzo: null
-- slug: okta-airbyte
-  label: Airbyte
-  partner: airbyte
-  partner_name: Airbyte
+- slug: okta-bamboohr-own
+  label: BambooHR (own)
+  partner: bamboohr
+  partner_name: BambooHR (own)
+  category: Identity Management
   type: marketplace
-  marketplace: airbyte-registry
-  channel: elt-connector
-  evidence: https://docs.airbyte.com/integrations/sources/okta
+  marketplace: own
+  channel: partner-built
+  evidence: https://www.bamboohr.com/integrations/listings/okta
   source: edge
-  relationship: ipaas-bridge
-  contract_reference:
-    register: Airbyte connector registry (connectors.airbyte.com cloud_registry.json + oss_registry.json)
-    spec_file: null
-    role: elt-connector:airbyte-community
-    registered_name: Okta
-    matched_domain: okta.com
-    matched_by: domain
-    detected_by: sweep-data-integration.py
-    detected: '2026-10-18'
-    signal_note: one edge per (provider, platform); connectors, streams, packages and usage are context, never read
-    connectors:
-    - airbyte/source-okta
-    support_level:
-    - community
-    release_stage:
-    - alpha
-    in_cloud: true
-    builder: unknown (community connector; contributor not in the record)
+  relationship: platform-app
   status: not-a-workflow
   arazzo: null
-- slug: okta-meltano
-  label: Meltano
-  partner: meltano
-  partner_name: Meltano
+- slug: okta-crowdstrike-own
+  label: CrowdStrike (own)
+  partner: crowdstrike
+  partner_name: CrowdStrike (own)
   type: marketplace
-  marketplace: meltano-hub
-  channel: elt-connector
-  evidence: https://hub.meltano.com/extractors/tap-okta--airbyte
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.crowdstrike.com/listings/okta/
   source: edge
-  relationship: ipaas-bridge
-  contract_reference:
-    register: Meltano Hub (github.com/meltano/hub _data/meltano extractors + loaders)
-    spec_file: null
-    role: elt-connector:meltano-hub
-    registered_name: Okta
-    matched_domain: okta.com
-    matched_by: domain
-    detected_by: sweep-data-integration.py
-    detected: '2026-10-18'
-    signal_note: one edge per (provider, platform); connectors, streams, packages and usage are context, never read
-    plugins:
-    - tap-okta--airbyte
-    - tap-okta--rshah-amplify
-    maintenance_status:
-    - beta
-    - unknown
-    quality:
-    - bronze
-    - unknown
-    builder: 'community (Meltano Hub variant maintainers: airbyte, rshah-amplify)'
+  relationship: platform-app
   status: not-a-workflow
   arazzo: null
 - slug: okta-microsoft-teams-own
@@ -94483,34 +94615,16 @@
   relationship: platform-app
   arazzo: okta-slack-new-events-channel-message.yml
   status: arazzo
-- slug: okta-pypi
-  label: PyPI
-  partner: pypi
-  partner_name: PyPI
-  category: official SDK (Python)
-  type: register
-  channel: package-registry
-  evidence: https://pypi.org/project/okta/
+- slug: okta-zendesk-own
+  label: Zendesk (own)
+  partner: zendesk
+  partner_name: Zendesk (own)
+  category: CRM and Marketing
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://www.zendesk.com/marketplace/apps/support/1267081/okta-workflows/
   source: edge
-  relationship: distribution-channel
-  contract_reference:
-    register: PyPI (public registry JSON)
-    spec_file: null
-    language: Python
-    packages:
-    - name: okta
-      version: 3.4.6
-      released: '2026-09-21'
-      released_field: upload_time
-      lapsed: false
-      page: https://pypi.org/project/okta/
-      repo_leg: github-org:okta
-      publisher_leg: email:okta.com
-      matched_by: domain
-    current: true
-    signal_note: 'an official package on the registry: distribution, not an integration; lapsed = no release in
-      24 months'
-    detected_by: sweep-official-sdks.py
-    detected: '2026-10-18'
+  relationship: platform-app
   status: not-a-workflow
   arazzo: null
