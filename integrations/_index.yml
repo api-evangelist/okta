@@ -94720,3 +94720,62 @@
   relationship: ipaas-bridge
   status: pending-partner-spec
   arazzo: null
+- slug: okta-homebrew
+  label: Homebrew
+  partner: homebrew
+  partner_name: Homebrew
+  category: official CLI (Homebrew)
+  type: register
+  channel: package-registry
+  evidence: https://formulae.brew.sh/formula/okta-aws-cli
+  source: edge
+  relationship: distribution-channel
+  contract_reference:
+    register: Homebrew (public package index)
+    spec_file: null
+    packages:
+    - name: okta-aws-cli
+      kind: formula
+      version: 2.6.0
+      released: null
+      lapsed: false
+      page: https://formulae.brew.sh/formula/okta-aws-cli
+      cli: 'formula desc: Okta federated identity for AWS CLI'
+      repo_leg: github-org:okta
+      publisher_leg: artifact-github-org:okta
+      matched_by: github-org
+    current: true
+    signal_note: 'the provider''s own command-line tool on a package manager: distribution, not an integration;
+      lapsed = no release in 24 months or deprecated / disabled by the manager'
+    detected_by: sweep-official-clis.py
+    detected: '2026-10-20'
+  status: not-a-workflow
+  arazzo: null
+- slug: okta-cisa-secure-by-design-pledge
+  label: CISA Secure by Design Pledge
+  partner_name: CISA Secure by Design Pledge
+  category: secure-by-design software pledge
+  type: register
+  channel: standard-directory
+  evidence: https://www.cisa.gov/securebydesign/pledge/secure-design-pledge-signers
+  source: edge
+  relationship: standard-participant
+  contract_reference:
+    register: CISA Secure by Design Pledge signers (cisa.gov/securebydesign/pledge)
+    standard: 'CISA Secure by Design Pledge (seven goals: MFA, default passwords, vulnerability classes, patches,
+      disclosure policy, CVEs, evidence of intrusions)'
+    spec_file: null
+    role: secure-by-design-pledge-signer
+    registered_name: Okta
+    matched_domain: null
+    matched_by: register-name
+    signal_note: 'participation only: a voluntary public pledge listed by CISA; not an audit or conformance result
+      (no certified_products, no tier)'
+    detected_by: sweep-cloud-security-star.py
+    detected: '2026-10-20'
+    register_name_note: register-name 'okta' = okta; no wikidata P856
+    identity_source: register-name
+    identity_note: register gave only the name; exact normalised match to the repo's apis.yml name, one repo, Wikidata
+      P856 not contradicting (Kin 2026-10-20 decision 2)
+  status: not-a-workflow
+  arazzo: null
