@@ -60,6 +60,9 @@ checked:
 - https://www.indexventures.com/companies/
 - https://www.sequoiacap.com/our-companies/
 - https://www.sequoiacap.com/sitemap.xml
+- https://addons.mozilla.org/api/v5/addons/addon/<slug>/
+- https://addons.mozilla.org/api/v5/addons/search/?type=extension&app=firefox
+- https://chromewebstore.google.com/sitemap
 summary: null
 marketplace_apps:
 - marketplace: own
@@ -164827,6 +164830,37 @@ edges:
     detected_by: sweep-vc-portfolios.py
     detected: '2026-10-21'
   detected_by: sweep-vc-portfolios.py
+  first_seen: '2026-10-21'
+- partner_name: Mozilla Firefox Add-ons (AMO)
+  partner: null
+  partner_match: null
+  type: marketplace
+  marketplace: firefox-add-ons
+  channel: partner-built
+  relationship: platform-app
+  direction: third-party
+  evidence: https://addons.mozilla.org/en-US/firefox/addon/okta-browser-plugin/
+  app: Okta Browser Plugin
+  listing_count: 1
+  category: browser extension (Firefox Add-ons)
+  partner_url: https://addons.mozilla.org/
+  contract_reference:
+    register: 'Firefox Add-ons (addons.mozilla.org public API v5 search: authors, homepage, support_url)'
+    spec_file: null
+    role: firefox-add-on-publisher
+    registered_name: Okta Inc.
+    register_id: https://addons.mozilla.org/api/v5/addons/addon/okta-browser-plugin/
+    matched_domain: okta.com
+    matched_by: domain
+    matched_name: Okta Inc.
+    builder: publisher
+    signal_note: ONE edge per provider for the store; listing alone = participation. The AMO author name (builder
+      publisher) or homepage + support_url both on the provider's domain (builder domain-attested) identifies it;
+      extension / user counts are context, never counted. No Mozilla repo in all/*, so no platform-side edge exists
+      to mirror.
+    detected_by: sweep-browser-extension-stores.py
+    detected: '2026-10-21'
+  detected_by: sweep-browser-extension-stores.py
   first_seen: '2026-10-21'
 templates:
 - title: Send Slack channel messages for new Okta events
