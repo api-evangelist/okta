@@ -64,6 +64,9 @@ checked:
 - https://addons.mozilla.org/api/v5/addons/search/?type=extension&app=firefox
 - https://chromewebstore.google.com/sitemap
 - https://openid.net/foundation/sponsoring-members/
+- https://api.first.org/data/v1/teams
+- https://raw.githubusercontent.com/CVEProject/cve-website/dev/src/assets/data/CNAsList.json
+- https://www.cisa.gov/sites/default/files/feeds/known_exploited_vulnerabilities.json
 summary: null
 marketplace_apps:
 - marketplace: own
@@ -164888,6 +164891,72 @@ edges:
     detected_by: sweep-openid-certified-implementations.py
     detected: '2026-10-22'
   detected_by: sweep-openid-certified-implementations.py
+  first_seen: '2026-10-22'
+- partner_name: CVE Program (CVE Numbering Authorities)
+  partner: null
+  partner_match: register
+  type: register
+  channel: standard-directory
+  relationship: standard-participant
+  direction: partner-built
+  evidence: https://www.cve.org/PartnerInformation/ListofPartners/partner/Okta
+  category: Vulnerability disclosure (CVE Numbering Authority)
+  contract_reference:
+    register: CVE Program CNA list (github.com/CVEProject/cve-website CNAsList.json @ 239d3d9b68e0)
+    standard: CVE Program CNA Operational Rules (CVE Numbering Authority)
+    spec_file: null
+    role: cve-numbering-authority
+    registered_name: Okta
+    matched_domain: okta.com
+    matched_by: domain
+    cna_id: CNA-2021-0049
+    cna_short_name: Okta
+    cna_types:
+    - Vendor
+    cna_roles:
+    - CNA
+    scope: Okta issues only.
+    top_level_root: MITRE Corporation
+    root: n/a
+    security_advisories:
+    - https://trust.okta.com/security-advisories
+    disclosure_policy:
+    - https://www.okta.com/vulnerability-reporting-policy/
+    country: USA
+    signal_note: listing as a CVE Numbering Authority = participation (a public commitment to assign CVE IDs and
+      publish advisories for its scope); never a count of CVEs
+    detected_by: sweep-vulnerability-disclosure-cna.py
+    detected: '2026-10-22'
+  detected_by: sweep-vulnerability-disclosure-cna.py
+  first_seen: '2026-10-22'
+- partner_name: FIRST (Forum of Incident Response and Security Teams)
+  partner: null
+  partner_match: register
+  type: register
+  channel: standard-directory
+  relationship: standard-participant
+  direction: partner-built
+  evidence: https://www.first.org/members/teams/okta_defensive_cyber_operations_team
+  category: Incident response / PSIRT (FIRST member team)
+  contract_reference:
+    register: FIRST member teams (api.first.org/data/v1/teams, public JSON API)
+    standard: FIRST (Forum of Incident Response and Security Teams) membership
+    spec_file: null
+    role: first-member-team
+    registered_name: Okta
+    matched_domain: okta.com
+    matched_by: domain
+    teams:
+    - id: okta_defensive_cyber_operations_team
+      team: Okta Defensive Cyber Operations Team
+      team_type: null
+      member_since: January 28, 2021
+      country: US
+    signal_note: FIRST full membership of an incident-response / product-security team = participation; team_type
+      names CSIRT / PSIRT / SOC; never a count
+    detected_by: sweep-vulnerability-disclosure-cna.py
+    detected: '2026-10-22'
+  detected_by: sweep-vulnerability-disclosure-cna.py
   first_seen: '2026-10-22'
 templates:
 - title: Send Slack channel messages for new Okta events

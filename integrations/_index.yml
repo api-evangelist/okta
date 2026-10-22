@@ -94915,3 +94915,69 @@
     detected: '2026-10-22'
   status: not-a-workflow
   arazzo: null
+- slug: okta-cve-program-cve-numbering-authorities
+  label: CVE Program (CVE Numbering Authorities)
+  partner_name: CVE Program (CVE Numbering Authorities)
+  category: Vulnerability disclosure (CVE Numbering Authority)
+  type: register
+  channel: standard-directory
+  evidence: https://www.cve.org/PartnerInformation/ListofPartners/partner/Okta
+  source: edge
+  relationship: standard-participant
+  contract_reference:
+    register: CVE Program CNA list (github.com/CVEProject/cve-website CNAsList.json @ 239d3d9b68e0)
+    standard: CVE Program CNA Operational Rules (CVE Numbering Authority)
+    spec_file: null
+    role: cve-numbering-authority
+    registered_name: Okta
+    matched_domain: okta.com
+    matched_by: domain
+    cna_id: CNA-2021-0049
+    cna_short_name: Okta
+    cna_types:
+    - Vendor
+    cna_roles:
+    - CNA
+    scope: Okta issues only.
+    top_level_root: MITRE Corporation
+    root: n/a
+    security_advisories:
+    - https://trust.okta.com/security-advisories
+    disclosure_policy:
+    - https://www.okta.com/vulnerability-reporting-policy/
+    country: USA
+    signal_note: listing as a CVE Numbering Authority = participation (a public commitment to assign CVE IDs and
+      publish advisories for its scope); never a count of CVEs
+    detected_by: sweep-vulnerability-disclosure-cna.py
+    detected: '2026-10-22'
+  status: not-a-workflow
+  arazzo: null
+- slug: okta-first-forum-of-incident-response-and-security-teams
+  label: FIRST (Forum of Incident Response and Security Teams)
+  partner_name: FIRST (Forum of Incident Response and Security Teams)
+  category: Incident response / PSIRT (FIRST member team)
+  type: register
+  channel: standard-directory
+  evidence: https://www.first.org/members/teams/okta_defensive_cyber_operations_team
+  source: edge
+  relationship: standard-participant
+  contract_reference:
+    register: FIRST member teams (api.first.org/data/v1/teams, public JSON API)
+    standard: FIRST (Forum of Incident Response and Security Teams) membership
+    spec_file: null
+    role: first-member-team
+    registered_name: Okta
+    matched_domain: okta.com
+    matched_by: domain
+    teams:
+    - id: okta_defensive_cyber_operations_team
+      team: Okta Defensive Cyber Operations Team
+      team_type: null
+      member_since: January 28, 2021
+      country: US
+    signal_note: FIRST full membership of an incident-response / product-security team = participation; team_type
+      names CSIRT / PSIRT / SOC; never a count
+    detected_by: sweep-vulnerability-disclosure-cna.py
+    detected: '2026-10-22'
+  status: not-a-workflow
+  arazzo: null
