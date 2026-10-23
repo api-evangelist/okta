@@ -95015,3 +95015,50 @@
     identity_source: register website (CMVP certificate Vendor panel)
   status: not-a-workflow
   arazzo: null
+- slug: okta-arch-user-repository-aur
+  label: Arch User Repository (AUR)
+  partner_name: Arch User Repository (AUR)
+  category: official CLI (Arch User Repository (AUR))
+  type: register
+  channel: package-registry
+  evidence: https://aur.archlinux.org/packages/okta-aws-cli
+  source: edge
+  relationship: distribution-channel
+  contract_reference:
+    register: Arch User Repository (AUR) (public package index)
+    spec_file: null
+    packages:
+    - name: okta-aws-cli
+      kind: aur
+      version: 2.6.0-2
+      released: '2026-03-30'
+      released_field: AUR LastModified
+      out_of_date: false
+      lapsed: false
+      page: https://aur.archlinux.org/packages/okta-aws-cli
+      upstream: https://github.com/okta/okta-aws-cli
+      cli: 'AUR description: A CLI for having Okta as the IdP for AWS CLI operations'
+      repo_leg: github-org:okta
+      publisher_leg: artifact-github-org:okta
+      matched_by: github-org
+    - name: okta-cli-bin
+      kind: aur
+      version: 0.8.0-1
+      released: '2021-11-10'
+      released_field: AUR LastModified
+      out_of_date: false
+      lapsed: true
+      page: https://aur.archlinux.org/packages/okta-cli-bin
+      upstream: https://github.com/okta/okta-cli
+      cli: 'AUR description: The Okta CLI is the easiest way to get started with Okta!'
+      repo_leg: github-org:okta
+      publisher_leg: artifact-github-org:okta
+      matched_by: github-org
+    current: true
+    signal_note: 'the provider''s own command-line tool packaged for Arch Linux (community-maintained PKGBUILD whose
+      upstream and source artifact are the provider''s): distribution, not an integration; lapsed = flagged out-of-date
+      or not updated in 24 months'
+    detected_by: sweep-aur-vendor-cli-packages.py
+    detected: '2026-10-23'
+  status: not-a-workflow
+  arazzo: null
