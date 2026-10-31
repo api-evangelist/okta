@@ -1,4 +1,4 @@
-# Okta (okta)
+# Okta
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -64,164 +64,317 @@
 > Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
 <!-- API-EVANGELIST-PROVENANCE:END -->
 
-Okta is the workforce identity incumbent. Its Identity Cloud platform — also branded the Okta Workforce Identity
-Platform — covers Single Sign-On, Adaptive MFA, Universal Directory, Lifecycle Management, Identity Governance,
-Privileged Access, Device Access, Identity Threat Protection, Identity Security Posture Management, Access Gateway,
-and API Access Management. Customer identity is handled by **Auth0**, which Okta acquired in 2021 and operates as
-its consumer-facing identity arm. The platform now extends to securing AI agents via **Okta for AI Agents** and the
-**Cross-App Access (XAA)** protocol — an emerging OAuth profile based on the IETF *Identity Assertion Authorization
-Grant* (ID-JAG) draft for agent-to-app authorization. The Okta Management API is the primary developer surface, with
-an official **MCP server** (`okta-mcp-server`) exposing administrative operations to LLM agents under human-in-the-loop
-confirmation.
+Okta is the workforce identity incumbent — its Identity Cloud platform (also called the Okta Workforce Identity Platform) covers Single Sign-On, Adaptive MFA, Universal Directory, Lifecycle Management, Identity Governance, Privileged Access, Device Access, Identity Threat Protection, Identity Security Posture Management, Access Gateway, and API Access Management. Customer identity is handled by Auth0, which Okta acquired in 2021 and now operates as its consumer-facing identity arm. The platform now extends to securing AI agents via Okta for AI Agents and the Cross-App Access (XAA) protocol — an emerging OAuth profile based on the IETF ID-JAG draft for agent-to-app authorization. The Okta Management API is the primary developer surface, with an official MCP server (okta-mcp-server) exposing administrative operations to LLM agents under human-in-the-loop confirmation.
 
-**URL:** [apis.yml on GitHub](https://raw.githubusercontent.com/api-evangelist/okta/refs/heads/main/apis.yml)
+**Areas:** SSO · Okta · Identity · Workforce Identity · Customer Identity · Authentication · Authorization · Multi-Factor Authentication · Identity Governance · Privileged Access Management · AI Agents · Cross-App Access
 
-## Scope
+## Okta on APIs.io
 
-- **Type:** Contract
-- **Position:** Consuming
-- **Access:** 3rd-Party
-- **x-type:** company
+Everything profiled for Okta is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/okta/](https://apis.io/providers/okta/)** — or go straight to one of the APIs or properties below.
 
-## Tags
+### APIs (37)
 
-- Identity
-- Workforce Identity
-- Customer Identity
-- Authentication
-- Authorization
-- Single Sign-On
-- Multi-Factor Authentication
-- Identity Governance
-- Privileged Access
-- AI Agents
-- Cross-App Access
-- MCP
-- Platform
+- [Cross-App Access (XAA)](https://apis.io/apis/okta/okta-cross-app-access/) — Cross-App Access is Okta's emerging OAuth profile for secure agent-to-app and app-to-app authorization, based on the IETF draft "OAuth Identity Assertion…
+- [Okta for AI Agents](https://apis.io/apis/okta/okta-for-ai-agents/) — Okta for AI Agents secures the full lifecycle of AI agents — discovery, registration with mandatory human ownership, least-privilege scope enforcement,…
+- [Okta Application API](https://apis.io/apis/okta/okta-application-api/) — The Application API from Okta — 31 operation(s) for application.
+- [Okta Authenticator API](https://apis.io/apis/okta/okta-authenticator-api/) — The Authenticator API from Okta — 4 operation(s) for authenticator.
+- [Okta AuthorizationServer API](https://apis.io/apis/okta/okta-authorizationserver-api/) — The AuthorizationServer API from Okta — 21 operation(s) for authorizationserver.
+- [Okta Brand API](https://apis.io/apis/okta/okta-brand-api/) — The Brand API from Okta — 15 operation(s) for brand.
+- [Okta Domain API](https://apis.io/apis/okta/okta-domain-api/) — The Domain API from Okta — 4 operation(s) for domain.
+- [Okta EventHook API](https://apis.io/apis/okta/okta-eventhook-api/) — The EventHook API from Okta — 5 operation(s) for eventhook.
+- [Okta Feature API](https://apis.io/apis/okta/okta-feature-api/) — The Feature API from Okta — 5 operation(s) for feature.
+- [Okta Group API](https://apis.io/apis/okta/okta-group-api/) — The Group API from Okta — 16 operation(s) for group.
+- [Okta GroupSchema API](https://apis.io/apis/okta/okta-groupschema-api/) — The GroupSchema API from Okta — 1 operation(s) for groupschema.
+- [Okta InlineHook API](https://apis.io/apis/okta/okta-inlinehook-api/) — The InlineHook API from Okta — 5 operation(s) for inlinehook.
+- [Okta LinkedObject API](https://apis.io/apis/okta/okta-linkedobject-api/) — The LinkedObject API from Okta — 2 operation(s) for linkedobject.
+- [Okta Log API](https://apis.io/apis/okta/okta-log-api/) — The Log API from Okta — 1 operation(s) for log.
+- [Okta NetworkZone API](https://apis.io/apis/okta/okta-networkzone-api/) — The NetworkZone API from Okta — 4 operation(s) for networkzone.
+- [Okta Org API](https://apis.io/apis/okta/okta-org-api/) — The Org API from Okta — 14 operation(s) for org.
+- [Okta Policy API](https://apis.io/apis/okta/okta-policy-api/) — The Policy API from Okta — 8 operation(s) for policy.
+- [Okta ProfileMapping API](https://apis.io/apis/okta/okta-profilemapping-api/) — The ProfileMapping API from Okta — 2 operation(s) for profilemapping.
+- [Okta Session API](https://apis.io/apis/okta/okta-session-api/) — The Session API from Okta — 3 operation(s) for session.
+- [Okta Subscription API](https://apis.io/apis/okta/okta-subscription-api/) — The Subscription API from Okta — 6 operation(s) for subscription.
+- [Okta Template API](https://apis.io/apis/okta/okta-template-api/) — The Template API from Okta — 2 operation(s) for template.
+- [Okta ThreatInsight API](https://apis.io/apis/okta/okta-threatinsight-api/) — The ThreatInsight API from Okta — 1 operation(s) for threatinsight.
+- [Okta TrustedOrigin API](https://apis.io/apis/okta/okta-trustedorigin-api/) — The TrustedOrigin API from Okta — 4 operation(s) for trustedorigin.
+- [Okta User API](https://apis.io/apis/okta/okta-user-api/) — The User API from Okta — 36 operation(s) for user.
+- [Okta UserFactor API](https://apis.io/apis/okta/okta-userfactor-api/) — The UserFactor API from Okta — 7 operation(s) for userfactor.
+- [Okta UserSchema API](https://apis.io/apis/okta/okta-userschema-api/) — The UserSchema API from Okta — 2 operation(s) for userschema.
+- [Okta App Authenticator API](https://apis.io/apis/okta/okta-appauthenticator-api/) — The MyAccount App Authenticators API provides operations to enroll, update, and delete an app authenticator. The API also allows users to view and verify…
+- [Okta Authenticators API](https://apis.io/apis/okta/okta-authenticators-api/) — <div class="x-lifecycle-container"><x-lifecycle class="lea"></x-lifecycle> <x-lifecycle class="oie"></x-lifecycle></div>The MyAccount Authenticators API…
+- [Okta Email API](https://apis.io/apis/okta/okta-email-api/) — The MyAccount Email API provides operations to enroll, update, and delete emails. The API also provides utilities to create, view, and answer verification…
+- [Okta Okta Applications API](https://apis.io/apis/okta/okta-oktaapplications-api/) — <div class="x-lifecycle-container"><x-lifecycle class="lea"></x-lifecycle> <x-lifecycle class="oie"></x-lifecycle></div>The MyAccount Profile API provides…
+- [Okta Organization API](https://apis.io/apis/okta/okta-organization-api/) — <div class="x-lifecycle-container"><x-lifecycle class="lea"></x-lifecycle> <x-lifecycle class="oie"></x-lifecycle></div>The MyAccount Profile API provides…
+- [Okta Password API](https://apis.io/apis/okta/okta-password-api/) — The MyAccount Password API provides operations to enroll, update, and delete passwords. > **Note:** Super admins can enable the IDP MyAccount API password…
+- [Okta Phone API](https://apis.io/apis/okta/okta-phone-api/) — The MyAccount Phone API provides operations to enroll, update, and delete phone numbers. The API also provides utilities to create, view, and answer…
+- [Okta Profile API](https://apis.io/apis/okta/okta-profile-api/) — The MyAccount Profile API provides operations to enroll and update profile fields. The API also allows viewing of all allowed profile fields. ### API…
+- [Okta Sessions API](https://apis.io/apis/okta/okta-sessions-api/) — The MyAccount Sessions API provides operations to manage sessions. See [sessions](/openapi/okta-management/management/tag/Session/) for more information.…
+- [Okta Identity Provider API](https://apis.io/apis/okta/okta-identity-provider-api/) — The Identity Provider API from Okta — 16 operation(s) for identity provider.
+- [Okta User Type API](https://apis.io/apis/okta/okta-user-type-api/) — The User Type API from Okta — 2 operation(s) for user type.
 
-## Timestamps
+### Published properties
 
-- **Created:** 2023-11-20
-- **Modified:** 2026-05-22
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-## APIs
+#### Arazzo workflows (21)
 
-### Okta API (Management)
+Multi-step workflows that chain operations into a business task.
 
-Unified identity and access management interface for the Okta Workforce Identity Platform. 26 resource tags
-across 338 operations cover applications, authenticators, authorization servers, brands, domains, event hooks,
-features, groups, group schemas, identity providers, inline hooks, linked objects, system logs, network zones,
-org, policies, profile mappings, sessions, subscriptions, templates, ThreatInsight, trusted origins, users, user
-factors, user schemas, and user types. Access uses scoped OAuth 2.0 tokens or legacy API tokens; rate limits apply
-per org and SKU.
+- [Okta Assign Admin Role to Group](https://apis.io/arazzos/okta/okta-assign-admin-role-to-group-workflow/)
+- [Okta Assign Admin Role to User](https://apis.io/arazzos/okta/okta-assign-admin-role-to-user-workflow/)
+- [Okta Assign Group to Application](https://apis.io/arazzos/okta/okta-assign-group-to-application-workflow/)
+- [Okta Create and Activate Application](https://apis.io/arazzos/okta/okta-create-and-activate-application-workflow/)
+- [Okta Create and Activate Authenticator](https://apis.io/arazzos/okta/okta-create-and-activate-authenticator-workflow/)
+- [Okta Create and Activate Group Rule](https://apis.io/arazzos/okta/okta-create-and-activate-group-rule-workflow/)
+- [Okta Create and Refresh Session](https://apis.io/arazzos/okta/okta-create-and-refresh-session-workflow/)
+- [Okta Create Application, Assign User, and Activate](https://apis.io/arazzos/okta/okta-create-app-assign-user-and-activate-workflow/)
+- [Okta Create Group and Add Members](https://apis.io/arazzos/okta/okta-create-group-and-add-members-workflow/)
+- [Okta Create Policy with Rule and Activate](https://apis.io/arazzos/okta/okta-create-policy-with-rule-workflow/)
+- [Okta Create User with Group Membership](https://apis.io/arazzos/okta/okta-create-user-with-group-membership-workflow/)
+- [Okta Deactivate and Delete User](https://apis.io/arazzos/okta/okta-deactivate-and-delete-user-workflow/)
+- [Okta Enroll and Activate User Factor](https://apis.io/arazzos/okta/okta-enroll-and-activate-factor-workflow/)
+- [Okta Find User and Assign Application](https://apis.io/arazzos/okta/okta-find-user-and-assign-app-workflow/)
+- [Okta Find User and Suspend](https://apis.io/arazzos/okta/okta-find-user-and-suspend-workflow/)
+- [Okta Offboard User and Clear Sessions](https://apis.io/arazzos/okta/okta-offboard-user-clear-sessions-workflow/)
+- [Okta Onboard User to Group and Application](https://apis.io/arazzos/okta/okta-onboard-user-to-group-and-app-workflow/)
+- [Okta Provision Admin User](https://apis.io/arazzos/okta/okta-provision-admin-user-workflow/)
+- [Okta Restore Suspended User](https://apis.io/arazzos/okta/okta-reactivate-suspended-user-workflow/)
+- [Okta Reset and Re-enroll User Factor](https://apis.io/arazzos/okta/okta-reset-and-reenroll-factor-workflow/)
+- [Okta Update Group Rule Expression](https://apis.io/arazzos/okta/okta-update-group-rule-expression-workflow/)
 
-- **Human URL:** https://developer.okta.com/docs/reference/
-- **Base URL:** https://your-subdomain.okta.com
-- **OpenAPI (local):** [`openapi/okta-openapi-original.yml`](openapi/okta-openapi-original.yml)
-- **OpenAPI (source of truth):** https://github.com/okta/okta-management-openapi-spec (`dist/current/`)
+#### AsyncAPI (1)
 
-### Cross-App Access (XAA)
+Event-driven and webhook contracts.
 
-Okta's emerging OAuth profile for secure agent-to-app and app-to-app authorization, based on the IETF draft
-`draft-ietf-oauth-identity-assertion-authz-grant` (ID-JAG). An IdP-minted identity assertion is exchanged for a
-scoped resource access token, eliminating long-lived unmanaged credentials between AI agents and SaaS apps.
-[`xaa.dev`](https://xaa.dev/) hosts the public sandbox.
+- [Okta Event Hooks and Log Streams](https://apis.io/asyncapis/okta/okta-events-asyncapi/)
 
-### Okta for AI Agents
+#### Event channels (4)
 
-Add-on covering AI agent discovery, registration with mandatory human owner, least-privilege scope enforcement,
-runtime monitoring, and instant revocation — all within the Okta identity control plane. Sold as an add-on across
-Workforce Identity SKUs.
+Individual events and webhooks the provider emits.
 
-## Common Properties
+- [okta/event-hook/delivery](https://apis.io/channels/okta/okta-event-hook-delivery/)
+- [okta/event-hook/verification](https://apis.io/channels/okta/okta-event-hook-verification/)
+- [okta/log-stream/aws-eventbridge](https://apis.io/channels/okta/okta-log-stream-aws-eventbridge/)
+- [okta/log-stream/splunk-cloud](https://apis.io/channels/okta/okta-log-stream-splunk-cloud/)
+
+#### GraphQL (1)
+
+GraphQL schemas.
+
+- [Moved to /providers/okta/](https://apis.io/graphqls/okta/okta-graphql/)
+
+#### MCP servers (2)
+
+Model Context Protocol servers that expose the API to agents.
+
+- [okta](https://apis.io/servers/okta/okta/)
+- [Okta MCP Server](https://apis.io/servers/okta/okta-mcp-server/)
+
+#### Agentic access (1)
+
+Which operations an agent can call, which act, and which need a human in the loop.
+
+- [Okta Agentic Access](https://apis.io/agentic-access/okta/okta-agentic-access/)
+
+#### JSON Schema (462)
+
+The data models the API reads and writes.
+
+- [AccessPolicy](https://apis.io/schemas/okta/okta-accesspolicy/)
+- [AccessPolicyConstraint](https://apis.io/schemas/okta/okta-accesspolicyconstraint/)
+- [AccessPolicyConstraints](https://apis.io/schemas/okta/okta-accesspolicyconstraints/)
+- [AccessPolicyRule](https://apis.io/schemas/okta/okta-accesspolicyrule/)
+- [AccessPolicyRuleActions](https://apis.io/schemas/okta/okta-accesspolicyruleactions/)
+- [AccessPolicyRuleApplicationSignOn](https://apis.io/schemas/okta/okta-accesspolicyruleapplicationsignon/)
+- [AccessPolicyRuleConditions](https://apis.io/schemas/okta/okta-accesspolicyruleconditions/)
+- [AccessPolicyRuleCustomCondition](https://apis.io/schemas/okta/okta-accesspolicyrulecustomcondition/)
+- [AcsEndpoint](https://apis.io/schemas/okta/okta-acsendpoint/)
+- [ActivateFactorRequest](https://apis.io/schemas/okta/okta-activatefactorrequest/)
+- [AllowedForEnum](https://apis.io/schemas/okta/okta-allowedforenum/)
+- [AppAndInstanceConditionEvaluatorAppOrInstance](https://apis.io/schemas/okta/okta-appandinstanceconditionevaluatorapporinstance/)
+- [AppAndInstancePolicyRuleCondition](https://apis.io/schemas/okta/okta-appandinstancepolicyrulecondition/)
+- [AppInstancePolicyRuleCondition](https://apis.io/schemas/okta/okta-appinstancepolicyrulecondition/)
+- [Okta Application](https://apis.io/schemas/okta/okta-application/)
+- [ApplicationAccessibility](https://apis.io/schemas/okta/okta-applicationaccessibility/)
+- [ApplicationCredentials](https://apis.io/schemas/okta/okta-applicationcredentials/)
+- [ApplicationCredentialsOAuthClient](https://apis.io/schemas/okta/okta-applicationcredentialsoauthclient/)
+- [ApplicationCredentialsScheme](https://apis.io/schemas/okta/okta-applicationcredentialsscheme/)
+- [ApplicationCredentialsSigning](https://apis.io/schemas/okta/okta-applicationcredentialssigning/)
+- [ApplicationCredentialsSigningUse](https://apis.io/schemas/okta/okta-applicationcredentialssigninguse/)
+- [ApplicationCredentialsUsernameTemplate](https://apis.io/schemas/okta/okta-applicationcredentialsusernametemplate/)
+- [ApplicationFeature](https://apis.io/schemas/okta/okta-applicationfeature/)
+- [ApplicationGroupAssignment](https://apis.io/schemas/okta/okta-applicationgroupassignment/)
+- [ApplicationLicensing](https://apis.io/schemas/okta/okta-applicationlicensing/)
+- …and 437 more published on APIs.io
+
+#### JSON Structure (2)
+
+Data models expressed in JSON Structure.
+
+- [Okta Structure](https://apis.io/json-structure/okta/okta-structure/)
+- [Okta User Structure](https://apis.io/json-structure/okta/okta-user-structure/)
+
+#### JSON-LD (1)
+
+Linked-data contexts for the provider's vocabulary.
+
+- [Okta Context](https://apis.io/jsonld/okta/okta-context/)
+
+#### Vocabulary (1)
+
+The provider's domain terms, defined.
+
+- [Okta Vocabulary](https://apis.io/vocabularies/okta/okta-vocabulary/)
+
+#### Examples (4)
+
+Example requests and responses.
+
+- [Okta Application Oidc Example](https://apis.io/examples/okta/okta-application-oidc-example/)
+- [Okta Cross App Access Grant Example](https://apis.io/examples/okta/okta-cross-app-access-grant-example/)
+- [Okta Group Example](https://apis.io/examples/okta/okta-group-example/)
+- [Okta User Active Example](https://apis.io/examples/okta/okta-user-active-example/)
+
+#### Collections (27)
+
+Postman and Open Collection request collections.
+
+- [Okta Application API](https://apis.io/collections/okta/open-okta-application-api/)
+- [Okta Application Authenticator API](https://apis.io/collections/okta/open-okta-authenticator-api/)
+- [Okta Application AuthorizationServer API](https://apis.io/collections/okta/open-okta-authorizationserver-api/)
+- [Okta Application Brand API](https://apis.io/collections/okta/open-okta-brand-api/)
+- [Okta Application Domain API](https://apis.io/collections/okta/open-okta-domain-api/)
+- [Okta Application EventHook API](https://apis.io/collections/okta/open-okta-eventhook-api/)
+- [Okta Application Feature API](https://apis.io/collections/okta/open-okta-feature-api/)
+- [Okta Application Group API](https://apis.io/collections/okta/open-okta-group-api/)
+- [Okta Application GroupSchema API](https://apis.io/collections/okta/open-okta-groupschema-api/)
+- [Okta Application IdentityProvider API](https://apis.io/collections/okta/open-okta-identityprovider-api/)
+- [Okta Application InlineHook API](https://apis.io/collections/okta/open-okta-inlinehook-api/)
+- [Okta Application LinkedObject API](https://apis.io/collections/okta/open-okta-linkedobject-api/)
+- [Okta Application Log API](https://apis.io/collections/okta/open-okta-log-api/)
+- [Okta Application NetworkZone API](https://apis.io/collections/okta/open-okta-networkzone-api/)
+- [Okta Application Org API](https://apis.io/collections/okta/open-okta-org-api/)
+- [Okta Application Policy API](https://apis.io/collections/okta/open-okta-policy-api/)
+- [Okta Application ProfileMapping API](https://apis.io/collections/okta/open-okta-profilemapping-api/)
+- [Okta Application Session API](https://apis.io/collections/okta/open-okta-session-api/)
+- [Okta Application Subscription API](https://apis.io/collections/okta/open-okta-subscription-api/)
+- [Okta Application Template API](https://apis.io/collections/okta/open-okta-template-api/)
+- [Okta Application ThreatInsight API](https://apis.io/collections/okta/open-okta-threatinsight-api/)
+- [Okta Application TrustedOrigin API](https://apis.io/collections/okta/open-okta-trustedorigin-api/)
+- [Okta Application User API](https://apis.io/collections/okta/open-okta-user-api/)
+- [Okta Application UserFactor API](https://apis.io/collections/okta/open-okta-userfactor-api/)
+- [Okta Application UserSchema API](https://apis.io/collections/okta/open-okta-userschema-api/)
+- …and 2 more published on APIs.io
+
+#### Governance rules (3)
+
+Spectral rulesets for the provider's contracts.
+
+- [Okta — asyncapi rules](https://apis.io/rules/okta/okta-asyncapi-spectral-rules/)
+- [Okta — jsonschema rules](https://apis.io/rules/okta/okta-jsonschema-spectral-rules/)
+- [Okta API Rules](https://apis.io/rules/okta/okta-rules/)
+
+#### Security (4)
+
+Authentication, trust centre, and vulnerability disclosure.
+
+- [Okta Authentication](https://apis.io/security/okta/okta-authentication/)
+- [Okta Domain Security](https://apis.io/security/okta/okta-domain-security/)
+- [Okta Trust Center](https://apis.io/security/okta/okta-trust-center/)
+- [Okta Vulnerability Disclosure](https://apis.io/security/okta/okta-vulnerability-disclosure/)
+
+#### OAuth scopes (1)
+
+The permissions the API asks for.
+
+- [Okta Scopes](https://apis.io/scopes/okta/okta-scopes/)
+
+#### Plans and pricing (1)
+
+Published plans, tiers and prices.
+
+- [Okta Plans Pricing](https://apis.io/plans/okta/okta-plans-pricing/)
+
+#### Rate limits (1)
+
+Published request limits.
+
+- [Okta Rate Limits](https://apis.io/rate-limits/okta/okta-rate-limits/)
+
+#### FinOps (1)
+
+What the API costs to run, by operation.
+
+- [Okta Finops](https://apis.io/finops/okta/okta-finops/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
 
 - [Website](https://www.okta.com/)
-- [Portal](https://developer.okta.com/)
 - [Documentation](https://developer.okta.com/docs/reference/)
-- [Authentication](https://developer.okta.com/docs/guides/implement-grant-type/authcodepkce/main/)
-- [GitHub Organization](https://github.com/okta) (88 public repos)
-- [Status](https://status.okta.com/)
+- [Getting started](https://www.okta.com/identity-101/digital-onboarding-definition-benefits-how-it-works)
 - [Support](https://support.okta.com/)
-- [Concepts](https://developer.okta.com/docs/concepts/)
-- [Guides](https://developer.okta.com/docs/guides/)
-- [SDKs](https://developer.okta.com/code/)
-- [Change Log](https://developer.okta.com/docs/release-notes/)
-- [Login](https://developer.okta.com/login/)
-- [Sign Up](https://developer.okta.com/signup/)
+- [Changelog](https://developer.okta.com/docs/release-notes/)
 - [Blog](https://developer.okta.com/blog/)
-- [Plans](https://www.okta.com/pricing/)
-- [Forum](https://devforum.okta.com/)
-- [Terms of Service](https://developer.okta.com/terms/)
-- [Privacy Policy](https://www.okta.com/privacy-policy/)
-- [Okta Integration Network](https://www.okta.com/integrations/)
-- [Cross-App Access Sandbox (xaa.dev)](https://xaa.dev/)
+- [Security](https://bugcrowd.com/auth0-okta)
+- [Compliance](https://security.okta.com/)
+- [Terms of service](https://developer.okta.com/terms/)
+- [Privacy policy](https://www.okta.com/privacy-policy/)
+- [GitHub](https://github.com/okta)
+- [Status](https://status.okta.com/)
 
-## SDKs, CLIs and Tools
+## API Evangelist rating
 
-| Type | Repo |
+**Kin Score 73.8** — exemplar · rubric 0.25.0 · scored 2026-10-23
+
+| Facet | Score |
 |---|---|
-| MCP Server | https://github.com/okta/okta-mcp-server |
-| CLI | https://github.com/okta/okta-cli |
-| CLI (Go) | https://github.com/okta/okta-cli-client |
-| Terraform | https://github.com/okta/terraform-provider-okta |
-| Terraform (PAM) | https://github.com/okta/terraform-provider-oktapam |
-| OpenAPI Spec | https://github.com/okta/okta-management-openapi-spec |
-| Java | https://github.com/okta/okta-sdk-java |
-| .NET | https://github.com/okta/okta-sdk-dotnet |
-| Go | https://github.com/okta/okta-sdk-golang |
-| Python | https://github.com/okta/okta-sdk-python |
-| Node.js | https://github.com/okta/okta-sdk-nodejs |
-| JavaScript Auth | https://github.com/okta/okta-auth-js |
-| React | https://github.com/okta/okta-react |
-| Angular | https://github.com/okta/okta-angular |
-| Vue | https://github.com/okta/okta-vue |
-| React Native | https://github.com/okta/okta-react-native |
-| Swift (iOS/macOS) | https://github.com/okta/okta-mobile-swift |
-| Kotlin (Android) | https://github.com/okta/okta-mobile-kotlin |
-| Spring Boot | https://github.com/okta/okta-spring-boot |
-| Sign-In Widget | https://github.com/okta/okta-signin-widget |
-| OIDC Middleware (Node) | https://github.com/okta/okta-oidc-middleware |
-| JWT Verifier (Java) | https://github.com/okta/okta-jwt-verifier-java |
-| JWT Verifier (Python) | https://github.com/okta/okta-jwt-verifier-python |
-| Design System | https://github.com/okta/odyssey |
-| Workflows Templates | https://github.com/okta/workflows-templates |
-| Customer Detections | https://github.com/okta/customer-detections |
+| Discoverability | 70.0 |
+| Contract quality | 75.3 |
+| Contract governance | 45.5 |
+| Operational transparency | 52.6 |
+| Developer ergonomics | 83.9 |
+| Access clarity | 61.8 |
 
-## Artifacts in this Repo
+**Agent readiness 51.1** — agent-ready (gated down from agent-native)
 
-- **OpenAPI:** `openapi/okta-openapi-original.yml` (Okta Management API v2.16.0, 338 operations, 26 tags)
-- **Naftiko Capabilities:** `capabilities/` — 26 per-tag YAML capability files
-- **Spectral Rules:** `rules/okta-rules.yml`
-- **JSON Schema:** `json-schema/okta-user-schema.json`, `okta-group-schema.json`, `okta-application-schema.json`
-- **JSON Structure:** `json-structure/okta-user-structure.json`
-- **JSON-LD:** `json-ld/okta-context.jsonld`
-- **Examples:** `examples/okta-user-active-example.json`, `okta-group-example.json`,
-  `okta-application-oidc-example.json`, `okta-cross-app-access-grant-example.json`
-- **Vocabulary:** `vocabulary/okta-vocabulary.yml`
-- **Plans / Pricing:** `plans/okta-plans-pricing.yml` (Workforce + Customer Identity + add-ons)
-- **Rate Limits:** `rate-limits/okta-rate-limits.yml`
-- **FinOps (FOCUS-aligned):** `finops/okta-finops.yml`
-- **Blog Index:** `blogs/blogs.json` plus posts (Cross-App Access, XAA, MCP Server, Entitlements, push-MFA)
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | — |
+| MCP Server | verified |
+| Auth Clarity | served (partial credit) |
+| Idempotency | — |
+| Error Semantics | verified |
+| OpenAPI Examples | partial |
+| Rate Limit Signal | derived (partial credit) |
+| Event Surface Described | derived (partial credit) |
+| Agent Skills | derived (partial credit) |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | served (partial credit) |
+| Protected Resource Metadata | verified |
+| Dynamic Client Registration | yes |
+| Agentic Commerce | — |
+| Pagination Ratio | — |
+| Operation Distinctiveness | mostly |
 
-## Pricing Highlights
+**Regulatory alignment 45.1** — Horizontal (data, software, accessibility, platform)
 
-| Tier | Price | Notes |
-|---|---|---|
-| Workforce Starter | $6 / user / mo | $1,500/yr minimum; SSO + MFA + Universal Directory + 5 Workflows |
-| Workforce Core Essentials | $14 / user / mo | + Adaptive MFA, Privileged Access, Lifecycle Mgmt, Access Governance |
-| Workforce Essentials | $17 / user / mo | + 50 Workflows |
-| Workforce Professional | Custom | + Device Access, ISPM, ITP, Sandbox, Unlimited Workflows |
-| Workforce Enterprise | Custom | + API Access Mgmt, Access Gateway, M2M Tokens |
-| Customer Identity (Auth0) Base | $3K / mo | Enterprise Base; B2C / B2B suites custom |
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/okta/](https://apis.io/providers/okta/).
 
-## Rate Limit Highlights
+## How this profile is made
 
-- Default 600 req/min on most endpoints
-- OAuth `/token` 1,000 req/min
-- System Log 120 req/min
-- `X-Rate-Limit-Limit` / `-Remaining` / `-Reset` headers; HTTP 429 on throttle
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
 
-## Maintainers
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Okta: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
 
-- **FN:** Kin Lane
-- **Email:** kin@apievangelist.com
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/okta/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
